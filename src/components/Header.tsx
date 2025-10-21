@@ -5,7 +5,8 @@ const logo = "/logo-7.png";
 const navLinks = [
   { href: "#about", label: "À propos" },
   { href: "#services", label: "Nos services" },
-  { href: "#projets", label: "Nos réalisations" },
+  { href: "#projets", label: "Nos réalisations" },  
+  { href: "#Testimonials", label: "Nos réalisations" }
   // { href: "#blog", label: "Blog & Ressources" },
   { href: "#contact", label: "Contact" },
 ];
