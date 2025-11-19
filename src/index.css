@@ -1,14 +1,21 @@
-html {
-  scroll-behavior: smooth;
-}
-/* @import "locomotive-scroll/dist/locomotive-scroll.css"; */
+/* Import Google Fonts - Lato */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+html {
+  scroll-behavior: smooth;
+}
+
+/* SUNU LINK Design System
+   Charte graphique officielle selon le cahier des charges
+   - Couleurs: #0071BC (bleu), #F6A61A (orange), #009CDE (cyan), #EAEAEA (gris clair), #FFFFFF (blanc)
+   - Typographies: Balgor (titres), Lato (textes)
+   - Slogan: Plus qu'un lien : un levier de Progrès, d'Impact et de Confiance
 */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -28,61 +35,58 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 207 91% 54%;
+    /* SUNU LINK Colors from Cahier des Charges */
+    --primary: 203 100% 37%;        /* #0071BC - Bleu principal */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 32 95% 65%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary: 31 95% 54%;        /* #F6A61A - Orange */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --cyan: 195 100% 44%;           /* #009CDE - Cyan */
+    --cyan-foreground: 0 0% 100%;
 
-    --accent: 32 95% 65%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --muted: 0 0% 92%;              /* #EAEAEA - Gris clair */
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 31 95% 54%;           /* #F6A61A - Orange */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 207 91% 54%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 203 100% 37%;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(207 91% 54%), hsl(207 91% 64%));
-    --gradient-secondary: linear-gradient(135deg, hsl(32 95% 65%), hsl(28 89% 67%));
-    --gradient-hero: linear-gradient(135deg, hsl(207 91% 54%), hsl(32 95% 65%));
-    --gradient-card: linear-gradient(145deg, hsl(32 95% 65%), hsl(28 89% 67%));
-    
-    --shadow-elegant: 0 20px 40px -20px hsl(207 91% 54% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(32 95% 65% / 0.2);
-    
+    /* Custom SUNU LINK gradients */
+    --gradient-primary: linear-gradient(135deg, #0071BC, #009CDE);
+    --gradient-secondary: linear-gradient(135deg, #F6A61A, #FF9500);
+    --gradient-hero: linear-gradient(135deg, #0071BC 0%, #009CDE 50%, #F6A61A 100%);
+    --gradient-card: linear-gradient(145deg, #0071BC, #009CDE);
+
+    --shadow-elegant: 0 20px 40px -20px rgba(0, 113, 188, 0.3);
+    --shadow-card: 0 10px 30px -10px rgba(246, 166, 26, 0.2);
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 203 100% 37%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 203 100% 37%;
   }
 
   .dark {
@@ -131,5 +135,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
   }
 }

@@ -32,6 +32,10 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				cyan: {
+					DEFAULT: 'hsl(var(--cyan))',
+					foreground: 'hsl(var(--cyan-foreground))'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -61,7 +65,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// SUNU LINK specific colors
+				sunuBlue: '#0071BC',
+				sunuOrange: '#F6A61A',
+				sunuCyan: '#009CDE',
+				sunuGray: '#EAEAEA',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
