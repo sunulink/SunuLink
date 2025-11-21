@@ -30,7 +30,7 @@
 }
 
 .flip-card-front {
-  background: #0a3a7e; /* bleu principal du site */
+  background: #ffffff; /* fond blanc */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,7 @@
 }
 
 .flip-card-back {
-  background: #0a3a7e; /* bleu principal du site */
+  background: linear-gradient(135deg, #0071BC 0%, #009CDE 100%); /* gradient sunuBlue vers sunuCyan */
   color: #fff;
   transform: rotateY(180deg);
   display: flex;

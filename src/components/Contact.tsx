@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Link as LinkIcon } from "lucide-react";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -42,14 +42,20 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Téléphone",
-      value: "+221 XX XXX XX XX",
-      link: "tel:+221XXXXXXXX",
+      value: "+221 78 593 83 69",
+      link: "tel:+221785938369",
     },
     {
-      icon: MapPin,
-      title: "Localisation",
-      value: "Dakar, Sénégal",
-      link: "#",
+      icon: Phone,
+      title: "Téléphone",
+      value: "+221 76 726 38 42",
+      link: "tel:+221767263842",
+    },
+    {
+      icon: LinkIcon,
+      title: "Liens officiels",
+      value: "linktr.ee/SunuLink_Consulting",
+      link: "https://linktr.ee/SunuLink_Consulting",
     },
   ];
 

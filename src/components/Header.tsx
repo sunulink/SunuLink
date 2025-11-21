@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 const logo = "/logo-7.png";
 
 const navLinks = [
-  { href: "#about", label: "À propos" },
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "À propos" },
+  { href: "/services", label: "Nos services" },
+  { href: "/realisations", label: "Nos réalisations" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="pt-8 px-4">
@@ -17,32 +19,33 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <a href="#" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
               <img src={logo} alt="SUNU LINK Logo" className="h-12 w-auto" />
-              <div className="hidden md:block">
+              {/* <div className="hidden md:block">
                 <h1 className="text-xl font-black tracking-tight">SUNU LINK</h1>
                 <p className="text-xs opacity-90 -mt-1">Progrès • Impact • Confiance</p>
-              </div>
-            </a>
+              </div> */}
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="hover:text-sunuOrange transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sunuOrange after:transition-all after:duration-300 hover:after:w-full"
+                to={link.href}
+                className={`hover:text-sunuOrange transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-sunuOrange after:transition-all after:duration-300 hover:after:w-full ${location.pathname === link.href ? "after:w-full" : ""
+                  }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            {/* <Link
+              to="/contact"
               className="bg-white text-sunuBlue px-6 py-2 rounded-full font-bold hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Parlons-en
-            </a>
+            </Link> */}
           </nav>
 
           {/* Hamburger Menu (Mobile) */}
@@ -68,22 +71,23 @@ const Header = () => {
           className={`md:hidden flex flex-col items-center justify-center gap-3 text-sm font-semibold mt-6 ${menuOpen ? "flex" : "hidden"}`}
         >
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
-              className="hover:text-sunuOrange py-2 px-4 font-semibold text-center w-full transition-colors duration-300"
+              to={link.href}
+              className={`hover:text-sunuOrange py-2 px-4 font-semibold text-center w-full transition-colors duration-300 ${location.pathname === link.href ? "text-sunuOrange" : ""
+                }`}
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="bg-white text-sunuBlue px-6 py-2 rounded-full font-bold hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-md mt-2"
             onClick={() => setMenuOpen(false)}
           >
             Parlons-en
-          </a>
+          </Link>
         </nav>
       </header>
     </div>

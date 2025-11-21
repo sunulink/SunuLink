@@ -11,34 +11,39 @@ const Portfolio = () => {
 
   const categories = [
     {
-      title: "Stratégie & Conseil",
-      examples: "Audits organisationnels, plans de développement, coaching d'équipes",
+      title: "Logo & Identité visuelle",
+      examples: "Création de logos professionnels, chartes graphiques, pack branding complet",
       color: "bg-sunuBlue",
     },
     {
-      title: "Identité Visuelle",
-      examples: "Logos, chartes graphiques, refontes de marque",
+      title: "Affiches & supports print",
+      examples: "Flyers, posters, dépliants, PLV, roll-up…",
       color: "bg-sunuOrange",
     },
     {
-      title: "Communication 360°",
-      examples: "Campagnes multicanal, storytelling, stratégies de marque",
+      title: "Branding & univers graphiques",
+      examples: "Identité, couleurs, typographies, guidelines, visuels cohérents",
       color: "bg-sunuCyan",
     },
     {
-      title: "Digital & SEO",
-      examples: "Sites web, référencement, campagnes Meta Ads & Google Ads",
+      title: "Images & photographies",
+      examples: "Shooting produits, photos corporate, mises en scène professionnelles",
       color: "bg-sunuBlue",
     },
     {
-      title: "Événementiel",
-      examples: "Événements corporate, institutionnels et culturels",
+      title: "Vidéos & animations",
+      examples: "Teasers, clips institutionnels, spots, vidéos expérimentales/IA",
       color: "bg-sunuOrange",
     },
     {
-      title: "Production de Contenus",
-      examples: "Photos, vidéos, motion design, podcasts, webinaires",
+      title: "Design produit & Packaging",
+      examples: "Étiquettes, packagings alimentaires, visuels produits, maquettes réalistes",
       color: "bg-sunuCyan",
+    },
+    {
+      title: "Web & Digital",
+      examples: "Sites web, interfaces, visuels digitaux, contenus optimisés",
+      color: "bg-sunuBlue",
     },
   ];
 
@@ -51,7 +56,10 @@ const Portfolio = () => {
             Notre <span className="text-sunuOrange">Portfolio</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des solutions sur-mesure pour des clients aux quatre coins du Sénégal et d'Afrique
+            Des projets divers et variés, mais toujours autour d'une passion commune
+          </p>
+          <p className="text-lg text-gray-500 mt-4 max-w-3xl mx-auto">
+            Découvrez une sélection de nos travaux réalisés avec rigueur, créativité et précision.
           </p>
         </div>
 

@@ -9,12 +9,13 @@ const Footer = () => {
   ];
 
   const services = [
-    "Cabinet de Conseil",
-    "Communication 360°",
-    "Événementiel",
-    "Digital & SEO",
-    "Production de Contenus",
-    "IA & Innovation",
+    "Stratégie & Conseil",
+    "Branding & Identité visuelle",
+    "Création visuelle & Contenus",
+    "Digital, Web & SEO",
+    "Production photo & vidéo",
+    "Événementiel & Activation",
+    "Développement commercial",
   ];
 
   return (
@@ -25,14 +26,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <img src={logo} alt="SUNU LINK Logo" className="h-12 w-auto" />
-              <div>
-                <h3 className="text-xl font-black">SUNU LINK</h3>
-                <p className="text-xs opacity-80">SUARL</p>
-              </div>
             </div>
-            <p className="text-sm opacity-90 leading-relaxed mb-6">
-              Plus qu'un lien : un levier de Progrès, d'Impact et de Confiance
-            </p>
             <p className="text-xs opacity-75">
               Cabinet de conseil & agence de communication 360° au service de votre croissance.
             </p>
@@ -79,15 +73,29 @@ const Footer = () => {
               </li>
               <li>
                 <span className="font-semibold block mb-1">Téléphone</span>
-                <a href="tel:+221XXXXXXXX" className="hover:text-sunuOrange transition-colors">
-                  +221 XX XXX XX XX
+                <a href="tel:+221785938369" className="hover:text-sunuOrange transition-colors block">
+                  +221 78 593 83 69
+                </a>
+                <a href="tel:+221767263842" className="hover:text-sunuOrange transition-colors block">
+                  +221 76 726 38 42
                 </a>
               </li>
               <li>
-                <span className="font-semibold block mb-1">Localisation</span>
-                Dakar, Sénégal
+                <span className="font-semibold block mb-1">Liens officiels</span>
+                <a href="https://linktr.ee/SunuLink_Consulting" target="_blank" rel="noopener noreferrer" className="hover:text-sunuOrange transition-colors">
+                  linktr.ee/SunuLink_Consulting
+                </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Slogan centré */}
+        <div className="border-t border-white/20 pt-8 pb-6">
+          <div className="text-center">
+            <p className="text-sm opacity-90 leading-relaxed">
+              Plus qu'un lien : un levier de Progrès, d'Impact et de Confiance
+            </p>
           </div>
         </div>
 
@@ -131,10 +139,7 @@ const Footer = () => {
             {/* Copyright */}
             <div className="text-center md:text-right">
               <p className="text-sm opacity-80">
-                © {new Date().getFullYear()} SUNU LINK SUARL. Tous droits réservés.
-              </p>
-              <p className="text-xs opacity-60 mt-1">
-                Fondateur & CEO : Birahim Basse
+                © 2025 SUNU LINK SUARL. Tous droits réservés.
               </p>
             </div>
           </div>
@@ -142,13 +147,13 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-black/30 py-4">
+      {/* <div className="bg-black/30 py-4">
         <div className="container mx-auto px-6 text-center">
           <p className="text-xs opacity-70">
             Fait avec passion à Dakar, Sénégal 🇸🇳
           </p>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };
