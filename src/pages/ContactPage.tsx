@@ -68,12 +68,12 @@ const ContactPage = () => {
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
               ÉCRIVEZ-NOUS,<br />
               APPELEZ-NOUS,<br />
               <span className="text-sunuOrange">RETROUVEZ-NOUS.</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
               Pour toute demande d'information, collaboration ou devis, nous sommes disponibles et réactifs.
             </p>
           </div>
@@ -85,7 +85,7 @@ const ContactPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Left Column - Info */}
               <div className="space-y-8">
-                <div>
+                <div data-aos="fade-right">
                   <h2 className="text-3xl font-black mb-6 text-gray-800">
                     Parlons de votre projet
                   </h2>
@@ -103,7 +103,9 @@ const ContactPage = () => {
                       href={info.link}
                       target={info.link.startsWith("http") ? "_blank" : undefined}
                       rel={info.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="flex items-start space-x-4 p-6 bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+                      className="grain-texture flex items-start space-x-4 p-6 bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+                      data-aos="fade-right"
+                      data-aos-delay={index * 100}
                     >
                       <div className="bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <info.icon className="w-6 h-6 text-white" />
@@ -117,7 +119,7 @@ const ContactPage = () => {
                 </div>
 
                 {/* Social Links */}
-                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-2xl p-6 text-white">
+                <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-2xl p-6 text-white">
                   <h4 className="font-bold mb-4 text-lg">Suivez-nous sur les réseaux sociaux</h4>
                   <div className="flex space-x-4">
                     <a
@@ -149,7 +151,7 @@ const ContactPage = () => {
               </div>
 
               {/* Right Column - Form */}
-              <div className="bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue rounded-3xl p-10 shadow-2xl">
+              <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
                 <h3 className="text-3xl font-black mb-8 text-white">Envoyez-nous un message</h3>
                 <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
@@ -211,7 +213,7 @@ const ContactPage = () => {
         {/* Partenaires Section */}
         <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="bg-gradient-to-r from-sunuBlue via-gray-500 to-sunuOrange rounded-3xl p-12 shadow-2xl">
+            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-gray-500 to-sunuOrange rounded-3xl p-12 shadow-2xl">
               <div className="text-center text-white">
                 <h2 className="text-4xl font-black mb-6">
                   DES COLLABORATIONS<br />FRUCTUEUSES

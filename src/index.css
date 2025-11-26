@@ -66,11 +66,11 @@ html {
     --input: 0 0% 92%;
     --ring: 203 100% 37%;
 
-    /* Custom SUNU LINK gradients */
-    --gradient-primary: linear-gradient(135deg, #0071BC, #009CDE);
-    --gradient-secondary: linear-gradient(135deg, #F6A61A, #FF9500);
-    --gradient-hero: linear-gradient(135deg, #0071BC 0%, #009CDE 50%, #F6A61A 100%);
-    --gradient-card: linear-gradient(145deg, #0071BC, #009CDE);
+    /* Custom SUNU LINK gradients - Simple comme sur main */
+    --gradient-primary: linear-gradient(135deg, hsl(203 100% 37%), hsl(195 100% 44%));
+    --gradient-secondary: linear-gradient(135deg, hsl(31 95% 54%), hsl(28 89% 67%));
+    --gradient-hero: linear-gradient(135deg, hsl(203 100% 37%), hsl(31 95% 54%));
+    --gradient-card: linear-gradient(145deg, hsl(203 100% 37%), hsl(195 100% 44%));
 
     --shadow-elegant: 0 20px 40px -20px rgba(0, 113, 188, 0.3);
     --shadow-card: 0 10px 30px -10px rgba(246, 166, 26, 0.2);
@@ -141,5 +141,49 @@ html {
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
+  }
+}
+
+/* Grain Texture Effect */
+@layer utilities {
+  .grain-texture {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grain-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .grain-texture > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Gradients simples - Style main branch */
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, hsl(203 100% 37%), hsl(31 95% 54%));
+  }
+
+  .bg-gradient-blue-warm {
+    background: linear-gradient(135deg, hsl(203 100% 37%), hsl(195 100% 44%));
+  }
+
+  .bg-gradient-cyan-orange {
+    background: linear-gradient(135deg, hsl(195 100% 44%), hsl(31 95% 54%));
+  }
+
+  .bg-gradient-cool-neutral {
+    background: linear-gradient(135deg, hsl(203 100% 37%), hsl(195 100% 50%));
   }
 }

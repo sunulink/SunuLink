@@ -133,11 +133,11 @@ const RealisationsPage = () => {
         <section className="py-16 px-6 bg-gradient-to-b from-sunuOrange/10 to-white">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800">
+              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
                 DES PROJETS DIVERS ET VARIÉS,<br />
                 <span className="text-sunuOrange">MAIS TOUJOURS AUTOUR D'UNE PASSION COMMUNE</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
                 Découvrez une sélection de nos travaux réalisés avec rigueur, créativité et précision.
               </p>
             </div>
@@ -147,7 +147,9 @@ const RealisationsPage = () => {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
                 >
                   <h3 className="text-4xl md:text-5xl font-black mb-2">
                     <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2000} />
@@ -163,14 +165,14 @@ const RealisationsPage = () => {
         <section className="py-16 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-3xl p-12 shadow-2xl flex items-center justify-center">
+              <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-3xl p-12 shadow-2xl flex items-center justify-center">
                 <div className="text-center text-white">
                   <Monitor className="w-32 h-32 mx-auto mb-6 opacity-80" />
                   <h3 className="text-3xl font-black">PROJETS</h3>
                   <p className="text-xl opacity-90">menés avec succès.</p>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-3xl overflow-hidden shadow-2xl">
+              <div className="grain-texture bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-3xl overflow-hidden shadow-2xl">
                 <div className="h-full flex items-center justify-center p-12">
                   <div className="text-white text-center">
                     <p className="text-2xl font-bold mb-4">Portfolio complet</p>
@@ -185,7 +187,7 @@ const RealisationsPage = () => {
         {/* Categories Grid */}
         <section className="py-20 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl font-black text-center mb-16 text-gray-800">
+            <h2 className="text-4xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
               Nos catégories de <span className="text-sunuOrange">réalisations</span>
             </h2>
 
@@ -193,7 +195,9 @@ const RealisationsPage = () => {
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-br ${category.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}
+                  className={`grain-texture bg-gradient-to-br ${category.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
                 >
                   <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                     <category.icon className="w-8 h-8 text-white" />
@@ -241,7 +245,7 @@ const RealisationsPage = () => {
         {/* CTA Section */}
         <section className="py-20 px-6 bg-gradient-to-b from-white to-sunuOrange/10">
           <div className="container mx-auto max-w-7xl">
-            <div className="bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange rounded-3xl p-12 text-white text-center shadow-2xl">
+            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange rounded-3xl p-12 text-white text-center shadow-2xl">
               <h2 className="text-3xl md:text-4xl font-black mb-6">
                 Un partenariat ?
               </h2>

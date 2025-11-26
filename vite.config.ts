@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/", // important pour que toutes les routes fonctionnent en production
   server: {
     host: "::",
     port: 8080,
@@ -16,5 +17,8 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: "dist", // Vercel attend le dossier "dist" par défaut
   },
 }));

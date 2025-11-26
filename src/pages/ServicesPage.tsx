@@ -1,113 +1,111 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Briefcase, Megaphone, Calendar, Globe, Brain, Palette, Camera, CheckCircle } from "lucide-react";
+import { Briefcase, Palette, Image, Globe, TrendingUp, Calendar, Brain, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import "../components/Hero_2.css";
-
-// Composant FlipCard
-const FlipCard: React.FC<{ front: React.ReactNode; back: React.ReactNode }> = ({
-  front,
-  back,
-}) => (
-  <div className="flip-card">
-    <div className="flip-card-inner">
-      <div className="flip-card-front">{front}</div>
-      <div className="flip-card-back">{back}</div>
-    </div>
-  </div>
-);
 
 const ServicesPage = () => {
   const services = [
     {
       icon: Briefcase,
-      title: "Stratégie & Conseil",
-      description: "Construire une stratégie solide, alignée à vos objectifs, est essentiel pour réussir.",
-      offerings: [
-        "Faire un audit de votre marque et de vos actions",
-        "Définir votre positionnement stratégique",
-        "Mettre en place un plan de communication structuré",
-        "Piloter et analyser vos performances",
-        "Optimiser vos actions pour une croissance durable",
-      ],
+      title: "Stratégie & Consulting",
+      description: "Bâtissez une stratégie solide et alignée sur vos objectifs pour garantir votre réussite.",
       color: "from-sunuBlue to-sunuCyan",
-    },
-    {
-      icon: Megaphone,
-      title: "Branding & Identité visuelle",
-      description: "Nous créons des identités fortes, mémorables et cohérentes.",
       offerings: [
-        "Logos professionnels",
-        "Charte graphique complète",
-        "Branding corporate et branding produit",
-        "Templates réseaux sociaux",
-        "Univers visuel complet",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
+        "Audit & diagnostic",
+        "Positionnement stratégique",
+        "Plan marketing",
+        "Plan de communication",
+        "Stratégie digitale",
+        "Accompagnement dirigeant",
+        "Études de marché",
+        "Conseil à long terme"
+      ]
     },
     {
       icon: Palette,
-      title: "Création visuelle & Contenus",
-      description: "Des contenus modernes, beaux et adaptés à votre audience.",
+      title: "Branding & Identité Visuelle",
+      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
+      color: "from-purple-500 to-pink-500",
       offerings: [
-        "Affiches & flyers",
-        "Posters, roll-up, kakemonos",
-        "Design pour réseaux sociaux",
-        "Contenus rédactionnels, slogans, pitchs, storytelling",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
+        "Création de logos premium",
+        "Charte graphique complète",
+        "Rebranding",
+        "Branding produits",
+        "Identité de marque complète",
+        "Direction artistique"
+      ]
+    },
+    {
+      icon: Image,
+      title: "Communication Visuelle & Contenus",
+      description: "Des créations visuelles modernes et percutantes pour captiver votre audience.",
+      color: "from-orange-500 to-yellow-500",
+      offerings: [
+        "Création de visuels",
+        "Flyers / affiches",
+        "Vidéos courtes & motion design",
+        "Contenus réseaux sociaux",
+        "Copywriting",
+        "Conception de campagnes visuelles"
+      ]
     },
     {
       icon: Globe,
       title: "Digital, Web & SEO",
-      description: "Votre présence en ligne doit être performante et professionnelle.",
+      description: "Dominez le web avec une présence digitale performante et professionnelle.",
+      color: "from-cyan-500 to-blue-500",
       offerings: [
-        "Création de sites vitrines et e-commerce",
-        "Refonte et optimisation UI/UX",
-        "Référencement naturel (SEO)",
-        "Gestion de pages & community management",
-        "Automatisations & intégration d'outils intelligents",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
+        "Création de sites web",
+        "Refonte de sites",
+        "SEO (référencement naturel)",
+        "Audit digital",
+        "Campagnes sponsorisées",
+        "Référencement Google",
+        "UX/UI design"
+      ]
     },
     {
-      icon: Camera,
-      title: "Production photo & vidéo",
-      description: "Des contenus qui attirent l'attention.",
+      icon: TrendingUp,
+      title: "Développement Commercial",
+      description: "Structurez et accélérez votre croissance commerciale avec nos experts.",
+      color: "from-green-500 to-teal-500",
       offerings: [
-        "Shooting produit",
-        "Photos corporate et événementielles",
-        "Vidéos promotionnelles",
-        "Teasers, animations et vidéos générées par IA",
-        "Interviews & capsules professionnelles",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
+        "Stratégie commerciale",
+        "Prospection B2B/B2C",
+        "Scripts de vente",
+        "Processus & tunnel de conversion",
+        "Mise en place de CRM",
+        "Coaching commercial"
+      ]
     },
     {
       icon: Calendar,
-      title: "Événementiel & Activation",
-      description: "Nous créons des expériences qui marquent les esprits.",
+      title: "Événementiel",
+      description: "Créez des expériences mémorables qui marquent les esprits.",
+      color: "from-pink-500 to-red-500",
       offerings: [
-        "Organisation d'événements professionnels",
-        "Lancements de produits",
-        "Activations de marque",
-        "Coordination logistique et communication événementielle",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
+        "Organisation d'événements",
+        "Activations de marques",
+        "Lancements produits",
+        "Gestion logistique & technique",
+        "Communication événementielle"
+      ]
     },
     {
       icon: Brain,
-      title: "Développement commercial",
-      description: "Nous vous aidons à structurer votre croissance.",
+      title: "IA & Automatisation",
+      description: "Optimisez vos processus avec l'intelligence artificielle et l'automatisation.",
+      color: "from-indigo-500 to-purple-500",
       offerings: [
-        "Stratégies commerciales",
-        "Segmentation & ciblage",
-        "Scripts de vente & argumentaires",
-        "Accompagnement à la prospection",
-        "Force commerciale externe",
-      ],
-      color: "from-sunuBlue to-sunuCyan",
-    },
+        "Chatbots professionnels",
+        "Automatisation WhatsApp & email",
+        "Création de workflows",
+        "Assistants IA personnalisés",
+        "Dashboard intelligents",
+        "Génération automatisée de contenus",
+        "Outils IA internes pour les entreprises"
+      ]
+    }
   ];
 
   return (
@@ -118,13 +116,14 @@ const ServicesPage = () => {
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800">
-              UNE COMMUNICATION À 360°<br />
-              <span className="text-sunuOrange">POUR DONNER DE L'ÉLAN À VOS PROJETS</span>
+            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
+              Nos <span className="text-sunuOrange">Services</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Nous vous accompagnons sur l'ensemble des besoins en communication, stratégie et développement digital.
-              Nos services sont organisés autour de 7 piliers puissants.
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-4" data-aos="fade-up" data-aos-delay="100">
+              Une communication à 360° pour donner de l'élan à vos projets
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+              Nous vous accompagnons sur l'ensemble des besoins en communication, stratégie et développement digital. Nos services sont organisés autour de 7 piliers puissants.
             </p>
           </div>
         </section>
@@ -132,83 +131,153 @@ const ServicesPage = () => {
         {/* Services Grid */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {services.map((service, index) => (
-                <div key={index} className="flex justify-center">
-                  <FlipCard
-                    front={
-                      <div className="bg-white w-full h-full flex flex-col items-center justify-center p-8">
-                        <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-20 h-20 rounded-2xl flex items-center justify-center mb-6">
-                          <service.icon className="w-10 h-10 text-white" />
-                        </div>
-                        <h3 className="text-2xl font-black text-center text-gray-800">{service.title}</h3>
-                      </div>
-                    }
-                    back={
-                      <div className={`bg-gradient-to-br ${service.color} text-white w-full h-full flex flex-col justify-start p-6 overflow-y-auto`}>
-                        <p className="opacity-95 mb-4 text-base font-semibold">{service.description}</p>
-                        <ul className="space-y-2">
-                          {service.offerings.map((offering, idx) => (
-                            <li key={idx} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 opacity-80" />
-                              <span className="opacity-90 text-sm">{offering}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    }
-                  />
+                <div
+                  key={index}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
+                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-black mb-4">{service.title}</h3>
+                    <p className="text-lg opacity-95 leading-relaxed">{service.description}</p>
+                  </div>
+                  <div className="p-8 bg-gradient-to-b from-white to-sunuGray/5">
+                    <h4 className="text-lg font-bold text-gray-800 mb-4">Nos prestations :</h4>
+                    <ul className="space-y-3">
+                      {service.offerings.map((offering, idx) => (
+                        <li key={idx} className="flex items-start space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700">{offering}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Service */}
+        {/* Featured Service - Stratégie */}
         <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 shadow-2xl">
+            <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 shadow-2xl" data-aos="fade-up">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-4xl font-black mb-6">
-                    CONSEIL STRATÉGIQUE<br />& PILOTAGE
-                  </h2>
-                  <p className="text-xl mb-6 opacity-95">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center">
+                      <Briefcase className="w-8 h-8 text-white" />
+                    </div>
+                    <h2 className="text-4xl font-black">Service phare</h2>
+                  </div>
+                  <h3 className="text-3xl font-black mb-6">
+                    CONSEIL STRATÉGIQUE & PILOTAGE
+                  </h3>
+                  <p className="text-xl mb-6 opacity-95 leading-relaxed">
                     Construire une stratégie solide, alignée à vos objectifs, est essentiel pour réussir.
                   </p>
-                  <p className="text-lg opacity-90 leading-relaxed">
-                    Nous vous accompagnons dans l'audit, la définition de votre positionnement, la mise en œuvre de vos plans d'action et
-                    l'analyse des performances pour une croissance durable.
+                  <p className="text-lg opacity-90 leading-relaxed mb-8">
+                    Nous vous accompagnons dans l'audit, la définition de votre positionnement, la mise en œuvre de vos plans d'action et l'analyse des performances pour une croissance durable.
                   </p>
+                  <Link to="/contact">
+                    <button className="bg-white text-sunuBlue px-8 py-4 rounded-full font-bold text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg">
+                      Planifier un audit gratuit
+                    </button>
+                  </Link>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-                  <Briefcase className="w-24 h-24 mx-auto mb-6 opacity-80" />
-                  <p className="text-lg font-semibold">Expertise stratégique à 360°</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <p className="text-lg">Audit complet de votre marque et positionnement</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <p className="text-lg">Plan d'action stratégique personnalisé</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <p className="text-lg">Accompagnement dans l'exécution</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <p className="text-lg">Mesure des performances et optimisation continue</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        {/* <section className="py-20 px-6">
+        {/* Pourquoi choisir nos services */}
+        <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange rounded-3xl p-12 text-white text-center shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
+              Pourquoi choisir <span className="text-sunuOrange">nos services ?</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up">
+                <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-gray-800">Résultats mesurables</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Nous définissons des KPI clairs et vous livrons des reportings réguliers pour suivre votre croissance.
+                </p>
+              </div>
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="100">
+                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-gray-800">Qualité garantie</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Chaque projet est traité avec excellence et professionnalisme par nos équipes expertes.
+                </p>
+              </div>
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
+                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Palette className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-gray-800">Approche 360°</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  De la stratégie à l'exécution, nous couvrons tous vos besoins en communication et marketing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grain-texture bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange text-white rounded-3xl p-12 text-center shadow-2xl" data-aos="fade-up">
               <h2 className="text-3xl md:text-4xl font-black mb-6">
                 Prêt à transformer votre vision en réalité ?
               </h2>
               <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-                Contactez-nous pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner.
+                Contactez-nous pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
               </p>
-              <Link
-                to="/contact"
-                className="inline-block bg-white text-sunuOrange px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Demander un devis
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/contact">
+                  <button className="bg-white text-sunuOrange px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Demander un devis
+                  </button>
+                </Link>
+                <Link to="/boost-my-pub">
+                  <button className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-sunuOrange transition-all duration-300">
+                    Découvrir Boost My Pub
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </section> */}
+        </section>
       </main>
 
       <Footer />

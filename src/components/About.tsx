@@ -1,30 +1,24 @@
-import { Sparkles, Target, Eye, Award } from "lucide-react";
+import { Sparkles, Target, Award } from "lucide-react";
 
 export const About = () => {
   const values = [
     {
-      icon: Sparkles,
-      title: "Innovation",
-      description: "Nous anticipons, testons et intégrons les meilleures idées.",
+      icon: Target,
+      title: "STRATÉGIE",
+      description: "Nous construisons avec vous une vision claire et durable de votre communication.",
       color: "bg-sunuBlue",
     },
     {
-      icon: Award,
-      title: "Excellence",
-      description: "Chaque détail compte.",
+      icon: Sparkles,
+      title: "CRÉATIVITÉ",
+      description: "Nous donnons forme et émotion à vos idées pour captiver et inspirer.",
       color: "bg-sunuOrange",
     },
     {
-      icon: Target,
-      title: "Fiabilité",
-      description: "Transparence, engagement, professionnalisme.",
+      icon: Award,
+      title: "IMPACT",
+      description: "Tout ce que nous créons doit vous apporter un résultat réel et mesurable.",
       color: "bg-sunuCyan",
-    },
-    {
-      icon: Eye,
-      title: "Impact",
-      description: "Tout ce que nous créons doit vous apporter un résultat réel.",
-      color: "bg-sunuBlue",
     },
   ];
 
@@ -68,21 +62,21 @@ export const About = () => {
             </ul>
           </div>
 
-          <div className="inline-block bg-gradient-to-r from-sunuBlue to-sunuOrange text-white px-6 py-4 rounded-full font-bold text-lg shadow-lg">
+          <div className="inline-block grain-texture bg-gradient-to-r from-sunuBlue to-sunuOrange text-white px-6 py-4 rounded-full font-bold text-lg shadow-lg">
             Plus qu'un lien : un levier de Progrès, d'Impact et de Confiance.
           </div>
         </div>
 
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-8 shadow-xl">
+          <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-8 shadow-xl">
             <h4 className="text-2xl font-black mb-4">Notre Mission</h4>
             <p className="leading-relaxed text-lg">
               Créer des solutions de communication puissantes, cohérentes et durables pour soutenir le
               développement de votre marque et vous offrir une longueur d'avance sur votre marché.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 shadow-xl">
+          <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 shadow-xl">
             <h4 className="text-2xl font-black mb-4">Notre Vision</h4>
             <p className="leading-relaxed text-lg">
               Devenir la référence de la communication stratégique moderne au Sénégal et en Afrique de l'Ouest
@@ -96,13 +90,13 @@ export const About = () => {
           <h3 className="text-3xl font-black text-center mb-10 text-gray-800">
             Nos <span className="text-sunuOrange">Valeurs</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-sunuOrange hover:-translate-y-2"
               >
-                <div className={`${value.color} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`grain-texture ${value.color} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <value.icon className="w-7 h-7 text-white" />
                 </div>
                 <h4 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-sunuOrange transition-colors">
