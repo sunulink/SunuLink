@@ -161,7 +161,7 @@ const Footer = () => {
             {/* Copyright */}
             <div className="text-center md:text-right">
               <p className="text-sm opacity-80">
-                © 2025 SUNU LINK SUARL. Tous droits réservés.
+                © SUNU LINK SUARL. Tous droits réservés.
               </p>
             </div>
           </div>

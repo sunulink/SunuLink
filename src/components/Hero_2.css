@@ -47,7 +47,7 @@
 }
 
 .flip-card-back {
-  background: linear-gradient(135deg, #0071BC 0%, #009CDE 100%);
+  background: #0071BC;
   color: #fff;
   transform: rotateY(180deg);
   display: flex;

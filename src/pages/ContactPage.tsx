@@ -52,12 +52,12 @@ const ContactPage = () => {
       value: "+221 76 726 38 42",
       link: "tel:+221767263842",
     },
-    {
-      icon: LinkIcon,
-      title: "Liens officiels",
-      value: "linktr.ee/SunuLink_Consulting",
-      link: "https://linktr.ee/SunuLink_Consulting",
-    },
+    // {
+    //   icon: LinkIcon,
+    //   title: "Liens officiels",
+    //   value: "linktr.ee/SunuLink_Consulting",
+    //   link: "https://linktr.ee/SunuLink_Consulting",
+    // },
   ];
 
   return (

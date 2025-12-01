@@ -40,18 +40,18 @@ const LogoCarousel = () => {
   const duplicatedLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos];
 
   return (
-    <div className="w-full overflow-hidden bg-white/10 backdrop-blur-sm py-4 rounded-xl">
+    <div className="w-full overflow-hidden bg-white/10 backdrop-blur-sm py-8 rounded-xl">
       <div
         ref={scrollRef}
-        className="flex gap-8 overflow-hidden"
+        className="flex gap-12 overflow-hidden"
         style={{ scrollBehavior: "auto" }}
       >
         {duplicatedLogos.map((partner, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-32 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center p-4 hover:bg-white/30 transition-all duration-300"
+            className="flex-shrink-0 w-48 h-28 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center p-6 hover:bg-white/30 transition-all duration-300"
           >
-            <div className="text-white text-xs font-semibold text-center">
+            <div className="text-white text-base font-semibold text-center">
               {partner.name}
             </div>
             {/* Remplacez par <img src={partner.logo} alt={partner.name} /> quand vous aurez les vrais logos */}
