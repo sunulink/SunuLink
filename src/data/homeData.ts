@@ -95,8 +95,8 @@ export const contactInfo: ContactInfo[] = [
   {
     icon: Mail,
     title: "Email",
-    value: "contact@sunulink.sn",
-    link: "mailto:contact@sunulink.sn",
+    value: "infosunulink@gmail.com",
+    link: "mailto:infosunulink@gmail.com",
   },
   {
     icon: Phone,
@@ -106,9 +106,9 @@ export const contactInfo: ContactInfo[] = [
   },
   {
     icon: Phone,
-    title: "Téléphone",
+    title: "WhatsApp",
     value: "+221 76 726 38 42",
-    link: "tel:+221767263842",
+    link: "https://wa.me/221767263842",
   },
 ];
 
