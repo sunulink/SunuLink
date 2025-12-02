@@ -67,9 +67,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm opacity-90">
               <li>
                 <span className="font-semibold block mb-1">Email</span>
-                <a href="mailto:contact@sunulink.sn" className="hover:text-sunuOrange transition-colors">
-                  contact@sunulink.sn
-                </a>
+                <a href="mailto:contact@sunulink.sn" className="hover:text-sunuOrange transition-colors">infosunulink@gmail.com                </a>
               </li>
               <li>
                 <span className="font-semibold block mb-1">Téléphone</span>
@@ -80,12 +78,12 @@ const Footer = () => {
                   +221 76 726 38 42
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <span className="font-semibold block mb-1">Liens officiels</span>
                 <a href="https://linktr.ee/SunuLink_Consulting" target="_blank" rel="noopener noreferrer" className="hover:text-sunuOrange transition-colors">
                   linktr.ee/SunuLink_Consulting
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

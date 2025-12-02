@@ -36,8 +36,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contact@sunulink.sn",
-      link: "mailto:contact@sunulink.sn",
+      value: "infosunulink@gmail.com",
+      link: "mailto:infosunulink@gmail.com",
     },
     {
       icon: Phone,
