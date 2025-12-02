@@ -10,51 +10,28 @@ import {
 } from "@/components/ui/carousel";
 import { heroImages } from "@/data/homeData";
 
-const messages = [
-  "vos idées en stratégies",
-  "vos projets en résultats",
-  "votre présence en véritable impact"
-];
-
 export const HeroSection = () => {
-
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [showFirstBlock, setShowFirstBlock] = useState(true);
 
   useEffect(() => {
-    const currentMessage = messages[currentMessageIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
+    const interval = setInterval(() => {
+      setShowFirstBlock((prev) => !prev);
+    }, 10000); // Change tous les 10 secondes
 
-    if (!isDeleting && displayedText === currentMessage) {
-      setTimeout(() => setIsDeleting(true), 2000);
-      return;
-    }
-
-    if (isDeleting && displayedText === "") {
-      setIsDeleting(false);
-      setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setDisplayedText(
-        isDeleting
-          ? currentMessage.substring(0, displayedText.length - 1)
-          : currentMessage.substring(0, displayedText.length + 1)
-      );
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, currentMessageIndex]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="pt-[80px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[400px] md:min-h-[500px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
       {/* Texte + CTA */}
       <div className="relative px-4 sm:px-6 md:px-8 py-6 md:py-10 flex flex-col justify-between min-h-[400px] md:min-h-[500px]">
         <div className="max-w-2xl text-white z-10">
-          <div className="space-y-4 md:space-y-6">
-            {/* Titre principal */}
+          {/* Premier bloc - Animation fade */}
+          <div
+            className={`space-y-4 md:space-y-6 transition-opacity duration-[1500ms] ease-in-out ${
+              showFirstBlock ? "opacity-100" : "opacity-0 absolute"
+            }`}
+          >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
               <span className="block mb-2 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
                 SunuLink Consulting
@@ -64,23 +41,25 @@ export const HeroSection = () => {
               </span>
             </h1>
 
-            {/* Section animée */}
-            <div className="mt-6 md:mt-8 min-h-[100px] sm:min-h-[120px]">
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed">
-                <span className="text-white/90">Nous transformons</span>{" "}
-                <span className="inline-block relative">
-                  <span className="font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-lg backdrop-blur-sm border border-secondary/20">
-                    {displayedText}
-                    <span className="text-secondary animate-pulse ml-1">|</span>
-                  </span>
-                </span>
-              </p>
-            </div>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mt-6 md:mt-8">
+              Nous transformons vos idées en stratégies, vos projets en résultats, et votre présence en véritable impact.
+            </p>
+          </div>
 
-            {/* Sous-titre descriptif */}
-            <p className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl font-light">
-              Nous vous accompagnons dans le développement d'une stratégie marketing complète,
-              de la création de votre identité visuelle à la mise en place d'une présence digitale performante.
+          {/* Deuxième bloc - Animation fade */}
+          <div
+            className={`space-y-4 md:space-y-6 transition-opacity duration-[1500ms] ease-in-out ${
+              !showFirstBlock ? "opacity-100" : "opacity-0 absolute"
+            }`}
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              <span className="block mb-2 bg-gradient-to-r from-secondary via-sunuOrange to-secondary bg-clip-text text-transparent">
+                STRATÉGIE • CRÉATIVITÉ • IMPACT
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl font-light mt-6 md:mt-8">
+              Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
             </p>
           </div>
 
