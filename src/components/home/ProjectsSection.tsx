@@ -15,9 +15,9 @@ export const ProjectsSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
           {/* Carte PROJETS */}
-          <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-2xl md:rounded-3xl p-6 sm:p-8 shadow-2xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 max-w-md mx-auto lg:mx-0 w-full" data-aos="fade-right">
+          <div className="lg:col-span-2 grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-2xl md:rounded-3xl p-6 sm:p-8 shadow-2xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 min-h-[300px] sm:min-h-[350px] w-full" data-aos="fade-right">
             <div className="text-center text-white">
               <Monitor className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 opacity-80" />
               <AnimatedCounter end={150} suffix="+" />
@@ -27,7 +27,7 @@ export const ProjectsSection = () => {
           </div>
 
           {/* Carte PORTFOLIO */}
-          <div className="grain-texture bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-left">
+          <div className="lg:col-span-3 grain-texture bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 min-h-[300px] sm:min-h-[350px]" data-aos="fade-left">
             <div className="h-full flex items-center justify-center p-6 sm:p-8 md:p-12">
               <div className="text-white text-center">
                 <p className="text-2xl sm:text-3xl font-black mb-3 md:mb-4">Portfolio complet</p>

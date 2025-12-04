@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Monitor, Image, Video, Package, Globe, FileText, Palette } from "lucide-react";
+import { Image, Video, Package, Globe, FileText, Palette } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Composant de compteur animé
@@ -157,29 +157,6 @@ const RealisationsPage = () => {
                   <p className="font-semibold opacity-90">{stat.label}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Project */}
-        <section className="py-16 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-3xl p-12 shadow-2xl flex items-center justify-center">
-                <div className="text-center text-white">
-                  <Monitor className="w-32 h-32 mx-auto mb-6 opacity-80" />
-                  <h3 className="text-3xl font-black">PROJETS</h3>
-                  <p className="text-xl opacity-90">menés avec succès.</p>
-                </div>
-              </div>
-              <div className="grain-texture bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-3xl overflow-hidden shadow-2xl">
-                <div className="h-full flex items-center justify-center p-12">
-                  <div className="text-white text-center">
-                    <p className="text-2xl font-bold mb-4">Portfolio complet</p>
-                    <p className="text-lg opacity-90">Découvrez nos réalisations par catégorie</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

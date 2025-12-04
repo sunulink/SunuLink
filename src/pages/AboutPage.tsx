@@ -144,7 +144,7 @@ const AboutPage = () => {
                 Notre <span className="text-sunuOrange">Histoire</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="100">
-                Fondée en 2025 à Dakar, <strong className="text-sunuBlue">Sunu Link Consulting</strong> accompagne les organisations qui veulent transformer leur visibilité en croissance réelle.
+                <strong className="text-sunuBlue">Sunu Link Consulting</strong> accompagne les organisations qui veulent transformer leur visibilité en croissance réelle.
               </p>
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
