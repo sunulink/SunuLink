@@ -137,9 +137,9 @@ const BoostMyPubPage = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pt-32 pb-20">
+      <main className="pt-0 pb-20">
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white">
+        <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-5xl md:text-7xl font-black mb-6" data-aos="fade-up">
               BOOST MY PUB
@@ -176,7 +176,9 @@ const BoostMyPubPage = () => {
               {packs.map((pack, index) => (
                 <div
                   key={index}
-                  className={`relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 ${pack.recommended ? "lg:-translate-y-4 lg:scale-105" : ""}`}
+                  className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
+                    pack.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
+                  } hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)]`}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >

@@ -67,7 +67,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm opacity-90">
               <li>
                 <span className="font-semibold block mb-1">Email</span>
-                <a href="mailto:contact@sunulink.sn" className="hover:text-sunuOrange transition-colors">infosunulink@gmail.com                </a>
+                <a href="mailto:infosunulink@gmail.com" className="hover:text-sunuOrange transition-colors">infosunulink@gmail.com                </a>
               </li>
               <li>
                 <span className="font-semibold block mb-1">Téléphone</span>

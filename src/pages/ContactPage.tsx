@@ -37,8 +37,8 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contact@sunulink.sn",
-      link: "mailto:contact@sunulink.sn",
+      value: "infosunlink@gmail.com",
+      link: "mailto:infosunlink@gmail.com",
     },
     {
       icon: Phone,

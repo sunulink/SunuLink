@@ -135,7 +135,7 @@ const ServicesPage = () => {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100"
+                  className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)]"
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
@@ -193,19 +193,19 @@ const ServicesPage = () => {
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <p className="text-lg">Audit complet de votre marque et positionnement</p>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <p className="text-lg">Plan d'action stratégique personnalisé</p>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <p className="text-lg">Accompagnement dans l'exécution</p>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-sunuOrange flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <p className="text-lg">Mesure des performances et optimisation continue</p>
                     </div>
                   </div>

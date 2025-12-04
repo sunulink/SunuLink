@@ -125,7 +125,7 @@ const FAQPage = () => {
     },
     {
       question: "Comment puis-je obtenir un devis ?",
-      answer: "Via le bouton 'Demander un devis' sur notre site ou en envoyant un email à contact@sunulink.sn. Nous revenons sous 48h."
+      answer: "Via le bouton 'Demander un devis' sur notre site ou en envoyant un email à . Nous revenons sous 48h."
     }
   ];
 

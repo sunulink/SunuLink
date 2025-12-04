@@ -28,32 +28,32 @@ export const HeroSection = () => {
         <div className="max-w-2xl text-white z-10">
           {/* Premier bloc - Animation fade */}
           <div
-            className={`space-y-4 md:space-y-6 transition-opacity duration-[1500ms] ease-in-out ${
+            className={`space-y-6 md:space-y-8 transition-opacity duration-[1500ms] ease-in-out ${
               showFirstBlock ? "opacity-100" : "opacity-0 absolute"
             }`}
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              <span className="block mb-2 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
+              <span className="block mb-4 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
                 SunuLink Consulting
               </span>
-              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white/95 mt-2">
+              <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-white/95 mt-4">
                 Plus qu'une agence, votre partenaire de croissance 360°
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mt-6 md:mt-8">
+            <p className="text-md sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mt-6 md:mt-8">
               Nous transformons vos idées en stratégies, vos projets en résultats, et votre présence en véritable impact.
             </p>
           </div>
 
           {/* Deuxième bloc - Animation fade */}
           <div
-            className={`space-y-4 md:space-y-6 transition-opacity duration-[1500ms] ease-in-out ${
+            className={`space-y-6 md:space-y-8 transition-opacity duration-[1500ms] ease-in-out ${
               !showFirstBlock ? "opacity-100" : "opacity-0 absolute"
             }`}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              <span className="block mb-2 bg-gradient-to-r from-secondary via-sunuOrange to-secondary bg-clip-text text-transparent">
+            <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              <span className="block mb-4">
                 STRATÉGIE • CRÉATIVITÉ • IMPACT
               </span>
             </h1>

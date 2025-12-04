@@ -7,8 +7,9 @@ const navLinks = [
   { href: "/about", label: "À propos" },
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
+  { href: "/ressources", label: "Ressources" },
   { href: "/boost-my-pub", label: "Boost My Pub" },
-  { href: "/blog", label: "Blog & Ressources" },
+  { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];

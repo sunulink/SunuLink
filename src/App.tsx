@@ -10,6 +10,9 @@ import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import RealisationsPage from "./pages/RealisationsPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import ResourceDetailPage from "./pages/ResourceDetailPage";
+import ArticlePage from "./pages/ArticlePage";
 import BoostMyPubPage from "./pages/BoostMyPubPage";
 import BlogPage from "./pages/BlogPage";
 import FAQPage from "./pages/FAQPage";
@@ -39,6 +42,9 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/realisations" element={<RealisationsPage />} />
+            <Route path="/ressources" element={<ResourcesPage />} />
+            <Route path="/ressources/:slug" element={<ResourceDetailPage />} />
+            <Route path="/article/:articleSlug" element={<ArticlePage />} />
             <Route path="/boost-my-pub" element={<BoostMyPubPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/faq" element={<FAQPage />} />
