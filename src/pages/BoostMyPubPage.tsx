@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const BoostMyPubPage = () => {
   const packs = [
     {
+      slug: "teranga",
       name: "PACK TERANGA",
       duration: "3 mois",
       price: "450.000 Fcfa / mois",
@@ -46,6 +47,7 @@ const BoostMyPubPage = () => {
       ]
     },
     {
+      slug: "xeewal",
       name: "PACK XEEWAL",
       duration: "6 mois",
       price: "750.000 Fcfa / mois",
@@ -87,6 +89,7 @@ const BoostMyPubPage = () => {
       ]
     },
     {
+      slug: "buur",
       name: "PACK BUUR",
       duration: "1 an",
       price: "1.499.000 Fcfa / mois",
@@ -214,10 +217,14 @@ const BoostMyPubPage = () => {
                       ))}
                     </div>
 
-                    <Link to="/contact">
-                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
-                        Je valide
-                      </Button>
+                    <Button className={`w-full ${pack.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
+                      Je valide
+                    </Button>
+                    <Link
+                      to={`/boost-my-pub/${pack.slug}`}
+                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold transition-colors"
+                    >
+                      En savoir plus →
                     </Link>
                   </div>
                 </div>

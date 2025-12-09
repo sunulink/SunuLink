@@ -14,7 +14,9 @@ import ResourcesPage from "./pages/ResourcesPage";
 import ResourceDetailPage from "./pages/ResourceDetailPage";
 import ArticlePage from "./pages/ArticlePage";
 import BoostMyPubPage from "./pages/BoostMyPubPage";
+import BoostMyPubDetailPage from "./pages/BoostMyPubDetailPage";
 import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
@@ -46,7 +48,9 @@ const App = () => {
             <Route path="/ressources/:slug" element={<ResourceDetailPage />} />
             <Route path="/article/:articleSlug" element={<ArticlePage />} />
             <Route path="/boost-my-pub" element={<BoostMyPubPage />} />
+            <Route path="/boost-my-pub/:packSlug" element={<BoostMyPubDetailPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogDetailPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

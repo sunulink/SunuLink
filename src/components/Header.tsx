@@ -7,7 +7,6 @@ const navLinks = [
   { href: "/about", label: "À propos" },
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
-  { href: "/ressources", label: "Ressources" },
   { href: "/boost-my-pub", label: "Boost My Pub" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
@@ -100,34 +99,34 @@ const Header = () => {
               href="https://www.facebook.com/share/19oMyxQApw/?mibextid=LQQJ4d"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-sunuBlue flex items-center justify-center transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white flex items-center justify-center transition-all duration-300 group"
               aria-label="Facebook"
             >
-              <img src="/facebook-176-svgrepo-com.svg" alt="Facebook" className="w-5 h-5" />
+              <img src="/facebook-176-svgrepo-com.svg" alt="Facebook" className="w-5 h-5 brightness-0 invert group-hover:invert-0" />
             </a>
             <a
               href="https://www.linkedin.com/company/sunulink-consulting/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-sunuBlue flex items-center justify-center transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white flex items-center justify-center transition-all duration-300 group"
               aria-label="LinkedIn"
             >
-              <img src="/linkedin-svgrepo-com.svg" alt="LinkedIn" className="w-5 h-5" />
+              <img src="/linkedin-svgrepo-com.svg" alt="LinkedIn" className="w-5 h-5 brightness-0 invert group-hover:invert-0" />
             </a>
             <a
               href="https://www.instagram.com/sunulink_consulting?igsh=MTh6dndrcGlja2lrNQ%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-sunuBlue flex items-center justify-center transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white flex items-center justify-center transition-all duration-300 group"
               aria-label="Instagram"
             >
-              <img src="/instagram-svgrepo-com.svg" alt="Instagram" className="w-6 h-6" />
+              <img src="/instagram-svgrepo-com.svg" alt="Instagram" className="w-6 h-6 brightness-0 invert group-hover:invert-0" />
             </a>
             <a
               href="https://wa.me/221767263842"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-green-600 flex items-center justify-center transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-green-600 flex items-center justify-center transition-all duration-300"
               aria-label="WhatsApp"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -138,7 +137,7 @@ const Header = () => {
               href="https://www.tiktok.com/@sunulink.consulting?_t=zm-8zc2czdhhc9&_r=1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-black flex items-center justify-center transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-300"
               aria-label="TikTok"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

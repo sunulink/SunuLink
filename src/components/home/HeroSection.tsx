@@ -22,9 +22,9 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-[80px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[400px] md:min-h-[500px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
+    <section className="pt-[50px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[400px] md:min-h-[500px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
       {/* Texte + CTA */}
-      <div className="relative px-4 sm:px-6 md:px-8 py-6 md:py-10 flex flex-col justify-between min-h-[400px] md:min-h-[500px]">
+      <div className="relative px-4 sm:px-6 md:px-8 py-4 md:py-6 flex flex-col justify-start min-h-[400px] md:min-h-[500px]">
         <div className="max-w-2xl text-white z-10">
           {/* Premier bloc - Animation fade */}
           <div
