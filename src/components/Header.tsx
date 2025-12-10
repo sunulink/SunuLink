@@ -45,7 +45,7 @@ const Header = () => {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/devis"
               className="bg-white text-sunuBlue px-6 py-2 rounded-full font-bold hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-md hover:shadow-lg ml-2"
             >
               Demander un devis
@@ -86,7 +86,7 @@ const Header = () => {
             </Link>
           ))}
           <Link
-            to="/contact"
+            to="/devis"
             className="bg-white text-sunuBlue px-6 py-2 rounded-full font-bold hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-md mt-2"
             onClick={() => setMenuOpen(false)}
           >

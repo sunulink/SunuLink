@@ -194,7 +194,7 @@ const BlogPage = () => {
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-12">
               <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
-                BLOG & <span className="text-sunuOrange">ACTUALITÉS</span>
+                BLOG & <span className="text-sunuOrange">RESSOURCES</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
                 Explorez nos articles, conseils pratiques et analyses pour booster votre communication et votre marketing.
