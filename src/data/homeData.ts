@@ -254,13 +254,42 @@ export const testimonials: Testimonial[] = [
   }
 ];
 
-export const partners = [
-  "Partenaire 1",
-  "Partenaire 2",
-  "Partenaire 3",
-  "Partenaire 4",
-  "Partenaire 5",
-  "Partenaire 6"
+export const collaborateurs = [
+  { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" },
+  { name: "MEER JUS", logo: "/collaborateurs/LOGO MEER JUS.png" },
+  { name: "NATAA", logo: "/collaborateurs/LOGO NATAA.png" },
+  { name: "ADJA FRANCE BABELLE", logo: "/collaborateurs/LOGO-ADJA-FRANCE-BABELLE.png" },
+  { name: "GAINDE", logo: "/collaborateurs/LOGO-GAINDE.png" },
+  { name: "GLOBAL FISH RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
+  { name: "KING MOUSSA", logo: "/collaborateurs/LOGO-KING-MOUSSA.png" },
+  { name: "MISS MBOURACKE", logo: "/collaborateurs/LOGO-MISS-MBOURACKE.png" },
+  { name: "SCI LA PROMOBILIERE", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
+  { name: "SOFFLE DE VIE", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" },
+  { name: "SenHorti Group", logo: "/collaborateurs/LOGO-SenHorti-Group.png" },
+];
+
+export const portfolioImages = [
+  { src: "/portfolio/1.png", alt: "Design graphique 1", category: "branding" },
+  { src: "/portfolio/2.png", alt: "Design graphique 2", category: "branding" },
+  { src: "/portfolio/3.png", alt: "Design graphique 3", category: "branding" },
+  { src: "/portfolio/BRANDING PUB3.png", alt: "Branding Pub 3", category: "branding" },
+  { src: "/portfolio/BRANDING PUB4.png", alt: "Branding Pub 4", category: "branding" },
+  { src: "/portfolio/BRANDING PUB5.png", alt: "Branding Pub 5", category: "branding" },
+  { src: "/portfolio/BRANDING PUB8.png", alt: "Branding Pub 8", category: "branding" },
+  { src: "/portfolio/FLYERS.png", alt: "Flyers design", category: "print" },
+  { src: "/portfolio/FLYERS 2.png", alt: "Flyers design 2", category: "print" },
+  { src: "/portfolio/FLYERS oil 1.png", alt: "Flyers oil", category: "print" },
+  { src: "/portfolio/MOCKUP 1 EMBALLAGE PRO.png", alt: "Emballage Pro 1", category: "packaging" },
+  { src: "/portfolio/MOCKUP 1 EMBALLAGES PRO BI.png", alt: "Emballages Pro BI", category: "packaging" },
+  { src: "/portfolio/MOCKUP 2 EMBALLAGES PRO.png", alt: "Emballages Pro 2", category: "packaging" },
+  { src: "/portfolio/MOCKUP 2 EMBALLAGES.png", alt: "Emballages 2", category: "packaging" },
+  { src: "/portfolio/MOCKUP FLACON HUILE 3.png", alt: "Flacon Huile", category: "packaging" },
+  { src: "/portfolio/MOCKUP PORT-A CLE.png", alt: "Porte-clé", category: "packaging" },
+  { src: "/portfolio/MOCKUP SACHET.png", alt: "Sachet", category: "packaging" },
+  { src: "/portfolio/MOCKUP TORSSON CHEF.png", alt: "Torsson Chef", category: "packaging" },
+  { src: "/portfolio/BOUTEILLE 2.png", alt: "Bouteille design 2", category: "packaging" },
+  { src: "/portfolio/BOUTEILLE 3.png", alt: "Bouteille design 3", category: "packaging" },
+  { src: "/portfolio/oil1.png", alt: "Oil design", category: "packaging" },
 ];
 
 export const socialLinks = [

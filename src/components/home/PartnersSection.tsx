@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { partners } from "@/data/homeData";
+import { collaborateurs } from "@/data/homeData";
 
 export const PartnersSection = () => {
   return (
@@ -28,7 +28,7 @@ export const PartnersSection = () => {
           {/* Partners Logos Grid */}
           <div className="relative overflow-hidden rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-sm p-4 sm:p-6 md:p-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
-              {partners.map((partner, index) => (
+              {collaborateurs.map((collab, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-lg md:rounded-xl p-4 sm:p-6 md:p-8 flex items-center justify-center h-24 sm:h-28 md:h-32 hover:scale-110 hover:-translate-y-2 hover:shadow-xl transition-all duration-500 shadow-md animate-fade-in"
@@ -39,9 +39,11 @@ export const PartnersSection = () => {
                     animationFillMode: 'both'
                   }}
                 >
-                  <div className="text-center">
-                    <p className="text-sunuBlue font-bold text-xs sm:text-sm md:text-base break-words">{partner}</p>
-                  </div>
+                  <img
+                    src={collab.logo}
+                    alt={collab.name}
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
               ))}
             </div>

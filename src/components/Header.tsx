@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="grain-texture bg-gradient-blue-warm text-white py-4 px-8 shadow-elegant fixed top-0 left-0 right-0 w-full z-[9999] backdrop-blur-sm bg-opacity-95">
+      <header className="bg-gradient-blue-warm text-white py-4 px-8 shadow-xl fixed top-0 left-0 right-0 w-full z-[9999]">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">

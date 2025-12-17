@@ -4,7 +4,7 @@ import { Briefcase, Users, Rocket, TrendingUp } from "lucide-react";
 const Portfolio = () => {
   const stats = [
     { icon: Briefcase, value: "50+", label: "Projets réalisés" },
-    { icon: Users, value: "30+", label: "Clients satisfaits" },
+    { icon: Users, value: "50+", label: "Clients satisfaits" },
     { icon: Rocket, value: "10+", label: "Secteurs d'activité" },
     { icon: TrendingUp, value: "95%", label: "Taux de satisfaction" },
   ];

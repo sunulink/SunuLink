@@ -1,13 +1,25 @@
 import { useEffect, useRef } from "react";
 
-// Exemples de logos de partenaires/clients
+// Logos de partenaires/clients
 const partnerLogos = [
-  { name: "Partenaire 1", logo: "/logos/partner1.png" },
-  { name: "Partenaire 2", logo: "/logos/partner2.png" },
-  { name: "Partenaire 3", logo: "/logos/partner3.png" },
-  { name: "Partenaire 4", logo: "/logos/partner4.png" },
-  { name: "Partenaire 5", logo: "/logos/partner5.png" },
-  { name: "Partenaire 6", logo: "/logos/partner6.png" },
+  { name: "FREHUP", logo: "/partners/LOGO FREHUP.png" },
+  { name: "MEER JUS", logo: "/partners/LOGO MEER JUS.png" },
+  { name: "NATAA", logo: "/partners/LOGO NATAA.png" },
+  { name: "SUNULINK", logo: "/partners/LOGO SUNULINK.png" },
+  { name: "ADJA FRANCE BABELLE", logo: "/partners/LOGO-ADJA-FRANCE-BABELLE.png" },
+  { name: "FADDECO", logo: "/partners/LOGO-FADDECO.png" },
+  { name: "INW Tech", logo: "/partners/LOGO-INW-Tech-1.png" },
+  { name: "KING MOUSSA", logo: "/partners/LOGO-KING-MOUSSA.png" },
+  { name: "MISS MBOURACKE", logo: "/partners/LOGO-MISS-MBOURACKE.png" },
+  { name: "NGELNA", logo: "/partners/LOGO-NGELNA.png" },
+  { name: "OUMOUL BACHAR", logo: "/partners/LOGO-OUMOUL-BACHAR.png" },
+  { name: "SCI LA PROMOBILIERE", logo: "/partners/LOGO-SCI-LA-PROMOBILIERE.png" },
+  { name: "SOFFLE DE VIE", logo: "/partners/LOGO-SOFFLE-DE-VIE.png" },
+  { name: "SenHorti Group", logo: "/partners/LOGO-SenHorti-Group.png" },
+  { name: "ZAL Multiservice", logo: "/partners/LOGO-ZAL-multiservice.png" },
+  { name: "Bouche Bae", logo: "/partners/Logo-de-Bouche-Bae.png" },
+  { name: "Femezon", logo: "/partners/femezon-logo 1.png" },
+  { name: "GIE TELEMARCK", logo: "/partners/logo-GIE-TELEMARCK-2k.png" },
 ];
 
 const LogoCarousel = () => {
@@ -49,12 +61,13 @@ const LogoCarousel = () => {
         {duplicatedLogos.map((partner, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-48 h-28 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center p-6 hover:bg-white/30 transition-all duration-300"
+            className="flex-shrink-0 w-32 h-20 sm:w-40 sm:h-24 md:w-48 md:h-28 bg-white rounded-lg flex items-center justify-center p-3 sm:p-4 md:p-5 hover:scale-105 transition-all duration-300 shadow-md"
           >
-            <div className="text-white text-base font-semibold text-center">
-              {partner.name}
-            </div>
-            {/* Remplacez par <img src={partner.logo} alt={partner.name} /> quand vous aurez les vrais logos */}
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="max-w-full max-h-full object-contain"
+            />
           </div>
         ))}
       </div>

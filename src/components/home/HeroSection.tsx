@@ -22,7 +22,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-[50px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[400px] md:min-h-[500px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
+    <section className="pt-[80px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[400px] md:min-h-[500px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
       {/* Texte + CTA */}
       <div className="relative px-4 sm:px-6 md:px-8 py-4 md:py-6 flex flex-col justify-start min-h-[400px] md:min-h-[500px]">
         <div className="max-w-2xl text-white z-10">
@@ -54,7 +54,7 @@ export const HeroSection = () => {
           >
             <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
               <span className="block mb-4">
-                STRATÉGIE • CRÉATIVITÉ • IMPACT
+                STRATÉGIE <span className="text-sm align-middle">•</span> CRÉATIVITÉ <span className="text-sm align-middle">•</span> IMPACT
               </span>
             </h1>
 

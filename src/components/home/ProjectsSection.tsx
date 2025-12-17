@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { Monitor } from "lucide-react";
+import { portfolioImages } from "@/data/homeData";
 
 export const ProjectsSection = () => {
   return (
@@ -20,20 +21,35 @@ export const ProjectsSection = () => {
           <div className="lg:col-span-2 grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 rounded-2xl md:rounded-3xl p-6 sm:p-8 shadow-2xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 min-h-[300px] sm:min-h-[350px] w-full" data-aos="fade-right">
             <div className="text-center text-white">
               <Monitor className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 opacity-80" />
-              <AnimatedCounter end={150} suffix="+" />
+              <AnimatedCounter end={50} suffix="+" />
               <h3 className="text-2xl sm:text-3xl font-black mt-2">PROJETS</h3>
               <p className="text-base sm:text-lg opacity-90">menés avec succès</p>
             </div>
           </div>
 
           {/* Carte PORTFOLIO */}
-          <div className="lg:col-span-3 grain-texture bg-gradient-to-br from-yellow-400 to-sunuOrange rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 min-h-[300px] sm:min-h-[350px]" data-aos="fade-left">
-            <div className="h-full flex items-center justify-center p-6 sm:p-8 md:p-12">
+          <div className="lg:col-span-3 relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 min-h-[300px] sm:min-h-[380px]" data-aos="fade-left">
+            {/* Grille d'images en arrière-plan */}
+            <div className="absolute inset-0 grid grid-cols-4 grid-rows-2">
+              {portfolioImages.slice(0, 8).map((img, index) => (
+                <div key={index} className="overflow-hidden">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+            {/* Contenu texte */}
+            <div className="relative h-full flex items-end justify-center p-6 sm:p-8 md:p-10">
               <div className="text-white text-center">
-                <p className="text-2xl sm:text-3xl font-black mb-3 md:mb-4">Portfolio complet</p>
-                <p className="text-base sm:text-lg md:text-xl opacity-90 mb-4 md:mb-6">Découvrez nos réalisations par catégorie</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-black mb-2 md:mb-3 drop-shadow-lg">Portfolio complet</p>
+                <p className="text-sm sm:text-base md:text-lg opacity-90 mb-4 md:mb-5">Découvrez nos réalisations par catégorie</p>
                 <Link to="/realisations" className="inline-block w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-white text-sunuOrange hover:bg-sunuBlue hover:text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Button className="w-full sm:w-auto bg-white text-sunuOrange hover:bg-sunuOrange hover:text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                     Voir nos réalisations
                   </Button>
                 </Link>
