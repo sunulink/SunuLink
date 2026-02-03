@@ -21,6 +21,12 @@ import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import DevisPage from "./pages/DevisPage";
 import NotFound from "./pages/NotFound";
+import IAlinkbusiness from "./pages/IA-link-business/IAlinkbusiness";
+import IAlinkDetail from "./pages/IA-link-business/IAlinkDeatil";
+import PackPubIA from "./pages/IA-link-business/PackpubIA";
+import PackpubIADetail from "./pages/IA-link-business/PackpubIADetail";
+// import { path } from 'path';
+// import AutomatisationMarketing from "./pages/IA-link-business/AutomatisationMarketing";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +61,10 @@ const App = () => {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/devis" element={<DevisPage />} />
+            <Route path="/ialinkbusiness" element={<IAlinkbusiness />} />
+            <Route path="/ialinkbusiness/:serviceTitle" element={<IAlinkDetail />} />
+            <Route path="/pack-pub-ia" element={<PackPubIA />} />
+            <Route path="/pack-pub-ia/:packSlugia" element={<PackpubIADetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

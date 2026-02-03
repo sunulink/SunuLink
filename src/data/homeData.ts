@@ -312,3 +312,52 @@ export const socialLinks = [
     iconSize: "w-5 h-5"
   }
 ];
+
+export const packsIA: Pack[] = [
+  {
+    name: "Pack de Démarrage IA",
+    duration: "3 mois",
+    price: "450K Fcfa / mois",
+    description: "Lancer sa communication proprement",
+    features: [
+      "15 visuels premium / mois",
+      "4 vidéos courtes / mois",
+      "Stories quotidiennes",
+      "Gestion FB + IG",
+      "Reporting mensuel"
+    ],
+    icon: "sparkles",
+    gradient: "from-blue-500 to-cyan-500"
+  },
+  {
+    name: "Pack Performance IA",
+    duration: "6 mois",
+    price: "850K Fcfa / mois",
+    description: "Accélérer sa croissance",
+    features: [
+      "30 visuels premium / mois",
+      "8 vidéos courtes / mois",
+      "1 vidéo pro / mois",
+      "Gestion multicanale",
+      "Boost sponsorisé"
+    ],
+    icon: "star",
+    gradient: "from-orange-500 to-yellow-500",
+    recommended: true
+  },
+  {
+    name: "Pack IA 360° Domination",
+    duration: "1 an",
+    price: "1.499K Fcfa / mois",
+    description: "Dominer son marché",
+    features: [
+      "60 visuels premium / mois",
+      "15 vidéos courtes / mois",
+      "2 vidéos pro / mois",
+      "Shooting trimestriel",
+      "Direction marketing"
+    ],
+    icon: "crown",
+    gradient: "from-purple-600 to-pink-600"
+  }
+];

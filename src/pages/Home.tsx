@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import ContactSection from "@/components/home/ContactSection";
 import "../components/Hero_2.css";
+import PacksSectionIA from "@/components/IA-link-business/packsectionIA";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <ServicesSection />
         <ProjectsSection />
         <PacksSection />
+        <PacksSectionIA />
         <TestimonialsSection />
         <PartnersSection />
         <ContactSection />

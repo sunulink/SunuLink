@@ -8,7 +8,8 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
   { href: "/boost-my-pub", label: "Boost My Pub" },
-  { href: "/blog", label: "Blog" },
+  { href: "/ialinkbusiness", label: "IA Link Business" },
+  { href: "/blog", label: "Blog & Ressources" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
