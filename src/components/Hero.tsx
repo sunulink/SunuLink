@@ -25,7 +25,7 @@ const Hero = () => {
             {/* BLOC TEXTE AVEC HAUTEUR MINIMALE POUR ÉVITER LE LAYOUT SHIFT */}
             <div className="min-h-[200px] md:min-h-[250px] flex flex-col justify-center">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight uppercase">
-                Stratégie Créativité <br />
+                TEST MODIFICATION <br />
                 <span className="text-secondary drop-shadow-lg">Impact</span>
               </h1>
 
