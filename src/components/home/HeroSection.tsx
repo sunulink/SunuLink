@@ -24,10 +24,10 @@ export const HeroSection = () => {
   return (
     <section className="pt-[100px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
           
           {/* CÔTÉ GAUCHE : TEXTE */}
-          <div className="relative z-10 flex flex-col justify-center h-full max-w-[550px]">
+          <div className="relative z-10 flex flex-col max-w-[550px] mb-4">
             <div className="relative min-h-[350px] flex flex-col justify-center">
               
               {/* Slide 1 : SunuLink Consulting */}
@@ -62,23 +62,23 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS (Animation restaurée) */}
+            {/* BOUTONS (Animation restaurée et position fixe) */}
             <div className="flex flex-wrap gap-4 mt-8">
               <Link to="/contact">
-                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all">
+                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300">
                   Parlons de votre projet
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white font-bold px-8 py-6 text-lg rounded-xl">
+                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white hover:bg-white/90 font-bold px-8 py-6 text-lg rounded-xl transition-all duration-300">
                   Découvrir nos services
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Sans cadre blanc, centrée) */}
-          <div className="flex justify-center md:justify-end items-center">
+          {/* CÔTÉ DROIT : IMAGE (Abaissée via items-end) */}
+          <div className="flex justify-center md:justify-end">
             <div className="w-full max-w-[550px] aspect-square relative overflow-hidden">
               <Carousel opts={{ loop: true }} className="w-full h-full">
                 <CarouselContent className="h-full">
