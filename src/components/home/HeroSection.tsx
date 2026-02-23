@@ -26,7 +26,7 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           
-          {/* CÔTÉ GAUCHE : TEXTE (Taille limitée à celle de l'image) */}
+          {/* CÔTÉ GAUCHE : TEXTE */}
           <div className="relative z-10 flex flex-col justify-center h-full max-w-[550px]">
             <div className="relative min-h-[350px] flex flex-col justify-center">
               
@@ -62,32 +62,32 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS (Position stable) */}
+            {/* BOUTONS (Animation restaurée) */}
             <div className="flex flex-wrap gap-4 mt-8">
               <Link to="/contact">
-                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl">
+                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all">
                   Parlons de votre projet
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white hover:bg-white/90 font-bold px-8 py-6 text-lg rounded-xl">
+                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white font-bold px-8 py-6 text-lg rounded-xl">
                   Découvrir nos services
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) */}
+          {/* CÔTÉ DROIT : IMAGE (Sans cadre blanc, centrée) */}
           <div className="flex justify-center md:justify-end items-center">
-            <div className="w-full max-w-[550px] aspect-square relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+            <div className="w-full max-w-[550px] aspect-square relative overflow-hidden">
               <Carousel opts={{ loop: true }} className="w-full h-full">
                 <CarouselContent className="h-full">
                   {heroImages.map((img, index) => (
                     <CarouselItem key={index} className="h-full">
                       <FlipCard
-                        front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover" />}
+                        front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
                         back={
-                          <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm">
+                          <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl">
                             {img.text}
                           </div>
                         }
