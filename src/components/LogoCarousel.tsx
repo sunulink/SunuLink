@@ -30,12 +30,12 @@ const LogoCarousel = () => {
     if (!scrollContainer) return;
 
     let scrollPosition = 0;
-    const scrollSpeed = 1; // pixels per frame
+    const scrollSpeed = 0.8; // Un peu plus lent pour plus d'élégance
 
     const scroll = () => {
       scrollPosition += scrollSpeed;
 
-      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
+      if (scrollPosition >= scrollContainer.scrollWidth / 3) {
         scrollPosition = 0;
       }
 
@@ -44,24 +44,23 @@ const LogoCarousel = () => {
     };
 
     const animationId = requestAnimationFrame(scroll);
-
     return () => cancelAnimationFrame(animationId);
   }, []);
 
-  // Dupliquer les logos pour un défilement infini
+  // Dupliquer pour un défilement infini fluide
   const duplicatedLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos];
 
   return (
-    <div className="w-full overflow-hidden bg-white/10 backdrop-blur-sm py-8 rounded-xl">
+    <div className="w-full overflow-hidden py-4">
       <div
         ref={scrollRef}
-        className="flex gap-12 overflow-hidden"
+        className="flex gap-4 md:gap-8 overflow-hidden py-4"
         style={{ scrollBehavior: "auto" }}
       >
         {duplicatedLogos.map((partner, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-32 h-20 sm:w-40 sm:h-24 md:w-48 md:h-28 bg-white rounded-lg flex items-center justify-center p-3 sm:p-4 md:p-5 hover:scale-105 transition-all duration-300 shadow-md"
+            className="flex-shrink-0 bg-white rounded-lg md:rounded-xl p-4 sm:p-6 md:p-8 flex items-center justify-center h-24 sm:h-28 md:h-32 w-32 sm:w-40 md:w-48 shadow-md hover:scale-110 hover:-translate-y-2 transition-all duration-500"
           >
             <img
               src={partner.logo}
