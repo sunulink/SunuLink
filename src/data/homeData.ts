@@ -68,19 +68,19 @@ export const services: Service[] = [
   {
     id: 3,
     title: "Branding & Positionnement",
-    image: "/img/strategie.jpg",
+    image: "/img/strategie-marketing-d-entreprise.jpg",
     description: "Nous révélons la force émotionnelle et stratégique de votre marque. De la conception à la mise en œuvre, nous façonnons une identité cohérente et différenciante."
   },
   {
     id: 4,
     title: "Digital, Réseaux & SEO",
-    image: "/img/graphism.jpg",
+    image: "/img/seo.jpg",
     description: "Nous façonnons votre présence digitale avec méthode, créativité et performance. De la conception web à la gestion de vos réseaux, nous bâtissons votre empreinte numérique."
   },
   {
     id: 5,
     title: "Développement Commercial & Partenariats",
-    image: "/img/strategie.jpg",
+    image: "/img/marketing_business_plan.jfif",
     description: "Nous transformons vos opportunités en résultats concrets. Nos experts développent des stratégies qui renforcent vos ventes et partenariats."
   },
   {
