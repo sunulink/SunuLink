@@ -22,13 +22,15 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-[100px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
+    <section className="pt-[120px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+        
+        {/* LE CADRE JAUNE : Conteneur principal qui regroupe TOUT au même niveau */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[500px]">
           
-          {/* CÔTÉ GAUCHE : TEXTE */}
-          <div className="relative z-10 flex flex-col max-w-[550px] mb-4">
-            <div className="relative min-h-[350px] flex flex-col justify-center">
+          {/* CÔTÉ GAUCHE : TEXTE ET BOUTONS */}
+          <div className="relative z-10 flex flex-col justify-center h-full">
+            <div className="relative min-h-[380px] flex flex-col justify-center">
               
               {/* Slide 1 : SunuLink Consulting */}
               <div
@@ -62,7 +64,7 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS (Animation restaurée et position fixe) */}
+            {/* BOUTONS : Intégrés au flux pour rester alignés avec l'image */}
             <div className="flex flex-wrap gap-4 mt-8">
               <Link to="/contact">
                 <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300">
@@ -77,13 +79,13 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Abaissée via items-end) */}
-          <div className="flex justify-center md:justify-end">
-            <div className="w-full max-w-[550px] aspect-square relative overflow-hidden">
+          {/* CÔTÉ DROIT : IMAGE (Centrée verticalement avec le texte) */}
+          <div className="flex justify-center md:justify-end items-center h-full">
+            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden flex items-center">
               <Carousel opts={{ loop: true }} className="w-full h-full">
                 <CarouselContent className="h-full">
                   {heroImages.map((img, index) => (
-                    <CarouselItem key={index} className="h-full">
+                    <CarouselItem key={index} className="h-full flex items-center">
                       <FlipCard
                         front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
                         back={
@@ -102,7 +104,7 @@ export const HeroSection = () => {
         </div>
 
         {/* LOGO CAROUSEL */}
-        <div className="mt-16">
+        <div className="mt-20">
           <LogoCarousel />
         </div>
       </div>
