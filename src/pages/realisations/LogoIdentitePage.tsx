@@ -5,9 +5,14 @@ const LogoIdentitePage = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="pt-32 pb-20 container mx-auto px-6">
-        <h1 className="text-4xl font-black text-sunuBlue">Logo & Identité Visuelle</h1>
-        <p className="mt-4 text-gray-600">Contenu en cours de préparation...</p>
+      <main className="pt-32 pb-20 container mx-auto px-6 text-center">
+        <h1 className="text-4xl md:text-6xl font-black text-sunuBlue mb-6">
+          LOGO & <span className="text-sunuOrange">IDENTITÉ VISUELLE</span>
+        </h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Découvrez nos créations de logos et chartes graphiques professionnelles. 
+          Le contenu détaillé arrive très bientôt.
+        </p>
       </main>
       <Footer />
     </div>
