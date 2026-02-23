@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+// Imports existants
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
@@ -25,19 +27,26 @@ import IAlinkbusiness from "./pages/IA-link-business/IAlinkbusiness";
 import IAlinkDetail from "./pages/IA-link-business/IAlinkDeatil";
 import PackPubIA from "./pages/IA-link-business/PackpubIA";
 import PackpubIADetail from "./pages/IA-link-business/PackpubIADetail";
-// import { path } from 'path';
-// import AutomatisationMarketing from "./pages/IA-link-business/AutomatisationMarketing";
+
+// Nouveaux imports pour les pages de réalisations
+import LogoIdentitePage from "./pages/realisations/LogoIdentitePage";
+import PrintPage from "./pages/realisations/PrintPage";
+import BrandingPage from "./pages/realisations/BrandingPage";
+import PhotoPage from "./pages/realisations/PhotoPage";
+import VideoPage from "./pages/realisations/VideoPage";
+import PackagingPage from "./pages/realisations/PackagingPage";
+import WebDigitalPage from "./pages/realisations/WebDigitalPage";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100,
-      easing: "ease-out-cubic",
-    });
+     AOS.init({
+       duration: 800,
+       once: true,
+       offset: 100,
+       easing: "ease-out-cubic",
+     });
   }, []);
 
   return (
@@ -51,6 +60,17 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/realisations" element={<RealisationsPage />} />
+            
+            {/* --- NOUVELLES ROUTES RÉALISATIONS --- */}
+            <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
+            <Route path="/realisations/print-affiches" element={<PrintPage />} />
+            <Route path="/realisations/branding-complet" element={<BrandingPage />} />
+            <Route path="/realisations/photo-shooting" element={<PhotoPage />} />
+            <Route path="/realisations/video-animation" element={<VideoPage />} />
+            <Route path="/realisations/design-packaging" element={<PackagingPage />} />
+            <Route path="/realisations/web-digital" element={<WebDigitalPage />} />
+            
+            {/* Autres routes existantes */}
             <Route path="/ressources" element={<ResourcesPage />} />
             <Route path="/ressources/:slug" element={<ResourceDetailPage />} />
             <Route path="/article/:articleSlug" element={<ArticlePage />} />
@@ -65,7 +85,7 @@ const App = () => {
             <Route path="/ialinkbusiness/:serviceTitle" element={<IAlinkDetail />} />
             <Route path="/pack-pub-ia" element={<PackPubIA />} />
             <Route path="/pack-pub-ia/:packSlugia" element={<PackpubIADetail />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
