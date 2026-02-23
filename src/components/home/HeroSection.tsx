@@ -25,12 +25,12 @@ export const HeroSection = () => {
     <section className="pt-[120px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         
-        {/* LE CADRE JAUNE : Conteneur principal qui regroupe TOUT au même niveau */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[500px]">
+        {/* GRILLE ALIGNÉE SUR LE BAS (items-end) POUR RESPECTER LE TRACÉ JAUNE */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
           
           {/* CÔTÉ GAUCHE : TEXTE ET BOUTONS */}
-          <div className="relative z-10 flex flex-col justify-center h-full">
-            <div className="relative min-h-[380px] flex flex-col justify-center">
+          <div className="relative z-10 flex flex-col max-w-[550px]">
+            <div className="relative min-h-[320px] flex flex-col justify-center">
               
               {/* Slide 1 : SunuLink Consulting */}
               <div
@@ -64,28 +64,35 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS : Intégrés au flux pour rester alignés avec l'image */}
-            <div className="flex flex-wrap gap-4 mt-8">
+            {/* BOUTONS : Remontés pour s'aligner sur le bas de l'image */}
+            <div className="flex flex-wrap gap-4 mt-6">
               <Link to="/contact">
-                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300">
+                <Button 
+                  size="lg" 
+                  className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
                   Parlons de votre projet
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white hover:bg-white/90 font-bold px-8 py-6 text-lg rounded-xl transition-all duration-300">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-white text-sunuBlue bg-white hover:bg-sunuOrange hover:border-sunuOrange hover:text-white font-bold px-8 py-6 text-lg rounded-xl transition-all duration-300 transform hover:scale-105"
+                >
                   Découvrir nos services
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Centrée verticalement avec le texte) */}
-          <div className="flex justify-center md:justify-end items-center h-full">
-            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden flex items-center">
+          {/* CÔTÉ DROIT : IMAGE (Base de l'alignement) */}
+          <div className="flex justify-center md:justify-end h-full">
+            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden">
               <Carousel opts={{ loop: true }} className="w-full h-full">
                 <CarouselContent className="h-full">
                   {heroImages.map((img, index) => (
-                    <CarouselItem key={index} className="h-full flex items-center">
+                    <CarouselItem key={index} className="h-full">
                       <FlipCard
                         front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
                         back={
@@ -104,7 +111,7 @@ export const HeroSection = () => {
         </div>
 
         {/* LOGO CAROUSEL */}
-        <div className="mt-20">
+        <div className="mt-16">
           <LogoCarousel />
         </div>
       </div>
