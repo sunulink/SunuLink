@@ -56,7 +56,7 @@ export const HeroSection = () => {
                 }`}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
-                  Stratégie <br /> Créativité <span className="text-sunuOrange text-4xl">•</span> Impact
+                  Stratégie <br /> Créativité <span className="text-sunuOrange text-4xl"></span> Impact
                 </h1>
                 <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
                   Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
