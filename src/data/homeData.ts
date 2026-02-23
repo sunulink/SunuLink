@@ -91,7 +91,7 @@ export const services: Service[] = [
   }
 ];
 
-export const contactInfo: ContactInfo[] = [
+export const contactInfo = [
   {
     icon: Mail,
     title: "Email",
@@ -105,10 +105,10 @@ export const contactInfo: ContactInfo[] = [
     link: "tel:+221785938369",
   },
   {
-    icon: Phone,
+    icon: Phone, // icône phone
     title: "WhatsApp",
     value: "+221 76 973 00 00",
-    link: "https://wa.me/221767263842",
+    link: "https://wa.me/221769730000", 
   },
 ];
 
