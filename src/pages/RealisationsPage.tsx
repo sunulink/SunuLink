@@ -72,6 +72,7 @@ const RealisationsPage = () => {
       examples: "Création de logos professionnels, chartes graphiques, pack branding complet",
       color: "from-sunuOrange to-yellow-500",
       projects: "15+",
+      link: "/realisations/logo-identite" // Lien ajouté vers la page Logo & Identité visuelle
     },
     {
       icon: FileText,
@@ -79,6 +80,7 @@ const RealisationsPage = () => {
       examples: "Flyers, posters, dépliants, PLV, roll-up…",
       color: "from-sunuOrange to-yellow-500",
       projects: "30+",
+      link: "/realisations/print-affiches"
     },
     {
       icon: Palette,
@@ -86,6 +88,7 @@ const RealisationsPage = () => {
       examples: "Identité, couleurs, typographies, guidelines, visuels cohérents",
       color: "from-sunuOrange to-yellow-500",
       projects: "12+",
+      link: "/realisations/branding-complet"
     },
     {
       icon: Image,
@@ -93,6 +96,7 @@ const RealisationsPage = () => {
       examples: "Shooting produits, photos corporate, mises en scène professionnelles",
       color: "from-sunuOrange to-yellow-500",
       projects: "25+",
+      link: "/realisations/photo-shooting"
     },
     {
       icon: Video,
@@ -100,6 +104,7 @@ const RealisationsPage = () => {
       examples: "Teasers, clips institutionnels, spots, vidéos expérimentales/IA",
       color: "from-sunuOrange to-yellow-500",
       projects: "18+",
+      link: "/realisations/video-animation"
     },
     {
       icon: Package,
@@ -107,6 +112,7 @@ const RealisationsPage = () => {
       examples: "Étiquettes, packagings alimentaires, visuels produits, maquettes réalistes",
       color: "from-sunuOrange to-yellow-500",
       projects: "10+",
+      link: "/realisations/design-packaging"
     },
     {
       icon: Globe,
@@ -114,6 +120,7 @@ const RealisationsPage = () => {
       examples: "Sites web, interfaces, visuels digitaux, contenus optimisés",
       color: "from-sunuOrange to-yellow-500",
       projects: "20+",
+      link: "/realisations/web-digital"
     },
   ];
 
@@ -170,9 +177,10 @@ const RealisationsPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {categories.map((category, index) => (
-                <div
+                <Link
                   key={index}
-                  className={`grain-texture bg-gradient-to-br ${category.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}
+                  to={category.link}
+                  className={`grain-texture bg-gradient-to-br ${category.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 block`}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
@@ -186,7 +194,7 @@ const RealisationsPage = () => {
                   </div>
                   <h3 className="text-2xl font-black mb-4">{category.title}</h3>
                   <p className="opacity-90 leading-relaxed">{category.examples}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
