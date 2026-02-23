@@ -107,7 +107,7 @@ export const contactInfo: ContactInfo[] = [
   {
     icon: Phone,
     title: "WhatsApp",
-    value: "+221 76 726 38 42",
+    value: "+221 76 973 00 00",
     link: "https://wa.me/221767263842",
   },
 ];
