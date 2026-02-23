@@ -22,94 +22,88 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-[80px] grain-texture relative md:grid md:grid-cols-[45%_55%] gap-2 min-h-[550px] bg-gradient-hero overflow-hidden shadow-elegant" data-aos="fade-up">
-      {/* GAUCHE : Texte + CTA */}
-      <div className="relative px-4 sm:px-6 md:px-12 py-6 md:py-10 flex flex-col justify-center">
-        <div className="max-w-2xl text-white z-10">
+    <section className="pt-[100px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           
-          <div className="relative min-h-[350px] sm:min-h-[300px] md:min-h-[350px]">
-            
-            {/* Premier bloc - SunuLink */}
-            <div
-              className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out ${
-                showFirstBlock ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-              }`}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4">
-                SunuLink Consulting
-              </h1>
-              <p className="text-lg md:text-xl font-normal text-white/90 leading-relaxed">
-                Plus qu'une agence, votre partenaire de croissance 360°
-              </p>
-              <p className="text-base md:text-lg font-normal text-white/80 leading-relaxed mt-6">
-                Nous transformons vos idées en stratégies, vos projets en résultats, et votre présence en véritable impact.
-              </p>
+          {/* CÔTÉ GAUCHE : TEXTE (Taille limitée à celle de l'image) */}
+          <div className="relative z-10 flex flex-col justify-center h-full max-w-[550px]">
+            <div className="relative min-h-[350px] flex flex-col justify-center">
+              
+              {/* Slide 1 : SunuLink Consulting */}
+              <div
+                className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col justify-center ${
+                  showFirstBlock ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
+                }`}
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white">
+                  SunuLink <br /> Consulting
+                </h1>
+                <p className="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-4">
+                  Plus qu'une agence, votre partenaire de croissance 360°
+                </p>
+                <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
+                  Nous transformons vos idées en stratégies, vos projets en résultats, et votre présence en véritable impact.
+                </p>
+              </div>
+
+              {/* Slide 2 : STRATÉGIE CRÉATIVITÉ IMPACT */}
+              <div
+                className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col justify-center ${
+                  !showFirstBlock ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
+                }`}
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
+                  Stratégie <br /> Créativité <span className="text-sunuOrange text-4xl">•</span> Impact
+                </h1>
+                <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
+                  Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
+                </p>
+              </div>
             </div>
 
-            {/* Deuxième bloc - Stratégie • Créativité • Impact */}
-            <div
-              className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out ${
-                !showFirstBlock ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-              }`}
-            >
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight uppercase mb-4 whitespace-nowrap">
-                Stratégie <span className="text-sunuOrange">•</span> Créativité <span className="text-sunuOrange">•</span> Impact
-              </h1>
-              <p className="text-base md:text-lg font-normal text-white/80 leading-relaxed mt-6">
-                Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
-              </p>
+            {/* BOUTONS (Position stable) */}
+            <div className="flex flex-wrap gap-4 mt-8">
+              <Link to="/contact">
+                <Button size="lg" className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl">
+                  Parlons de votre projet
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button variant="outline" size="lg" className="border-2 border-white text-sunuBlue bg-white hover:bg-white/90 font-bold px-8 py-6 text-lg rounded-xl">
+                  Découvrir nos services
+                </Button>
+              </Link>
             </div>
           </div>
 
-          {/* Boutons CTA */}
-          <div className="flex flex-col sm:flex-row sm:gap-4 gap-3 mt-8 md:mt-10">
-            <Link to="/contact" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all"
-              >
-                Parlons de votre projet
-              </Button>
-            </Link>
-            <Link to="/services" className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto border-2 border-white text-sunuBlue bg-white font-bold px-8 py-6 text-lg rounded-xl"
-              >
-                Découvrir nos services
-              </Button>
-            </Link>
+          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) */}
+          <div className="flex justify-center md:justify-end items-center">
+            <div className="w-full max-w-[550px] aspect-square relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <Carousel opts={{ loop: true }} className="w-full h-full">
+                <CarouselContent className="h-full">
+                  {heroImages.map((img, index) => (
+                    <CarouselItem key={index} className="h-full">
+                      <FlipCard
+                        front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover" />}
+                        back={
+                          <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm">
+                            {img.text}
+                          </div>
+                        }
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
           </div>
+
         </div>
 
-        {/* Logo Carousel */}
-        <div className="mt-12 z-10">
+        {/* LOGO CAROUSEL */}
+        <div className="mt-16">
           <LogoCarousel />
-        </div>
-      </div>
-
-      {/* DROITE : Image IA centrée */}
-      <div className="relative flex items-center justify-center p-6 md:p-12">
-        <div className="w-full max-w-[500px] lg:max-w-[550px]">
-          <Carousel opts={{ loop: true }} className="w-full">
-            <CarouselContent>
-              {heroImages.map((img, index) => (
-                <CarouselItem key={index}>
-                  <div className="group relative w-full aspect-square rounded-2xl shadow-2xl overflow-hidden border-4 border-white/10">
-                    <FlipCard
-                      front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover" />}
-                      back={
-                        <div className="p-8 h-full flex items-center justify-center text-white text-center font-medium text-xl bg-sunuBlue">
-                          {img.text}
-                        </div>
-                      }
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
         </div>
       </div>
     </section>
