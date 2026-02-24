@@ -26,7 +26,8 @@ import IAlinkDetail from "./pages/IA-link-business/IAlinkDeatil";
 import PackPubIA from "./pages/IA-link-business/PackpubIA";
 import PackpubIADetail from "./pages/IA-link-business/PackpubIADetail";
 
-// Import de la nouvelle page unique
+// Import des pages de réalisations (La principale + les détails)
+import RealisationsPage from "./pages/RealisationsPage";
 import LogoIdentitePage from "./pages/LogoIdentitePage";
 
 const queryClient = new QueryClient();
@@ -66,7 +67,8 @@ const App = () => {
             <Route path="/pack-pub-ia" element={<PackPubIA />} />
             <Route path="/pack-pub-ia/:packSlugia" element={<PackpubIADetail />} />
 
-            {/* Route pour la page Logo & Identité */}
+            {/* Routes pour les Réalisations */}
+            <Route path="/realisations" element={<RealisationsPage />} />
             <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
 
             <Route path="*" element={<NotFound />} />
