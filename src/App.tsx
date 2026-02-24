@@ -34,6 +34,7 @@ import RealisationsPage from "./pages/RealisationsPage";
 import LogoIdentitePage from "./pages/LogoIdentitePage";
 import AffichesSupportsPage from "./pages/AffichesSupportsPage";
 import BrandingCompletPage from "./pages/BrandingCompletPage";
+import PhotoShootingPage from "./pages/PhotoShootingPage";
 
 const queryClient = new QueryClient();
 
@@ -84,6 +85,7 @@ const App = () => {
             <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
             <Route path="/realisations/print-affiches" element={<AffichesSupportsPage />} />
             <Route path="/realisations/branding-complet" element={<BrandingCompletPage />} />
+            <Route path="/realisations/photo-shooting" element={<PhotoShootingPage />} />
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
