@@ -37,20 +37,34 @@ const AffichesSupportsPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
-  // Liste des 76 images
+  const stats = [
+    { value: 76, suffix: "+", label: "Supports Créés" },
+    { value: 100, suffix: "%", label: "Haute Résolution" },
+    { value: 45, suffix: "+", label: "Clients Print" },
+    { value: 10, suffix: "/10", label: "Finition Premium" },
+  ];
+
+  const mainShowcase = [
+    { id: 1, img: "/portfolio/affiche-support1.jpg", title: "Design Événementiel" },
+    { id: 2, img: "/portfolio/affiche-support2.jpg", title: "Communication Print" },
+    { id: 3, img: "/portfolio/affiche-support3.jpg", title: "Marketing Opérationnel" },
+    { id: 4, img: "/portfolio/affiche-support4.jpg", title: "Supports Publicitaires" },
+  ];
+
   const allPrints = Array.from({ length: 76 }, (_, i) => `/portfolio/affiche-support${i + 1}.jpg`);
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % allPrints.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + allPrints.length) % allPrints.length);
 
-  // Fermer le zoom avec la touche Echap
+  // Verrouillage du scroll quand le zoom est ouvert
   useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedImg(null);
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+    if (selectedImg) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedImg]);
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -63,113 +77,114 @@ const AffichesSupportsPage = () => {
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800 uppercase">
               AFFICHES & <span className="text-sunuOrange">Supports Print</span>
             </h1>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-4xl font-black mb-2"><AnimatedCounter end={stat.value} suffix={stat.suffix} /></h3>
+                  <p className="font-semibold opacity-90">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* GALERIE DYNAMIQUE - ANIMATION 5s */}
-        <section className="py-12 bg-gray-50 overflow-hidden">
+        {/* TOP SHOWCASE */}
+        <section className="py-12 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {mainShowcase.map((item) => (
+                <div key={item.id} className="relative overflow-hidden rounded-[2.5rem] shadow-xl aspect-square group cursor-pointer" onClick={() => setSelectedImg(item.img)}>
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                    <h3 className="text-white text-xl font-bold">{item.title}</h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INFINITE MARQUEE - PASSÉ À 30s */}
+        <section className="py-20 bg-gray-50 overflow-hidden">
           <h2 className="text-center text-3xl font-black mb-12 uppercase text-gray-800">
-            Galerie <span className="text-sunuOrange">réalisations</span>
+            Galerie <span className="text-sunuOrange">Dynamique</span>
           </h2>
-          <div className="flex gap-6 animate-marquee-fast whitespace-nowrap">
+          <div className="flex gap-6 animate-marquee whitespace-nowrap">
             {[...allPrints.slice(0, 20), ...allPrints.slice(0, 20)].map((img, index) => (
-              <div 
-                key={index} 
-                className="w-[300px] h-[400px] rounded-2xl overflow-hidden shadow-lg flex-shrink-0 cursor-zoom-in"
-                onClick={() => setSelectedImg(img)}
-              >
-                <img src={img} className="w-full h-full object-cover" alt="Support" />
+              <div key={index} className="w-[300px] h-[450px] rounded-3xl overflow-hidden shadow-xl flex-shrink-0 border-4 border-white cursor-zoom-in" onClick={() => setSelectedImg(img)}>
+                <img src={img} className="w-full h-full object-cover" alt="Realisation" loading="lazy" />
               </div>
             ))}
           </div>
         </section>
 
-        {/* SLIDER INTERACTIF (850x650) */}
+        {/* SLIDER INTERACTIF (1000x600px) */}
         <section className="py-24 bg-white">
           <div className="container mx-auto max-w-6xl px-6">
+            <h2 className="text-center text-4xl font-black mb-16 uppercase italic text-sunuBlue">Focus Réalisations</h2>
             <div className="relative flex items-center justify-center">
-              {/* Bouton Gauche */}
-              <button onClick={prevSlide} className="absolute left-0 md:left-[-40px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-xl hover:scale-110 transition-all">
-                <ChevronLeft size={32} />
+              <button onClick={prevSlide} className="absolute left-[-20px] lg:left-[-80px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
+                <ChevronLeft size={40} />
               </button>
               
-              {/* Conteneur Image 850x650 */}
-              <div 
-                className="w-full max-w-[850px] h-[650px] rounded-[2rem] overflow-hidden shadow-2xl border-[8px] border-white cursor-zoom-in group relative"
-                onClick={() => setSelectedImg(allPrints[currentIndex])}
-              >
+              <div className="w-full max-w-[1000px] h-[600px] rounded-[3rem] overflow-hidden shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] border-[12px] border-gray-50 cursor-zoom-in group" onClick={() => setSelectedImg(allPrints[currentIndex])}>
                 <img 
                   src={allPrints[currentIndex]} 
-                  alt="Focus" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  alt="Focus Print" 
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <span className="text-white font-bold bg-sunuOrange/80 px-4 py-2 rounded-lg">Cliquer pour zoomer</span>
-                </div>
               </div>
 
-              {/* Bouton Droit */}
-              <button onClick={nextSlide} className="absolute right-0 md:right-[-40px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-xl hover:scale-110 transition-all">
-                <ChevronRight size={32} />
+              <button onClick={nextSlide} className="absolute right-[-20px] lg:right-[-80px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
+                <ChevronRight size={40} />
               </button>
             </div>
-            <p className="text-center mt-6 font-bold text-gray-500 italic">Support {currentIndex + 1} / {allPrints.length}</p>
+            <p className="text-center mt-8 font-bold text-gray-400 uppercase tracking-widest">Support {currentIndex + 1} / {allPrints.length}</p>
           </div>
         </section>
 
-        {/* LIGHTBOX / MODAL DE ZOOM RÉPARÉE */}
+        {/* MODAL ZOOM (LIGHTBOX FIABLE) */}
         {selectedImg && (
           <div 
-            className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center cursor-pointer"
-            onClick={() => setSelectedImg(null)} // Ferme en cliquant sur le fond
+            className="fixed inset-0 z-[999] bg-black/95 flex items-center justify-center p-4 transition-all animate-in fade-in zoom-in duration-300 cursor-pointer"
+            onClick={() => setSelectedImg(null)}
           >
-            {/* Bouton Fermer (X) */}
+            {/* Bouton Fermer (X) très visible */}
             <button 
-              className="absolute top-10 right-10 text-white bg-sunuOrange p-3 rounded-full hover:bg-white hover:text-sunuOrange transition-all"
-              onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }}
+              onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }} 
+              className="absolute top-6 right-6 md:top-10 md:right-10 z-[1000] bg-sunuOrange text-white p-4 rounded-full hover:bg-white hover:text-sunuOrange transition-all shadow-2xl"
             >
               <X size={40} strokeWidth={3} />
             </button>
 
-            {/* Image Zoomée */}
             <img 
               src={selectedImg} 
-              className="max-w-[90%] max-h-[90%] md:max-w-[80%] md:max-h-[85%] object-contain rounded-lg shadow-2xl animate-in zoom-in duration-300" 
-              alt="Zoom réalisation"
-              onClick={(e) => e.stopPropagation()} // Empêche la fermeture si on clique sur l'image elle-même
+              className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain cursor-default" 
+              alt="Zoom" 
+              onClick={(e) => e.stopPropagation()}
             />
           </div>
         )}
 
-        {/* SECTION CONTACT */}
-        <section className="py-20 px-6 text-center bg-sunuBlue">
-          <div className="max-w-4xl mx-auto text-white">
-            <h2 className="text-4xl font-black mb-8 uppercase">Prêt pour votre prochain support ?</h2>
-            <Link to="/contact">
-              <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-bold px-10 py-7 rounded-full text-xl transition-all">
-                Démarrer un projet
-              </Button>
-            </Link>
-          </div>
+        {/* CTA FINAL */}
+        <section className="py-24 px-6 text-center bg-sunuBlue">
+            <div className="max-w-4xl mx-auto text-white">
+                <h2 className="text-5xl font-black mb-8 uppercase leading-tight">Votre projet mérite <br/><span className="text-sunuOrange">une impression d'exception</span></h2>
+                <Link to="/contact">
+                    <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-black px-12 py-9 rounded-full text-2xl shadow-2xl transition-all hover:-translate-y-2">
+                        Démarrer mon projet Print
+                    </Button>
+                </Link>
+            </div>
         </section>
       </main>
 
       <Footer />
 
       <style>{`
-        @keyframes marquee { 
-          0% { transform: translateX(0); } 
-          100% { transform: translateX(-50%); } 
-        }
-        /* Animation réglée sur 5 secondes */
-        .animate-marquee-fast { 
-          display: flex;
-          width: max-content;
-          animation: marquee 5s linear infinite; 
-        }
-        .animate-marquee-fast:hover { 
-          animation-play-state: paused; 
-        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 30s linear infinite; }
+        .animate-marquee:hover { animation-play-state: paused; }
       `}</style>
     </div>
   );
