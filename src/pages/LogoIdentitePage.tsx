@@ -1,100 +1,173 @@
+import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Palette, ArrowLeft } from "lucide-react";
+import { Palette, ArrowLeft, Layers, ShieldCheck, Zap, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
+// Composant de compteur animé (issu de votre code Blog)
+const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+    if (counterRef.current) observer.observe(counterRef.current);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    let startTime: number | null = null;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [isVisible, end, duration]);
+
+  return <div ref={counterRef}>{count}{suffix}</div>;
+};
 
 const LogoIdentitePage = () => {
-  // 1. 3 images de présentation du haut
-  const heroProjects = [
-    { id: 1, title: "Logo Design Pro", image: "/portfolio/1.png" },
-    { id: 2, title: "Charte Graphique Premium", image: "/portfolio/2.png" },
-    { id: 3, title: "Identité Visuelle Corporate", image: "/portfolio/3.png" },
+  // Stats adaptées pour Logo & Identité
+  const stats = [
+    { value: 15, suffix: "+", label: "Identités créées" },
+    { value: 100, suffix: "%", label: "Design Unique" },
+    { value: 50, suffix: "+", label: "Logos livrés" },
+    { value: 12, suffix: "/12", label: "Mois d'innovation" },
   ];
 
-  // 2. Liste de logos pour le défilé (fonds blancs)
-  const logoList = [
-    "/portfolio/logo-sunulink.png", "/portfolio/logo-soso.png", 
-    "/portfolio/logo-sarataa.png", "/portfolio/logo-welli.png",
-    "/portfolio/logo-zami.png", "/portfolio/logo-telemarck.png",
-    "/portfolio/logo-cafe.png", "/portfolio/logo-bokk-dem.png",
-    "/portfolio/logo-faddeco.png", "/portfolio/logo-gainde.png"
+  // Grandes images (Tirés jaunes)
+  const mainShowcase = [
+    { id: 1, img: "/portfolio/1.png", title: "Branding Industriel" },
+    { id: 2, img: "/portfolio/2.png", title: "Identité Corporate" },
+    { id: 3, img: "/portfolio/3.png", title: "Packaging Design" },
+    { id: 4, img: "/portfolio/MOCKUP 1 EMBALLAGE PRO.png", title: "Concept Produit" },
   ];
 
-  // 3. Galerie fixe (le reste des réalisations)
-  const galleryProjects = [
-    { id: 10, title: "SunuLink", image: "/portfolio/logo-sunulink.png" },
-    { id: 11, title: "Nataa Body Care", image: "/portfolio/logo-nataa.png" },
-    { id: 12, title: "SCI La Promobiliere", image: "/portfolio/logo-sci-la-promobiliere.png" },
-    { id: 13, title: "Linguere Oil", image: "/portfolio/logo-linguere_oil.png" },
-    { id: 14, title: "Bazar Service", image: "/portfolio/logo-bazar-service.png" },
-    { id: 15, title: "Sya Masseuse", image: "/portfolio/logo-sya-masseuse-third.png" },
+  // Liste des logos (Tirés verts - à compléter avec tous vos noms de fichiers)
+  const logos = [
+    { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
+    { name: "Soso", logo: "/portfolio/logo-soso.png" },
+    { name: "Sarataa", logo: "/portfolio/logo-sarataa.png" },
+    { name: "Welli", logo: "/portfolio/logo-welli.png" },
+    { name: "Zami", logo: "/portfolio/logo-zami.png" },
+    { name: "Telemarck", logo: "/portfolio/logo-telemarck.png" },
+    { name: "Linguere Oil", logo: "/portfolio/logo-linguere_oil.png" },
+    { name: "Café Délices", logo: "/portfolio/logo-cafe.png" },
+    { name: "Bokk Dem", logo: "/portfolio/logo-bokk-dem.png" },
+    { name: "FemeZon", logo: "/portfolio/femeZon-logo.png" },
+    { name: "Bazar Service", logo: "/portfolio/logo-bazar-service.png" },
+    { name: "Sci La Promobiliere", logo: "/portfolio/logo-sci-la-promobiliere.png" },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
+
       <main className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          
-          <Link to="/realisations" className="inline-flex items-center text-sunuOrange hover:underline mb-8 font-medium">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Retour
-          </Link>
+        {/* HERO SECTION - Structure inspirée du Blog */}
+        <section className="py-16 px-6 bg-gradient-to-b from-sunuOrange/10 to-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
+                LOGO & <span className="text-sunuOrange uppercase">Identité Visuelle</span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                L'essence de votre marque capturée dans un design unique. Explorez nos créations graphiques pour une image de marque forte et mémorable.
+              </p>
+            </div>
 
-          <h1 className="text-4xl font-black text-gray-900 mb-12 flex items-center gap-4">
-            <Palette className="text-sunuOrange w-10 h-10" /> Logo & Identité visuelle
-          </h1>
-
-          {/* SECTION 1 : Présentation (3 images avec grands arrondis) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            {heroProjects.map((project) => (
-              <div key={project.id} className="space-y-4">
-                <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-sm border border-gray-100">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 px-2">{project.title}</h3>
-              </div>
-            ))}
-          </div>
-
-          {/* SECTION 2 : Défilé des logos (Arrière-plan blanc) */}
-          <div className="mb-20 py-10 bg-gray-50/50 rounded-[3rem] overflow-hidden">
-            <h2 className="text-2xl font-bold text-center mb-10 text-gray-400 uppercase tracking-widest">Nos Logos</h2>
-            <div className="flex gap-12 animate-marquee whitespace-nowrap">
-              {[...logoList, ...logoList].map((logo, index) => (
-                <div key={index} className="h-32 w-48 bg-white rounded-2xl flex items-center justify-center p-6 shadow-sm border border-gray-100 flex-shrink-0">
-                  <img src={logo} className="max-h-full max-w-full object-contain" />
+            {/* Stats - Style Blog */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+              {stats.map((stat, index) => (
+                <div key={index} className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="zoom-in" data-aos-delay={index * 100}>
+                  <h3 className="text-4xl md:text-5xl font-black mb-2">
+                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                  </h3>
+                  <p className="font-semibold opacity-90">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* SECTION 3 : Galerie Fixe */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {galleryProjects.map((project) => (
-              <div key={project.id} className="aspect-square bg-gray-50 rounded-[2rem] p-8 border border-gray-100 flex items-center justify-center hover:shadow-xl transition-all duration-300">
-                <img src={project.image} alt={project.title} className="max-h-full max-w-full object-contain" />
-              </div>
-            ))}
+        {/* SECTION RÉALISATIONS - Grandes images (Tirés jaunes) */}
+        <section className="py-12 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {mainShowcase.map((item, index) => (
+                <div key={item.id} className="group" data-aos="fade-up" data-aos-delay={index * 150}>
+                  <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl bg-gray-100 aspect-video md:aspect-auto">
+                    <img 
+                      src={item.img} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+                      <h3 className="text-white text-2xl font-bold">{item.title}</h3>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-        </div>
+        {/* SECTION LOGOS - Structure PartnersSection (Tirés verts) */}
+        <section className="py-12 md:py-20 px-4 md:px-6">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grain-texture bg-gradient-hero rounded-[3rem] p-8 md:p-16 shadow-2xl" data-aos="fade-up">
+              <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+                <div className="text-center md:text-left">
+                  <h2 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase leading-tight">
+                    NOS CRÉATIONS <span className="text-secondary text-sunuOrange">LOGOTYPES</span>
+                  </h2>
+                  <p className="text-lg md:text-xl text-white/90 font-medium">
+                    Une collection de logos conçus pour durer et marquer les esprits.
+                  </p>
+                </div>
+                <Link to="/contact">
+                  <Button className="bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white font-bold px-10 py-6 rounded-full shadow-xl transition-all duration-300 text-lg">
+                    Démarrer un projet
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Grille de logos blanche sur fond coloré */}
+              <div className="relative overflow-hidden rounded-[2rem] bg-white/10 backdrop-blur-md p-6 md:p-12">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                  {logos.map((logo, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-2xl p-6 flex items-center justify-center h-32 md:h-40 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 shadow-md group"
+                      data-aos="zoom-in"
+                      data-aos-delay={index * 50}
+                    >
+                      <img
+                        src={logo.logo}
+                        alt={logo.name}
+                        className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <Footer />
 
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          display: flex;
-          width: max-content;
-          animation: marquee 30s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+      <Footer />
     </div>
   );
 };
