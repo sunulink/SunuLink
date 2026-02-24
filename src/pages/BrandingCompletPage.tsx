@@ -73,11 +73,11 @@ const BrandingCompletPage = () => {
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <Palette className="text-sunuOrange" size={32} />
-                <h3 className="text-3xl font-black uppercase">Collection <span className="text-sunuOrange">A-Green</span></h3>
+                <h3 className="text-3xl font-black uppercase italic">Collection <span className="text-sunuOrange">A-GREEN</span></h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {categories.agreen.map((img, i) => (
-                  <div key={i} className="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl cursor-zoom-in group" onClick={() => setSelectedImg(img)}>
+                  <div key={i} className="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl cursor-zoom-in group border-8 border-white" onClick={() => setSelectedImg(img)}>
                     <img src={img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="A-Green" />
                   </div>
                 ))}
@@ -88,11 +88,11 @@ const BrandingCompletPage = () => {
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <Brush className="text-sunuOrange" size={32} />
-                <h3 className="text-3xl font-black uppercase">Univers <span className="text-sunuOrange">Good Café</span></h3>
+                <h3 className="text-3xl font-black uppercase italic">Univers <span className="text-sunuOrange">GOOD CAFÉ</span></h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {categories.goodCafe.map((img, i) => (
-                  <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-lg cursor-zoom-in group" onClick={() => setSelectedImg(img)}>
+                  <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-lg cursor-zoom-in group border-4 border-white" onClick={() => setSelectedImg(img)}>
                     <img src={img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Good Cafe" />
                   </div>
                 ))}
@@ -106,7 +106,10 @@ const BrandingCompletPage = () => {
           <div className="container mx-auto max-w-6xl px-6">
             <div className="flex items-center justify-center gap-4 mb-12">
                 <Layout className="text-sunuOrange" size={28} />
-                <h2 className="text-4xl font-black uppercase italic text-center">Focus Identité Visuelle</h2>
+                {/* CORRECTION : VISUELLE EN JAUNE/ORANGE */}
+                <h2 className="text-4xl font-black uppercase italic text-center">
+                  Focus Identité <span className="text-sunuOrange">Visuelle</span>
+                </h2>
             </div>
             
             <div className="relative flex items-center justify-center">
@@ -118,10 +121,11 @@ const BrandingCompletPage = () => {
                 className="w-full max-w-[1000px] h-[600px] rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border-[15px] border-white cursor-zoom-in group" 
                 onClick={() => setSelectedImg(allImages[currentIndex])}
               >
+                {/* CORRECTION : OBJECT-COVER POUR REMPLIR LE CADRE BLANC */}
                 <img 
                   src={allImages[currentIndex]} 
                   alt="Branding Focus" 
-                  className="w-full h-full object-contain bg-white transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
               </div>
 
@@ -133,7 +137,7 @@ const BrandingCompletPage = () => {
           </div>
         </section>
 
-        {/* MODAL ZOOM (LIGHTBOX FIABLE) */}
+        {/* MODAL ZOOM */}
         {selectedImg && (
           <div 
             className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 cursor-pointer backdrop-blur-sm"
