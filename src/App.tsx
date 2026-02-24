@@ -33,6 +33,7 @@ import PackpubIADetail from "./pages/IA-link-business/PackpubIADetail";
 import RealisationsPage from "./pages/RealisationsPage";
 import LogoIdentitePage from "./pages/LogoIdentitePage";
 import AffichesSupportsPage from "./pages/AffichesSupportsPage";
+import BrandingCompletPage from "./pages/BrandingCompletPage";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ const App = () => {
             <Route path="/realisations" element={<RealisationsPage />} />
             <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
             <Route path="/realisations/print-affiches" element={<AffichesSupportsPage />} />
+            <Route path="/realisations/branding-complet" element={<BrandingCompletPage />} />
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
