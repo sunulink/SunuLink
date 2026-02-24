@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -33,6 +34,9 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; d
 };
 
 const AffichesSupportsPage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
   const stats = [
     { value: 76, suffix: "+", label: "Supports Créés" },
     { value: 100, suffix: "%", label: "Haute Résolution" },
@@ -40,7 +44,6 @@ const AffichesSupportsPage = () => {
     { value: 10, suffix: "/10", label: "Finition Premium" },
   ];
 
-  // Sélection des 4 premières images pour le haut de page
   const mainShowcase = [
     { id: 1, img: "/portfolio/affiche-support1.jpg", title: "Design Événementiel" },
     { id: 2, img: "/portfolio/affiche-support2.jpg", title: "Communication Print" },
@@ -48,17 +51,10 @@ const AffichesSupportsPage = () => {
     { id: 4, img: "/portfolio/affiche-support4.jpg", title: "Supports Publicitaires" },
   ];
 
-  // Génération automatique des 76 images pour le défilement (Marquee)
   const allPrints = Array.from({ length: 76 }, (_, i) => `/portfolio/affiche-support${i + 1}.jpg`);
 
-  const logoGrid = [
-    { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
-    { name: "Bokk Dem", logo: "/portfolio/logo-bokk-dem.png" },
-    { name: "Linguere Oil", logo: "/portfolio/logo-linguere_oil.png" },
-    { name: "Soso", logo: "/portfolio/logo-soso.png" },
-    { name: "Welli", logo: "/portfolio/logo-welli.png" },
-    { name: "Café Délices", logo: "/portfolio/logo-cafe.png" },
-  ];
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % allPrints.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + allPrints.length) % allPrints.length);
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -71,16 +67,10 @@ const AffichesSupportsPage = () => {
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800 uppercase">
               AFFICHES & <span className="text-sunuOrange">Supports Print</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-              De la conception à la mise en page, nous créons des supports physiques qui captent l'attention.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
               {stats.map((stat, index) => (
                 <div key={index} className="bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-4xl font-black mb-2">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                  </h3>
+                  <h3 className="text-4xl font-black mb-2"><AnimatedCounter end={stat.value} suffix={stat.suffix} /></h3>
                   <p className="font-semibold opacity-90">{stat.label}</p>
                 </div>
               ))}
@@ -93,7 +83,7 @@ const AffichesSupportsPage = () => {
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {mainShowcase.map((item) => (
-                <div key={item.id} className="relative overflow-hidden rounded-[2.5rem] shadow-xl aspect-square group">
+                <div key={item.id} className="relative overflow-hidden rounded-[2.5rem] shadow-xl aspect-square group cursor-pointer" onClick={() => setSelectedImg(item.img)}>
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
                     <h3 className="text-white text-xl font-bold">{item.title}</h3>
@@ -104,38 +94,65 @@ const AffichesSupportsPage = () => {
           </div>
         </section>
 
-        {/* INFINITE MARQUEE - 76 IMAGES (Format Portrait) */}
+        {/* INFINITE MARQUEE - ACCÉLÉRÉ (60s) */}
         <section className="py-20 bg-gray-50 overflow-hidden">
           <h2 className="text-center text-3xl font-black mb-12 uppercase text-gray-800">
-            Galerie Complète des <span className="text-sunuOrange">Réalisations</span>
+            Galerie <span className="text-sunuOrange">Dynamique</span>
           </h2>
           <div className="flex gap-6 animate-marquee whitespace-nowrap">
-            {[...allPrints, ...allPrints].map((img, index) => (
-              <div key={index} className="w-[350px] h-[500px] rounded-3xl overflow-hidden shadow-xl flex-shrink-0 border-4 border-white">
-                <img src={img} className="w-full h-full object-cover" alt={`Réalisation print ${index + 1}`} loading="lazy" />
+            {[...allPrints.slice(0, 20), ...allPrints.slice(0, 20)].map((img, index) => (
+              <div key={index} className="w-[300px] h-[450px] rounded-3xl overflow-hidden shadow-xl flex-shrink-0 border-4 border-white cursor-zoom-in" onClick={() => setSelectedImg(img)}>
+                <img src={img} className="w-full h-full object-cover" alt="Realisation" loading="lazy" />
               </div>
             ))}
           </div>
         </section>
 
-        {/* CTA & LOGOS (Identique aux autres pages pour la cohérence) */}
-        <section className="py-20 px-6 text-center">
-            <div className="bg-sunuBlue rounded-[3rem] p-16 text-white max-w-6xl mx-auto">
-                <h2 className="text-4xl font-black mb-6 uppercase">Prêt à imprimer votre succès ?</h2>
+        {/* NOUVEAU SLIDER INTERACTIF (700x700) */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto max-w-5xl px-6">
+            <h2 className="text-center text-4xl font-black mb-16 uppercase italic text-sunuBlue">Focus Réalisations</h2>
+            <div className="relative flex items-center justify-center">
+              <button onClick={prevSlide} className="absolute left-[-20px] md:left-[-60px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
+                <ChevronLeft size={40} />
+              </button>
+              
+              <div className="w-full max-w-[700px] aspect-square rounded-[3rem] overflow-hidden shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] border-[12px] border-gray-50 cursor-zoom-in group" onClick={() => setSelectedImg(allPrints[currentIndex])}>
+                <img 
+                  src={allPrints[currentIndex]} 
+                  alt="Focus Print" 
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <button onClick={nextSlide} className="absolute right-[-20px] md:right-[-60px] z-10 p-4 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
+                <ChevronRight size={40} />
+              </button>
+            </div>
+            <p className="text-center mt-8 font-bold text-gray-400">Support {currentIndex + 1} / {allPrints.length}</p>
+          </div>
+        </section>
+
+        {/* MODAL ZOOM (LIGHTBOX) */}
+        {selectedImg && (
+          <div className="fixed inset-0 z-[999] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-all animate-in fade-in zoom-in duration-300">
+            <button onClick={() => setSelectedImg(null)} className="absolute top-8 right-8 text-white hover:text-sunuOrange transition-colors">
+              <X size={50} strokeWidth={3} />
+            </button>
+            <img src={selectedImg} className="max-w-full max-h-full rounded-xl shadow-2xl object-contain" alt="Zoom" />
+          </div>
+        )}
+
+        {/* CTA FINAL (Sans logos défilants) */}
+        <section className="py-24 px-6 text-center bg-sunuBlue">
+            <div className="max-w-4xl mx-auto text-white">
+                <h2 className="text-5xl font-black mb-8 uppercase leading-tight">Votre projet mérite <br/><span className="text-sunuOrange">une impression d'exception</span></h2>
                 <Link to="/contact">
-                    <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-bold px-10 py-7 rounded-full text-xl transition-all">
-                        Demander un devis print
+                    <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-black px-12 py-9 rounded-full text-2xl shadow-2xl transition-all hover:-translate-y-2">
+                        Démarrer mon projet Print
                     </Button>
                 </Link>
             </div>
-        </section>
-
-        <section className="py-10 overflow-hidden border-t">
-          <div className="flex gap-20 animate-marquee-slow whitespace-nowrap items-center">
-            {[...logoGrid, ...logoGrid].map((logo, index) => (
-              <img key={index} src={logo.logo} alt={logo.name} className="h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
-            ))}
-          </div>
         </section>
       </main>
 
@@ -143,8 +160,7 @@ const AffichesSupportsPage = () => {
 
       <style>{`
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 120s linear infinite; }
-        .animate-marquee-slow { animation: marquee 60s linear infinite; }
+        .animate-marquee { animation: marquee 60s linear infinite; }
         .animate-marquee:hover { animation-play-state: paused; }
       `}</style>
     </div>
