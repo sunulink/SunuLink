@@ -47,13 +47,19 @@ const LogoIdentitePage = () => {
     { id: 4, img: "/portfolio/MOCKUP 1 EMBALLAGE PRO.png", title: "Concept Produit" },
   ];
 
+  // Liste des images pour le défilement horizontal (section D'autres réalisations)
   const otherRealizations = [
-    "/portfolio/BRANDING PUB3.png", "/portfolio/BRANDING PUB4.png",
-    "/portfolio/BRANDING PUB5.png", "/portfolio/FLYERS 2.png",
-    "/portfolio/FLYERS.png", "/portfolio/MOCKUP 2 EMBALLAGES PRO.png",
-    "/portfolio/MOCKUP SACHET.png", "/portfolio/BOUTEILLE 2.png"
+    "/portfolio/oil1.png", 
+    "/portfolio/BOUTEILLE 2.png", 
+    "/portfolio/BOUTEILLE 3.png",
+    "/portfolio/MOCKUP SACHET.png",
+    "/portfolio/BRANDING PUB3.png",
+    "/portfolio/BRANDING PUB4.png",
+    "/portfolio/FLYERS.png",
+    "/portfolio/MOCKUP 2 EMBALLAGES PRO.png"
   ];
 
+  // Liste complète des logos basée sur vos fichiers
   const logoGrid = [
     { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
     { name: "Soso", logo: "/portfolio/logo-soso.png" },
@@ -62,7 +68,7 @@ const LogoIdentitePage = () => {
     { name: "Zami", logo: "/portfolio/logo-zami.png" },
     { name: "Telemarck", logo: "/portfolio/logo-telemarck.png" },
     { name: "Linguere Oil", logo: "/portfolio/logo-linguere_oil.png" },
-    { name: "Café Délices", logo: "/portfolio/logo-cafe.png" },
+    { name: "Café", logo: "/portfolio/logo-cafe.png" },
     { name: "Bokk Dem", logo: "/portfolio/logo-bokk-dem.png" },
     { name: "FemeZon", logo: "/portfolio/femezon-logo.png" },
     { name: "Bazar Service", logo: "/portfolio/logo-bazar-service.png" },
@@ -73,6 +79,8 @@ const LogoIdentitePage = () => {
     { name: "Nataa", logo: "/portfolio/logo-nataa.png" },
     { name: "Soly", logo: "/portfolio/logo-soly-internationnal.png" },
     { name: "Senhorti", logo: "/portfolio/logo-senhorti-group.png" },
+    { name: "Meer Jus", logo: "/portfolio/logo-mere-jus.png" },
+    { name: "Kaisha Style", logo: "/portfolio/logo-kaisha-style.png" }
   ];
 
   return (
@@ -88,7 +96,7 @@ const LogoIdentitePage = () => {
                 LOGO & <span className="text-sunuOrange uppercase">Identité Visuelle</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up">
-                L'essence de votre marque capturée dans un design unique.
+                Création de logos professionnels et chartes graphiques complètes.
               </p>
             </div>
 
@@ -105,7 +113,7 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* 4 GRANDES IMAGES */}
+        {/* SECTION 1 : 4 GRANDES IMAGES */}
         <section className="py-12 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -123,7 +131,7 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* SECTION 2 : DÉFILEMENT (HAUTEUR DOUBLÉE) */}
+        {/* SECTION 2 : D'AUTRES RÉALISATIONS (Images entières / non coupées) */}
         <section className="py-16 bg-gray-50 overflow-hidden">
           <div className="container mx-auto px-6 mb-12 text-center">
              <h2 className="text-3xl md:text-4xl font-black text-gray-800 uppercase tracking-tight">
@@ -132,14 +140,18 @@ const LogoIdentitePage = () => {
           </div>
           <div className="flex gap-8 animate-marquee whitespace-nowrap">
             {[...otherRealizations, ...otherRealizations].map((img, index) => (
-              <div key={index} className="w-[500px] h-[440px] rounded-[2rem] overflow-hidden shadow-xl flex-shrink-0">
-                <img src={img} className="w-full h-full object-cover" alt="Réalisation" />
+              <div key={index} className="w-[500px] h-[440px] rounded-[2rem] overflow-hidden shadow-xl flex-shrink-0 bg-white p-4">
+                <img 
+                  src={img} 
+                  className="w-full h-full object-contain" 
+                  alt="Réalisation" 
+                />
               </div>
             ))}
           </div>
         </section>
 
-        {/* SECTION 3 : GRILLE LOGOS CARRÉS */}
+        {/* SECTION 3 : GRILLE LOGOS CARRÉS (Fond blanc) */}
         <section className="py-12 md:py-20 px-4 md:px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grain-texture bg-gradient-hero rounded-[3rem] p-8 md:p-16 shadow-2xl">
@@ -148,7 +160,7 @@ const LogoIdentitePage = () => {
                   <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase leading-tight">
                     NOS CRÉATIONS <span className="text-sunuOrange">LOGOTYPES</span>
                   </h2>
-                  <p className="text-lg opacity-90">Une collection de logos conçus pour durer.</p>
+                  <p className="text-lg opacity-90">Une collection de logos conçus pour marquer les esprits.</p>
                 </div>
                 <Link to="/contact">
                   <Button className="bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white font-bold px-10 py-6 rounded-full text-lg shadow-xl transition-all">
@@ -170,7 +182,7 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* SECTION 4 : DÉFILEMENT FINAL (COULEURS RÉELLES) */}
+        {/* SECTION 4 : DÉFILEMENT LOGOS FINAL (Couleurs originales) */}
         <section className="py-14 bg-white border-y border-gray-100 overflow-hidden">
           <div className="flex gap-20 animate-marquee-slow whitespace-nowrap items-center">
             {[...logoGrid, ...logoGrid].map((logo, index) => (
