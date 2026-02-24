@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Palette, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -41,7 +40,6 @@ const LogoIdentitePage = () => {
     { value: 12, suffix: "/12", label: "Mois d'innovation" },
   ];
 
-  // 1. Les 4 Grandes Images (Taille égale grâce à aspect-square)
   const mainShowcase = [
     { id: 1, img: "/portfolio/1.png", title: "Branding Industriel" },
     { id: 2, img: "/portfolio/2.png", title: "Identité Corporate" },
@@ -49,15 +47,13 @@ const LogoIdentitePage = () => {
     { id: 4, img: "/portfolio/MOCKUP 1 EMBALLAGE PRO.png", title: "Concept Produit" },
   ];
 
-  // 2. Autres réalisations pour le défilement horizontal
   const otherRealizations = [
-    "/portfolio/BRANDING PUB3.png", "/portfolio/BRANDING PUB 2.png",
-    "/portfolio/FLYERS 1.png", "/portfolio/FLYERS 2.png",
-    "/portfolio/COBI-PAGES.png", "/portfolio/FLNERCI/0.png",
-    "/portfolio/3.png", "/portfolio/1.png"
+    "/portfolio/BRANDING PUB3.png", "/portfolio/BRANDING PUB4.png",
+    "/portfolio/BRANDING PUB5.png", "/portfolio/FLYERS 2.png",
+    "/portfolio/FLYERS.png", "/portfolio/MOCKUP 2 EMBALLAGES PRO.png",
+    "/portfolio/MOCKUP SACHET.png", "/portfolio/BOUTEILLE 2.png"
   ];
 
-  // 3. Grille des Logos (Carrés blancs)
   const logoGrid = [
     { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
     { name: "Soso", logo: "/portfolio/logo-soso.png" },
@@ -68,15 +64,15 @@ const LogoIdentitePage = () => {
     { name: "Linguere Oil", logo: "/portfolio/logo-linguere_oil.png" },
     { name: "Café Délices", logo: "/portfolio/logo-cafe.png" },
     { name: "Bokk Dem", logo: "/portfolio/logo-bokk-dem.png" },
-    { name: "FemeZon", logo: "/portfolio/femeZon-logo.png" },
+    { name: "FemeZon", logo: "/portfolio/femezon-logo.png" },
     { name: "Bazar Service", logo: "/portfolio/logo-bazar-service.png" },
     { name: "Sci La Promobiliere", logo: "/portfolio/logo-sci-la-promobiliere.png" },
-    { name: "Vide Boubou", logo: "/portfolio/logo-vide-boubou.png" },
+    { name: "Biba Seduction", logo: "/portfolio/logo-biba-seduction.png" },
+    { name: "Faddeco", logo: "/portfolio/logo-faddeco.png" },
+    { name: "Gainde", logo: "/portfolio/logo-gainde.png" },
+    { name: "Nataa", logo: "/portfolio/logo-nataa.png" },
     { name: "Soly", logo: "/portfolio/logo-soly-internationnal.png" },
     { name: "Senhorti", logo: "/portfolio/logo-senhorti-group.png" },
-    { name: "Sow Auto", logo: "/portfolio/LOGO_SOW_AUTO.PNG" },
-    { name: "Vision Plus", logo: "/portfolio/LOGO_VISION_PLUS.PNG" },
-    { name: "Expertise Immo", logo: "/portfolio/LOGO_EXPERTISE_IMMO.PNG" },
   ];
 
   return (
@@ -91,14 +87,14 @@ const LogoIdentitePage = () => {
               <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
                 LOGO & <span className="text-sunuOrange uppercase">Identité Visuelle</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Explorez nos créations graphiques pour une image de marque forte.
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up">
+                L'essence de votre marque capturée dans un design unique.
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
               {stats.map((stat, index) => (
-                <div key={index} className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 text-center shadow-lg hover:-translate-y-2 transition-all" data-aos="zoom-in" data-aos-delay={index * 100}>
+                <div key={index} className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-2xl p-8 text-center shadow-lg hover:-translate-y-2 transition-all">
                   <h3 className="text-4xl md:text-5xl font-black mb-2">
                     <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                   </h3>
@@ -109,7 +105,7 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* SECTION 1 : LES 4 GRANDES RÉALISATIONS (Aspect Square pour égalité) */}
+        {/* 4 GRANDES IMAGES */}
         <section className="py-12 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -127,30 +123,32 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* SECTION 2 : DÉFILEMENT AUTRES RÉALISATIONS */}
+        {/* SECTION 2 : DÉFILEMENT (HAUTEUR DOUBLÉE) */}
         <section className="py-16 bg-gray-50 overflow-hidden">
-          <div className="container mx-auto px-6 mb-8 text-center">
-             <h2 className="text-2xl font-black text-gray-400 uppercase tracking-widest">D'autres réalisations</h2>
+          <div className="container mx-auto px-6 mb-12 text-center">
+             <h2 className="text-3xl md:text-4xl font-black text-gray-800 uppercase tracking-tight">
+                D'AUTRES <span className="text-sunuOrange">RÉALISATIONS</span>
+             </h2>
           </div>
           <div className="flex gap-8 animate-marquee whitespace-nowrap">
             {[...otherRealizations, ...otherRealizations].map((img, index) => (
-              <div key={index} className="w-[350px] h-[220px] rounded-3xl overflow-hidden shadow-md flex-shrink-0">
+              <div key={index} className="w-[500px] h-[440px] rounded-[2rem] overflow-hidden shadow-xl flex-shrink-0">
                 <img src={img} className="w-full h-full object-cover" alt="Réalisation" />
               </div>
             ))}
           </div>
         </section>
 
-        {/* SECTION 3 : GRILLE DE LOGOS CARRÉS (Style Partners) */}
+        {/* SECTION 3 : GRILLE LOGOS CARRÉS */}
         <section className="py-12 md:py-20 px-4 md:px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-hero rounded-[3rem] p-8 md:p-16 shadow-2xl" data-aos="fade-up">
+            <div className="grain-texture bg-gradient-hero rounded-[3rem] p-8 md:p-16 shadow-2xl">
               <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
                 <div className="text-center md:text-left text-white">
                   <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase leading-tight">
                     NOS CRÉATIONS <span className="text-sunuOrange">LOGOTYPES</span>
                   </h2>
-                  <p className="text-lg opacity-90">Des logos conçus pour marquer les esprits.</p>
+                  <p className="text-lg opacity-90">Une collection de logos conçus pour durer.</p>
                 </div>
                 <Link to="/contact">
                   <Button className="bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white font-bold px-10 py-6 rounded-full text-lg shadow-xl transition-all">
@@ -162,8 +160,8 @@ const LogoIdentitePage = () => {
               <div className="relative overflow-hidden rounded-[2rem] bg-white/10 backdrop-blur-md p-6 md:p-10">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                   {logoGrid.map((logo, index) => (
-                    <div key={index} className="bg-white rounded-xl aspect-square p-6 flex items-center justify-center hover:scale-105 transition-all shadow-md group" data-aos="zoom-in">
-                      <img src={logo.logo} alt={logo.name} className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform" />
+                    <div key={index} className="bg-white rounded-xl aspect-square p-6 flex items-center justify-center hover:scale-105 transition-all shadow-md group">
+                      <img src={logo.logo} alt={logo.name} className="max-w-full max-h-full object-contain" />
                     </div>
                   ))}
                 </div>
@@ -172,11 +170,11 @@ const LogoIdentitePage = () => {
           </div>
         </section>
 
-        {/* SECTION 4 : DÉFILEMENT LOGOS EN BAS (Style Accueil) */}
-        <section className="py-10 bg-white border-y border-gray-100 overflow-hidden">
-          <div className="flex gap-16 animate-marquee-slow whitespace-nowrap">
+        {/* SECTION 4 : DÉFILEMENT FINAL (COULEURS RÉELLES) */}
+        <section className="py-14 bg-white border-y border-gray-100 overflow-hidden">
+          <div className="flex gap-20 animate-marquee-slow whitespace-nowrap items-center">
             {[...logoGrid, ...logoGrid].map((logo, index) => (
-              <div key={index} className="h-16 w-32 flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-default">
+              <div key={index} className="h-20 w-40 flex-shrink-0 transition-transform hover:scale-110">
                 <img src={logo.logo} alt={logo.name} className="h-full w-full object-contain" />
               </div>
             ))}
@@ -194,12 +192,12 @@ const LogoIdentitePage = () => {
         .animate-marquee {
           display: flex;
           width: max-content;
-          animation: marquee 40s linear infinite;
+          animation: marquee 35s linear infinite;
         }
         .animate-marquee-slow {
           display: flex;
           width: max-content;
-          animation: marquee 60s linear infinite;
+          animation: marquee 50s linear infinite;
         }
         .animate-marquee:hover, .animate-marquee-slow:hover {
           animation-play-state: paused;
