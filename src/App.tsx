@@ -81,7 +81,7 @@ const App = () => {
             {/* --- SECTION RÉALISATIONS --- */}
             <Route path="/realisations" element={<RealisationsPage />} />
             <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
-            <Route path="/realisations/affiches-supports" element={<AffichesSupportsPage />} />
+            <Route path="/realisations/print-affiches" element={<AffichesSupportsPage />} />
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
