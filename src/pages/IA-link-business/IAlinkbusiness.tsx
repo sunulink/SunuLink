@@ -177,14 +177,23 @@ const IAlinkbusiness = () => {
               </p>
               
               {/* DEUX BOUTONS CENTRÉS */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button asChild size="lg" className="bg-sunuOrange hover:bg-sunuBlue text-white px-10 py-7 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105">
-                  <Link to="/contact">Démarrer mon projet IA</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-sunuBlue px-10 py-7 rounded-full text-xl font-bold transition-all backdrop-blur-md">
-                  <Link to="/services">Nos Solutions</Link>
-                </Button>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-10">
+            {/* PREMIER BOUTON : ORANGE -> BLEU */}
+            <Button asChild size="lg" className="bg-sunuOrange hover:bg-sunuBlue text-white px-10 py-8 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105 border-none h-auto">
+            <Link to="/contact">Démarrer mon projet IA</Link>
+            </Button>
+  
+            {/* DEUXIÈME BOUTON : BLEU -> JAUNE/ORANGE (Fond blanc au repos supprimé pour visibilité) */}
+            <Button 
+            asChild 
+            size="lg" 
+            className="bg-sunuBlue text-white hover:bg-sunuOrange px-10 py-8 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105 border-none h-auto"
+            >
+    <Link to="/services">
+      Découvrez nos solutions IA 360°
+    </Link>
+  </Button>
+</div>
             </div>
           </div>
         </section>
