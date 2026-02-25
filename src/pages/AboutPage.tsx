@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import SocialLinksBlock from "@/components/SocialLinksBlock";
 
 const AboutPage = () => {
   const values = [
@@ -127,26 +129,24 @@ const AboutPage = () => {
       <main className="pt-32 pb-20">
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/30">
-          <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-16">
-              <h1 className="text-5xl md:text-6xl font-black mb-6 text-sunuBlue" data-aos="fade-up">
-                À propos de <span className="text-sunuOrange">Sunu Link</span>
-              </h1>
-            </div>
+          <div className="container mx-auto max-w-7xl text-center">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 text-sunuBlue" data-aos="fade-up">
+              À propos de <span className="text-sunuOrange">Sunu Link</span>
+            </h1>
           </div>
         </section>
 
         {/* Notre Histoire */}
         <section className="py-16 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
-                Notre <span className="text-sunuOrange">Histoire</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="100">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
+              Notre <span className="text-sunuOrange">Histoire</span>
+            </h2>
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed" data-aos="fade-up">
                 <strong className="text-sunuBlue">Sunu Link Consulting</strong> accompagne les organisations qui veulent transformer leur visibilité en croissance réelle.
               </p>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
               </p>
             </div>
@@ -155,20 +155,14 @@ const AboutPage = () => {
 
         {/* Mission & Vision */}
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
-                <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
-                <p className="leading-relaxed text-xl">
-                  Propulser la croissance des entreprises africaines par des solutions de communication et de conseil adaptées et mesurables.
-                </p>
-              </div>
-              <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
-                <h3 className="text-3xl font-black mb-6">Notre Vision</h3>
-                <p className="leading-relaxed text-xl">
-                  Devenir la référence africaine du conseil stratégique et de la communication intégrée.
-                </p>
-              </div>
+          <div className="container mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
+            <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
+              <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
+              <p className="leading-relaxed text-xl">Propulser la croissance des entreprises africaines par des solutions de communication et de conseil adaptées et mesurables.</p>
+            </div>
+            <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
+              <h3 className="text-3xl font-black mb-6">Notre Vision</h3>
+              <p className="leading-relaxed text-xl">Devenir la référence africaine du conseil stratégique et de la communication intégrée.</p>
             </div>
           </div>
         </section>
@@ -181,12 +175,7 @@ const AboutPage = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {values.map((value, index) => (
-                <div
-                  key={index}
-                  className={`grain-texture bg-gradient-to-br ${value.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
+                <div key={index} className={`grain-texture bg-gradient-to-br ${value.color} text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`} data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
@@ -200,21 +189,14 @@ const AboutPage = () => {
 
         {/* Notre Approche */}
         <section className="py-20 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-8 text-gray-800" data-aos="fade-up">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Approche</span>
             </h2>
-            <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="100">
-              Un processus clair et structuré pour garantir votre succès
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <p className="text-xl text-gray-600 mb-16 max-w-3xl mx-auto">Un processus clair et structuré pour garantir votre succès</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
               {approachSteps.map((step, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-sunuBlue/20"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
+                <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border-2 border-sunuBlue/20 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="text-6xl font-black text-sunuOrange mb-4 opacity-20">{step.number}</div>
                   <h3 className="text-2xl font-black mb-3 text-gray-800">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
@@ -226,22 +208,15 @@ const AboutPage = () => {
 
         {/* Notre Équipe */}
         <section className="py-20 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-8 text-gray-800" data-aos="fade-up">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Équipe</span>
             </h2>
-            <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="100">
-              Une équipe pluridisciplinaire rassemblant experts en stratégie, design, digital, production et IA.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p className="text-xl text-gray-600 mb-16 max-w-3xl mx-auto">Une équipe pluridisciplinaire rassemblant experts en stratégie, design, digital, production et IA.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               {teams.map((team, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 50}
-                >
-                  <div className="bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <div key={index} className="bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-8 shadow-lg hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 50}>
+                  <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                     <Zap className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-black mb-3">{team.name}</h3>
@@ -254,18 +229,13 @@ const AboutPage = () => {
 
         {/* Pourquoi nous choisir */}
         <section className="py-20 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
               Pourquoi <span className="text-sunuOrange">nous choisir ?</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               {whyChooseUs.map((reason, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-sunuOrange/20"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
+                <div key={index} className="bg-white rounded-3xl p-10 shadow-lg border-2 border-sunuOrange/20 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                     <reason.icon className="w-8 h-8 text-white" />
                   </div>
@@ -277,45 +247,39 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* SECTION FINALE : CTA + RÉSEAUX SOCIAUX */}
-<section className="py-16 px-6">
-  <div className="container mx-auto max-w-7xl">
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-      
-      {/* BLOC CTA (Prend 2/3 de l'espace) */}
-      <div className="lg:col-span-2 grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-10 md:p-12 shadow-2xl flex flex-col justify-center" data-aos="fade-right">
-        <h2 className="text-3xl md:text-4xl font-black mb-6">
-          Prêt à transformer votre communication ?
-        </h2>
-        <p className="text-xl mb-8 opacity-95 max-w-2xl">
-          Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            to="/contact"
-            className="inline-block bg-white text-sunuBlue px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg text-center"
-          >
-            Demander un devis
-          </Link>
-          <Link
-            to="/services"
-            className="inline-block bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-sunuBlue transition-all duration-300 text-center"
-          >
-            Découvrir nos services
-          </Link>
-        </div>
-      </div>
+        {/* CTA FINAL AVEC COMPOSANT RÉSEAUX SOCIAUX */}
+        <section className="py-16 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+              
+              {/* BLOC TEXTE CTA */}
+              <div className="lg:col-span-2 grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-10 md:p-12 shadow-2xl flex flex-col justify-center" data-aos="fade-right">
+                <h2 className="text-3xl md:text-4xl font-black mb-6">
+                  Prêt à transformer votre communication ?
+                </h2>
+                <p className="text-xl mb-8 opacity-95 max-w-2xl">
+                  Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white px-8 py-6 rounded-full font-bold text-lg h-auto">
+                    <Link to="/contact">Demander un devis</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-sunuBlue px-8 py-6 rounded-full font-bold text-lg h-auto">
+                    <Link to="/services">Découvrir nos services</Link>
+                  </Button>
+                </div>
+              </div>
 
-      {/* BLOC RÉSEAUX SOCIAUX (Prend 1/3 de l'espace) */}
-      <div className="flex" data-aos="fade-left">
-        <div className="w-full">
-          <SocialLinksBlock />
-        </div>
-      </div>
+              {/* BLOC RÉSEAUX SOCIAUX (UTILISE LE COMPOSANT DÉFINI PLUS TÔT) */}
+              <div className="flex" data-aos="fade-left">
+                <div className="w-full">
+                  <SocialLinksBlock />
+                </div>
+              </div>
 
-    </div>
-  </div>
-</section>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
