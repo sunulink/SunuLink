@@ -49,8 +49,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Téléphone",
-      value: "+221 76 726 38 42",
-      link: "tel:+221767263842",
+      value: "+221 76 973 00 00",
+      link: "tel:+221769730000",
     },
   ];
 
@@ -104,7 +104,7 @@ const Contact = () => {
 
               {/* Social Links - REMPLACÉ PAR COMPOSANT + FOND JAUNE/ORANGE */}
               <div className="bg-gradient-to-r from-sunuOrange to-yellow-500 rounded-2xl p-6 text-white shadow-lg">
-                <h4 className="font-bold mb-4 text-lg">Suivez-nous sur les réseaux sociaux</h4>
+                {/* <h4 className="font-bold mb-4 text-lg">Suivez-nous sur les réseaux sociaux</h4> */}
                 <div className="flex">
                    <SocialLinksBlock />
                 </div>
