@@ -10,7 +10,7 @@ import {
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-// --- COMPOSANT ARTICLE CARD (Format réduit) ---
+// --- COMPOSANT ARTICLE CARD ---
 const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured?: boolean }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -41,12 +41,12 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
           isExpanded ? 'max-h-[1000px] opacity-100 mb-6' : 'max-h-0 opacity-0'
         }`}>
           <div className="pt-6 border-t border-gray-100 space-y-6">
-            <div className="bg-gray-900 text-white p-6 rounded-2xl">
+            <div className="bg-sunuBlue text-white p-6 rounded-2xl">
               <h4 className="flex items-center gap-2 text-sunuOrange font-black text-base mb-2">
-                <Zap className="w-4 h-4" /> Analyse
+                <Zap className="w-4 h-4" /> L'analyse de l'expert
               </h4>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {article.content || "Analyse stratégique Sunu Link : Optimisation des leviers de croissance et déploiement opérationnel pour garantir un avantage compétitif durable."}
+              <p className="text-blue-50 text-sm leading-relaxed">
+                {article.content || "Notre cabinet analyse les leviers de performance spécifiques à ce secteur pour garantir un ROI mesurable et une exécution terrain sans faille."}
               </p>
             </div>
           </div>
@@ -55,7 +55,7 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
-            isExpanded ? 'bg-gray-100 text-gray-900' : 'bg-sunuOrange text-white hover:bg-sunuBlue'
+            isExpanded ? 'bg-gray-100 text-sunuBlue' : 'bg-sunuOrange text-white hover:bg-sunuBlue'
           }`}
         >
           {isExpanded ? "Réduire" : "Lire l'analyse"} 
@@ -301,6 +301,7 @@ export const blogCategoriesData: any = {
     ]
   }
 };
+
 const BlogDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const category = slug ? blogCategoriesData[slug] : null;
@@ -312,7 +313,7 @@ const BlogDetailPage = () => {
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 text-center">
         <div className="max-w-md">
           <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-black mb-2">Catégorie introuvable</h1>
+          <h1 className="text-2xl font-black mb-2">Expertise non référencée</h1>
           <Link to="/blog" className="text-sunuBlue font-bold hover:underline">Retour au blog</Link>
         </div>
       </div>
@@ -332,7 +333,7 @@ const BlogDetailPage = () => {
         <section className="py-12 px-6 bg-gray-50/50">
           <div className="container mx-auto max-w-5xl">
             <Link to="/blog" className="inline-flex items-center gap-2 text-sunuBlue font-bold text-sm mb-8 hover:text-sunuOrange transition-colors">
-              <ArrowLeft className="w-4 h-4" /> Retour
+              <ArrowLeft className="w-4 h-4" /> Retour au blog
             </Link>
 
             <div className="flex flex-col md:flex-row items-center gap-6">
@@ -357,7 +358,7 @@ const BlogDetailPage = () => {
             {featuredArticles.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
-                   <div className="w-2 h-6 bg-sunuOrange rounded-full"></div> Analyses Premium
+                   <div className="w-2 h-6 bg-sunuOrange rounded-full"></div> Analyses Stratégiques
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {featuredArticles.map((article: any) => (
@@ -370,7 +371,7 @@ const BlogDetailPage = () => {
             {regularArticles.length > 0 && (
               <div>
                 <h2 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
-                   <div className="w-2 h-6 bg-sunuBlue rounded-full"></div> Bibliothèque
+                   <div className="w-2 h-6 bg-sunuBlue rounded-full"></div> Notes de Cabinet
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {regularArticles.map((article: any) => (
@@ -382,24 +383,25 @@ const BlogDetailPage = () => {
           </div>
         </section>
 
-        {/* CTA RÉDUIT */}
-        <section className="px-6">
+        {/* CTA SECTION - COULEUR BLEUE ET BOUTON UNIQUE */}
+        <section className="px-6 mt-12">
           <div className="container mx-auto max-w-5xl">
-            <div className="bg-gray-900 rounded-[2rem] p-8 md:p-12 text-white text-center relative overflow-hidden">
+            <div className="bg-sunuBlue rounded-[2rem] p-8 md:p-14 text-white text-center relative overflow-hidden shadow-2xl shadow-blue-900/20">
               <div className="relative z-10">
-                <h2 className="text-2xl md:text-3xl font-black mb-4">Prêt à passer à l'action ?</h2>
-                <p className="text-gray-400 mb-8 max-w-lg mx-auto text-sm md:text-base">
-                  Transformons ensemble ces analyses en croissance pour votre business.
+                <h2 className="text-2xl md:text-4xl font-black mb-4 italic">Passez à l'action</h2>
+                <p className="text-blue-100 mb-10 max-w-2xl mx-auto text-base md:text-lg">
+                  Transformons ensemble ces analyses d'experts en leviers de croissance concrets pour votre business.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <button className="bg-sunuOrange text-white px-8 py-3 rounded-full font-bold text-base hover:scale-105 transition-transform">
+                <div className="flex justify-center">
+                  <button className="bg-sunuOrange text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-lg hover:shadow-sunuOrange/40">
                     Contactez-nous
-                  </button>
-                  <button className="bg-white/10 text-white border border-white/20 px-8 py-3 rounded-full font-bold text-base hover:bg-white/20 transition-all">
-                    Audit gratuit
                   </button>
                 </div>
               </div>
+              
+              {/* Éléments de design subtils en fond */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-sunuOrange/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
             </div>
           </div>
         </section>
