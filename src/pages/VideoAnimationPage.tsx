@@ -3,24 +3,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { X, Play, Film, MonitorPlay } from "lucide-react";
+import { X, Play, MonitorPlay, Film } from "lucide-react";
 
 const VideoAnimationPage = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  // --- Configuration de votre vidéo ---
+  // --- Configuration mise à jour avec .png ---
   const videos = [
     {
       id: 1,
       title: "Animation Nataa",
       client: "Nataa",
-      thumbnail: "/portfolio/video-anime-nataa-thumb.jpg", // Capture d'écran de la vidéo
-      videoPath: "/portfolio/video-anime-nataa.mp4",     // Chemin du fichier local
+      thumbnail: "/portfolio/video-anime-nataa-thumb.png", // Corrigé en .png
+      videoPath: "/portfolio/video-anime-nataa.mp4",
     }
-    // Vous pourrez ajouter d'autres objets ici plus tard
   ];
 
-  // Désactiver le scroll quand la vidéo est ouverte
   useEffect(() => {
     document.body.style.overflow = selectedVideo ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
@@ -31,7 +29,6 @@ const VideoAnimationPage = () => {
       <Header />
 
       <main className="pt-32 pb-20">
-        {/* HERO SECTION - DARK MODE */}
         <section className="py-20 px-6 bg-gradient-to-b from-sunuOrange/10 to-[#0a0a0a]">
           <div className="container mx-auto max-w-7xl text-center">
             <div className="flex justify-center mb-6">
@@ -40,7 +37,7 @@ const VideoAnimationPage = () => {
               </div>
             </div>
             <h1 className="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tighter">
-              Motion <span className="text-sunuOrange text-outline">Design</span>
+              Motion <span className="text-sunuOrange">Design</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto font-medium italic">
               " Donner du mouvement à votre identité visuelle. "
@@ -48,7 +45,6 @@ const VideoAnimationPage = () => {
           </div>
         </section>
 
-        {/* GRILLE DE PRODUCTION */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -57,7 +53,6 @@ const VideoAnimationPage = () => {
                   key={vid.id}
                   className="group relative rounded-[2.5rem] overflow-hidden bg-[#111] border border-white/5 transition-all hover:border-sunuOrange/30 shadow-2xl"
                 >
-                  {/* Container Miniature */}
                   <div 
                     className="relative aspect-video cursor-pointer overflow-hidden"
                     onClick={() => setSelectedVideo(vid.videoPath)}
@@ -67,7 +62,6 @@ const VideoAnimationPage = () => {
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                       alt={vid.title}
                     />
-                    {/* Overlay Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
                       <div className="w-24 h-24 bg-sunuOrange text-white rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,102,0,0.5)] transform group-hover:scale-125 transition-all duration-500">
                         <Play size={40} fill="white" className="ml-2" />
@@ -75,7 +69,6 @@ const VideoAnimationPage = () => {
                     </div>
                   </div>
 
-                  {/* Infos */}
                   <div className="p-10 flex justify-between items-center">
                     <div>
                       <span className="text-sunuOrange font-black tracking-[0.3em] text-xs uppercase block mb-2">PROJET VIDÉO</span>
@@ -91,7 +84,7 @@ const VideoAnimationPage = () => {
           </div>
         </section>
 
-        {/* MODAL LECTEUR VIDÉO NATIF */}
+        {/* MODAL AVEC POSTER PNG */}
         {selectedVideo && (
           <div 
             className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-4 animate-in fade-in duration-300"
@@ -106,6 +99,7 @@ const VideoAnimationPage = () => {
                 className="w-full h-full" 
                 controls 
                 autoPlay 
+                poster="/portfolio/video-anime-nataa-thumb.png"
                 src={selectedVideo}
               >
                 Votre navigateur ne supporte pas la lecture de vidéos.
@@ -114,7 +108,6 @@ const VideoAnimationPage = () => {
           </div>
         )}
 
-        {/* CTA SECTION */}
         <section className="py-24 px-6 border-t border-white/5 mt-20">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-5xl md:text-7xl font-black mb-10 uppercase leading-tight">Envie d'une vidéo <br/><span className="text-sunuOrange tracking-tighter italic">mémorable ?</span></h2>
