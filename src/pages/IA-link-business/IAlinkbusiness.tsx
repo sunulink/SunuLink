@@ -3,8 +3,6 @@ import Footer from "@/components/Footer";
 import { Briefcase, Image, Globe, Calendar, Brain, CheckCircle, Palette, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import HeroSection from "@/components/IA-link-business/herosection";
-import { services } from "@/data/homeData";
 import PackpubIA from "./PackpubIA";
 
 const IAlinkbusiness = () => {
@@ -20,8 +18,7 @@ const IAlinkbusiness = () => {
         "Email & campagnes marketing : Envoi automatique et ciblage précis.",
         "Analyse de performance : Tableaux de bord interactifs et prédictifs",
         "Social Media Automation : Planification et publication automatique sur les réseaux sociaux",
-        "	Segmentation et scoring IA : Identification des prospects à forte valeur et priorisation des actions.",
-
+        "Segmentation et scoring IA : Identification des prospects à forte valeur et priorisation des actions.",
       ]
     },
     {
@@ -34,9 +31,8 @@ const IAlinkbusiness = () => {
         "Prospection IA : Identification automatique des clients potentiels et scoring prédictif.",
         "Suivi des ventes : Alertes et rapports automatisés pour une gestion optimale.",
         "Analyse de marché : Informations prédictives pour orienter les stratégies commerciales.",
-        "	CRM intégré : Centralisation et suivi des prospects et clients en temps réel.",
+        "CRM intégré : Centralisation et suivi des prospects et clients en temps réel.",
         "Optimisation du pipeline : Priorisation intelligente des opportunités de vente.",
-
       ]
     },
     {
@@ -48,10 +44,9 @@ const IAlinkbusiness = () => {
       offerings: [
         "Gestion documentaire automatisée : Classement, archivage et accès rapide aux documents.",
         "Facturation et suivi comptable : Processus automatisés et relances intelligentes.",
-        "	Planification intelligente : Gestion des agendas et rappels automatisés.",
-        "	Optimisation des flux administratifs : Rationalisation des processus internes.",
-        "	Suivi et reporting automatisés : Analyse en temps réel pour la performance administrative.",
-
+        "Planification intelligente : Gestion des agendas et rappels automatisés.",
+        "Optimisation des flux administratifs : Rationalisation des processus internes.",
+        "Suivi et reporting automatisés : Analyse en temps réel pour la performance administrative.",
       ]
     },
     {
@@ -63,14 +58,12 @@ const IAlinkbusiness = () => {
       offerings: [
         "Recrutement intelligent : Tri et présélection des candidats par IA.",
         "Gestion des employés : Suivi des plannings, absences et performances en temps réel.",
-        "	Onboarding digital : Intégration automatisée des nouveaux collaborateurs.",
-        "	Optimisation des processus RH : Détection des inefficacités et recommandations intelligentes.",
+        "Onboarding digital : Intégration automatisée des nouveaux collaborateurs.",
+        "Optimisation des processus RH : Détection des inefficacités et recommandations intelligentes.",
         "Analyse de l’engagement : Mesure automatisée de la satisfaction et motivation des employés.",
-
       ]
     },
-
-     {
+    {
       icon: Globe,
       title: " Business Intelligence & Analyse de données",
       slug: "business-intelligence",
@@ -82,7 +75,6 @@ const IAlinkbusiness = () => {
         "Visualisation des KPI : Tableaux de bord complets pour toutes les fonctions de l’entreprise.",
         "Optimisation stratégique : Décisions guidées par des insights précis.",
         "Intégration multi-sources : Centralisation des données internes et externes pour une analyse complète.",
-
       ]
     },
     {
@@ -97,7 +89,6 @@ const IAlinkbusiness = () => {
         "Feedback et enquêtes automatisés : Analyse des retours clients pour améliorer l’expérience.",
         "Segmentation et communication ciblée : Offres personnalisées selon le profil client.",
         "Optimisation des interactions : Suivi et amélioration continue du parcours client.",
-
       ]
     },
     {
@@ -109,10 +100,9 @@ const IAlinkbusiness = () => {
       offerings: [
         "Gestion de stocks automatisée : Suivi et réapprovisionnement intelligent en temps réel.",
         "Planification des livraisons : Optimisation des itinéraires et réduction des coûts.",
-        "	Suivi des opérations en temps réel : Alertes et reporting automatisés.",
-        "	Analyse opérationnelle prédictive : Anticipation des problèmes et optimisation des ressources.",
+        "Suivi des opérations en temps réel : Alertes et reporting automatisés.",
+        "Analyse opérationnelle prédictive : Anticipation des problèmes et optimisation des ressources.",
         "Optimisation des flux logistiques : Meilleure coordination entre les départements et partenaires.",
-
       ]
     },
     {
@@ -126,8 +116,7 @@ const IAlinkbusiness = () => {
         "Suivi réglementaire automatisé : Alertes sur échéances et obligations légales.",
         "Gestion des contrats : Création, signature et suivi centralisés et automatisés.",
         "Audit et reporting automatisés : Rapports détaillés sur la conformité et la performance juridique.",
-        "	Sécurité et réduction des risques : Minimisation des erreurs et des pénalités.",
-
+        "Sécurité et réduction des risques : Minimisation des erreurs et des pénalités.",
       ]
     },
     {
@@ -140,9 +129,8 @@ const IAlinkbusiness = () => {
         "Maintenance prédictive : Anticipation des pannes pour éviter les arrêts coûteux.",
         "Optimisation des processus de production : Amélioration continue de l’efficacité et de la qualité.",
         "Surveillance en temps réel : Contrôle permanent des machines et lignes de production.",
-        "	Analyse et reporting industriel : Rapports détaillés sur performances, consommation et rendements.",
+        "Analyse et reporting industriel : Rapports détaillés sur performances, consommation et rendements.",
         "Réduction des coûts et déchets : Processus plus efficaces et économiques.",
-
       ]
     },
     {
@@ -157,18 +145,49 @@ const IAlinkbusiness = () => {
         "Déploiement sur mesure : Solutions IA adaptées aux besoins spécifiques de l’entreprise.",
         "Accompagnement stratégique : Suivi et optimisation continue des solutions IA.",
         "Adoption complète de l’IA : Intégration fluide dans tous les départements et processus.",
-
       ]
     },
   ];
-
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-0 pb-20">
-        <HeroSection />
+        {/* HERO SECTION AVEC IMAGE EN ARRIÈRE-PLAN ET TEXTE CENTRÉ */}
+        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+          {/* Image de fond avec overlay sombre pour la lisibilité */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995" 
+              alt="AI Background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+          </div>
+
+          <div className="container relative z-10 mx-auto px-6 text-center">
+            <div className="max-w-4xl mx-auto" data-aos="zoom-in">
+              <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">
+                L'IA Link <span className="text-sunuOrange">Business</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed">
+                Propulsez votre entreprise dans une nouvelle ère. Automatisez vos processus, 
+                optimisez vos performances et libérez le plein potentiel de vos équipes grâce à l'Intelligence Artificielle.
+              </p>
+              
+              {/* DEUX BOUTONS CENTRÉS */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button asChild size="lg" className="bg-sunuOrange hover:bg-sunuBlue text-white px-10 py-7 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105">
+                  <Link to="/contact">Démarrer mon projet IA</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-sunuBlue px-10 py-7 rounded-full text-xl font-bold transition-all backdrop-blur-md">
+                  <Link to="/services">Nos Solutions</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
           <div className="container mx-auto max-w-7xl">
@@ -181,11 +200,6 @@ const IAlinkbusiness = () => {
                   <p className="text-xl mb-6 opacity-95 leading-relaxed">
                     L’Intelligence Artificielle n’est plus une option : c’est un levier stratégique pour toutes les entreprises. Chez Sunu Link Consulting, nous développons des solutions d’automatisation intelligentes pour :
                   </p>
-                  {/* <Link to="/contact">
-                    <button className="bg-white text-sunuBlue px-8 py-4 rounded-full font-bold text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg">
-                      Planifier un audit gratuit
-                    </button>
-                  </Link> */}
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
                   <div className="space-y-4">
@@ -208,17 +222,15 @@ const IAlinkbusiness = () => {
                   </div>
                 </div>
               </div>
-              <div className="text-3xl font-black mb-6 text-center pt-6">
-                <p className="text-3xl text-center">Faciliter la prise de décisions grâce à l’analyse de données</p>
-              </div>
             </div>
           </div>
         </section>
+
         {/* SECTION AVANTAGE */}
         <section className="py-20 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
-              Avantages clés  <span className="text-sunuOrange">pour votre entreprise ?</span>
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
+              Avantages clés <span className="text-sunuOrange">pour votre entreprise ?</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up">
@@ -226,54 +238,31 @@ const IAlinkbusiness = () => {
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-gray-800">Gain de temps immédiat</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Réduisez les heures passées sur les tâches répétitives.
-                </p>
+                <p className="text-gray-600 leading-relaxed">Réduisez les heures passées sur les tâches répétitives.</p>
               </div>
+              {/* ... Autres avantages ... */}
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="100">
                 <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Efficacité opérationnelle </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Minimisez les erreurs et maximisez la productivité
-                </p>
+                <h3 className="text-2xl font-black mb-4 text-gray-800">Efficacité opérationnelle</h3>
+                <p className="text-gray-600 leading-relaxed">Minimisez les erreurs et maximisez la productivité.</p>
               </div>
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
                 <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Palette className="w-8 h-8 text-white" />
+                  <Brain className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-gray-800">Décisions éclairées</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Analyse prédictive et tableaux de bord interactifs.
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
-                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Palette className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Réduction des coûts</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Optimisez vos ressources et vos budgets.
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
-                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Palette className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Innovation continue </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Solutions évolutives qui suivent vos besoins.
-                </p>
+                <p className="text-gray-600 leading-relaxed">Analyse prédictive et tableaux de bord interactifs.</p>
               </div>
             </div>
           </div>
         </section>
-        {/* Hero Section */}
+
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
-              Nos services  <span className="text-sunuOrange">d’automatisation</span>
+              Nos services <span className="text-sunuOrange">d’automatisation</span>
             </h1>
           </div>
         </section>
@@ -285,12 +274,11 @@ const IAlinkbusiness = () => {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)]"
+                  className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105"
                   data-aos="fade-up"
-                  data-aos-delay={index * 100}
                 >
                   <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
-                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-3xl font-black mb-4">{service.title}</h3>
@@ -306,10 +294,9 @@ const IAlinkbusiness = () => {
                         </li>
                       ))}
                     </ul>
-                    
                     <Link
-                      to={`/ialinkbusiness/${service.slug}`} // On utilise le slug ici !
-                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold transition-colors"
+                      to={`/ialinkbusiness/${service.slug}`}
+                      className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg transition-colors"
                     >
                       En savoir plus →
                     </Link>
@@ -317,8 +304,7 @@ const IAlinkbusiness = () => {
                 </div>
               ))}
             </div>
-            
-          <PackpubIA />
+            <PackpubIA />
           </div>
         </section>
       </main>
