@@ -7,15 +7,18 @@ import { X, Play, MonitorPlay, Film } from "lucide-react";
 
 const VideoAnimationPage = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  
+  // Génère un identifiant unique basé sur la date pour forcer le rafraîchissement du cache
+  const cacheBuster = new Date().getTime();
 
-  // --- Configuration mise à jour avec .png ---
+  // --- Configuration avec Cache-Buster ---
   const videos = [
     {
       id: 1,
       title: "Animation Nataa",
       client: "Nataa",
-      thumbnail: "/portfolio/video-anime-nataa-thumb.png", // Corrigé en .png
-      videoPath: "/portfolio/video-anime-nataa.mp4",
+      thumbnail: `/portfolio/video-anime-nataa-thumb.png?v=${cacheBuster}`,
+      videoPath: `/portfolio/video-anime-nataa.mp4?v=${cacheBuster}`,
     }
   ];
 
@@ -29,6 +32,7 @@ const VideoAnimationPage = () => {
       <Header />
 
       <main className="pt-32 pb-20">
+        {/* HERO SECTION */}
         <section className="py-20 px-6 bg-gradient-to-b from-sunuOrange/10 to-[#0a0a0a]">
           <div className="container mx-auto max-w-7xl text-center">
             <div className="flex justify-center mb-6">
@@ -45,6 +49,7 @@ const VideoAnimationPage = () => {
           </div>
         </section>
 
+        {/* GRILLE VIDÉO */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -59,8 +64,12 @@ const VideoAnimationPage = () => {
                   >
                     <img 
                       src={vid.thumbnail} 
-                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                       alt={vid.title}
+                      onError={(e) => {
+                        console.error("Erreur de chargement miniature");
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
                       <div className="w-24 h-24 bg-sunuOrange text-white rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,102,0,0.5)] transform group-hover:scale-125 transition-all duration-500">
@@ -84,7 +93,7 @@ const VideoAnimationPage = () => {
           </div>
         </section>
 
-        {/* MODAL AVEC POSTER PNG */}
+        {/* MODAL LECTEUR AVEC POSTER DYNAMIQUE */}
         {selectedVideo && (
           <div 
             className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-4 animate-in fade-in duration-300"
@@ -96,10 +105,11 @@ const VideoAnimationPage = () => {
             
             <div className="w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-[0_0_100px_rgba(255,102,0,0.2)] bg-black" onClick={(e) => e.stopPropagation()}>
               <video 
+                key={selectedVideo} // Force le rechargement du lecteur si la source change
                 className="w-full h-full" 
                 controls 
                 autoPlay 
-                poster="/portfolio/video-anime-nataa-thumb.png"
+                poster={`/portfolio/video-anime-nataa-thumb.png?v=${cacheBuster}`}
                 src={selectedVideo}
               >
                 Votre navigateur ne supporte pas la lecture de vidéos.
@@ -108,6 +118,7 @@ const VideoAnimationPage = () => {
           </div>
         )}
 
+        {/* CTA */}
         <section className="py-24 px-6 border-t border-white/5 mt-20">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-5xl md:text-7xl font-black mb-10 uppercase leading-tight">Envie d'une vidéo <br/><span className="text-sunuOrange tracking-tighter italic">mémorable ?</span></h2>
