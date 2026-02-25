@@ -53,16 +53,13 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; d
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
-
       setCount(Math.floor(progress * end));
-
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       }
     };
 
     animationFrame = requestAnimationFrame(animate);
-
     return () => {
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
@@ -176,137 +173,73 @@ const BlogPage = () => {
       articles: "22+",
     },
     {
-    icon: Target,
-    title: "Communication 360° & Stratégie Globale",
-    description: "Stratégies complètes pour construire, piloter et optimiser la communication des marques.",
-    color: "from-sunuBlue to-sunuCyan",
-    slug: "communication-360-strategie-globale",
-    articles: "20+",
-  },
-  {
-    icon: Megaphone,
-    title: "Publicité & Média Buying",
-    description: "Campagnes sponsorisées, achat média, performance publicitaire et ROI.",
-    color: "from-red-500 to-orange-500",
-    slug: "publicite-digitale-strategies-media",
-    articles: "15+",
-  },
-  {
-    icon: MessageSquare,
-    title: "Création de Contenu & Storytelling",
-    description: "Contenus engageants, storytelling de marque et stratégies éditoriales.",
-    color: "from-purple-500 to-pink-500",
-    slug: "strategie-contenu-creation-editoriale",
-    articles: "18+",
-  },
-  {
-    icon: Palette,
-    title: "Design Graphique & Création Visuelle",
-    description: "Identité visuelle, branding, design graphique et supports de communication.",
-    color: "from-pink-500 to-rose-500",
-    slug: "design-graphique-branding-visuel",
-    articles: "14+",
-  },
-  {
-    icon: Sparkles,
-    title: "Audiovisuel & Motion Design",
-    description: "Vidéos, motion design, animations et contenus audiovisuels impactants.",
-    color: "from-indigo-500 to-blue-500",
-    slug: "intelligence-artificielle-communication-marketing",
-    articles: "12+",
-  },
-  {
-    icon: Users,
-    title: "Événementiel & Activation de Marque",
-    description: "Événements, lancements, activations terrain et expériences de marque.",
-    color: "from-amber-500 to-orange-500",
-    slug: "evenementiel-experience-client",
-    articles: "10+",
-  },
-  {
-    icon: Briefcase,
-    title: "Communication Corporate & Institutionnelle",
-    description: "Communication interne, institutionnelle et image de marque corporate.",
-    color: "from-teal-500 to-cyan-500",
-    slug: "relations-publiques-communication-institutionnelle",
-    articles: "11+",
-  },
-  {
-    icon: Award,
-    title: "Communication de Crise & Réputation",
-    description: "Gestion de crise, e-réputation et communication sensible.",
-    color: "from-gray-600 to-gray-800",
-    slug: "communication-crise-reputation",
-    articles: "8+",
-  },
-  {
-    icon: TrendingUp,
-    title: "Business Intelligence & Data Marketing",
-    description: "Analyse des données, KPI marketing et pilotage par la performance.",
-    color: "from-green-500 to-emerald-500",
-    slug: "data-analytics-business-intelligence",
-    articles: "13+",
-  },
-  {
-    icon: Lightbulb,
-    title: "Growth Marketing & Acquisition",
-    description: "Stratégies d’acquisition, conversion, tunnel de vente et croissance rapide.",
-    color: "from-yellow-500 to-orange-400",
-    slug: "growth-marketing",
-    articles: "16+",
-  },
-  {
-    icon: Sparkles,
-    title: "Tendances & Innovations Technologiques",
-    description: "IA, innovations digitales et nouvelles technologies appliquées au business.",
-    color: "from-violet-500 to-purple-600",
-    slug: "tendances-innovation-futur-business",
-    articles: "19+",
-  },
-  {
-    icon: Globe,
-    title: "Transformation Digitale & Outils Pros",
-    description: "Digitalisation des entreprises, outils professionnels et automatisation.",
-    color: "from-blue-500 to-indigo-600",
-    slug: "marketing-digital",
-    articles: "17+",
-  },
-  {
-    icon: Globe,
-    title: "Afrique : Communication, Marchés & Tendances",
-    description: "Analyses des marchés africains et spécificités de la communication locale.",
-    color: "from-amber-600 to-orange-600",
-    slug: "marketing-communication-afrique",
-    articles: "9+",
-  },
-  {
-    icon: BookOpen,
-    title: "Études de Cas & Analyses de Campagnes",
-    description: "Décryptage de campagnes, retours d’expérience et cas clients.",
-    color: "from-sunuOrange to-yellow-500",
-    slug: "veille-strategique-decryptage",
-    articles: "12+",
-  },
-  {
-    icon: Users,
-    title: "Conseils Pratiques pour PME & Startups",
-    description: "Guides concrets et conseils actionnables pour entrepreneurs et PME.",
-    color: "from-cyan-500 to-blue-500",
-    slug: "entrepreneuriat-leadership",
-    articles: "22+",
-  },
-  {
-    icon: MessageSquare,
-    title: "Actualité, Insights & Analyses Sunu Link",
-    description: "Actualités, analyses internes et vision stratégique Sunu Link Consulting.",
-    color: "from-sunuBlue to-sunuOrange",
-    slug: "actualite-sunu-link",
-    articles: "10+",
-  },
+      icon: Target,
+      title: "Communication 360° & Stratégie Globale",
+      description: "Stratégies complètes pour construire, piloter et optimiser la communication des marques.",
+      color: "from-sunuBlue to-sunuCyan",
+      slug: "communication-360-strategie-globale",
+      articles: "20+",
+    },
+    {
+      icon: Megaphone,
+      title: "Publicité & Média Buying",
+      description: "Campagnes sponsorisées, achat média, performance publicitaire et ROI.",
+      color: "from-red-500 to-orange-500",
+      slug: "publicite-digitale-strategies-media",
+      articles: "15+",
+    },
+    {
+      icon: MessageSquare,
+      title: "Création de Contenu & Storytelling",
+      description: "Contenus engageants, storytelling de marque et stratégies éditoriales.",
+      color: "from-purple-500 to-pink-500",
+      slug: "strategie-contenu-creation-editoriale",
+      articles: "18+",
+    },
+    {
+      icon: Palette,
+      title: "Design Graphique & Création Visuelle",
+      description: "Identité visuelle, branding, design graphique et supports de communication.",
+      color: "from-pink-500 to-rose-500",
+      slug: "design-graphique-branding-visuel",
+      articles: "14+",
+    },
+    {
+      icon: Sparkles,
+      title: "Audiovisuel & Motion Design",
+      description: "Vidéos, motion design, animations et contenus audiovisuels impactants.",
+      color: "from-indigo-500 to-blue-500",
+      slug: "audiovisuel-motion-design",
+      articles: "12+",
+    },
+    {
+      icon: Users,
+      title: "Événementiel & Activation de Marque",
+      description: "Événements, lancements, activations terrain et expériences de marque.",
+      color: "from-amber-500 to-orange-500",
+      slug: "evenementiel-experience-client",
+      articles: "10+",
+    },
+    {
+      icon: Briefcase,
+      title: "Communication Corporate & Institutionnelle",
+      description: "Communication interne, institutionnelle et image de marque corporate.",
+      color: "from-teal-500 to-cyan-500",
+      slug: "relations-publiques-communication-institutionnelle",
+      articles: "11+",
+    },
+    {
+      icon: Award,
+      title: "Communication de Crise & Réputation",
+      description: "Gestion de crise, e-réputation et communication sensible.",
+      color: "from-gray-600 to-gray-800",
+      slug: "communication-crise-reputation",
+      articles: "8+",
+    },
   ];
 
   const stats = [
-    { value: 12, suffix: "", label: "Catégories d'articles" },
+    { value: 20, suffix: "", label: "Catégories d'articles" }, // Mis à jour de 12 à 20
     { value: 180, suffix: "+", label: "Articles publiés" },
     { value: 50, suffix: "+", label: "Success stories" },
     { value: 25, suffix: "K+", label: "Lecteurs mensuels" },
@@ -321,10 +254,10 @@ const BlogPage = () => {
         <section className="py-16 px-6 bg-gradient-to-b from-sunuBlue/10 to-white">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
+              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800">
                 BLOG & <span className="text-sunuOrange">RESSOURCES</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Explorez nos articles, conseils pratiques et analyses pour booster votre communication et votre marketing.
               </p>
             </div>
@@ -335,8 +268,6 @@ const BlogPage = () => {
                 <div
                   key={index}
                   className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 100}
                 >
                   <h3 className="text-4xl md:text-5xl font-black mb-2">
                     <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2000} />
@@ -351,10 +282,10 @@ const BlogPage = () => {
         {/* Blog Categories Grid */}
         <section className="py-20 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl font-black text-center mb-4 text-gray-800" data-aos="fade-up">
+            <h2 className="text-4xl font-black text-center mb-4 text-gray-800">
               Explorez nos <span className="text-sunuOrange">catégories</span>
             </h2>
-            <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
               Cliquez sur une catégorie pour découvrir tous les articles associés.
             </p>
 
@@ -364,8 +295,6 @@ const BlogPage = () => {
                   key={index}
                   to={`/blog/${category.slug}`}
                   className={`grain-texture bg-gradient-to-br ${category.color} text-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group cursor-pointer`}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 50}
                 >
                   <div className="bg-white/20 backdrop-blur-sm w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <category.icon className="w-7 h-7 text-white" />
