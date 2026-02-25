@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Briefcase, Image, Globe, Calendar, Brain, CheckCircle, Palette, TrendingUp } from "lucide-react";
+import { Briefcase, Image, Globe, Brain, CheckCircle, Palette, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import PackpubIA from "./PackpubIA";
@@ -153,10 +153,9 @@ const IAlinkbusiness = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pt-0 pb-20">
-        {/* HERO SECTION AVEC IMAGE EN ARRIÈRE-PLAN ET TEXTE CENTRÉ */}
+      <main className="pt-0">
+        {/* HERO SECTION */}
         <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-          {/* Image de fond avec overlay sombre pour la lisibilité */}
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1677442136019-21780ecad995" 
@@ -176,68 +175,38 @@ const IAlinkbusiness = () => {
                 optimisez vos performances et libérez le plein potentiel de vos équipes grâce à l'Intelligence Artificielle.
               </p>
               
-             {/* DEUX BOUTONS CENTRÉS ET AFFINÉS */}
-<div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-  {/* PREMIER BOUTON */}
-  <Button 
-    asChild 
-    className="bg-sunuOrange hover:bg-sunuBlue text-white px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]"
-  >
-    <Link to="/contact">Démarrer mon projet IA</Link>
-  </Button>
-  
-  {/* DEUXIÈME BOUTON */}
-  <Button 
-    asChild 
-    className="bg-sunuBlue text-white hover:bg-sunuOrange px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]"
-  >
-    <Link to="/services">
-      Découvrez nos solutions IA 360°
-    </Link>
-  </Button>
-</div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+                <Button asChild className="bg-sunuOrange hover:bg-sunuBlue text-white px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]">
+                  <Link to="/contact">Démarrer mon projet IA</Link>
+                </Button>
+                <Button asChild className="bg-sunuBlue text-white hover:bg-sunuOrange px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]">
+                  <Link to="/services">Découvrez nos solutions IA 360°</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
+        {/* SECTION ESSENTIELLE */}
         <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 shadow-2xl" data-aos="fade-up">
-              <h3 className="text-3xl font-black mb-6 text-center">
-                Pourquoi l’IA est essentielle
-              </h3>
+              <h3 className="text-3xl font-black mb-6 text-center">Pourquoi l’IA est essentielle</h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <p className="text-xl mb-6 opacity-95 leading-relaxed">
-                    L’Intelligence Artificielle n’est plus une option : c’est un levier stratégique pour toutes les entreprises. Chez Sunu Link Consulting, nous développons des solutions d’automatisation intelligentes pour :
-                  </p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Réduire les tâches répétitives et chronophages</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Optimiser vos processus internes</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Améliorer la productivité et la performance</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Faciliter la prise de décisions grâce à l’analyse de données</p>
-                    </div>
-                  </div>
+                <p className="text-xl mb-6 opacity-95 leading-relaxed">
+                  L’Intelligence Artificielle n’est plus une option : c’est un levier stratégique pour toutes les entreprises.
+                </p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 space-y-4">
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Réduire les tâches répétitives</p></div>
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Optimiser vos processus internes</p></div>
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Améliorer la productivité</p></div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION AVANTAGE */}
+        {/* AVANTAGES */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
@@ -245,81 +214,61 @@ const IAlinkbusiness = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up">
-                <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Gain de temps immédiat</h3>
-                <p className="text-gray-600 leading-relaxed">Réduisez les heures passées sur les tâches répétitives.</p>
+                <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><TrendingUp className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Gain de temps</h3>
+                <p className="text-gray-600">Réduisez les heures sur les tâches répétitives.</p>
               </div>
-              {/* ... Autres avantages ... */}
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="100">
-                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Efficacité opérationnelle</h3>
-                <p className="text-gray-600 leading-relaxed">Minimisez les erreurs et maximisez la productivité.</p>
+                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><CheckCircle className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Efficacité</h3>
+                <p className="text-gray-600">Minimisez les erreurs et maximisez la productivité.</p>
               </div>
               <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
-                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Brain className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Décisions éclairées</h3>
-                <p className="text-gray-600 leading-relaxed">Analyse prédictive et tableaux de bord interactifs.</p>
+                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><Brain className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Décisions</h3>
+                <p className="text-gray-600">Analyse prédictive et insights précis.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
-              Nos services <span className="text-sunuOrange">d’automatisation</span>
-            </h1>
-          </div>
-        </section>
-
-        {/* Services Grid */}
+        {/* SERVICES GRID */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105"
-                  data-aos="fade-up"
-                >
+                <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105" data-aos="fade-up">
                   <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
-                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                      <service.icon className="w-8 h-8 text-white" />
-                    </div>
+                    <service.icon className="w-12 h-12 mb-6" />
                     <h3 className="text-3xl font-black mb-4">{service.title}</h3>
-                    <p className="text-lg opacity-95 leading-relaxed">{service.description}</p>
+                    <p className="text-lg opacity-95">{service.description}</p>
                   </div>
-                  <div className="p-8 bg-gradient-to-b from-white to-sunuGray/5">
-                    <h4 className="text-lg font-bold text-gray-800 mb-4">Nos prestations :</h4>
+                  <div className="p-8">
                     <ul className="space-y-3">
                       {service.offerings.map((offering, idx) => (
                         <li key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                           <span className="text-gray-700">{offering}</span>
                         </li>
                       ))}
                     </ul>
-                    <Link
-                      to={`/ialinkbusiness/${service.slug}`}
-                      className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg transition-colors"
-                    >
+                    <Link to={`/ialinkbusiness/${service.slug}`} className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg">
                       En savoir plus →
                     </Link>
                   </div>
                 </div>
               ))}
             </div>
-            <PackpubIA />
+            
+            {/* Composant additionnel avant le footer */}
+            <div className="mt-20">
+              <PackpubIA />
+            </div>
           </div>
         </section>
       </main>
 
+      {/* FOOTER UNIQUE (Contient Contact + Réseaux + Copyright) */}
       <Footer />
     </div>
   );
