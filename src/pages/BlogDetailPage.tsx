@@ -4,7 +4,7 @@ import {
   ArrowLeft, Calendar, Clock, User, BookOpen, 
   ChevronDown, CalendarCheck, Megaphone,
   Users, TrendingUp, BarChart3, ShoppingCart, 
-  Lightbulb, Search, Award, MessageSquare, Share2
+  Lightbulb, Search, Award, MessageSquare, Share2,Palette
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -16,20 +16,20 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
 
   return (
     <div 
-      className={`bg-white transition-all duration-500 ease-in-out overflow-hidden ${
+      className={`bg-white transition-all duration-500 ease-in-out overflow-hidden border ${
         isFeatured 
-          ? 'border-2 border-gray-200 rounded-3xl p-8 hover:border-sunuOrange' 
-          : 'border border-gray-100 rounded-2xl p-6 shadow-sm'
-      } ${isExpanded ? 'ring-2 ring-sunuOrange shadow-2xl z-10' : 'hover:shadow-lg'}`}
+          ? 'border-gray-200 rounded-3xl p-8' 
+          : 'border-gray-100 rounded-2xl p-6 shadow-sm'
+      } ${isExpanded ? 'ring-2 ring-sunuOrange shadow-2xl scale-[1.01]' : 'hover:shadow-lg'}`}
     >
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-4 text-xs md:text-sm text-gray-500">
+        {/* En-tête de l'article */}
+        <div className="flex items-center gap-4 text-xs text-gray-500">
           <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {article.publishedDate}</span>
           <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {article.readTime}</span>
-          <span className="flex items-center gap-1"><User className="w-4 h-4" /> {article.author}</span>
         </div>
         
-        <h3 className={`${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'} font-black text-gray-800 transition-colors ${isExpanded ? 'text-sunuOrange' : ''}`}>
+        <h3 className={`${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'} font-black text-gray-800`}>
           {article.title}
         </h3>
         
@@ -37,52 +37,34 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
           {article.description}
         </p>
 
-        {/* --- CONTENU DÉVELOPPÉ (S'affiche au clic) --- */}
+        {/* --- SECTION QUI S'ÉCARTE (CONTENU) --- */}
         <div 
           className={`transition-all duration-700 ease-in-out ${
-            isExpanded ? 'max-h-[5000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
+            isExpanded ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="pt-6 border-t border-gray-100 text-gray-700">
-            <div className="prose prose-orange max-w-none">
-              <h4 className="font-bold text-lg text-sunuBlue mb-4 text-transform: uppercase">Analyse Stratégique</h4>
-              <p className="mb-4">
-                L'expertise de <strong>Sunu Link Consulting</strong> sur le sujet <em>"{article.title}"</em> 
-                repose sur une analyse rigoureuse des dynamiques actuelles du marché.
-              </p>
-              
-              <div className="bg-slate-50 p-6 rounded-2xl mb-6">
-                <h5 className="font-bold text-sunuOrange mb-3">Ce que vous allez apprendre :</h5>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
-                  <li className="flex items-start gap-2">✅ <span className="text-sm">Maîtrise des fondamentaux et outils spécifiques.</span></li>
-                  <li className="flex items-start gap-2">✅ <span className="text-sm">Optimisation des processus et gains de productivité.</span></li>
-                  <li className="flex items-start gap-2">✅ <span className="text-sm">Anticipation des risques et gestion de la performance.</span></li>
-                  <li className="flex items-start gap-2">✅ <span className="text-sm">Mise en œuvre d'un plan d'action opérationnel.</span></li>
-                </ul>
-              </div>
-
-              <p className="mb-4">
-                Chaque étape nécessite une personnalisation selon votre structure. Nos consultants utilisent des données en temps réel 
-                pour ajuster ces modèles aux réalités locales et internationales.
-              </p>
-
-              <div className="flex items-center gap-4 mt-8 pt-4 border-t border-gray-50">
-                <button className="flex items-center gap-2 text-sunuBlue font-bold text-sm hover:underline">
-                  <Share2 className="w-4 h-4" /> Partager cette analyse
-                </button>
-              </div>
-            </div>
+          <div className="pt-6 border-t border-gray-100 text-gray-700 space-y-4">
+            <h4 className="font-bold text-sunuBlue">Analyse détaillée :</h4>
+            <p>
+              Le déploiement d'une stratégie sur <strong>{article.title}</strong> demande une approche méthodique. 
+              Sunu Link Consulting préconise une phase d'audit suivie d'une implémentation par étapes.
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Analyse des besoins spécifiques de votre secteur.</li>
+              <li>Mise en place d'outils de suivi de performance (KPIs).</li>
+              <li>Optimisation continue basée sur les résultats obtenus.</li>
+            </ul>
           </div>
         </div>
 
-        {/* BOUTON D'ACTION */}
+        {/* --- BOUTON INTERACTIF --- */}
         <div className="mt-4">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className={`inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all duration-300 ${
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${
               isExpanded 
                 ? 'bg-gray-800 text-white' 
-                : 'bg-sunuOrange text-white hover:bg-sunuBlue shadow-lg shadow-sunuOrange/20'
+                : 'bg-sunuOrange text-white hover:bg-sunuBlue'
             }`}
           >
             {isExpanded ? (
