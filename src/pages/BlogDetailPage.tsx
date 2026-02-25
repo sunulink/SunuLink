@@ -1,465 +1,367 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
-import { 
-  ArrowLeft, Calendar, Clock, BookOpen, 
-  ChevronDown, Megaphone, Users, TrendingUp, 
-  BarChart3, ShoppingCart, Lightbulb, Search, 
-  Award, Palette, Layout, Target, PieChart,
-  CheckCircle2, Sparkles, Zap, ShieldCheck,
-  MousePointer2, MessageSquare, Globe, Smartphone
-} from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { useParams, Link, useLocation } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import {
+  Lightbulb, TrendingUp, Megaphone, Target, Users, Palette,
+  Globe, Briefcase, Sparkles, Award, MessageSquare, BookOpen,
+  ArrowLeft, Clock, Calendar, User, BarChart3, Brain,
+  PenTool, CalendarCheck, ShoppingCart, Search, ChevronDown,
+  CheckCircle2, Zap, AlertCircle
+} from "lucide-react";
 
-// --- COMPOSANT ARTICLE CARD (LOGIQUE D'EXPANSION) ---
-const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured?: boolean }) => {
+// --- TYPES ---
+interface BlogArticle {
+  id: string;
+  title: string;
+  description: string;
+  readTime: string;
+  publishedDate: string;
+  author: string;
+  featured?: boolean;
+  articleSlug?: string;
+  content?: string; // Ajout pour l'expertise
+  points?: string[]; // Ajout pour les leviers de succès
+}
+
+// --- COMPOSANT DE CARTE D'ARTICLE INTERACTIVE ---
+const ArticleCard = ({ article, isFeatured = false }: { article: BlogArticle; isFeatured?: boolean }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className={`group bg-white transition-all duration-500 rounded-[2.5rem] overflow-hidden border ${
-      isExpanded ? 'ring-2 ring-sunuOrange shadow-2xl scale-[1.01]' : 'border-gray-100 shadow-sm hover:shadow-xl'
-    } ${isFeatured ? 'md:col-span-2' : ''}`}>
+    <div className={`group bg-white transition-all duration-500 rounded-[2rem] overflow-hidden border ${
+      isExpanded ? 'ring-2 ring-sunuOrange shadow-2xl' : 'border-gray-100 shadow-sm hover:shadow-md'
+    } ${isFeatured ? 'md:col-span-2 border-l-4 border-l-sunuOrange' : ''}`}>
       
-      <div className="p-8 md:p-10">
-        <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-sunuBlue/50 uppercase tracking-tighter mb-6">
-          <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-full">
-            <Calendar className="w-3.5 h-3.5" /> {article.publishedDate}
-          </span>
-          <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-full">
-            <Clock className="w-3.5 h-3.5" /> {article.readTime}
-          </span>
-          {isFeatured && (
-            <span className="flex items-center gap-1.5 bg-sunuOrange/10 text-sunuOrange px-3 py-1.5 rounded-full">
-              <Sparkles className="w-3.5 h-3.5" /> Analyse Premium
-            </span>
-          )}
+      <div className="p-6 md:p-8">
+        <div className="flex items-center gap-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">
+          <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {article.publishedDate}</span>
+          <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {article.readTime}</span>
+          {isFeatured && <span className="text-sunuOrange bg-sunuOrange/10 px-2 py-0.5 rounded">Premium</span>}
         </div>
         
-        <h3 className={`${isFeatured ? 'text-3xl md:text-4xl' : 'text-2xl'} font-black text-gray-900 mb-6 leading-[1.1] group-hover:text-sunuOrange transition-colors`}>
+        <h3 className={`${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'} font-black text-gray-900 mb-4 leading-tight group-hover:text-sunuOrange transition-colors`}>
           {article.title}
         </h3>
         
-        <p className="text-lg text-gray-600 leading-relaxed mb-8">
+        <p className="text-gray-600 mb-6 line-clamp-3">
           {article.description}
         </p>
 
-        {/* --- CONTENU DÉPLOYABLE --- */}
-        <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-          isExpanded ? 'max-h-[1500px] opacity-100 mb-10' : 'max-h-0 opacity-0 pointer-events-none'
+        {/* CONTENU DÉPLOYABLE */}
+        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+          isExpanded ? 'max-h-[1000px] opacity-100 mb-8' : 'max-h-0 opacity-0'
         }`}>
-          <div className="pt-10 border-t border-gray-100 space-y-8">
-            <div className="bg-gray-900 text-white p-8 rounded-[2rem] relative overflow-hidden">
-              <div className="relative z-10">
-                <h4 className="flex items-center gap-3 text-sunuOrange font-black text-xl mb-4">
-                  <Zap className="w-6 h-6" /> L'Œil de l'Expert
-                </h4>
-                <div className="text-gray-300 leading-relaxed space-y-4 text-lg">
-                  {article.content}
-                </div>
-              </div>
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Target className="w-32 h-32" />
-              </div>
+          <div className="pt-6 border-t border-gray-100 space-y-6">
+            <div className="bg-slate-50 p-6 rounded-2xl border-l-4 border-sunuBlue">
+              <h4 className="flex items-center gap-2 text-sunuBlue font-bold mb-2">
+                <Zap className="w-4 h-4" /> Analyse de l'expert
+              </h4>
+              <p className="text-sm text-gray-700 leading-relaxed italic">
+                {article.content || "Analyse approfondie en cours de rédaction par nos consultants."}
+              </p>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-sunuBlue/5 p-8 rounded-[2rem]">
-                <h5 className="font-black text-sunuBlue text-lg mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5" /> Leviers de succès
-                </h5>
-                <ul className="space-y-3 text-gray-700">
-                  {article.points?.map((p: string, i: number) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sunuOrange mt-2 flex-shrink-0" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
+            {article.points && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {article.points.map((p, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" /> {p}
+                  </div>
+                ))}
               </div>
-              <div className="bg-orange-50 p-8 rounded-[2rem]">
-                <h5 className="font-black text-sunuOrange text-lg mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" /> ROI & Performance
-                </h5>
-                <p className="text-gray-700 leading-relaxed">
-                  L'implémentation de ces recommandations permet généralement une amélioration de <strong>25% à 40%</strong> des indicateurs de performance clés (KPIs) sous 6 mois.
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`flex items-center gap-4 px-10 py-4 rounded-full font-black text-lg transition-all duration-500 ${
-            isExpanded 
-              ? 'bg-gray-100 text-gray-900' 
-              : 'bg-sunuOrange text-white hover:bg-sunuBlue shadow-xl shadow-sunuOrange/20'
+          className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
+            isExpanded ? 'bg-gray-100 text-gray-900' : 'bg-sunuBlue text-white hover:bg-sunuOrange'
           }`}
         >
-          {isExpanded ? "Fermer l'analyse" : "Déployer l'expertise"} 
-          <ChevronDown className={`w-6 h-6 transition-transform duration-500 ${isExpanded ? 'rotate-180' : ''}`} />
+          {isExpanded ? "Réduire" : "Lire l'analyse"} 
+          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
       </div>
     </div>
   );
 };
 
-// --- BASE DE DONNÉES ÉTENDUE ---
-export const blogCategoriesData: any = {
-  "conseils-marketing": { // SLUG: Design & Branding
-    icon: Palette,
-    color: "from-pink-500 to-rose-600",
-    title: "Design & Identité Visuelle",
-    description: "Comment transformer une simple image en un actif stratégique qui impose votre marque sur son marché.",
+// --- MAPPING DES DONNÉES ---
+const blogCategoriesData: Record<string, {
+  title: string;
+  icon: any;
+  color: string;
+  description: string;
+  articles: BlogArticle[];
+}> = {
+  "conseils-marketing": {
+    title: "Conseils & Astuces Marketing",
+    icon: Lightbulb,
+    color: "from-sunuOrange to-yellow-500",
+    description: "Des astuces pratiques pour améliorer votre stratégie marketing au quotidien.",
     articles: [
       {
-        id: "dgb-1",
-        title: "Le Branding Holistique : Au-delà du simple Logo",
-        publishedDate: "12 Février 2026",
-        readTime: "18 min",
-        featured: true,
-        description: "Pourquoi l'identité visuelle est le socle de votre crédibilité et comment elle influence directement vos marges bénéficiaires.",
-        content: "En 2026, le branding ne se regarde pas, il se vit. Une identité forte permet de réduire vos coûts d'acquisition client (CAC) car la confiance est déjà pré-établie. Nous analysons ici comment une palette de couleurs cohérente et une typographie propriétaire créent un 'raccourci mental' chez le consommateur, vous plaçant immédiatement en haut de la pile face à la concurrence.",
-        points: [
-          "Cohérence multisensorielle du message de marque",
-          "Psychologie des couleurs appliquée aux secteurs d'activité",
-          "Architecture de marque : comment structurer vos sous-produits",
-          "Mise en place d'une charte graphique dynamique (adaptative)"
-        ]
+        id: "1",
+        title: "10 astuces pour booster votre engagement sur les réseaux sociaux",
+        description: "Découvrez des techniques simples mais efficaces pour augmenter l'engagement de votre communauté.",
+        content: "L'engagement n'est plus une question de volume mais de qualité. En 2026, l'algorithme privilégie les 'conversations profondes'. Répondre aux commentaires par des questions ouvertes augmente votre portée de 30%.",
+        points: ["Réponse active sous 60min", "Utilisation des sondages interactifs", "Storytelling authentique", "Analyse des heures de pointe"],
+        readTime: "8 min",
+        publishedDate: "15 Octobre 2025",
+        author: "Sunu Link",
+        featured: true
       },
-      {
-        id: "dgb-2",
-        title: "UX/UI : L'interface comme levier de conversion",
-        publishedDate: "18 Février 2026",
-        readTime: "14 min",
-        description: "Optimiser le parcours utilisateur pour transformer chaque visite en action concrète.",
-        content: "Chaque seconde de friction sur votre site coûte de l'argent. L'UX Design n'est pas une question d'esthétique, mais d'ergonomie cognitive. En simplifiant les processus de décision et en guidant l'œil vers les zones de conversion (CTA), vous transformez votre interface en un commercial qui travaille 24h/24 sans jamais se fatiguer.",
-        points: [
-          "Réduction de la charge cognitive et loi de Hick",
-          "Accessibilité numérique et inclusion (Normes WCAG)",
-          "Micro-interactions : humaniser la technologie",
-          "Mobile-first : concevoir pour le pouce, pas pour la souris"
-        ]
-      }
-    ]
-  },
-  "marketing-digital-social-media": {
-    icon: Megaphone,
-    color: "from-blue-600 to-cyan-500",
-    title: "Marketing Digital & Social Media",
-    description: "Dominer l'écosystème numérique en transformant l'attention en intention d'achat.",
-    articles: [
-      {
-        id: "mds-1",
-        title: "Algorithmes 2026 : La fin du 'Mass Market'",
-        publishedDate: "05 Mars 2026",
-        readTime: "22 min",
-        featured: true,
-        description: "Pourquoi la portée organique s'effondre et comment la 'Social Search' remplace le fil d'actualité classique.",
-        content: "Aujourd'hui, les plateformes sociales agissent comme des moteurs de recherche. Pour exister, votre contenu ne doit plus simplement être 'beau', il doit répondre à une intention. Nous analysons l'importance de l'indexation de vos vidéos (mots-clés prononcés, sous-titres) et l'émergence des micro-communautés fermées (Discord, WhatsApp) comme nouveaux canaux de conversion prioritaire.",
-        points: [
-          "Optimisation du SEO Social (TikTok & Instagram Search)",
-          "Stratégie de contenu vertical (Reels/Shorts) haute rétention",
-          "Migration de l'audience vers des plateformes de 'Dark Social'",
-          "Mesure du taux de sentiment au-delà des simples likes"
-        ]
-      },
-      {
-        id: "mds-2",
-        title: "L'IA Générative dans le Content Marketing",
-        publishedDate: "10 Mars 2026",
-        readTime: "19 min",
-        description: "Industrialiser sa production de contenu sans perdre son âme ni sa singularité.",
-        content: "L'IA n'est pas un remplaçant, c'est un amplificateur. Le défi de 2026 est d'utiliser l'IA pour la structure et la data, tout en injectant une 'touche humaine' irremplaçable dans le storytelling. Nous explorons les flux de travail (workflows) qui permettent de transformer un seul article de blog en 15 micro-contenus pour tous vos réseaux en moins d'une heure.",
-        points: [
-          "Ingénierie de prompt pour garder le ton de votre marque",
-          "Personnalisation de masse grâce à la donnée comportementale",
-          "Éthique et transparence : le label 'Human Made' comme luxe",
-          "Automatisation de la distribution multicanale"
-        ]
-      }
-    ]
-  },
-  "vente-developpement-commercial": {
-    icon: TrendingUp,
-    color: "from-orange-600 to-red-500",
-    title: "Vente & Développement Commercial",
-    description: "Passer de la vente transactionnelle à l'ingénierie d'affaires pour sécuriser vos revenus.",
-    articles: [
-      {
-        id: "vdc-1",
-        title: "Closing 3.0 : La psychologie de la décision",
-        publishedDate: "15 Mars 2026",
-        readTime: "25 min",
-        featured: true,
-        description: "Pourquoi vos prospects hésitent et comment lever les barrières psychologiques au moment de la signature.",
-        content: "Le closing n'est pas une fin en soi, c'est la conséquence logique d'un parcours de confiance. Cette analyse décortique le 'Paradoxe du choix' et explique pourquoi proposer trop d'options tue la vente. Nous introduisons la méthode du 'Reverse Closing' : amener le prospect à se vendre lui-même votre solution en identifiant son coût de l'inaction.",
-        points: [
-          "Identification des 'Pain Points' profonds vs besoins déclarés",
-          "L'art du silence et de l'écoute active en négociation",
-          "Structuration d'offres à tiroirs (Good, Better, Best)",
-          "Gestion des objections par la méthode de l'empathie tactique"
-        ]
-      },
-      {
-        id: "vdc-2",
-        title: "Social Selling : Bâtir son pipeline sur LinkedIn",
-        publishedDate: "20 Mars 2026",
-        readTime: "18 min",
-        description: "Comment transformer votre profil personnel en une machine à générer des leads qualifiés.",
-        content: "LinkedIn n'est plus un CV en ligne, c'est une salle de conférence permanente. Pour réussir, vous devez passer du statut de 'vendeur' à celui de 'leader d'opinion'. Nous détaillons la stratégie des 3C (Connexion, Conversation, Conversion) pour approcher les décideurs sans jamais paraître intrusif ou désespéré.",
-        points: [
-          "Optimisation du profil pour la conversion (Landing Page)",
-          "Routine de publication pour l'autorité sectorielle",
-          "Techniques d'approche directe en message privé (InMail)",
-          "Utilisation du Sales Navigator pour le ciblage chirurgical"
-        ]
-      }
+      // ... autres articles
     ]
   },
   "management-leadership-institutionnel": {
-    icon: Users,
-    color: "from-slate-700 to-indigo-900",
     title: "Management & Leadership",
-    description: "Transformer le capital humain en avantage compétitif durable par l'excellence managériale.",
+    icon: Users,
+    color: "from-blue-700 to-indigo-900",
+    description: "Développer un leadership inspirant et optimiser la performance collective.",
     articles: [
       {
         id: "ml-1",
-        title: "Le Leadership Exécutif en Période de Mutation",
-        publishedDate: "12 Janvier 2026",
-        readTime: "24 min",
+        title: "Leadership Moderne : Inspirer, Collaborer, Innover",
+        description: "Passer du modèle autoritaire à un leadership d'influence pour mobiliser les talents.",
+        content: "Le leadership en 2026 repose sur la sécurité psychologique. Un collaborateur qui n'a pas peur de l'échec est 40% plus innovant. Nous explorons comment le leader devient un facilitateur de succès plutôt qu'un simple donneur d'ordres.",
+        points: ["Intelligence émotionnelle (QE)", "Délégation responsabilisante", "Culture du feedback constructif", "Vision partagée"],
+        readTime: "21 min",
+        publishedDate: "15 Janvier 2026",
+        author: "Sunu Link Consulting",
         featured: true,
-        description: "Comment piloter la croissance quand l'incertitude devient la seule constante du marché.",
-        content: "Le leader de 2026 ne commande pas, il orchestre. Face à une main-d'œuvre de plus en plus volatile, la fidélisation passe par le 'Sense-Making' : donner du sens aux objectifs. Nous analysons ici la transition du management par le contrôle vers le management par la confiance (empowerment), tout en maintenant une reddition de comptes (accountability) stricte pour garantir les résultats.",
-        points: [
-          "Développement de l'agilité décisionnelle en comité de direction",
-          "Mise en place d'une culture de la feedback-loop permanente",
-          "Gestion de la résistance au changement technologique",
-          "Alignement des valeurs individuelles sur la mission d'entreprise"
-        ]
       },
       {
-        id: "ml-2",
-        title: "Productivité des Équipes : Le framework OKR",
-        publishedDate: "28 Janvier 2026",
-        readTime: "20 min",
-        description: "Adopter la méthodologie des géants de la Tech pour aligner vos équipes sur des objectifs ambitieux.",
-        content: "Les OKR (Objectives and Key Results) permettent de briser les silos départementaux. En définissant des objectifs clairs et des résultats mesurables, chaque collaborateur comprend son impact direct sur le chiffre d'affaires. Cette analyse détaille comment implémenter ce système sans créer de bureaucratie supplémentaire, en se concentrant sur l'exécution pure.",
-        points: [
-          "Définition d'objectifs 'Stretch' motivants mais réalistes",
-          "Cascade des objectifs de la direction vers l'opérationnel",
-          "Revues trimestrielles de performance et ajustements agiles",
-          "Outils collaboratifs pour le suivi en temps réel des KPIs"
-        ]
+        id: "ml-7",
+        title: "Culture d'Entreprise : L'âme de votre organisation",
+        description: "Comment définir et infuser des valeurs fortes pour fédérer les collaborateurs.",
+        content: "La culture d'entreprise est ce qui reste quand le dirigeant n'est pas dans la pièce. Elle est le premier levier de rétention des talents face à la concurrence.",
+        points: ["Alignement des valeurs", "Rituels d'entreprise", "Marque employeur", "Sentiment d'appartenance"],
+        readTime: "21 min",
+        publishedDate: "24 Janvier 2026",
+        author: "Sunu Link Consulting",
       }
-    ]
+    ],
   },
   "strategie-business-finance": {
-    icon: BarChart3,
-    color: "from-emerald-600 to-teal-900",
     title: "Stratégie Business & Finance",
-    description: "Sécuriser la pérennité de l'entreprise par une gestion rigoureuse et une vision long terme.",
+    icon: BarChart3,
+    color: "from-emerald-700 to-slate-900",
+    description: "Structurer votre modèle économique et piloter la croissance avec des outils performants.",
     articles: [
       {
         id: "bf-1",
-        title: "Optimisation de la Trésorerie : Le Cash est Roi",
-        publishedDate: "15 Février 2026",
-        readTime: "22 min",
+        title: "Comprendre un Business Model : Création et Capture de Valeur",
+        description: "Définir comment votre entreprise crée et délivre de la valeur pour assurer sa rentabilité.",
+        content: "Un business model n'est pas figé. L'analyse du Business Model Canvas permet d'identifier des sources de revenus inexploitées et d'optimiser la structure de coûts.",
+        points: ["Proposition de valeur unique", "Flux de revenus diversifiés", "Optimisation du BFR", "Analyse de rentabilité"],
+        readTime: "20 min",
+        publishedDate: "10 Février 2026",
+        author: "Sunu Link Consulting",
         featured: true,
-        description: "Maîtriser son BFR (Besoin en Fonds de Roulement) pour ne jamais freiner sa croissance par manque de liquidités.",
-        content: "Beaucoup d'entreprises rentables font faillite par manque de cash. Nous explorons les leviers pour raccourcir les cycles de paiement clients, optimiser la gestion des stocks et négocier intelligemment avec les fournisseurs. Une gestion financière saine est le socle qui permet de saisir les opportunités d'investissement au moment où vos concurrents sont paralysés.",
-        points: [
-          "Analyse prévisionnelle des flux de trésorerie (Cash-flow)",
-          "Réduction du délai moyen de paiement (DSO)",
-          "Arbitrage entre autofinancement et levée de dette",
-          "Stratégies de réduction des coûts fixes sans perte de qualité"
-        ]
       },
       {
-        id: "bf-2",
-        title: "Scalabilité : Préparer l'entreprise à changer d'échelle",
-        publishedDate: "02 Mars 2026",
+        id: "bf-3",
+        title: "Gestion Financière Simple pour PME et Startups",
+        description: "Maîtriser les fondamentaux : flux de trésorerie et budgets prévisionnels.",
+        content: "La trésorerie est le carburant de votre entreprise. Savoir lire un plan de trésorerie prévisionnel permet d'anticiper les crises avant qu'elles ne surviennent.",
+        points: ["Suivi du Cash-Flow", "Seuil de rentabilité", "Gestion des créances clients", "Indicateurs de performance"],
         readTime: "19 min",
-        description: "Comment doubler votre volume d'activité sans doubler vos charges opérationnelles.",
-        content: "La scalabilité n'est pas une question de taille, mais de structure. Pour qu'une entreprise soit 'scalable', elle doit s'appuyer sur des processus automatisables et une offre standardisable. Nous analysons les goulots d'étranglement classiques de la croissance et comment les lever par la digitalisation des flux de travail et la délégation stratégique.",
-        points: [
-          "Standardisation des processus critiques (SOP)",
-          "Automatisation des tâches à faible valeur ajoutée",
-          "Externalisation intelligente des fonctions non-cœur de métier",
-          "Modélisation de la rentabilité marginale"
-        ]
+        publishedDate: "16 Février 2026",
+        author: "Sunu Link Consulting",
+        featured: true,
       }
-    ]
+    ],
+  },
+  "design-graphique-branding": {
+    title: "Design Graphique & Branding",
+    icon: Palette,
+    color: "from-pink-500 to-rose-600",
+    description: "L'art de créer des identités visuelles fortes et des expériences de marque mémorables.",
+    articles: [
+      {
+        id: "dgb-1",
+        title: "L'importance du Branding pour une PME",
+        description: "Pourquoi votre identité visuelle est votre premier atout commercial.",
+        content: "Le branding est l'investissement le plus rentable à long terme. Une marque reconnue peut pratiquer des prix 20% supérieurs à une marque générique.",
+        points: ["Psychologie des couleurs", "Cohérence typographique", "Architecture de marque", "Storytelling visuel"],
+        readTime: "15 min",
+        publishedDate: "10 Octobre 2025",
+        author: "Sunu Link Consulting",
+        featured: true,
+      }
+    ],
   },
   "e-commerce-ventes-en-ligne": {
-    icon: ShoppingCart,
-    color: "from-cyan-500 to-blue-700",
     title: "E-commerce & Ventes en Ligne",
-    description: "Maîtriser l'écosystème de la vente directe pour transformer votre site en moteur de croissance.",
+    icon: ShoppingCart,
+    color: "from-cyan-500 to-blue-600",
+    description: "Maîtriser l'ensemble de la chaîne de valeur du commerce électronique : de la plateforme à la logistique.",
     articles: [
       {
         id: "ec-1",
-        title: "L'Expérience d'Achat 'Sans Friction' en 2026",
-        publishedDate: "12 Mars 2026",
+        title: "Comment lancer une boutique en ligne : Guide Stratégique",
+        description: "Les étapes clés pour planifier, concevoir et lancer un site e-commerce performant.",
+        content: "Le succès d'une boutique en ligne ne dépend pas de la technologie, mais de l'expérience client. Un tunnel d'achat optimisé peut multiplier votre taux de conversion par trois sans augmenter votre budget publicitaire.",
+        points: ["Choix de la plateforme (SaaS vs Open Source)", "Optimisation du tunnel de commande", "Stratégies de réassurance", "Gestion des stocks en temps réel"],
         readTime: "20 min",
+        publishedDate: "12 Mars 2026",
+        author: "Sunu Link Consulting",
         featured: true,
-        description: "Pourquoi chaque milliseconde de chargement et chaque champ de formulaire inutile tuent votre conversion.",
-        content: "Le e-commerce moderne se gagne sur le checkout. Avec l'essor du Mobile Money et des portefeuilles numériques, l'utilisateur attend un paiement en un clic. Nous analysons l'impact psychologique de la barre de progression, la rassurance par la preuve sociale en temps réel et les stratégies de récupération de paniers abandonnés par IA prédictive.",
-        points: [
-          "Optimisation du Core Web Vitals pour le SEO E-commerce",
-          "Intégration transparente des paiements locaux (Orange Money, Wave, etc.)",
-          "Copywriting persuasif pour les fiches produits",
-          "Logistique du dernier kilomètre : l'avantage compétitif"
-        ]
       },
       {
-        id: "ec-2",
-        title: "Social Commerce : Vendre là où se trouve l'attention",
-        publishedDate: "25 Mars 2026",
-        readTime: "17 min",
-        description: "Transformer vos réseaux sociaux en véritables boutiques sans redirection externe.",
-        content: "La barrière entre contenu et commerce disparaît. Le 'Live Shopping' et les boutiques intégrées Instagram/TikTok permettent de capturer l'impulsion d'achat instantanément. Cette analyse explique comment configurer votre catalogue pour la vente sociale et comment utiliser les micro-influenceurs pour driver du trafic qualifié directement vers vos produits phares.",
-        points: [
-          "Configuration des catalogues Facebook & Instagram Shopping",
-          "Stratégie de Live Shopping : engagement et conversion",
-          "Gestion du service client via les messageries sociales",
-          "Analyse du tunnel de conversion Social-to-Sale"
-        ]
+        id: "ec-3",
+        title: "Paiements en ligne en Afrique : Solutions et Enjeux",
+        description: "Mobile Money, cartes bancaires et sécurité : comment adapter vos moyens de paiement.",
+        content: "En Afrique, le Mobile Money est le moteur de l'e-commerce. Intégrer des solutions comme Wave, Orange Money ou Free Money est impératif pour capter le marché local.",
+        points: ["Interopérabilité des systèmes", "Sécurisation des transactions", "Gestion des remboursements", "Confiance des utilisateurs"],
+        readTime: "22 min",
+        publishedDate: "18 Mars 2026",
+        author: "Sunu Link Consulting",
+        featured: true,
+      }
+    ],
+  },
+  "vente-developpement-commercial": {
+    title: "Vente & Développement Commercial",
+    icon: TrendingUp,
+    color: "from-orange-500 to-red-600",
+    description: "Améliorez vos techniques de vente et accélérez votre croissance commerciale.",
+    articles: [
+      {
+        id: "vdc-1",
+        title: "Les Fondamentaux de la Vente B2B : Stratégies et Techniques",
+        description: "Comprendre le cycle de vente complexe et les techniques de closing efficaces.",
+        content: "La vente B2B est une course d'endurance. Il s'agit de résoudre un problème métier plutôt que de vendre un produit. La méthode de vente consultative est celle qui génère les plus gros paniers moyens.",
+        points: ["Identification des décideurs", "Traitement des objections", "Négociation de valeur", "Suivi post-vente"],
+        readTime: "20 min",
+        publishedDate: "28 Octobre 2025",
+        author: "Sunu Link Consulting",
+        featured: true,
+      }
+    ],
+  },
+  "veille-strategique-decryptage": {
+    title: "Analyses & Veille Marketing",
+    icon: Search,
+    color: "from-purple-600 to-indigo-700",
+    description: "Décryptages stratégiques, tendances et analyses premium pour comprendre et anticiper.",
+    articles: [
+      {
+        id: "vsd-7",
+        title: "Évolution des Comportements Consommateurs : Data et Psychologie",
+        description: "Analyser les nouvelles attentes en matière d'immédiateté et de personnalisation.",
+        content: "Le consommateur moderne exige une réponse instantanée. La 'data' permet de prédire les besoins avant même qu'ils ne soient exprimés, créant une expérience client sans friction.",
+        points: ["Analyse prédictive", "Micro-moments d'achat", "Économie de l'attention", "Hyper-personnalisation"],
+        readTime: "21 min",
+        publishedDate: "2 Juin 2026",
+        author: "Sunu Link Consulting",
+        featured: true,
+      }
+    ],
+  },
+  "communication-crise-reputation": {
+    title: "Communication de Crise & Réputation",
+    icon: Award,
+    color: "from-gray-600 to-gray-800",
+    description: "Gestion de crise, e-réputation et communication sensible.",
+    articles: [
+      {
+        id: "crise-1",
+        title: "Comment gérer une crise sur les réseaux sociaux",
+        description: "Guide étape par étape pour protéger votre image de marque lors d'un bad buzz.",
+        content: "Le silence est rarement une option en cas de crise numérique. La réactivité, la transparence et la prise de responsabilité sont les trois piliers pour transformer un bad buzz en opportunité de dialogue.",
+        points: ["Veille en temps réel", "Cellule de crise", "Éléments de langage", "Restauration de l'image"],
+        readTime: "15 min",
+        publishedDate: "12 Décembre 2025",
+        author: "Sunu Link Consulting",
+        featured: true,
       }
     ]
   },
-  "veille-strategique-decryptage": {
-    icon: Search,
-    color: "from-purple-600 to-indigo-800",
-    title: "Analyses & Veille Stratégique",
-    description: "Décrypter les signaux faibles du marché pour anticiper les tendances de demain.",
-    articles: [
-      {
-        id: "vsd-1",
-        title: "Rapport : L'Économie Numérique en Afrique de l'Ouest",
-        publishedDate: "15 Mai 2026",
-        readTime: "30 min",
-        featured: true,
-        description: "Une analyse profonde des opportunités sectorielles et des barrières à l'entrée pour les 24 prochains mois.",
-        content: "Le marché ouest-africain connaît une accélération sans précédent de la bancarisation mobile. Cela ouvre des opportunités majeures dans la FinTech, la PropTech et la distribution. Nous décryptons les données de consommation data et l'évolution des classes moyennes pour vous aider à positionner vos investissements stratégiques là où la croissance sera la plus forte.",
-        points: [
-          "Analyse démographique et pouvoir d'achat par segment",
-          "Cartographie des acteurs dominants et des nouveaux entrants",
-          "Impact des nouvelles réglementations sur la protection des données",
-          "Prospective technologique : 5G, IoT et services de proximité"
-        ]
-      }
-    ]
-  }
-};
+  }; // Fermeture de l'objet blogCategoriesData
 
-// --- COMPOSANT PRINCIPAL (LOGIQUE DE RENDU FINAL) ---
 const BlogDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const location = useLocation();
+  const category = slug ? blogCategoriesData[slug] : null;
 
-  // Correction automatique pour les slugs approchants
-  const getCategory = () => {
-    if (!slug) return null;
-    if (blogCategoriesData[slug]) return blogCategoriesData[slug];
-    
-    // Mapping de secours pour éviter le "Non trouvé"
-    const redirects: any = {
-      "analyses-veille": "veille-strategique-decryptage",
-      "design-graphique": "conseils-marketing",
-      "marketing-digital": "marketing-digital-social-media",
-      "commercial": "vente-developpement-commercial"
-    };
-    
-    return blogCategoriesData[redirects[slug]] || null;
-  };
-
-  const category = getCategory();
-
-  // Scroll en haut de page lors du changement de catégorie
+  // Scroll en haut au chargement
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
   if (!category) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6">
-        <div className="bg-white p-12 rounded-[3rem] shadow-2xl max-w-lg text-center border border-gray-100">
-          <div className="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-8">
-            <Search className="w-12 h-12 text-red-500" />
-          </div>
-          <h1 className="text-4xl font-black mb-4 text-gray-900">Expertise introuvable</h1>
-          <p className="text-gray-600 mb-10 text-lg">Le lien semble rompu ou la catégorie a été renommée par notre équipe stratégique.</p>
-          <Link to="/blog" className="inline-flex items-center gap-3 bg-sunuBlue text-white px-10 py-4 rounded-full font-black hover:bg-sunuOrange transition-all shadow-lg shadow-sunuBlue/20">
-            <ArrowLeft className="w-5 h-5" /> Explorer le blog
-          </Link>
-        </div>
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center">
+        <AlertCircle className="w-16 h-16 text-red-500 mb-6" />
+        <h1 className="text-3xl font-black mb-4 text-gray-800">Catégorie non trouvée</h1>
+        <Link to="/blog" className="inline-flex items-center gap-2 text-sunuOrange font-bold hover:underline transition-colors">
+          <ArrowLeft className="w-5 h-5" /> Retour au blog
+        </Link>
       </div>
     );
   }
 
   const Icon = category.icon;
-  const featuredArticles = category.articles.filter((a: any) => a.featured);
-  const regularArticles = category.articles.filter((a: any) => !a.featured);
+  const featuredArticles = category.articles.filter((a) => a.featured);
+  const regularArticles = category.articles.filter((a) => !a.featured);
 
   return (
     <div className="min-h-screen bg-white selection:bg-sunuOrange selection:text-white">
       <Header />
       
-      <main className="pt-32 pb-20">
-        {/* HERO DYNAMIQUE */}
-        <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-          <div className="container mx-auto max-w-6xl relative z-10">
-            <Link to="/blog" className="inline-flex items-center gap-2 text-sunuBlue font-bold mb-12 hover:text-sunuOrange transition-colors group">
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform" /> 
-              Retour au hub de connaissances
+      <main className="pt-24 pb-20">
+        {/* --- Hero Section : Icône et Titre optimisés --- */}
+        <section className="py-12 px-6 bg-gradient-to-b from-slate-50 to-white border-b border-gray-100">
+          <div className="container mx-auto max-w-5xl">
+            <Link to="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-sunuOrange font-semibold mb-8 transition-colors group">
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retour au blog
             </Link>
 
-            <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className={`bg-gradient-to-br ${category.color} w-32 h-32 rounded-[2.5rem] flex items-center justify-center flex-shrink-0 shadow-2xl shadow-indigo-500/20 rotate-3`}>
-                <Icon className="w-16 h-16 text-white" />
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
+              {/* Icône réduite à w-16 h-16 (au lieu de w-24) */}
+              <div className={`bg-gradient-to-br ${category.color} w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                <Icon className="w-8 h-8 text-white" />
               </div>
-              <div className="text-center md:text-left">
-                <h1 className="text-5xl md:text-8xl font-black mb-6 text-gray-900 tracking-tighter">
+              <div>
+                {/* Titre réduit à text-3xl ou 4xl (au lieu de 6xl) */}
+                <h1 className="text-3xl md:text-4xl font-black mb-3 text-gray-900 leading-tight">
                   {category.title}
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-500 max-w-3xl font-medium leading-relaxed">
-                  {category.description}
-                </p>
+                <p className="text-lg text-gray-500 max-w-2xl font-medium">{category.description}</p>
               </div>
             </div>
           </div>
-          {/* Décoration d'arrière-plan */}
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-sunuOrange/5 blur-[120px] rounded-full -mr-20"></div>
         </section>
 
-        {/* GRILLE D'ARTICLES */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-6xl">
-            {/* ARTICLES À LA UNE */}
+        {/* --- Liste des Articles --- */}
+        <section className="py-12 px-6">
+          <div className="container mx-auto max-w-5xl">
+            {/* Articles "À la une" */}
             {featuredArticles.length > 0 && (
-              <div className="mb-24">
-                <div className="flex items-center gap-6 mb-12">
-                  <h2 className="text-4xl font-black text-gray-900">Analyses Premium</h2>
-                  <div className="h-1 flex-grow bg-gray-100 rounded-full"></div>
+              <div className="mb-16">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-1 bg-sunuOrange rounded-full" />
+                  <h2 className="text-2xl font-black text-gray-800 tracking-tight">Expertises à la une</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  {featuredArticles.map((article: any) => (
+                <div className="grid grid-cols-1 gap-8">
+                  {featuredArticles.map((article) => (
                     <ArticleCard key={article.id} article={article} isFeatured={true} />
                   ))}
                 </div>
               </div>
             )}
 
-            {/* AUTRES ARTICLES */}
+            {/* Bibliothèque d'articles */}
             {regularArticles.length > 0 && (
               <div>
-                <div className="flex items-center gap-6 mb-12">
-                  <h2 className="text-4xl font-black text-gray-900">Bibliothèque d'expertise</h2>
-                  <div className="h-1 flex-grow bg-gray-100 rounded-full"></div>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-1 bg-sunuBlue rounded-full" />
+                  <h2 className="text-2xl font-black text-gray-800 tracking-tight">Toutes les analyses</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {regularArticles.map((article: any) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {regularArticles.map((article) => (
                     <ArticleCard key={article.id} article={article} />
                   ))}
                 </div>
@@ -468,31 +370,34 @@ const BlogDetailPage = () => {
           </div>
         </section>
 
-        {/* SECTION CONTACT / CTA */}
-        <section className="mt-20 px-6">
-          <div className="container mx-auto max-w-6xl">
-            <div className="bg-gray-900 rounded-[4rem] p-12 md:p-24 text-white text-center relative overflow-hidden">
+        {/* --- CTA Section : Newsletter (Fidèle à votre document) --- */}
+        <section className="py-16 px-6">
+          <div className="container mx-auto max-w-5xl">
+            <div className="grain-texture bg-gradient-to-r from-sunuOrange to-yellow-500 rounded-[2.5rem] p-10 md:p-16 text-white text-center shadow-2xl relative overflow-hidden">
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-                  Prêt à passer <br className="hidden md:block" /> à l'action ?
+                <h2 className="text-3xl md:text-4xl font-black mb-6">
+                  Ne manquez aucun article
                 </h2>
-                <p className="text-xl text-gray-400 mb-14 max-w-2xl mx-auto leading-relaxed">
-                  Nos consultants transforment ces analyses en plans d'exécution concrets pour votre business. Parlons de vos objectifs.
+                <p className="text-lg mb-10 opacity-90 max-w-xl mx-auto font-medium">
+                  Abonnez-vous à notre newsletter et recevez nos analyses stratégiques directement dans votre boîte mail.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button className="bg-sunuOrange text-white px-12 py-6 rounded-full font-black text-xl hover:scale-105 transition-transform shadow-2xl shadow-sunuOrange/30">
-                    Prendre rendez-vous
+                <form 
+                  onSubmit={(e) => e.preventDefault()}
+                  className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto bg-white/10 p-2 rounded-[2rem] backdrop-blur-md"
+                >
+                  <input
+                    type="email"
+                    placeholder="Votre email professionnel"
+                    className="flex-1 px-6 py-4 rounded-full text-gray-800 font-semibold focus:outline-none focus:ring-4 focus:ring-sunuBlue/30 bg-white"
+                  />
+                  <button className="bg-sunuBlue text-white px-8 py-4 rounded-full font-bold hover:bg-gray-900 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+                    S'abonner <Sparkles className="w-4 h-4" />
                   </button>
-                  <button className="bg-white/5 backdrop-blur-xl text-white border border-white/10 px-12 py-6 rounded-full font-black text-xl hover:bg-white/10 transition-all">
-                    Demander un audit gratuit
-                  </button>
-                </div>
+                </form>
               </div>
-              {/* Éléments design abstraits */}
-              <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-sunuOrange blur-[150px] rounded-full"></div>
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-sunuBlue blur-[150px] rounded-full"></div>
-              </div>
+              {/* Cercles de décoration */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full -mr-20 -mt-20"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-sunuBlue/20 blur-[80px] rounded-full -ml-20 -mb-20"></div>
             </div>
           </div>
         </section>
