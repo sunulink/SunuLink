@@ -4,7 +4,8 @@ import {
   ArrowLeft, Calendar, Clock, User, BookOpen, 
   ChevronDown, CalendarCheck, Megaphone,
   Users, TrendingUp, BarChart3, ShoppingCart, 
-  Lightbulb, Search, Award, MessageSquare, Share2,Palette
+  Lightbulb, Search, Award, MessageSquare, Share2,
+  Palette, Rocket, Layout, Target, PieChart // Icônes manquantes
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -15,76 +16,32 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div 
-      className={`bg-white transition-all duration-500 ease-in-out overflow-hidden border ${
-        isFeatured 
-          ? 'border-gray-200 rounded-3xl p-8' 
-          : 'border-gray-100 rounded-2xl p-6 shadow-sm'
-      } ${isExpanded ? 'ring-2 ring-sunuOrange shadow-2xl scale-[1.01]' : 'hover:shadow-lg'}`}
-    >
-      <div className="flex flex-col gap-4">
-        {/* En-tête de l'article */}
-        <div className="flex items-center gap-4 text-xs text-gray-500">
-          <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {article.publishedDate}</span>
-          <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {article.readTime}</span>
-        </div>
-        
-        <h3 className={`${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'} font-black text-gray-800`}>
-          {article.title}
-        </h3>
-        
-        <p className="text-gray-600 leading-relaxed">
-          {article.description}
+    <div className={`bg-white transition-all duration-500 rounded-2xl p-6 border ${isExpanded ? 'ring-2 ring-sunuOrange' : ''}`}>
+      {/* ... titre et description ... */}
+      
+      {/* Contenu qui apparaît au clic */}
+      <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+        <p className="p-4 bg-gray-50 rounded-lg text-gray-700">
+          {article.content || "Analyse complète de Sunu Link Consulting en cours de lecture..."}
         </p>
-
-        {/* --- SECTION QUI S'ÉCARTE (CONTENU) --- */}
-        <div 
-          className={`transition-all duration-700 ease-in-out ${
-            isExpanded ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="pt-6 border-t border-gray-100 text-gray-700 space-y-4">
-            <h4 className="font-bold text-sunuBlue">Analyse détaillée :</h4>
-            <p>
-              Le déploiement d'une stratégie sur <strong>{article.title}</strong> demande une approche méthodique. 
-              Sunu Link Consulting préconise une phase d'audit suivie d'une implémentation par étapes.
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Analyse des besoins spécifiques de votre secteur.</li>
-              <li>Mise en place d'outils de suivi de performance (KPIs).</li>
-              <li>Optimisation continue basée sur les résultats obtenus.</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* --- BOUTON INTERACTIF --- */}
-        <div className="mt-4">
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${
-              isExpanded 
-                ? 'bg-gray-800 text-white' 
-                : 'bg-sunuOrange text-white hover:bg-sunuBlue'
-            }`}
-          >
-            {isExpanded ? (
-              <>Voir moins <ChevronDown className="w-4 h-4 rotate-180" /></>
-            ) : (
-              <>Lire l'article <BookOpen className="w-4 h-4" /></>
-            )}
-          </button>
-        </div>
       </div>
+
+      <button
+        onClick={() => setIsExpanded(!isExpanded)} // C'est cette ligne qui rend le bouton cliquable
+        className="mt-4 flex items-center gap-2 bg-sunuOrange text-white px-6 py-2 rounded-full font-bold hover:bg-sunuBlue transition-colors"
+      >
+        {isExpanded ? "Voir moins" : "Lire l'article"} <BookOpen className="w-4 h-4" />
+      </button>
     </div>
   );
 };
 
 // --- BASE DE DONNÉES ET COMPOSANT PRINCIPAL ---
+// Changez le nom de la clé ici pour correspondre à votre URL
 export const blogCategoriesData: any = {
-  "design-graphique-branding": {
-    icon: Palette,
-    color: "from-pink-500 to-rose-600",
-    title: "Design Graphique & Branding",
+  "conseils-marketing": { // Au lieu de "veille-strategique-decryptage"
+    icon: Lightbulb,
+    title: "Conseils & Astuces Marketing",
     description: "L'art de créer des identités visuelles fortes et des expériences de marque mémorables qui captivent votre audience.",
     articles: [
       {
