@@ -9,18 +9,11 @@ const DesignPackagingPage = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("Tous");
 
-  // --- Configuration des données ---
+  // --- Configuration des données (Collections validées uniquement) ---
   const categoriesData = {
-    "Agrohouse": { count: 5, prefix: "packaging-agrohouse", ext: "jpg" },
-    "Beno": { count: 11, prefix: "packaging-beno", ext: "jpg" },
-    "Freshup": { count: 12, prefix: "packaging-freshup", ext: "jpg" },
     "GIE Bakhyaye": { count: 6, prefix: "packaging-gie-bakhyaye", ext: "png" },
     "GIE Ngelna": { count: 5, prefix: "packaging-gie-ngelna", ext: "png" },
-    "Telemack": { count: 9, prefix: "packaging-telemack", ext: "jpg", skip: [8] },
-    "Gouye Mbinde": { count: 6, prefix: "packaging-gouye-mbinde-cafe-touba", ext: "jpg" },
     "Kop": { count: 6, prefix: "packaging-kop", ext: "jpg" },
-    "Linguere Oil": { count: 11, prefix: "packaging-linguere-oil", ext: "jpg" },
-    "Miss Mbourake": { count: 11, prefix: "packaging-miss-mbourake", ext: "jpg", skip: [8] },
     "Nyambeaye": { count: 10, prefix: "packaging-nyambeaye", ext: "jpg" },
     "Proma": { count: 5, prefix: "packaging-proma", ext: "jpg" },
     "Rose Lassi": { count: 4, prefix: "packaging-rose-lassi", ext: "jpg" },
