@@ -36,6 +36,7 @@ import AffichesSupportsPage from "./pages/AffichesSupportsPage";
 import BrandingCompletPage from "./pages/BrandingCompletPage";
 import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
+import VideoAnimationPage from "./pages/VideoAnimationPage"; // <-- Ajout de l'import
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,7 @@ const App = () => {
             <Route path="/realisations/branding-complet" element={<BrandingCompletPage />} />
             <Route path="/realisations/photo-shooting" element={<PhotoShootingPage />} />
             <Route path="/realisations/design-packaging" element={<DesignPackagingPage />} />
+            <Route path="/realisations/video-animation" element={<VideoAnimationPage />} /> {/* <-- Ajout de la route */}
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
