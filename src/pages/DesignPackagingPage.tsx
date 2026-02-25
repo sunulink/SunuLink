@@ -3,14 +3,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X, Package, Box, Filter } from "lucide-react";
+import { X, Package, Filter } from "lucide-react";
 
 const DesignPackagingPage = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("Tous");
 
-  // --- Configuration des données (Collections validées uniquement) ---
+  // --- Configuration des données (Incluant Agrohouse qui fonctionne) ---
   const categoriesData = {
+    "Agrohouse": { count: 5, prefix: "packaging-agrohouse", ext: "jpg" },
     "GIE Bakhyaye": { count: 6, prefix: "packaging-gie-bakhyaye", ext: "png" },
     "GIE Ngelna": { count: 5, prefix: "packaging-gie-ngelna", ext: "png" },
     "Kop": { count: 6, prefix: "packaging-kop", ext: "jpg" },
@@ -25,6 +26,7 @@ const DesignPackagingPage = () => {
     const list = [];
     for (let i = 1; i <= data.count; i++) {
       if (data.skip && data.skip.includes(i)) continue;
+      // Les images sont chargées depuis le dossier public/portfolio/
       list.push(`/portfolio/${data.prefix}${i}.${data.ext}`);
     }
     return list;
@@ -32,9 +34,13 @@ const DesignPackagingPage = () => {
 
   const allCategories = Object.keys(categoriesData);
   
-  // Gestion du scroll lors du zoom
+  // Gestion du scroll lors du zoom pour éviter que l'arrière-plan ne bouge
   useEffect(() => {
-    document.body.style.overflow = selectedImg ? 'hidden' : 'unset';
+    if (selectedImg) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
     return () => { document.body.style.overflow = 'unset'; };
   }, [selectedImg]);
 
@@ -55,7 +61,7 @@ const DesignPackagingPage = () => {
           </div>
         </section>
 
-        {/* FILTRES PAR CLIENTS */}
+        {/* FILTRES PAR CLIENTS (Barre collante au scroll) */}
         <section className="py-8 border-y border-gray-100 bg-gray-50/50 sticky top-[80px] z-40 backdrop-blur-md">
           <div className="container mx-auto max-w-7xl px-6">
             <div className="flex items-center gap-3 mb-4 text-sunuBlue/50 font-bold uppercase text-sm tracking-widest">
@@ -85,13 +91,15 @@ const DesignPackagingPage = () => {
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             {allCategories.map((cat) => {
+              // Filtrage logique
               if (activeCategory !== "Tous" && activeCategory !== cat) return null;
+              
               const images = generateImages(cat, categoriesData[cat as keyof typeof categoriesData]);
               
               return (
                 <div key={cat} className="mb-20 animate-in fade-in slide-in-from-bottom-10 duration-700">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-sunuOrange rounded-xl flex items-center justify-center text-white">
+                    <div className="w-12 h-12 bg-sunuOrange rounded-xl flex items-center justify-center text-white shadow-inner">
                       <Package size={24} />
                     </div>
                     <div>
@@ -113,7 +121,11 @@ const DesignPackagingPage = () => {
                           alt={`${cat} Packaging`}
                           loading="lazy" 
                         />
-                        <div className="absolute inset-0 bg-sunuOrange/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-sunuOrange/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                           <span className="bg-white text-sunuOrange p-3 rounded-full shadow-lg scale-0 group-hover:scale-100 transition-transform duration-300">
+                             <Package size={20} />
+                           </span>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -123,15 +135,25 @@ const DesignPackagingPage = () => {
           </div>
         </section>
 
-        {/* MODAL ZOOM */}
+        {/* MODAL DE ZOOM (S'affiche au clic sur une image) */}
         {selectedImg && (
-          <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 cursor-pointer backdrop-blur-sm" onClick={() => setSelectedImg(null)}>
-            <button className="absolute top-6 right-6 bg-sunuOrange text-white p-4 rounded-full shadow-2xl"><X size={45} strokeWidth={3} /></button>
-            <img src={selectedImg} className="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain animate-in zoom-in duration-300" alt="Packaging Detail" onClick={(e) => e.stopPropagation()}/>
+          <div 
+            className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 cursor-pointer backdrop-blur-sm" 
+            onClick={() => setSelectedImg(null)}
+          >
+            <button className="absolute top-6 right-6 bg-sunuOrange text-white p-4 rounded-full shadow-2xl hover:rotate-90 transition-transform">
+              <X size={40} strokeWidth={3} />
+            </button>
+            <img 
+              src={selectedImg} 
+              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain animate-in zoom-in duration-300" 
+              alt="Packaging Zoom" 
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         )}
 
-        {/* CTA FINAL */}
+        {/* SECTION D'APPEL À L'ACTION */}
         <section className="py-24 px-6 text-center bg-sunuBlue">
             <div className="max-w-4xl mx-auto text-white">
                 <h2 className="text-5xl font-black mb-10 uppercase leading-tight">Prêt à habiller <br/><span className="text-sunuOrange text-6xl">votre produit ?</span></h2>
@@ -143,6 +165,7 @@ const DesignPackagingPage = () => {
             </div>
         </section>
       </main>
+      
       <Footer />
     </div>
   );
