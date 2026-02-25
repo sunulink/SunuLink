@@ -57,7 +57,7 @@ const DesignPackagingPage = () => {
               Design Produit & <span className="text-sunuOrange">Packaging</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-              Sublimer vos produits par un design d'étiquettes percutant et des packagings qui racontent une vraie histoire.
+              Sublimer vos produits par un design d'étiquettes percutant et des packagings qui racontent une histoire.
             </p>
           </div>
         </section>
