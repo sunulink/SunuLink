@@ -2,8 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import SocialLinksBlock from "@/components/SocialLinksBlock";
 
 const AboutPage = () => {
   const values = [
@@ -247,36 +245,30 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* CTA FINAL AVEC COMPOSANT RÉSEAUX SOCIAUX */}
+        {/* CTA Final */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-              
-              {/* BLOC TEXTE CTA */}
-              <div className="lg:col-span-2 grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-10 md:p-12 shadow-2xl flex flex-col justify-center" data-aos="fade-right">
-                <h2 className="text-3xl md:text-4xl font-black mb-6">
-                  Prêt à transformer votre communication ?
-                </h2>
-                <p className="text-xl mb-8 opacity-95 max-w-2xl">
-                  Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" className="bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white px-8 py-6 rounded-full font-bold text-lg h-auto">
-                    <Link to="/contact">Demander un devis</Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-sunuBlue px-8 py-6 rounded-full font-bold text-lg h-auto">
-                    <Link to="/services">Découvrir nos services</Link>
-                  </Button>
-                </div>
+            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 text-center shadow-2xl" data-aos="fade-up">
+              <h2 className="text-3xl md:text-4xl font-black mb-6">
+                Prêt à transformer votre communication ?
+              </h2>
+              <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+                Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/contact"
+                  className="inline-block bg-white text-sunuBlue px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Demander un devis
+                </Link>
+                <Link
+                  to="/services"
+                  className="inline-block bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-sunuBlue transition-all duration-300"
+                >
+                  Découvrir nos services
+                </Link>
               </div>
-
-              {/* BLOC RÉSEAUX SOCIAUX (UTILISE LE COMPOSANT DÉFINI PLUS TÔT) */}
-              <div className="flex" data-aos="fade-left">
-                <div className="w-full">
-                  <SocialLinksBlock />
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
