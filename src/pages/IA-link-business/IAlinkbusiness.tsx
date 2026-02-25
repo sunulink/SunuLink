@@ -169,7 +169,7 @@ const IAlinkbusiness = () => {
           <div className="container relative z-10 mx-auto px-6 text-center">
             <div className="max-w-4xl mx-auto" data-aos="zoom-in">
               <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">
-                L'IA Link <span className="text-sunuOrange">Business</span>
+                Link IA <span className="text-sunuOrange">Business</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed">
                 Propulsez votre entreprise dans une nouvelle ère. Automatisez vos processus, 
