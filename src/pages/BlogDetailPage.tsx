@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -10,7 +10,7 @@ import {
   CheckCircle2, Zap, AlertCircle
 } from "lucide-react";
 
-// --- TYPES ---
+// --- TYPES ENRICHIS ---
 interface BlogArticle {
   id: string;
   title: string;
@@ -20,11 +20,12 @@ interface BlogArticle {
   author: string;
   featured?: boolean;
   articleSlug?: string;
-  content?: string; // Ajout pour l'expertise
-  points?: string[]; // Ajout pour les leviers de succès
+  // Ajouts pour les fonctionnalités d'expertise
+  content?: string; 
+  points?: string[]; 
 }
 
-// --- COMPOSANT DE CARTE D'ARTICLE INTERACTIVE ---
+// --- COMPOSANT ARTICLE CARD INTERACTIF ---
 const ArticleCard = ({ article, isFeatured = false }: { article: BlogArticle; isFeatured?: boolean }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -37,7 +38,7 @@ const ArticleCard = ({ article, isFeatured = false }: { article: BlogArticle; is
         <div className="flex items-center gap-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">
           <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {article.publishedDate}</span>
           <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {article.readTime}</span>
-          {isFeatured && <span className="text-sunuOrange bg-sunuOrange/10 px-2 py-0.5 rounded">Premium</span>}
+          {isFeatured && <span className="text-sunuOrange bg-sunuOrange/10 px-2 py-0.5 rounded">Expertise Premium</span>}
         </div>
         
         <h3 className={`${isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'} font-black text-gray-900 mb-4 leading-tight group-hover:text-sunuOrange transition-colors`}>
@@ -48,17 +49,17 @@ const ArticleCard = ({ article, isFeatured = false }: { article: BlogArticle; is
           {article.description}
         </p>
 
-        {/* CONTENU DÉPLOYABLE */}
-        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
-          isExpanded ? 'max-h-[1000px] opacity-100 mb-8' : 'max-h-0 opacity-0'
+        {/* CONTENU DÉPLOYABLE (EXPERTISE) */}
+        <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
+          isExpanded ? 'max-h-[1200px] opacity-100 mb-8' : 'max-h-0 opacity-0'
         }`}>
           <div className="pt-6 border-t border-gray-100 space-y-6">
             <div className="bg-slate-50 p-6 rounded-2xl border-l-4 border-sunuBlue">
               <h4 className="flex items-center gap-2 text-sunuBlue font-bold mb-2">
-                <Zap className="w-4 h-4" /> Analyse de l'expert
+                <Zap className="w-4 h-4" /> Analyse de l'expert Sunu Link
               </h4>
               <p className="text-sm text-gray-700 leading-relaxed italic">
-                {article.content || "Analyse approfondie en cours de rédaction par nos consultants."}
+                {article.content || "Cette analyse approfondie détaille les leviers stratégiques et les retours sur expérience de nos consultants pour ce sujet spécifique."}
               </p>
             </div>
             {article.points && (
@@ -76,18 +77,18 @@ const ArticleCard = ({ article, isFeatured = false }: { article: BlogArticle; is
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
-            isExpanded ? 'bg-gray-100 text-gray-900' : 'bg-sunuBlue text-white hover:bg-sunuOrange'
+            isExpanded ? 'bg-gray-100 text-gray-900' : 'bg-sunuBlue text-white hover:bg-sunuOrange shadow-lg shadow-sunuBlue/20'
           }`}
         >
-          {isExpanded ? "Réduire" : "Lire l'analyse"} 
-          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+          {isExpanded ? "Réduire l'analyse" : "Consulter l'expertise"} 
+          <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
       </div>
     </div>
   );
 };
 
-// --- MAPPING DES DONNÉES ---
+// --- DATA MAPPING (PARTIE 1/4) ---
 const blogCategoriesData: Record<string, {
   title: string;
   icon: any;
@@ -99,313 +100,342 @@ const blogCategoriesData: Record<string, {
     title: "Conseils & Astuces Marketing",
     icon: Lightbulb,
     color: "from-sunuOrange to-yellow-500",
-    description: "Des astuces pratiques pour améliorer votre stratégie marketing au quotidien.",
+    description: "Des astuces pratiques pour améliorer votre stratégie marketing au quotidien",
     articles: [
       {
         id: "1",
         title: "10 astuces pour booster votre engagement sur les réseaux sociaux",
-        description: "Découvrez des techniques simples mais efficaces pour augmenter l'engagement de votre communauté.",
-        content: "L'engagement n'est plus une question de volume mais de qualité. En 2026, l'algorithme privilégie les 'conversations profondes'. Répondre aux commentaires par des questions ouvertes augmente votre portée de 30%.",
-        points: ["Réponse active sous 60min", "Utilisation des sondages interactifs", "Storytelling authentique", "Analyse des heures de pointe"],
-        readTime: "8 min",
-        publishedDate: "15 Octobre 2025",
-        author: "Sunu Link",
-        featured: true
+        description: "Découvrez des techniques simples mais efficaces pour augmenter l'engagement de votre communauté",
+        content: "L'engagement en 2026 ne se mesure plus aux likes, mais au temps passé et aux partages en DM. Une stratégie de 'micro-conversations' peut augmenter votre portée organique de 40%.",
+        points: ["Réponse ultra-rapide aux commentaires", "Sondages en story", "Contenu généré par les utilisateurs", "Live streaming hebdomadaire"],
+        readTime: "8 min", publishedDate: "5 Décembre 2025", author: "Sunu Link Consulting", featured: true
       },
-      // ... autres articles
+      { id: "2", title: "Comment créer du contenu viral en 2025", description: "Les secrets des contenus qui se partagent massivement", readTime: "10 min", publishedDate: "1 Décembre 2025", author: "Sunu Link Consulting" },
+      { id: "3", title: "Optimiser votre budget marketing : guide pratique", description: "Maximisez votre ROI avec ces conseils de gestion budgétaire", readTime: "12 min", publishedDate: "28 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "tendances-actualites": {
+    title: "Tendances & Actualités",
+    icon: TrendingUp,
+    color: "from-sunuBlue to-cyan-500",
+    description: "Restez informé des dernières tendances en communication et marketing digital",
+    articles: [
+      {
+        id: "ta-1",
+        title: "Les tendances marketing à suivre en 2025",
+        description: "Tour d'horizon des innovations qui vont transformer le marketing cette année",
+        content: "L'intelligence artificielle générative et le commerce conversationnel dominent le paysage. Les marques qui n'adoptent pas une approche 'data-driven' perdront 20% de part de marché d'ici 2027.",
+        points: ["IA personnalisée", "Recherche vocale", "Marketing d'influence local", "Éco-responsabilité affichée"],
+        readTime: "15 min", publishedDate: "8 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      { id: "ta-2", title: "L'essor du commerce social en Afrique", description: "Comment les réseaux sociaux révolutionnent le e-commerce africain", readTime: "10 min", publishedDate: "3 Décembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "strategies-communication": {
+    title: "Stratégies de Communication",
+    icon: Megaphone,
+    color: "from-purple-500 to-pink-500",
+    description: "Apprenez à construire des stratégies de communication efficaces et percutantes",
+    articles: [
+      {
+        id: "sc-1",
+        title: "Construire une stratégie de communication 360° efficace",
+        description: "Guide complet pour une approche globale et cohérente",
+        content: "Une stratégie 360° n'est pas simplement d'être partout, c'est d'être cohérent partout. L'alignement entre le message offline et l'expérience digitale est le premier facteur de confiance.",
+        points: ["Audit de marque", "Ciblage omnicanal", "Plan de contenu unifié", "Mesure du ROI global"],
+        readTime: "20 min", publishedDate: "6 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      { id: "sc-2", title: "Communication de crise : comment réagir efficacement", description: "Les bonnes pratiques pour gérer une crise de réputation", readTime: "12 min", publishedDate: "30 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "marketing-digital-seo": {
+    title: "Marketing Digital & SEO",
+    icon: Target,
+    color: "from-green-500 to-emerald-500",
+    [cite_start]description: "Optimisez votre présence en ligne et améliorez votre référencement naturel[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "SEO en 2025 : les nouvelles règles du jeu [cite: 1]",
+        [cite_start]description: "Comment adapter votre stratégie SEO aux dernières mises à jour Google[cite: 1].",
+        content: "Le SEO moderne ne concerne plus seulement les mots-clés, mais l'intention de recherche et l'expérience utilisateur (SGE). Google privilégie désormais les contenus qui répondent directement aux questions complexes des utilisateurs.",
+        points: ["Search Generative Experience (SGE)", "Core Web Vitals", "Autorité thématique", "Optimisation pour la recherche vocale"],
+        readTime: "18 min", publishedDate: "7 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "Google Ads vs Meta Ads : quel canal choisir ? [cite: 1][cite_start]", description: "Comparatif détaillé pour optimiser votre budget publicitaire[cite: 1].", readTime: "14 min", publishedDate: "2 Décembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "reseaux-sociaux": {
+    title: "Réseaux Sociaux",
+    icon: Users,
+    color: "from-blue-500 to-indigo-500",
+    [cite_start]description: "Maîtrisez les réseaux sociaux et développez votre communauté en ligne[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "TikTok pour les entreprises : guide complet [cite: 1]",
+        [cite_start]description: "Comment utiliser TikTok pour développer votre marque en Afrique[cite: 1].",
+        content: "En Afrique, TikTok est devenu un moteur de recherche pour la Gen Z. Une stratégie de contenu authentique et 'lo-fi' performe mieux que des publicités léchées et impersonnelles.",
+        points: ["Utilisation des sons tendance locaux", "Storytelling authentique", "Partenariats avec des micro-influenceurs", "Social Selling"],
+        readTime: "16 min", publishedDate: "9 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "LinkedIn : optimiser votre profil entreprise [cite: 1][cite_start]", description: "Les secrets d'une page LinkedIn qui génère des leads[cite: 1].", readTime: "10 min", publishedDate: "4 Décembre 2025", author: "Sunu Link Consulting" },
+      [cite_start]{ id: "3", title: "Instagram Reels : stratégies qui fonctionnent [cite: 1][cite_start]", description: "Créer des Reels engageants pour votre audience[cite: 1].", readTime: "8 min", publishedDate: "29 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "branding-identite": {
+    title: "Branding & Identité Visuelle",
+    icon: Palette,
+    color: "from-pink-500 to-rose-500",
+    [cite_start]description: "Construisez une marque forte et une identité visuelle mémorable[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "Créer une identité de marque mémorable [cite: 1]",
+        [cite_start]description: "Les étapes clés pour construire une marque qui marque les esprits[cite: 1].",
+        content: "Votre marque n'est pas ce que vous dites d'elle, c'est ce que vos clients disent de vous quand vous n'êtes pas là. L'identité visuelle doit refléter des valeurs profondes et une promesse unique.",
+        points: ["Définition de la mission", "Alignement visuel et verbal", "Cohérence sur tous les supports", "Expérience émotionnelle"],
+        readTime: "14 min", publishedDate: "5 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "Refonte de marque : quand et comment la faire ? [cite: 1][cite_start]", description: "Guide pour réussir votre rebranding[cite: 1].", readTime: "12 min", publishedDate: "27 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "communication-africaine": {
+    title: "Communication Africaine",
+    icon: Globe,
+    color: "from-amber-500 to-orange-500",
+    [cite_start]description: "Focus sur les spécificités de la communication sur le continent africain[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "Le marketing digital en Afrique : état des lieux 2025 [cite: 1]",
+        [cite_start]description: "Panorama du paysage digital africain et ses opportunités[cite: 1].",
+        content: "Le mobile-first n'est plus une option mais la norme absolue. L'interopérabilité des systèmes de paiement et la pénétration de la 5G ouvrent de nouvelles perspectives pour le e-commerce transfrontalier.",
+        points: ["Économie du Mobile Money", "Pénétration internet par région", "Adaptation linguistique", "Canaux de distribution hybrides"],
+        readTime: "20 min", publishedDate: "8 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "Adapter sa communication aux cultures africaines [cite: 1][cite_start]", description: "Comment communiquer efficacement sur un marché multiculturel[cite: 1].", readTime: "15 min", publishedDate: "1 Décembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "entrepreneuriat-business": {
+    title: "Entrepreneuriat & Business",
+    icon: Briefcase,
+    color: "from-teal-500 to-cyan-500",
+    [cite_start]description: "Conseils pour les entrepreneurs et PME en matière de communication[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "Communication startup : les essentiels avec un petit budget [cite: 1]",
+        [cite_start]description: "Comment communiquer efficacement quand on débute[cite: 1].",
+        content: "L'erreur classique est de vouloir être partout. Pour une startup, il vaut mieux dominer un canal spécifique (ex: SEO local ou LinkedIn) plutôt que d'être invisible sur cinq plateformes différentes.",
+        points: ["Priorisation des canaux", "Marketing de guerrilla", "Partenariats stratégiques", "Relation client personnalisée"],
+        readTime: "12 min", publishedDate: "6 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "Pitcher son projet : les clés d'une présentation réussie [cite: 1][cite_start]", description: "Techniques pour convaincre investisseurs et partenaires[cite: 1].", readTime: "10 min", publishedDate: "30 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "innovation-ia": {
+    title: "Innovation & IA",
+    icon: Sparkles,
+    color: "from-violet-500 to-purple-500",
+    [cite_start]description: "L'intelligence artificielle et les innovations au service de la communication[cite: 1].",
+    articles: [
+      {
+        id: "1",
+        [cite_start]title: "ChatGPT et la création de contenu : guide pratique [cite: 1]",
+        [cite_start]description: "Comment utiliser l'IA générative pour votre communication[cite: 1].",
+        content: "L'IA ne remplace pas le créateur, elle l'augmente. L'art du 'prompt engineering' devient une compétence clé pour produire des contenus de haute qualité à une vitesse inégalée.",
+        points: ["Rédaction assistée", "Brainstorming d'idées", "Optimisation SEO", "Personnalisation à l'échelle"],
+        readTime: "18 min", publishedDate: "9 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      [cite_start]{ id: "2", title: "Les outils IA indispensables pour les marketeurs [cite: 1][cite_start]", description: "Sélection des meilleures solutions IA pour optimiser votre travail[cite: 1].", readTime: "14 min", publishedDate: "3 Décembre 2025", author: "Sunu Link Consulting" },
+      [cite_start]{ id: "3", title: "L'IA va-t-elle remplacer les créatifs ? [cite: 1][cite_start]", description: "Réflexion sur l'avenir de la création à l'ère de l'IA[cite: 1].", readTime: "10 min", publishedDate: "26 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "success-stories": {
+    title: "Success Stories",
+    icon: Award,
+    color: "from-yellow-600 to-orange-600",
+    description: "Découvrez comment nous avons aidé nos clients à atteindre leurs objectifs.",
+    articles: [
+      {
+        id: "1",
+        title: "Comment cette startup a doublé son CA en 6 mois",
+        description: "Étude de cas détaillée sur une stratégie de croissance accélérée.",
+        content: "Le succès de ce projet repose sur le passage d'une acquisition payante non rentable à une stratégie de 'Retention Marketing'. En optimisant le cycle de vie client (LTV), nous avons réduit le coût d'acquisition de 45%.",
+        points: ["Refonte du tunnel de conversion", "Mise en place d'un CRM prédictif", "Campagnes de retargeting chirurgicales", "Programme d'ambassadeurs"],
+        readTime: "25 min", publishedDate: "4 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      { id: "2", title: "Refonte d'image réussie pour un leader industriel", description: "L'impact du branding sur la perception de marque.", readTime: "20 min", publishedDate: "25 Novembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "interviews-experts": {
+    title: "Interviews d'Experts",
+    icon: MessageSquare,
+    color: "from-blue-600 to-indigo-800",
+    description: "Échanges avec des leaders d'opinion du marketing et de la communication.",
+    articles: [
+      {
+        id: "1",
+        title: "L'avenir du digital en Afrique : interview de M. Diop",
+        description: "Un regard d'expert sur les mutations technologiques du continent.",
+        content: "M. Diop souligne que l'Afrique ne fait pas que rattraper son retard, elle 'saute' des étapes technologiques. Le passage direct au Mobile Money sans passer par la banque traditionnelle en est l'exemple parfait.",
+        points: ["Souveraineté numérique", "Impact de la 5G sur le retail", "Formation des talents locaux", "Cybersécurité"],
+        readTime: "30 min", publishedDate: "7 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      { id: "2", title: "Branding de luxe : les conseils de Sarah Cohen", description: "Comment positionner une marque sur le segment haut de gamme.", readTime: "22 min", publishedDate: "2 Décembre 2025", author: "Sunu Link Consulting" }
+    ]
+  },
+  "tutoriels-guides": {
+    title: "Tutoriels & Guides",
+    icon: BookOpen,
+    color: "from-emerald-600 to-teal-800",
+    description: "Des guides étape par étape pour maîtriser les outils et techniques.",
+    articles: [
+      {
+        id: "1",
+        title: "Guide complet : créer sa première campagne Facebook Ads",
+        description: "Tout ce qu'il faut savoir pour lancer des publicités rentables.",
+        content: "Un bon tutoriel ne montre pas seulement où cliquer, il explique 'pourquoi'. Ce guide détaille la structure d'une audience personnalisée et comment tester vos visuels sans gaspiller votre budget.",
+        points: ["Pixel Facebook et API de conversion", "A/B Testing de créatives", "Copywriting persuasif", "Analyse des métriques (ROAS)"],
+        readTime: "35 min", publishedDate: "9 Décembre 2025", author: "Sunu Link Consulting", featured: true
+      },
+      { id: "2", title: "Comment utiliser Canva comme un pro", description: "Astuces de design pour des visuels percutants.", readTime: "15 min", publishedDate: "3 Décembre 2025", author: "Sunu Link Consulting" }
     ]
   },
   "management-leadership-institutionnel": {
     title: "Management & Leadership",
     icon: Users,
-    color: "from-blue-700 to-indigo-900",
-    description: "Développer un leadership inspirant et optimiser la performance collective.",
+    color: "from-slate-700 to-slate-900",
+    description: "Leadership moderne et excellence managériale.",
     articles: [
-      {
-        id: "ml-1",
-        title: "Leadership Moderne : Inspirer, Collaborer, Innover",
-        description: "Passer du modèle autoritaire à un leadership d'influence pour mobiliser les talents.",
-        content: "Le leadership en 2026 repose sur la sécurité psychologique. Un collaborateur qui n'a pas peur de l'échec est 40% plus innovant. Nous explorons comment le leader devient un facilitateur de succès plutôt qu'un simple donneur d'ordres.",
-        points: ["Intelligence émotionnelle (QE)", "Délégation responsabilisante", "Culture du feedback constructif", "Vision partagée"],
-        readTime: "21 min",
-        publishedDate: "15 Janvier 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      },
-      {
-        id: "ml-7",
-        title: "Culture d'Entreprise : L'âme de votre organisation",
-        description: "Comment définir et infuser des valeurs fortes pour fédérer les collaborateurs.",
-        content: "La culture d'entreprise est ce qui reste quand le dirigeant n'est pas dans la pièce. Elle est le premier levier de rétention des talents face à la concurrence.",
-        points: ["Alignement des valeurs", "Rituels d'entreprise", "Marque employeur", "Sentiment d'appartenance"],
-        readTime: "21 min",
-        publishedDate: "24 Janvier 2026",
-        author: "Sunu Link Consulting",
-      }
-    ],
+      { id: "ml-1", title: "Leadership Moderne : Inspirer, Collaborer, Innover", description: "Développez votre leadership d'influence.", content: "Le management par le contrôle est mort. En 2026, le leader doit créer un environnement de sécurité psychologique pour libérer l'innovation.", points: ["Intelligence émotionnelle", "Délégation", "Agilité"], readTime: "21 min", publishedDate: "15 Janvier 2026", author: "Sunu Link", featured: true },
+      { id: "ml-2", title: "Gestion du Changement : Stratégies pour Réussir", description: "Accompagner vos équipes dans la transformation.", readTime: "23 min", publishedDate: "18 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-3", title: "Intelligence Émotionnelle au Service du Management", description: "Le QE, nouveau pilier de la performance.", content: "L'empathie tactique permet de résoudre les conflits avant qu'ils n'impactent la productivité.", points: ["Écoute active", "Régulation du stress", "Empathie"], readTime: "20 min", publishedDate: "20 Janvier 2026", author: "Sunu Link", featured: true },
+      { id: "ml-4", title: "Construire des Équipes Performantes et Engagées", description: "Les secrets des équipes à haute performance.", readTime: "22 min", publishedDate: "21 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-5", title: "Le Management Agile : Méthodes et Bénéfices", description: "Adopter l'agilité au quotidien.", readTime: "19 min", publishedDate: "22 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-6", title: "Leadership Féminin : Enjeux et Opportunités", description: "Promouvoir la diversité au sommet.", readTime: "25 min", publishedDate: "23 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-7", title: "Culture d'Entreprise : L'âme de votre organisation", description: "Définir vos valeurs fondamentales.", readTime: "21 min", publishedDate: "24 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-8", title: "Gestion du Temps et de la Productivité des Cadres", description: "Optimiser son agenda stratégique.", readTime: "18 min", publishedDate: "25 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-9", title: "Éthique et Responsabilité Sociétale des Entreprises", description: "La RSE comme levier de performance.", readTime: "24 min", publishedDate: "26 Janvier 2026", author: "Sunu Link" },
+      { id: "ml-10", title: "Le Mentorat : Accélérateur de Talents", description: "Transmettre pour pérenniser l'excellence.", readTime: "20 min", publishedDate: "27 Janvier 2026", author: "Sunu Link" }
+    ]
   },
   "strategie-business-finance": {
     title: "Stratégie Business & Finance",
     icon: BarChart3,
-    color: "from-emerald-700 to-slate-900",
-    description: "Structurer votre modèle économique et piloter la croissance avec des outils performants.",
+    color: "from-indigo-600 to-blue-900",
+    description: "Piloter la performance et sécuriser la croissance.",
     articles: [
-      {
-        id: "bf-1",
-        title: "Comprendre un Business Model : Création et Capture de Valeur",
-        description: "Définir comment votre entreprise crée et délivre de la valeur pour assurer sa rentabilité.",
-        content: "Un business model n'est pas figé. L'analyse du Business Model Canvas permet d'identifier des sources de revenus inexploitées et d'optimiser la structure de coûts.",
-        points: ["Proposition de valeur unique", "Flux de revenus diversifiés", "Optimisation du BFR", "Analyse de rentabilité"],
-        readTime: "20 min",
-        publishedDate: "10 Février 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      },
-      {
-        id: "bf-3",
-        title: "Gestion Financière Simple pour PME et Startups",
-        description: "Maîtriser les fondamentaux : flux de trésorerie et budgets prévisionnels.",
-        content: "La trésorerie est le carburant de votre entreprise. Savoir lire un plan de trésorerie prévisionnel permet d'anticiper les crises avant qu'elles ne surviennent.",
-        points: ["Suivi du Cash-Flow", "Seuil de rentabilité", "Gestion des créances clients", "Indicateurs de performance"],
-        readTime: "19 min",
-        publishedDate: "16 Février 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
-    ],
-  },
-  "design-graphique-branding": {
-    title: "Design Graphique & Branding",
-    icon: Palette,
-    color: "from-pink-500 to-rose-600",
-    description: "L'art de créer des identités visuelles fortes et des expériences de marque mémorables.",
-    articles: [
-      {
-        id: "dgb-1",
-        title: "L'importance du Branding pour une PME",
-        description: "Pourquoi votre identité visuelle est votre premier atout commercial.",
-        content: "Le branding est l'investissement le plus rentable à long terme. Une marque reconnue peut pratiquer des prix 20% supérieurs à une marque générique.",
-        points: ["Psychologie des couleurs", "Cohérence typographique", "Architecture de marque", "Storytelling visuel"],
-        readTime: "15 min",
-        publishedDate: "10 Octobre 2025",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
-    ],
-  },
-  "e-commerce-ventes-en-ligne": {
-    title: "E-commerce & Ventes en Ligne",
-    icon: ShoppingCart,
-    color: "from-cyan-500 to-blue-600",
-    description: "Maîtriser l'ensemble de la chaîne de valeur du commerce électronique : de la plateforme à la logistique.",
-    articles: [
-      {
-        id: "ec-1",
-        title: "Comment lancer une boutique en ligne : Guide Stratégique",
-        description: "Les étapes clés pour planifier, concevoir et lancer un site e-commerce performant.",
-        content: "Le succès d'une boutique en ligne ne dépend pas de la technologie, mais de l'expérience client. Un tunnel d'achat optimisé peut multiplier votre taux de conversion par trois sans augmenter votre budget publicitaire.",
-        points: ["Choix de la plateforme (SaaS vs Open Source)", "Optimisation du tunnel de commande", "Stratégies de réassurance", "Gestion des stocks en temps réel"],
-        readTime: "20 min",
-        publishedDate: "12 Mars 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      },
-      {
-        id: "ec-3",
-        title: "Paiements en ligne en Afrique : Solutions et Enjeux",
-        description: "Mobile Money, cartes bancaires et sécurité : comment adapter vos moyens de paiement.",
-        content: "En Afrique, le Mobile Money est le moteur de l'e-commerce. Intégrer des solutions comme Wave, Orange Money ou Free Money est impératif pour capter le marché local.",
-        points: ["Interopérabilité des systèmes", "Sécurisation des transactions", "Gestion des remboursements", "Confiance des utilisateurs"],
-        readTime: "22 min",
-        publishedDate: "18 Mars 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
-    ],
-  },
-  "vente-developpement-commercial": {
-    title: "Vente & Développement Commercial",
-    icon: TrendingUp,
-    color: "from-orange-500 to-red-600",
-    description: "Améliorez vos techniques de vente et accélérez votre croissance commerciale.",
-    articles: [
-      {
-        id: "vdc-1",
-        title: "Les Fondamentaux de la Vente B2B : Stratégies et Techniques",
-        description: "Comprendre le cycle de vente complexe et les techniques de closing efficaces.",
-        content: "La vente B2B est une course d'endurance. Il s'agit de résoudre un problème métier plutôt que de vendre un produit. La méthode de vente consultative est celle qui génère les plus gros paniers moyens.",
-        points: ["Identification des décideurs", "Traitement des objections", "Négociation de valeur", "Suivi post-vente"],
-        readTime: "20 min",
-        publishedDate: "28 Octobre 2025",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
-    ],
-  },
-  "veille-strategique-decryptage": {
-    title: "Analyses & Veille Marketing",
-    icon: Search,
-    color: "from-purple-600 to-indigo-700",
-    description: "Décryptages stratégiques, tendances et analyses premium pour comprendre et anticiper.",
-    articles: [
-      {
-        id: "vsd-7",
-        title: "Évolution des Comportements Consommateurs : Data et Psychologie",
-        description: "Analyser les nouvelles attentes en matière d'immédiateté et de personnalisation.",
-        content: "Le consommateur moderne exige une réponse instantanée. La 'data' permet de prédire les besoins avant même qu'ils ne soient exprimés, créant une expérience client sans friction.",
-        points: ["Analyse prédictive", "Micro-moments d'achat", "Économie de l'attention", "Hyper-personnalisation"],
-        readTime: "21 min",
-        publishedDate: "2 Juin 2026",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
-    ],
-  },
-  "communication-crise-reputation": {
-    title: "Communication de Crise & Réputation",
-    icon: Award,
-    color: "from-gray-600 to-gray-800",
-    description: "Gestion de crise, e-réputation et communication sensible.",
-    articles: [
-      {
-        id: "crise-1",
-        title: "Comment gérer une crise sur les réseaux sociaux",
-        description: "Guide étape par étape pour protéger votre image de marque lors d'un bad buzz.",
-        content: "Le silence est rarement une option en cas de crise numérique. La réactivité, la transparence et la prise de responsabilité sont les trois piliers pour transformer un bad buzz en opportunité de dialogue.",
-        points: ["Veille en temps réel", "Cellule de crise", "Éléments de langage", "Restauration de l'image"],
-        readTime: "15 min",
-        publishedDate: "12 Décembre 2025",
-        author: "Sunu Link Consulting",
-        featured: true,
-      }
+      { id: "bf-1", title: "Comprendre un Business Model : Valeur et Capture", description: "Les bases de la rentabilité.", content: "L'analyse du Business Model Canvas permet de pivoter rapidement face aux changements de marché.", points: ["Flux de revenus", "Proposition de valeur", "Partenaires"], readTime: "20 min", publishedDate: "10 Février 2026", author: "Sunu Link", featured: true },
+      { id: "bf-2", title: "Analyse SWOT : Un Outil Stratégique Indispensable", description: "Diagnostiquer votre positionnement.", readTime: "18 min", publishedDate: "12 Février 2026", author: "Sunu Link" },
+      { id: "bf-3", title: "Gestion Financière Simple pour PME et Startups", description: "Maîtriser son cash-flow.", content: "Une gestion rigoureuse de la trésorerie est la seule garantie contre l'insolvabilité en phase de croissance.", points: ["BFR", "Seuil de rentabilité", "Budgets"], readTime: "19 min", publishedDate: "16 Février 2026", author: "Sunu Link", featured: true },
+      { id: "bf-4", title: "Levée de Fonds : Guide pour les Entrepreneurs", description: "Convaincre les investisseurs.", readTime: "25 min", publishedDate: "18 Février 2026", author: "Sunu Link" },
+      { id: "bf-5", title: "Le Business Plan : Tracer la Route du Succès", description: "Formaliser sa vision stratégique.", readTime: "22 min", publishedDate: "20 Février 2026", author: "Sunu Link" },
+      { id: "bf-6", title: "Optimisation de la Chaîne de Valeur", description: "Réduire les coûts, augmenter la valeur.", readTime: "21 min", publishedDate: "22 Février 2026", author: "Sunu Link" },
+      { id: "bf-7", title: "L'Expansion Internationale : Défis et Stratégies", description: "Conquérir de nouveaux marchés.", readTime: "26 min", publishedDate: "24 Février 2026", author: "Sunu Link" },
+      { id: "bf-8", title: "Fusions et Acquisitions : Les Fondamentaux", description: "Comprendre les opérations de haut de bilan.", readTime: "28 min", publishedDate: "26 Février 2026", author: "Sunu Link" },
+      { id: "bf-9", title: "Gestion des Risques en Entreprise", description: "Anticiper pour protéger ses actifs.", readTime: "23 min", publishedDate: "28 Février 2026", author: "Sunu Link" },
+      { id: "bf-10", title: "L'Économie Circulaire : Modèles Business Durables", description: "Innover pour la planète et le profit.", readTime: "22 min", publishedDate: "2 Mars 2026", author: "Sunu Link" }
     ]
   },
-  }; // Fermeture de l'objet blogCategoriesData
-
-const BlogDetailPage = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const category = slug ? blogCategoriesData[slug] : null;
-
-  // Scroll en haut au chargement
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-
-  if (!category) {
-    return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-6" />
-        <h1 className="text-3xl font-black mb-4 text-gray-800">Catégorie non trouvée</h1>
-        <Link to="/blog" className="inline-flex items-center gap-2 text-sunuOrange font-bold hover:underline transition-colors">
-          <ArrowLeft className="w-5 h-5" /> Retour au blog
-        </Link>
-      </div>
-    );
+  "data-analytics-business-intelligence": {
+    title: "Data, Analytics & Business Intelligence",
+    icon: BarChart3,
+    color: "from-cyan-500 to-blue-600",
+    description: "Exploiter la data pour piloter la performance et anticiper les tendances.",
+    articles: [
+      { id: "da-1", title: "La data : un levier de croissance", description: "Pourquoi la data est l'actif stratégique clé pour optimiser les décisions.", content: "Dans une économie numérique, la donnée est le nouveau pétrole. Mais sans raffinage (analyse), elle reste inutile. Nous aidons les entreprises à transformer des chiffres bruts en décisions stratégiques.", points: ["Collecte intelligente", "Nettoyage de données", "Visualisation (Dashboarding)"], readTime: "17 min", publishedDate: "5 Avril 2026", author: "Sunu Link Consulting", featured: true },
+      { id: "da-2", title: "Comment analyser les données clients", description: "Comprendre le comportement client pour maximiser la fidélisation.", readTime: "20 min", publishedDate: "7 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-3", title: "KPI essentiels en marketing", description: "Les indicateurs clés pour mesurer le ROI.", readTime: "18 min", publishedDate: "10 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-4", title: "Tableaux de bord : comment les créer", description: "Visualiser pour mieux décider.", readTime: "21 min", publishedDate: "13 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-5", title: "Power BI vs Google Data Studio : comparatif", description: "Choisir le bon outil de BI.", readTime: "19 min", publishedDate: "15 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-6", title: "L'importance de la data dans la communication", description: "Mesurer l'impact réel de vos campagnes.", readTime: "17 min", publishedDate: "18 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-7", title: "Collecte de données : règles et éthique", description: "Respecter la vie privée tout en restant performant.", readTime: "18 min", publishedDate: "21 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-8", title: "Prédiction et tendances grâce à la data", description: "Anticiper le marché grâce à l'analyse prédictive.", content: "L'analyse prédictive permet de passer d'un mode réactif à un mode proactif, en identifiant les futurs besoins des clients avant même qu'ils ne les expriment.", points: ["Modèles statistiques", "IA prédictive", "Saisonnalité"], readTime: "22 min", publishedDate: "24 Avril 2026", author: "Sunu Link Consulting", featured: true },
+      { id: "da-9", title: "Marketing basé sur la data (data-driven)", description: "Optimiser chaque action grâce aux données.", readTime: "20 min", publishedDate: "27 Avril 2026", author: "Sunu Link Consulting" },
+      { id: "da-10", title: "Business Intelligence pour PME", description: "Rendre la BI accessible aux petites structures.", readTime: "19 min", publishedDate: "30 Avril 2026", author: "Sunu Link Consulting" }
+    ]
+  },
+  "ia-communication-marketing": {
+    title: "Intelligence Artificielle & Marketing",
+    icon: Brain,
+    color: "from-indigo-700 to-purple-800",
+    description: "Intégrez l'IA dans vos processus pour décupler votre productivité.",
+    articles: [
+      { id: "ia-1", title: "L'IA générative : révolution pour les créatifs", description: "Comment l'IA transforme la création de contenu.", content: "L'IA n'est plus une option mais un collaborateur. De la génération d'images à la rédaction SEO, elle permet de scaler la production sans sacrifier la qualité.", points: ["Midjourney pour le design", "ChatGPT pour la stratégie", "Prompt Engineering"], readTime: "25 min", publishedDate: "5 Mai 2026", author: "Sunu Link Consulting", featured: true },
+      { id: "ia-2", title: "Automatiser son marketing avec l'IA", description: "Gagner du temps sur les tâches répétitives.", readTime: "20 min", publishedDate: "8 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-3", title: "Éthique et IA : les limites à ne pas franchir", description: "Maintenir l'authenticité à l'ère du synthétique.", readTime: "22 min", publishedDate: "12 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-4", title: "Personnalisation ultra-poussée grâce à l'IA", description: "Parler à chaque client de manière unique.", readTime: "18 min", publishedDate: "15 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-5", title: "L'avenir du Search : de Google à Perplexity", description: "Comprendre le nouveau paradigme de la recherche.", content: "L'IA change la façon dont les gens cherchent. Le SEO doit évoluer vers une optimisation pour les moteurs de réponse (AEO).", points: ["LLMs", "Citations de sources", "Contenu conversationnel"], readTime: "23 min", publishedDate: "18 Mai 2026", author: "Sunu Link Consulting", featured: true },
+      { id: "ia-6", title: "IA et Service Client : les nouveaux Chatbots", description: "Améliorer l'expérience utilisateur 24/7.", readTime: "19 min", publishedDate: "21 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-7", title: "Analyse de sentiment par IA", description: "Écouter ce que vos clients disent vraiment.", readTime: "17 min", publishedDate: "24 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-8", title: "Création de vidéo par IA : état de l'art", description: "Produire des vidéos de qualité en quelques clics.", readTime: "26 min", publishedDate: "27 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-9", title: "Former ses équipes à l'intelligence artificielle", description: "Réussir la transition technologique en interne.", readTime: "21 min", publishedDate: "30 Mai 2026", author: "Sunu Link Consulting" },
+      { id: "ia-10", title: "IA et Cybersécurité marketing", description: "Protéger ses données à l'ère des algorithmes.", readTime: "24 min", publishedDate: "2 Juin 2026", author: "Sunu Link Consulting" }
+    ]
   }
+};
 
-  const Icon = category.icon;
-  const featuredArticles = category.articles.filter((a) => a.featured);
-  const regularArticles = category.articles.filter((a) => !a.featured);
+export default function BlogDetailPage() {
+  const { categoryId } = useParams();
+  const category = blogCategoriesData[categoryId || ""] || blogCategoriesData["conseils-marketing"];
+  const featuredArticles = category.articles.filter(a => a.featured);
+  const otherArticles = category.articles.filter(a => !a.featured);
 
   return (
-    <div className="min-h-screen bg-white selection:bg-sunuOrange selection:text-white">
+    <div className="min-h-screen bg-white">
       <Header />
-      
-      <main className="pt-24 pb-20">
-        {/* --- Hero Section : Icône et Titre optimisés --- */}
-        <section className="py-12 px-6 bg-gradient-to-b from-slate-50 to-white border-b border-gray-100">
-          <div className="container mx-auto max-w-5xl">
-            <Link to="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-sunuOrange font-semibold mb-8 transition-colors group">
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retour au blog
-            </Link>
+      <main className="pt-24">
+        {/* Category Hero */}
+        <div className={`bg-gradient-to-r ${category.color} py-20 px-6 text-white text-center`}>
+          <div className="container mx-auto max-w-4xl">
+            <category.icon className="w-16 h-16 mx-auto mb-6 opacity-90" />
+            <h1 className="text-4xl md:text-5xl font-black mb-6">{category.title}</h1>
+            <p className="text-xl opacity-90 leading-relaxed">{category.description}</p>
+          </div>
+        </div>
 
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
-              {/* Icône réduite à w-16 h-16 (au lieu de w-24) */}
-              <div className={`bg-gradient-to-br ${category.color} w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                <Icon className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                {/* Titre réduit à text-3xl ou 4xl (au lieu de 6xl) */}
-                <h1 className="text-3xl md:text-4xl font-black mb-3 text-gray-900 leading-tight">
-                  {category.title}
-                </h1>
-                <p className="text-lg text-gray-500 max-w-2xl font-medium">{category.description}</p>
-              </div>
+        {/* Featured Content Expansion */}
+        <section className="py-20 px-6 bg-slate-50">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-3 mb-12">
+              <Sparkles className="text-sunuOrange w-6 h-6" />
+              <h2 className="text-3xl font-bold text-sunuBlue">Analyses d'Expertise</h2>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredArticles.map(article => (
+                <ArticleCard key={article.id} article={article} featured />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* --- Liste des Articles --- */}
-        <section className="py-12 px-6">
-          <div className="container mx-auto max-w-5xl">
-            {/* Articles "À la une" */}
-            {featuredArticles.length > 0 && (
-              <div className="mb-16">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-1 bg-sunuOrange rounded-full" />
-                  <h2 className="text-2xl font-black text-gray-800 tracking-tight">Expertises à la une</h2>
-                </div>
-                <div className="grid grid-cols-1 gap-8">
-                  {featuredArticles.map((article) => (
-                    <ArticleCard key={article.id} article={article} isFeatured={true} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Bibliothèque d'articles */}
-            {regularArticles.length > 0 && (
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-1 bg-sunuBlue rounded-full" />
-                  <h2 className="text-2xl font-black text-gray-800 tracking-tight">Toutes les analyses</h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {regularArticles.map((article) => (
-                    <ArticleCard key={article.id} article={article} />
-                  ))}
-                </div>
-              </div>
-            )}
+        {/* Full Article List */}
+        <section className="py-20 px-6">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-3xl font-bold text-sunuBlue mb-12">Tous les articles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherArticles.map(article => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* --- CTA Section : Newsletter (Fidèle à votre document) --- */}
-        <section className="py-16 px-6">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuOrange to-yellow-500 rounded-[2.5rem] p-10 md:p-16 text-white text-center shadow-2xl relative overflow-hidden">
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-black mb-6">
-                  Ne manquez aucun article
-                </h2>
-                <p className="text-lg mb-10 opacity-90 max-w-xl mx-auto font-medium">
-                  Abonnez-vous à notre newsletter et recevez nos analyses stratégiques directement dans votre boîte mail.
-                </p>
-                <form 
-                  onSubmit={(e) => e.preventDefault()}
-                  className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto bg-white/10 p-2 rounded-[2rem] backdrop-blur-md"
-                >
-                  <input
-                    type="email"
-                    placeholder="Votre email professionnel"
-                    className="flex-1 px-6 py-4 rounded-full text-gray-800 font-semibold focus:outline-none focus:ring-4 focus:ring-sunuBlue/30 bg-white"
-                  />
-                  <button className="bg-sunuBlue text-white px-8 py-4 rounded-full font-bold hover:bg-gray-900 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
-                    S'abonner <Sparkles className="w-4 h-4" />
-                  </button>
-                </form>
-              </div>
-              {/* Cercles de décoration */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full -mr-20 -mt-20"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-sunuBlue/20 blur-[80px] rounded-full -ml-20 -mb-20"></div>
+        {/* Footer Newsletter CTA */}
+        <section className="py-20 px-6 bg-sunuBlue text-white">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-bold mb-6">Prêt à transformer votre communication ?</h2>
+            <p className="text-xl mb-10 opacity-80">Rejoignez 5,000+ décideurs qui reçoivent nos analyses chaque semaine.</p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input type="email" placeholder="Votre email" className="px-6 py-4 rounded-full text-slate-900 flex-1 focus:ring-4 focus:ring-sunuOrange outline-none" />
+              <button className="bg-sunuOrange hover:bg-white hover:text-sunuOrange px-8 py-4 rounded-full font-bold transition-all shadow-xl">S'abonner</button>
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
-};
-
-export default BlogDetailPage;
+}
