@@ -176,19 +176,21 @@ const IAlinkbusiness = () => {
                 optimisez vos performances et libérez le plein potentiel de vos équipes grâce à l'Intelligence Artificielle.
               </p>
               
-              {/* DEUX BOUTONS CENTRÉS */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-10">
-            {/* PREMIER BOUTON : ORANGE -> BLEU */}
-            <Button asChild size="lg" className="bg-sunuOrange hover:bg-sunuBlue text-white px-10 py-8 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105 border-none h-auto">
-            <Link to="/contact">Démarrer mon projet IA</Link>
-            </Button>
+             {/* DEUX BOUTONS CENTRÉS ET AFFINÉS */}
+<div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+  {/* PREMIER BOUTON */}
+  <Button 
+    asChild 
+    className="bg-sunuOrange hover:bg-sunuBlue text-white px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]"
+  >
+    <Link to="/contact">Démarrer mon projet IA</Link>
+  </Button>
   
-            {/* DEUXIÈME BOUTON : BLEU -> JAUNE/ORANGE (Fond blanc au repos supprimé pour visibilité) */}
-            <Button 
-            asChild 
-            size="lg" 
-            className="bg-sunuBlue text-white hover:bg-sunuOrange px-10 py-8 rounded-full text-xl font-bold transition-all shadow-xl hover:scale-105 border-none h-auto"
-            >
+  {/* DEUXIÈME BOUTON */}
+  <Button 
+    asChild 
+    className="bg-sunuBlue text-white hover:bg-sunuOrange px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]"
+  >
     <Link to="/services">
       Découvrez nos solutions IA 360°
     </Link>
