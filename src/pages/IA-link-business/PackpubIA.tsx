@@ -12,8 +12,7 @@ const PackiaPubIA = () => {
       duration: "Durée minimale : 3 mois",
       price: "350 000 FCFA / mois",
       tagline: "PME & Startups",
-      description:
-        "Automatiser l’essentiel pour gagner du temps et structurer son activité. Objectif : efficacité immédiate.",
+      description: "Automatiser l’essentiel pour gagner du temps et structurer son activité.",
       icon: Sparkles,
       color: "from-blue-500 to-cyan-500",
       buttonColor: "bg-blue-500 hover:bg-blue-600",
@@ -23,33 +22,6 @@ const PackiaPubIA = () => {
         "Automatisation administrative",
         "Support client IA",
         "Tableaux de bord & reporting"
-      ],
-      detailedFeatures: [
-        "CRM automatisé (prospects & clients)",
-        "Email & SMS marketing automatisés",
-        "Segmentation et ciblage intelligent",
-        "15 workflows automatisés",
-        "Reporting marketing simplifié",
-        "Prospection intelligente IA",
-        "Scoring automatique des prospects",
-        "Suivi du pipeline de vente",
-        "Relances automatiques",
-        "Gestion documentaire automatisée",
-        "Facturation & relances automatiques",
-        "Planification intelligente & rappels",
-        "Suivi des plannings & congés",
-        "Onboarding digital basique",
-        "Chatbot IA basique",
-        "Suivi des demandes clients",
-        "Tableau de bord KPI essentiels",
-        "1 session de formation IA",
-        "Support technique 30 jours"
-      ],
-      benefits: [
-        "Gain de temps immédiat",
-        "Processus structurés",
-        "Moins de tâches manuelles",
-        "Meilleure organisation globale"
       ]
     },
     {
@@ -58,8 +30,7 @@ const PackiaPubIA = () => {
       duration: "Durée minimale : 6 mois",
       price: "750 000 FCFA / mois",
       tagline: "PME & Entreprises en croissance",
-      description:
-        "Automatiser plusieurs départements pour accélérer la croissance. Objectif : performance & rentabilité.",
+      description: "Automatiser plusieurs départements pour accélérer la croissance.",
       icon: Star,
       color: "from-orange-500 to-yellow-500",
       buttonColor: "bg-orange-500 hover:bg-orange-600",
@@ -70,41 +41,6 @@ const PackiaPubIA = () => {
         "RH & administration intelligentes",
         "Logistique & opérations",
         "BI & reporting avancé"
-      ],
-      detailedFeatures: [
-        "Email, SMS & social media automation",
-        "Campagnes sponsorisées automatisées",
-        "Segmentation prédictive",
-        "30 workflows automatisés",
-        "Reporting mensuel avancé",
-        "CRM IA avancé",
-        "Scoring prédictif",
-        "Prévision des ventes",
-        "Optimisation du pipeline commercial",
-        "Gestion documentaire complète",
-        "Facturation, paiements & relances",
-        "Planification avancée",
-        "Recrutement intelligent",
-        "Suivi performances & présence",
-        "Onboarding digital complet",
-        "Gestion des stocks automatisée",
-        "Planification des livraisons",
-        "Suivi des opérations",
-        "Chatbot IA avancé",
-        "Support multicanal",
-        "Enquêtes & feedback automatisés",
-        "Analyse de documents juridiques",
-        "Suivi réglementaire automatisé",
-        "Tableaux de bord interactifs",
-        "Analyse prédictive",
-        "Formation équipes",
-        "Support & suivi 6 mois"
-      ],
-      benefits: [
-        "Croissance accélérée",
-        "Meilleure rentabilité",
-        "Décisions basées sur la donnée",
-        "Automatisation multi-départements"
       ]
     },
     {
@@ -112,9 +48,8 @@ const PackiaPubIA = () => {
       name: "Pack IA 360° Domination",
       duration: "Durée : 12 mois",
       price: "1 350 000 FCFA / mois",
-      tagline: "Grandes entreprises & Leaders du marché",
-      description:
-        "Transformer totalement l’entreprise grâce à l’IA. Objectif : domination & leadership.",
+      tagline: "Grandes entreprises & Leaders",
+      description: "Transformer totalement l’entreprise grâce à l’IA.",
       icon: Crown,
       color: "from-purple-600 to-pink-600",
       buttonColor: "bg-purple-600 hover:bg-purple-700",
@@ -123,78 +58,39 @@ const PackiaPubIA = () => {
         "Marketing, ventes, RH, admin, production",
         "BI prédictive & direction stratégique",
         "Accompagnement annuel"
-      ],
-      detailedFeatures: [
-        "Automatisation marketing complète",
-        "Email, SMS, social media & sponsorisation",
-        "Contenus premium & plan marketing IA",
-        "Analyse prédictive des performances",
-        "CRM IA avancé",
-        "Prospection automatique",
-        "Workflows complets de vente",
-        "Prévisions commerciales avancées",
-        "Gestion documentaire totale",
-        "Facturation & processus automatisés",
-        "Organisation intelligente",
-        "Recrutement IA",
-        "Analyse engagement collaborateurs",
-        "Gestion RH complète",
-        "Gestion intelligente des stocks",
-        "Optimisation des livraisons",
-        "Suivi en temps réel",
-        "Maintenance prédictive",
-        "Optimisation des processus industriels",
-        "Reporting industriel",
-        "Chatbot IA 24/7",
-        "Support client intelligent",
-        "Fidélisation automatisée",
-        "Gestion contrats automatisée",
-        "Analyse documents légaux",
-        "Suivi conformité complet",
-        "Tableaux de bord exécutifs",
-        "KPI avancés",
-        "Reporting prédictif stratégique",
-        "Audit IA 360°",
-        "Formation complète des équipes",
-        "Direction IA annuelle",
-        "Accompagnement stratégique continu"
-      ],
-      benefits: [
-        "Transformation totale de l’entreprise",
-        "Leadership sur le marché",
-        "Décisions stratégiques prédictives",
-        "Avantage concurrentiel durable"
       ]
     }
   ];
 
   return (
     <div className="min-h-screen bg-white mt-8">
+      {/* 1. HEADER */}
+      <Header />
+
       <main className="pt-0 pb-20">
-        {/* Hero Section */}
-        <div className="container mx-auto max-w-7xl text-center">
-          <p className="text-2xl md:text-4xl font-bold mb-8" data-aos="fade-up" data-aos-delay="100">
+        {/* 2. HERO / TITRE */}
+        <div className="container mx-auto max-w-7xl text-center py-10">
+          <p className="text-2xl md:text-4xl font-bold mb-8" data-aos="fade-up">
             Choisissez le pack adapté<span className="text-sunuOrange"> à votre niveau de croissance</span>
           </p>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl" data-aos="fade-up" data-aos-delay="200">
+          <div className="max-w-4xl mx-auto space-y-6 text-lg" data-aos="fade-up" data-aos-delay="100">
             <p className="leading-relaxed">
-              Trois offres claires, progressives et complètes, conçues pour répondre aux besoins réels <br /> des entreprises au Sénégal et en Afrique.
+              Trois offres claires, progressives et complètes.
             </p>
           </div>
         </div>
 
-        {/* Packs Section */}
-        <section className="py-20 px-6 bg-white">
+        {/* 3. GRILLE DES PACKS (Dernière section avant le Footer) */}
+        <section className="py-10 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {packsIA.map((packia, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
+                  className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
                     packia.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
-                  } hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)]`}
+                  }`}
                   data-aos="fade-up"
-                  data-aos-delay={index * 100}
                 >
                   {packia.recommended && (
                     <div className="absolute top-0 right-0 bg-sunuOrange text-white px-6 py-2 font-bold text-sm rounded-bl-2xl">
@@ -202,38 +98,32 @@ const PackiaPubIA = () => {
                     </div>
                   )}
 
-                  <div className={`grain-texture bg-gradient-to-br ${packia.color} text-white p-8`}>
-                    <div className="flex items-center justify-center mb-6">
+                  <div className={`grain-texture bg-gradient-to-br ${packia.color} text-white p-8 text-center`}>
+                    <div className="flex justify-center mb-6">
                       <div className="bg-white/20 backdrop-blur-sm w-20 h-20 rounded-2xl flex items-center justify-center">
                         <packia.icon className="w-10 h-10 text-white" />
                       </div>
                     </div>
-                    <h2 className="text-3xl font-black text-center mb-2">{packia.name}</h2>
-                    <p className="text-center text-lg font-semibold mb-4 opacity-90">{packia.duration}</p>
-                    <div className="text-center mb-6">
-                      <p className="text-4xl font-black">{packia.price}</p>
-                    </div>
-                    <p className="text-center text-lg font-bold mb-6 italic">{packia.tagline}</p>
+                    <h2 className="text-3xl font-black mb-2">{packia.name}</h2>
+                    <p className="text-4xl font-black mb-4">{packia.price}</p>
+                    <p className="font-bold italic">{packia.tagline}</p>
                   </div>
 
                   <div className="bg-white p-8">
-                    <p className="text-gray-700 mb-6 leading-relaxed">{packia.description}</p>
+                    <p className="text-gray-700 mb-6">{packia.description}</p>
                     <div className="space-y-3 mb-8">
                       {packia.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start space-x-3">
                           <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-700 text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
 
-                    <Button className={`w-full ${packia.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
+                    <Button className={`w-full ${packia.buttonColor} text-white font-bold py-6 text-lg rounded-xl`}>
                       Je valide
                     </Button>
-                    <Link
-                      to={`/pack-pub-ia/${packia.slug}`}
-                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold transition-colors"
-                    >
+                    <Link to={`/pack-pub-ia/${packia.slug}`} className="block text-center mt-4 text-sunuBlue font-semibold">
                       En savoir plus →
                     </Link>
                   </div>
@@ -244,6 +134,7 @@ const PackiaPubIA = () => {
         </section>
       </main>
 
+      {/* 4. FOOTER (Unique section de contact finale) */}
       <Footer />
     </div>
   );
