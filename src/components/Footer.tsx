@@ -188,7 +188,7 @@ const Contact = () => {
       <div className="py-8 border-t border-gray-200 bg-white">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-500 font-medium">
-            &copy; {new Date().getFullYear()} <span className="text-sunuBlue font-bold">SUNU LINK</span> <span className="text-sunuOrange font-bold">CONSULTING</span>. Tous droits réservés.
+            &copy; {new Date().getFullYear()} <span className="text-sunuBlue font-bold">SUNULINK</span> <span className="text-sunuOrange font-bold">CONSULTING</span>. Tous droits réservés.
           </p>
         </div>
       </div>
