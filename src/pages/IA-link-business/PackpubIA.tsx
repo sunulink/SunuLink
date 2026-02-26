@@ -10,7 +10,7 @@ const packsIA = [
     slug: "Pack-de-Démarrage-IA",
     name: "Pack de Démarrage IA",
     duration: "Durée minimale : 3 mois",
-    price: "450 000 FCFA / mois",
+    price: "350 000 FCFA / mois",
     tagline: "PME & Startups",
     description:
       "Automatiser l’essentiel pour gagner du temps et structurer son activité. Objectif : efficacité immédiate.",
@@ -57,7 +57,7 @@ const packsIA = [
     slug: "Pack-Performance-IA",
     name: "Pack Performance IA",
     duration: "Durée minimale : 6 mois",
-    price: "850 000 FCFA / mois",
+    price: "750 000 FCFA / mois",
     tagline: "PME & Entreprises en croissance",
     description:
       "Automatiser plusieurs départements pour accélérer la croissance. Objectif : performance & rentabilité.",
@@ -113,7 +113,7 @@ const packsIA = [
     slug: "Pack-IA-360-Domination",
     name: "Pack IA 360° Domination",
     duration: "Durée : 12 mois",
-    price: "1 499 000 FCFA / mois",
+    price: "1 350 000 FCFA / mois",
     tagline: "Grandes entreprises & Leaders du marché",
     description:
       "Transformer totalement l’entreprise grâce à l’IA. Objectif : domination & leadership.",
