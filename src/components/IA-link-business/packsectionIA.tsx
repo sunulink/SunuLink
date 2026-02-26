@@ -61,7 +61,7 @@ export const PacksSectionIA = () => {
         {/* En-tête de section */}
         <div className="text-center mb-8 md:mb-12 px-2" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-800 mb-3 md:mb-4">
-            IA LINK <span className="text-sunuOrange">BUSINESS</span>
+            LINK IA <span className="text-sunuOrange">BUSINESS</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-2 font-bold">
             Votre visibilité. Notre puissance
