@@ -63,69 +63,53 @@ const PackiaPubIA = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white mt-8">
-      {/* 1. HEADER */}
+    <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pt-0 pb-20">
-        {/* 2. HERO / TITRE */}
-        <div className="container mx-auto max-w-7xl text-center py-10">
-          <p className="text-2xl md:text-4xl font-bold mb-8" data-aos="fade-up">
-            Choisissez le pack adapté<span className="text-sunuOrange"> à votre niveau de croissance</span>
+      <main className="pt-20 pb-10">
+        {/* HERO TITRE */}
+        <div className="container mx-auto max-w-7xl text-center px-6">
+          <h1 className="text-3xl md:text-5xl font-black mb-6">
+            Choisissez le pack adapté <span className="text-sunuOrange">à votre croissance</span>
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-16">
+            Trois offres claires, progressives et complètes pour transformer votre entreprise.
           </p>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg" data-aos="fade-up" data-aos-delay="100">
-            <p className="leading-relaxed">
-              Trois offres claires, progressives et complètes.
-            </p>
-          </div>
         </div>
 
-        {/* 3. GRILLE DES PACKS (Dernière section avant le Footer) */}
-        <section className="py-10 px-6 bg-white">
+        {/* GRILLE DES PACKS */}
+        <section className="px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {packsIA.map((packia, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
-                    packia.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
+                  className={`group relative rounded-3xl shadow-xl transition-all border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
+                    packia.recommended ? "lg:-translate-y-4" : ""
                   }`}
-                  data-aos="fade-up"
                 >
-                  {packia.recommended && (
-                    <div className="absolute top-0 right-0 bg-sunuOrange text-white px-6 py-2 font-bold text-sm rounded-bl-2xl">
-                      ⭐ Recommandé
-                    </div>
-                  )}
-
                   <div className={`grain-texture bg-gradient-to-br ${packia.color} text-white p-8 text-center`}>
-                    <div className="flex justify-center mb-6">
-                      <div className="bg-white/20 backdrop-blur-sm w-20 h-20 rounded-2xl flex items-center justify-center">
-                        <packia.icon className="w-10 h-10 text-white" />
-                      </div>
+                    <div className="flex justify-center mb-4">
+                      <packia.icon className="w-12 h-12" />
                     </div>
-                    <h2 className="text-3xl font-black mb-2">{packia.name}</h2>
-                    <p className="text-4xl font-black mb-4">{packia.price}</p>
-                    <p className="font-bold italic">{packia.tagline}</p>
+                    <h2 className="text-2xl font-black mb-2">{packia.name}</h2>
+                    <p className="text-3xl font-black mb-2">{packia.price}</p>
+                    <p className="text-sm opacity-90 italic">{packia.tagline}</p>
                   </div>
 
                   <div className="bg-white p-8">
-                    <p className="text-gray-700 mb-6">{packia.description}</p>
-                    <div className="space-y-3 mb-8">
+                    <div className="space-y-4 mb-8">
                       {packia.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start space-x-3">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
+                          <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-700 text-sm font-medium">{feature}</span>
                         </div>
                       ))}
                     </div>
 
-                    <Button className={`w-full ${packia.buttonColor} text-white font-bold py-6 text-lg rounded-xl`}>
-                      Je valide
+                    <Button asChild className={`w-full ${packia.buttonColor} text-white font-bold py-6 rounded-xl`}>
+                      <Link to="/contact">Choisir ce pack</Link>
                     </Button>
-                    <Link to={`/pack-pub-ia/${packia.slug}`} className="block text-center mt-4 text-sunuBlue font-semibold">
-                      En savoir plus →
-                    </Link>
                   </div>
                 </div>
               ))}
@@ -134,7 +118,7 @@ const PackiaPubIA = () => {
         </section>
       </main>
 
-      {/* 4. FOOTER (Unique section de contact finale) */}
+      {/* FOOTER : Il contient déjà tout le formulaire de contact visible sur vos images */}
       <Footer />
     </div>
   );
