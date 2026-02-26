@@ -6,7 +6,7 @@ import ProjectsSection from "@/components/home/ProjectsSection";
 import PacksSection from "@/components/home/PacksSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import PartnersSection from "@/components/home/PartnersSection";
-import ContactSection from "@/components/home/ContactSection";
+// On supprime l'import de ContactSection ici
 import "../components/Hero_2.css";
 import PacksSectionIA from "@/components/IA-link-business/packsectionIA";
 
@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <div className="min-h-screen">
+      <main>
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />
@@ -22,9 +22,9 @@ const Home = () => {
         <PacksSectionIA />
         <TestimonialsSection />
         <PartnersSection />
-        <ContactSection />
-        <Footer />
-      </div>
+        {/* On a retiré <ContactSection /> ici car le Footer s'en occupe */}
+      </main>
+      <Footer />
     </div>
   );
 };
