@@ -78,7 +78,7 @@ export const blogCategoriesData: any = {
       { 
         id: "cm-1", 
         title: "Arrêtez de courir après les 'Likes' : Mesurez ce qui compte vraiment", 
-        description: "ARTICLE"
+        description: "ARTICLE",
         publishedDate: "12 Fév 2026", 
         readTime: "6 min", 
         featured: true,
