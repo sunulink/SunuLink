@@ -7,171 +7,181 @@ export const communication360Guide = {
   readTime: "45 min",
   author: "SUNULINK CONSULTING",
 
-  // Voici les 6 Articles (Sections) structurés pour vos cartes dépliantes
   articles: [
     {
       id: "art-1",
-      title: "1. FONDAMENTAUX & STRATÉGIE INTÉGRÉE",
-      desc: "Comprendre pourquoi le 360° est le standard absolu en 2025.",
-      readTime: "8 min",
-      intro: "La communication 360° n'est pas une option, c'est une architecture. Elle transforme la visibilité éparpillée en une force de frappe cohérente qui génère confiance et conversion.",
+      title: "1. FONDAMENTAUX, PRINCIPES ET BÉNÉFICES",
+      desc: "Pourquoi la communication 360° est le moteur de la performance moderne.",
+      readTime: "10 min",
+      intro: "La communication 360° est une approche intégrée qui orchestre tous les points de contact entre une marque et ses publics. C’est la stratégie qui transforme la visibilité en confiance, l’attention en engagement, et l’engagement en conversion.",
       sections: [
         {
           title: "DÉFINITION ET PRINCIPES CLÉS",
           points: [
-            "Combinaison de stratégie offline (presse, événementiel) et online (SEO, Social, Ads).",
-            "Cohérence absolue : un seul ton, une seule signature visuelle sur tous les supports.",
-            "Orientation Data : chaque action est pilotée par les résultats et l'expérience utilisateur.",
-            "Agilité : une capacité d'optimisation continue selon les retours du marché."
+            "Combinaison stratégique : Alliance du offline (événementiel, RP, PLV) et du online (SEO, Ads, Social, Automation).",
+            "Cohérence du message : Unicité du ton, de la signature visuelle et de la promesse de marque.",
+            "Centralisation du pilotage : Un plan directeur unique pour éviter la dispersion.",
+            "Orientation résultats : Utilisation intensive des KPIs et des tests itératifs.",
+            "Expérience utilisateur (UX) : Focalisation sur le parcours client global."
           ]
         },
         {
-          title: "LES BÉNÉFICES CONCRETS",
+          title: "LES BÉNÉFICES CONCRETS POUR L'ENTREPRISE",
           points: [
-            "Visibilité démultipliée par la répétition intelligente du message.",
-            "Suppression des contradictions publicitaires qui perdent le client.",
-            "ROI mesurable grâce à un suivi précis du parcours client (CAC, LTV).",
-            "Réputation protégée par un monitoring constant."
+            "Visibilité accrue et reconnaissance de marque immédiate.",
+            "Message uniforme évitant toute contradiction devant le client.",
+            "Optimisation de la génération de leads et des taux de conversion.",
+            "Maîtrise totale de la réputation et de l'e-réputation.",
+            "ROI mesurable : Calcul précis du CAC (Coût d'Acquisition) et de la LTV (Lifetime Value)."
           ]
         }
       ],
-      conclusion: "Le 360° permet de passer d'une communication réactive à une présence proactive et dominante."
+      conclusion: "Adopter ces fondamentaux, c'est garantir que chaque franc investi contribue à la force globale de la marque."
     },
     {
       id: "art-2",
-      title: "2. LES 12 PILIERS DE L'ÉCOSYSTÈME",
-      desc: "L'inventaire complet des leviers à activer pour une présence totale.",
+      title: "2. LES 12 PILIERS ET L'ÉQUIPE EXPERTE",
+      desc: "L'architecture technique et humaine pour une présence totale.",
       readTime: "12 min",
-      intro: "Pour qu'une marque soit forte, elle doit reposer sur des piliers solides. Voici la vue synthétique de ce que SUNULINK CONSULTING déploie pour ses partenaires.",
+      intro: "Une stratégie 360° repose sur 12 leviers interdépendants et une équipe pluridisciplinaire capable de les activer avec précision.",
       sections: [
         {
-          title: "LES FONDATIONS VISUELLES ET ÉDITORIALES",
+          title: "LES 12 PILIERS DE L'ÉCOSYSTÈME",
           points: [
-            "Stratégie & Positionnement : Définir la promesse unique.",
-            "Identité Visuelle : Charte graphique, typographies et codes couleurs.",
-            "Content Marketing : Production de textes, vidéos et visuels premium.",
-            "Gouvernance & Process : Rôles, planning et budgets maîtrisés."
+            "Stratégie & Positionnement : Valeurs et promesses cibles.",
+            "Identité visuelle : Logo et charte graphique.",
+            "Content Marketing : Vidéos, articles et assets long/short format.",
+            "SEO & Site Web : Technique et expérience mobile optimisée.",
+            "Publicité payante : Social Ads, Search et Retargeting.",
+            "Relations Presse & Influence : RP traditionnelles et digitales.",
+            "Emailing & Automation : Séquences de nurturing et scoring.",
+            "Gouvernance : Rôles, planning, budget et process."
           ]
         },
         {
-          title: "L'ACTIVATION DIGITALE ET RELATIONNELLE",
+          title: "STRUCTURE D'ÉQUIPE RECOMMANDÉE",
           points: [
-            "Réseaux Sociaux : Stratégie par plateforme et Community Management.",
-            "SEO & Site Web : Expérience utilisateur fluide et référencement naturel.",
-            "Publicité Payante (Ads) : Search, Social Ads et Retargeting puissant.",
-            "Emailing & Automation : Nurturing des prospects pour maximiser les ventes."
+            "Directeur de la communication / Chef de projet (Pilotage central).",
+            "Responsable contenu & Designer (Production créative).",
+            "Social Media Manager & Paid Media Specialist (Diffusion).",
+            "SEO & Web Analyst (Optimisation technique).",
+            "Data Analyst (Mesure et reporting)."
           ]
         }
       ],
-      conclusion: "Chaque pilier renforce les autres pour créer un effet de synergie imbattable."
+      conclusion: "La synergie entre ces piliers et ces experts crée une barrière à l'entrée insurmontable pour vos concurrents."
     },
     {
       id: "art-3",
-      title: "3. MÉTHODOLOGIE : DE L'AUDIT AU SCALING",
-      desc: "Le processus opérationnel pas-à-pas pour garantir le succès.",
-      readTime: "10 min",
-      intro: "Une stratégie sans exécution n'est qu'une hallucination. Notre méthodologie rigoureuse garantit que chaque franc investi produit un résultat.",
+      title: "3. MÉTHODOLOGIE OPÉRATIONNELLE (ÉTAPES 0 À 6)",
+      desc: "Le processus rigoureux de Sunu Link Consulting pour déployer votre stratégie.",
+      readTime: "15 min",
+      intro: "Le succès ne doit rien au hasard. Notre méthodologie en 7 étapes garantit une transition fluide du diagnostic vers la performance.",
       sections: [
         {
-          title: "DIAGNOSTIC ET PLAN DIRECTEUR",
+          title: "PHASE DE DIAGNOSTIC ET STRATÉGIE",
           points: [
-            "Audit Complet : Analyse de marque, digitale, sociale et concurrentielle.",
-            "Plan Stratégique 12 mois : Calendrier tactique et choix des canaux prioritaires.",
-            "Brief & Validation : Définition des objectifs SMART (ex: +30% de trafic qualifié)."
+            "Étape 0 (Brief) : Définition des objectifs SMART et des personas.",
+            "Étape 1 (Audit) : Analyse 360° (Digital, Social, Offline) et Benchmark.",
+            "Étape 2 (Plan Directeur) : Proposition de valeur unique et calendrier tactique sur 12 mois."
           ]
         },
         {
-          title: "CRÉATION ET ACTIVATION",
+          title: "PHASE D'EXÉCUTION ET OPTIMISATION",
           points: [
-            "Production d'Assets : Kit créatif, vidéos, landing pages et articles.",
-            "Lancement Multi-canal : Coordination du kickoff sur tous les supports.",
-            "Mesure & Optimisation : Tracking via pixels, UTM et dashboards interactifs."
+            "Étape 3 (Création) : Production du kit créatif et de la banque d'assets.",
+            "Étape 4 (Activation) : Lancement multi-canal coordonné et campagnes Ads.",
+            "Étape 5 (Mesure) : Tracking complet (UTM, Pixels) et Dashboard KPI.",
+            "Étape 6 (Pérennisation) : Formation interne et Roadmap d'innovation (IA)."
           ]
         }
       ],
-      conclusion: "La rigueur du process est la clé de la répétitivité du succès."
+      conclusion: "Chaque étape produit des livrables concrets (Audit, Plan média, Kit créatif) indispensables au pilotage."
     },
     {
       id: "art-4",
-      title: "4. ÉQUIPE, BUDGET ET OUTILS (LA STACK)",
-      desc: "Comment structurer vos ressources pour piloter la performance.",
-      readTime: "7 min",
-      intro: "La communication 360° demande des compétences variées. Voici comment SUNULINK CONSULTING recommande d'organiser votre force de frappe.",
+      title: "4. OUTILS, PLANNING ET BUDGETS",
+      desc: "La boîte à outils et les prévisions financières pour votre croissance.",
+      readTime: "10 min",
+      intro: "Maîtriser une stratégie 360° demande une stack technologique moderne et une planification budgétaire réaliste.",
       sections: [
         {
-          title: "L'ÉQUIPE ET LA STACK TECHNOLOGIQUE",
+          title: "LA STACK LOGICIELLE INDISPENSABLE",
           points: [
-            "Rôles Clés : Chef de projet, Designer, Media Buyer, SEO Specialist et Data Analyst.",
-            "Gestion & Création : Utilisation de ClickUp, Figma, Adobe Suite et Canva Pro.",
-            "Analyse & Data : Google Analytics 4, Looker Studio et Semrush pour le SEO."
+            "Gestion de projet : Trello, Asana ou ClickUp.",
+            "Création & Vidéo : Adobe Suite, Figma, CapCut.",
+            "Analytics & SEO : GA4, Semrush, Looker Studio.",
+            "Email & CRM : HubSpot, ActiveCampaign, Mailchimp.",
+            "E-réputation : Brand24, Mention."
           ]
         },
         {
-          title: "LE MODÈLE BUDGÉTAIRE SIMPLIFIÉ",
+          title: "EXEMPLE DE PLANNING ET BUDGET (3 MOIS)",
           points: [
-            "Phase Stratégie (One-time) : Audit et kit créatif initial.",
-            "Production Mensuelle : Contenu récurrent et Community Management.",
-            "Budget Média : Investissements Ads pour booster la portée.",
-            "Outils : Abonnements logiciels essentiels au pilotage."
+            "Mois 0 (Préparation) : Audit, stratégie et production initiale.",
+            "Mois 1 (Lancement) : Kickoff site, SEO et campagne Awareness.",
+            "Mois 2 & 3 (Optimisation/Scaling) : Tests A/B, Automation et augmentation des budgets performants.",
+            "Budget : Modèle incluant le setup, la production mensuelle et l'achat média."
           ]
         }
       ],
-      conclusion: "Investir dans les bons outils et les bonnes personnes transforme une dépense en investissement rentable."
+      conclusion: "Une visibilité sur 12 mois avec des outils de monitoring permet d'ajuster le budget en fonction de la performance réelle."
     },
     {
       id: "art-5",
-      title: "5. PILOTAGE PAR LA DATA ET LES KPI",
-      desc: "Mesurer l'impact réel et optimiser le ROI de vos campagnes.",
-      readTime: "5 min",
-      intro: "Ce qui ne se mesure pas ne s'améliore pas. Nous nous concentrons sur les indicateurs qui font réellement progresser votre business.",
+      title: "5. KPI, DASHBOARD ET GESTION DE CRISE",
+      desc: "Comment mesurer l'impact et protéger votre image de marque.",
+      readTime: "8 min",
+      intro: "Une communication 360° sans mesure est une dépense. Avec des KPI clairs, elle devient un investissement stratégique.",
       sections: [
         {
-          title: "LES INDICATEURS DE PERFORMANCE PRIORITAIRES",
+          title: "LES 5 FAMILLES DE KPI MAÎTRES",
           points: [
-            "Notoriété : Impressions, reach et trafic organique vers le site.",
-            "Acquisition & Conversion : Nombre de leads par mois et coût par lead (CPL).",
-            "Fidélisation : Taux d'ouverture email, NPS et rétention client.",
-            "Rentabilité : ROAS (Retour sur investissement publicitaire) et CPA."
+            "Notoriété : Impressions, reach, trafic organique.",
+            "Engagement : Taux d'interaction, vues vidéos, CTR.",
+            "Acquisition : Leads par mois et Coût par Lead (CPL).",
+            "Conversion : Taux de transformation landing page et ventes.",
+            "ROI : ROAS (Retour sur dépenses publicitaires) et CPA."
           ]
         },
         {
-          title: "DASHBOARD ET GESTION DE CRISE",
+          title: "GESTION DE CRISE ET E-RÉPUTATION",
           points: [
-            "Tableau de Bord Interactif : Widgets de mesure en temps réel.",
-            "E-Réputation : Monitoring permanent pour anticiper les crises.",
-            "Procédure de Réponse : Script et comité de crise prêt à intervenir."
+            "Monitoring permanent pour détecter les signaux faibles.",
+            "Constitution d'un comité de crise et nomination d'un porte-parole.",
+            "Process de réponse : Transparence, factualité et réassurance.",
+            "Analyse post-crise pour ajuster les procédures."
           ]
         }
       ],
-      conclusion: "La data permet de prendre des décisions basées sur des faits, pas sur des intuitions."
+      conclusion: "Le dashboard interactif est votre boussole pour naviguer sereinement sur tous vos canaux."
     },
     {
       id: "art-6",
-      title: "6. CHECKLISTS ET BONNES PRATIQUES",
-      desc: "Le guide actionnable pour ne rien oublier lors de vos lancements.",
-      readTime: "3 min",
-      intro: "Pour finir, voici les réflexes d'experts à adopter pour maintenir un niveau d'excellence constant dans votre communication.",
+      title: "6. CHECKLISTS, TEMPLATES ET BONNES PRATIQUES",
+      desc: "Le guide d'action immédiate pour vos équipes opérationnelles.",
+      readTime: "5 min",
+      intro: "L'excellence réside dans l'exécution quotidienne. Voici nos outils prêts à l'emploi et nos conseils d'experts.",
       sections: [
         {
-          title: "CHECKLIST DE LANCEMENT DE CAMPAGNE",
+          title: "CHECKLISTS PRATIQUES (LANCEMENT & CONTENU)",
           points: [
-            "Objectif SMART et Persona validés.",
-            "Assets créatifs finalisés au bon format.",
-            "Landing Page opérationnelle avec tracking (Pixels/UTM) paramétré.",
-            "Plan de diffusion et budget validés par la direction."
+            "Campagne : Objectif SMART, Persona, Tracking UTM et Dashboard prêts.",
+            "Contenu : Hook fort, message unique, CTA clair et format adapté.",
+            "Livrables : Rapports d'audit, chartes et banques d'assets validés."
           ]
         },
         {
           title: "LES CONSEILS D'EXPERTS SUNULINK",
           points: [
-            "Priorisez la qualité et la répétition plutôt que la quantité.",
-            "Concentrez-vous sur 2 ou 3 canaux prioritaires au démarrage.",
-            "Documentez tout : les procédures accélèrent la montée en charge.",
-            "Testez souvent (A/B testing) pour découvrir ce qui résonne avec votre audience."
+            "Priorisez la qualité sur la quantité : la répétition d'un message fort vaut mieux que mille messages faibles.",
+            "Mesurez tout : chaque actif doit avoir un objectif chiffré.",
+            "Testez et itérez : utilisez les tests A/B pour découvrir ce qui fait vibrer votre audience.",
+            "Documentez vos succès : créez vos propres playbooks pour gagner en agilité."
           ]
         }
       ],
-      conclusion: "L'excellence réside dans les détails et la constance de l'exécution."
+      conclusion: "La communication 360° est une promesse de cohérence et d'impact durable signée Sunu Link Consulting."
     }
   ]
 };
