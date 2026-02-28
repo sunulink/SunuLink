@@ -149,10 +149,135 @@ export const blogCategoriesData: any = {
     icon: Palette,
     color: "from-pink-500 to-rose-500",
     title: "Branding & Identité Visuelle",
-    description: "Incarner vos valeurs à travers chaque pixel.",
+    description: "Incarner vos valeurs à travers chaque pixel pour bâtir une icône.",
     articles: [
-      { id: "bi-1", title: "Le 'Rebranding' ne sauvera pas un mauvais produit", description: "Une réflexion sur le rôle profond de la marque. Changer de logo n'est que la surface de notre travail.", publishedDate: "18 Jan 2026", readTime: "10 min", featured: true },
-      { id: "bi-2", title: "L'impact psychologique des typographies", description: "Comment le choix d'une police peut modifier la perception de votre prix par vos clients.", publishedDate: "10 Jan 2026", readTime: "6 min" }
+      {
+        id: "bi-5",
+        title: "Les erreurs fréquentes dans la création de Logo",
+        intro: "Un logo n'est pas qu'un dessin, c'est un actif stratégique. Une seule erreur de conception peut coûter des années de crédibilité.",
+        publishedDate: "20 Fév 2026",
+        readTime: "8 min",
+        featured: true,
+        content: [
+          {
+            subtitle: "Top 5 des erreurs de design",
+            type: "grid",
+            items: [
+              { label: "Complexité", text: "Trop de détails rendent le logo illisible sur mobile ou en petite taille." },
+              { label: "Mimétisme", text: "Ressembler à la concurrence, c'est devenir invisible et risquer le juridique." },
+              { label: "Typographie", text: "Une police générique ou illisible tue l'autorité de la marque." },
+              { label: "Couleurs", text: "Un manque de contraste rend la marque inaccessible sur certains supports." },
+              { label: "Rigidité", text: "Un logo qui ne fonctionne pas en noir et blanc n'est pas un bon logo." }
+            ]
+          },
+          {
+            type: "impact-box",
+            text: "Le conseil SUNULINK : Testez toujours votre logo en format 'favicon' (16x16px). S'il est reconnaissable là, il le sera partout."
+          }
+        ],
+        conclusion: "La simplicité est la sophistication suprême. Visez l'intemporel, pas la tendance."
+      },
+      {
+        id: "bi-6",
+        title: "Personal Branding vs Corporate Branding",
+        intro: "En 2026, les gens achètent à des gens, pas à des logos anonymes. Faut-il mettre en avant le dirigeant ou l'institution ?",
+        publishedDate: "18 Fév 2026",
+        readTime: "10 min",
+        content: [
+          {
+            type: "comparison",
+            headers: ["Aspect", "Branding Corporate", "Branding Personnel"],
+            rows: [
+              ["Objectif", "Réputation de l'entreprise", "Autorité de l'individu"],
+              ["Audience", "Marché global / Investisseurs", "Communauté / Pairs"],
+              ["Ton", "Institutionnel et uniforme", "Authentique et flexible"],
+              ["Atout", "Pérennité et structure", "Confiance et proximité"]
+            ]
+          },
+          {
+            type: "impact-box",
+            text: "L'Analyse du Cabinet : Le Personal Branding du dirigeant humanise la marque Corporate. C'est le duo gagnant pour briser la glace avec des clients B2B."
+          }
+        ],
+        conclusion: "Ne choisissez pas : alignez-les. Votre visage est votre meilleure introduction, votre entreprise est votre meilleure solution."
+      },
+      {
+        id: "bi-7",
+        title: "Pourquoi la cohérence visuelle crée la confiance",
+        intro: "L'incohérence est le premier tueur de ventes. Une marque qui change de visage à chaque post semble instable.",
+        publishedDate: "15 Fév 2026",
+        readTime: "7 min",
+        content: [
+          {
+            subtitle: "Les 3 piliers de la stabilité",
+            type: "steps",
+            items: [
+              "La Palette : Utilisez vos couleurs signatures sur 100% de vos supports.",
+              "La Typographie : Limitez-vous à 2 polices maximum pour une lecture fluide.",
+              "L'Iconographie : Gardez le même style de photos (filtres, angles) pour être reconnu sans voir le logo."
+            ]
+          }
+        ],
+        conclusion: "La répétition crée la reconnaissance. La reconnaissance crée la confiance."
+      },
+      {
+        id: "bi-8",
+        title: "Comment réussir un Rebranding (Guide Complet)",
+        intro: "Changer d'identité est une opération à cœur ouvert. Voici comment moderniser votre image sans perdre votre âme.",
+        publishedDate: "10 Fév 2026",
+        readTime: "12 min",
+        content: [
+          {
+            subtitle: "La Méthodologie Sunu Link",
+            type: "steps",
+            items: [
+              "Audit de perception : Que pensent vos clients actuels ?",
+              "Définition des nouveaux KPIs : Pourquoi change-t-on ?",
+              "Création de la Charte 2.0 : Plus qu'un logo, un univers.",
+              "Plan de bascule : Synchronisez le changement sur tous vos canaux le Jour J."
+            ]
+          }
+        ],
+        conclusion: "Un rebranding réussi ne se contente pas de changer de décor, il change la trajectoire de l'entreprise."
+      },
+      {
+        id: "bi-9",
+        title: "Le pouvoir des symboles en communication",
+        intro: "Une image vaut mille mots, mais un symbole bien choisi vaut un marché entier. Apprenez à communiquer sans parler.",
+        publishedDate: "05 Fév 2026",
+        readTime: "6 min",
+        content: [
+          {
+            type: "comparison",
+            headers: ["Type", "Exemple", "Effet"],
+            rows: [
+              ["Abstrait", "Nike Swoosh", "Dynamisme et mouvement"],
+              ["Culturel", "Motifs Wax", "Appartenance et racines"],
+              ["Minimaliste", "Apple", "Luxe et simplicité"]
+            ]
+          }
+        ],
+        conclusion: "Votre symbole doit être le résumé visuel de votre promesse."
+      },
+      {
+        id: "bi-10",
+        title: "Branding Sensoriel : Émotions & Expérience",
+        intro: "Le branding ne s'arrête pas à la vue. Comment l'odeur, le toucher et le son peuvent fidéliser vos clients à vie.",
+        publishedDate: "01 Fév 2026",
+        readTime: "9 min",
+        content: [
+          {
+            subtitle: "Exploitez les 5 sens",
+            type: "grid",
+            items: [
+              { label: "Ouïe", text: "Un jingle audio ou une playlist spécifique en boutique." },
+              { label: "Toucher", text: "Le grammage de vos cartes de visite ou la texture de vos produits." },
+              { label: "Odorat", text: "Une signature olfactive unique dans vos bureaux ou colis." }
+            ]
+          }
+        ],
+        conclusion: "On oublie ce qu'on a lu, mais on n'oublie jamais ce qu'on a ressenti."
+      }
     ]
   },
 
