@@ -96,7 +96,7 @@ export const blogCategoriesData: any = {
         publishedDate: "12 Fév 2026", 
         readTime: "6 min", 
         featured: true,
-        pdfUrl: "/assets/pdf/analyse-likes.pdf", // Exemple de lien
+        pdfUrl: "/assets/docs/strategie-marketing", // Exemple de lien
         content: "Notre approche chez SUNULINK CONSULTING est simple : si une métrique ne peut pas être liée à une conversion ou à une intention d'achat, c'est du bruit. Nous recommandons de segmenter vos rapports par tunnel de vente."
       },
       { 
