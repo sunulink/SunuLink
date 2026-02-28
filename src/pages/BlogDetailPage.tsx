@@ -72,7 +72,7 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
             className="flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm border-2 border-gray-100 text-gray-600 hover:border-sunuOrange hover:text-sunuOrange transition-all"
           >
             <FileText className="w-4 h-4" />
-            PDF
+            Télécharger le PDF
           </a>
         </div>
       </div>
