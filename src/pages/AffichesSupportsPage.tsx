@@ -183,7 +183,7 @@ const AffichesSupportsPage = () => {
 
       <style>{`
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 30s linear infinite; }
+        .animate-marquee { animation: marquee 12s linear infinite; }
         .animate-marquee:hover { animation-play-state: paused; }
       `}</style>
     </div>
