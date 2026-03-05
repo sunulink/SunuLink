@@ -176,7 +176,7 @@ const BrandingCompletPage = () => {
 
       <style>{`
         @keyframes marqueeBranding { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee-branding { animation: marqueeBranding 20s linear infinite; }
+        .animate-marquee-branding { animation: marqueeBranding 15s linear infinite; }
         .animate-marquee-branding:hover { animation-play-state: paused; }
       `}</style>
     </div>
