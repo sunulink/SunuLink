@@ -5,7 +5,7 @@ import { Image, Video, Package, Globe, FileText, Palette } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Composant de compteur animé
-const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
+const AnimatedCounter = ({ end, duration = 1000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef<HTMLDivElement>(null);
