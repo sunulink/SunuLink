@@ -92,24 +92,208 @@ export const blogCategoriesData: any = {
       { 
         id: "cm-1", 
         title: "Arrêtez de courir après les 'Likes' : Mesurez ce qui compte vraiment", 
-        description: "ARTICLE",
+        description: "Focus sur la conversion et le ROI réel des réseaux sociaux.",
         publishedDate: "12 Fév 2026", 
         readTime: "6 min", 
         featured: true,
-        pdfUrl: "/assets/docs/strategie-marketing.pdf", // Exemple de lien
-        content: "Notre approche chez SUNULINK CONSULTING est simple : si une métrique ne peut pas être liée à une conversion ou à une intention d'achat, c'est du bruit. Nous recommandons de segmenter vos rapports par tunnel de vente."
-      },
-      { 
-        id: "cm-2", 
-        title: "Le pouvoir de l'A/B Testing en environnement restreint", 
-        description: "Pas besoin de 100 000 visiteurs pour tester. Nos méthodes pour optimiser vos tunnels avec de petits volumes.", 
-        publishedDate: "05 Fév 2026", 
-        readTime: "8 min",
-        pdfUrl: "/assets/pdf/ab-testing.pdf"
+        pdfUrl: "/assets/docs/strategie-marketing.pdf",
+        content: "L'approche de SUNULINK CONSULTING : une métrique n'a de valeur que si elle est liée à une intention d'achat. Segmentez vos rapports par tunnel de vente."
       }
     ]
   },
-  // ... les autres catégories restent identiques
+  "developpement-commercial": {
+    icon: TrendingUp,
+    color: "from-orange-500 to-red-500",
+    title: "Développement Commercial",
+    description: "Optimisez votre pipeline et boostez vos ventes.",
+    articles: [
+      { 
+        id: "dc-1", 
+        title: "Prospection Commerciale Moderne", 
+        description: "L'art de détecter et d'engager des prospects dans un environnement digital.",
+        publishedDate: "15 Fév 2026", 
+        readTime: "8 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/prospection-commerciale-moderne.pdf",
+        content: "L'analyse SUNULINK CONSULTING : La prospection hybride combine l'automatisation intelligente et la personnalisation humaine pour maximiser le taux de conversion."
+      }
+    ]
+  },
+  "entrepreneuriat-leadership": {
+    icon: Briefcase,
+    color: "from-blue-600 to-indigo-600",
+    title: "Entrepreneuriat & Leadership",
+    description: "Inspirer, motiver et guider vers l'excellence.",
+    articles: [
+      { 
+        id: "el-1", 
+        title: "Les qualités essentielles d'un leader moderne", 
+        description: "Vision, communication et agilité dans un monde en mutation.",
+        publishedDate: "18 Fév 2026", 
+        readTime: "7 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/qualites-leader-moderne.pdf",
+        content: "Pour SUNULINK CONSULTING, le leadership moderne est avant tout une question d'intelligence émotionnelle et de capacité à inspirer une vision partagée."
+      }
+    ]
+  },
+  "ecommerce-ventes": {
+    icon: Globe,
+    color: "from-purple-500 to-pink-500",
+    title: "E-commerce & Ventes en ligne",
+    description: "Vendre efficacement sur le marché mondial.",
+    articles: [
+      { 
+        id: "ev-1", 
+        title: "Comment lancer une boutique en ligne", 
+        description: "Guide stratégique : de la niche au choix de la plateforme.",
+        publishedDate: "20 Fév 2026", 
+        readTime: "10 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/lancer-boutique-en-ligne.pdf",
+        content: "L'expertise SUNULINK CONSULTING souligne que la réussite e-commerce repose sur une logistique impeccable et une expérience client sans friction."
+      }
+    ]
+  },
+  "ia-automatisation": {
+    icon: Sparkles,
+    color: "from-cyan-500 to-blue-500",
+    title: "IA & Automatisation",
+    description: "L'intelligence artificielle au service de votre productivité.",
+    articles: [
+      { 
+        id: "ia-1", 
+        title: "Comment l'IA transforme la communication", 
+        description: "Personnalisation de masse et automatisation des tâches répétitives.",
+        publishedDate: "22 Fév 2026", 
+        readTime: "9 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/ia-transformation-communication.pdf",
+        content: "SUNULINK CONSULTING accompagne les entreprises dans l'hybridation homme-machine pour une communication ultra-performante."
+      }
+    ]
+  },
+  "evenementiel-experience": {
+    icon: Star,
+    color: "from-yellow-500 to-orange-600",
+    title: "Événementiel & Expérience",
+    description: "Créer des moments mémorables et impactants.",
+    articles: [
+      { 
+        id: "ee-1", 
+        title: "Organiser un événement professionnel", 
+        description: "Rigueur, anticipation et créativité pour valoriser votre marque.",
+        publishedDate: "25 Fév 2026", 
+        readTime: "11 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/organiser-evenement-pro.pdf",
+        content: "Le conseil de SUNULINK CONSULTING : Un événement réussi se mesure à la qualité de l'engagement post-événement des participants."
+      }
+    ]
+  },
+  "business-finance": {
+    icon: Landmark,
+    color: "from-emerald-600 to-teal-700",
+    title: "Business & Finance",
+    description: "Structurer la valeur et assurer la rentabilité.",
+    articles: [
+      { 
+        id: "bf-1", 
+        title: "Comprendre un Business Model", 
+        description: "Comment créer, délivrer et capturer de la valeur durablement.",
+        publishedDate: "28 Fév 2026", 
+        readTime: "8 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/comprendre-business-model.pdf",
+        content: "Analyse SUNULINK CONSULTING : Un business model agile est la clé de la survie dans des marchés volatiles."
+      }
+    ]
+  },
+  "business-intelligence": {
+    icon: Target,
+    color: "from-indigo-500 to-blue-800",
+    title: "Business Intelligence & Data",
+    description: "Transformer la donnée en décision stratégique.",
+    articles: [
+      { 
+        id: "bi-1", 
+        title: "La Data : Un levier de croissance", 
+        description: "Optimiser les décisions et anticiper les tendances du marché.",
+        publishedDate: "02 Mars 2026", 
+        readTime: "9 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/data-levier-croissance.pdf",
+        content: "Pour SUNULINK CONSULTING, la data n'est plus un luxe mais un actif stratégique incontournable pour tout avantage compétitif."
+      }
+    ]
+  },
+  "communication-africaine": {
+    icon: Globe,
+    color: "from-red-600 to-orange-700",
+    title: "Communication Africaine",
+    description: "Adapter vos messages aux spécificités culturelles locales.",
+    articles: [
+      { 
+        id: "ca-1", 
+        title: "Particularités du Marché Africain", 
+        description: "Storytelling culturel et codes locaux pour une relation authentique.",
+        publishedDate: "05 Mars 2026", 
+        readTime: "10 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/particularites-marche-africain.pdf",
+        content: "L'expertise SUNULINK CONSULTING : La pertinence culturelle est le facteur numéro 1 de succès sur le continent."
+      }
+    ]
+  },
+  "communication-institutionnelle": {
+    icon: MessageSquare,
+    color: "from-slate-600 to-slate-800",
+    title: "Communication Institutionnelle",
+    description: "Gérer votre réputation et influencer les perceptions.",
+    articles: [
+      { 
+        id: "ci-1", 
+        title: "Relations Publiques : Guide Complet", 
+        description: "Bâtir la confiance et gérer l'image de marque institutionnelle.",
+        publishedDate: "08 Mars 2026", 
+        readTime: "12 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/guide-relations-publiques.pdf",
+        content: "SUNULINK CONSULTING aide les institutions à maintenir une communication transparente et proactive, surtout en période de crise."
+      }
+    ]
+  },
+  "design-creation": {
+    icon: Palette,
+    color: "from-rose-500 to-purple-600",
+    title: "Design & Création Visuelle",
+    description: "Le design comme outil stratégique de performance.",
+    articles: [
+      { 
+        id: "dc-1", 
+        title: "Le Design Graphique Stratégique", 
+        description: "Comment le visuel influence la crédibilité et la prise de décision.",
+        publishedDate: "10 Mars 2026", 
+        readTime: "7 min", 
+        featured: true,
+        pdfUrl: "/assets/docs/design-graphique-strategique.pdf",
+        content: "Selon SUNULINK CONSULTING, un bon design structure l'information pour orienter naturellement l'utilisateur vers l'action."
+      }
+    ]
+  },
+
+  /* --- CATÉGORIES À DÉFINIR (Manquantes pour atteindre 20) --- */
+  /*
+  "gestion-projets": { title: "Gestion de Projets", articles: [] },
+  "rh-recrutement": { title: "RH & Recrutement", articles: [] },
+  "strategie-digitale": { title: "Stratégie Digitale", articles: [] },
+  "developpement-personnel": { title: "Développement Personnel", articles: [] },
+  "relations-clients": { title: "Relations Clients & CRM", articles: [] },
+  "innovation-r-d": { title: "Innovation & R&D", articles: [] },
+  "juridique-fiscalite": { title: "Juridique & Fiscalité", articles: [] },
+  "logistique-supply-chain": { title: "Logistique & Supply Chain", articles: [] },
+  "cybersecurite": { title: "Cybersécurité & IT", articles: [] }
+  */
 };
 
 const BlogDetailPage = () => {
