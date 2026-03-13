@@ -81,7 +81,6 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
 };
 
 // --- DATA : LES 20 CATÉGORIES ---
-
 export const blogCategoriesData: any = {
   "conseils-marketing": {
     icon: Lightbulb,
@@ -280,20 +279,7 @@ export const blogCategoriesData: any = {
         content: "Selon SUNULINK CONSULTING, un bon design structure l'information pour orienter naturellement l'utilisateur vers l'action."
       }
     ]
-  },
-
-  /* --- CATÉGORIES À DÉFINIR (Manquantes pour atteindre 20) --- */
-  /*
-  "gestion-projets": { title: "Gestion de Projets", articles: [] },
-  "rh-recrutement": { title: "RH & Recrutement", articles: [] },
-  "strategie-digitale": { title: "Stratégie Digitale", articles: [] },
-  "developpement-personnel": { title: "Développement Personnel", articles: [] },
-  "relations-clients": { title: "Relations Clients & CRM", articles: [] },
-  "innovation-r-d": { title: "Innovation & R&D", articles: [] },
-  "juridique-fiscalite": { title: "Juridique & Fiscalité", articles: [] },
-  "logistique-supply-chain": { title: "Logistique & Supply Chain", articles: [] },
-  "cybersecurite": { title: "Cybersécurité & IT", articles: [] }
-  */
+  }
 };
 
 const BlogDetailPage = () => {
