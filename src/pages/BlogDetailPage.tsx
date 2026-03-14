@@ -6,11 +6,12 @@ import {
   Lightbulb, Palette, Target, 
   Sparkles, Zap, Globe, 
   Briefcase, MessageSquare, AlertCircle,
-  FileText, Star, Landmark
+  FileText, Star, Landmark, BarChart3, ShieldCheck
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+// --- COMPOSANT ARTICLE CARD ---
 const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured?: boolean }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -46,7 +47,7 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
                 <Zap className="w-4 h-4" /> L'analyse de l'expert
               </h4>
               <p className="text-blue-50 text-sm leading-relaxed">
-                {article.content || "Analyse en cours de rédaction par SUNULINK CONSULTING."}
+                {article.content || "Analyse stratégique en cours de finalisation par les consultants de SUNULINK CONSULTING."}
               </p>
             </div>
           </div>
@@ -77,6 +78,7 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
   );
 };
 
+// --- DATA : LES CATÉGORIES ET DOCUMENTS ---
 export const blogCategoriesData: any = {
   "conseils-marketing": {
     icon: Lightbulb,
@@ -84,7 +86,16 @@ export const blogCategoriesData: any = {
     title: "Conseils & Astuces Marketing",
     description: "Le pragmatisme au service de votre croissance quotidienne.",
     articles: [
-      { id: "cm-1", title: "Arrêtez de courir après les 'Likes'", description: "Focus sur la conversion et le ROI réel.", publishedDate: "12 Fév 2026", readTime: "6 min", featured: true, pdfUrl: "/assets/docs/strategie-marketing.pdf", content: "L'approche de SUNULINK CONSULTING : une métrique n'a de valeur que si elle est liée à une intention d'achat." }
+      { 
+        id: "cm-1", 
+        title: "Arrêtez de courir après les 'Likes'", 
+        description: "Focus sur la conversion et le ROI réel.", 
+        publishedDate: "12 Fév 2026", 
+        readTime: "6 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/strategie-marketing.pdf", 
+        content: "L'approche de SUNULINK CONSULTING : une métrique n'a de valeur que si elle est liée à une intention d'achat." 
+      }
     ]
   },
   "developpement-commercial": {
@@ -93,7 +104,16 @@ export const blogCategoriesData: any = {
     title: "Développement Commercial",
     description: "Optimisez votre pipeline et boostez vos ventes.",
     articles: [
-      { id: "dc-1", title: "Prospection Commerciale Moderne", description: "L'art d'engager des prospects dans un environnement digital.", publishedDate: "15 Fév 2026", readTime: "8 min", featured: true, pdfUrl: "/assets/docs/prospection-commerciale-moderne.pdf", content: "L'analyse SUNULINK CONSULTING : La prospection hybride est la clé." }
+      { 
+        id: "dc-1", 
+        title: "Prospection Commerciale Moderne", 
+        description: "L'art d'engager des prospects dans un environnement digital.", 
+        publishedDate: "15 Fév 2026", 
+        readTime: "8 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/prospection-commerciale-moderne.pdf", 
+        content: "La prospection hybride combine automatisation et personnalisation." 
+      }
     ]
   },
   "entrepreneuriat-leadership": {
@@ -102,7 +122,16 @@ export const blogCategoriesData: any = {
     title: "Entrepreneuriat & Leadership",
     description: "Inspirer, motiver et guider vers l'excellence.",
     articles: [
-      { id: "el-1", title: "Les qualités essentielles d'un leader moderne", description: "Vision, communication et agilité.", publishedDate: "18 Fév 2026", readTime: "7 min", featured: true, pdfUrl: "/assets/docs/qualites-leader-moderne.pdf", content: "Pour SUNULINK CONSULTING, le leadership est une question d'intelligence émotionnelle." }
+      { 
+        id: "el-1", 
+        title: "Les qualités d'un leader moderne", 
+        description: "Vision, communication et agilité.", 
+        publishedDate: "18 Fév 2026", 
+        readTime: "7 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/qualites-leader-moderne.pdf", 
+        content: "Le leadership moderne repose sur l'intelligence émotionnelle." 
+      }
     ]
   },
   "ecommerce-ventes": {
@@ -111,7 +140,16 @@ export const blogCategoriesData: any = {
     title: "E-commerce & Ventes en ligne",
     description: "Vendre efficacement sur le marché mondial.",
     articles: [
-      { id: "ev-1", title: "Comment lancer une boutique en ligne", description: "Guide stratégique du choix de la plateforme.", publishedDate: "20 Fév 2026", readTime: "10 min", featured: true, pdfUrl: "/assets/docs/lancer-boutique-en-ligne.pdf", content: "La réussite e-commerce repose sur une logistique impeccable." }
+      { 
+        id: "ev-1", 
+        title: "Lancer une boutique en ligne", 
+        description: "Guide stratégique du choix de la plateforme.", 
+        publishedDate: "20 Fév 2026", 
+        readTime: "10 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/lancer-boutique-en-ligne.pdf", 
+        content: "La logistique est le coeur battant du e-commerce." 
+      }
     ]
   },
   "ia-automatisation": {
@@ -120,7 +158,16 @@ export const blogCategoriesData: any = {
     title: "IA & Automatisation",
     description: "L'intelligence artificielle au service de votre productivité.",
     articles: [
-      { id: "ia-1", title: "Comment l'IA transforme la communication", description: "Personnalisation de masse et automatisation.", publishedDate: "22 Fév 2026", readTime: "9 min", featured: true, pdfUrl: "/assets/docs/ia-transformation-communication.pdf", content: "Hybridation homme-machine pour une communication performante." }
+      { 
+        id: "ia-1", 
+        title: "L'IA transforme la communication", 
+        description: "Personnalisation de masse et automatisation.", 
+        publishedDate: "22 Fév 2026", 
+        readTime: "9 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/ia-transformation-communication.pdf", 
+        content: "L'IA doit servir l'humain pour augmenter la créativité." 
+      }
     ]
   },
   "evenementiel-experience": {
@@ -129,7 +176,16 @@ export const blogCategoriesData: any = {
     title: "Événementiel & Expérience",
     description: "Créer des moments mémorables et impactants.",
     articles: [
-      { id: "ee-1", title: "Organiser un événement professionnel", description: "Rigueur et créativité pour votre marque.", publishedDate: "25 Fév 2026", readTime: "11 min", featured: true, pdfUrl: "/assets/docs/organiser-evenement-pro.pdf", content: "Un événement réussi se mesure à l'engagement post-événement." }
+      { 
+        id: "ee-1", 
+        title: "Organiser un événement professionnel", 
+        description: "Rigueur et créativité pour votre marque.", 
+        publishedDate: "25 Fév 2026", 
+        readTime: "11 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/organiser-evenement-pro.pdf", 
+        content: "L'expérience participant commence dès l'invitation." 
+      }
     ]
   },
   "business-finance": {
@@ -138,16 +194,34 @@ export const blogCategoriesData: any = {
     title: "Business & Finance",
     description: "Structurer la valeur et assurer la rentabilité.",
     articles: [
-      { id: "bf-1", title: "Comprendre un Business Model", description: "Créer et capturer de la valeur durablement.", publishedDate: "28 Fév 2026", readTime: "8 min", featured: true, pdfUrl: "/assets/docs/comprendre-business-model.pdf", content: "L'agilité est la clé de la survie sur les marchés volatiles." }
+      { 
+        id: "bf-1", 
+        title: "Comprendre son Business Model", 
+        description: "Créer et capturer de la valeur durablement.", 
+        publishedDate: "28 Fév 2026", 
+        readTime: "8 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/comprendre-business-model.pdf", 
+        content: "Le pilotage financier est la boussole du dirigeant." 
+      }
     ]
   },
   "business-intelligence": {
-    icon: Target,
+    icon: BarChart3,
     color: "from-indigo-500 to-blue-800",
     title: "Business Intelligence & Data",
     description: "Transformer la donnée en décision stratégique.",
     articles: [
-      { id: "bi-1", title: "La Data : Un levier de croissance", description: "Optimiser les décisions et anticiper les tendances.", publishedDate: "02 Mars 2026", readTime: "9 min", featured: true, pdfUrl: "/assets/docs/data-levier-croissance.pdf", content: "La data est un actif stratégique incontournable." }
+      { 
+        id: "bi-1", 
+        title: "La Data : Levier de croissance", 
+        description: "Optimiser les décisions via l'analyse.", 
+        publishedDate: "02 Mars 2026", 
+        readTime: "9 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/data-levier-croissance.pdf", 
+        content: "La donnée brute n'est rien sans une interprétation métier." 
+      }
     ]
   },
   "communication-africaine": {
@@ -156,16 +230,34 @@ export const blogCategoriesData: any = {
     title: "Communication Africaine",
     description: "Adapter vos messages aux spécificités culturelles.",
     articles: [
-      { id: "ca-1", title: "Particularités du Marché Africain", description: "Storytelling culturel et codes locaux.", publishedDate: "05 Mars 2026", readTime: "10 min", featured: true, pdfUrl: "/assets/docs/particularites-marche-africain.pdf", content: "La pertinence culturelle est le facteur numéro 1 de succès." }
+      { 
+        id: "ca-1", 
+        title: "Particularités du Marché Africain", 
+        description: "Storytelling culturel et codes locaux.", 
+        publishedDate: "05 Mars 2026", 
+        readTime: "10 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/particularites-marche-africain.pdf", 
+        content: "L'authenticité culturelle crée la confiance sur le continent." 
+      }
     ]
   },
   "communication-institutionnelle": {
-    icon: MessageSquare,
+    icon: ShieldCheck,
     color: "from-slate-600 to-slate-800",
     title: "Communication Institutionnelle",
     description: "Gérer votre réputation et influencer les perceptions.",
     articles: [
-      { id: "ci-1", title: "Relations Publiques : Guide Complet", description: "Bâtir la confiance et gérer l'image.", publishedDate: "08 Mars 2026", readTime: "12 min", featured: true, pdfUrl: "/assets/docs/guide-relations-publiques.pdf", content: "Maintenir une communication transparente et proactive." }
+      { 
+        id: "ci-1", 
+        title: "Guide des Relations Publiques", 
+        description: "Bâtir la confiance et gérer l'image.", 
+        publishedDate: "08 Mars 2026", 
+        readTime: "12 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/guide-relations-publiques.pdf", 
+        content: "La transparence est le socle d'une institution pérenne." 
+      }
     ]
   },
   "design-creation": {
@@ -174,7 +266,16 @@ export const blogCategoriesData: any = {
     title: "Design & Création Visuelle",
     description: "Le design comme outil stratégique de performance.",
     articles: [
-      { id: "dcv-1", title: "Le Design Graphique Stratégique", description: "Comment le visuel influence la décision.", publishedDate: "10 Mars 2026", readTime: "7 min", featured: true, pdfUrl: "/assets/docs/design-graphique-strategique.pdf", content: "Le bon design oriente naturellement l'utilisateur vers l'action." }
+      { 
+        id: "dcv-1", 
+        title: "Design Graphique Stratégique", 
+        description: "Comment le visuel influence la décision.", 
+        publishedDate: "10 Mars 2026", 
+        readTime: "7 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/design-graphique-strategique.pdf", 
+        content: "Le design traduit visuellement vos valeurs d'entreprise." 
+      }
     ]
   }
 };
@@ -205,6 +306,7 @@ const BlogDetailPage = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <main className="pt-24 pb-16">
+        {/* Header de catégorie */}
         <section className="py-12 px-6 bg-gray-50/50">
           <div className="container mx-auto max-w-5xl">
             <Link to="/blog" className="inline-flex items-center gap-2 text-sunuBlue font-bold text-sm mb-8 hover:text-sunuOrange transition-colors">
@@ -226,6 +328,7 @@ const BlogDetailPage = () => {
           </div>
         </section>
 
+        {/* Liste des articles */}
         <section className="py-12 px-6">
           <div className="container mx-auto max-w-5xl">
             {featuredArticles.length > 0 && (
@@ -240,6 +343,7 @@ const BlogDetailPage = () => {
                 </div>
               </div>
             )}
+            
             {regularArticles.length > 0 && (
               <div>
                 <h2 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
@@ -255,6 +359,7 @@ const BlogDetailPage = () => {
           </div>
         </section>
 
+        {/* CTA Section */}
         <section className="px-6 mt-12">
           <div className="container mx-auto max-w-5xl">
             <div className="bg-sunuBlue rounded-[2rem] p-8 md:p-14 text-white text-center relative overflow-hidden shadow-2xl shadow-blue-900/20">
@@ -265,7 +370,7 @@ const BlogDetailPage = () => {
                 </p>
                 <div className="flex justify-center">
                   <button className="bg-sunuOrange text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-lg">
-                    Contactez-nous
+                    Contactez SUNULINK CONSULTING
                   </button>
                 </div>
               </div>
