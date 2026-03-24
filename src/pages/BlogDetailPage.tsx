@@ -219,36 +219,113 @@ export const blogCategoriesData: any = {
     articles: [{ id: "dg-1", title: "Identité Visuelle", description: "Moderniser son image.", publishedDate: "14 Mars 2026", readTime: "7 min", featured: true, pdfUrl: "/assets/docs/design-creation-visuelle.pdf" }]
   },
 
-  // --- RESTANTES (EN ATTENTE DE PDF) ---
+// --- CATÉGORIES FINALISÉES (PDF INTÉGRÉS) ---
   "audiovisuel-motion-design": {
     icon: Sparkles,
     color: "from-indigo-500 to-blue-500",
-    title: "Audiovisuel & Motion",
-    description: "Donnez vie à vos idées par la vidéo.",
-    articles: [{ id: "amd-1", title: "Puissance de la Vidéo", description: "Engager par l'animation.", publishedDate: "À venir", readTime: "5 min", featured: false, pdfUrl: "#" }]
+    title: "Audiovisuel & Motion Design",
+    description: "Maîtrisez l'art de la narration visuelle. De la vidéo institutionnelle au motion design pédagogique, nous transformons vos messages complexes en expériences immersives et mémorables pour captiver votre audience.",
+    articles: [
+      { 
+        id: "amd-1", 
+        title: "L’Audiovisuel : Pilier de la Com Moderne", 
+        description: "Découvrez comment l'image animée renforce l'impact émotionnel et la mémorisation de votre marque.", 
+        publishedDate: "20 Mars 2026", 
+        readTime: "8 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/audiovisuel-motion-design.pdf" 
+      },
+      { 
+        id: "amd-2", 
+        title: "Le Pouvoir du Motion Design", 
+        description: "Simplifier des concepts complexes par l'animation graphique et le storytelling visuel.", 
+        publishedDate: "22 Mars 2026", 
+        readTime: "6 min", 
+        featured: false, 
+        pdfUrl: "/assets/docs/audiovisuel-motion-design.pdf" 
+      }
+    ]
   },
+
   "evenementiel-experience-client": {
     icon: Users,
     color: "from-amber-500 to-orange-500",
-    title: "Événementiel & Expérience",
-    description: "Créez des souvenirs mémorables.",
-    articles: [{ id: "eec-1", title: "Activations Terrain", description: "L'immersion de marque.", publishedDate: "16 Mars 2026", readTime: "11 min", featured: true, pdfUrl: "/assets/docs/evenement-experience.pdf" }]
+    title: "Événementiel & Expérience Client",
+    description: "Au-delà de la logistique, créez des connexions humaines durables. Nous explorons les stratégies d'activation de marque et de scénographie pour transformer chaque événement en un levier de croissance commerciale.",
+    articles: [
+      { 
+        id: "eec-1", 
+        title: "Événementiel Stratégique", 
+        description: "Comment transformer un événement professionnel en un véritable levier de différenciation et d'engagement.", 
+        publishedDate: "16 Mars 2026", 
+        readTime: "11 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/evenementiel-experience.pdf" 
+      },
+      { 
+        id: "eec-2", 
+        title: "L'Expérience Client (UX) Physique", 
+        description: "Placer le client au cœur de la stratégie pour garantir fidélité et recommandations positives.", 
+        publishedDate: "17 Mars 2026", 
+        readTime: "9 min", 
+        featured: false, 
+        pdfUrl: "/assets/docs/evenementiel-experience.pdf" 
+      }
+    ]
   },
+
   "relations-publiques-communication-institutionnelle": {
     icon: Briefcase,
     color: "from-teal-500 to-cyan-500",
-    title: "Comm. Institutionnelle",
-    description: "Gérez votre image institutionnelle.",
-    articles: [{ id: "rpc-1", title: "Confiance & Réputation", description: "Bâtir des relations solides.", publishedDate: "18 Mars 2026", readTime: "10 min", featured: true, pdfUrl: "/assets/docs/communication-institutionnelle.pdf" }]
+    title: "Communication Corporate & Institutionnelle",
+    description: "Bâtissez une réputation solide et pérenne. Nous vous accompagnons dans la structuration de votre discours institutionnel, la gestion de votre image de marque et l'alignement de vos valeurs avec vos actions.",
+    articles: [
+      { 
+        id: "rpc-1", 
+        title: "Identité & Crédibilité Corporate", 
+        description: "Les clés pour construire une image institutionnelle forte auprès des partenaires et du public.", 
+        publishedDate: "18 Mars 2026", 
+        readTime: "10 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/communication-corporate-institutionnelle.pdf" 
+      },
+      { 
+        id: "rpc-2", 
+        title: "Communication Interne & Engagement", 
+        description: "Faire de vos collaborateurs les premiers ambassadeurs de votre vision d'entreprise.", 
+        publishedDate: "19 Mars 2026", 
+        readTime: "7 min", 
+        featured: false, 
+        pdfUrl: "/assets/docs/communication-corporate-institutionnelle.pdf" 
+      }
+    ]
   },
+
   "communication-crise-reputation": {
     icon: ShieldCheck,
     color: "from-gray-600 to-gray-800",
-    title: "Gestion de Crise",
-    description: "Anticiper et protéger votre e-réputation.",
-    articles: [{ id: "ccr-1", title: "Savoir Communiquer en Crise", description: "Protéger sa marque.", publishedDate: "À venir", readTime: "12 min", featured: false, pdfUrl: "#" }]
-  }
-};
+    title: "Gestion de Crise & E-Réputation",
+    description: "Protégez votre actif le plus précieux : votre nom. Apprenez à anticiper les risques, à réagir avec transparence face aux imprévus et à restaurer la confiance après une situation sensible.",
+    articles: [
+      { 
+        id: "ccr-1", 
+        title: "Stratégies de Com de Crise", 
+        description: "Guide méthodologique pour protéger la réputation de votre organisation en période d'instabilité.", 
+        publishedDate: "21 Mars 2026", 
+        readTime: "12 min", 
+        featured: true, 
+        pdfUrl: "/assets/docs/communication-crise-reputation.pdf" 
+      },
+      { 
+        id: "ccr-2", 
+        title: "Maîtriser son Image Numérique", 
+        description: "Surveiller et influencer positivement votre e-réputation sur les réseaux sociaux.", 
+        publishedDate: "23 Mars 2026", 
+        readTime: "10 min", 
+        featured: false, 
+        pdfUrl: "/assets/docs/communication-crise-reputation.pdf" 
+      }
+  };
 
 const BlogDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
