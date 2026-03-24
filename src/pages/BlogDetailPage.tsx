@@ -219,7 +219,7 @@ export const blogCategoriesData: any = {
     articles: [{ id: "dg-1", title: "Identité Visuelle", description: "Moderniser son image.", publishedDate: "14 Mars 2026", readTime: "7 min", featured: true, pdfUrl: "/assets/docs/design-creation-visuelle.pdf" }]
   },
 
-// --- CATÉGORIES FINALISÉES (PDF INTÉGRÉS) ---
+  // --- CATÉGORIES FINALISÉES (PDF INTÉGRÉS) ---
   "audiovisuel-motion-design": {
     icon: Sparkles,
     color: "from-indigo-500 to-blue-500",
@@ -325,7 +325,9 @@ export const blogCategoriesData: any = {
         featured: false, 
         pdfUrl: "/assets/docs/communication-crise-reputation.pdf" 
       }
-  };
+    ]
+  }
+};
 
 const BlogDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
