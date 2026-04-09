@@ -1,18 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X, Camera, Users, Image as ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Camera, Users, Image as ImageIcon, LayoutGrid } from "lucide-react";
 
 const PhotoShootingPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
   // --- Organisation des Images ---
-  // On génère la liste de image-photographie1.jpg à image-photographie8.jpg
-  // Note : Assurez-vous que l'extension correspond bien à vos fichiers (ici .jpg)
+  // Collection originale (1 à 8)
   const ramadanCollection = Array.from({ length: 8 }, (_, i) => `/portfolio/image-photographie${i + 1}.jpg`);
+  
+  // Nouvelles images (9 à 25) pour la section Galerie étendue
+  const extendedGallery = Array.from({ length: 17 }, (_, i) => `/portfolio/image-photographie${i + 9}.jpg`);
+  
+  // Liste complète pour le Marquee (flux visuel)
+  const fullCollection = [...ramadanCollection, ...extendedGallery];
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % ramadanCollection.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + ramadanCollection.length) % ramadanCollection.length);
@@ -39,27 +44,27 @@ const PhotoShootingPage = () => {
               Images & <span className="text-sunuOrange text-transparent bg-clip-text bg-gradient-to-r from-sunuOrange to-yellow-600">Photographies</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-              Shooting produits, photos corporate et mises en scène professionnelles pour sublimer votre image.
+              Shooting produits, portraits corporate et mises en scène artistiques signés SUNULINK CONSULTING.
             </p>
           </div>
         </section>
 
-        {/* 1. FLUX VISUEL (Marquee) */}
+        {/* 1. FLUX VISUEL (Marquee infini avec toutes les images) */}
         <section className="py-12 bg-gray-50 overflow-hidden">
           <div className="flex gap-4 animate-marquee-photo whitespace-nowrap">
-            {[...ramadanCollection, ...ramadanCollection].map((img, index) => (
+            {[...fullCollection, ...fullCollection].map((img, index) => (
               <div 
                 key={index} 
-                className="w-[400px] h-[300px] rounded-2xl overflow-hidden shadow-lg flex-shrink-0 cursor-zoom-in border-2 border-transparent hover:border-sunuOrange transition-all"
+                className="w-[350px] h-[250px] rounded-2xl overflow-hidden shadow-lg flex-shrink-0 cursor-zoom-in border-2 border-transparent hover:border-sunuOrange transition-all"
                 onClick={() => setSelectedImg(img)}
               >
-                <img src={img} className="w-full h-full object-cover" alt="Shooting Photo" loading="lazy" />
+                <img src={img} className="w-full h-full object-cover" alt="Production SUNULINK" loading="lazy" />
               </div>
             ))}
           </div>
         </section>
 
-        {/* 2. FOCUS COLLECTION RAMADAN */}
+        {/* 2. FOCUS COLLECTION RAMADAN (Grid 1-8) */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
@@ -70,13 +75,13 @@ const PhotoShootingPage = () => {
                     Collection <span className="text-sunuOrange">Ramadan</span>
                   </h3>
                   <p className="text-gray-500 font-bold mt-2 flex items-center gap-2">
-                    <Users size={18} /> Sunulink Consulting — Avec Imam Lilou
+                    <Users size={18} /> Sunulink Consulting — Shooting Thématique
                   </p>
                 </div>
               </div>
               <div className="hidden md:block">
                  <span className="bg-sunuBlue text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
-                   8 Photos Premium
+                   Série Limitée
                  </span>
               </div>
             </div>
@@ -94,7 +99,7 @@ const PhotoShootingPage = () => {
                     alt={`Ramadan Collection ${i + 1}`} 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <p className="text-white font-bold italic">Photo #0{i + 1}</p>
+                    <p className="text-white font-bold italic">Visual #0{i + 1}</p>
                   </div>
                 </div>
               ))}
@@ -102,13 +107,13 @@ const PhotoShootingPage = () => {
           </div>
         </section>
 
-        {/* 3. SLIDER INTERACTIF GRAND FORMAT */}
+        {/* 3. SLIDER INTERACTIF (Focus sur la collection principale) */}
         <section className="py-24 bg-sunuBlue/5">
           <div className="container mx-auto max-w-6xl px-6">
             <div className="flex items-center justify-center gap-4 mb-12">
                 <ImageIcon className="text-sunuOrange" size={28} />
                 <h2 className="text-4xl font-black uppercase italic text-center">
-                  Focus <span className="text-sunuOrange">Mise en scène</span>
+                  Mise en <span className="text-sunuOrange">Lumière</span>
                 </h2>
             </div>
             
@@ -118,7 +123,7 @@ const PhotoShootingPage = () => {
               </button>
               
               <div 
-                className="w-full max-w-[1000px] h-[650px] rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-[15px] border-white cursor-zoom-in group relative" 
+                className="w-full max-w-[1000px] h-[600px] rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-[12px] border-white cursor-zoom-in group relative" 
                 onClick={() => setSelectedImg(ramadanCollection[currentIndex])}
               >
                 <img 
@@ -126,19 +131,41 @@ const PhotoShootingPage = () => {
                   alt="Shooting Focus" 
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                 />
-                <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md px-8 py-4 rounded-2xl">
-                   <p className="text-sunuBlue font-black uppercase text-sm">Personnage</p>
-                   <p className="text-sunuOrange font-bold text-xl italic">Imam Lilou</p>
-                </div>
               </div>
 
               <button onClick={nextSlide} className="absolute right-[-20px] lg:right-[-80px] z-10 p-5 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
                 <ChevronRight size={35} />
               </button>
             </div>
-            <p className="text-center mt-10 font-bold text-sunuBlue/40 uppercase tracking-[0.3em]">
-              Cliché {currentIndex + 1} / {ramadanCollection.length}
-            </p>
+          </div>
+        </section>
+
+        {/* 4. GALERIE ÉTENDUE (Nouvelles images 9-25) */}
+        <section className="py-20 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="flex items-center gap-4 mb-12">
+              <LayoutGrid className="text-sunuBlue" size={32} />
+              <h3 className="text-3xl font-black uppercase italic">
+                Galerie <span className="text-sunuBlue">Lifestyle & Corporate</span>
+              </h3>
+            </div>
+            
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+              {extendedGallery.map((img, i) => (
+                <div 
+                  key={i} 
+                  className="relative break-inside-avoid rounded-2xl overflow-hidden shadow-xl cursor-zoom-in hover:shadow-2xl transition-all duration-300 group"
+                  onClick={() => setSelectedImg(img)}
+                >
+                  <img 
+                    src={img} 
+                    alt={`Photo Galerie ${i + 9}`}
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-sunuBlue/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -168,11 +195,11 @@ const PhotoShootingPage = () => {
         <section className="py-24 px-6 text-center bg-sunuBlue">
             <div className="max-w-4xl mx-auto text-white">
                 <h2 className="text-5xl font-black mb-10 uppercase leading-tight">
-                  Besoin d'un <br/><span className="text-sunuOrange text-6xl">Shooting Pro ?</span>
+                  Un projet visuel en <br/><span className="text-sunuOrange text-6xl">préparation ?</span>
                 </h2>
                 <Link to="/contact">
                     <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-black px-14 py-10 rounded-full text-2xl shadow-2xl transition-all hover:-translate-y-2 border-none">
-                        Réserver ma séance
+                        Démarrer un projet
                     </Button>
                 </Link>
             </div>
@@ -183,7 +210,7 @@ const PhotoShootingPage = () => {
 
       <style>{`
         @keyframes marqueePhoto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee-photo { animation: marqueePhoto 40s linear infinite; }
+        .animate-marquee-photo { animation: marqueePhoto 50s linear infinite; }
         .animate-marquee-photo:hover { animation-play-state: paused; }
       `}</style>
     </div>
