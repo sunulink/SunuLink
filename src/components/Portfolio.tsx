@@ -1,18 +1,21 @@
 import { Card } from "@/components/ui/card";
 import { Briefcase, Users, Rocket, TrendingUp, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { portfolioImages } from "@/data/homeData"; 
 
 const Portfolio = () => {
-  // Données pour les statistiques rapides
-  const stats = [
-    { icon: Briefcase, value: "50+", label: "Projets réalisés" },
-    { icon: Users, value: "50+", label: "Clients satisfaits" },
-    { icon: Rocket, value: "10+", label: "Secteurs d'activité" },
-    { icon: TrendingUp, value: "95%", label: "Taux de satisfaction" },
+  // Liste stricte des images provenant de vos captures d'écran
+  const scrollImages = [
+    "/portfolio/04892c225711895.68224a2a6ee4a.jpg",
+    "/portfolio/0db9bc217830789.6797898d3bee2.jpg",
+    "/portfolio/0dbb90227394313.683f3d2280d86.jpg",
+    "/portfolio/12389e227394313.683f3d228131f.jpg",
+    "/portfolio/1.jpg",
+    "/portfolio/1.png",
+    "/portfolio/2.jpg",
+    "/assets/docs/04892c225711895.68224a2a6ee4a.jpg",
+    "/assets/docs/0db9bc217830789.6797898d3bee2.jpg",
   ];
 
-  // Catégories d'expertises
   const categories = [
     { title: "Logo & Identité visuelle", examples: "Création de logos professionnels, chartes graphiques, pack branding complet", color: "bg-sunuBlue" },
     { title: "Affiches & supports print", examples: "Flyers, posters, dépliants, PLV, roll-up…", color: "bg-sunuOrange" },
@@ -36,29 +39,29 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* --- NOUVELLE SECTION : GRILLE DYNAMIQUE (STAT + DÉFILÉ) --- */}
+        {/* --- SECTION BENTO GRID (STAT + DÉFILÉ) --- */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
           
-          {/* Carte Gauche : Compteur de Projets (Jaune) */}
-          <div className="md:col-span-4 bg-[#FFB800] rounded-[2.5rem] p-10 flex flex-col justify-center items-center text-center shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+          {/* Carte Gauche : Statistique Jaune */}
+          <div className="md:col-span-4 bg-[#FFB800] rounded-[2.5rem] p-10 flex flex-col justify-center items-center text-center shadow-2xl">
             <span className="text-7xl md:text-9xl font-black text-white mb-2 leading-none">50+</span>
             <p className="text-2xl md:text-3xl font-black text-sunuBlue uppercase leading-tight italic">
               Projets <br/> menés avec <br/> succès
             </p>
           </div>
 
-          {/* Carte Droite : Défilé d'images infini */}
+          {/* Carte Droite : Défilé d'images */}
           <div className="md:col-span-8 relative group overflow-hidden rounded-[2.5rem] min-h-[450px] shadow-2xl bg-gray-900">
             
-            {/* Conteneur du défilé (Background animé) */}
+            {/* Le défilé horizontal infini */}
             <div className="absolute inset-0 flex">
               <div className="flex animate-scroll-portfolio h-full w-max">
-                {/* On duplique les images pour créer la boucle infinie */}
-                {[...portfolioImages, ...portfolioImages].map((img, index) => (
+                {/* On duplique le tableau pour la fluidité du cycle */}
+                {[...scrollImages, ...scrollImages].map((src, index) => (
                   <div key={index} className="w-[400px] h-full flex-shrink-0">
                     <img 
-                      src={img.src} 
-                      alt={img.alt} 
+                      src={src} 
+                      alt="Réalisation SUNULINK CONSULTING" 
                       className="w-full h-full object-cover border-r-2 border-white/5" 
                     />
                   </div>
@@ -66,8 +69,8 @@ const Portfolio = () => {
               </div>
             </div>
 
-            {/* Overlay Gradient pour assurer la lisibilité du texte à gauche */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
             
             {/* Contenu Texte et CTA */}
             <div className="absolute inset-0 p-10 md:p-16 flex flex-col justify-center items-start text-white z-10">
@@ -97,7 +100,6 @@ const Portfolio = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-none bg-white group">
-                {/* Barre de couleur supérieure animée */}
                 <div className={`${category.color} h-2 transition-all duration-500 group-hover:h-4`}></div>
                 <div className="p-8">
                   <h4 className="text-xl font-black mb-4 text-sunuBlue uppercase tracking-tight group-hover:text-sunuOrange transition-colors">
@@ -122,7 +124,6 @@ const Portfolio = () => {
               DISCUTONS DE VOTRE PROJET
             </Link>
           </div>
-          {/* Décoration en arrière-plan */}
           <div className="absolute top-[-10%] right-[-5%] w-64 h-64 bg-sunuOrange/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-[-10%] left-[-5%] w-64 h-64 bg-sunuCyan/10 rounded-full blur-3xl"></div>
         </div>
@@ -135,7 +136,7 @@ const Portfolio = () => {
           100% { transform: translateX(-50%); }
         }
         .animate-scroll-portfolio {
-          animation: scrollPortfolio 40s linear infinite;
+          animation: scrollPortfolio 35s linear infinite;
         }
         .animate-scroll-portfolio:hover {
           animation-play-state: paused;
