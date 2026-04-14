@@ -6,14 +6,17 @@ const Portfolio = () => {
   // Liste stricte des images provenant de vos captures d'écran
   const scrollImages = [
     "/portfolio/04892c225711895.68224a2a6ee4a.jpg",
+    "/portfolio/carte-identite-visuelle2.jpg",
     "/portfolio/0db9bc217830789.6797898d3bee2.jpg",
     "/portfolio/0dbb90227394313.683f3d2280d86.jpg",
     "/portfolio/12389e227394313.683f3d228131f.jpg",
+    "/portfolio/carte-identite-visuelle1.jpg",
     "/portfolio/1.jpg",
     "/portfolio/1.png",
     "/portfolio/2.jpg",
     "/assets/docs/04892c225711895.68224a2a6ee4a.jpg",
     "/assets/docs/0db9bc217830789.6797898d3bee2.jpg",
+    "/portfolio/carte-identite-visuelle5.jpg",
   ];
 
   const categories = [
