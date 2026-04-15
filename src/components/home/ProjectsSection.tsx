@@ -64,27 +64,28 @@ export const ProjectsSection = () => {
           </div>
 
           {/* --- BLOC DROITE : SLIDER D'IMAGES SÉPARÉ --- */}
-          <div 
-            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950 group" 
-            data-aos="fade-left"
-          >
-            {/* Conteneur des Images */}
-            <div className="absolute inset-0">
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
-                  }`}
-                >
-                  <img
-                    src={slide}
-                    alt={`Projet ${index}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+          <div 
+            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
+            data-aos="fade-left"
+          >
+            {/* Conteneur des Images */}
+            <div className="absolute inset-0">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                  }`}
+                >
+                  <img
+                    src={slide}
+                    alt={`Projet ${index}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
             {/* FLÈCHES DE NAVIGATION (Apparaissent au survol) */}
             <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
