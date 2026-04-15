@@ -5,7 +5,7 @@ import { Monitor, ArrowRight } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export const ProjectsSection = () => {
-  // Liste stricte basée sur vos captures
+  // Liste des images basée sur vos fichiers GitHub
   const slides = [
     ...Array.from({ length: 7 }, (_, i) => `/portfolio/carte-identite-marque-locale${i}.jpg`),
     ...Array.from({ length: 8 }, (_, i) => `/portfolio/carte-identite-visuelle${i + 1}.jpg`)
@@ -13,24 +13,20 @@ export const ProjectsSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
   // Défilement automatique toutes les 3 secondes
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
+      setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [slides.length]);
 
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 bg-white overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         
         {/* Titre de Section */}
-        <div className="text-center mb-10 md:mb-16" data-aos="fade-up">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-800 leading-tight uppercase tracking-tighter">
             Des projets divers et variés,<br />
             <span className="text-sunuOrange">Mais toujours autour d'une passion commune</span>
@@ -40,13 +36,10 @@ export const ProjectsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
           
           {/* --- BLOC GAUCHE : COMPTEUR + BOUTON --- */}
-          <div 
-            className="lg:col-span-2 bg-[#FFB800] rounded-[2.5rem] p-8 md:p-12 shadow-2xl flex flex-col items-center justify-center text-center text-white min-h-[400px]" 
-            data-aos="fade-right"
-          >
+          <div className="lg:col-span-2 bg-[#FFB800] rounded-[2.5rem] p-8 md:p-12 shadow-2xl flex flex-col items-center justify-center text-center text-white min-h-[400px]">
             <Monitor className="w-16 h-16 md:w-20 md:h-20 mb-4 opacity-90" />
             <AnimatedCounter end={50} suffix="+" />
-            <h3 className="text-3xl md:text-4xl font-black mt-2 tracking-tighter">PROJETS</h3>
+            <h3 className="text-3xl md:text-4xl font-black mt-2 tracking-tighter uppercase">Projets</h3>
             <p className="text-lg md:text-xl opacity-90 italic mb-10">menés avec succès</p>
             
             <Link to="/realisations" className="w-full sm:w-auto">
@@ -57,31 +50,27 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC DROITE : SLIDER D'IMAGES --- */}
-          <div 
-            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
-            data-aos="fade-left"
-          >
-            {/* Conteneur des Images */}
+          {/* --- BLOC DROITE : SLIDER AUTOMATIQUE ÉPURÉ --- */}
+          <div className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950">
             <div className="absolute inset-0 flex items-center justify-center">
               {slides.map((slide, index) => (
                 <div
                   key={index}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center justify-center ${
-                    index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                    index === currentIndex ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   <img
                     src={slide}
-                    alt={`Projet ${index}`}
-                    {/* Correction : object-contain pour ne pas couper l'image et p-4 pour l'esthétique */}
-                    className="max-w-full max-h-full object-contain p-4 md:p-8"
+                    alt={`Réalisation ${index}`}
+                    {/* Adaptation : l'image est contenue sans être coupée */}
+                    className="max-w-full max-h-full object-contain p-6 md:p-10"
                   />
                 </div>
               ))}
             </div>
             
-            {/* Les flèches, indicateurs et la bande portfolio ont été retirés pour un look épuré */}
+            {/* Les flèches, indicateurs et badges ont été supprimés comme demandé */}
           </div>
 
         </div>
