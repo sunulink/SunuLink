@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Monitor, ArrowRight } from "lucide-react";
+import { Monitor, ArrowRight } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export const ProjectsSection = () => {
@@ -13,6 +13,10 @@ export const ProjectsSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
   // Défilement automatique toutes les 3 secondes
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,16 +24,6 @@ export const ProjectsSection = () => {
     }, 3000);
     return () => clearInterval(timer);
   }, [currentIndex]);
-
-  const prevSlide = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 bg-white overflow-hidden">
@@ -63,13 +57,13 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC DROITE : SLIDER D'IMAGES SÉPARÉ --- */}
+          {/* --- BLOC DROITE : SLIDER D'IMAGES --- */}
           <div 
-            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950 group" 
+            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
             data-aos="fade-left"
           >
             {/* Conteneur des Images */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 flex items-center justify-center">
               {slides.map((slide, index) => (
                 <div
                   key={index}
@@ -80,48 +74,14 @@ export const ProjectsSection = () => {
                   <img
                     src={slide}
                     alt={`Projet ${index}`}
-                    {/* MODIFICATION UNIQUE : passage en object-contain pour adapter toute l'image */}
-                    className="w-full h-full object-contain p-4"
+                    {/* Correction : object-contain pour ne pas couper l'image et p-4 pour l'esthétique */}
+                    className="max-w-full max-h-full object-contain p-4 md:p-8"
                   />
                 </div>
               ))}
             </div>
-
-            {/* FLÈCHES DE NAVIGATION (Apparaissent au survol) */}
-            <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-              <button
-                onClick={prevSlide}
-                className="bg-black/30 hover:bg-sunuOrange text-white p-3 rounded-full backdrop-blur-sm transition-all"
-              >
-                <ChevronLeft size={32} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="bg-black/30 hover:bg-sunuOrange text-white p-3 rounded-full backdrop-blur-sm transition-all"
-              >
-                <ChevronRight size={32} />
-              </button>
-            </div>
-
-            {/* INDICATEURS (Points en bas) */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    i === currentIndex ? "bg-sunuOrange w-8" : "bg-white/40 w-2"
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Titre flottant sur l'image */}
-            <div className="absolute top-8 left-8 z-10">
-              <span className="bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-black uppercase tracking-widest border-l-4 border-sunuOrange">
-                Portfolio
-              </span>
-            </div>
+            
+            {/* Les flèches, indicateurs et la bande portfolio ont été retirés pour un look épuré */}
           </div>
 
         </div>
