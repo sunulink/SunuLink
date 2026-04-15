@@ -57,24 +57,23 @@ export const ProjectsSection = () => {
             className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
             data-aos="fade-left"
           >
-            {/* Conteneur des Images */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 flex items-center justify-center">
               {slides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center justify-center ${
                     index === currentIndex ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   <img
                     src={slide}
                     alt={`Projet ${index}`}
-                    className="w-full h-full object-cover"
+                    /* CHANGEMENT : object-contain pour tout voir + padding pour ne pas toucher les bords */
+                    className="max-w-full max-h-full object-contain p-6 md:p-10"
                   />
                 </div>
               ))}
             </div>
-            {/* Les flèches, indicateurs et badge "Portfolio" ont été retirés ici */}
           </div>
 
         </div>
