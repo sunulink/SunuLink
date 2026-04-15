@@ -52,7 +52,7 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC DROITE : SLIDER D'IMAGES --- */}
+          {/* --- BLOC DROITE : SLIDER ADAPTÉ (MICRO-MARGES) --- */}
           <div 
             className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
             data-aos="fade-left"
@@ -67,9 +67,9 @@ export const ProjectsSection = () => {
                 >
                   <img
                     src={slide}
-                    alt={`Projet ${index}`}
-                    /* CHANGEMENT : object-contain pour tout voir + padding pour ne pas toucher les bords */
-                    className="max-w-full max-h-full object-contain p-6 md:p-10"
+                    alt={`Projet SUNULINK Consulting ${index}`}
+                    /* CHANGEMENT : Marges réduites au minimum (p-2) pour un impact maximal */
+                    className="max-w-full max-h-full object-contain p-2" 
                   />
                 </div>
               ))}
