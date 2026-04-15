@@ -73,14 +73,15 @@ export const ProjectsSection = () => {
               {slides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center justify-center ${
                     index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
                   }`}
                 >
                   <img
                     src={slide}
                     alt={`Projet ${index}`}
-                    className="w-full h-full object-cover"
+                    {/* MODIFICATION UNIQUE : passage en object-contain pour adapter toute l'image */}
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
               ))}
