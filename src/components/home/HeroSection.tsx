@@ -86,7 +86,7 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) */}
+          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
           <div className="flex justify-center md:justify-end items-center">
             <div className="w-full max-w-[500px] aspect-square relative overflow-hidden flex items-center">
               <Carousel opts={{ loop: true }} className="w-full h-full">
