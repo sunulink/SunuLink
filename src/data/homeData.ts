@@ -45,7 +45,7 @@ export interface Pack {
 
 export const heroImages: HeroImage[] = [
   {
-    src: "/img/IA.jpg",
+    src: "/portfolio/link-ia.JPG",
     alt: "Intelligence Artificielle",
     type: "cover",
     text: "Nous intégrons l'IA au service de votre efficacité et créativité. Nos solutions intelligentes optimisent vos performances et enrichissent votre stratégie.",
