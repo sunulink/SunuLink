@@ -31,10 +31,10 @@ export const ProjectsSection = () => {
           </h2>
         </div>
 
-        {/* GRILLE RÉORGANISÉE (6 colonnes pour plus de flexibilité) */}
+        {/* STRUCTURE 3 BLOCS : 2 col (Stats) | 1 col (Logo/Cube) | 3 col (Image) */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-0 items-stretch shadow-2xl rounded-[2.5rem] overflow-hidden">
           
-          {/* --- BLOC 1 : COMPTEUR (2/6) --- */}
+          {/* --- BLOC 1 : STATS (GAUCHE) --- */}
           <div 
             className="lg:col-span-2 bg-[#FFB800] p-8 md:p-12 flex flex-col items-center justify-center text-center text-white min-h-[400px]" 
             data-aos="fade-right"
@@ -52,19 +52,29 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC 2 : DESIGN CENTRAL ABSTRAIT (1/6) --- */}
+          {/* --- BLOC 2 : FIGURE LOGO / CHAÎNE (MILIEU) --- */}
           <div 
-            className="hidden lg:flex lg:col-span-1 bg-[#004A99] relative items-center justify-center overflow-hidden border-x border-white/10"
+            className="hidden lg:flex lg:col-span-1 bg-[#004A99] relative items-center justify-center overflow-hidden"
             data-aos="zoom-in"
           >
-            {/* Figures géométriques décoratives */}
-            <div className="absolute top-0 left-0 w-20 h-20 bg-white/10 rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 bg-sunuOrange/20 rounded-tl-full" />
-            <div className="w-12 h-12 border-2 border-white/20 rotate-45 animate-pulse" />
-            <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12" />
+            {/* Figure en forme de cube/losange contenant le symbole de la chaîne */}
+            <div className="relative w-24 h-24 border-2 border-white/20 rotate-45 flex items-center justify-center">
+              {/* On replace le symbole 'infini' du logo ici (SVG simplifié) */}
+              <svg 
+                viewBox="0 0 24 24" 
+                className="w-12 h-12 text-white -rotate-45 fill-current opacity-80"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M18.414 12c0-1.325-1.089-2.4-2.433-2.4-1.343 0-2.433 1.075-2.433 2.4s1.09 2.4 2.433 2.4c1.344 0 2.433-1.075 2.433-2.4zm-12.828 0c0-1.325 1.09-2.4 2.433-2.4 1.344 0 2.433 1.075 2.433 2.4s-1.09 2.4-2.433 2.4c-1.343 0-2.433-1.075-2.433-2.4zm16.414 0c0 3.314-2.686 6-6 6-1.583 0-3.023-.615-4.093-1.619l-3.814 3.619h-6.093l6-6-6-6h6.093l3.814 3.619c1.07-1.004 2.51-1.619 4.093-1.619 3.314 0 6 2.686 6 6z"/>
+              </svg>
+            </div>
+            
+            {/* Décorations abstraites */}
+            <div className="absolute top-0 w-full h-[1px] bg-white/10" />
+            <div className="absolute bottom-0 w-full h-[1px] bg-white/10" />
           </div>
 
-          {/* --- BLOC 3 : IMAGE TOUT À DROITE (3/6) --- */}
+          {/* --- BLOC 3 : IMAGE PLEIN ÉCRAN (DROITE) --- */}
           <div 
             className="lg:col-span-3 relative min-h-[400px] md:min-h-[480px] bg-[#004A99] overflow-hidden" 
             data-aos="fade-left"
@@ -80,16 +90,15 @@ export const ProjectsSection = () => {
                   <img
                     src={slide}
                     alt={`Projet SUNULINK Consulting ${index}`}
-                    /* object-cover ici pour un look immersif bord à bord 
-                       Assurez-vous que vos textes sont centrés sur vos affiches */
-                    className="w-full h-full object-cover" 
+                    /* - object-contain : pour voir l'image COMPLÈTEMENT (indispensable d'après votre demande)
+                       - bg-[#004A99] : assure la continuité visuelle
+                       - Pas de 'rounded' : l'image garde ses angles droits
+                    */
+                    className="w-full h-full object-contain" 
                   />
                 </div>
               ))}
             </div>
-            
-            {/* Overlay subtil pour lier le design */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#004A99]/20 to-transparent pointer-events-none" />
           </div>
 
         </div>
