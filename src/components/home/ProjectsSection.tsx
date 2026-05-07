@@ -72,7 +72,7 @@ export const ProjectsSection = () => {
                        - Suppression de p-2 (plus de marge)
                        - object-cover pour remplir tout l'espace
                     */
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-contain" 
                   />
                 </div>
               ))}
