@@ -64,11 +64,10 @@ export const ProjectsSection = () => {
                 <img
                   src={slide}
                   alt={`Projet SUNULINK Consulting ${index}`}
-                  /* IMPORTANT : 
-                     - h-full et w-full forcent l'image à prendre la taille du parent
-                     - object-cover garantit qu'elle garde son ratio (pas de déformation)
+                  /* On utilise 'object-contain' pour voir TOUTE l'image sans rien couper.
+                     On garde 'bg-white' ou on met une couleur qui rappelle vos visuels (ex: #500137 pour le bordeaux)
                   */
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-contain bg-[#500137]" 
                 />
               </div>
             ))}
