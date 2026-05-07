@@ -51,28 +51,35 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC DROITE : IMAGE IMMERSIVE (CHANGEMENTS ICI) --- */}
-          <div className="lg:col-span-3 relative min-h-[400px] md:min-h-[600px] bg-white overflow-hidden">
+          {/* --- BLOC DROITE : IMAGE ADAPTÉE AU BRANDING --- */}
+          <div 
+            className="lg:col-span-3 relative min-h-[350px] md:min-h-[480px] bg-[#004A99] overflow-hidden" 
+            data-aos="fade-left"
+          >
+            {/* CHANGEMENTS EFFECTUÉS :
+              1. min-h réduit de 600px à 480px pour diminuer la hauteur globale.
+              2. bg-[#004A99] remplace le blanc/bordeaux par le bleu officiel.
+            */}
             <div className="absolute inset-0">
               {slides.map((slide, index) => (
                 <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <img
-                  src={slide}
-                  alt={`Projet SUNULINK Consulting ${index}`}
-                  /* On utilise 'object-contain' pour voir TOUTE l'image sans rien couper.
-                     On garde 'bg-white' ou on met une couleur qui rappelle vos visuels (ex: #500137 pour le bordeaux)
-                  */
-                  className="w-full h-full object-contain bg-[#500137]" 
-                />
-              </div>
-            ))}
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <img
+                    src={slide}
+                    alt={`Projet SUNULINK Consulting ${index}`}
+                    /* - object-contain : garantit que tout le texte de l'affiche est visible.
+                       - bg-[#004A99] : assure que si l'image ne remplit pas tout, le fond est bleu.
+                    */
+                    className="w-full h-full object-contain bg-[#004A99]" 
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
         </div>
       </div>
