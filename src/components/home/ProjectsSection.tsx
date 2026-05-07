@@ -12,7 +12,6 @@ export const ProjectsSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Sécurisation du défilement pour éviter l'erreur CSP "eval"
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -32,11 +31,11 @@ export const ProjectsSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 items-stretch shadow-2xl rounded-[2.5rem] overflow-hidden">
           
           {/* --- BLOC GAUCHE : COMPTEUR + BOUTON --- */}
           <div 
-            className="lg:col-span-2 bg-[#FFB800] rounded-[2.5rem] p-8 md:p-12 shadow-2xl flex flex-col items-center justify-center text-center text-white min-h-[400px]" 
+            className="lg:col-span-2 bg-[#FFB800] p-8 md:p-12 flex flex-col items-center justify-center text-center text-white min-h-[400px]" 
             data-aos="fade-right"
           >
             <Monitor className="w-16 h-16 md:w-20 md:h-20 mb-4 opacity-90" />
@@ -52,24 +51,28 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC DROITE : SLIDER ADAPTÉ (MICRO-MARGES) --- */}
+          {/* --- BLOC DROITE : IMAGE IMMERSIVE (CHANGEMENTS ICI) --- */}
           <div 
-            className="lg:col-span-3 relative rounded-[2.5rem] overflow-hidden shadow-2xl min-h-[400px] md:min-h-[500px] bg-gray-950" 
+            className="lg:col-span-3 relative min-h-[400px] md:min-h-[500px] bg-white" 
             data-aos="fade-left"
           >
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0">
               {slides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex items-center justify-center ${
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                     index === currentIndex ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   <img
                     src={slide}
                     alt={`Projet SUNULINK Consulting ${index}`}
-                    /* CHANGEMENT : Marges réduites au minimum (p-2) pour un impact maximal */
-                    className="max-w-full max-h-full object-contain p-2" 
+                    /* CHANGEMENTS CLÉS : 
+                       - Suppression de rounded-[2.5rem] sur l'image elle-même
+                       - Suppression de p-2 (plus de marge)
+                       - object-cover pour remplir tout l'espace
+                    */
+                    className="w-full h-full object-cover" 
                   />
                 </div>
               ))}
