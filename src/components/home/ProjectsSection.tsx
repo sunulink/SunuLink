@@ -52,32 +52,28 @@ export const ProjectsSection = () => {
           </div>
 
           {/* --- BLOC DROITE : IMAGE IMMERSIVE (CHANGEMENTS ICI) --- */}
-          <div 
-            className="lg:col-span-3 relative min-h-[400px] md:min-h-[500px] bg-white" 
-            data-aos="fade-left"
-          >
+          <div className="lg:col-span-3 relative min-h-[400px] md:min-h-[600px] bg-white overflow-hidden">
             <div className="absolute inset-0">
               {slides.map((slide, index) => (
                 <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === currentIndex ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <img
-                    src={slide}
-                    alt={`Projet SUNULINK Consulting ${index}`}
-                    /* CHANGEMENTS CLÉS : 
-                       - Suppression de rounded-[2.5rem] sur l'image elle-même
-                       - Suppression de p-2 (plus de marge)
-                       - object-cover pour remplir tout l'espace
-                    */
-                    className="w-full h-full object-cover object-center" 
-                  />
-                </div>
-              ))}
-            </div>
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <img
+                  src={slide}
+                  alt={`Projet SUNULINK Consulting ${index}`}
+                  /* IMPORTANT : 
+                     - h-full et w-full forcent l'image à prendre la taille du parent
+                     - object-cover garantit qu'elle garde son ratio (pas de déformation)
+                  */
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+            ))}
           </div>
+        </div>
 
         </div>
       </div>
