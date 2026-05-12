@@ -215,7 +215,7 @@ const DevisPage = () => {
     try {
       await emailjs.send(
         "service_xgdluls",
-        "template_5x9tqf8",
+        "template_cqv61zn", // nouveau template devis
         templateParams,
         "KfF-FpO2K-0aYUFsS"
       );
