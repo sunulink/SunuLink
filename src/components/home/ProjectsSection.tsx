@@ -9,14 +9,14 @@ export const ProjectsSection = () => {
     ...Array.from({ length: 8 }, (_, i) => `/portfolio/carte-identite-visuelle${i + 1}.jpg`)
   ];
 
-  // On double la liste pour créer l'effet de boucle infinie sans saut
-  const infiniteSlides = [...slides, ...slides];
+  // Tripler la liste pour assurer un défilement infini sans coupure avec de grandes images
+  const infiniteSlides = [...slides, ...slides, ...slides];
 
   return (
     <section className="py-8 md:py-12 px-4 sm:px-6 bg-white overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         
-        {/* --- TITRE COMPLET RÉTABLI --- */}
+        {/* --- TITRE COMPLET --- */}
         <div className="text-center mb-8" data-aos="fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-800 leading-tight uppercase tracking-tighter">
             Des projets divers et variés,<br />
@@ -26,7 +26,7 @@ export const ProjectsSection = () => {
 
         <div className="flex flex-col shadow-xl rounded-[2.5rem] overflow-hidden border border-gray-100">
           
-          {/* --- BLOC HAUT : COMPTEUR FIXÉ --- */}
+          {/* --- BLOC HAUT : COMPTEUR (SOUDÉ) --- */}
           <div 
             className="bg-[#FFB800] py-4 px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-white" 
             data-aos="fade-down"
@@ -36,10 +36,10 @@ export const ProjectsSection = () => {
                 <Monitor className="w-8 h-8 text-white" />
               </div>
               <div className="flex items-center gap-3">
-                {/* Bloc Compteur : Le chiffre et le + restent soudés sur la même ligne */}
+                {/* Bloc "50+" maintenu sur une seule ligne */}
                 <div className="flex items-center text-4xl md:text-6xl font-black tracking-tighter whitespace-nowrap">
                   <AnimatedCounter end={50} />
-                  <span>+</span>
+                  <span className="ml-1">+</span>
                 </div>
                 <span className="text-lg md:text-xl font-bold uppercase leading-tight max-w-[200px]">
                   Projets menés avec succès
@@ -55,40 +55,42 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC BAS : DÉFILEMENT INFINI (Style Logo Carousel) --- */}
-          <div className="bg-sunuBlue py-8 overflow-hidden relative group">
-            {/* Conteneur animé : défile de droite à gauche */}
-            <div className="flex w-max animate-scroll-slow group-hover:pause-animation">
+          {/* --- BLOC BAS : DÉFILEMENT LENT ET GRANDES IMAGES --- */}
+          <div className="bg-sunuBlue py-10 overflow-hidden relative group">
+            {/* - animate-scroll-ultra-slow : pour un passage très lent 
+                - w-max : pour que le conteneur s'adapte à la largeur totale des images
+            */}
+            <div className="flex w-max animate-scroll-ultra-slow group-hover:pause-animation">
               {infiniteSlides.map((slide, index) => (
                 <div 
                   key={index} 
-                  className="w-[300px] md:w-[350px] aspect-square mx-3 flex-shrink-0 bg-white overflow-hidden rounded-2xl shadow-lg"
+                  className="w-[350px] md:w-[450px] aspect-square mx-4 flex-shrink-0 bg-white overflow-hidden rounded-2xl shadow-2xl"
                 >
                   <img
                     src={slide}
                     alt="Réalisation SUNULINK"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
               ))}
             </div>
 
-            {/* Overlay dégradé pour adoucir l'entrée/sortie sur les bords */}
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-sunuBlue to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-sunuBlue to-transparent z-10" />
+            {/* Overlays pour l'effet de fondu sur les bords */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-sunuBlue via-sunuBlue/50 to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-sunuBlue via-sunuBlue/50 to-transparent z-10" />
           </div>
 
         </div>
       </div>
 
-      {/* Styles CSS nécessaires pour l'animation (à mettre dans votre fichier CSS global ou via Tailwind config) */}
       <style>{`
-        @keyframes scroll-slow {
+        @keyframes scroll-ultra-slow {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-33.33%); }
         }
-        .animate-scroll-slow {
-          animation: scroll-slow 40s linear infinite;
+        .animate-scroll-ultra-slow {
+          /* 60s pour un défilement très calme, ajustez à 80s pour encore plus lent */
+          animation: scroll-ultra-slow 60s linear infinite;
         }
         .pause-animation:hover {
           animation-play-state: paused;
