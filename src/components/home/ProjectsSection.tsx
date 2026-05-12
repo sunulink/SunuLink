@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Monitor, ArrowRight } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import { useState } from "react";
 
 export const ProjectsSection = () => {
   const slides = [
@@ -11,6 +12,8 @@ export const ProjectsSection = () => {
 
   // Tripler la liste pour assurer un défilement infini sans coupure avec de grandes images
   const infiniteSlides = [...slides, ...slides, ...slides];
+
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <section className="py-8 md:py-12 px-4 sm:px-6 bg-white overflow-hidden">
@@ -55,12 +58,16 @@ export const ProjectsSection = () => {
             </Link>
           </div>
 
-          {/* --- BLOC BAS : DÉFILEMENT LENT ET GRANDES IMAGES --- */}
-          <div className="bg-sunuBlue py-10 overflow-hidden relative group">
-            {/* - animate-scroll-ultra-slow : pour un passage très lent 
-                - w-max : pour que le conteneur s'adapte à la largeur totale des images
+          {/* --- BLOC BAS : DÉFILEMENT ULTRALENT ET INTERACTIF --- */}
+          <div className="bg-sunuBlue py-10 overflow-hidden relative">
+            {/* - animate-scroll-ultra-slow : pour un passage extrêmement lent 
+                - isPaused : permet de figer l'animation au survol
             */}
-            <div className="flex w-max animate-scroll-ultra-slow group-hover:pause-animation">
+            <div 
+              className={`flex w-max ${isPaused ? '' : 'animate-scroll-ultra-slow'}`}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
               {infiniteSlides.map((slide, index) => (
                 <div 
                   key={index} 
@@ -89,11 +96,8 @@ export const ProjectsSection = () => {
           100% { transform: translateX(-33.33%); }
         }
         .animate-scroll-ultra-slow {
-          /* 60s pour un défilement très calme, ajustez à 80s pour encore plus lent */
-          animation: scroll-ultra-slow 60s linear infinite;
-        }
-        .pause-animation:hover {
-          animation-play-state: paused;
+          /* 120s pour un défilement extrêmement lent, ajustez au besoin */
+          animation: scroll-ultra-slow 120s linear infinite;
         }
       `}</style>
     </section>
