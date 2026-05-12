@@ -266,6 +266,7 @@ export const collaborateurs = [
   { name: "SCI LA PROMOBILIERE", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
   { name: "SOFFLE DE VIE", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" },
   { name: "SenHorti Group", logo: "/collaborateurs/LOGO-SenHorti-Group.png" },
+  { name: "BDA SERVICE", logo: "/collaborateurs/BDA-SERVICE-LOGO.png" },
 ];
 
 export const portfolioImages = [
