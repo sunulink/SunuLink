@@ -14,10 +14,12 @@ const BrandingCompletPage = () => {
     generale: Array.from({ length: 25 }, (_, i) => `/portfolio/branding-graphique${i + 1}.jpg`),
     agreen: Array.from({ length: 3 }, (_, i) => `/portfolio/branding-graphique-agreen${i + 1}.png`),
     goodCafe: Array.from({ length: 7 }, (_, i) => `/portfolio/branding-graphique-good-cafe${i + 1}.jpg`),
+    // Nouvelle collection BDA SERVICE Mai 2026
+    bdaService: Array.from({ length: 5 }, (_, i) => `/portfolio/branding-graphique-bda-service${i}.jpg`),
   };
 
-  // Liste plate pour le Slider Global
-  const allImages = [...categories.generale, ...categories.agreen, ...categories.goodCafe];
+  // Liste plate pour le Slider Global et ajoute bdaService ici
+  const allImages = [...categories.generale, ...categories.agreen, ...categories.goodCafe, ...categories.bdaService];
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % allImages.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
@@ -68,8 +70,30 @@ const BrandingCompletPage = () => {
         {/* 2. SECTION PAR CATÉGORIES */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
+
+            {/* --- La NOUVELLE SECTION : BDA SERVICE --- */}
+            <div className="mb-20">
+              <div className="flex items-center gap-4 mb-8">
+                <Layout className="text-sunuOrange" size={32} />
+                <h3 className="text-3xl font-black uppercase italic">Expertise <span className="text-sunuOrange">BDA SERVICE</span></h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {categories.bdaService.map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="aspect-square rounded-2xl overflow-hidden shadow-lg cursor-zoom-in group border-4 border-white transition-all hover:border-sunuOrange/30" 
+                    onClick={() => setSelectedImg(img)}
+                  >
+                    <img 
+                      src={img} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                      alt="BDA Service Branding" 
+                    />
+                  </div>
+                ))}
+              </div>
             
-            {/* A-Green Branding */}
+            {/* Collection A-Green Branding */}
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <Palette className="text-sunuOrange" size={32} />
@@ -84,7 +108,7 @@ const BrandingCompletPage = () => {
               </div>
             </div>
 
-            {/* Good Café Branding */}
+            {/* Collection Good Café Branding */}
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <Brush className="text-sunuOrange" size={32} />
