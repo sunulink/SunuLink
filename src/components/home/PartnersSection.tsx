@@ -39,6 +39,7 @@ export const PartnersSection = () => {
                     animationFillMode: 'both'
                   }}
                 >
+                  {/* Pour ajouter d'autres images ou logos de partenaires, rendez-vous src/data/homeData */}
                   <img
                     src={collab.logo}
                     alt={collab.name}
