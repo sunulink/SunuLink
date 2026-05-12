@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
@@ -14,12 +14,17 @@ const BrandingCompletPage = () => {
     generale: Array.from({ length: 25 }, (_, i) => `/portfolio/branding-graphique${i + 1}.jpg`),
     agreen: Array.from({ length: 3 }, (_, i) => `/portfolio/branding-graphique-agreen${i + 1}.png`),
     goodCafe: Array.from({ length: 7 }, (_, i) => `/portfolio/branding-graphique-good-cafe${i + 1}.jpg`),
-    // Nouvelle collection BDA SERVICE Mai 2026
+    // Nouvelle collection BDA SERVICE (Extension .png)
     bdaService: Array.from({ length: 5 }, (_, i) => `/portfolio/branding-graphique-bda-service${i}.png`),
   };
 
-  // Liste plate pour le Slider Global et ajoute bdaService ici
-  const allImages = [...categories.generale, ...categories.agreen, ...categories.goodCafe, ...categories.bdaService];
+  // Liste plate pour le Slider Global et le Flux Créatif
+  const allImages = [
+    ...categories.generale, 
+    ...categories.agreen, 
+    ...categories.goodCafe, 
+    ...categories.bdaService
+  ];
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % allImages.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
@@ -51,7 +56,7 @@ const BrandingCompletPage = () => {
           </div>
         </section>
 
-        {/* 1. SECTION GALERIE DYNAMIQUE (30s) */}
+        {/* 1. SECTION GALERIE DYNAMIQUE (MARQUEE) */}
         <section className="py-12 bg-gray-50 overflow-hidden">
           <h2 className="text-center text-2xl font-black mb-10 uppercase tracking-widest text-gray-400">Flux Créatif</h2>
           <div className="flex gap-4 animate-marquee-branding whitespace-nowrap">
@@ -71,7 +76,7 @@ const BrandingCompletPage = () => {
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-7xl">
 
-            {/* --- La NOUVELLE SECTION : BDA SERVICE --- */}
+            {/* --- SECTION : BDA SERVICE --- */}
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <Layout className="text-sunuOrange" size={32} />
@@ -92,7 +97,8 @@ const BrandingCompletPage = () => {
                   </div>
                 ))}
               </div>
-            
+            </div>
+
             {/* Collection A-Green Branding */}
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
@@ -125,12 +131,11 @@ const BrandingCompletPage = () => {
           </div>
         </section>
 
-        {/* 3. SLIDER INTERACTIF (1000x600px) */}
+        {/* 3. SLIDER INTERACTIF */}
         <section className="py-24 bg-sunuBlue/5">
           <div className="container mx-auto max-w-6xl px-6">
             <div className="flex items-center justify-center gap-4 mb-12">
                 <Layout className="text-sunuOrange" size={28} />
-                {/* CORRECTION : VISUELLE EN JAUNE/ORANGE */}
                 <h2 className="text-4xl font-black uppercase italic text-center">
                   Focus Identité <span className="text-sunuOrange">Visuelle</span>
                 </h2>
@@ -145,7 +150,6 @@ const BrandingCompletPage = () => {
                 className="w-full max-w-[1000px] h-[600px] rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] border-[15px] border-white cursor-zoom-in group" 
                 onClick={() => setSelectedImg(allImages[currentIndex])}
               >
-                {/* CORRECTION : OBJECT-COVER POUR REMPLIR LE CADRE BLANC */}
                 <img 
                   src={allImages[currentIndex]} 
                   alt="Branding Focus" 
