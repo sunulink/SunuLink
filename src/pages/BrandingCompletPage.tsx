@@ -15,7 +15,7 @@ const BrandingCompletPage = () => {
     agreen: Array.from({ length: 3 }, (_, i) => `/portfolio/branding-graphique-agreen${i + 1}.png`),
     goodCafe: Array.from({ length: 7 }, (_, i) => `/portfolio/branding-graphique-good-cafe${i + 1}.jpg`),
     // Nouvelle collection BDA SERVICE Mai 2026
-    bdaService: Array.from({ length: 5 }, (_, i) => `/portfolio/branding-graphique-bda-service${i}.jpg`),
+    bdaService: Array.from({ length: 5 }, (_, i) => `/portfolio/branding-graphique-bda-service${i}.png`),
   };
 
   // Liste plate pour le Slider Global et ajoute bdaService ici
