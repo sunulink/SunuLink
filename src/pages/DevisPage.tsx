@@ -214,10 +214,10 @@ const DevisPage = () => {
 
     try {
       await emailjs.send(
-        "service_xgdluls",
+        "service_04lmrjh", // nouveau ID Service
         "template_cqv61zn", // nouveau template devis
         templateParams,
-        "KfF-FpO2K-0aYUFsS"
+        "ShXDBB_RTc_F-EWm1" // Nouvelle Public Key
       );
       setIsSuccess(true);
     } catch (error) {
