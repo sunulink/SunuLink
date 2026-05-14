@@ -8,7 +8,9 @@ export const ProjectsSection = () => {
   // Définition des images du portfolio
   const slides = [
     ...Array.from({ length: 7 }, (_, i) => `/portfolio/carte-identite-marque-locale${i}.jpg`),
-    ...Array.from({ length: 8 }, (_, i) => `/portfolio/carte-identite-visuelle${i + 1}.jpg`)
+    // Remplacement de la logique numérique par une logique de lettres (a-g) pour organiser les visuelles
+    // J'ai utilisé le code ASCII de la lettre 'a' et de l'index i pour iterer les images
+    ...Array.from({ length: 7 }, (_, i) => `/portfolio/carte-identite-visuelle-${String.fromCharCode(97 + i)}.jpg`)
   ];
 
   // Tripler la liste pour assurer un défilement infini fluide
