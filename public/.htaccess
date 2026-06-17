@@ -1,1 +1,11 @@
+Options -MultiViews
+RewriteEngine On
 
+# 1. Redirection définitive du domaine .com vers le domaine .sn
+RewriteCond %{HTTP_HOST} ^(www\.)?sunulinkconsulting\.com [NC]
+RewriteRule ^(.*)$ https://www.sunulink.sn/$1 [R=301,L]
+
+# 2. Gestion du routeur React (pour éviter les erreurs 404 au rafraîchissement)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
