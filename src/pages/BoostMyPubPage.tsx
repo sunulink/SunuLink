@@ -52,7 +52,7 @@ const BoostMyPubPage = () => {
       duration: "6 mois",
       price: "750.000 Fcfa / mois",
       tagline: "Accélérer sa croissance et renforcer son image",
-      description: "Le pack préféré des entreprises : puissance, régularité, qualité et visibilité sponsorisée.",
+      description: "Le pack préféré des entreprises : puissance, régularité, quality et visibilité sponsorisée.",
       icon: Star,
       color: "from-orange-500 to-yellow-500",
       buttonColor: "bg-orange-500 hover:bg-orange-600",
@@ -217,9 +217,13 @@ const BoostMyPubPage = () => {
                       ))}
                     </div>
 
-                    <Button className={`w-full ${pack.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
-                      Je valide
-                    </Button>
+                    {/* MODIFICATION : Ajout de la redirection vers la page contact */}
+                    <Link to="/contact" className="block w-full">
+                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
+                        Je valide
+                      </Button>
+                    </Link>
+                    
                     <Link
                       to={`/boost-my-pub/${pack.slug}`}
                       className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold transition-colors"
