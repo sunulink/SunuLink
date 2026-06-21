@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-image.jpg";
@@ -29,7 +30,8 @@ const Hero = () => {
                 <span className="text-secondary drop-shadow-lg">Impact</span>
               </h1>
 
-              <p className="text-xl md:text-2xl font-light opacity-95 leading-relaxed max-w-2xl mb-8">
+              {/* MODIFICATION : Passage de font-light à font-normal */}
+              <p className="text-xl md:text-2xl font-normal opacity-95 leading-relaxed max-w-2xl mb-8">
                 Nous vous aidons à développer une stratégie marketing complète,
                 de la création de votre identité visuelle à la mise en place
                 d'une stratégie digitale.
