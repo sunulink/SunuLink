@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 
-// Logos de partenaires/clients Aller vers le dossier /public/parteners... pour en ajouter ici du plus récent au plus ancien
+// Logos de partenaires/clients Aller vers le dossier /public/partners... pour en ajouter ici du plus récent au plus ancien
 const partnerLogos = [
+  { name: "Agence Babelle", logo: "/partners/logo-babelle.png" },
+  { name: "Vide Boubou", logo: "/partners/logo-vide-boubou.png" },
   { name: "BDA SERVICE", logo: "/collaborateurs/logo-bda-service.png" },
   { name: "FREHUP", logo: "/partners/LOGO FREHUP.png" },
   { name: "MEER JUS", logo: "/partners/LOGO MEER JUS.png" },
