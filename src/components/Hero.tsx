@@ -30,8 +30,8 @@ const Hero = () => {
                 <span className="text-secondary drop-shadow-lg">Impact</span>
               </h1>
 
-              {/* OPTIMISATION : Clarté maximale avec font-semibold, opacity-100 et drop-shadow-sm */}
-              <p className="text-xl md:text-2xl font-semibold opacity-100 drop-shadow-sm leading-relaxed max-w-2xl mb-8">
+              {/* MODIFICATION : Utilisation de font-black pour correspondre aux titres de la section Services */}
+              <p className="text-xl md:text-2xl font-black opacity-100 drop-shadow-sm leading-relaxed max-w-2xl mb-8">
                 Nous vous aidons à développer une stratégie marketing complète,
                 de la création de votre identité visuelle à la mise en place
                 d'une stratégie digitale.
