@@ -28,8 +28,8 @@ const Hero_2 = () => {
                 <span className="text-white drop-shadow-lg">Votre partenaire 360°</span>
               </h1>
 
-              {/* OPTIMISATION : Clarté maximale avec font-semibold, opacity-100 et drop-shadow-sm */}
-              <p className="text-xl md:text-2xl font-semibold opacity-100 drop-shadow-sm leading-relaxed max-w-2xl mb-8">
+              {/* MODIFICATION : Utilisation de font-black pour correspondre aux titres de la section Services */}
+              <p className="text-xl md:text-2xl font-black opacity-100 drop-shadow-sm leading-relaxed max-w-2xl mb-8">
                 Nous accompagnons entreprises, institutions et entrepreneurs dans leur transformation stratégique, digitale et créative.
               </p>
             </div>
