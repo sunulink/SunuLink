@@ -32,18 +32,19 @@ const Contact = () => {
       );
   };
 
+  // MODIFICATION : Mise à jour de l'email et du premier numéro de téléphone (WhatsApp)
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "infosunulink@gmail.com",
-      link: "mailto:infosunulink@gmail.com",
+      value: "contact@sunulink.sn",
+      link: "mailto:contact@sunulink.sn",
     },
     {
       icon: Phone,
-      title: "Téléphone",
-      value: "+221 78 593 83 69",
-      link: "tel:+221785938369",
+      title: "Téléphone / WhatsApp",
+      value: "+221 71 008 59 15",
+      link: "https://wa.me/221710085915", // Redirection directe vers WhatsApp
     },
     {
       icon: Phone,
@@ -93,6 +94,8 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.link}
+                  target={info.title.includes("WhatsApp") ? "_blank" : undefined}
+                  rel={info.title.includes("WhatsApp") ? "noopener noreferrer" : undefined}
                   className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-sunuOrange group"
                 >
                   <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -180,8 +183,9 @@ const Contact = () => {
               />
 
               <div>
+                {/* MODIFICATION : Changement du label pour SUNULINK CONSULTING */}
                 <label className="text-sm opacity-90 block mb-2">
-                  Comment avez-vous connu SUNU LINK ?
+                  Comment avez-vous connu SUNULINK CONSULTING ?
                 </label>
                 <Input
                   name="source"
