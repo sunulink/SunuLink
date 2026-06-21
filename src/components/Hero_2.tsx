@@ -21,19 +21,20 @@ const Hero_2 = () => {
               <span>Cabinet de Conseil & Agence 360°</span>
             </div>
 
-            {/* BLOC TEXTE HARMONISÉ (Même hauteur que Hero.tsx) */}
+            {/* BLOC TEXTE HARMONISÉ */}
             <div className="min-h-[200px] md:min-h-[250px] flex flex-col justify-center">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight uppercase">
                 SunuLink Consulting <br />
                 <span className="text-white drop-shadow-lg">Votre partenaire 360°</span>
               </h1>
 
-              <p className="text-xl md:text-2xl font-light opacity-95 leading-relaxed max-w-2xl mb-8">
+              {/* MODIFICATION : Passage de font-light à font-normal */}
+              <p className="text-xl md:text-2xl font-normal opacity-95 leading-relaxed max-w-2xl mb-8">
                 Nous accompagnons entreprises, institutions et entrepreneurs dans leur transformation stratégique, digitale et créative.
               </p>
             </div>
 
-            {/* BLOC BOUTONS - ALIGNÉ AVEC HERO.TSX */}
+            {/* BLOC BOUTONS - ALIGNÉ */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="#services">
                 <Button
