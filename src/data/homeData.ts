@@ -101,14 +101,14 @@ export const contactInfo = [
   {
     icon: Phone,
     title: "Téléphone",
-    value: "+221 78 593 83 69",
-    link: "tel:+221785938369",
+    value: "+221 71 008 59 15",
+    link: "tel:+221710085915",
   },
   {
     icon: Phone, // icône phone
     title: "WhatsApp",
-    value: "+221 76 973 00 00",
-    link: "https://wa.me/221769730000", 
+    value: "+221 71 008 59 15",
+    link: "https://wa.me/221710085915", 
   },
 ];
 
