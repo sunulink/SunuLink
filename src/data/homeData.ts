@@ -255,10 +255,10 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const collaborateurs = [
+  { name: "Agence Babelle", logo: "/collaborateurs/logo-babelle.png" },
   { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" },
   { name: "MEER JUS", logo: "/collaborateurs/LOGO MEER JUS.png" },
   { name: "NATAA", logo: "/collaborateurs/LOGO NATAA.png" },
-  { name: "ADJA FRANCE BABELLE", logo: "/collaborateurs/LOGO-ADJA-FRANCE-BABELLE.png" },
   { name: "GAINDE", logo: "/collaborateurs/LOGO-GAINDE.png" },
   { name: "GLOBAL FISH RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
   { name: "KING MOUSSA", logo: "/collaborateurs/LOGO-KING-MOUSSA.png" },
