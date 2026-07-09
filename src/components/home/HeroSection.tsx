@@ -28,11 +28,11 @@ export const HeroSection = () => {
         {/* GRILLE ALIGNÉE AU CENTRE : Aligne verticalement le bloc texte et l'image */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          {/* CÔTÉ GAUCHE : TOUT LE CONTENU ENCADRÉ (Remonté et aligné) */}
+          {/* CÔTÉ GAUCHE : TOUT LE CONTENU ENCADRÉ */}
           <div className="relative z-10 flex flex-col max-w-[550px]">
             <div className="relative min-h-[300px] flex flex-col justify-center">
               
-              {/* Slide 1 : SunuLink Consulting */}
+              {/* Slide 1 : SUNULINK CONSULTING */}
               <div
                 className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col justify-center ${
                   showFirstBlock ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
@@ -56,15 +56,15 @@ export const HeroSection = () => {
                 }`}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
-                  Stratégie <br /> Créativité <span className="text-sunuOrange">Impact</span>
+                  Stratégie <br /> Créativité <span>Impact</span>
                 </h1>
                 <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
-                  Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
+                  Nous vous aidons à développer une strategy marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
                 </p>
               </div>
             </div>
 
-            {/* BOUTONS : Alignés au flux pour rester dans le cadre jaune */}
+            {/* BOUTONS */}
             <div className="flex flex-wrap gap-4 mt-8">
               <Link to="/contact">
                 <Button 
@@ -86,27 +86,34 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
-          {/* CÔTÉ DROIT : IMAGE (Coins blancs masqués avec rounded-3xl sur le parent overflow-hidden) */}
+          {/* CÔTÉ DROIT : IMAGE (Correction définitive des coins) */}
           <div className="flex justify-center md:justify-end items-center">
-          <div className="w-full max-w-[500px] aspect-square relative overflow-hidden rounded-3xl isolate flex items-center">
-            <Carousel opts={{ loop: true }} className="w-full h-full rounded-3xl overflow-hidden">
-              <CarouselContent className="h-full">
-                {heroImages.map((img, index) => (
-                  <CarouselItem key={index} className="h-full flex items-center">
-                    <FlipCard
-                      front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
-                      back={
-                        <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl">
-                          {img.text}
-                        </div>
-                      }
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
+            <div className="w-full max-w-[500px] aspect-square relative rounded-3xl overflow-hidden bg-transparent">
+              <Carousel opts={{ loop: true }} className="w-full h-full bg-transparent">
+                <CarouselContent className="h-full bg-transparent">
+                  {heroImages.map((img, index) => (
+                    <CarouselItem key={index} className="h-full bg-transparent flex items-center justify-center">
+                      <div className="w-full h-full rounded-3xl overflow-hidden bg-transparent isolation-auto">
+                        <FlipCard
+                          front={
+                            <img 
+                              src={img.src} 
+                              alt={img.alt} 
+                              className="w-full h-full object-cover rounded-3xl overflow-hidden block select-none bg-transparent" 
+                            />
+                          }
+                          back={
+                            <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl overflow-hidden">
+                              {img.text}
+                            </div>
+                          }
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
           </div>
 
         </div>
