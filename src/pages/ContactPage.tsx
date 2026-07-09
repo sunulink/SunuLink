@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 
 const ContactPage = () => {
   const scrollToContact = () => {
-    // Recherche l'élément du formulaire de contact dans le DOM et fait défiler la page
     const contactSection = document.getElementById("contact") || document.getElementById("contact-section") || document.querySelector("footer");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
@@ -34,7 +33,8 @@ const ContactPage = () => {
           <div className="container mx-auto max-w-7xl">
             <div className="grain-texture bg-gradient-to-r from-sunuBlue via-gray-500 to-sunuOrange rounded-3xl p-6 sm:p-12 shadow-2xl" data-aos="zoom-in">
               <div className="text-center text-white">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 leading-tight break-words">
+                {/* Correction apportée ici pour éviter la coupure du 'S' */}
+                <h2 className="text-[22px] sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 leading-tight tracking-tight whitespace-normal">
                   DES COLLABORATIONS<br />FRUCTUEUSES
                 </h2>
                 <p className="text-base sm:text-xl opacity-95 mb-6 sm:mb-8 max-w-md mx-auto">
