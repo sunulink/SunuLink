@@ -89,24 +89,24 @@ export const HeroSection = () => {
           {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
           {/* CÔTÉ DROIT : IMAGE (Coins blancs masqués avec rounded-3xl sur le parent overflow-hidden) */}
           <div className="flex justify-center md:justify-end items-center">
-            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden rounded-3xl flex items-center">
-              <Carousel opts={{ loop: true }} className="w-full h-full">
-                <CarouselContent className="h-full">
-                  {heroImages.map((img, index) => (
-                    <CarouselItem key={index} className="h-full flex items-center">
-                      <FlipCard
-                        front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
-                        back={
-                          <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl">
-                            {img.text}
-                          </div>
-                        }
-                      />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-              </Carousel>
-            </div>
+          <div className="w-full max-w-[500px] aspect-square relative overflow-hidden rounded-3xl isolate flex items-center">
+            <Carousel opts={{ loop: true }} className="w-full h-full rounded-3xl overflow-hidden">
+              <CarouselContent className="h-full">
+                {heroImages.map((img, index) => (
+                  <CarouselItem key={index} className="h-full flex items-center">
+                    <FlipCard
+                      front={<img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-3xl" />}
+                      back={
+                        <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl">
+                          {img.text}
+                        </div>
+                      }
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
           </div>
 
         </div>
