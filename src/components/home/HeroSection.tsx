@@ -25,10 +25,10 @@ export const HeroSection = () => {
     <section className="pt-[110px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         
-        {/* GRILLE ALIGNÉE AU CENTRE : Aligne verticalement le bloc texte et l'image */}
+        {/* GRILLE ALIGNÉE AU CENTRE */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          {/* CÔTÉ GAUCHE : TOUT LE CONTENU ENCADRÉ */}
+          {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
           <div className="relative z-10 flex flex-col max-w-[550px]">
             <div className="relative min-h-[300px] flex flex-col justify-center">
               
@@ -56,10 +56,10 @@ export const HeroSection = () => {
                 }`}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
-                  Stratégie <br /> Créativité <span>Impact</span>
+                  Stratégie <br /> Créativité <span className="text-white">Impact</span>
                 </h1>
                 <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
-                  Nous vous aidons à développer une strategy marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
+                  Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
                 </p>
               </div>
             </div>
@@ -87,24 +87,27 @@ export const HeroSection = () => {
           </div>
 
           {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
-          {/* CÔTÉ DROIT : IMAGE (Correction définitive sans aucun résidu blanc possible) */}
+          {/* CÔTÉ DROIT : CARROUSEL AVEC CLIP-PATH (SOLUTION RADICALE ANTI-COINS BLANCS) */}
           <div className="flex justify-center md:justify-end items-center">
-            <div className="w-full max-w-[500px] aspect-square relative rounded-3xl overflow-hidden isolation-strict bg-transparent">
+            <div 
+              className="w-full max-w-[500px] aspect-square relative bg-transparent"
+              style={{ clipPath: "inset(0% 0% 0% 0% round 1.875rem)" }} // Coupe tout au pixel près avec un arrondi identique à rounded-3xl (30px)
+            >
               <Carousel opts={{ loop: true }} className="w-full h-full bg-transparent">
-                <CarouselContent className="h-full bg-transparent ml-0"> {/* ml-0 supprime le décalage négatif par défaut de Shadcn */}
+                <CarouselContent className="h-full bg-transparent ml-0">
                   {heroImages.map((img, index) => (
                     <CarouselItem key={index} className="h-full pl-0 bg-transparent flex items-center justify-center">
-                      <div className="w-full h-full rounded-3xl overflow-hidden bg-transparent select-none mask-image-fix">
+                      <div className="w-full h-full bg-transparent select-none">
                         <FlipCard
                           front={
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-full object-cover rounded-3xl overflow-hidden bg-transparent" 
+                              className="w-full h-full object-cover bg-transparent" 
                             />
                           }
                           back={
-                            <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm rounded-3xl overflow-hidden">
+                            <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm">
                               {img.text}
                             </div>
                           }
