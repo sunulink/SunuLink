@@ -10,7 +10,8 @@ const BoostMyPubPage = () => {
       slug: "teranga",
       name: "PACK TERANGA",
       duration: "3 mois",
-      price: "450.000 Fcfa / mois",
+      price: "450.000 Fcfa",
+      period: "/ mois",
       tagline: "Lancer sa communication proprement et efficacement",
       description: "Un pack idéal pour les entreprises qui veulent une communication claire, régulière et professionnelle sans passer par de grands investissements.",
       icon: Sparkles,
@@ -50,7 +51,8 @@ const BoostMyPubPage = () => {
       slug: "xeewal",
       name: "PACK XEEWAL",
       duration: "6 mois",
-      price: "750.000 Fcfa / mois",
+      price: "750.000 Fcfa",
+      period: "/ mois",
       tagline: "Accélérer sa croissance et renforcer son image",
       description: "Le pack préféré des entreprises : puissance, régularité, quality et visibilité sponsorisée.",
       icon: Star,
@@ -92,7 +94,8 @@ const BoostMyPubPage = () => {
       slug: "buur",
       name: "PACK BUUR",
       duration: "1 an",
-      price: "1.499.000 Fcfa / mois",
+      price: "1.499.000 Fcfa",
+      period: "/ mois",
       tagline: "Dominer son marché et devenir une référence",
       description: "Le pack ultime pour les entreprises ambitieuses qui veulent être visibles partout, tout le temps, avec une image haut de gamme.",
       icon: Crown,
@@ -142,30 +145,30 @@ const BoostMyPubPage = () => {
 
       <main className="pt-0 pb-20">
         {/* Hero Section */}
-        <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white">
+        <section className="pt-24 pb-16 px-4 sm:px-6 bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white">
           <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-7xl font-black mb-6" data-aos="fade-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 sm:mb-6" data-aos="fade-up">
               BOOST MY PUB
             </h1>
-            <p className="text-2xl md:text-3xl font-bold mb-8" data-aos="fade-up" data-aos-delay="100">
+            <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8" data-aos="fade-up" data-aos-delay="100">
               Votre visibilité. Notre puissance.
             </p>
-            <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl" data-aos="fade-up" data-aos-delay="200">
+            <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 text-base sm:text-lg md:text-xl" data-aos="fade-up" data-aos-delay="200">
               <p className="leading-relaxed">
-                Une page d'entreprise n'est pas seulement un réseau social.<br />
+                Une page d'entreprise n'est pas seulement un réseau social.<br className="hidden sm:block" />
                 C'est votre vitrine, votre réputation, votre croissance.
               </p>
               <p className="leading-relaxed">
                 Avec <strong>Boost My Pub</strong>, Sunu Link Consulting transforme votre communication en une machine capable de :
               </p>
-              <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 pt-2 sm:pt-4">
                 {["attirer", "convertir", "fidéliser", "imposer votre marque"].map((item, index) => (
-                  <span key={index} className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full font-semibold">
+                  <span key={index} className="bg-white/20 backdrop-blur-sm px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold">
                     ✔ {item}
                   </span>
                 ))}
               </div>
-              <p className="text-2xl font-bold pt-6 italic">
+              <p className="text-xl sm:text-2xl font-bold pt-4 sm:pt-6 italic">
                 "Faites parler de vous. Faites voir votre marque. Faites avancer votre business."
               </p>
             </div>
@@ -173,7 +176,7 @@ const BoostMyPubPage = () => {
         </section>
 
         {/* Packs Section */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {packs.map((pack, index) => (
@@ -186,47 +189,49 @@ const BoostMyPubPage = () => {
                   data-aos-delay={index * 100}
                 >
                   {pack.recommended && (
-                    <div className="absolute top-0 right-0 bg-sunuOrange text-white px-6 py-2 font-bold text-sm rounded-bl-2xl">
+                    <div className="absolute top-0 right-0 bg-sunuOrange text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
                       ⭐ Recommandé
                     </div>
                   )}
 
-                  <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-8`}>
-                    <div className="flex items-center justify-center mb-6">
-                      <div className="bg-white/20 backdrop-blur-sm w-20 h-20 rounded-2xl flex items-center justify-center">
-                        <pack.icon className="w-10 h-10 text-white" />
+                  <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-6 sm:p-8`}>
+                    <div className="flex items-center justify-center mb-4 sm:mb-6">
+                      <div className="bg-white/20 backdrop-blur-sm w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center">
+                        <pack.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                       </div>
                     </div>
-                    <h2 className="text-3xl font-black text-center mb-2">{pack.name}</h2>
-                    <p className="text-center text-lg font-semibold mb-4 opacity-90">{pack.duration}</p>
-                    <div className="text-center mb-6">
-                      <p className="text-4xl font-black">{pack.price}</p>
+                    <h2 className="text-2xl sm:text-3xl font-black text-center mb-1 sm:mb-2">{pack.name}</h2>
+                    <p className="text-center text-base sm:text-lg font-semibold mb-3 sm:mb-4 opacity-90">{pack.duration}</p>
+                    <div className="text-center mb-4 sm:mb-6">
+                      <p className="text-2xl sm:text-3xl md:text-4xl font-black whitespace-normal break-words">
+                        {pack.price}
+                        <span className="text-lg sm:text-xl font-medium block sm:inline">{pack.period}</span>
+                      </p>
                     </div>
-                    <p className="text-center text-lg font-bold mb-6 italic">{pack.tagline}</p>
+                    <p className="text-center text-base sm:text-lg font-bold mb-2 sm:mb-6 italic">{pack.tagline}</p>
                   </div>
 
-                  <div className="bg-white p-8">
-                    <p className="text-gray-700 mb-6 leading-relaxed">{pack.description}</p>
+                  <div className="bg-white p-6 sm:p-8">
+                    <p className="text-gray-700 mb-6 text-sm sm:text-base leading-relaxed">{pack.description}</p>
 
                     <div className="space-y-3 mb-8">
                       {pack.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start space-x-3">
                           <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
 
-                    {/* MODIFICATION : Ajout de la redirection vers la page contact */}
                     <Link to="/contact" className="block w-full">
-                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
+                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
                         Je valide
                       </Button>
                     </Link>
                     
                     <Link
                       to={`/boost-my-pub/${pack.slug}`}
-                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold transition-colors"
+                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold text-sm sm:text-base transition-colors"
                     >
                       En savoir plus →
                     </Link>
@@ -238,20 +243,22 @@ const BoostMyPubPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-sunuGray/20 to-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange text-white rounded-3xl p-12 text-center shadow-2xl" data-aos="fade-up">
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
+            <div className="grain-texture bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange text-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-center shadow-2xl" data-aos="fade-up">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 leading-tight">
                 Prêt à booster votre visibilité ?
               </h2>
-              <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-95 max-w-2xl mx-auto leading-relaxed">
                 Choisissez le pack qui correspond à vos ambitions et transformez votre communication.
               </p>
-              <Link to="/contact">
-                <Button className="bg-white text-sunuOrange px-10 py-6 text-lg font-bold rounded-full hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Demander un devis personnalisé
-                </Button>
-              </Link>
+              <div className="w-full flex justify-center">
+                <Link to="/contact" className="w-full sm:w-auto max-w-md sm:max-w-none">
+                  <Button className="w-full bg-white text-sunuOrange px-6 sm:px-10 py-5 sm:py-6 text-sm sm:text-base md:text-lg font-bold rounded-full hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl h-auto whitespace-normal text-center break-words leading-snug">
+                    Demander un devis personnalisé
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
