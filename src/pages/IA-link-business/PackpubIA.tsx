@@ -5,57 +5,58 @@ import { Link } from "react-router-dom";
 const PackiaPubIA = () => {
   const packsIA = [
     {
-      slug: "Pack-de-Démarrage-IA",
-      name: "Pack de Démarrage IA",
-      duration: "Durée minimale : 3 mois",
-      price: "350 000 FCFA / mois",
-      tagline: "PME & Startups",
-      description: "Automatiser l’essentiel pour gagner du temps et structurer son activité.",
+      slug: "link-ia-start",
+      name: "LINK IA START",
+      duration: "Engagement : 3 mois recommandé",
+      price: "500 000 FCFA / mois",
+      tagline: "Structurer son entreprise et automatiser l’essentiel.",
+      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
       icon: Sparkles,
       color: "from-blue-500 to-cyan-500",
       buttonColor: "bg-blue-500 hover:bg-blue-600",
       features: [
-        "Automatisation marketing & commerciale",
-        "CRM intelligent",
-        "Automatisation administrative",
-        "Support client IA",
-        "Tableaux de bord & reporting"
+        "Audit IA",
+        "CRM simple",
+        "Automatisation tâches",
+        "Assistant IA",
+        "Formation équipe"
       ]
     },
     {
-      slug: "Pack-Performance-IA",
-      name: "Pack Performance IA",
-      duration: "Durée minimale : 6 mois",
-      price: "750 000 FCFA / mois",
-      tagline: "PME & Entreprises en croissance",
-      description: "Automatiser plusieurs départements pour accélérer la croissance.",
+      slug: "link-ia-growth",
+      name: "LINK IA GROWTH",
+      duration: "Engagement : 6 mois recommandé",
+      price: "900 000 FCFA / mois",
+      tagline: "Automatiser ses processus pour accélérer.",
+      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
       icon: Star,
       color: "from-orange-500 to-yellow-500",
       buttonColor: "bg-orange-500 hover:bg-orange-600",
       recommended: true,
       features: [
-        "Automatisation marketing avancée",
-        "Automatisation commerciale prédictive",
-        "RH & administration intelligentes",
-        "Logistique & opérations",
-        "BI & reporting avancé"
+        "CRM avancé",
+        "Marketing automation",
+        "Chatbot intelligent",
+        "Analyse données",
+        "Process automatisés"
       ]
     },
     {
-      slug: "Pack-IA-360-Domination",
-      name: "Pack IA 360° Domination",
-      duration: "Durée : 12 mois",
-      price: "1 350 000 FCFA / mois",
-      tagline: "Grandes entreprises & Leaders",
-      description: "Transformer totalement l’entreprise grâce à l’IA.",
+      slug: "link-ia-transformation",
+      name: "LINK IA TRANSFORMATION",
+      duration: "Grandes entreprises",
+      price: "Sur devis",
+      tagline: "Transformer votre entreprise grâce à l’IA.",
+      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
       icon: Crown,
       color: "from-purple-600 to-pink-600",
       buttonColor: "bg-purple-600 hover:bg-purple-700",
       features: [
-        "Automatisation IA complète",
-        "Marketing, ventes, RH, admin, production",
-        "BI prédictive & direction stratégique",
-        "Accompagnement annuel"
+        "Audit IA 360°",
+        "Stratégie IA",
+        "Transformation processus",
+        "Data & KPI",
+        "Accompagnement direction"
       ]
     }
   ];
@@ -86,7 +87,7 @@ const PackiaPubIA = () => {
             >
               {packia.recommended && (
                 <div className="absolute top-0 right-0 bg-sunuOrange text-white px-6 py-2 font-bold text-sm rounded-bl-2xl z-10">
-                  ⭐ Recommandé
+                  🚀 Propulser
                 </div>
               )}
 
@@ -97,12 +98,13 @@ const PackiaPubIA = () => {
                   </div>
                 </div>
                 <h2 className="text-2xl font-black mb-2">{packia.name}</h2>
-                <p className="text-3xl font-black mb-2">{packia.price}</p>
+                <p className="text-3xl font-black mb-1">{packia.price}</p>
+                <p className="text-xs font-medium uppercase tracking-wider opacity-75 mb-3">{packia.duration}</p>
                 <p className="text-sm font-bold italic opacity-90">{packia.tagline}</p>
               </div>
 
               <div className="bg-white p-8">
-                <p className="text-gray-700 mb-6 leading-relaxed text-sm">{packia.description}</p>
+                <p className="text-gray-700 mb-6 leading-relaxed text-sm min-h-[40px]">{packia.description}</p>
 
                 <div className="space-y-3 mb-8">
                   {packia.features.map((feature, idx) => (
@@ -113,7 +115,6 @@ const PackiaPubIA = () => {
                   ))}
                 </div>
 
-                {/* LES DEUX BOUTONS RÉINSÉRÉS */}
                 <div className="space-y-4">
                   <Button asChild className={`w-full ${packia.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
                     <Link to="/contact">Je valide</Link>
@@ -123,7 +124,7 @@ const PackiaPubIA = () => {
                     to={`/pack-pub-ia/${packia.slug}`}
                     className="block text-center text-sunuBlue hover:text-sunuOrange font-semibold transition-colors text-base"
                   >
-                    En savoir plus →
+                    Voir le détail →
                   </Link>
                 </div>
               </div>
