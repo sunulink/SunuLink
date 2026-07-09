@@ -7,14 +7,16 @@ const logo = "/logo-7.png";
 const Hero = () => {
   return (
     <div className="p-4 md:py-10 mt-10">
-      <section className="relative min-h-[600px] bg-gradient-hero overflow-hidden rounded-2xl shadow-elegant max-w-7xl mx-auto">
-        <div className="absolute inset-0">
+      <section className="relative min-h-[600px] bg-gradient-hero overflow-hidden rounded-2xl shadow-elegant max-w-7xl mx-auto isolate">
+        
+        {/* CONTENEUR DE FOND - Correction anti-débordement des angles */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden z-0 pointer-events-none transform tracking-normal">
           <img
             src={heroImage}
             alt="Strategic consulting team"
-            className="w-full h-full object-cover opacity-10"
+            className="w-full h-full object-cover opacity-10 rounded-2xl"
           />
-          <div className="absolute inset-0 bg-gradient-hero opacity-80"></div>
+          <div className="absolute inset-0 bg-gradient-hero opacity-80 rounded-2xl"></div>
         </div>
 
         <div className="relative px-6 md:px-16 py-16 md:py-20 z-10 flex items-center min-h-[600px]">
@@ -27,10 +29,9 @@ const Hero = () => {
             <div className="min-h-[200px] md:min-h-[250px] flex flex-col justify-center">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight uppercase">
                 STRATÉGIE CRÉATIVITÉ <br />
-                <span className="text-secondary drop-shadow-lg">Impact</span>
+                <span className="text-white drop-shadow-lg">Impact</span> {/* Impact reste bien en blanc ici également */}
               </h1>
 
-              {/* MODIFICATION : Utilisation de font-black pour correspondre aux titres de la section Services */}
               <p className="text-xl md:text-2xl font-black opacity-100 drop-shadow-sm leading-relaxed max-w-2xl mb-8">
                 Nous vous aidons à développer une stratégie marketing complète,
                 de la création de votre identité visuelle à la mise en place
@@ -38,7 +39,7 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* BLOC BOUTONS - MAINTENANT FIXE */}
+            {/* BLOC BOUTONS */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
