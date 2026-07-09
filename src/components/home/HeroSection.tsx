@@ -56,7 +56,7 @@ export const HeroSection = () => {
                 }`}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
-                  Stratégie <br /> Créativité <span className="text-sunuOrange text-4xl"></span> Impact
+                  Stratégie <br /> Créativité <span className="text-sunuOrange">Impact</span>
                 </h1>
                 <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
                   Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
@@ -87,8 +87,9 @@ export const HeroSection = () => {
           </div>
 
           {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
+          {/* CÔTÉ DROIT : IMAGE (Coins blancs masqués avec rounded-3xl sur le parent overflow-hidden) */}
           <div className="flex justify-center md:justify-end items-center">
-            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden flex items-center">
+            <div className="w-full max-w-[500px] aspect-square relative overflow-hidden rounded-3xl flex items-center">
               <Carousel opts={{ loop: true }} className="w-full h-full">
                 <CarouselContent className="h-full">
                   {heroImages.map((img, index) => (
