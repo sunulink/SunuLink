@@ -72,7 +72,7 @@ const RealisationsPage = () => {
       examples: "Création de logos professionnels, chartes graphiques, pack branding complet",
       color: "from-sunuOrange to-yellow-500",
       projects: "15+",
-      link: "/realisations/logo-identite" // Lien ajouté vers la page Logo & Identité visuelle
+      link: "/realisations/logo-identite"
     },
     {
       icon: FileText,
@@ -203,21 +203,24 @@ const RealisationsPage = () => {
         {/* Testimonials Section */}
         <section className="py-16 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-3xl p-12 shadow-lg">
-              <h2 className="text-4xl font-black mb-8 text-gray-800 text-center">
+            <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-3xl p-6 md:p-12 shadow-lg">
+              <h2 className="text-3xl md:text-4xl font-black mb-8 text-gray-800 text-center">
                 CE QU'ILS DISENT<br />DE NOUS
               </h2>
               <div className="max-w-3xl mx-auto text-center">
-                <p className="text-xl text-gray-700 italic mb-6">
+                <p className="text-lg md:text-xl text-gray-700 italic mb-6">
                   "La qualité, la rapidité et le professionnalisme sont les forces les plus souvent citées."
                 </p>
-                <div className="flex justify-center gap-4 mt-8">
-                  <button className="bg-sunuBlue text-white px-6 py-3 rounded-full font-bold hover:bg-sunuOrange transition-all duration-300">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 w-full max-w-md mx-auto sm:max-w-none">
+                  <Link
+                    to="/contact"
+                    className="w-full sm:w-auto text-center bg-sunuBlue text-white px-6 py-3 rounded-full font-bold hover:bg-sunuOrange transition-all duration-300 shadow-md"
+                  >
                     Laisser un avis
-                  </button>
+                  </Link>
                   <Link
                     to="/realisations"
-                    className="bg-sunuOrange text-white px-6 py-3 rounded-full font-bold hover:bg-sunuBlue transition-all duration-300"
+                    className="w-full sm:w-auto text-center bg-sunuOrange text-white px-6 py-3 rounded-full font-bold hover:bg-sunuBlue transition-all duration-300 shadow-md"
                   >
                     Nos réalisations
                   </Link>
