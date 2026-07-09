@@ -206,7 +206,14 @@ const IAlinkbusiness = () => {
           </div>
         </section>
 
-        {/* AVANTAGES */}
+        {/* PACKS (Placés juste avant les avantages clés) */}
+        <section className="py-10 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl">
+            <PackpubIA />
+          </div>
+        </section>
+
+        {/* AVANTAGES CLÉS */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
@@ -232,7 +239,7 @@ const IAlinkbusiness = () => {
           </div>
         </section>
 
-        {/* SERVICES GRID */}
+        {/* SERVICES GRID (Placés juste après les avantages clés) */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -259,16 +266,10 @@ const IAlinkbusiness = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Composant additionnel avant le footer */}
-            <div className="mt-20">
-              <PackpubIA />
-            </div>
           </div>
         </section>
       </main>
 
-      {/* FOOTER UNIQUE (Contient Contact + Réseaux + Copyright) */}
       <Footer />
     </div>
   );
