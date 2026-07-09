@@ -129,7 +129,7 @@ const AboutPage = () => {
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/30">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-sunuBlue" data-aos="fade-up">
-              À propos de <span className="text-sunuOrange">Sunu Link</span>
+              À propos de <span className="text-sunuOrange">SunuLink</span>
             </h1>
           </div>
         </section>
@@ -142,7 +142,7 @@ const AboutPage = () => {
             </h2>
             <div className="max-w-4xl mx-auto space-y-6">
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed" data-aos="fade-up">
-                <strong className="text-sunuBlue">Sunu Link Consulting</strong> accompagne les organisations qui veulent transformer leur visibilité en croissance réelle.
+                <strong className="text-sunuBlue">SunuLink Consulting</strong> accompagne les organisations qui veulent transformer leur visibilité en croissance réelle.
               </p>
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
