@@ -86,20 +86,21 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Correction définitive des coins) */}
+          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
+          {/* CÔTÉ DROIT : IMAGE (Correction définitive sans aucun résidu blanc possible) */}
           <div className="flex justify-center md:justify-end items-center">
-            <div className="w-full max-w-[500px] aspect-square relative rounded-3xl overflow-hidden bg-transparent">
+            <div className="w-full max-w-[500px] aspect-square relative rounded-3xl overflow-hidden isolation-strict bg-transparent">
               <Carousel opts={{ loop: true }} className="w-full h-full bg-transparent">
-                <CarouselContent className="h-full bg-transparent">
+                <CarouselContent className="h-full bg-transparent ml-0"> {/* ml-0 supprime le décalage négatif par défaut de Shadcn */}
                   {heroImages.map((img, index) => (
-                    <CarouselItem key={index} className="h-full bg-transparent flex items-center justify-center">
-                      <div className="w-full h-full rounded-3xl overflow-hidden bg-transparent isolation-auto">
+                    <CarouselItem key={index} className="h-full pl-0 bg-transparent flex items-center justify-center">
+                      <div className="w-full h-full rounded-3xl overflow-hidden bg-transparent select-none mask-image-fix">
                         <FlipCard
                           front={
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-full object-cover rounded-3xl overflow-hidden block select-none bg-transparent" 
+                              className="w-full h-full object-cover rounded-3xl overflow-hidden bg-transparent" 
                             />
                           }
                           back={
