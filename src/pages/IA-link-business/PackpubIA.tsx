@@ -1,139 +1,278 @@
-import { Check, Sparkles, Star, Crown } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Briefcase, Image, Globe, Brain, CheckCircle, Palette, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import PackpubIA from "./PackpubIA";
 
-const PackiaPubIA = () => {
-  const packsIA = [
+const IAlinkbusiness = () => {
+  const services = [
     {
-      slug: "link-ia-start",
-      name: "LINK IA START",
-      duration: "Engagement : 3 mois recommandé",
-      price: "500 000 FCFA / mois",
-      tagline: "Structurer son entreprise et automatiser l’essentiel.",
-      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
-      icon: Sparkles,
-      color: "from-blue-500 to-cyan-500",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
-      features: [
-        "Audit IA",
-        "CRM simple",
-        "Automatisation tâches",
-        "Assistant IA",
-        "Formation équipe"
+      icon: Briefcase,
+      title: "Automatisation Marketing",
+      slug: "automatisation-marketing",
+      description: "Bâtissez une stratégie solide et alignée sur vos objectifs pour garantir votre réussite.",
+      color: "from-sunuBlue to-sunuCyan",
+      offerings: [
+        "CRM automatisé : Gestion intelligente des prospects et clients.",
+        "Email & campagnes marketing : Envoi automatique et ciblage précis.",
+        "Analyse de performance : Tableaux de bord interactifs et prédictifs",
+        "Social Media Automation : Planification et publication automatique sur les réseaux sociaux",
+        "Segmentation et scoring IA : Identification des prospects à forte valeur et priorisation des actions.",
       ]
     },
     {
-      slug: "link-ia-growth",
-      name: "LINK IA GROWTH",
-      duration: "Engagement : 6 mois recommandé",
-      price: "900 000 FCFA / mois",
-      tagline: "Automatiser ses processus pour accélérer.",
-      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
-      icon: Star,
+      icon: Palette,
+      title: "Automatisation Commerciale",
+      slug: "automatisation-commerciale",
+      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
+      color: "from-purple-500 to-pink-500",
+      offerings: [
+        "Prospection IA : Identification automatique des clients potentiels et scoring prédictif.",
+        "Suivi des ventes : Alertes et rapports automatisés pour une gestion optimale.",
+        "Analyse de marché : Informations prédictives pour orienter les stratégies commerciales.",
+        "CRM intégré : Centralisation et suivi des prospects et clients en temps réel.",
+        "Optimisation du pipeline : Priorisation intelligente des opportunités de vente.",
+      ]
+    },
+    {
+      icon: Image,
+      title: " Automatisation Administrative",
+      slug: "automatisation-administrative",
+      description: "Gestion documentaire automatisée : Classement, archivage et accès rapide ",
       color: "from-orange-500 to-yellow-500",
-      buttonColor: "bg-orange-500 hover:bg-orange-600",
-      recommended: true,
-      features: [
-        "CRM avancé",
-        "Marketing automation",
-        "Chatbot intelligent",
-        "Analyse données",
-        "Process automatisés"
+      offerings: [
+        "Gestion documentaire automatisée : Classement, archivage et accès rapide aux documents.",
+        "Facturation et suivi comptable : Processus automatisés et relances intelligentes.",
+        "Planification intelligente : Gestion des agendas et rappels automatisés.",
+        "Optimisation des flux administratifs : Rationalisation des processus internes.",
+        "Suivi et reporting automatisés : Analyse en temps réel pour la performance administrative.",
       ]
     },
     {
-      slug: "link-ia-transformation",
-      name: "LINK IA TRANSFORMATION",
-      duration: "Grandes entreprises",
-      price: "Sur devis",
-      tagline: "Transformer votre entreprise grâce à l’IA.",
-      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
-      icon: Crown,
-      color: "from-purple-600 to-pink-600",
-      buttonColor: "bg-purple-600 hover:bg-purple-700",
-      features: [
-        "Audit IA 360°",
-        "Stratégie IA",
-        "Transformation processus",
-        "Data & KPI",
-        "Accompagnement direction"
+      icon: Globe,
+      title: "Automatisation des Ressources Humaines (RH)",
+      slug: "automatisation-rh",
+      description: "Dominez le web avec une présence digitale performante et professionnelle.",
+      color: "from-cyan-500 to-blue-500",
+      offerings: [
+        "Recrutement intelligent : Tri et présélection des candidats par IA.",
+        "Gestion des employés : Suivi des plannings, absences et performances en temps réel.",
+        "Onboarding digital : Intégration automatisée des nouveaux collaborateurs.",
+        "Optimisation des processus RH : Détection des inefficacités et recommandations intelligentes.",
+        "Analyse de l’engagement : Mesure automatisée de la satisfaction et motivation des employés.",
       ]
-    }
+    },
+    {
+      icon: Globe,
+      title: " Business Intelligence & Analyse de données",
+      slug: "business-intelligence",
+      description: "Dominez le web avec une présence digitale performante et professionnelle.",
+      color: "from-cyan-500 to-blue-500",
+      offerings: [
+        "Reporting automatisé : Rapports clairs et interactifs sur les performances.",
+        "Analyse prédictive : Anticipation des tendances et comportements clients.",
+        "Visualisation des KPI : Tableaux de bord complets pour toutes les fonctions de l’entreprise.",
+        "Optimisation stratégique : Décisions guidées par des insights précis.",
+        "Intégration multi-sources : Centralisation des données internes et externes pour une analyse complète.",
+      ]
+    },
+    {
+      icon: Globe,
+      title: " Automatisation de la Relation Client",
+      slug: "automatisation-relation-client",
+      description: "Dominez le web avec une présence digitale performante et professionnelle.",
+      color: "from-cyan-500 to-blue-500",
+      offerings: [
+        "Chatbots intelligents : Réponses instantanées et personnalisées 24/7.",
+        "Support client automatisé : Gestion des tickets, requêtes et suivis.",
+        "Feedback et enquêtes automatisés : Analyse des retours clients pour améliorer l’expérience.",
+        "Segmentation et communication ciblée : Offres personnalisées selon le profil client.",
+        "Optimisation des interactions : Suivi et amélioration continue du parcours client.",
+      ]
+    },
+    {
+      icon: Globe,
+      title: "Automatisation Logistique et Opérationnelle",
+      slug: "automatisation-logistique-operationnelle",
+      description: "Dominez le web avec une présence digitale performante et professionnelle.",
+      color: "from-purple-500 to-pink-500",
+      offerings: [
+        "Gestion de stocks automatisée : Suivi et réapprovisionnement intelligent en temps réel.",
+        "Planification des livraisons : Optimisation des itinéraires et réduction des coûts.",
+        "Suivi des opérations en temps réel : Alertes et reporting automatisés.",
+        "Analyse opérationnelle prédictive : Anticipation des problèmes et optimisation des ressources.",
+        "Optimisation des flux logistiques : Meilleure coordination entre les départements et partenaires.",
+      ]
+    },
+    {
+      icon: Briefcase,
+      title: " Automatisation Juridique et Conformité",
+      slug: "automatisation-juridique-conformite",
+      description: "Bâtissez une stratégie solide et alignée sur vos objectifs pour garantir votre réussite.",
+      color: "from-sunuBlue to-sunuCyan",
+      offerings: [
+        "Analyse des documents légaux : Détection automatique des clauses critiques et risques.",
+        "Suivi réglementaire automatisé : Alertes sur échéances et obligations légales.",
+        "Gestion des contrats : Création, signature et suivi centralisés et automatisés.",
+        "Audit et reporting automatisés : Rapports détaillés sur la conformité et la performance juridique.",
+        "Sécurité et réduction des risques : Minimisation des erreurs et des pénalités.",
+      ]
+    },
+    {
+      icon: Palette,
+      title: " Automatisation Production / Industrie",
+      slug: "automatisation-production-industrie",
+      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
+      color: "from-purple-500 to-pink-500",
+      offerings: [
+        "Maintenance prédictive : Anticipation des pannes pour éviter les arrêts coûteux.",
+        "Optimisation des processus de production : Amélioration continue de l’efficacité et de la qualité.",
+        "Surveillance en temps réel : Contrôle permanent des machines et lignes de production.",
+        "Analyse et reporting industriel : Rapports détaillés sur performances, consommation et rendements.",
+        "Réduction des coûts et déchets : Processus plus efficaces et économiques.",
+      ]
+    },
+    {
+      icon: Image,
+      title: "Formation & Conseil IA 360°",
+      slug: "formation-conseil-ia-360",
+      description: "Gestion documentaire automatisée : Classement, archivage et accès rapide ",
+      color: "from-orange-500 to-yellow-500",
+      offerings: [
+        "Audit IA 360° : Analyse complète des processus et identification des opportunités d’optimisation.",
+        "Formation des équipes : Sensibilisation, montée en compétences et maîtrise des outils IA.",
+        "Déploiement sur mesure : Solutions IA adaptées aux besoins spécifiques de l’entreprise.",
+        "Accompagnement stratégique : Suivi et optimisation continue des solutions IA.",
+        "Adoption complète de l’IA : Intégration fluide dans tous les départements et processus.",
+      ]
+    },
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto max-w-7xl px-6">
-        <div className="text-center mb-16">
-          <p className="text-2xl md:text-4xl font-bold mb-8" data-aos="fade-up">
-            Choisissez le pack adapté<span className="text-sunuOrange"> à votre niveau de croissance</span>
-          </p>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl" data-aos="fade-up" data-aos-delay="100">
-            <p className="leading-relaxed text-gray-600">
-               Trois offres claires, progressives et complètes, conçues pour répondre aux besoins réels <br/> des entreprises au Sénégal et en Afrique.
-            </p>      
+    <div className="min-h-screen bg-white">
+      <Header />
+
+      <main className="pt-0">
+        {/* HERO SECTION */}
+        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995" 
+              alt="AI Background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {packsIA.map((packia, index) => (
-            <div
-              key={index}
-              className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange overflow-hidden ${
-                packia.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
-              } hover:scale-105 md:hover:scale-110 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)]`}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              {packia.recommended && (
-                <div className="absolute top-0 right-0 bg-sunuOrange text-white px-6 py-2 font-bold text-sm rounded-bl-2xl z-10">
-                  🚀 Propulser
-                </div>
-              )}
-
-              <div className={`grain-texture bg-gradient-to-br ${packia.color} text-white p-8 text-center`}>
-                <div className="flex justify-center mb-4">
-                   <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center">
-                    <packia.icon className="w-10 h-10 text-white" />
-                  </div>
-                </div>
-                <h2 className="text-2xl font-black mb-2">{packia.name}</h2>
-                <p className="text-3xl font-black mb-1">{packia.price}</p>
-                <p className="text-xs font-medium uppercase tracking-wider opacity-75 mb-3">{packia.duration}</p>
-                <p className="text-sm font-bold italic opacity-90">{packia.tagline}</p>
+          <div className="container relative z-10 mx-auto px-6 text-center">
+            <div className="max-w-4xl mx-auto" data-aos="zoom-in">
+              <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">
+                Link IA <span className="text-sunuOrange">Business</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed">
+                Propulsez votre entreprise dans une nouvelle ère. Automatisez vos processus, 
+                optimisez vos performances et libérez le plein potentiel de vos équipes grâce à l'Intelligence Artificielle.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+                <Button asChild className="bg-sunuOrange hover:bg-sunuBlue text-white px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]">
+                  <Link to="/contact">Démarrer mon projet IA</Link>
+                </Button>
+                <Button asChild className="bg-sunuBlue text-white hover:bg-sunuOrange px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:scale-105 border-none h-auto min-w-[240px]">
+                  <Link to="/services">Découvrez nos solutions IA 360°</Link>
+                </Button>
               </div>
+            </div>
+          </div>
+        </section>
 
-              <div className="bg-white p-8">
-                <p className="text-gray-700 mb-6 leading-relaxed text-sm min-h-[40px]">{packia.description}</p>
-
-                <div className="space-y-3 mb-8">
-                  {packia.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="space-y-4">
-                  <Button asChild className={`w-full ${packia.buttonColor} text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
-                    <Link to="/contact">Je valide</Link>
-                  </Button>
-                  
-                  <Link
-                    to={`/pack-pub-ia/${packia.slug}`}
-                    className="block text-center text-sunuBlue hover:text-sunuOrange font-semibold transition-colors text-base"
-                  >
-                    Voir le détail →
-                  </Link>
+        {/* SECTION ESSENTIELLE - Raccourcie en bas (pb-6 au lieu de py-16) */}
+        <section className="pt-16 pb-6 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 shadow-2xl" data-aos="fade-up">
+              <h3 className="text-3xl font-black mb-6 text-center">Pourquoi l’IA est essentielle</h3>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <p className="text-xl mb-6 opacity-95 leading-relaxed">
+                  L’Intelligence Artificielle n’est plus une option : c’est un levier stratégique pour toutes les entreprises.
+                </p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 space-y-4">
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Réduire les tâches répétitives</p></div>
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Optimiser vos processus internes</p></div>
+                  <div className="flex items-start space-x-3"><CheckCircle className="w-6 h-6 text-white flex-shrink-0" /><p className="text-lg">Améliorer la productivité</p></div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
+
+        {/* PACKS - Ajusté avec pt-2 pb-10 pour coller proprement à la section du dessus */}
+        <section className="pt-2 pb-10 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl">
+            <PackpubIA />
+          </div>
+        </section>
+
+        {/* AVANTAGES CLÉS */}
+        <section className="py-20 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
+              Avantages clés <span className="text-sunuOrange">pour votre entreprise ?</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up">
+                <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><TrendingUp className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Gain de temps</h3>
+                <p className="text-gray-600">Réduisez les heures sur les tâches répétitives.</p>
+              </div>
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="100">
+                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><CheckCircle className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Efficacité</h3>
+                <p className="text-gray-600">Minimisez les erreurs et maximisez la productivité.</p>
+              </div>
+              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
+                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><Brain className="w-8 h-8 text-white" /></div>
+                <h3 className="text-2xl font-black mb-4">Décisions</h3>
+                <p className="text-gray-600">Analyse prédictive et insights précis.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES GRID */}
+        <section className="py-20 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {services.map((service, index) => (
+                <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105" data-aos="fade-up">
+                  <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
+                    <service.icon className="w-12 h-12 mb-6" />
+                    <h3 className="text-3xl font-black mb-4">{service.title}</h3>
+                    <p className="text-lg opacity-95">{service.description}</p>
+                  </div>
+                  <div className="p-8">
+                    <ul className="space-y-3">
+                      {service.offerings.map((offering, idx) => (
+                        <li key={idx} className="flex items-start space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+                          <span className="text-gray-700">{offering}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to={`/ialinkbusiness/${service.slug}`} className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg">
+                      En savoir plus →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 };
 
-export default PackiaPubIA;
+export default IAlinkbusiness;
