@@ -24,7 +24,7 @@ const ServicesPage = () => {
     {
       icon: Palette,
       title: "Branding & Identité Visuelle",
-      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
+      description: "Créez une identity de marque forte, mémorable et cohérente qui vous distingue.",
       color: "from-purple-500 to-pink-500",
       offerings: [
         "Création de logos premium",
@@ -264,7 +264,7 @@ const ServicesPage = () => {
                 Contactez-nous pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
+                <Link to="/devis">
                   <button className="bg-white text-sunuOrange px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
                     Demander un devis
                   </button>
