@@ -186,7 +186,7 @@ const BoostMyPubPage = () => {
                 Choisissez la solution adaptée à vos objectifs et bénéficiez d’un accompagnement stratégique personnalisé.
               </p>
               <div className="w-full flex justify-center">
-                <Link to="/contact" className="w-full sm:w-auto max-w-md sm:max-w-none">
+                <Link to="/devis" className="w-full sm:w-auto max-w-md sm:max-w-none">
                   <Button className="w-full bg-white text-sunuOrange px-6 sm:px-10 py-5 sm:py-6 text-sm sm:text-base md:text-lg font-bold rounded-full hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl h-auto whitespace-normal text-center break-words leading-snug">
                     Demander un devis
                   </Button>
