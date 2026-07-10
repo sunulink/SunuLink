@@ -7,61 +7,61 @@ const PackpubIA = () => {
     {
       slug: "link-ia-start",
       title: "LINK IA START",
-      duration: "3 mois recommandé",
+      duration: "Engagement : 3 mois recommandé",
       price: "500 000 FCFA",
       period: "/ mois",
       tagline: "Structurer son entreprise et automatiser l’essentiel.",
-      description: "Une formule idéale pour installer des fondations solides, centraliser vos données clients et automatiser vos premières tâches répétitives.",
+      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
       icon: Sparkles,
-      color: "from-blue-600 to-cyan-500",
-      buttonColor: "bg-blue-600 hover:bg-blue-700",
+      color: "from-blue-500 to-cyan-500",
+      buttonColor: "bg-blue-500 hover:bg-blue-600",
       recommended: false,
       features: [
-        "Audit IA initial complet",
-        "Mise en place d'un CRM simple",
-        "Automatisation des tâches de base",
-        "Configuration d'un Assistant IA dédié",
-        "Formation initiale de vos équipes"
+        "Audit IA",
+        "CRM simple",
+        "Automatisation tâches",
+        "Assistant IA",
+        "Formation équipe"
       ]
     },
     {
       slug: "link-ia-growth",
       title: "LINK IA GROWTH",
-      duration: "6 mois recommandé",
+      duration: "Engagement : 6 mois recommandé",
       price: "900 000 FCFA",
       period: "/ mois",
       tagline: "Automatiser ses processus pour accélérer.",
-      description: "Le pack idéal pour les structures en pleine croissance : connectez vos outils, fluidifiez vos tunnels marketing et déployez une intelligence conversationnelle active 24/7.",
+      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
       icon: Star,
       color: "from-orange-500 to-yellow-500",
       buttonColor: "bg-orange-500 hover:bg-orange-600",
       recommended: true,
       features: [
-        "Mise en place d'un CRM avancé",
-        "Stratégie de Marketing automation",
-        "Déploiement d'un Chatbot intelligent",
-        "Analyse prédictive de données",
-        "Process métiers entièrement automatisés"
+        "CRM avancé",
+        "Marketing automation",
+        "Chatbot intelligent",
+        "Analyse données",
+        "Process automatisés"
       ]
     },
     {
       slug: "link-ia-transformation",
       title: "LINK IA TRANSFORMATION",
-      duration: "Accompagnement sur-mesure",
+      duration: "Grandes entreprises",
       price: "Sur devis",
       period: "",
       tagline: "Transformer votre entreprise grâce à l’IA.",
-      description: "La solution ultime pour repenser intégralement vos chaînes de valeur. Intégration profonde, outils décisionnels et pilotage stratégique de haut niveau.",
+      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
       icon: Crown,
       color: "from-purple-600 to-pink-600",
       buttonColor: "bg-purple-600 hover:bg-purple-700",
       recommended: false,
       features: [
-        "Audit de maturité IA 360°",
-        "Feuille de route stratégique IA globale",
-        "Transformation profonde des processus internes",
-        "Gouvernance Data & Tableaux de bord KPI",
-        "Accompagnement personnalisé du comité de direction"
+        "Audit IA 360°",
+        "Stratégie IA",
+        "Transformation processus",
+        "Data & KPI",
+        "Accompagnement direction"
       ]
     }
   ];
@@ -97,6 +97,11 @@ const PackpubIA = () => {
                 {pack.recommended && (
                   <div className="absolute top-0 right-0 bg-sunuOrange text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
                     ⭐ Recommandé
+                  </div>
+                )}
+                {!pack.recommended && pack.slug === "link-ia-transformation" && (
+                  <div className="absolute top-0 right-0 bg-purple-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
+                    🏢 Corporate
                   </div>
                 )}
 
@@ -156,8 +161,9 @@ const PackpubIA = () => {
                       </Button>
                     </Link>
 
+                    {/* CORRECTION DE L'URL ICI : Utilise /pack-pub-ia/ au lieu de /packs/ */}
                     <Link
-                      to={`/packs/${pack.slug}`}
+                      to={`/pack-pub-ia/${pack.slug}`}
                       className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold text-sm sm:text-base transition-colors"
                     >
                       En savoir plus →
