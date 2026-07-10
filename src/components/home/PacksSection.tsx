@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Star, Crown, Check } from "lucide-react";
-import { packs } from "@/data/homeData";
+import { packsIA } from "@/data/homeData"; // 1. On importe bien packsIA ici
 
 const iconMap = {
   sparkles: Sparkles,
@@ -16,7 +16,7 @@ export const PacksSection = () => {
         {/* En-tête de section */}
         <div className="text-center mb-8 md:mb-12 px-2" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-800 mb-3 md:mb-4">
-            BOOST <span className="text-sunuOrange">MY PUB</span>
+            Nos Packs <span className="text-sunuOrange">Link IA Business</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-2">
             Votre visibilité. Notre puissance.
@@ -28,7 +28,8 @@ export const PacksSection = () => {
 
         {/* Grille des packs */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12 items-stretch">
-          {packs.map((pack, index) => {
+          {/* 2. On utilise packsIA au lieu de packs */}
+          {packsIA.map((pack, index) => {
             const Icon = iconMap[pack.icon as keyof typeof iconMap] || Sparkles;
             const isRecommended = pack.recommended;
             const delay = index * 100;
@@ -60,9 +61,10 @@ export const PacksSection = () => {
                     <div className="text-center mb-4 sm:mb-6">
                       <p className="text-2xl sm:text-3xl md:text-4xl font-black whitespace-normal break-words">
                         {pack.price}
+                        {pack.period && <span className="text-lg font-normal">{pack.period}</span>}
                       </p>
                     </div>
-                    <p className="text-center text-base sm:text-lg font-bold mb-2 sm:mb-4 italic leading-snug">{pack.tagline}</p>
+                    <p className="text-center text-base sm:text-lg font-bold mb-2 sm:mb-4 italic leading-snug">"{pack.tagline}"</p>
                   </div>
 
                   {/* Corps de la carte */}
@@ -82,14 +84,14 @@ export const PacksSection = () => {
 
                 {/* Actions au bas de la carte */}
                 <div className="p-6 sm:p-8 pt-0 bg-white">
-                  <Link to="/devis" className="block w-full">
+                  <Link to="/contact" className="block w-full">
                     <Button className={`w-full ${pack.buttonColor || 'bg-sunuOrange hover:bg-orange-600'} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
                       Je valide
                     </Button>
                   </Link>
                   
                   <Link
-                    to={`/boost-my-pub/${pack.slug}`}
+                    to={`/link-ia-business/${pack.slug}`}
                     className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-bold text-sm sm:text-base transition-colors"
                   >
                     Voir le détail →
@@ -102,9 +104,9 @@ export const PacksSection = () => {
 
         {/* Bouton Voir Plus Global */}
         <div className="text-center px-4" data-aos="fade-up">
-          <Link to="/boost-my-pub" className="inline-block w-full sm:w-auto">
+          <Link to="/link-ia-business" className="inline-block w-full sm:w-auto">
             <Button className="w-full sm:w-auto bg-gradient-to-r from-sunuOrange to-yellow-500 text-white hover:from-sunuBlue hover:to-sunuCyan font-bold px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
-              Voir tous nos packs en détail
+              Voir toutes nos solutions IA
             </Button>
           </Link>
         </div>
