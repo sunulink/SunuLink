@@ -2,7 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Check, Sparkles, Star, Crown, ArrowLeft, Target, Zap, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useParams, Navigate } from "react-dom";
+// CORRECTION ICI : import depuis "react-router-dom"
+import { Link, useParams, Navigate } from "react-router-dom";
 
 const packsData = [
   {
