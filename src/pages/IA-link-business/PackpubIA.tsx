@@ -26,7 +26,7 @@ const PackpubIA = () => {
     },
     {
       slug: "link-ia-growth",
-      title: "🚀 LINK IA GROWTH",
+      title: "LINK IA GROWTH",
       duration: "6 mois recommandé",
       price: "900 000 FCFA",
       period: "/ mois",
@@ -46,7 +46,7 @@ const PackpubIA = () => {
     },
     {
       slug: "link-ia-transformation",
-      title: "🏢 LINK IA TRANSFORMATION",
+      title: "LINK IA TRANSFORMATION",
       duration: "Accompagnement sur-mesure",
       price: "Sur devis",
       period: "",
