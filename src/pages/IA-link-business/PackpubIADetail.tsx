@@ -6,165 +6,105 @@ import { Link, useParams, Navigate } from "react-router-dom";
 
 const packsIA = [
   {
-    slug: "Pack-de-Démarrage-IA",
-    name: "Pack de Démarrage IA",
-    duration: "Durée minimale : 3 mois",
-    price: "450 000 FCFA / mois",
-    tagline: "PME & Startups",
-    description:
-      "Automatiser l’essentiel pour gagner du temps et structurer son activité. Objectif : efficacité immédiate.",
+    slug: "link-ia-start",
+    name: "LINK IA START",
+    duration: "Engagement : 3 mois recommandé",
+    price: "500 000 FCFA",
+    period: "/ mois",
+    tagline: "Structurer son entreprise et automatiser l’essentiel.",
+    description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
     icon: Sparkles,
     color: "from-blue-500 to-cyan-500",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     features: [
-      "Automatisation marketing & commerciale",
-      "CRM intelligent",
-      "Automatisation administrative",
-      "Support client IA",
-      "Tableaux de bord & reporting"
+      "Audit IA",
+      "CRM simple",
+      "Automatisation tâches",
+      "Assistant IA",
+      "Formation équipe"
     ],
     detailedFeatures: [
-      "CRM automatisé (prospects & clients)",
-      "Email & SMS marketing automatisés",
-      "Segmentation et ciblage intelligent",
-      "15 workflows automatisés",
-      "Reporting marketing simplifié",
-      "Prospection intelligente IA",
-      "Scoring automatique des prospects",
-      "Suivi du pipeline de vente",
-      "Relances automatiques",
-      "Gestion documentaire automatisée",
-      "Facturation & relances automatiques",
-      "Planification intelligente & rappels",
-      "Suivi des plannings & congés",
-      "Onboarding digital basique",
-      "Chatbot IA basique",
-      "Suivi des demandes clients",
-      "Tableau de bord KPI essentiels",
-      "1 session de formation IA",
-      "Support technique 30 jours"
+      "Audit IA",
+      "Analyse processus",
+      "CRM simple",
+      "Automatisation emails",
+      "Assistant IA",
+      "Gestion documentaire",
+      "Chatbot basique",
+      "Formation équipe"
     ],
     benefits: [
-      "Gain de temps immédiat",
-      "Processus structurés",
-      "Moins de tâches manuelles",
-      "Meilleure organisation globale"
+      "Gain de temps",
+      "Organisation améliorée",
+      "Productivité accrue"
     ]
   },
-
   {
-    slug: "Pack-Performance-IA",
-    name: "Pack Performance IA",
-    duration: "Durée minimale : 6 mois",
-    price: "850 000 FCFA / mois",
-    tagline: "PME & Entreprises en croissance",
-    description:
-      "Automatiser plusieurs départements pour accélérer la croissance. Objectif : performance & rentabilité.",
+    slug: "link-ia-growth",
+    name: "LINK IA GROWTH",
+    duration: "Engagement : 6 mois recommandé",
+    price: "900 000 FCFA",
+    period: "/ mois",
+    tagline: "Automatiser ses processus pour accélérer.",
+    description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
     icon: Star,
     color: "from-orange-500 to-yellow-500",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
     recommended: true,
     features: [
-      "Automatisation marketing avancée",
-      "Automatisation commerciale prédictive",
-      "RH & administration intelligentes",
-      "Logistique & opérations",
-      "BI & reporting avancé"
+      "CRM avancé",
+      "Marketing automation",
+      "Chatbot intelligent",
+      "Analyse données",
+      "Process automatisés"
     ],
     detailedFeatures: [
-      "Email, SMS & social media automation",
-      "Campagnes sponsorisées automatisées",
-      "Segmentation prédictive",
-      "30 workflows automatisés",
-      "Reporting mensuel avancé",
-      "CRM IA avancé",
-      "Scoring prédictif",
-      "Prévision des ventes",
-      "Optimisation du pipeline commercial",
-      "Gestion documentaire complète",
-      "Facturation, paiements & relances",
-      "Planification avancée",
-      "Recrutement intelligent",
-      "Suivi performances & présence",
-      "Onboarding digital complet",
-      "Gestion des stocks automatisée",
-      "Planification des livraisons",
-      "Suivi des opérations",
+      "CRM avancé",
+      "Scoring prospects",
+      "Automatisation commerciale",
+      "Email marketing automatisé",
       "Chatbot IA avancé",
-      "Support multicanal",
-      "Enquêtes & feedback automatisés",
-      "Analyse de documents juridiques",
-      "Suivi réglementaire automatisé",
-      "Tableaux de bord interactifs",
-      "Analyse prédictive",
-      "Formation équipes",
-      "Support & suivi 6 mois"
+      "Reporting KPI",
+      "Analyse performance",
+      "Formation équipes"
     ],
     benefits: [
-      "Croissance accélérée",
-      "Meilleure rentabilité",
-      "Décisions basées sur la donnée",
-      "Automatisation multi-départements"
+      "Performance commerciale",
+      "Meilleure organisation",
+      "Décisions basées sur les données"
     ]
   },
-
   {
-    slug: "Pack-IA-360-Domination",
-    name: "Pack IA 360° Domination",
-    duration: "Durée : 12 mois",
-    price: "1 499 000 FCFA / mois",
-    tagline: "Grandes entreprises & Leaders du marché",
-    description:
-      "Transformer totalement l’entreprise grâce à l’IA. Objectif : domination & leadership.",
+    slug: "link-ia-transformation",
+    name: "LINK IA TRANSFORMATION",
+    duration: "Grandes entreprises",
+    price: "Sur devis",
+    period: "",
+    tagline: "Transformer votre entreprise grâce à l’IA.",
+    description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
     icon: Crown,
     color: "from-purple-600 to-pink-600",
     buttonColor: "bg-purple-600 hover:bg-purple-700",
     features: [
-      "Automatisation IA complète",
-      "Marketing, ventes, RH, admin, production",
-      "BI prédictive & direction stratégique",
-      "Accompagnement annuel"
+      "Audit IA 360°",
+      "Stratégie IA",
+      "Transformation processus",
+      "Data & KPI",
+      "Accompagnement direction"
     ],
     detailedFeatures: [
-      "Automatisation marketing complète",
-      "Email, SMS, social media & sponsorisation",
-      "Contenus premium & plan marketing IA",
-      "Analyse prédictive des performances",
-      "CRM IA avancé",
-      "Prospection automatique",
-      "Workflows complets de vente",
-      "Prévisions commerciales avancées",
-      "Gestion documentaire totale",
-      "Facturation & processus automatisés",
-      "Organisation intelligente",
-      "Recrutement IA",
-      "Analyse engagement collaborateurs",
-      "Gestion RH complète",
-      "Gestion intelligente des stocks",
-      "Optimisation des livraisons",
-      "Suivi en temps réel",
-      "Maintenance prédictive",
-      "Optimisation des processus industriels",
-      "Reporting industriel",
-      "Chatbot IA 24/7",
-      "Support client intelligent",
-      "Fidélisation automatisée",
-      "Gestion contrats automatisée",
-      "Analyse documents légaux",
-      "Suivi conformité complet",
-      "Tableaux de bord exécutifs",
-      "KPI avancés",
-      "Reporting prédictif stratégique",
-      "Audit IA 360°",
-      "Formation complète des équipes",
-      "Direction IA annuelle",
-      "Accompagnement stratégique continu"
+      "Audit IA complet",
+      "Feuille de route IA",
+      "Automatisation avancée",
+      "Optimisation processus",
+      "Analyse données",
+      "Formation équipes",
+      "Accompagnement direction"
     ],
     benefits: [
-      "Transformation totale de l’entreprise",
-      "Leadership sur le marché",
-      "Décisions stratégiques prédictives",
-      "Avantage concurrentiel durable"
+      "Transformation digitale",
+      "Réduction inefficacités",
+      "Avantage concurrentiel"
     ]
   }
 ];
@@ -207,6 +147,11 @@ const PackpubIADetail = () => {
                     ⭐ Pack Recommandé
                   </span>
                 )}
+                {!pack.recommended && pack.slug === "link-ia-transformation" && (
+                  <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                    🏢 Grandes entreprises
+                  </span>
+                )}
                 <h1 className="text-4xl md:text-6xl font-black mb-4">{pack.name}</h1>
                 <p className="text-2xl md:text-3xl font-bold mb-2">{pack.tagline}</p>
                 <p className="text-xl opacity-90">{pack.duration}</p>
@@ -220,8 +165,13 @@ const PackpubIADetail = () => {
           <div className="container mx-auto max-w-7xl">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
-                <p className="text-gray-600 mb-1">Investissement mensuel</p>
-                <p className="text-4xl md:text-5xl font-black text-sunuBlue">{pack.price}</p>
+                <p className="text-gray-600 mb-1">
+                  {pack.price === "Sur devis" ? "Tarification" : "Investissement mensuel"}
+                </p>
+                <p className="text-4xl md:text-5xl font-black text-sunuBlue">
+                  {pack.price}
+                  {pack.period && <span className="text-2xl font-medium text-gray-500">{pack.period}</span>}
+                </p>
               </div>
               <Link to="/contact">
                 <Button className={`${pack.buttonColor} text-white font-bold py-6 px-12 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}>
@@ -235,7 +185,7 @@ const PackpubIADetail = () => {
         {/* Description */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl" data-aos="fade-up">
+            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl font-medium" data-aos="fade-up">
               {pack.description}
             </p>
           </div>
@@ -262,28 +212,28 @@ const PackpubIADetail = () => {
                   <div className={`bg-gradient-to-br ${pack.color} w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-gray-700 text-lg">{feature}</span>
+                  <span className="text-gray-700 text-lg font-medium">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* Benefits / Résultats */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="flex items-center gap-4 mb-12" data-aos="fade-up">
               <div className={`bg-gradient-to-br ${pack.color} w-14 h-14 rounded-2xl flex items-center justify-center`}>
                 <Target className="w-7 h-7 text-white" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-sunuBlue">Ce que vous obtenez</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-sunuBlue">Résultats attendus</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {pack.benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-8 rounded-2xl text-center`}
+                  className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-8 rounded-2xl text-center flex items-center justify-center shadow-lg transition-transform hover:scale-105 duration-300`}
                   data-aos="zoom-in"
                   data-aos-delay={index * 100}
                 >
@@ -302,7 +252,7 @@ const PackpubIADetail = () => {
                 Prêt à passer à l'action ?
               </h2>
               <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-                Contactez-nous pour démarrer avec le {pack.name} et transformer votre communication.
+                Contactez-nous pour démarrer avec le {pack.name} et propulser votre activité grâce à l'IA.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact">
