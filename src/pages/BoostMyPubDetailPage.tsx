@@ -1,136 +1,93 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Check, Sparkles, Star, Crown, ArrowLeft, Target, Zap } from "lucide-react";
+import { Check, Sparkles, Star, Crown, ArrowLeft, Target, Zap, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-dom";
 
 const packsData = [
   {
     slug: "teranga",
     name: "PACK TERANGA",
-    duration: "3 mois",
-    price: "450.000 Fcfa / mois",
-    tagline: "Lancer sa communication proprement et efficacement",
-    description: "Un pack idéal pour les entreprises qui veulent une communication claire, régulière et professionnelle sans passer par de grands investissements.",
+    duration: "Engagement : 3 mois recommandé",
+    price: "450 000 FCFA / mois",
+    tagline: "Lancer sa communication proprement et efficacement.",
+    description: "Le Pack Teranga accompagne les entreprises souhaitant construire une présence digitale professionnelle avec une communication claire, régulière et cohérente.",
     icon: Sparkles,
     color: "from-blue-500 to-cyan-500",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
-    features: [
-      "15 visuels premium / mois",
-      "4 vidéos courtes / mois",
-      "Stories quotidiennes",
-      "Gestion Facebook + Instagram",
-      "Modération & réponses",
-      "Stratégie 3 mois",
-      "Reporting mensuel",
-      "Pas de budget pub inclus"
-    ],
+    hoverTextColor: "hover:text-blue-600",
     detailedFeatures: [
-      "Mini-stratégie 360°",
-      "Analyse audience",
-      "Positionnement & messages clés",
-      "15 visuels premium / mois",
-      "4 vidéos courtes / mois",
-      "Textes optimisés",
-      "Stories quotidiennes",
-      "Gestion Facebook & Instagram",
-      "Modération + réponses",
-      "Calendrier éditorial",
-      "Reporting mensuel"
+      "Stratégie : Audit communication initial",
+      "Stratégie : Analyse audience",
+      "Stratégie : Positionnement & Messages clés",
+      "Création contenu : 8 visuels premium chaque mois",
+      "Création contenu : 4 vidéos courtes chaque mois",
+      "Création contenu : Textes optimisés",
+      "Réseaux sociaux : Gestion Facebook & Instagram",
+      "Réseaux sociaux : Programmation & Publication",
+      "Réseaux sociaux : Modération & Organisation calendrier"
     ],
     benefits: [
-      "Une image professionnelle",
-      "Une page vivante et active",
-      "Une communication cohérente",
-      "Une meilleure perception de marque"
+      "Image professionnelle",
+      "Communication structurée",
+      "Présence régulière",
+      "Meilleure visibilité"
     ]
   },
   {
     slug: "xeewal",
     name: "PACK XEEWAL",
-    duration: "6 mois",
-    price: "750.000 Fcfa / mois",
-    tagline: "Accélérer sa croissance et renforcer son image",
-    description: "Le pack préféré des entreprises : puissance, régularité, qualité et visibilité sponsorisée.",
+    duration: "Engagement : 6 mois recommandé",
+    price: "750 000 FCFA / mois",
+    tagline: "Accélérer sa croissance et renforcer son image.",
+    description: "Une solution destinée aux entreprises souhaitant développer leur visibilité, renforcer leur image et construire une audience engagée.",
     icon: Star,
     color: "from-orange-500 to-yellow-500",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
+    hoverTextColor: "hover:text-orange-500",
     recommended: true,
-    features: [
-      "30 visuels premium / mois",
-      "8 vidéos courtes / mois",
-      "1 vidéo professionnelle / mois",
-      "Stories quotidiennes",
-      "Gestion Facebook + Instagram + TikTok + LinkedIn",
-      "Automatisation basique",
-      "Boost sponsorisé pour 2 pages",
-      "Stratégie 6 mois",
-      "Reporting analytique"
-    ],
     detailedFeatures: [
-      "Stratégie marketing 6 mois",
-      "Plan éditorial structuré",
-      "30 visuels premium / mois",
-      "8 vidéos courtes / mois",
-      "1 vidéo professionnelle / mois",
-      "Shooting tous les 2 mois",
-      "Gestion Facebook + Instagram + TikTok + LinkedIn",
-      "Animation quotidienne",
-      "Automatisation basique",
-      "Boost sponsorisé pour 2 pages (configuration incluse)",
-      "Reporting analytique complet"
+      "Stratégie marketing : Plan éditorial avancé",
+      "Stratégie marketing : Analyse marché & Recommandations",
+      "Production contenu : 15 visuels premium chaque mois",
+      "Production contenu : 8 vidéos courtes chaque mois",
+      "Production contenu : 2 contenus premium chaque mois",
+      "Réseaux sociaux : Gestion Facebook, Instagram, LinkedIn & TikTok",
+      "Production : Shooting photo/vidéo tous les 2 mois",
+      "Publicité : Configuration campagnes & Optimisation audiences"
     ],
     benefits: [
-      "Une croissance visible",
-      "Une audience plus large",
-      "Un contenu professionnel",
-      "Une stratégie long terme"
+      "Croissance visibilité",
+      "Audience engagée",
+      "Image renforcée"
     ]
   },
   {
     slug: "buur",
     name: "PACK BUUR",
-    duration: "1 an",
-    price: "1.499.000 Fcfa / mois",
-    tagline: "Dominer son marché et devenir une référence",
-    description: "Le pack ultime pour les entreprises ambitieuses qui veulent être visibles partout, tout le temps, avec une image haut de gamme.",
+    duration: "Engagement : 12 mois recommandé",
+    price: "1 750 000 FCFA / mois",
+    tagline: "Dominer son marché et devenir une référence.",
+    description: "L’accompagnement ultime pour les entreprises souhaitant externaliser leur direction marketing et construire une marque forte.",
     icon: Crown,
     color: "from-purple-600 to-pink-600",
     buttonColor: "bg-purple-600 hover:bg-purple-700",
-    features: [
-      "60 visuels premium / mois",
-      "15 vidéos courtes / mois",
-      "2 vidéos professionnelles / mois",
-      "Shooting trimestriel",
-      "Stories quotidiennes",
-      "Gestion multicanale complète",
-      "Automatisation avancée + WhatsApp",
-      "Boost sponsorisé pour 4 pages",
-      "Direction marketing annuelle",
-      "Reporting premium",
-      "Plan marketing complet"
-    ],
+    hoverTextColor: "hover:text-purple-600",
     detailedFeatures: [
-      "Direction marketing annuelle complète",
-      "Plan marketing 12 mois",
-      "Analyse IA + optimisation",
-      "60 visuels premium / mois",
-      "15 vidéos courtes / mois",
-      "2 vidéos professionnelles / mois",
-      "Shooting trimestriel",
-      "Stories quotidiennes",
-      "Gestion multicanale complète (FB, IG, TikTok, LinkedIn)",
-      "Modération professionnelle 7/7",
-      "Automatisation avancée",
-      "WhatsApp Business + tunnel",
-      "Boost sponsorisé pour 4 pages",
-      "Reporting premium + KPI avancés"
+      "Direction marketing : Stratégie annuelle & Plan marketing",
+      "Direction marketing : Conseil direction",
+      "Production contenu : 25 visuels premium chaque mois",
+      "Production contenu : 15 vidéos courtes chaque mois",
+      "Production contenu : 5 contenus premium chaque mois",
+      "Gestion digitale : Facebook, Instagram, TikTok, LinkedIn & YouTube",
+      "Production : Shooting trimestriel & Direction artistique",
+      "Performance : Automatisation marketing & Optimisation continue",
+      "Performance : Dashboard KPI"
     ],
     benefits: [
-      "Une image solide et premium",
-      "Une audience massive",
-      "Une visibilité continue",
-      "Un positionnement de leader"
+      "Leadership digital",
+      "Positionnement premium",
+      "Croissance durable"
     ]
   }
 ];
@@ -156,7 +113,7 @@ const BoostMyPubDetailPage = () => {
           <div className="container mx-auto max-w-7xl">
             <Link
               to="/boost-my-pub"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors font-semibold"
             >
               <ArrowLeft className="w-5 h-5" />
               Retour aux packs
@@ -170,12 +127,12 @@ const BoostMyPubDetailPage = () => {
               <div className="text-center md:text-left" data-aos="fade-up">
                 {pack.recommended && (
                   <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                    ⭐ Pack Recommandé
+                    ⭐ Le plus choisi
                   </span>
                 )}
                 <h1 className="text-4xl md:text-6xl font-black mb-4">{pack.name}</h1>
                 <p className="text-2xl md:text-3xl font-bold mb-2">{pack.tagline}</p>
-                <p className="text-xl opacity-90">{pack.duration}</p>
+                <p className="text-xl opacity-90 font-medium">{pack.duration}</p>
               </div>
             </div>
           </div>
@@ -186,7 +143,7 @@ const BoostMyPubDetailPage = () => {
           <div className="container mx-auto max-w-7xl">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
-                <p className="text-gray-600 mb-1">Investissement mensuel</p>
+                <p className="text-gray-600 mb-1 font-medium">Investissement mensuel</p>
                 <p className="text-4xl md:text-5xl font-black text-sunuBlue">{pack.price}</p>
               </div>
               <Link to="/contact">
@@ -198,12 +155,26 @@ const BoostMyPubDetailPage = () => {
           </div>
         </section>
 
-        {/* Description */}
+        {/* Description & Important Alert */}
         <section className="py-16 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl" data-aos="fade-up">
+          <div className="container mx-auto max-w-7xl space-y-8">
+            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl font-medium" data-aos="fade-up">
               {pack.description}
             </p>
+            <p className="text-gray-600 leading-relaxed max-w-4xl">
+              Boost My Pub accompagne les entreprises souhaitant développer leur visibilité, attirer plus de prospects et améliorer leurs performances publicitaires.
+            </p>
+
+            {/* Note Importante */}
+            <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl max-w-3xl flex items-start gap-3 shadow-sm" data-aos="fade-up">
+              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="font-bold text-amber-900">Important</h4>
+                <p className="text-amber-800 font-medium text-sm sm:text-base">
+                  Le budget publicitaire média n’est pas inclus dans la prestation.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -228,28 +199,28 @@ const BoostMyPubDetailPage = () => {
                   <div className={`bg-gradient-to-br ${pack.color} w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-gray-700 text-lg">{feature}</span>
+                  <span className="text-gray-700 text-lg font-medium">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* Benefits / Résultats */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="flex items-center gap-4 mb-12" data-aos="fade-up">
               <div className={`bg-gradient-to-br ${pack.color} w-14 h-14 rounded-2xl flex items-center justify-center`}>
                 <Target className="w-7 h-7 text-white" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-sunuBlue">Ce que vous obtenez</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-sunuBlue">Résultats attendus</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {pack.benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-8 rounded-2xl text-center`}
+                  className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-8 rounded-2xl text-center flex items-center justify-center shadow-lg transition-transform hover:scale-105 duration-300`}
                   data-aos="zoom-in"
                   data-aos-delay={index * 100}
                 >
@@ -270,14 +241,14 @@ const BoostMyPubDetailPage = () => {
               <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
                 Contactez-nous pour démarrer avec le {pack.name} et transformer votre communication.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link to="/contact">
-                  <Button className="bg-white text-sunuBlue px-10 py-6 text-lg font-bold rounded-full hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <Button className="bg-white text-sunuBlue px-10 py-4 h-14 text-lg font-bold rounded-full hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                     Je valide ce pack
                   </Button>
                 </Link>
                 <Link to="/boost-my-pub">
-                  <Button variant="outline" className="border-2 border-white text-white px-10 py-6 text-lg font-bold rounded-full hover:bg-white/20 transition-all duration-300">
+                  <Button className={`bg-transparent text-white border-2 border-white px-10 py-4 h-14 text-lg font-bold rounded-full hover:bg-white ${pack.hoverTextColor} transition-all duration-300 flex items-center justify-center`}>
                     Voir les autres packs
                   </Button>
                 </Link>
