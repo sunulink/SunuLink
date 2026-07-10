@@ -16,6 +16,7 @@ const packsIA = [
     icon: Sparkles,
     color: "from-blue-500 to-cyan-500",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
+    hoverTextColor: "hover:text-blue-600",
     features: [
       "Audit IA",
       "CRM simple",
@@ -50,6 +51,7 @@ const packsIA = [
     icon: Star,
     color: "from-orange-500 to-yellow-500",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
+    hoverTextColor: "hover:text-orange-500",
     recommended: true,
     features: [
       "CRM avancé",
@@ -85,6 +87,7 @@ const packsIA = [
     icon: Crown,
     color: "from-purple-600 to-pink-600",
     buttonColor: "bg-purple-600 hover:bg-purple-700",
+    hoverTextColor: "hover:text-purple-600",
     features: [
       "Audit IA 360°",
       "Stratégie IA",
@@ -254,14 +257,15 @@ const PackpubIADetail = () => {
               <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
                 Contactez-nous pour démarrer avec le {pack.name} et propulser votre activité grâce à l'IA.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link to="/contact">
                   <Button className="bg-white text-sunuBlue px-10 py-6 text-lg font-bold rounded-full hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
                     Je valide ce pack
                   </Button>
                 </Link>
                 <Link to="/pack-pub-ia">
-                  <Button variant="outline" className="border-2 border-white text-white px-10 py-6 text-lg font-bold rounded-full hover:bg-white/20 transition-all duration-300">
+                  {/* Correction appliquée ici pour garantir la visibilité du texte blanc et de sa bordure */}
+                  <Button className={`bg-transparent text-white border-2 border-white px-10 py-6 text-lg font-bold rounded-full hover:bg-white ${pack.hoverTextColor} transition-all duration-300 h-auto`}>
                     Voir les autres packs
                   </Button>
                 </Link>
