@@ -233,62 +233,67 @@ export const socialLinks = [
 ];
 
 // DONNÉES EXACTES ISSUES DE LA PAGE LINK IA BUSINESS
-export const packsIA: Pack[] = [
-  {
-    slug: "pack-demarrage-ia",
-    name: "Pack de Démarrage IA",
-    duration: "Durée minimale : 3 mois",
-    price: "350 000 FCFA",
-    period: " / mois",
-    tagline: "Automatiser l'essentiel pour gagner du temps et structurer son activité.",
-    description: "Idéal pour les structures souhaitant amorcer une transition technologique fluide et ciblée.",
-    icon: "sparkles",
-    gradient: "from-blue-500 to-cyan-500",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    recommended: false,
-    badge: "IA Initial",
-    features: [
-      "Automatisation marketing & commerciale",
-      "CRM intelligent",
-      "Automatisation administrative"
-    ]
-  },
-  {
-    slug: "pack-performance-ia",
-    name: "Pack Performance IA",
-    duration: "Durée minimale : 6 mois",
-    price: "750 000 FCFA",
-    period: " / mois",
-    tagline: "Automatiser plusieurs départements pour accélérer la croissance.",
-    description: "Une solution complète pour intégrer l'intelligence artificielle au cœur de vos processus opérationnels.",
-    icon: "star",
-    gradient: "from-orange-500 to-yellow-500",
-    buttonColor: "bg-orange-500 hover:bg-orange-600",
-    recommended: true,
-    badge: "Recommandé",
-    features: [
-      "Automatisation marketing avancée",
-      "Automatisation commerciale prédictive",
-      "RH & administration intelligentes"
-    ]
-  },
-  {
-    slug: "pack-ia-360-domination",
-    name: "Pack IA 360° Domination",
-    duration: "Durée : 12 mois",
-    price: "1 350 000 FCFA",
-    period: " / mois",
-    tagline: "Transformer totalement l'entreprise grâce à l'IA.",
-    description: "L'écosystème ultime pour faire passer votre organisation à l'ère de l'automatisation intégrale.",
-    icon: "crown",
-    gradient: "from-purple-600 to-pink-600",
-    buttonColor: "bg-purple-600 hover:bg-purple-700",
-    recommended: false,
-    badge: "Corporate",
-    features: [
-      "Automatisation IA complète",
-      "Marketing, ventes, RH, admin, production",
-      "BI prédictive & direction stratégique"
-    ]
-  }
-];
+
+const PackpubIA = () => {
+  const packs = [
+    {
+      slug: "link-ia-start",
+      title: "LINK IA START",
+      duration: "Engagement : 3 mois recommandé",
+      price: "500 000 FCFA",
+      period: "/ mois",
+      tagline: "Structurer son entreprise et automatiser l’essentiel.",
+      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
+      icon: Sparkles,
+      color: "from-blue-500 to-cyan-500",
+      buttonColor: "bg-blue-500 hover:bg-blue-600",
+      recommended: false,
+      features: [
+        "Audit IA",
+        "CRM simple",
+        "Automatisation tâches",
+        "Assistant IA",
+        "Formation équipe"
+      ]
+    },
+    {
+      slug: "link-ia-growth",
+      title: "LINK IA GROWTH",
+      duration: "Engagement : 6 mois recommandé",
+      price: "900 000 FCFA",
+      period: "/ mois",
+      tagline: "Automatiser ses processus pour accélérer.",
+      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
+      icon: Star,
+      color: "from-orange-500 to-yellow-500",
+      buttonColor: "bg-orange-500 hover:bg-orange-600",
+      recommended: true,
+      features: [
+        "CRM avancé",
+        "Marketing automation",
+        "Chatbot intelligent",
+        "Analyse données",
+        "Process automatisés"
+      ]
+    },
+    {
+      slug: "link-ia-transformation",
+      title: "LINK IA TRANSFORMATION",
+      duration: "Grandes entreprises",
+      price: "Sur devis",
+      period: "",
+      tagline: "Transformer votre entreprise grâce à l’IA.",
+      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
+      icon: Crown,
+      color: "from-purple-600 to-pink-600",
+      buttonColor: "bg-purple-600 hover:bg-purple-700",
+      recommended: false,
+      features: [
+        "Audit IA 360°",
+        "Stratégie IA",
+        "Transformation processus",
+        "Data & KPI",
+        "Accompagnement direction"
+      ]
+    }
+  ];
