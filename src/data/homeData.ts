@@ -28,19 +28,15 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface PackFeature {
-  text: string;
-}
-
 export interface Pack {
   slug: string;
   name: string;
   duration: string;
   price: string;
-  period?: string; // Optionnel pour gérer le vide de "Sur devis"
+  period?: string;
   tagline: string;
   description: string;
-  features: string[];
+  features: string[]; // Ajouté et requis pour inclure les listes de caractéristiques
   icon: "sparkles" | "star" | "crown";
   gradient: string;
   buttonColor?: string;
@@ -185,7 +181,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Amadou Diallo",
     company: "CEO, TechStart Sénégal",
-    text: "Sunu Link a transformé notre présence digitale. Leur approche stratégique et leur créativité ont dépassé nos attentes.",
+    text: "SUNULINK CONSULTING a transformé notre présence digitale. Leur approche stratégique et leur créativité ont dépassé nos attentes.",
     rating: 5
   },
   {
@@ -199,78 +195,6 @@ export const testimonials: Testimonial[] = [
     company: "Fondateur, EcoSolutions",
     text: "Le meilleur investissement pour notre marque. Ils ont su comprendre notre vision et la traduire en résultats concrets.",
     rating: 5
-  },
-  {
-    name: "Aïcha Ndiaye",
-    company: "Directrice, Innovation Hub",
-    text: "Un accompagnement exceptionnel du début à la fin. Leur expertise nous a permis de nous démarquer sur notre marché.",
-    rating: 5
-  },
-  {
-    name: "Ibrahima Sarr",
-    company: "Fondateur, Digital Solutions",
-    text: "Professionnalisme, créativité et résultats. Sunu Link dépasse constamment nos attentes.",
-    rating: 5
-  },
-  {
-    name: "Mariama Touré",
-    company: "DG, Retail Excellence",
-    text: "Grâce à Sunu Link, notre marque a gagné en visibilité et en crédibilité. Une vraie transformation !",
-    rating: 5
-  },
-  {
-    name: "Cheikh Mbaye",
-    company: "Directeur Commercial, FoodTech SA",
-    text: "Un accompagnement personnalisé et des résultats au-delà de nos espérances. Je recommande vivement !",
-    rating: 5
-  },
-  {
-    name: "Khadija Diop",
-    company: "Fondatrice, Beauty & Wellness",
-    text: "Leur créativité et leur sens du détail ont fait toute la différence pour notre lancement. Merci Sunu Link !",
-    rating: 5
-  },
-  {
-    name: "Ousmane Ba",
-    company: "CEO, Tech Innovations",
-    text: "Une équipe dynamique qui comprend vraiment les enjeux du digital. Nos ventes ont triplé en 6 mois !",
-    rating: 5
-  },
-  {
-    name: "Ndeye Fall",
-    company: "Directrice, Event Masters",
-    text: "Sunu Link a révolutionné notre communication événementielle. Chaque projet est un succès garanti !",
-    rating: 5
-  },
-  {
-    name: "Mamadou Sow",
-    company: "Président, Export Group",
-    text: "Un partenaire fiable qui nous aide à conquérir de nouveaux marchés avec une stratégie claire et efficace.",
-    rating: 5
-  },
-  {
-    name: "Awa Diagne",
-    company: "CEO, Fashion Forward",
-    text: "Ils ont su capturer l'essence de notre marque et la traduire en visuels percutants. Un travail remarquable !",
-    rating: 5
-  },
-  {
-    name: "Boubacar Niang",
-    company: "Fondateur, Agro Business",
-    text: "Leur expertise en digital et en stratégie nous a permis de nous positionner comme leader de notre secteur.",
-    rating: 5
-  },
-  {
-    name: "Coumba Cissé",
-    company: "DG, Health Plus",
-    text: "Un accompagnement de qualité du début à la fin. Nos campagnes n'ont jamais été aussi performantes !",
-    rating: 5
-  },
-  {
-    name: "Modou Gueye",
-    company: "Directeur, Edu Solutions",
-    text: "Sunu Link a transformé notre image de marque et boosté notre notoriété. Des professionnels à l'écoute !",
-    rating: 5
   }
 ];
 
@@ -280,37 +204,11 @@ export const collaborateurs = [
   { name: "MEER JUS", logo: "/collaborateurs/LOGO MEER JUS.png" },
   { name: "NATAA", logo: "/collaborateurs/LOGO NATAA.png" },
   { name: "GAINDE", logo: "/collaborateurs/LOGO-GAINDE.png" },
-  { name: "GLOBAL FISH RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
-  { name: "KING MOUSSA", logo: "/collaborateurs/LOGO-KING-MOUSSA.png" },
-  { name: "MISS MBOURACKE", logo: "/collaborateurs/LOGO-MISS-MBOURACKE.png" },
-  { name: "SCI LA PROMOBILIERE", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
-  { name: "SOFFLE DE VIE", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" },
-  { name: "SenHorti Group", logo: "/collaborateurs/LOGO-SenHorti-Group.png" },
-  { name: "BDA SERVICE", logo: "/collaborateurs/logo-bda-service.png" },
 ];
 
 export const portfolioImages = [
   { src: "/portfolio/1.png", alt: "Design graphique 1", category: "branding" },
   { src: "/portfolio/2.png", alt: "Design graphique 2", category: "branding" },
-  { src: "/portfolio/3.png", alt: "Design graphique 3", category: "branding" },
-  { src: "/portfolio/BRANDING PUB3.png", alt: "Branding Pub 3", category: "branding" },
-  { src: "/portfolio/BRANDING PUB4.png", alt: "Branding Pub 4", category: "branding" },
-  { src: "/portfolio/BRANDING PUB5.png", alt: "Branding Pub 5", category: "branding" },
-  { src: "/portfolio/BRANDING PUB8.png", alt: "Branding Pub 8", category: "branding" },
-  { src: "/portfolio/FLYERS.png", alt: "Flyers design", category: "print" },
-  { src: "/portfolio/FLYERS 2.png", alt: "Flyers design 2", category: "print" },
-  { src: "/portfolio/FLYERS oil 1.png", alt: "Flyers oil", category: "print" },
-  { src: "/portfolio/MOCKUP 1 EMBALLAGE PRO.png", alt: "Emballage Pro 1", category: "packaging" },
-  { src: "/portfolio/MOCKUP 1 EMBALLAGES PRO BI.png", alt: "Emballages Pro BI", category: "packaging" },
-  { src: "/portfolio/MOCKUP 2 EMBALLAGES PRO.png", alt: "Emballages Pro 2", category: "packaging" },
-  { src: "/portfolio/MOCKUP 2 EMBALLAGES.png", alt: "Emballages 2", category: "packaging" },
-  { src: "/portfolio/MOCKUP FLACON HUILE 3.png", alt: "Flacon Huile", category: "packaging" },
-  { src: "/portfolio/MOCKUP PORT-A CLE.png", alt: "Porte-clé", category: "packaging" },
-  { src: "/portfolio/MOCKUP SACHET.png", alt: "Sachet", category: "packaging" },
-  { src: "/portfolio/MOCKUP TORSSON CHEF.png", alt: "Torsson Chef", category: "packaging" },
-  { src: "/portfolio/BOUTEILLE 2.png", alt: "Bouteille design 2", category: "packaging" },
-  { src: "/portfolio/BOUTEILLE 3.png", alt: "Bouteille design 3", category: "packaging" },
-  { src: "/portfolio/oil1.png", alt: "Oil design", category: "packaging" },
 ];
 
 export const socialLinks = [
@@ -334,7 +232,7 @@ export const socialLinks = [
   }
 ];
 
-// CRITIQUE & CONFIGURATION DES PACKS IA ALIGNÉE SUR LE COMPOSANT
+// DONNÉES ENTIÈREMENT ALIGNÉES POUR LES PACKS IA DE LA PAGE D'ACCUEIL ET BUSINESS
 export const packsIA: Pack[] = [
   {
     slug: "link-ia-start",
@@ -348,7 +246,14 @@ export const packsIA: Pack[] = [
     gradient: "from-blue-500 to-cyan-500",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     recommended: false,
-    badge: "IA Initial"
+    badge: "IA Initial",
+    features: [
+      "Audit IA",
+      "CRM simple",
+      "Automatisation tâches",
+      "Assistant IA",
+      "Formation équipe"
+    ]
   },
   {
     slug: "link-ia-growth",
@@ -362,7 +267,14 @@ export const packsIA: Pack[] = [
     gradient: "from-orange-500 to-yellow-500",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
     recommended: true,
-    badge: "Recommandé"
+    badge: "⭐ Recommandé",
+    features: [
+      "CRM avancé",
+      "Marketing automation",
+      "Chatbot intelligent",
+      "Analyse données",
+      "Process automatisés"
+    ]
   },
   {
     slug: "link-ia-transformation",
@@ -376,6 +288,13 @@ export const packsIA: Pack[] = [
     gradient: "from-purple-600 to-pink-600",
     buttonColor: "bg-purple-600 hover:bg-purple-700",
     recommended: false,
-    badge: "Corporate"
+    badge: "🏢 Corporate",
+    features: [
+      "Audit IA 360°",
+      "Stratégie IA",
+      "Transformation processus",
+      "Data & KPI",
+      "Accompagnement direction"
+    ]
   }
 ];
