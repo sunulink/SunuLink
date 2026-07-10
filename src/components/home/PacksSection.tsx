@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Star, Crown, Check } from "lucide-react";
-import { packs } from "@/data/homeData"; // On recharge bien les packs standards (Teranga, Xeewal, Buur)
+import { packsIA } from "@/data/homeData"; // Importation corrigée pour charger les nouveaux packs IA
 
 const iconMap = {
   sparkles: Sparkles,
@@ -13,10 +13,10 @@ export const PacksSection = () => {
   return (
     <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
-        {/* En-tête de section - BOOST MY PUB */}
+        {/* En-tête de section réajusté pour LINK IA BUSINESS */}
         <div className="text-center mb-8 md:mb-12 px-2" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-800 mb-3 md:mb-4">
-            BOOST <span className="text-sunuOrange">MY PUB</span>
+            LINK IA <span className="text-sunuOrange">BUSINESS</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-2">
             Votre visibilité. Notre puissance.
@@ -28,7 +28,7 @@ export const PacksSection = () => {
 
         {/* Grille des packs */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12 items-stretch">
-          {packs.map((pack, index) => {
+          {packsIA.map((pack, index) => {
             const Icon = iconMap[pack.icon as keyof typeof iconMap] || Sparkles;
             const isRecommended = pack.recommended;
             const delay = index * 100;
@@ -43,9 +43,11 @@ export const PacksSection = () => {
                 data-aos-delay={delay}
               >
                 {/* Badge contextuel dynamique */}
-                <div className="absolute top-0 right-0 bg-sunuOrange text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
-                  {isRecommended ? `⭐ ${pack.badge}` : pack.badge}
-                </div>
+                {pack.badge && (
+                  <div className="absolute top-0 right-0 bg-sunuOrange text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
+                    {isRecommended ? `⭐ ${pack.badge}` : pack.badge}
+                  </div>
+                )}
 
                 <div>
                   {/* En-tête de la carte */}
@@ -90,7 +92,7 @@ export const PacksSection = () => {
                   </Link>
                   
                   <Link
-                    to={`/boost-my-pub/${pack.slug}`}
+                    to={`/pack-pub-ia/${pack.slug}`}
                     className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-bold text-sm sm:text-base transition-colors"
                   >
                     Voir le détail →
@@ -101,9 +103,9 @@ export const PacksSection = () => {
           })}
         </div>
 
-        {/* Bouton Voir Plus Global */}
+        {/* Bouton Voir Plus Global réorienté vers la page IA */}
         <div className="text-center px-4" data-aos="fade-up">
-          <Link to="/boost-my-pub" className="inline-block w-full sm:w-auto">
+          <Link to="/pack-pub-ia" className="inline-block w-full sm:w-auto">
             <Button className="w-full sm:w-auto bg-gradient-to-r from-sunuOrange to-yellow-500 text-white hover:from-sunuBlue hover:to-sunuCyan font-bold px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
               Voir tous nos packs en détail
             </Button>
