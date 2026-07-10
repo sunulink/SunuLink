@@ -36,7 +36,7 @@ export interface Pack {
   period?: string;
   tagline: string;
   description: string;
-  features: string[]; // Ajouté et requis pour inclure les listes de caractéristiques
+  features: string[];
   icon: "sparkles" | "star" | "crown";
   gradient: string;
   buttonColor?: string;
@@ -232,68 +232,69 @@ export const socialLinks = [
   }
 ];
 
-// DONNÉES EXACTES ISSUES DE LA PAGE LINK IA BUSINESS
-
-const PackpubIA = () => {
-  const packs = [
-    {
-      slug: "link-ia-start",
-      title: "LINK IA START",
-      duration: "Engagement : 3 mois recommandé",
-      price: "500 000 FCFA",
-      period: "/ mois",
-      tagline: "Structurer son entreprise et automatiser l’essentiel.",
-      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
-      icon: Sparkles,
-      color: "from-blue-500 to-cyan-500",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
-      recommended: false,
-      features: [
-        "Audit IA",
-        "CRM simple",
-        "Automatisation tâches",
-        "Assistant IA",
-        "Formation équipe"
-      ]
-    },
-    {
-      slug: "link-ia-growth",
-      title: "LINK IA GROWTH",
-      duration: "Engagement : 6 mois recommandé",
-      price: "900 000 FCFA",
-      period: "/ mois",
-      tagline: "Automatiser ses processus pour accélérer.",
-      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
-      icon: Star,
-      color: "from-orange-500 to-yellow-500",
-      buttonColor: "bg-orange-500 hover:bg-orange-600",
-      recommended: true,
-      features: [
-        "CRM avancé",
-        "Marketing automation",
-        "Chatbot intelligent",
-        "Analyse données",
-        "Process automatisés"
-      ]
-    },
-    {
-      slug: "link-ia-transformation",
-      title: "LINK IA TRANSFORMATION",
-      duration: "Grandes entreprises",
-      price: "Sur devis",
-      period: "",
-      tagline: "Transformer votre entreprise grâce à l’IA.",
-      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
-      icon: Crown,
-      color: "from-purple-600 to-pink-600",
-      buttonColor: "bg-purple-600 hover:bg-purple-700",
-      recommended: false,
-      features: [
-        "Audit IA 360°",
-        "Stratégie IA",
-        "Transformation processus",
-        "Data & KPI",
-        "Accompagnement direction"
-      ]
-    }
-  ];
+// DONNÉES EXACTES ISSUES DE L'ANCIEN COMPOSANT LOCAL
+export const packsIA: Pack[] = [
+  {
+    slug: "link-ia-start",
+    name: "LINK IA START",
+    duration: "Engagement : 3 mois recommandé",
+    price: "500 000 FCFA",
+    period: "/ mois",
+    tagline: "Structurer son entreprise et automatiser l’essentiel.",
+    description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
+    icon: "sparkles",
+    gradient: "from-blue-500 to-cyan-500",
+    buttonColor: "bg-blue-500 hover:bg-blue-600",
+    recommended: false,
+    badge: "IA Initial",
+    features: [
+      "Audit IA",
+      "CRM simple",
+      "Automatisation tâches",
+      "Assistant IA",
+      "Formation équipe"
+    ]
+  },
+  {
+    slug: "link-ia-growth",
+    name: "LINK IA GROWTH",
+    duration: "Engagement : 6 mois recommandé",
+    price: "900 000 FCFA",
+    period: "/ mois",
+    tagline: "Automatiser ses processus pour accélérer.",
+    description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
+    icon: "star",
+    gradient: "from-orange-500 to-yellow-500",
+    buttonColor: "bg-orange-500 hover:bg-orange-600",
+    recommended: true,
+    badge: "Recommandé",
+    features: [
+      "CRM avancé",
+      "Marketing automation",
+      "Chatbot intelligent",
+      "Analyse données",
+      "Process automatisés"
+    ]
+  },
+  {
+    slug: "link-ia-transformation",
+    name: "LINK IA TRANSFORMATION",
+    duration: "Grandes entreprises",
+    price: "Sur devis",
+    period: "",
+    tagline: "Transformer votre entreprise grâce à l’IA.",
+    description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
+    icon: "crown",
+    gradient: "from-purple-600 to-pink-600",
+    buttonColor: "bg-purple-600 hover:bg-purple-700",
+    recommended: false,
+    badge: "Corporate",
+    features: [
+      "Audit IA 360°",
+      "Stratégie IA",
+      "Transformation processus",
+      "Data & KPI",
+      "Accompagnement direction"
+    ]
+  }
+];
