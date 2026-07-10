@@ -130,7 +130,7 @@ const IAlinkbusiness = () => {
         "Optimisation des processus de production : Amélioration continue de l’efficacité et de la qualité.",
         "Surveillance en temps réel : Contrôle permanent des machines et lignes de production.",
         "Analyse et reporting industriel : Rapports détaillés sur performances, consommation et rendements.",
-        "Réduction des coûts et déchets : Processus plus efficaces et économiques.",
+        "Réduction des coûts et déchets : Processus mais efficaces et économiques.",
       ]
     },
     {
@@ -206,7 +206,7 @@ const IAlinkbusiness = () => {
           </div>
         </section>
 
-        {/* PACKS (Placés juste avant les avantages clés) */}
+        {/* PACKS */}
         <section className="py-10 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <PackpubIA />
@@ -239,32 +239,40 @@ const IAlinkbusiness = () => {
           </div>
         </section>
 
-        {/* SERVICES GRID (Placés juste après les avantages clés) */}
+        {/* SERVICES GRID */}
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {services.map((service, index) => (
-                <div key={index} className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105" data-aos="fade-up">
-                  <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
-                    <service.icon className="w-12 h-12 mb-6" />
-                    <h3 className="text-3xl font-black mb-4">{service.title}</h3>
-                    <p className="text-lg opacity-95">{service.description}</p>
+              {services.map((service) => {
+                const IconComponent = service.icon;
+
+                return (
+                  <div 
+                    key={service.slug} 
+                    className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105" 
+                    data-aos="fade-up"
+                  >
+                    <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
+                      {IconComponent && <IconComponent className="w-12 h-12 mb-6" />}
+                      <h3 className="text-3xl font-black mb-4">{service.title}</h3>
+                      <p className="text-lg opacity-95">{service.description}</p>
+                    </div>
+                    <div className="p-8">
+                      <ul className="space-y-3">
+                        {service.offerings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start space-x-3">
+                            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link to={`/ialinkbusiness/${service.slug}`} className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg">
+                        En savoir plus →
+                      </Link>
+                    </div>
                   </div>
-                  <div className="p-8">
-                    <ul className="space-y-3">
-                      {service.offerings.map((offering, idx) => (
-                        <li key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
-                          <span className="text-gray-700">{offering}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link to={`/ialinkbusiness/${service.slug}`} className="block text-center mt-6 text-sunuBlue hover:text-sunuOrange font-black text-lg">
-                      En savoir plus →
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
