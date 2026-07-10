@@ -33,13 +33,18 @@ export interface PackFeature {
 }
 
 export interface Pack {
+  slug: string;
   name: string;
   duration: string;
   price: string;
+  period?: string; // Optionnel pour gérer le vide de "Sur devis"
+  tagline: string;
   description: string;
   features: string[];
   icon: "sparkles" | "star" | "crown";
   gradient: string;
+  buttonColor?: string;
+  badge?: string;
   recommended?: boolean;
 }
 
@@ -105,7 +110,7 @@ export const contactInfo = [
     link: "tel:+221710085915",
   },
   {
-    icon: Phone, // icône phone
+    icon: Phone,
     title: "WhatsApp",
     value: "+221 71 008 59 15",
     link: "https://wa.me/221710085915", 
@@ -114,50 +119,65 @@ export const contactInfo = [
 
 export const packs: Pack[] = [
   {
+    slug: "teranga",
     name: "PACK TERANGA",
-    duration: "3 mois",
-    price: "450K Fcfa / mois",
-    description: "Lancer sa communication proprement",
-    features: [
-      "15 visuels premium / mois",
-      "4 vidéos courtes / mois",
-      "Stories quotidiennes",
-      "Gestion FB + IG",
-      "Reporting mensuel"
-    ],
+    duration: "Engagement : 3 mois recommandé",
+    price: "450 000 FCFA",
+    period: "/ mois",
+    tagline: "Lancer sa communication proprement et efficacement.",
+    description: "Le Pack Teranga accompagne les entreprises souhaitant construire une présence digitale professionnelle avec une communication claire, régulière et cohérente.",
     icon: "sparkles",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-500 to-cyan-500",
+    buttonColor: "bg-blue-500 hover:bg-blue-600",
+    badge: "Débuter",
+    features: [
+      "Mini stratégie digitale",
+      "Création contenus premium",
+      "Gestion Facebook & Instagram",
+      "Calendrier éditorial",
+      "Reporting mensuel"
+    ]
   },
   {
+    slug: "xeewal",
     name: "PACK XEEWAL",
-    duration: "6 mois",
-    price: "750K Fcfa / mois",
-    description: "Accélérer sa croissance",
-    features: [
-      "30 visuels premium / mois",
-      "8 vidéos courtes / mois",
-      "1 vidéo pro / mois",
-      "Gestion multicanale",
-      "Boost sponsorisé"
-    ],
+    duration: "Engagement : 6 mois recommandé",
+    price: "750 000 FCFA",
+    period: "/ mois",
+    tagline: "Accélérer sa croissance et renforcer son image.",
+    description: "Une solution destinée aux entreprises souhaitant développer leur visibilité, renforcer leur image et construire une audience engagée.",
     icon: "star",
     gradient: "from-orange-500 to-yellow-500",
-    recommended: true
+    buttonColor: "bg-orange-500 hover:bg-orange-600",
+    recommended: true,
+    badge: "Le plus choisi",
+    features: [
+      "Stratégie marketing avancée",
+      "Création contenus premium",
+      "Gestion multi-réseaux",
+      "Shooting contenu",
+      "Publicité digitale"
+    ]
   },
   {
+    slug: "buur",
     name: "PACK BUUR",
-    duration: "1 an",
-    price: "1.499K Fcfa / mois",
-    description: "Dominer son marché",
-    features: [
-      "60 visuels premium / mois",
-      "15 vidéos courtes / mois",
-      "2 vidéos pro / mois",
-      "Shooting trimestriel",
-      "Direction marketing"
-    ],
+    duration: "Engagement : 12 mois recommandé",
+    price: "1 750 000 FCFA",
+    period: "/ mois",
+    tagline: "Dominer son marché et devenir une référence.",
+    description: "L’accompagnement ultime pour les entreprises souhaitant externaliser leur direction marketing et construire une marque forte.",
     icon: "crown",
-    gradient: "from-purple-600 to-pink-600"
+    gradient: "from-purple-600 to-pink-600",
+    buttonColor: "bg-purple-600 hover:bg-purple-700",
+    badge: "Premium",
+    features: [
+      "Direction marketing",
+      "Production intensive",
+      "Gestion complète réseaux sociaux",
+      "Automatisation",
+      "KPI avancés"
+    ]
   }
 ];
 
@@ -314,51 +334,48 @@ export const socialLinks = [
   }
 ];
 
+// CRITIQUE & CONFIGURATION DES PACKS IA ALIGNÉE SUR LE COMPOSANT
 export const packsIA: Pack[] = [
   {
-    name: "Pack de Démarrage IA",
-    duration: "3 mois",
-    price: "450K Fcfa / mois",
-    description: "Lancer sa communication proprement",
-    features: [
-      "15 visuels premium / mois",
-      "4 vidéos courtes / mois",
-      "Stories quotidiennes",
-      "Gestion FB + IG",
-      "Reporting mensuel"
-    ],
+    slug: "link-ia-start",
+    name: "LINK IA START",
+    duration: "Engagement : 3 mois recommandé",
+    price: "500 000 FCFA",
+    period: "/ mois",
+    tagline: "Structurer son entreprise et automatiser l’essentiel.",
+    description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
     icon: "sparkles",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-500 to-cyan-500",
+    buttonColor: "bg-blue-500 hover:bg-blue-600",
+    recommended: false,
+    badge: "IA Initial"
   },
   {
-    name: "Pack Performance IA",
-    duration: "6 mois",
-    price: "850K Fcfa / mois",
-    description: "Accélérer sa croissance",
-    features: [
-      "30 visuels premium / mois",
-      "8 vidéos courtes / mois",
-      "1 vidéo pro / mois",
-      "Gestion multicanale",
-      "Boost sponsorisé"
-    ],
+    slug: "link-ia-growth",
+    name: "LINK IA GROWTH",
+    duration: "Engagement : 6 mois recommandé",
+    price: "900 000 FCFA",
+    period: "/ mois",
+    tagline: "Automatiser ses processus pour accélérer.",
+    description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
     icon: "star",
     gradient: "from-orange-500 to-yellow-500",
-    recommended: true
+    buttonColor: "bg-orange-500 hover:bg-orange-600",
+    recommended: true,
+    badge: "Recommandé"
   },
   {
-    name: "Pack IA 360° Domination",
-    duration: "1 an",
-    price: "1.499K Fcfa / mois",
-    description: "Dominer son marché",
-    features: [
-      "60 visuels premium / mois",
-      "15 vidéos courtes / mois",
-      "2 vidéos pro / mois",
-      "Shooting trimestriel",
-      "Direction marketing"
-    ],
+    slug: "link-ia-transformation",
+    name: "LINK IA TRANSFORMATION",
+    duration: "Grandes entreprises",
+    price: "Sur devis",
+    period: "",
+    tagline: "Transformer votre entreprise grâce à l’IA.",
+    description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
     icon: "crown",
-    gradient: "from-purple-600 to-pink-600"
+    gradient: "from-purple-600 to-pink-600",
+    buttonColor: "bg-purple-600 hover:bg-purple-700",
+    recommended: false,
+    badge: "Corporate"
   }
 ];
