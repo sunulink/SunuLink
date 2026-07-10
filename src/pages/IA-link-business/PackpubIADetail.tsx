@@ -20,7 +20,7 @@ const packsIA = [
     features: [
       "Audit IA",
       "CRM simple",
-      "Automatisation tâches",
+      "Automatisation tasks",
       "Assistant IA",
       "Formation équipe"
     ],
@@ -259,13 +259,12 @@ const PackpubIADetail = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link to="/contact">
-                  <Button className="bg-white text-sunuBlue px-10 py-6 text-lg font-bold rounded-full hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <Button className="bg-white text-sunuBlue px-10 py-4 h-14 text-lg font-bold rounded-full hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                     Je valide ce pack
                   </Button>
                 </Link>
                 <Link to="/pack-pub-ia">
-                  {/* Correction appliquée ici pour garantir la visibilité du texte blanc et de sa bordure */}
-                  <Button className={`bg-transparent text-white border-2 border-white px-10 py-6 text-lg font-bold rounded-full hover:bg-white ${pack.hoverTextColor} transition-all duration-300 h-auto`}>
+                  <Button className={`bg-transparent text-white border-2 border-white px-10 py-4 h-14 text-lg font-bold rounded-full hover:bg-white ${pack.hoverTextColor} transition-all duration-300 flex items-center justify-center`}>
                     Voir les autres packs
                   </Button>
                 </Link>
