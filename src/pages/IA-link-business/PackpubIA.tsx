@@ -1,91 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Check, Bot, Cpu, Layers } from "lucide-react";
+import { Check, Sparkles, Star, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// Interface explicite ajoutée pour typer correctement le tableau packs
-interface PackItem {
-  title: string;
-  slug: string;
-  duration: string;
-  price: string;
-  period: string;
-  tagline: string;
-  description: string;
-  features: string[];
-  color: string;
-  buttonColor: string;
-  recommended: boolean;
-  icon: React.ComponentType<{ className?: string }>;
-}
+import { Link } from "react-router-dom";
 
 const PackpubIA = () => {
-  const packs: PackItem[] = [
+  const packs = [
     {
-      title: "Pack Link IA Découverte",
-      slug: "link-ia-decouverte",
-      duration: "Durée : 2 à 3 semaines",
-      price: "1 500 000 F CFA",
-      period: "",
-      tagline: "Idéal pour faire vos premiers pas dans l'univers de l'IA.",
-      description:
-        "Ce pack d'initiation permet d'évaluer le potentiel de l'IA au sein de votre structure et de déployer une première solution simple et impactante pour acculturer vos équipes.",
-      features: [
-        "1 Session d'idéation et d'évaluation (2h)",
-        "Création d'un Agent IA personnalisé (ex: Support client basique)",
-        "Intégration sur 1 canal (Web ou WhatsApp)",
-        "Formation de prise en main pour 3 collaborateurs",
-        "Support technique (2 semaines post-déploiement)",
-      ],
-      color: "from-blue-600 to-cyan-500",
-      buttonColor: "bg-blue-600 hover:bg-blue-700",
+      slug: "link-ia-start",
+      title: "LINK IA START",
+      duration: "Engagement : 3 mois recommandé",
+      price: "500 000 FCFA",
+      period: "/ mois",
+      tagline: "Structurer son entreprise et automatiser l’essentiel.",
+      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
+      icon: Sparkles,
+      color: "from-blue-500 to-cyan-500",
+      buttonColor: "bg-blue-500 hover:bg-blue-600",
       recommended: false,
-      icon: Bot,
+      features: [
+        "Audit IA",
+        "CRM simple",
+        "Automatisation tâches",
+        "Assistant IA",
+        "Formation équipe"
+      ]
     },
     {
-      title: "Pack Link IA Croissance",
-      slug: "link-ia-croissance",
-      duration: "Durée : 4 à 6 semaines",
-      price: "3 500 000 F CFA",
-      period: "",
-      tagline: "Le choix parfait pour structurer et automatiser vos processus clés.",
-      description:
-        "Conçu pour les PME en pleine expansion, ce pack interconnecte vos outils du quotidien à des agents IA avancés pour maximiser la productivité et générer un ROI mesurable.",
-      features: [
-        "Audit complet des workflows existants (1 semaine)",
-        "Développement de 2 Agents IA avancés métiers",
-        "Connexion API complexes (CRM, ERP, Google Workspace)",
-        "Automatisation de 2 processus métiers critiques",
-        "Formation approfondie + livret de prompt engineering",
-        "Support & Optimisation (1 mois inclus)",
-      ],
-      color: "from-orange-500 to-amber-500",
-      buttonColor: "bg-sunuOrange hover:bg-orange-600",
+      slug: "link-ia-growth",
+      title: "LINK IA GROWTH",
+      duration: "Engagement : 6 mois recommandé",
+      price: "900 000 FCFA",
+      period: "/ mois",
+      tagline: "Automatiser ses processus pour accélérer.",
+      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
+      icon: Star,
+      color: "from-orange-500 to-yellow-500",
+      buttonColor: "bg-orange-500 hover:bg-orange-600",
       recommended: true,
-      icon: Cpu,
+      features: [
+        "CRM avancé",
+        "Marketing automation",
+        "Chatbot intelligent",
+        "Analyse données",
+        "Process automatisés"
+      ]
     },
     {
-      title: "Pack Link IA Transformation",
       slug: "link-ia-transformation",
-      duration: "Durée : Sur Mesure",
-      price: "Sur Devis",
+      title: "LINK IA TRANSFORMATION",
+      duration: "Grandes entreprises",
+      price: "Sur devis",
       period: "",
-      tagline: "Une restructuration globale axée sur l'intelligence artificielle.",
-      description:
-        "Une solution complète et hautement personnalisée pour les grandes organisations souhaitant placer l'IA au cœur de leur modèle opérationnel et de leur stratégie globale.",
-      features: [
-        "Audit holistique de l'organisation et gouvernance des données",
-        "Création d'un écosystème d'Agents IA interconnectés",
-        "Développement de solutions IA propriétaires (sur mesure)",
-        "Conduite du changement et plan de formation global",
-        "Comité de suivi stratégique trimestriel",
-        "Support premium 24/7 avec SLA garanti",
-      ],
-      color: "from-purple-700 to-indigo-800",
-      buttonColor: "bg-purple-700 hover:bg-purple-800",
+      tagline: "Transformer votre entreprise grâce à l’IA.",
+      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
+      icon: Crown,
+      color: "from-purple-600 to-pink-600",
+      buttonColor: "bg-purple-600 hover:bg-purple-700",
       recommended: false,
-      icon: Layers,
-    },
+      features: [
+        "Audit IA 360°",
+        "Stratégie IA",
+        "Transformation processus",
+        "Data & KPI",
+        "Accompagnement direction"
+      ]
+    }
   ];
 
   return (
@@ -96,14 +74,13 @@ const PackpubIA = () => {
           <h2 className="text-3xl md:text-5xl font-black text-gray-800 mb-4">
             Nos Packs <span className="text-sunuOrange">Link IA</span>
           </h2>
-          <div className="h-1.5 w-24 bg-sunuOrange mx-auto rounded-full mb-6"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
             Choisissez la formule adaptée à la maturité de votre organisation et commencez votre transformation.
           </p>
         </div>
 
         {/* Grille des packs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch w-full">
           {packs.map((pack, index) => {
             const IconComponent = pack.icon;
 
@@ -111,8 +88,8 @@ const PackpubIA = () => {
               <div
                 key={pack.slug}
                 className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange overflow-hidden flex flex-col justify-between w-full ${
-                  pack.recommended ? "lg:-translate-y-4" : ""
-                } md:hover:-translate-y-4 md:hover:rotate-1 hover:shadow-[0_20px_40px_rgba(255,127,39,0.2)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.4)]`}
+                  pack.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
+                } md:hover:scale-105 md:hover:-translate-y-4 md:hover:rotate-1 hover:shadow-[0_20px_40px_rgba(255,127,39,0.2)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.4)]`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
@@ -129,35 +106,35 @@ const PackpubIA = () => {
                 )}
 
                 {/* Partie supérieure colorée */}
-                <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-6 md:p-8`}>
+                <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-5 md:p-8`}>
                   <div className="flex items-center justify-center mb-4">
                     <div className="bg-white/20 backdrop-blur-sm w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center">
                       <IconComponent className="w-7 h-7 md:w-10 md:h-10 text-white" />
                     </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-center mb-1 tracking-tight">
+                  <h3 className="text-xl md:text-3xl font-black text-center mb-1 tracking-tight">
                     {pack.title}
                   </h3>
-                  <p className="text-center text-xs md:text-sm font-semibold mb-3 opacity-90">
+                  <p className="text-center text-xs md:text-base font-semibold mb-3 opacity-90">
                     {pack.duration}
                   </p>
                   <div className="text-center mb-4">
-                    <p className="text-2xl md:text-4xl font-black whitespace-nowrap">
+                    <p className="text-2xl md:text-4xl font-black whitespace-normal break-words">
                       {pack.price}
                       {pack.period && (
-                        <span className="text-base md:text-xl font-medium">
+                        <span className="text-base md:text-xl font-medium block sm:inline">
                           {pack.period}
                         </span>
                       )}
                     </p>
                   </div>
-                  <p className="text-center text-sm md:text-base font-bold mb-2 italic min-h-[40px] md:min-h-[50px] leading-relaxed">
+                  <p className="text-center text-sm md:text-lg font-bold mb-2 italic min-h-[40px] md:min-h-[50px] leading-relaxed">
                     "{pack.tagline}"
                   </p>
                 </div>
 
                 {/* Partie inférieure blanche */}
-                <div className="bg-white p-6 md:p-8 flex-1 flex flex-col justify-between">
+                <div className="bg-white p-5 md:p-8 flex-1 flex flex-col justify-between">
                   <div>
                     <p className="text-gray-700 mb-6 text-sm md:text-base leading-relaxed">
                       {pack.description}
