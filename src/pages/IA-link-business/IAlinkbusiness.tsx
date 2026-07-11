@@ -3,12 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroPages from "@/components/HeroPages";
 import { Link } from "react-router-dom";
-import { ArrowRight, Bot, Cpu, Layers, Sparkles, LucideIcon } from "lucide-react";
+import { ArrowRight, Bot, Cpu, Layers, Sparkles } from "lucide-react";
 import PackpubIA from "@/components/PackpubIA";
 
-// Définition de l'interface pour typer proprement les services
+// Définition de l'interface avec un typage de composant React robuste
 interface ServiceItem {
-  icon: React.ComponentType<any>; // Remplace LucideIcon
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   features: string[];
@@ -104,7 +104,6 @@ const IAlinkbusiness = () => {
           {/* GRILLE DES SERVICES */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full">
             {services.map((service, index) => {
-              // On s'assure que la variable commence par une MAJUSCULE pour le JSX
               const IconComponent = service.icon;
               return (
                 <div
@@ -157,7 +156,6 @@ const IAlinkbusiness = () => {
 
         {/* CTA SECTION */}
         <section className="bg-gradient-to-br from-sunuBlue to-slate-900 text-white py-16 md:py-20 px-4 sm:px-6 relative overflow-hidden">
-          {/* Formes décoratives en arrière-plan */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-sunuOrange/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
 
