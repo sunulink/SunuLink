@@ -8,7 +8,7 @@ import PackpubIA from "@/components/PackpubIA";
 
 // Définition de l'interface pour typer proprement les services
 interface ServiceItem {
-  icon: LucideIcon;
+  icon: React.ComponentType<any>; // Remplace LucideIcon
   title: string;
   description: string;
   features: string[];
