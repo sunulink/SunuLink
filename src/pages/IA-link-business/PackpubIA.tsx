@@ -3,8 +3,24 @@ import { Link } from "react-router-dom";
 import { Check, Bot, Cpu, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Interface explicite ajoutée pour typer correctement le tableau packs
+interface PackItem {
+  title: string;
+  slug: string;
+  duration: string;
+  price: string;
+  period: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  color: string;
+  buttonColor: string;
+  recommended: boolean;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
 const PackpubIA = () => {
-  const packs = [
+  const packs: PackItem[] = [
     {
       title: "Pack Link IA Découverte",
       slug: "link-ia-decouverte",
@@ -119,7 +135,7 @@ const PackpubIA = () => {
                       <IconComponent className="w-7 h-7 md:w-10 md:h-10 text-white" />
                     </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-center mb-1 tracking-tight balance">
+                  <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-center mb-1 tracking-tight">
                     {pack.title}
                   </h3>
                   <p className="text-center text-xs md:text-sm font-semibold mb-3 opacity-90">
