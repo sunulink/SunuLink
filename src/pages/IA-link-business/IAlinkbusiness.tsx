@@ -3,16 +3,26 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroPages from "@/components/HeroPages";
 import { Link } from "react-router-dom";
-import { ArrowRight, Bot, Cpu, Layers, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Cpu, Layers, Sparkles, LucideIcon } from "lucide-react";
 import PackpubIA from "@/components/PackpubIA";
 
+// Définition de l'interface pour typer proprement les services
+interface ServiceItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  features: string[];
+  color: string;
+  accent: string;
+}
+
 const IAlinkbusiness = () => {
-  const services = [
+  const services: ServiceItem[] = [
     {
       icon: Bot,
       title: "Création d'Agents IA sur Mesure",
       description:
-        "Développement d'assistants virtuels autonomes et intelligents, capables de gérer vos tâches complexes et d'automatiser vos processus métiers clés.",
+        "Développement d'assistants virtuels autonomes et intelligentes, capables de gérer vos tâches complexes et d'automatiser vos processus métiers clés.",
       features: [
         "Agents de support client 24/7",
         "Assistants de productivité internes",
@@ -94,6 +104,7 @@ const IAlinkbusiness = () => {
           {/* GRILLE DES SERVICES */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full">
             {services.map((service, index) => {
+              // On s'assure que la variable commence par une MAJUSCULE pour le JSX
               const IconComponent = service.icon;
               return (
                 <div
