@@ -37,7 +37,7 @@ export interface Pack {
   tagline: string;
   description: string;
   features: string[];
-  icon: "sparkles" | "star" | "crown";
+  icon: "sparkles" | "star" | "crown" | "link-ia-start" | "link-ia-growth" | "link-ia-transformation";
   gradient: string;
   buttonColor?: string;
   badge?: string;
@@ -113,7 +113,8 @@ export const contactInfo = [
   },
 ];
 
-export const packs: Pack[] = [
+// Alias exporté sous le nom de packsPub pour matcher avec le premier composant PacksSection
+export const packsPub: Pack[] = [
   {
     slug: "teranga",
     name: "PACK TERANGA",
@@ -177,6 +178,9 @@ export const packs: Pack[] = [
   }
 ];
 
+// Conserver l'export "packs" original pour assurer la compatibilité ascendante
+export const packs = packsPub;
+
 export const testimonials: Testimonial[] = [
   {
     name: "Amadou Diallo",
@@ -232,7 +236,6 @@ export const socialLinks = [
   }
 ];
 
-// DONNÉES EXACTES ISSUES DE L'ANCIEN COMPOSANT LOCAL
 export const packsIA: Pack[] = [
   {
     slug: "link-ia-start",
@@ -242,7 +245,7 @@ export const packsIA: Pack[] = [
     period: "/ mois",
     tagline: "Structurer son entreprise et automatiser l’essentiel.",
     description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
-    icon: "sparkles",
+    icon: "link-ia-start",
     gradient: "from-blue-500 to-cyan-500",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     recommended: false,
@@ -263,7 +266,7 @@ export const packsIA: Pack[] = [
     period: "/ mois",
     tagline: "Automatiser ses processus pour accélérer.",
     description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
-    icon: "star",
+    icon: "link-ia-growth",
     gradient: "from-orange-500 to-yellow-500",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
     recommended: true,
@@ -284,7 +287,7 @@ export const packsIA: Pack[] = [
     period: "",
     tagline: "Transformer votre entreprise grâce à l’IA.",
     description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
-    icon: "crown",
+    icon: "link-ia-transformation",
     gradient: "from-purple-600 to-pink-600",
     buttonColor: "bg-purple-600 hover:bg-purple-700",
     recommended: false,
