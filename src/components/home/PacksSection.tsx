@@ -1,74 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Star, Crown, Check } from "lucide-react";
+import { packsPub } from "@/data/packsData";
+
+const iconMap = {
+  teranga: Sparkles,
+  xeewal: Star,
+  buur: Crown,
+};
 
 export const PacksSection = () => {
-  const packsPub = [
-    {
-      slug: "teranga",
-      name: "PACK TERANGA",
-      duration: "Engagement : 3 mois recommandé",
-      price: "450 000 FCFA",
-      period: "/ mois",
-      tagline: "Lancer sa communication proprement et efficacement.",
-      description: "Le Pack Teranga accompagne les entreprises souhaitant construire une présence digitale professionnelle avec une communication claire, régulière et cohérente.",
-      icon: Sparkles,
-      color: "from-blue-500 to-cyan-500",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
-      badge: "Débuter",
-      recommended: false,
-      features: [
-        "Mini stratégie digitale",
-        "Création contenus premium",
-        "Gestion Facebook & Instagram",
-        "Calendrier éditorial",
-        "Reporting mensuel"
-      ]
-    },
-    {
-      slug: "xeewal",
-      name: "PACK XEEWAL",
-      duration: "Engagement : 6 mois recommandé",
-      price: "750 000 FCFA",
-      period: "/ mois",
-      tagline: "Accélérer sa croissance et renforcer son image.",
-      description: "Une solution destinée aux entreprises souhaitant développer leur visibilité, renforcer leur image et construire une audience engagée.",
-      icon: Star,
-      color: "from-orange-500 to-yellow-500",
-      buttonColor: "bg-orange-500 hover:bg-orange-600",
-      badge: "Le plus choisi",
-      recommended: true,
-      features: [
-        "Stratégie marketing avancée",
-        "Création contenus premium",
-        "Gestion multi-réseaux",
-        "Shooting contenu",
-        "Publicité digitale"
-      ]
-    },
-    {
-      slug: "buur",
-      name: "PACK BUUR",
-      duration: "Engagement : 12 mois recommandé",
-      price: "1 750 000 FCFA",
-      period: "/ mois",
-      tagline: "Dominer son marché et devenir une référence.",
-      description: "L’accompagnement ultime pour les entreprises souhaitant externaliser leur direction marketing et construire une marque forte.",
-      icon: Crown,
-      color: "from-purple-600 to-pink-600",
-      buttonColor: "bg-purple-600 hover:bg-purple-700",
-      badge: "Premium",
-      recommended: false,
-      features: [
-        "Direction marketing",
-        "Production intensive",
-        "Gestion complète réseaux sociaux",
-        "Automatisation",
-        "KPI avancés"
-      ]
-    }
-  ];
-
   return (
     <section className="py-16 sm:py-20 px-4 sm:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
@@ -88,7 +29,19 @@ export const PacksSection = () => {
         {/* Grille des Packs */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {packsPub.map((pack, index) => {
-            const IconComponent = pack.icon;
+            const IconComponent = iconMap[pack.slug as keyof typeof iconMap] || Sparkles;
+            
+            // Conserver la configuration visuelle d'origine spécifique aux designs des cartes
+            const colorClass = 
+              pack.slug === "teranga" ? "from-blue-500 to-cyan-500" : 
+              pack.slug === "xeewal" ? "from-orange-500 to-yellow-500" : 
+              "from-purple-600 to-pink-600";
+              
+            const buttonColorClass = 
+              pack.slug === "teranga" ? "bg-blue-500 hover:bg-blue-600" : 
+              pack.slug === "xeewal" ? "bg-orange-500 hover:bg-orange-600" : 
+              "bg-purple-600 hover:bg-purple-700";
+
             return (
               <div
                 key={pack.slug}
@@ -104,7 +57,7 @@ export const PacksSection = () => {
                   </div>
                 )}
 
-                <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-6 sm:p-8`}>
+                <div className={`grain-texture bg-gradient-to-br ${colorClass} text-white p-6 sm:p-8`}>
                   <div className="flex items-center justify-center mb-4 sm:mb-6">
                     <div className="bg-white/20 backdrop-blur-sm w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center">
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -154,17 +107,10 @@ export const PacksSection = () => {
                   </div>
 
                   <div>
-                    <Link to="/contact" className="block w-full">
-                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
-                        Je valide
+                    <Link to={`/boost-my-pub/${pack.slug}`} className="block w-full">
+                      <Button className={`w-full ${buttonColorClass} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
+                        Voir le détail
                       </Button>
-                    </Link>
-
-                    <Link
-                      to={`/boost-my-pub/${pack.slug}`}
-                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold text-sm sm:text-base transition-colors"
-                    >
-                      En savoir plus →
                     </Link>
                   </div>
                 </div>
