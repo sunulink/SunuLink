@@ -1,4 +1,3 @@
-voici PacksSection.tsx
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Star, Crown, Check } from "lucide-react";
