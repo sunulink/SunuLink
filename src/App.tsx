@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// Import du nouveau composant de retour en haut
+import { ScrollToTop } from "@/components/ScrollToTop";
+
 // Imports des pages standards
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
@@ -36,7 +39,7 @@ import AffichesSupportsPage from "./pages/AffichesSupportsPage";
 import BrandingCompletPage from "./pages/BrandingCompletPage";
 import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
-import VideoAnimationPage from "./pages/VideoAnimationPage"; // <-- Ajout de l'import
+import VideoAnimationPage from "./pages/VideoAnimationPage";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +59,12 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          {/* 
+            Le composant ScrollToTop est placé à l'intérieur de BrowserRouter pour
+            fonctionner de manière transparente et globale sur l'ensemble de l'application.
+          */}
+          <ScrollToTop />
+
           <Routes>
             {/* Pages Principales */}
             <Route path="/" element={<Home />} />
@@ -89,7 +98,7 @@ const App = () => {
             <Route path="/realisations/branding-complet" element={<BrandingCompletPage />} />
             <Route path="/realisations/photo-shooting" element={<PhotoShootingPage />} />
             <Route path="/realisations/design-packaging" element={<DesignPackagingPage />} />
-            <Route path="/realisations/video-animation" element={<VideoAnimationPage />} /> {/* <-- Ajout de la route */}
+            <Route path="/realisations/video-animation" element={<VideoAnimationPage />} />
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
