@@ -4,9 +4,9 @@ import { Sparkles, Star, Crown, Check } from "lucide-react";
 import { packsIA } from "@/data/homeData"; 
 
 const iconMap = {
-  sparkles: Sparkles,
-  star: Star,
-  crown: Crown,
+  "link-ia-start": Sparkles,
+  "link-ia-growth": Star,
+  "link-ia-transformation": Crown,
 };
 
 export const PackSectionIA = () => {
@@ -83,17 +83,10 @@ export const PackSectionIA = () => {
                 </div>
 
                 <div className="p-6 sm:p-8 pt-0 bg-white">
-                  <Link to="/devis" className="block w-full">
+                  <Link to={`/pack-pub-ia/${pack.slug}`} className="block w-full">
                     <Button className={`w-full ${pack.buttonColor || 'bg-sunuOrange hover:bg-orange-600'} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
-                      Je valide
+                      Voir le détail
                     </Button>
-                  </Link>
-                  
-                  <Link
-                    to={`/pack-pub-ia/${pack.slug}`}
-                    className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-bold text-sm sm:text-base transition-colors"
-                  >
-                    Voir le détail →
                   </Link>
                 </div>
               </div>
