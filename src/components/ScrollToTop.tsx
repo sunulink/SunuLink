@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // <-- Ajout de l'import pour suivre la navigation
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { pathname } = useLocation(); // <-- Récupère le chemin de l'URL actuelle
 
-  // Gérer la visibilité du bouton en fonction du défilement
+  // Écouteur 1 : Remet la page tout en haut instantanément à chaque changement d'URL
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]); // Se déclenche dès que "pathname" change (changement de page)
+
+  // Écouteur 2 : Gère la visibilité du bouton en fonction du défilement
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
@@ -19,7 +26,7 @@ export const ScrollToTop = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Action de retour fluide en haut de la page
+  // Action de retour fluide en cliquant sur le bouton
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
