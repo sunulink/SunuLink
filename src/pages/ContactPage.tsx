@@ -31,7 +31,8 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const templateParams = {
+    // 1. Paramètres pour recevoir la notification de Contact chez SUNULINK
+    const notificationParams = {
       prenom: formData.prenom,
       nom: formData.nom,
       email: formData.email,
@@ -42,15 +43,35 @@ const ContactPage = () => {
     };
 
     try {
+      // Étape A : Envoi du message à contact@sunulink.sn
       await emailjs.send(
         "service_04lmrjh", 
-        "template_pabmg78", // Votre ID de template de contact mis à jour
-        templateParams,
+        "template_pabmg78", 
+        notificationParams,
         "ShXDBB_RTc_F-EWm1"
       );
+
+      // Étape B : Envoi de l'accusé de réception textuel exact au client
+      const accuseParams = {
+        prenom: formData.prenom,
+        nom: formData.nom,
+        email: formData.email, 
+        to_email: formData.email, // Envoi vers le client
+        objet: "Accusé de réception - SUNULINK CONSULTING",
+        message: "Merci, votre demande a bien été reçue. Nous vous contacterons sous 24h.\n\nSUNULINK CONSULTING",
+        source: "Formulaire de Contact"
+      };
+
+      await emailjs.send(
+        "service_04lmrjh",
+        "template_pabmg78", 
+        accuseParams,
+        "ShXDBB_RTc_F-EWm1"
+      );
+
       setIsSuccess(true);
     } catch (error) {
-      console.error("Erreur envoi contact:", error);
+      console.error("Erreur lors de l'envoi :", error);
       alert("Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
@@ -64,7 +85,6 @@ const ContactPage = () => {
     }
   };
 
-  // Style harmonisé blanc transparent sur fond dégradé
   const inputStyle = "w-full bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/60 text-base py-6 rounded-xl transition-all";
 
   return (
@@ -72,7 +92,6 @@ const ContactPage = () => {
       <Header />
 
       <main className="pt-24 md:pt-32">
-        {/* 1. Hero Section */}
         <section className="py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 text-gray-800 leading-tight break-words">
@@ -86,12 +105,11 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* 2. Partenaires Section */}
         <section className="py-8 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grain-texture bg-gradient-to-r from-sunuBlue via-gray-500 to-sunuOrange rounded-3xl p-6 sm:p-12 shadow-2xl">
               <div className="text-center text-white">
-                <h2 className="text-[22px] sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 leading-tight tracking-tight whitespace-normal">
+                <h2 className="text-[22px] sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 leading-tight tracking-tight">
                   DES COLLABORATIONS<br />FRUCTUEUSES
                 </h2>
                 <p className="text-base sm:text-xl opacity-95 mb-6 sm:mb-8 max-w-md mx-auto">
@@ -108,12 +126,10 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* 3. Section Formulaire et Infos de Contact */}
         <section id="contact-section" className="py-16 px-4 sm:px-6 scroll-mt-24 bg-white">
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               
-              {/* Infos pratiques à gauche */}
               <div className="lg:col-span-5 space-y-8 flex flex-col justify-center">
                 <div>
                   <h2 className="text-3xl font-black text-gray-800 mb-4">Contactez SUNULINK</h2>
@@ -155,14 +171,13 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Formulaire à droite */}
               <div className="lg:col-span-7">
                 {isSuccess ? (
                   <div className="grain-texture bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-8 text-center text-white shadow-2xl h-full flex flex-col justify-center items-center">
                     <CheckCircle className="w-16 h-16 mb-4" />
                     <h3 className="text-2xl font-black mb-2">Message envoyé !</h3>
                     <p className="opacity-90 max-w-sm mb-6">
-                      Merci {formData.prenom}. Notre équipe a bien reçu votre message et vous répondra sous 24 heures.
+                      Merci {formData.prenom}. Votre demande a bien été reçue. Un e-mail de confirmation vient de vous être envoyé.
                     </p>
                     <Button
                       onClick={() => setIsSuccess(false)}
@@ -185,7 +200,7 @@ const ContactPage = () => {
                       </div>
 
                       <Input name="objet" value={formData.objet} onChange={handleInputChange} placeholder="Objet du message" className={inputStyle} required />
-                      <Input name="source" value={formData.source} onChange={handleInputChange} placeholder="Comment nous avez-vous connus ? (ex: LinkedIn, Recommandation...)" className={inputStyle} />
+                      <Input name="source" value={formData.source} onChange={handleInputChange} placeholder="Comment nous avez-vous connus ?" className={inputStyle} />
 
                       <Textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Votre message..." rows={5} className="w-full bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/60 text-base rounded-xl p-4 transition-all" required />
 
