@@ -58,7 +58,7 @@ const ContactPage = () => {
         email: formData.email, 
         to_email: formData.email, // Envoi vers le client
         objet: "Accusé de réception - SUNULINK CONSULTING",
-        message: "Merci, votre demande a bien été reçue. Nous vous contacterons sous 24h.\n\nSUNULINK CONSULTING",
+        message: "Merci, votre message a bien été reçue. Nous vous contacterons sous 24h.\n\nSUNULINK CONSULTING",
         source: "Formulaire de Contact"
       };
 
