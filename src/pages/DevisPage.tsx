@@ -63,7 +63,7 @@ const categoriesProjets = {
   "Événementiel & Activation": [
     "Organisation d'événements corporates ou grand public",
     "Lancements de produits / services",
-    "Activations de marque et expériences clients",
+    "Activations de marque et experiences clients",
   ],
   "Développement commercial": [
     "Prospection digitale & génération de leads",
@@ -187,6 +187,7 @@ const DevisPage = () => {
 
     setIsSubmitting(true);
 
+    // A. Paramètres complets pour le devis envoyé à SUNULINK (template_cqv61zn)
     const templateParams = {
       civilite: formData.civilite,
       nom: formData.nom,
@@ -203,12 +204,32 @@ const DevisPage = () => {
     };
 
     try {
+      // 1. Envoi du devis complet à contact@sunulink.sn
       await emailjs.send(
         "service_04lmrjh",
         "template_cqv61zn",
         templateParams,
         "ShXDBB_RTc_F-EWm1"
       );
+
+      // 2. Envoi automatique de l'accusé de réception au client via template_pabmg78
+      const accuseParams = {
+        prenom: formData.prenom,
+        nom: formData.nom,
+        email: formData.email, 
+        to_email: formData.email, // Force l'envoi vers la boîte mail du client
+        objet: "Accusé de réception - Votre demande de devis SUNULINK CONSULTING",
+        message: "Merci, votre demande a bien été reçue. Nous vous contacterons sous 24h.\n\nSUNULINK CONSULTING",
+        source: "Générateur de Devis"
+      };
+
+      await emailjs.send(
+        "service_04lmrjh",
+        "template_pabmg78",
+        accuseParams,
+        "ShXDBB_RTc_F-EWm1"
+      );
+
       setIsSuccess(true);
     } catch (error) {
       console.error("Erreur envoi:", error);
@@ -218,7 +239,6 @@ const DevisPage = () => {
     }
   };
 
-  // Classe utilitaire pour harmoniser les inputs avec texte blanc
   const inputStyle = "w-full bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/60 text-base py-6 rounded-xl transition-all";
 
   if (isSuccess) {
@@ -231,7 +251,7 @@ const DevisPage = () => {
               <CheckCircle className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6" />
               <h1 className="text-3xl sm:text-4xl font-black mb-4">Demande envoyée !</h1>
               <p className="text-lg sm:text-xl opacity-90 mb-8">
-                Merci {formData.prenom} ! Votre demande a bien été transmise à SUNULINK CONSULTING.
+                Merci {formData.prenom} ! Votre demande a bien été reçue. Un e-mail de confirmation vient de vous être envoyé.
               </p>
               <Button
                 onClick={() => window.location.href = "/"}
@@ -291,7 +311,7 @@ const DevisPage = () => {
           </div>
         </section>
 
-        {/* Section Formulaire principale - Pleine largeur mobile */}
+        {/* Section Formulaire principale */}
         <section ref={formSectionRef} className="px-4 sm:px-6 pb-16 scroll-mt-24">
           <div className="container mx-auto max-w-4xl">
             <form ref={formRef} onSubmit={envoyerDevis} className="w-full">
