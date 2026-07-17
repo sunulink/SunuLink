@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import emailjs from "emailjs-com";
 
-// Types
 interface FormData {
   civilite: string;
   nom: string;
@@ -36,7 +35,6 @@ interface FormData {
   consentement: boolean;
 }
 
-// Données des catégories de projets
 const categoriesProjets = {
   "Digital & Web": [
     "Création d'un nouveau site internet",
@@ -187,6 +185,7 @@ const DevisPage = () => {
 
     setIsSubmitting(true);
 
+    // Synchronisation exacte avec les captures 2 et 3 de votre modèle de devis
     const templateParams = {
       civilite: formData.civilite,
       nom: formData.nom,
@@ -194,11 +193,11 @@ const DevisPage = () => {
       email: formData.email,
       telephone: formData.telephone,
       adresse: formData.adresse || "Non renseignée",
-      projets: formData.projets.join("\n• "),
+      projets: formData.projets.map(p => `- ${p}`).join("\n"),
       description_projet: formData.descriptionProjet,
       date_debut: formData.dateDebutSouhaitee || "Non précisée",
       deadline: formData.deadline || "Non précisée",
-      contenus: formData.contenus.length > 0 ? formData.contenus.join("\n• ") : "Aucun sélectionné",
+      contenus: formData.contenus.length > 0 ? formData.contenus.map(c => `- ${c}`).join("\n") : "Aucun sélectionné",
       autres_informations: formData.autresInformations || "Aucune",
     };
 
@@ -211,14 +210,13 @@ const DevisPage = () => {
       );
       setIsSuccess(true);
     } catch (error) {
-      console.error("Erreur envoi:", error);
-      alert("Erreur lors de l'envoi. Veuillez réessayer.");
+      console.error("Erreur envoi devis:", error);
+      alert("Erreur lors de l'envoi de votre demande. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Classe utilitaire pour harmoniser les inputs avec texte blanc
   const inputStyle = "w-full bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/60 text-base py-6 rounded-xl transition-all";
 
   if (isSuccess) {
@@ -261,7 +259,7 @@ const DevisPage = () => {
           </p>
         </section>
 
-        {/* Stepper horizontal - responsive */}
+        {/* Stepper */}
         <section className="py-4 sm:py-8 px-4 sm:px-6 overflow-x-auto select-none">
           <div className="container mx-auto max-w-4xl min-w-[320px]">
             <div className="flex items-center justify-between gap-1 sm:gap-2">
@@ -291,7 +289,7 @@ const DevisPage = () => {
           </div>
         </section>
 
-        {/* Section Formulaire principale - Pleine largeur mobile */}
+        {/* Formulaire Principal */}
         <section ref={formSectionRef} className="px-4 sm:px-6 pb-16 scroll-mt-24">
           <div className="container mx-auto max-w-4xl">
             <form ref={formRef} onSubmit={envoyerDevis} className="w-full">
@@ -396,7 +394,7 @@ const DevisPage = () => {
                 </div>
               )}
 
-              {/* ÉTAPE 5: Récapitulatif et Validation */}
+              {/* ÉTAPE 5: Récapitulatif */}
               {etapeActuelle === 5 && (
                 <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue rounded-3xl p-5 sm:p-10 shadow-2xl transition-all">
                   <h2 className="text-xl sm:text-2xl font-black mb-6 text-white flex items-center gap-3">
@@ -416,7 +414,7 @@ const DevisPage = () => {
                 </div>
               )}
 
-              {/* Boutons d'actions et de navigation bas */}
+              {/* Boutons Actions */}
               <div className="flex justify-between items-center mt-6 gap-4">
                 {etapeActuelle > 1 && (
                   <Button 
