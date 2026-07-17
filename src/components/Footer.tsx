@@ -1,26 +1,28 @@
-import { useRef } from "react";
-import emailjs from "emailjs-com";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser"; // Passage à la version moderne et stable du SDK
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, Send } from "lucide-react";
-import SocialLinksBlock from "./SocialLinksBlock"; // Assurez-vous du chemin correct
+import { Mail, Phone, Send, Loader2 } from "lucide-react";
+import SocialLinksBlock from "./SocialLinksBlock"; 
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formRef.current) return;
+    setIsSubmitting(true);
 
     emailjs
       .sendForm(
-        "service_xgdluls",
-        "template_5x9tqf8",
+        "service_ktbwzv5",      // ID de votre service SMTP mis à jour
+        "template_pabmg78",     // ID de votre template
         formRef.current,
-        "KfF-FpO2K-0aYUFsS"
+        "ShXDBB_RTc_F-EWm1"     // Votre clé publique EmailJS
       )
       .then(
         () => {
@@ -28,17 +30,18 @@ const Contact = () => {
           formRef.current?.reset();
         },
         (error) => {
-          // MODIFICATION : Mise à jour des contacts de secours dans l'alerte d'erreur
           alert(
             "Erreur lors de l'envoi ❌ : " + 
             error.text + 
             "\n\nVeuillez nous contacter directement à contact@sunulink.sn ou par WhatsApp au +221 71 008 59 15."
           );
         }
-      );
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
-  // MODIFICATION : Mise à jour de l'email et du premier numéro de téléphone (WhatsApp)
   const contactInfo = [
     {
       icon: Mail,
@@ -50,7 +53,7 @@ const Contact = () => {
       icon: Phone,
       title: "Téléphone / WhatsApp",
       value: "+221 71 008 59 15",
-      link: "https://wa.me/221710085915", // Redirige directement vers WhatsApp
+      link: "https://wa.me/221710085915", 
     },
     {
       icon: Phone,
@@ -160,7 +163,6 @@ const Contact = () => {
                 />
 
                 <div>
-                  {/* MODIFICATION : Harmonisation de la marque en SUNULINK CONSULTING */}
                   <label className="text-sm opacity-90 block mb-2">
                     Comment avez-vous connu SUNULINK CONSULTING ?
                   </label>
@@ -181,10 +183,20 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white font-bold py-6 text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl group"
+                  disabled={isSubmitting}
+                  className="w-full bg-white text-sunuBlue hover:bg-sunuOrange hover:text-white font-bold py-6 text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl group flex items-center justify-center gap-2"
                 >
-                  Envoyer le message
-                  <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  {isSubmitting ? (
+                    <>
+                      Envoi en cours...
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Envoyer le message
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </Button>
               </form>
             </Card>
@@ -196,7 +208,7 @@ const Contact = () => {
       <div className="py-8 border-t border-gray-200 bg-white">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-500 font-medium">
-            &copy; {new Date().getFullYear()} <span className="text-sunuBlue font-bold">SUNULINK</span> <span className="text-sunuOrange font-bold">CONSULTING</span>. Tous droits réservés.
+            &copy; {new Date().getFullYear()} <span className="text-gray-800 font-bold">SUNULINK CONSULTING</span>. Tous droits réservés.
           </p>
         </div>
       </div>
