@@ -31,7 +31,6 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Exactement calqué sur les tags {{variable}} de votre premier template
     const templateParams = {
       prenom: formData.prenom,
       nom: formData.nom,
@@ -44,7 +43,7 @@ const ContactPage = () => {
 
     try {
       await emailjs.send(
-        "service_04lmrjh", 
+        "service_ktbwzv5", // Votre nouvel ID de service SMTP mis à jour
         "template_pabmg78",
         templateParams,
         "ShXDBB_RTc_F-EWm1"
@@ -98,6 +97,7 @@ const ContactPage = () => {
                   Découvrez et rencontrez nos partenaires.
                 </p>
                 <button 
+                  type="button"
                   onClick={scrollToContact}
                   className="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:bg-white hover:text-sunuBlue font-bold text-base sm:text-lg cursor-pointer border border-white/10 active:scale-95"
                 >
@@ -165,6 +165,7 @@ const ContactPage = () => {
                       Merci {formData.prenom}. Notre équipe a bien reçu votre message et vous répondra sous 24 heures.
                     </p>
                     <Button
+                      type="button"
                       onClick={() => setIsSuccess(false)}
                       className="bg-white text-green-600 hover:bg-gray-100 font-bold px-6 py-3 rounded-xl"
                     >
