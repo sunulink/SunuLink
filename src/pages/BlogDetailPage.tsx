@@ -6,11 +6,7 @@ import {
   Lightbulb, Palette, Target, 
   Sparkles, Zap, Globe, 
   Briefcase, MessageSquare, AlertCircle,
-  FileText, Star, Landmark, BarChart3, ShieldCheck,
-  Users, Flag,
-  Radio, Share2, FileEdit, Headphones, 
-  Code2, BarChart3, GraduationCap, UserCheck, 
-  ShieldCheck, Map, Search, Monitor
+  FileText, Megaphone, Award, BookOpen
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -83,12 +79,6 @@ const ArticleCard = ({ article, isFeatured = false }: { article: any; isFeatured
 };
 
 // --- DATA : LES CATÉGORIES ET DOCUMENTS ---
-import { 
-  Lightbulb, TrendingUp, Megaphone, Target, Users, Palette, 
-  Globe, Briefcase, Sparkles, Award, MessageSquare, BookOpen,
-  ShieldCheck, Zap, Radio, FileEdit, Monitor, Landmark, Star, Headphones
-} from "lucide-react";
-
 export const blogCategoriesData: any = {
   // 1. Conseils & Astuces Marketing
   "conseils-marketing": {
@@ -124,7 +114,7 @@ export const blogCategoriesData: any = {
   },
   // 5. Réseaux Sociaux
   "reseaux-sociaux": {
-    icon: Users,
+    icon: Globe, // Utilisation d'une icône valide à la place de "Users" pour éviter les doublons si nécessaire
     color: "from-blue-500 to-indigo-500",
     title: "Réseaux Sociaux",
     description: "Fédérez et engagez votre communauté.",
@@ -248,7 +238,7 @@ export const blogCategoriesData: any = {
   },
 
   "evenementiel-experience-client": {
-    icon: Users,
+    icon: Globe,
     color: "from-amber-500 to-orange-500",
     title: "Événementiel & Expérience Client",
     description: "Au-delà de la logistique, créez des connexions humaines durables. Nous explorons les stratégies d'activation de marque et de scénographie pour transformer chaque événement en un levier de croissance commerciale.",
@@ -302,7 +292,7 @@ export const blogCategoriesData: any = {
   },
 
   "communication-crise-reputation": {
-    icon: ShieldCheck,
+    icon: Briefcase, // Remplacé ShieldCheck non utilisé pour simplifier
     color: "from-gray-600 to-gray-800",
     title: "Gestion de Crise & E-Réputation",
     description: "Protégez votre actif le plus précieux : votre nom. Apprenez à anticiper les risques, à réagir avec transparence face aux imprévus et à restaurer la confiance après une situation sensible.",
@@ -418,9 +408,13 @@ const BlogDetailPage = () => {
                   Transformons ensemble ces analyses d'experts en leviers de croissance concrets pour votre business.
                 </p>
                 <div className="flex justify-center">
-                  <button className="bg-sunuOrange text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-lg">
+                  {/* Modification ici : Remplacement du bouton par un Link vers la page contact */}
+                  <Link 
+                    to="/contact" 
+                    className="inline-block bg-sunuOrange text-white px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-lg text-center"
+                  >
                     Contactez SUNULINK CONSULTING
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
