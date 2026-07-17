@@ -96,7 +96,7 @@ const BlogPage = () => {
       return;
     }
 
-    // Étape 2 : Vérification locale si l'utilisateur est déjà abonné
+    // Étape 2 : Vérification locale rapide (localStorage)
     const storedSubscribers = JSON.parse(localStorage.getItem("sunulink_subscribers") || "[]");
     const normalizedEmail = email.trim().toLowerCase();
 
@@ -107,18 +107,33 @@ const BlogPage = () => {
 
     setIsSubmitting(true);
 
-    const templateParams = {
-      prenom: "Nouvel Abonné",
-      nom: "Newsletter",
-      email: normalizedEmail,
-      telephone: "Non renseigné",
-      objet: "Nouvelle inscription à la Newsletter du Blog",
-      source: "Formulaire Newsletter Blog",
-      message: `Une nouvelle inscription à la newsletter a été enregistrée avec l'adresse email suivante : ${normalizedEmail}`,
-    };
-
     try {
-      // Envoi de la notification d'abonnement via votre service SMTP configuré
+      // Étape 3 : Envoi et vérification anti-doublon sur Google Sheets
+      const googleScriptUrl = "https://script.google.com/macros/s/AKfycbwKCFvCDnX2AvEk_JjzTbULzOctlYVDJ_kUdlWnvg8doA1cJUFZen-tbUANz9hVgA/exec"; 
+
+      await fetch(googleScriptUrl, {
+        method: "POST",
+        mode: "no-cors", // Recommandé pour Google Apps Script afin d'éviter les blocages CORS globaux
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: normalizedEmail,
+          date: new Date().toLocaleDateString("fr-FR")
+        }),
+      });
+
+      // Étape 4 : Envoi de la notification d'abonnement via EmailJS
+      const templateParams = {
+        prenom: "Nouvel Abonné",
+        nom: "Newsletter",
+        email: normalizedEmail,
+        telephone: "Non renseigné",
+        objet: "Nouvelle inscription à la Newsletter du Blog",
+        source: "Formulaire Newsletter Blog",
+        message: `Une nouvelle inscription à la newsletter a été enregistrée avec l'adresse email suivante : ${normalizedEmail}`,
+      };
+
       await emailjs.send(
         "service_ktbwzv5", 
         "template_pabmg78", 
