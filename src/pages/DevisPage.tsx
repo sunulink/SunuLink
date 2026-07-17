@@ -185,7 +185,6 @@ const DevisPage = () => {
 
     setIsSubmitting(true);
 
-    // Synchronisation exacte avec les captures 2 et 3 de votre modèle de devis
     const templateParams = {
       civilite: formData.civilite,
       nom: formData.nom,
@@ -203,7 +202,7 @@ const DevisPage = () => {
 
     try {
       await emailjs.send(
-        "service_04lmrjh",
+        "service_ktbwzv5", // Votre nouvel ID de service SMTP mis à jour
         "template_cqv61zn",
         templateParams,
         "ShXDBB_RTc_F-EWm1"
@@ -232,6 +231,7 @@ const DevisPage = () => {
                 Merci {formData.prenom} ! Votre demande a bien été transmise à SUNULINK CONSULTING.
               </p>
               <Button
+                type="button"
                 onClick={() => window.location.href = "/"}
                 className="bg-white text-green-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl text-lg w-full sm:w-auto"
               >
