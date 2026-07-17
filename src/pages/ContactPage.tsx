@@ -31,6 +31,7 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Exactement calqué sur les tags {{variable}} de votre premier template
     const templateParams = {
       prenom: formData.prenom,
       nom: formData.nom,
@@ -44,7 +45,7 @@ const ContactPage = () => {
     try {
       await emailjs.send(
         "service_04lmrjh", 
-        "template_pabmg78", // Votre ID de template de contact mis à jour
+        "template_pabmg78",
         templateParams,
         "ShXDBB_RTc_F-EWm1"
       );
@@ -64,7 +65,6 @@ const ContactPage = () => {
     }
   };
 
-  // Style harmonisé blanc transparent sur fond dégradé
   const inputStyle = "w-full bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/60 text-base py-6 rounded-xl transition-all";
 
   return (
