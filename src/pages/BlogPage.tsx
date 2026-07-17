@@ -108,17 +108,22 @@ const BlogPage = () => {
     setIsSubmitting(true);
 
     const templateParams = {
-      user_email: normalizedEmail,
-      subscription_type: "Newsletter Blog",
+      prenom: "Nouvel Abonné",
+      nom: "Newsletter",
+      email: normalizedEmail,
+      telephone: "Non renseigné",
+      objet: "Nouvelle inscription à la Newsletter du Blog",
+      source: "Formulaire Newsletter Blog",
+      message: `Une nouvelle inscription à la newsletter a été enregistrée avec l'adresse email suivante : ${normalizedEmail}`,
     };
 
     try {
-      // Envoi de la notification d'abonnement via EmailJS
+      // Envoi de la notification d'abonnement via votre service SMTP configuré
       await emailjs.send(
-        "YOUR_SERVICE_ID", 
-        "YOUR_NEWSLETTER_TEMPLATE_ID", 
+        "service_ktbwzv5", 
+        "template_pabmg78", 
         templateParams,
-        "YOUR_PUBLIC_KEY" 
+        "ShXDBB_RTc_F-EWm1" 
       );
 
       // Enregistrement de l'abonné dans le localStorage pour éviter les doublons futurs
@@ -180,7 +185,7 @@ const BlogPage = () => {
     {
       icon: Palette,
       title: "Branding & Identité Visuelle",
-      description: "Construisez une marque forte et une identité visuelle mémorable",
+      description: "Construisez une marque forte et une identity visuelle mémorable",
       color: "from-pink-500 to-rose-500",
       slug: "branding-identite",
       articles: "10+",
@@ -415,7 +420,7 @@ const BlogPage = () => {
                         className="flex-1 px-6 py-4 rounded-full text-gray-800 font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 text-base"
                       />
                     </div>
-                    
+                     
                     <button 
                       type="submit"
                       disabled={isSubmitting}
