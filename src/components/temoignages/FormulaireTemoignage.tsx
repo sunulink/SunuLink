@@ -9,7 +9,7 @@ interface IFormulaireProps {
 interface ITemoignageForm {
   prenom: string;
   nom: string;
-  email: string; // Ajout du champ pour la réponse automatique
+  email: string;
   fonction: string;
   entreprise: string;
   secteurActivite: string;
@@ -67,8 +67,8 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
     };
 
     try {
-      // 1. ENVOI VERS GOOGLE SHEETS MULTI-ONGLETS
-      const sheetResponse = await fetch('URL_DE_VOTRE_DEPLOIEMENT_GOOGLE_APPS_SCRIPT', {
+      // 1. ENVOI VERS GOOGLE SHEETS VIA VOTRE APP SCRIPT DÉPLOYÉ
+      const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSave),
@@ -114,7 +114,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
   return (
     <div className="relative w-full max-w-4xl mx-auto p-6 sm:p-10 md:p-12 bg-gradient-to-br from-slate-950 via-sunuBlue/20 to-slate-950 border border-white/10 rounded-3xl shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-y-auto custom-scrollbar backdrop-blur-xl">
       
-      {/* Bouton de Fermeture Modale Premium */}
+      {/* Bouton de Fermeture Modale */}
       {onClose && (
         <button 
           onClick={onClose} 
@@ -227,7 +227,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
           </div>
         </div>
 
-        {/* SECTION 3 : AUTORISATION & BOUTON ORANGE / SURVOLE BLEU */}
+        {/* SECTION 3 : AUTORISATION & BOUTON D'ENVOI */}
         <div className="pt-5 bg-white/5 p-4 sm:p-6 rounded-2xl border border-white/10 space-y-4 backdrop-blur-md">
           <div className="flex items-start gap-3">
             <input 
@@ -249,7 +249,6 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
               <Info className="w-4 h-4 text-sunuCyan flex-shrink-0" /> Vos données professionnelles restent protégées.
             </span>
             
-            {/* Bouton Premium : Fond SunuOrange, Survol SunuBlue */}
             <button 
               type="submit" 
               disabled={isSubmitting} 
