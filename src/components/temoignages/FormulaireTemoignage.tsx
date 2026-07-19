@@ -90,7 +90,6 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
         resultatsConstates: '', recommandation: '', autorisationPublication: false
       });
 
-      // Fermeture automatique optionnelle après 3 secondes en cas de succès
       if (onClose) {
         setTimeout(() => onClose(), 3500);
       }
@@ -103,125 +102,147 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
   };
 
   return (
-    <div className="relative max-w-4xl mx-auto p-6 md:p-10 bg-white border border-gray-100 rounded-[2rem] shadow-2xl max-h-[90vh] overflow-y-auto">
-      {/* Bouton de Fermeture Modale */}
+    <div className="relative w-full max-w-4xl mx-auto p-5 sm:p-8 md:p-10 bg-white border border-gray-100 rounded-2xl sm:rounded-[2rem] shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-y-auto custom-scrollbar">
+      
+      {/* Bouton de Fermeture Modale - Agrandie et accessible sur mobile */}
       {onClose && (
         <button 
           onClick={onClose} 
-          className="absolute top-5 right-5 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all cursor-pointer"
+          className="absolute top-4 right-4 p-2.5 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100 transition-all cursor-pointer z-50"
+          aria-label="Fermer la fenêtre"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 sm:w-6 h-6" />
         </button>
       )}
 
-      <div className="text-center mb-10 pr-6">
-        <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">Votre expérience SUNULINK CONSULTING</h2>
-        <p className="text-gray-500 max-w-xl mx-auto font-medium text-sm">
+      {/* En-tête avec les couleurs de la charte */}
+      <div className="text-center mb-8 sm:mb-10 pr-4 sm:pr-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 mb-2 sm:mb-3">
+          Votre expérience <span className="text-orange-500">SUNULINK</span> <span className="text-blue-600">CONSULTING</span>
+        </h2>
+        <p className="text-gray-500 max-w-xl mx-auto font-medium text-xs sm:text-sm px-2">
           Votre retour est précieux. Aidez-nous à valoriser notre collaboration en partageant votre avis.
         </p>
       </div>
 
+      {/* Messages d'état */}
       {submitStatus === 'success' && (
-        <div className="mb-8 p-6 bg-green-50 text-green-800 rounded-2xl border border-green-200 flex items-start gap-3">
-          <ShieldCheck className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 sm:p-6 bg-green-50 text-green-800 rounded-xl sm:rounded-2xl border border-green-200 flex items-start gap-3 animate-fadeIn">
+          <ShieldCheck className="w-5 h-5 sm:w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-lg">Merci pour votre témoignage !</h4>
-            <p className="text-sm text-green-700 mt-1">
-              Il a bien été enregistré. L'équipe va analyser votre retour avant sa mise en ligne.
+            <h4 className="font-bold text-base sm:text-lg">Merci pour votre témoignage !</h4>
+            <p className="text-xs sm:text-sm text-green-700 mt-1">
+              Il a bien été enregistré. L'équipe va analyser votre retour avant sa mise en ligne officielle.
             </p>
           </div>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mb-8 p-6 bg-red-50 text-red-800 rounded-2xl border border-red-200">
-          <p className="font-bold">Une erreur est survenue lors de l'envoi. Veuillez réessayer ou nous contacter.</p>
+        <div className="mb-6 p-4 bg-red-50 text-red-800 rounded-xl border border-red-200 text-xs sm:text-sm font-medium animate-fadeIn">
+          Une erreur est survenue lors de l'envoi. Veuillez réessayer ou nous contacter directement.
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+        
         {/* SECTION 1 : INFORMATIONS GÉNÉRALES */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-black text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-3">
-            <User className="w-5 h-5 text-orange-500" /> 1. Informations Générales
+        <div className="space-y-4 sm:space-y-6">
+          <h3 className="text-base sm:text-lg font-black text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-2.5">
+            <User className="w-4 h-4 sm:w-5 h-5 text-orange-500" /> 1. Informations Générales
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Prénom *</label>
-              <input required type="text" name="prenom" value={formData.prenom} onChange={handleChange} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm text-gray-800" placeholder="Ex: Birahim" />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2">Prénom *</label>
+              <input required type="text" name="prenom" value={formData.prenom} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Birahim" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Nom *</label>
-              <input required type="text" name="nom" value={formData.nom} onChange={handleChange} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm text-gray-800" placeholder="Ex: Diop" />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2">Nom *</label>
+              <input required type="text" name="nom" value={formData.nom} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Diop" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-1">
-                <Briefcase className="w-4 h-4 text-gray-400" /> Fonction *
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
+                <Briefcase className="w-3.5 h-3.5 text-gray-400" /> Fonction *
               </label>
-              <input required type="text" name="fonction" value={formData.fonction} onChange={handleChange} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm text-gray-800" placeholder="Ex: Directeur Marketing" />
+              <input required type="text" name="fonction" value={formData.fonction} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Directeur Marketing" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-1">
-                <Building2 className="w-4 h-4 text-gray-400" /> Entreprise *
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
+                <Building2 className="w-3.5 h-3.5 text-gray-400" /> Entreprise *
               </label>
-              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm text-gray-800" placeholder="Ex: Ma société" />
+              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Nema Firm" />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-1">
-                <Compass className="w-4 h-4 text-gray-400" /> Secteur d’activité *
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
+                <Compass className="w-3.5 h-3.5 text-gray-400" /> Secteur d’activité *
               </label>
-              <input required type="text" name="secteurActivite" value={formData.secteurActivite} onChange={handleChange} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm text-gray-800" placeholder="Ex: Technologie, Agroalimentaire..." />
+              <input required type="text" name="secteurActivite" value={formData.secteurActivite} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Technologie, Agroalimentaire, Énergie..." />
             </div>
           </div>
         </div>
 
         {/* SECTION 2 : LE TÉMOIGNAGE */}
-        <div className="space-y-6 pt-4">
-          <h3 className="text-lg font-black text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-3">
-            <MessageSquare className="w-5 h-5 text-blue-600" /> 2. Votre Témoignage
+        <div className="space-y-4 sm:space-y-6 pt-2">
+          <h3 className="text-base sm:text-lg font-black text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-2.5">
+            <MessageSquare className="w-4 h-4 sm:w-5 h-5 text-blue-600" /> 2. Votre Témoignage
           </h3>
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Comment avez-vous connu SUNULINK CONSULTING ? *</label>
-              <textarea required name="sourceDecouverte" value={formData.sourceDecouverte} onChange={handleChange} rows={2} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-sm text-gray-800 resize-none" placeholder="Recommandation, Réseaux sociaux..." />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5">Comment avez-vous connu SUNULINK CONSULTING ? *</label>
+              <textarea required name="sourceDecouverte" value={formData.sourceDecouverte} onChange={handleChange} rows={2} className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 resize-none transition-all" placeholder="Recommandation, Réseaux sociaux, Recherche..." />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Quel était votre besoin initial ? *</label>
-              <textarea required name="besoinInitial" value={formData.besoinInitial} onChange={handleChange} rows={2} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-sm text-gray-800 resize-none" placeholder="Décrivez vos défis..." />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5">Quel était votre besoin ou problématique initiale ? *</label>
+              <textarea required name="besoinInitial" value={formData.besoinInitial} onChange={handleChange} rows={2} className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 resize-none transition-all" placeholder="Décrivez les défis auxquels vous faisiez face..." />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Quelle solution vous a-t-elle été proposée ? *</label>
-              <textarea required name="solutionApportee" value={formData.solutionApportee} onChange={handleChange} rows={2} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-sm text-gray-800 resize-none" placeholder="L'accompagnement mis en place..." />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5">Quelle solution SUNULINK CONSULTING vous a-t-elle proposée ? *</label>
+              <textarea required name="solutionApportee" value={formData.solutionApportee} onChange={handleChange} rows={2} className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 resize-none transition-all" placeholder="L'accompagnement, la stratégie ou les outils mis en place..." />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Quels résultats concrets avez-vous constatés ? *</label>
-              <textarea required name="resultatsConstates" value={formData.resultatsConstates} onChange={handleChange} rows={2} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-sm text-gray-800 resize-none" placeholder="Gains de temps, visibilité accrue..." />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5">Quels résultats ou améliorations concrètes avez-vous constatés ? *</label>
+              <textarea required name="resultatsConstates" value={formData.resultatsConstates} onChange={handleChange} rows={2} className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 resize-none transition-all" placeholder="Chiffres clés, gains de temps, visibilité accrue..." />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">Recommanderiez-vous SUNULINK CONSULTING ? Pourquoi ? *</label>
-              <textarea required name="recommandation" value={formData.recommandation} onChange={handleChange} rows={2} className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none text-sm text-gray-800 resize-none" placeholder="Vos raisons principales..." />
+              <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5">Recommanderiez-vous SUNULINK CONSULTING ? Pourquoi ? *</label>
+              <textarea required name="recommandation" value={formData.recommandation} onChange={handleChange} rows={2} className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 resize-none transition-all" placeholder="Vos raisons principales de recommandation..." />
             </div>
           </div>
         </div>
 
-        {/* SECTION 3 : AUTORISATION & BOUTON */}
-        <div className="pt-4 bg-gray-50 p-5 rounded-2xl border border-gray-100 space-y-4">
-          <div className="flex items-start gap-3">
-            <input required type="checkbox" id="autorisationPublication" name="autorisationPublication" checked={formData.autorisationPublication} onChange={handleChange} className="w-5 h-5 rounded text-orange-500 focus:ring-orange-500 border-gray-300 mt-0.5 cursor-pointer" />
-            <label htmlFor="autorisationPublication" className="text-sm text-gray-700 font-medium cursor-pointer select-none leading-relaxed">
-              J’autorise <strong>SUNULINK CONSULTING</strong> à publier mon témoignage sur son site web.
+        {/* SECTION 3 : AUTORISATION & ACTION DE SOUMISSION */}
+        <div className="pt-4 bg-gray-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-gray-100 space-y-4">
+          <div className="flex items-start gap-2.5 sm:gap-3">
+            <input 
+              required 
+              type="checkbox" 
+              id="autorisationPublication" 
+              name="autorisationPublication" 
+              checked={formData.autorisationPublication} 
+              onChange={handleChange} 
+              className="w-4 h-4 sm:w-5 h-5 rounded text-orange-500 focus:ring-orange-500 border-gray-300 mt-0.5 cursor-pointer" 
+            />
+            <label htmlFor="autorisationPublication" className="text-xs sm:text-sm text-gray-700 font-medium cursor-pointer select-none leading-relaxed">
+              J’autorise <strong className="font-bold text-blue-600">SUNULINK CONSULTING</strong> à publier mon témoignage sur son site web et ses supports commerciaux.
             </label>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-gray-200/60 text-xs text-gray-400 font-medium">
-            <span className="flex items-center gap-1">
-              <Info className="w-4 h-4 text-blue-600" /> Vos données professionnelles restent protégées.
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-gray-200 text-[11px] sm:text-xs text-gray-400 font-medium">
+            <span className="flex items-center gap-1 text-center sm:text-left">
+              <Info className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" /> Vos données professionnelles restent protégées.
             </span>
-            <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-orange-500 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-blue-600 disabled:bg-gray-300 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer">
-              {isSubmitting ? 'Envoi...' : 'Soumettre mon témoignage'}
-              <Send className="w-4 h-4" />
+            <button 
+              type="submit" 
+              disabled={isSubmitting} 
+              className="w-full sm:w-auto bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-bold text-xs sm:text-sm hover:bg-blue-600 active:bg-blue-800 disabled:bg-gray-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/10 cursor-pointer"
+            >
+              {isSubmitting ? 'Envoi en cours...' : 'Soumettre mon témoignage'}
+              <Send className="w-3.5 h-3.5 sm:w-4 h-4" />
             </button>
           </div>
         </div>
+
       </form>
     </div>
   );
