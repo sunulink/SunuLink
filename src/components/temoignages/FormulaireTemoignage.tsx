@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Briefcase, Building2, Compass, MessageSquare, ShieldCheck, Send, Info, X } from 'lucide-react';
+import { User, Briefcase, Building2, Compass, MessageSquare, ShieldCheck, Send, Info, X, Mail } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 interface IFormulaireProps {
@@ -9,6 +9,7 @@ interface IFormulaireProps {
 interface ITemoignageForm {
   prenom: string;
   nom: string;
+  email: string; // Ajout du champ pour la réponse automatique
   fonction: string;
   entreprise: string;
   secteurActivite: string;
@@ -24,6 +25,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
   const [formData, setFormData] = useState<ITemoignageForm>({
     prenom: '',
     nom: '',
+    email: '',
     fonction: '',
     entreprise: '',
     secteurActivite: '',
@@ -65,8 +67,8 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
     };
 
     try {
-      // 1. ENVOI VERS GOOGLE SHEETS
-      const sheetResponse = await fetch('URL_DE_TON_API_GOOGLE_SHEETS', {
+      // 1. ENVOI VERS GOOGLE SHEETS MULTI-ONGLETS
+      const sheetResponse = await fetch('URL_DE_VOTRE_DEPLOIEMENT_GOOGLE_APPS_SCRIPT', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSave),
@@ -74,18 +76,26 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
 
       if (!sheetResponse.ok) throw new Error("Erreur Google Sheets");
 
-      // 2. ENVOI DE LA NOTIFICATION EMAIL
+      // 2. ENVOI DE LA NOTIFICATION EMAIL À L'ÉQUIPE SUNULINK
       await emailjs.send(
-        'VOTRE_NOUVEAU_SERVICE_ID', 
-        'VOTRE_NOUVEAU_TEMPLATE_ID', 
+        'service_gs6odis', 
+        'template_z95c4wg', 
         dataToSave as any, 
-        'VOTRE_NOUVELLE_PUBLIC_KEY'
+        'sIGXDASzNfWYK5wfK'
+      );
+      
+      // 3. ENVOI DE L'ACCUSÉ DE RÉCEPTION AUTOMATIQUE AU TÉMOIN
+      await emailjs.send(
+        'service_gs6odis', 
+        'template_8vqzelm', 
+        dataToSave as any, 
+        'sIGXDASzNfWYK5wfK'
       );
       
       setSubmitStatus('success');
       
       setFormData({
-        prenom: '', nom: '', fonction: '', entreprise: '', secteurActivite: '',
+        prenom: '', nom: '', email: '', fonction: '', entreprise: '', secteurActivite: '',
         sourceDecouverte: '', besoinInitial: '', solutionApportee: '',
         resultatsConstates: '', recommandation: '', autorisationPublication: false
       });
@@ -132,7 +142,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
           <div>
             <h4 className="font-bold text-base sm:text-lg text-white">Merci pour votre témoignage !</h4>
             <p className="text-xs sm:text-sm text-emerald-300/90 mt-1">
-              Il a bien été enregistré. L'équipe va analyser votre retour avant sa mise en ligne officielle.
+              Il a bien été enregistré. Un e-mail de confirmation vous a été envoyé et l'équipe va analyser votre retour avant sa mise en ligne officielle.
             </p>
           </div>
         </div>
@@ -161,6 +171,12 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
               <label className="block text-xs sm:text-sm font-bold text-slate-200 mb-2">Nom *</label>
               <input required type="text" name="nom" value={formData.nom} onChange={handleChange} className="w-full px-4 py-3 bg-white/95 border border-transparent rounded-xl focus:ring-2 focus:ring-sunuOrange outline-none text-xs sm:text-sm text-slate-900 font-semibold shadow-inner transition-all" placeholder="Ex: BASSE" />
             </div>
+            <div className="md:col-span-2">
+              <label className="block text-xs sm:text-sm font-bold text-slate-200 mb-2 flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-slate-400" /> Adresse E-mail Professionnelle *
+              </label>
+              <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-white/95 border border-transparent rounded-xl focus:ring-2 focus:ring-sunuOrange outline-none text-xs sm:text-sm text-slate-900 font-semibold shadow-inner transition-all" placeholder="Ex: client@entreprise.com" />
+            </div>
             <div>
               <label className="block text-xs sm:text-sm font-bold text-slate-200 mb-2 flex items-center gap-1.5">
                 <Briefcase className="w-3.5 h-3.5 text-slate-400" /> Fonction *
@@ -171,7 +187,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
               <label className="block text-xs sm:text-sm font-bold text-slate-200 mb-2 flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5 text-slate-400" /> Entreprise *
               </label>
-              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-4 py-3 bg-white/95 border border-transparent rounded-xl focus:ring-2 focus:ring-sunuBlue outline-none text-xs sm:text-sm text-slate-900 font-semibold shadow-inner transition-all" placeholder="Ex: SUNULINK CONSULTING" />
+              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-4 py-3 bg-white/95 border border-transparent rounded-xl focus:ring-2 focus:ring-sunuBlue outline-none text-xs sm:text-sm text-slate-900 font-semibold shadow-inner transition-all" placeholder="Ex: Entreprise partenaire" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-xs sm:text-sm font-bold text-slate-200 mb-2 flex items-center gap-1.5">
