@@ -34,18 +34,27 @@ const Home = () => {
         {/* ========================================================= */}
         <PacksSectionIA />
 
-        {/* Bouton d'action pour ouvrir le formulaire de témoignage */}
-        <div className="bg-gray-50/60 py-10 text-center border-t border-b border-gray-100">
-          <div className="max-w-2xl mx-auto px-4">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Vous êtes client chez nous ?</h3>
-            <p className="text-sm text-gray-500 mb-5">
+        {/* ========================================================= */}
+        {/* SECTION BANDEAU TÉMOIGNAGE - REFACTORISÉE PREMIUM SUNULINK */}
+        {/* ========================================================= */}
+        <div className="relative bg-gradient-to-r from-sunuBlue via-slate-900 to-sunuBlue py-14 md:py-16 text-center border-t border-b border-white/10 overflow-hidden shadow-inner">
+          {/* Effet lumineux d'arrière-plan discret */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none" />
+          
+          <div className="relative max-w-3xl mx-auto px-6 z-10">
+            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-3">
+              Vous êtes client chez nous ?
+            </h3>
+            <p className="text-sm sm:text-base text-slate-200/90 max-w-xl mx-auto mb-6 font-medium leading-relaxed">
               Prenez 2 minutes pour partager votre avis et booster notre visibilité mutuelle.
             </p>
+            
+            {/* Bouton Orange officiel, survol en Bleu officiel */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-orange-500 text-white font-bold px-6 py-3 rounded-full hover:bg-blue-600 transition-all shadow-lg shadow-orange-500/10 hover:shadow-blue-600/10 cursor-pointer text-sm"
+              className="inline-flex items-center gap-2.5 bg-sunuOrange text-white font-extrabold px-8 py-4 rounded-full hover:bg-sunuBlue transition-all duration-300 shadow-xl shadow-sunuOrange/20 hover:shadow-sunuBlue/30 hover:-translate-y-0.5 cursor-pointer text-sm tracking-wide uppercase"
             >
-              <MessageSquarePlus className="w-4 h-4" />
+              <MessageSquarePlus className="w-4 h-4 sm:w-5 h-5 transition-transform group-hover:rotate-6" />
               Laisser un témoignage
             </button>
           </div>
@@ -59,8 +68,8 @@ const Home = () => {
 
       {/* --- FENÊTRE POP-UP (MODALE) --- */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          {/* Fermeture si clic à l'extérieur du bloc blanc de formulaire */}
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fadeIn">
+          {/* Fermeture si clic à l'extérieur du bloc de formulaire */}
           <div className="absolute inset-0" onClick={() => setIsModalOpen(false)} />
           
           <div className="relative w-full max-w-4xl z-10 animate-scaleUp">
