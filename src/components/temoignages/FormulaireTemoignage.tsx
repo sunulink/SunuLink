@@ -60,35 +60,40 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const dataToSave = {
+    // Préparation des métadonnées globales
+    const fullData = {
       ...formData,
       statut: 'En attente',
       date: new Date().toLocaleDateString('fr-FR'),
     };
 
-    try {
-      // 1. ENVOI VERS GOOGLE SHEETS VIA VOTRE APP SCRIPT DÉPLOYÉ
-      const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataToSave),
-      });
+    // Payload nettoyé de l'email pour correspondre exactement aux colonnes A à L de votre script actuel
+    const { email, ...sheetPayload } = fullData;
 
-      if (!sheetResponse.ok) throw new Error("Erreur Google Sheets");
+    try {
+      // 1. ENVOI VERS GOOGLE SHEETS EN MODE NO-CORS (Résout l'erreur réseau du navigateur)
+      await fetch('https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec', {
+        method: 'POST',
+        mode: 'no-cors', 
+        headers: { 
+          'Content-Type': 'text/plain' 
+        },
+        body: JSON.stringify(sheetPayload),
+      });
 
       // 2. ENVOI DE LA NOTIFICATION EMAIL À L'ÉQUIPE SUNULINK
       await emailjs.send(
         'service_gs6odis', 
         'template_z95c4wg', 
-        dataToSave as any, 
+        fullData as any, 
         'sIGXDASzNfWYK5wfK'
       );
       
-      // 3. ENVOI DE L'ACCUSÉ DE RÉCEPTION AUTOMATIQUE AU TÉMOIN
+      // 3. ENVOI DE L'ACCUSÉ DE RÉCEPTION AUTOMATIQUE AU CLIENT (Utilise la variable email)
       await emailjs.send(
         'service_gs6odis', 
         'template_8vqzelm', 
-        dataToSave as any, 
+        fullData as any, 
         'sIGXDASzNfWYK5wfK'
       );
       
