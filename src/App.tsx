@@ -41,6 +41,9 @@ import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
 import VideoAnimationPage from "./pages/VideoAnimationPage";
 
+// Import du Formulaire de Témoignage Client
+import FormulaireTemoignage from "@/components/temoignages/FormulaireTemoignage";
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -80,6 +83,9 @@ const App = () => {
             <Route path="/article/:articleSlug" element={<ArticlePage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogDetailPage />} />
+
+            {/* Témoignages Clients */}
+            <Route path="/temoignages/nouveau" element={<FormulaireTemoignage />} />
 
             {/* Boost My Pub */}
             <Route path="/boost-my-pub" element={<BoostMyPubPage />} />
