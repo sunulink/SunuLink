@@ -104,7 +104,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
   return (
     <div className="relative w-full max-w-4xl mx-auto p-5 sm:p-8 md:p-10 bg-white border border-gray-100 rounded-2xl sm:rounded-[2rem] shadow-2xl max-h-[92vh] md:max-h-[88vh] overflow-y-auto custom-scrollbar">
       
-      {/* Bouton de Fermeture Modale - Adapté mobile */}
+      {/* Bouton de Fermeture Modale */}
       {onClose && (
         <button 
           onClick={onClose} 
@@ -115,7 +115,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
         </button>
       )}
 
-      {/* En-tête mis aux couleurs SunuLink */}
+      {/* En-tête */}
       <div className="text-center mb-8 sm:mb-10 pr-4 sm:pr-6">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 mb-2 sm:mb-3">
           Votre expérience <span className="text-sunuBlue">SUNULINK</span> <span className="text-sunuOrange">CONSULTING</span>
@@ -159,7 +159,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
             </div>
             <div>
               <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2">Nom *</label>
-              <input required type="text" name="nom" value={formData.nom} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sunuOrange focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Diop" />
+              <input required type="text" name="nom" value={formData.nom} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sunuOrange focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: BASSE" />
             </div>
             <div>
               <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
@@ -171,7 +171,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
               <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
                 <Building2 className="w-3.5 h-3.5 text-gray-400" /> Entreprise *
               </label>
-              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sunuBlue focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: Nema Firm" />
+              <input required type="text" name="entreprise" value={formData.entreprise} onChange={handleChange} className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sunuBlue focus:border-transparent outline-none text-xs sm:text-sm text-gray-800 transition-all" placeholder="Ex: SUNULINK CONSULTING" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 flex items-center gap-1">
@@ -211,7 +211,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
           </div>
         </div>
 
-        {/* SECTION 3 : AUTORISATION & BOUTON SOUUMISSION */}
+        {/* SECTION 3 : AUTORISATION & BOUTON SOUMISSION */}
         <div className="pt-4 bg-gray-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-gray-100 space-y-4">
           <div className="flex items-start gap-2.5 sm:gap-3">
             <input 
@@ -232,11 +232,11 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
             <span className="flex items-center gap-1 text-center sm:text-left">
               <Info className="w-3.5 h-3.5 text-sunuBlue flex-shrink-0" /> Vos données professionnelles restent protégées.
             </span>
-            {/* Bouton stylisé avec bg-sunuOrange identique à l'image fournie */}
+            {/* Bouton mis à jour en jaune-500 et hover en sunuBlue */}
             <button 
               type="submit" 
               disabled={isSubmitting} 
-              className="w-full sm:w-auto bg-sunuOrange text-white px-6 sm:px-8 py-3 rounded-full font-bold text-xs sm:text-sm hover:bg-sunuBlue disabled:bg-gray-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-sunuOrange/20 cursor-pointer"
+              className="w-full sm:w-auto bg-yellow-500 text-white px-6 sm:px-8 py-3 rounded-full font-bold text-xs sm:text-sm hover:bg-sunuBlue disabled:bg-gray-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-yellow-500/20 cursor-pointer"
             >
               {isSubmitting ? 'Envoi en cours...' : 'Soumettre mon témoignage'}
               <Send className="w-3.5 h-3.5 sm:w-4 h-4" />
