@@ -41,6 +41,10 @@ import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
 import VideoAnimationPage from "./pages/VideoAnimationPage";
 
+// Nouveaux services insérés (Audiovisuel et Événementiel)
+import SunuLinkProd from "./pages/services/SunuLinkProd";
+import SunuLinkEvents from "./pages/services/SunuLinkEvents";
+
 // Import du Formulaire de Témoignage Client
 import FormulaireTemoignage from "@/components/temoignages/FormulaireTemoignage";
 
@@ -96,6 +100,10 @@ const App = () => {
             <Route path="/ialinkbusiness/:serviceTitle" element={<IAlinkDetail />} />
             <Route path="/pack-pub-ia" element={<PackPubIA />} />
             <Route path="/pack-pub-ia/:packSlugia" element={<PackpubIADetail />} />
+
+            {/* --- SECTION SERVICES DÉDIÉS --- */}
+            <Route path="/services/audiovisuel" element={<SunuLinkProd />} />
+            <Route path="/services/evenementiel" element={<SunuLinkEvents />} />
 
             {/* --- SECTION RÉALISATIONS --- */}
             <Route path="/realisations" element={<RealisationsPage />} />
