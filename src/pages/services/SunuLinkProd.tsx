@@ -1,59 +1,106 @@
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Film, CheckCircle, Video, Layers, Users, ShieldCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { X, Play, MonitorPlay, Film, Sparkles, Sliders, Clapperboard } from "lucide-react";
 
 const SunuLinkProd = () => {
-  const features = [
-    { title: "Films Institutionnels", desc: "Valorisez votre image de marque et votre culture d'entreprise." },
-    { title: "Publicités & Spots", desc: "Des formats percutants conçus pour maximiser vos conversions." },
-    { title: "Motion Design", desc: "Des animations graphiques modernes pour expliquer vos concepts complexes." },
-    { title: "Prises de vues Drone", desc: "Prenez de la hauteur avec des images aériennes en haute définition." }
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  
+  const cacheBuster = new Date().getTime();
+
+  const videos = [
+    {
+      id: 1,
+      title: "Corporate Showcase & Branding",
+      client: "SunuLink",
+      thumbnail: `https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800&v=${cacheBuster}`,
+      videoPath: `/portfolio/video-corporate.mp4?v=${cacheBuster}`,
+      category: "FILM INSTITUTIONNEL"
+    },
+    {
+      id: 2,
+      title: "Animation Graphic Nataa",
+      client: "Nataa",
+      thumbnail: `/portfolio/video-anime-nataa-thumb.png?v=${cacheBuster}`,
+      videoPath: `/portfolio/video-anime-nataa.mp4?v=${cacheBuster}`,
+      category: "MOTION DESIGN"
+    }
   ];
 
+  useEffect(() => {
+    document.body.style.overflow = selectedVideo ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedVideo]);
+
   return (
-    <div className="min-h-screen bg-white text-gray-800 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden font-sans flex flex-col">
       <Header />
 
       <main className="pt-32 flex-grow">
-        {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-gray-50 text-center">
-          <div className="container mx-auto max-w-4xl">
-            <div className="inline-flex items-center justify-center p-3 bg-amber-100 text-amber-600 rounded-2xl mb-6">
-              <Film className="w-8 h-8" />
+        {/* HERO SECTION */}
+        <section className="relative py-24 px-6 bg-gradient-to-b from-sunuOrange/15 via-[#0a0a0a]/50 to-[#0a0a0a] overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,102,0,0.08)_0%,transparent_70%)]" />
+          <div className="container mx-auto max-w-7xl text-center relative z-10">
+            <div className="flex justify-center mb-8">
+              <div className="bg-sunuOrange/10 border border-sunuOrange/20 p-5 rounded-3xl backdrop-blur-md shadow-[0_0_50px_rgba(255,102,0,0.1)]">
+                <Clapperboard className="text-sunuOrange" size={52} />
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">
-              SUNULINK <span className="text-sunuOrange">PROD</span>
+            <h1 className="text-6xl md:text-9xl font-black mb-6 uppercase tracking-tighter leading-none">
+              SUNULINK <span className="text-sunuOrange font-light italic">PROD</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Donnez une dimension cinématographique, moderne et mémorable à votre univers visuel grâce à notre expertise audiovisuelle.
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium tracking-wide">
+              Donner une dimension cinématographique et mémorable à votre univers visuel.
             </p>
-            
-            {/* BOUTON AJUSTÉ (Taille normale et équilibrée) */}
-            <div className="flex justify-center">
-              <Link to="/contact">
-                <button className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300 shadow-md hover:shadow-lg hover:opacity-95 transform hover:-translate-y-0.5">
-                  <span>Lancer ma production</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </Link>
-            </div>
+            <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-sunuOrange to-transparent mx-auto mt-8" />
           </div>
         </section>
 
-        {/* Détails des prestations */}
-        <section className="py-16 px-6 bg-white">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl font-black text-center mb-12 text-gray-900">Nos expertises audiovisuelles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {features.map((feature, idx) => (
-                <div key={idx} className="p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white flex items-start space-x-4">
-                  <div className="p-3 bg-orange-50 text-sunuOrange rounded-xl mt-1">
-                    <CheckCircle className="w-5 h-5" />
+        {/* VIDEOS SECTION */}
+        <section className="py-16 px-6 relative">
+          <div className="container mx-auto max-w-7xl">
+            <div className="flex items-center gap-3 mb-12">
+              <div className="w-2 h-8 bg-sunuOrange rounded-full" />
+              <h2 className="text-3xl font-black uppercase tracking-tight">Réalisations Récentes</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {videos.map((vid) => (
+                <div 
+                  key={vid.id}
+                  className="group relative rounded-[2.5rem] overflow-hidden bg-[#121212] border border-white/5 transition-all hover:border-sunuOrange/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                >
+                  <div 
+                    className="relative aspect-video cursor-pointer overflow-hidden"
+                    onClick={() => setSelectedVideo(vid.videoPath)}
+                  >
+                    <img 
+                      src={vid.thumbnail} 
+                      className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                      alt={vid.title}
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=800";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity group-hover:opacity-40" />
+                    
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 bg-sunuOrange text-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(255,102,0,0.4)] transform group-hover:scale-110 transition-all duration-500">
+                        <Play size={32} fill="white" className="ml-1.5" />
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.desc}</p>
+
+                  <div className="p-8 md:p-10 flex justify-between items-center bg-[#161616]/90 backdrop-blur-md">
+                    <div>
+                      <span className="text-sunuOrange font-black tracking-[0.25em] text-xs uppercase block mb-2">{vid.category}</span>
+                      <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white group-hover:text-sunuOrange transition-colors">{vid.title}</h3>
+                    </div>
+                    <div className="text-gray-500 group-hover:text-sunuOrange transition-colors ml-4 flex-shrink-0">
+                      <MonitorPlay size={36} />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -61,32 +108,70 @@ const SunuLinkProd = () => {
           </div>
         </section>
 
-        {/* Pourquoi nous faire confiance */}
-        <section className="py-16 px-6 bg-gray-50/50 border-t border-b border-gray-100">
-          <div className="container mx-auto max-w-5xl text-center">
-            <h2 className="text-3xl font-black mb-12 text-gray-900">Pourquoi choisir SunuLink Prod ?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              <div className="p-4">
-                <Video className="w-8 h-8 text-amber-600 mx-auto mb-4" />
-                <h4 className="font-bold mb-2">Matériel Pro</h4>
-                <p className="text-sm text-gray-600">Caméras de pointe, optiques cinéma et captation audio premium.</p>
-              </div>
-              <div className="p-4">
-                <Layers className="w-8 h-8 text-amber-600 mx-auto mb-4" />
-                <h4 className="font-bold mb-2">Post-Production</h4>
-                <p className="text-sm text-gray-600">Étalonnage colorimétrique et sound design soignés.</p>
-              </div>
-              <div className="p-4">
-                <Users className="w-8 h-8 text-amber-600 mx-auto mb-4" />
-                <h4 className="font-bold mb-2">Équipe Dédiée</h4>
-                <p className="text-sm text-gray-600">Réalisateurs, cadreurs et monteurs chevronnés à votre service.</p>
-              </div>
+        {/* VALEURS */}
+        <section className="py-20 bg-[#111]/40 border-y border-white/5">
+          <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-3xl bg-[#121212] border border-white/5 hover:border-sunuOrange/20 transition-all">
+              <Sparkles className="text-sunuOrange mb-4" size={36} />
+              <h3 className="text-xl font-bold uppercase mb-2">Direction Artistique</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Conception d'identités visuelles fortes et scénarisations adaptées à l'ADN de votre marque.</p>
             </div>
+            <div className="p-8 rounded-3xl bg-[#121212] border border-white/5 hover:border-sunuOrange/20 transition-all">
+              <Film className="text-sunuOrange mb-4" size={36} />
+              <h3 className="text-xl font-bold uppercase mb-2">Tournage Très Haute Définition</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Prises de vue au sol et aériennes via du matériel de captation de niveau cinéma.</p>
+            </div>
+            <div className="p-8 rounded-3xl bg-[#121212] border border-white/5 hover:border-sunuOrange/20 transition-all">
+              <Sliders className="text-sunuOrange mb-4" size={36} />
+              <h3 className="text-xl font-bold uppercase mb-2">Post-Production Avancée</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Montage rythmé, étalonnage colorimétrique professionnel et sound-design immersif.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODAL LECTEUR */}
+        {selectedVideo && (
+          <div 
+            className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-4 animate-in fade-in duration-300"
+            onClick={() => setSelectedVideo(null)}
+          >
+            <button className="absolute top-8 right-8 text-white hover:text-sunuOrange transition-all hover:rotate-90">
+              <X size={50} strokeWidth={3} />
+            </button>
+            
+            <div className="w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-[0_0_100px_rgba(255,102,0,0.2)] bg-black" onClick={(e) => e.stopPropagation()}>
+              <video 
+                key={selectedVideo}
+                className="w-full h-full" 
+                controls 
+                autoPlay 
+                src={selectedVideo}
+              >
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            </div>
+          </div>
+        )}
+
+        {/* CTA FINAL DE VISIBILITÉ NORMALE */}
+        <section className="py-24 px-6 mt-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl md:text-7xl font-black mb-10 uppercase leading-tight">
+              Créons une vidéo <br/><span className="text-sunuOrange tracking-tighter italic">qui marque les esprits.</span>
+            </h2>
+            <Link to="/contact">
+              <Button className="bg-sunuOrange hover:bg-white hover:text-[#0a0a0a] text-white font-black px-8 py-5 h-auto rounded-full text-xl shadow-[0_20px_50px_rgba(255,102,0,0.3)] transition-all transform hover:-translate-y-1">
+                Lancer ma production
+              </Button>
+            </Link>
           </div>
         </section>
       </main>
 
-      <Footer />
+      {/* BLOC D'ISOLATION BLANC POUR LE FOOTER */}
+      <div className="bg-white text-gray-800">
+        <Footer />
+      </div>
     </div>
   );
 };
