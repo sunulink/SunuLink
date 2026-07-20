@@ -193,7 +193,7 @@ const SunuLinkEvents = () => {
               Prêt à concrétiser <br/><span className="text-sunuOrange">votre grand projet ?</span>
             </h2>
             <Link to="/contact">
-              <Button className="bg-sunuOrange hover:bg-white hover:text-[#0a0a0a] text-white font-black px-8 py-5 h-auto rounded-full text-xl shadow-2xl transition-all transform hover:-translate-y-1">
+              <Button className="bg-sunuOrange hover:bg-blue-600 hover:text-white text-white font-black px-8 py-5 h-auto rounded-full text-xl shadow-2xl transition-all transform hover:-translate-y-1">
                 Planifier mon événement
               </Button>
             </Link>
