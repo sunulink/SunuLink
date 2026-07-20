@@ -50,7 +50,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.autorisationPublication) {
       alert("Veuillez cocher la case d'autorisation pour soumettre votre témoignage.");
@@ -60,28 +60,42 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Préparation des métadonnées globales
+    // 1. Préparation des métadonnées pour l'envoi d'e-mails (EmailJS)
     const fullData = {
       ...formData,
       statut: 'En attente',
       date: new Date().toLocaleDateString('fr-FR'),
     };
 
-    // Payload nettoyé de l'email pour correspondre exactement aux colonnes A à L de votre script actuel
-    const { email, ...sheetPayload } = fullData;
+    // 2. Alignement structurel strict et ordonné pour Google Sheets (Colonnes A à L)
+    // On exclut volontairement l'email ici pour ne pas impacter le tableau Google Sheets
+    const orderedPayload = {
+      prenom: formData.prenom,
+      nom: formData.nom,
+      fonction: formData.fonction,
+      entreprise: formData.entreprise,
+      secteurActivite: formData.secteurActivite,
+      sourceDecouverte: formData.sourceDecouverte,
+      besoinInitial: formData.besoinInitial,
+      solutionApportee: formData.solutionApportee,
+      resultatsConstates: formData.resultatsConstates,
+      recommandation: formData.recommandation,
+      statut: 'En attente', // Fixé rigoureusement en avant-dernière position (Colonne K)
+      date: fullData.date,  // Fixé rigoureusement en dernière position (Colonne L)
+    };
 
     try {
-      // 1. ENVOI VERS GOOGLE SHEETS EN MODE NO-CORS (Résout l'erreur réseau du navigateur)
+      // Envoi ordonné vers Google Sheets
       await fetch('https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec', {
         method: 'POST',
         mode: 'no-cors', 
         headers: { 
           'Content-Type': 'text/plain' 
         },
-        body: JSON.stringify(sheetPayload),
+        body: JSON.stringify(orderedPayload), // Envoi du payload structuré sans décalage
       });
 
-      // 2. ENVOI DE LA NOTIFICATION EMAIL À L'ÉQUIPE SUNULINK
+      // Envoi de la notification e-mail à l'équipe SUNULINK
       await emailjs.send(
         'service_gs6odis', 
         'template_z95c4wg', 
@@ -89,7 +103,7 @@ const FormulaireTemoignage = ({ onClose }: IFormulaireProps) => {
         'sIGXDASzNfWYK5wfK'
       );
       
-      // 3. ENVOI DE L'ACCUSÉ DE RÉCEPTION AUTOMATIQUE AU CLIENT (Utilise la variable email)
+      // Envoi de l'accusé de réception automatique au client
       await emailjs.send(
         'service_gs6odis', 
         'template_8vqzelm', 
