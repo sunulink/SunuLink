@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/carousel";
 import { Star, Eye, Loader2 } from "lucide-react";
 
-// Définition de la structure d'un témoignage reçu depuis l'API Google Sheets
 interface GoogleSheetTestimonial {
   prenom: string;
   nom: string;
@@ -33,15 +32,17 @@ export const TestimonialsSection = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        // Remplacer l'URL ci-dessous par l'URL de votre macro Google Web App si elle gère le GET, 
-        // ou l'API de lecture de votre feuille "Temoignages"
-        const response = await fetch(
-          "https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec"
-        );
-        const result = await response.json();
+        const targetUrl = "https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec";
+        
+        // Utilisation du proxy AllOrigins pour contourner les blocages de redirection/CORS de Google Script
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`);
+        const jsonWrapper = await response.json();
+        
+        // AllOrigins renvoie le résultat dans une chaîne de caractères sous la clé .contents
+        const result = JSON.parse(jsonWrapper.contents);
 
         if (result && Array.isArray(result.data)) {
-          // FILTRAGE : On ne garde que ceux dont le statut est STRICTEMENT égal à "Validé"
+          // Filtrage strict : on affiche uniquement si le statut est "Validé"
           const valides = result.data.filter(
             (t: GoogleSheetTestimonial) => t.statut === "Validé"
           );
@@ -83,7 +84,6 @@ export const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Zone d'affichage des témoignages */}
         <div className="mt-6 md:mt-8">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-12 text-gray-500 gap-3">
@@ -107,7 +107,6 @@ export const TestimonialsSection = () => {
                   <CarouselItem key={index} className="pl-2 sm:pl-4 md:basis-1/2 lg:basis-1/3">
                     <div className="bg-white rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 h-full flex flex-col justify-between">
                       <div>
-                        {/* Note fixée par défaut à 5 étoiles pour les clients validés */}
                         <div className="flex mb-3 sm:mb-4">
                           {[...Array(5)].map((_, i) => (
                             <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-sunuOrange fill-current" viewBox="0 0 20 20">
@@ -115,7 +114,6 @@ export const TestimonialsSection = () => {
                             </svg>
                           ))}
                         </div>
-                        {/* Affichage de la solution apportée ou recommandation en guise de texte principal */}
                         <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6 italic">
                           "{testimonial.recommandation || testimonial.solutionApportee}"
                         </p>
