@@ -160,7 +160,7 @@ const SunuLinkProd = () => {
               Créons une vidéo <br/><span className="text-sunuOrange tracking-tighter italic">qui marque les esprits.</span>
             </h2>
             <Link to="/contact">
-              <Button className="bg-sunuOrange hover:bg-white hover:text-[#0a0a0a] text-white font-black px-8 py-5 h-auto rounded-full text-xl shadow-[0_20px_50px_rgba(255,102,0,0.3)] transition-all transform hover:-translate-y-1">
+              <Button className="bg-sunuOrange hover:bg-blue-600 hover:text-white text-white font-black px-8 py-5 h-auto rounded-full text-xl shadow-[0_20px_50px_rgba(255,102,0,0.3)] transition-all transform hover:-translate-y-1">
                 Lancer ma production
               </Button>
             </Link>
