@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Briefcase, Palette, Image, Globe, TrendingUp, Calendar, Brain, CheckCircle } from "lucide-react";
+import { Briefcase, Palette, Image, Globe, TrendingUp, Calendar, Brain, CheckCircle, Film } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ServicesPage = () => {
@@ -24,7 +24,7 @@ const ServicesPage = () => {
     {
       icon: Palette,
       title: "Branding & Identité Visuelle",
-      description: "Créez une identity de marque forte, mémorable et cohérente qui vous distingue.",
+      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
       color: "from-purple-500 to-pink-500",
       offerings: [
         "Création de logos premium",
@@ -79,16 +79,31 @@ const ServicesPage = () => {
       ]
     },
     {
-      icon: Calendar,
-      title: "Événementiel",
-      description: "Créez des expériences mémorables qui marquent les esprits.",
-      color: "from-pink-500 to-red-500",
+      icon: Film,
+      title: "SunuLink Prod",
+      description: "Donnez une dimension cinématographique, moderne et mémorable à votre univers visuel.",
+      color: "from-amber-600 to-orange-600",
+      link: "/services/audiovisuel",
       offerings: [
-        "Organisation d'événements",
-        "Activations de marques",
-        "Lancements produits",
-        "Gestion logistique & technique",
-        "Communication événementielle"
+        "Branding & Films Institutionnels",
+        "Motion Design & Animation Graphique",
+        "Tournage Haute Définition (Sol & Air)",
+        "Post-Production & Étalonnage Cinéma",
+        "Sound-Design & Captation Audio Pro"
+      ]
+    },
+    {
+      icon: Calendar,
+      title: "SunuLink Events",
+      description: "L'art de concevoir et piloter des rassemblements corporatifs ou grand public millimétrés.",
+      color: "from-pink-500 to-rose-600",
+      link: "/services/evenementiel",
+      offerings: [
+        "Conférences & Forums Élite",
+        "Cocktails & Galas Prestige",
+        "Salons Professionnels B2B",
+        "Lancements de Produits & Activations",
+        "Gestion Logistique & Technique Clé en Main"
       ]
     },
     {
@@ -101,7 +116,7 @@ const ServicesPage = () => {
         "Automatisation WhatsApp & email",
         "Création de workflows",
         "Assistants IA personnalisés",
-        "Dashboard intelligents",
+        "Dashboards intelligents",
         "Génération automatisée de contenus",
         "Outils IA internes pour les entreprises"
       ]
@@ -123,7 +138,7 @@ const ServicesPage = () => {
               Une communication à 360° pour donner de l'élan à vos projets
             </p>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-              Nous vous accompagnons sur l'ensemble des besoins en communication, stratégie et développement digital. Nos services sont organisés autour de 7 piliers puissants.
+              Nous vous accompagnons sur l'ensemble des besoins en communication, stratégie et développement digital. Nos services sont organisés autour de piliers puissants.
             </p>
           </div>
         </section>
@@ -132,33 +147,62 @@ const ServicesPage = () => {
         <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)]"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
-                  <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
-                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-8 h-8 text-white" />
+              {services.map((service, index) => {
+                const CardContent = (
+                  <>
+                    <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
+                      <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <service.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-black mb-4 flex items-center gap-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-lg opacity-95 leading-relaxed">{service.description}</p>
                     </div>
-                    <h3 className="text-3xl font-black mb-4">{service.title}</h3>
-                    <p className="text-lg opacity-95 leading-relaxed">{service.description}</p>
+                    <div className="p-8 bg-gradient-to-b from-white to-sunuGray/5 flex-grow">
+                      <h4 className="text-lg font-bold text-gray-800 mb-4">Nos prestations :</h4>
+                      <ul className="space-y-3">
+                        {service.offerings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start space-x-3">
+                            <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {service.link && (
+                        <div className="mt-6 text-right">
+                          <span className="inline-block text-sm font-black uppercase tracking-wider text-sunuOrange group-hover:underline">
+                            Découvrir l'espace →
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+
+                const cardClasses = "group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)] flex flex-col h-full";
+
+                return service.link ? (
+                  <Link 
+                    to={service.link}
+                    key={index}
+                    className={cardClasses}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    {CardContent}
+                  </Link>
+                ) : (
+                  <div
+                    key={index}
+                    className={cardClasses}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    {CardContent}
                   </div>
-                  <div className="p-8 bg-gradient-to-b from-white to-sunuGray/5">
-                    <h4 className="text-lg font-bold text-gray-800 mb-4">Nos prestations :</h4>
-                    <ul className="space-y-3">
-                      {service.offerings.map((offering, idx) => (
-                        <li key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{offering}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
