@@ -59,7 +59,7 @@ const Home = () => {
 
               {/* Titre Principal */}
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4 leading-tight drop-shadow-sm">
-                Vous êtes client <span className="text-slate-900">SunuLink ?</span>
+                Vous êtes client <span className="text-sunuOrange">SunuLink ?</span>
               </h3>
 
               {/* Sous-titre */}
