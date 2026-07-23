@@ -136,18 +136,18 @@ const AboutPage = () => {
 
         {/* Notre Histoire */}
         <section className="py-16 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
+          <div className="container mx-auto max-w-7xl">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800 text-center" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Histoire</span>
             </h2>
             <div className="max-w-4xl mx-auto space-y-6">
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed" data-aos="fade-up">
-                <strong className="text-sunuBlue">SunuLink Consulting</strong> , Nous aidons les entreprises, les institutions et les organisations à
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed text-justify md:text-center hyphens-auto" data-aos="fade-up">
+                <strong className="text-sunuBlue">SunuLink Consulting</strong> : Nous aidons les entreprises, les institutions et les organisations à
                 développer leur visibilité, renforcer leur image de marque et accélérer
                 leur croissance grâce à des stratégies de communication et de conseil
                 performantes.
               </p>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed text-justify md:text-center hyphens-auto" data-aos="fade-up" data-aos-delay="100">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
               </p>
             </div>
