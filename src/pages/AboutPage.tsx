@@ -156,11 +156,17 @@ const AboutPage = () => {
           <div className="container mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
             <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
               <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
-              <p className="leading-relaxed text-xl">Propulser la croissance des entreprises africaines par des solutions de communication et de conseil adaptées et mesurables.</p>
+              <p className="leading-relaxed text-xl">Accompagner les organisations dans leur croissance en concevant
+                des stratégies de conseil, de communication et d’innovation qui
+                génèrent des résultats mesurables et durables.
+              </p>
             </div>
             <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
               <h3 className="text-3xl font-black mb-6">Notre Vision</h3>
-              <p className="leading-relaxed text-xl">Devenir la référence africaine du conseil stratégique et de la communication intégrée.</p>
+              <p className="leading-relaxed text-xl">Devenir un cabinet de conseil stratégique et de communication de
+                référence, reconnu pour son excellence, son innovation et son impact
+                auprès des organisations à l’échelle internationale.
+              </p>
             </div>
           </div>
         </section>
