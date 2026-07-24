@@ -208,10 +208,10 @@ const AboutPage = () => {
                   </p>
                   <ul className="space-y-2 font-medium">
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-base sm:text-lg">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="font-bold text-sunuBlue">“Notre”</span>.
+                      <span className="text-sunuOrange font-bold text-base sm:text-lg">SUNU </span> Un mot profondément sénégalais, qui signifie <span className="font-bold text-sunuBlue">“Notre”</span>.
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-base sm:text-lg">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
+                      <span className="text-sunuOrange font-bold text-base sm:text-lg">LINK </span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
                     </li>
                   </ul>
                   <div className="pt-3 border-t border-slate-200 text-center">
