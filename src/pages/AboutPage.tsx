@@ -133,7 +133,7 @@ const AboutPage = () => {
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 text-sunuBlue leading-tight" data-aos="fade-up">
               À propos de <br />
-              <span className="text-sunuOrange">SUNULINK CONSULTING</span>
+              <span className="text-sunuOrange">NOUS</span>
             </h1>
           </div>
         </section>
