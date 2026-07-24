@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb } from "lucide-react";
+import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const values = [
     {
       icon: Award,
@@ -138,7 +141,7 @@ const AboutPage = () => {
         <section className="py-16 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800 text-center" data-aos="fade-up">
-              Notre <span className="text-sunuOrange">Histoire</span>
+              Mots du <span className="text-sunuOrange">Fondateur</span>
             </h2>
             <div className="max-w-4xl mx-auto space-y-6">
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed text-justify md:text-center hyphens-auto" data-aos="fade-up">
@@ -154,19 +157,157 @@ const AboutPage = () => {
           </div>
         </section>
 
+        {/* ========================================================= */}
+        {/* SECTION STORYTELLING (AMBITION & ORIGINE DE SUNULINK)    */}
+        {/* ========================================================= */}
+        <section className="py-20 px-6 bg-[#0B1220] text-white relative overflow-hidden my-12 border-y border-white/10">
+          {/* Arrière-plan lumineux avec halo discret */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full bg-gradient-to-b from-sunuBlue/20 via-transparent to-sunuOrange/10 pointer-events-none" />
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-sunuBlue/20 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-sunuOrange/20 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="container mx-auto max-w-5xl relative z-10">
+            {/* Tag d'en-tête */}
+            <div className="flex justify-center mb-6">
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-sunuCyan px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                <BookOpen className="w-4 h-4 text-sunuOrange" />
+                Manifeste & Inspiration
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-10 text-white tracking-tight">
+              L’histoire de <span className="text-sunuOrange">SUNULINK Consulting</span>
+            </h2>
+
+            {/* Conteneur principal du récit */}
+            <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 sm:p-12 backdrop-blur-md shadow-2xl relative">
+              
+              <div 
+                className={`space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed text-justify hyphens-auto transition-all duration-700 overflow-hidden relative ${
+                  !isExpanded ? "max-h-[420px]" : "max-h-[5000px]"
+                }`}
+              >
+                <p className="text-xl font-semibold text-white italic border-l-4 border-sunuOrange pl-4">
+                  Chaque grande aventure naît d’une conviction. La nôtre est née d’un constat.
+                </p>
+
+                <p>
+                  Pendant des années, j’ai exercé le métier de graphiste avec passion. J’ai découvert la puissance de la communication, du design et des idées. Mais j’ai également vu une réalité difficile : <strong className="text-white">en Afrique, et particulièrement au Sénégal, les métiers de la création sont encore trop souvent sous-estimés</strong>. Des talents sont exploités, des compétences sont dévalorisées et une jeunesse créative peine à obtenir la reconnaissance qu’elle mérite.
+                </p>
+
+                <p className="font-bold text-white">
+                  Cette réalité m’a profondément marqué.
+                </p>
+
+                <p>
+                  Mais au lieu de considérer ce problème comme une fatalité, j’ai décidé d’en faire une opportunité. Parce que je crois profondément en l’Afrique. <strong className="text-sunuCyan">Je crois en sa jeunesse. Je crois en sa créativité. Je crois en son intelligence.</strong> Je crois surtout que notre génération a la responsabilité d’écrire une nouvelle histoire.
+                </p>
+
+                <p>
+                  Aujourd’hui, nous vivons une révolution sans précédent. La technologie transforme nos façons de communiquer, de travailler et de créer. L’intelligence artificielle, le digital et les innovations redessinent le monde. <strong className="text-white">Je voulais créer une entreprise capable de connecter cette nouvelle Afrique au reste du monde.</strong>
+                </p>
+
+                {/* Bloc d'origine du Nom SUNULINK */}
+                <div className="my-8 p-6 sm:p-8 bg-gradient-to-r from-sunuBlue/30 to-sunuBlue/10 rounded-2xl border border-sunuBlue/30 text-white space-y-4">
+                  <h3 className="text-xl font-black text-sunuOrange uppercase tracking-wide">
+                    La Naissance de l'Évidence
+                  </h3>
+                  <p>
+                    Pendant des semaines, j’ai exploré des dizaines d’idées. Aucun nom ne reflétait réellement ce que j’avais en tête. Il manquait toujours quelque chose : une émotion, une identité, une vision. Puis un jour, l’évidence est apparue :
+                  </p>
+                  <ul className="space-y-2 font-semibold">
+                    <li className="flex items-center gap-2">
+                      <span className="text-sunuOrange font-bold text-xl">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="text-sunuCyan">“Notre”</span>.
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-sunuOrange font-bold text-xl">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
+                    </li>
+                  </ul>
+                  <p className="text-2xl font-black text-center text-sunuOrange pt-2 border-t border-white/10">
+                    SUNULINK = Notre Lien.
+                  </p>
+                </div>
+
+                <p className="font-semibold text-white">
+                  Le lien du Sénégal avec le monde. Le lien de l’Afrique avec l’innovation. Le lien entre les idées et leur impact. Le lien entre les entreprises et leur croissance. Le lien entre les talents africains et les opportunités internationales.
+                </p>
+
+                <blockquote className="bg-white/5 p-4 rounded-xl border-l-2 border-sunuCyan italic my-4 text-white">
+                  "SUNULINK n’est donc pas seulement un nom. C’est une vision. Une promesse. Un mouvement."
+                </blockquote>
+
+                <p>
+                  Nous avons créé <strong className="text-sunuBlue">SUNULINK Consulting</strong> avec une ambition simple mais immense : <strong className="text-white">faire de la communication un véritable levier de transformation pour les entreprises africaines.</strong> Nous voulons prouver qu’une équipe composée majoritairement de jeunes Africains peut concevoir des stratégies, des marques, des campagnes et des solutions capables de rivaliser avec les meilleurs standards internationaux.
+                </p>
+
+                <p>
+                  Notre mission dépasse la création de logos ou la gestion des réseaux sociaux. Nous voulons construire des marques fortes, accompagner les entreprises dans leur croissance, mettre la technologie et l’IA au service du développement, valoriser les talents locaux et inspirer une nouvelle génération d’entrepreneurs.
+                </p>
+
+                <p className="text-lg font-bold text-sunuOrange">
+                  Chez SUNULINK Consulting, nous croyons que l’Afrique ne doit plus seulement consommer les innovations du monde : elle doit les créer, les exporter et les diriger.
+                </p>
+
+                <p>
+                  Nous voulons participer à cette transformation en bâtissant un cabinet de conseil et une agence de communication qui portent haut les couleurs de l’Afrique. Notre histoire ne fait que commencer. Et chaque client qui nous rejoint devient un acteur de cette vision.
+                </p>
+
+                {/* Signature */}
+                <div className="pt-8 border-t border-white/10 text-center space-y-3">
+                  <p className="text-xl font-black text-white">
+                    L’avenir de la communication mondiale ne se construira pas sans l’Afrique.
+                  </p>
+                  <p className="text-2xl font-black text-sunuOrange">
+                    Et SUNULINK Consulting a choisi d’en être l’un des bâtisseurs.
+                  </p>
+                  <div className="pt-4 inline-block bg-white/5 px-6 py-3 rounded-2xl border border-white/10">
+                    <p className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Notre signature</p>
+                    <p className="text-base font-bold text-sunuCyan">
+                      SUNULINK Consulting — Plus qu’un lien : un levier de progrès, d’impact et de confiance.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Effet Dégradé de Masquage (Gradient Fade Out) si le texte est replié */}
+                {!isExpanded && (
+                  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/90 to-transparent pointer-events-none" />
+                )}
+              </div>
+
+              {/* Bouton d'action "Lire plus" / "Afficher moins" */}
+              <div className="mt-8 text-center relative z-20">
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="inline-flex items-center gap-3 bg-sunuOrange hover:bg-sunuBlue text-white font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-sunuBlue/30 hover:-translate-y-0.5 cursor-pointer text-sm uppercase tracking-wider border border-white/10"
+                >
+                  <span>{isExpanded ? "Afficher moins" : "Lire l'histoire complète"}</span>
+                  {isExpanded ? (
+                    <ChevronUp className="w-5 h-5" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 animate-bounce" />
+                  )}
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Mission & Vision */}
         <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
             <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
               <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
-              <p className="leading-relaxed text-xl">Accompagner les organisations dans leur croissance en concevant
+              <p className="leading-relaxed text-xl text-justify hyphens-auto">
+                Accompagner les organisations dans leur croissance en concevant
                 des stratégies de conseil, de communication et d’innovation qui
                 génèrent des résultats mesurables et durables.
               </p>
             </div>
             <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
               <h3 className="text-3xl font-black mb-6">Notre Vision</h3>
-              <p className="leading-relaxed text-xl">Devenir un cabinet de conseil stratégique et de communication de
+              <p className="leading-relaxed text-xl text-justify hyphens-auto">
+                Devenir un cabinet de conseil stratégique et de communication de
                 référence, reconnu pour son excellence, son innovation et son impact
                 auprès des organisations à l’échelle internationale.
               </p>
