@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { Sparkles, Target, Eye, Award, TrendingUp, Shield, Users, Zap, CheckCircle, Lightbulb, ChevronDown, ChevronUp, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
@@ -124,33 +124,27 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-gray-800">
       <Header />
 
       <main className="pt-32 pb-20">
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/30">
+        <section className="py-16 px-6 bg-gradient-to-b from-white to-slate-50">
           <div className="container mx-auto max-w-7xl text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-sunuBlue" data-aos="fade-up">
-              À propos de <span className="text-sunuOrange">SunuLink</span>
+              À propos de <span className="text-sunuOrange">SUNULINK CONSULTING</span>
             </h1>
           </div>
         </section>
 
-        {/* Notre Histoire */}
-        <section className="py-16 px-6 bg-white">
+        {/* Introduction / Présentation */}
+        <section className="py-12 px-6 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800 text-center" data-aos="fade-up">
-              Notre <span className="text-sunuOrange">Histoire</span>
-            </h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed text-justify md:text-center hyphens-auto" data-aos="fade-up">
-                <strong className="text-sunuBlue">SUNULINK CONSULTING</strong> : Nous aidons les entreprises, les institutions et les organisations à
-                développer leur visibilité, renforcer leur image de marque et accélérer
-                leur croissance grâce à des stratégies de communication et de conseil
-                performantes.
+            <div className="max-w-4xl mx-auto space-y-6 text-center">
+              <p className="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed">
+                <strong className="text-sunuBlue font-bold">SUNULINK CONSULTING</strong> accompagne les entreprises, les institutions et les organisations à développer leur visibilité, renforcer leur image de marque et accélérer leur croissance grâce à des stratégies de communication et de conseil performantes.
               </p>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed text-justify md:text-center hyphens-auto" data-aos="fade-up" data-aos-delay="100">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
               </p>
             </div>
@@ -158,85 +152,84 @@ const AboutPage = () => {
         </section>
 
         {/* ========================================================= */}
-        {/* SECTION STORYTELLING SUR FOND BLEU SUNULINK              */}
+        {/* SECTION : MOTS DU FONDATEUR (LISIBILITÉ OPTIMISÉE)       */}
         {/* ========================================================= */}
-        <section className="py-20 px-6 bg-sunuBlue text-white relative overflow-hidden my-12 shadow-2xl">
-          {/* Effets d'éclairage d'arrière-plan en dégradé subtil */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-sunuCyan/20 blur-[130px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-sunuOrange/20 blur-[130px] rounded-full pointer-events-none" />
-
-          <div className="container mx-auto max-w-5xl relative z-10">
-            {/* Tag d'en-tête */}
-            <div className="flex justify-center mb-6">
-              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-sunuCyan px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md">
-                <BookOpen className="w-4 h-4 text-sunuOrange" />
-                Manifeste & Inspiration
+        <section className="py-16 px-6 bg-slate-50 border-y border-slate-200 my-8">
+          <div className="container mx-auto max-w-4xl">
+            
+            {/* Tag / Badge */}
+            <div className="flex justify-center mb-4">
+              <span className="inline-flex items-center gap-2 bg-sunuBlue/10 text-sunuBlue border border-sunuBlue/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Quote className="w-4 h-4 text-sunuOrange" />
+                Vision & Inception
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-10 text-white tracking-tight">
-              L’histoire de <span className="text-sunuOrange">SunuLink Consulting</span>
+            <h2 className="text-3xl md:text-4xl font-black text-center mb-10 text-sunuBlue tracking-tight">
+              Mots du <span className="text-sunuOrange">Fondateur</span>
             </h2>
 
-            {/* Carte principale sur bleu légèrement translucide */}
-            <div className="bg-white/10 border border-white/20 rounded-3xl p-6 sm:p-12 backdrop-blur-md shadow-2xl relative">
+            {/* Carte de lecture fluide sur Fond Blanc */}
+            <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-xl border border-slate-200/80 relative">
               
               <div 
-                className={`space-y-6 text-blue-50 text-base sm:text-lg leading-relaxed text-justify hyphens-auto transition-all duration-700 overflow-hidden relative ${
-                  !isExpanded ? "max-h-[420px]" : "max-h-[5000px]"
+                className={`space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed text-justify hyphens-auto transition-all duration-500 overflow-hidden relative ${
+                  !isExpanded ? "max-h-[380px]" : "max-h-[5000px]"
                 }`}
               >
-                <p className="text-xl font-semibold text-white italic border-l-4 border-sunuOrange pl-4">
+                <p className="text-xl font-bold text-sunuBlue italic border-l-4 border-sunuOrange pl-4 py-1 bg-orange-50/50 rounded-r-lg">
                   Chaque grande aventure naît d’une conviction. La nôtre est née d’un constat.
                 </p>
 
                 <p>
-                  Pendant des années, j’ai exercé le métier de graphiste avec passion. J’ai découvert la puissance de la communication, du design et des idées. Mais j’ai également vu une réalité difficile : <strong className="text-white">en Afrique, et particulièrement au Sénégal, les métiers de la création sont encore trop souvent sous-estimés</strong>. Des talents sont exploités, des compétences sont dévalorisées et une jeunesse créative peine à obtenir la reconnaissance qu’elle mérite.
+                  Pendant des années, j’ai exercé le métier de graphiste avec passion. J’ai découvert la puissance de la communication, du design et des idées. Mais j’ai également vu une réalité difficile : <strong className="text-gray-900 font-bold">en Afrique, et particulièrement au Sénégal, les métiers de la création sont encore trop souvent sous-estimés</strong>. Des talents sont exploités, des compétences sont dévalorisées et une jeunesse créative peine à obtenir la reconnaissance qu’elle mérite.
                 </p>
 
-                <p className="font-bold text-white text-lg">
+                <p className="font-bold text-gray-900">
                   Cette réalité m’a profondément marqué.
                 </p>
 
                 <p>
-                  Mais au lieu de considérer ce problème comme une fatalité, j’ai décidé d’en faire une opportunité. Parce que je crois profondément en l’Afrique. <strong className="text-sunuCyan font-semibold">Je crois en sa jeunesse. Je crois en sa créativité. Je crois en son intelligence.</strong> Je crois surtout que notre génération a la responsabilité d’écrire une nouvelle histoire.
+                  Mais au lieu de considérer ce problème comme une fatalité, j’ai décidé d’en faire une opportunité. Parce que je crois profondément en l’Afrique. <strong className="text-sunuBlue font-bold">Je crois en sa jeunesse. Je crois en sa créativité. Je crois en son intelligence.</strong> Je crois surtout que notre génération a la responsabilité d’écrire une nouvelle histoire.
                 </p>
 
                 <p>
-                  Aujourd’hui, nous vivons une révolution sans précédent. La technologie transforme nos façons de communiquer, de travailler et de créer. L’intelligence artificielle, le digital et les innovations redessinent le monde. <strong className="text-white">Je voulais créer une entreprise capable de connecter cette nouvelle Afrique au reste du monde.</strong>
+                  Aujourd’hui, nous vivons une révolution sans précédent. La technologie transforme nos façons de communiquer, de travailler et de créer. L’intelligence artificielle, le digital et les innovations redessinent le monde. <strong className="text-gray-900 font-bold">Je voulais créer une entreprise capable de connecter cette nouvelle Afrique au reste du monde.</strong>
                 </p>
 
-                {/* Encadré d'origine de SUNULINK */}
-                <div className="my-8 p-6 sm:p-8 bg-white/10 rounded-2xl border border-white/20 text-white space-y-4 backdrop-blur-lg">
-                  <h3 className="text-xl font-black text-sunuOrange uppercase tracking-wide">
+                {/* Encadré d'origine de SUNULINK (Lisibilité maximale) */}
+                <div className="my-8 p-6 sm:p-8 bg-slate-50 rounded-2xl border-2 border-sunuBlue/20 text-gray-800 space-y-4">
+                  <h3 className="text-lg font-black text-sunuBlue uppercase tracking-wide">
                     La Naissance de l'Évidence
                   </h3>
-                  <p>
+                  <p className="text-gray-700">
                     Pendant des semaines, j’ai exploré des dizaines d’idées. Aucun nom ne reflétait réellement ce que j’avais en tête. Il manquait toujours quelque chose : une émotion, une identité, une vision. Puis un jour, l’évidence est apparue :
                   </p>
-                  <ul className="space-y-2 font-semibold">
+                  <ul className="space-y-2 font-medium">
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-xl">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="text-sunuCyan">“Notre”</span>.
+                      <span className="text-sunuOrange font-bold text-lg">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="font-bold text-sunuBlue">“Notre”</span>.
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-xl">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
+                      <span className="text-sunuOrange font-bold text-lg">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
                     </li>
                   </ul>
-                  <p className="text-2xl font-black text-center text-sunuOrange pt-2 border-t border-white/20">
-                    SUNULINK = Notre Lien.
-                  </p>
+                  <div className="pt-3 border-t border-slate-200 text-center">
+                    <p className="text-2xl font-black text-sunuOrange">
+                      SUNULINK = Notre Lien.
+                    </p>
+                  </div>
                 </div>
 
-                <p className="font-semibold text-white">
+                <p className="font-medium text-gray-800">
                   Le lien du Sénégal avec le monde. Le lien de l’Afrique avec l’innovation. Le lien entre les idées et leur impact. Le lien entre les entreprises et leur croissance. Le lien entre les talents africains et les opportunités internationales.
                 </p>
 
-                <blockquote className="bg-white/10 p-4 rounded-xl border-l-4 border-sunuCyan italic my-4 text-white">
+                <blockquote className="bg-blue-50/60 p-4 rounded-xl border-l-4 border-sunuBlue italic my-4 text-sunuBlue font-medium">
                   "SUNULINK n’est donc pas seulement un nom. C’est une vision. Une promesse. Un mouvement."
                 </blockquote>
 
                 <p>
-                  Nous avons créé <strong className="text-white font-black underline decoration-sunuOrange underline-offset-4">SUNULINK Consulting</strong> avec une ambition simple mais immense : <strong className="text-white">faire de la communication un véritable levier de transformation pour les entreprises africaines.</strong> Nous voulons prouver qu’une équipe composée majoritairement de jeunes Africains peut concevoir des stratégies, des marques, des campagnes et des solutions capables de rivaliser avec les meilleurs standards internationaux.
+                  Nous avons créé <strong className="text-sunuBlue font-bold">SUNULINK Consulting</strong> avec une ambition simple mais immense : <strong className="text-gray-900 font-bold">faire de la communication un véritable levier de transformation pour les entreprises africaines.</strong> Nous voulons prouver qu’une équipe composée majoritairement de jeunes Africains peut concevoir des stratégies, des marques, des campagnes et des solutions capables de rivaliser avec les meilleurs standards internationaux.
                 </p>
 
                 <p>
@@ -252,38 +245,38 @@ const AboutPage = () => {
                 </p>
 
                 {/* Signature */}
-                <div className="pt-8 border-t border-white/20 text-center space-y-3">
-                  <p className="text-xl font-black text-white">
+                <div className="pt-8 border-t border-slate-200 text-center space-y-3">
+                  <p className="text-xl font-bold text-gray-900">
                     L’avenir de la communication mondiale ne se construira pas sans l’Afrique.
                   </p>
                   <p className="text-2xl font-black text-sunuOrange">
                     Et SUNULINK Consulting a choisi d’en être l’un des bâtisseurs.
                   </p>
-                  <div className="pt-4 inline-block bg-white/10 px-6 py-3 rounded-2xl border border-white/20">
-                    <p className="text-xs uppercase tracking-widest text-blue-200 font-bold mb-1">Notre signature</p>
-                    <p className="text-base font-bold text-sunuCyan">
+                  <div className="pt-4 inline-block bg-slate-100 px-6 py-3 rounded-2xl border border-slate-200">
+                    <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">Notre signature</p>
+                    <p className="text-base font-bold text-sunuBlue">
                       SUNULINK Consulting — Plus qu’un lien : un levier de progrès, d’impact et de confiance.
                     </p>
                   </div>
                 </div>
 
-                {/* Effet Dégradé de Masquage basé sur la couleur Bleue SunuLink */}
+                {/* Fondu de masquage doux si replié */}
                 {!isExpanded && (
-                  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-sunuBlue via-sunuBlue/90 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
                 )}
               </div>
 
-              {/* Bouton d'action "Lire l'histoire complète" / "Afficher moins" */}
-              <div className="mt-8 text-center relative z-20">
+              {/* Bouton d'extension */}
+              <div className="mt-6 text-center relative z-20">
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="inline-flex items-center gap-3 bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 shadow-xl hover:-translate-y-0.5 cursor-pointer text-sm uppercase tracking-wider border border-white/20"
+                  className="inline-flex items-center gap-2 bg-sunuBlue hover:bg-sunuOrange text-white font-bold px-7 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer text-sm uppercase tracking-wider"
                 >
-                  <span>{isExpanded ? "Afficher moins" : "Lire l'histoire complète"}</span>
+                  <span>{isExpanded ? "Réduire" : "Lire les mots du fondateur"}</span>
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5" />
+                    <ChevronUp className="w-4 h-4" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 animate-bounce" />
+                    <ChevronDown className="w-4 h-4" />
                   )}
                 </button>
               </div>
@@ -293,7 +286,7 @@ const AboutPage = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
+        <section className="py-16 px-6 bg-white">
           <div className="container mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
             <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
               <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
@@ -315,7 +308,7 @@ const AboutPage = () => {
         </section>
 
         {/* Nos Valeurs */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-slate-50">
           <div className="container mx-auto max-w-7xl">
             <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
               Nos <span className="text-sunuOrange">Valeurs</span>
@@ -335,7 +328,7 @@ const AboutPage = () => {
         </section>
 
         {/* Notre Approche */}
-        <section className="py-20 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
+        <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Approche</span>
@@ -343,8 +336,8 @@ const AboutPage = () => {
             <p className="text-xl text-gray-600 mb-16 max-w-3xl mx-auto">Un processus clair et structuré pour garantir votre succès</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
               {approachSteps.map((step, index) => (
-                <div key={index} className="bg-white rounded-3xl p-8 shadow-lg border-2 border-sunuBlue/20 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
-                  <div className="text-6xl font-black text-sunuOrange mb-4 opacity-20">{step.number}</div>
+                <div key={index} className="bg-slate-50 rounded-3xl p-8 shadow-md border border-slate-200 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
+                  <div className="text-6xl font-black text-sunuOrange mb-4 opacity-30">{step.number}</div>
                   <h3 className="text-2xl font-black mb-3 text-gray-800">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
@@ -354,7 +347,7 @@ const AboutPage = () => {
         </section>
 
         {/* Notre Équipe */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-6 bg-slate-50">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Équipe</span>
@@ -375,14 +368,14 @@ const AboutPage = () => {
         </section>
 
         {/* Pourquoi nous choisir */}
-        <section className="py-20 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
+        <section className="py-20 px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
               Pourquoi <span className="text-sunuOrange">nous choisir ?</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               {whyChooseUs.map((reason, index) => (
-                <div key={index} className="bg-white rounded-3xl p-10 shadow-lg border-2 border-sunuOrange/20 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
+                <div key={index} className="bg-slate-50 rounded-3xl p-10 shadow-md border border-slate-200 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                     <reason.icon className="w-8 h-8 text-white" />
                   </div>
