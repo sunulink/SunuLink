@@ -128,23 +128,24 @@ const AboutPage = () => {
       <Header />
 
       <main className="pt-32 pb-20">
-        {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-slate-50">
+        {/* Hero Section avec titre sur deux lignes */}
+        <section className="py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50">
           <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black mb-6 text-sunuBlue" data-aos="fade-up">
-              À propos de <span className="text-sunuOrange">SUNULINK CONSULTING</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 text-sunuBlue leading-tight" data-aos="fade-up">
+              À propos de <br />
+              <span className="text-sunuOrange">SUNULINK CONSULTING</span>
             </h1>
           </div>
         </section>
 
-        {/* Introduction / Présentation */}
-        <section className="py-12 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="max-w-4xl mx-auto space-y-6 text-center">
-              <p className="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed">
+        {/* Introduction / Présentation avec texte justifié */}
+        <section className="py-8 md:py-12 px-4 sm:px-6 bg-white">
+          <div className="container mx-auto max-w-4xl">
+            <div className="space-y-6">
+              <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed text-justify hyphens-auto">
                 <strong className="text-sunuBlue font-bold">SUNULINK CONSULTING</strong> accompagne les entreprises, les institutions et les organisations à développer leur visibilité, renforcer leur image de marque et accélérer leur croissance grâce à des stratégies de communication et de conseil performantes.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed text-justify hyphens-auto">
                 Nous associons stratégie, créativité et technologie pour délivrer des résultats mesurables aux entreprises africaines.
               </p>
             </div>
@@ -152,9 +153,9 @@ const AboutPage = () => {
         </section>
 
         {/* ========================================================= */}
-        {/* SECTION : MOTS DU FONDATEUR (LISIBILITÉ OPTIMISÉE)       */}
+        {/* SECTION : MOTS DU FONDATEUR (OPTIMISÉE MOBILE & JUSTIFIÉE) */}
         {/* ========================================================= */}
-        <section className="py-16 px-6 bg-slate-50 border-y border-slate-200 my-8">
+        <section className="py-12 md:py-16 px-3 sm:px-6 bg-slate-50 border-y border-slate-200 my-8">
           <div className="container mx-auto max-w-4xl">
             
             {/* Tag / Badge */}
@@ -165,19 +166,19 @@ const AboutPage = () => {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-10 text-sunuBlue tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-center mb-8 md:mb-10 text-sunuBlue tracking-tight">
               Mots du <span className="text-sunuOrange">Fondateur</span>
             </h2>
 
-            {/* Carte de lecture fluide sur Fond Blanc */}
-            <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-xl border border-slate-200/80 relative">
+            {/* Carte de lecture fluide avec padding mobile resserré */}
+            <div className="bg-white rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12 shadow-lg border border-slate-200/80 relative">
               
               <div 
-                className={`space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed text-justify hyphens-auto transition-all duration-500 overflow-hidden relative ${
+                className={`space-y-6 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed text-justify hyphens-auto transition-all duration-500 overflow-hidden relative ${
                   !isExpanded ? "max-h-[380px]" : "max-h-[5000px]"
                 }`}
               >
-                <p className="text-xl font-bold text-sunuBlue italic border-l-4 border-sunuOrange pl-4 py-1 bg-orange-50/50 rounded-r-lg">
+                <p className="text-base sm:text-lg md:text-xl font-bold text-sunuBlue italic border-l-4 border-sunuOrange pl-4 py-1 bg-orange-50/50 rounded-r-lg">
                   Chaque grande aventure naît d’une conviction. La nôtre est née d’un constat.
                 </p>
 
@@ -197,9 +198,9 @@ const AboutPage = () => {
                   Aujourd’hui, nous vivons une révolution sans précédent. La technologie transforme nos façons de communiquer, de travailler et de créer. L’intelligence artificielle, le digital et les innovations redessinent le monde. <strong className="text-gray-900 font-bold">Je voulais créer une entreprise capable de connecter cette nouvelle Afrique au reste du monde.</strong>
                 </p>
 
-                {/* Encadré d'origine de SUNULINK (Lisibilité maximale) */}
-                <div className="my-8 p-6 sm:p-8 bg-slate-50 rounded-2xl border-2 border-sunuBlue/20 text-gray-800 space-y-4">
-                  <h3 className="text-lg font-black text-sunuBlue uppercase tracking-wide">
+                {/* Encadré d'origine de SUNULINK */}
+                <div className="my-6 p-4 sm:p-6 md:p-8 bg-slate-50 rounded-2xl border-2 border-sunuBlue/20 text-gray-800 space-y-4">
+                  <h3 className="text-base sm:text-lg font-black text-sunuBlue uppercase tracking-wide">
                     La Naissance de l'Évidence
                   </h3>
                   <p className="text-gray-700">
@@ -207,14 +208,14 @@ const AboutPage = () => {
                   </p>
                   <ul className="space-y-2 font-medium">
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-lg">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="font-bold text-sunuBlue">“Notre”</span>.
+                      <span className="text-sunuOrange font-bold text-base sm:text-lg">SUNU :</span> Un mot profondément sénégalais, qui signifie <span className="font-bold text-sunuBlue">“Notre”</span>.
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-sunuOrange font-bold text-lg">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
+                      <span className="text-sunuOrange font-bold text-base sm:text-lg">LINK :</span> Le lien, la connexion, le pont entre les personnes, les entreprises et les opportunités.
                     </li>
                   </ul>
                   <div className="pt-3 border-t border-slate-200 text-center">
-                    <p className="text-2xl font-black text-sunuOrange">
+                    <p className="text-xl sm:text-2xl font-black text-sunuOrange">
                       SUNULINK = Notre Lien.
                     </p>
                   </div>
@@ -229,15 +230,15 @@ const AboutPage = () => {
                 </blockquote>
 
                 <p>
-                  Nous avons créé <strong className="text-sunuBlue font-bold">SUNULINK Consulting</strong> avec une ambition simple mais immense : <strong className="text-gray-900 font-bold">faire de la communication un véritable levier de transformation pour les entreprises africaines.</strong> Nous voulons prouver qu’une équipe composée majoritairement de jeunes Africains peut concevoir des stratégies, des marques, des campagnes et des solutions capables de rivaliser avec les meilleurs standards internationaux.
+                  Nous avons créé <strong className="text-sunuBlue font-bold">SUNULINK CONSULTING</strong> avec une ambition simple mais immense : <strong className="text-gray-900 font-bold">faire de la communication un véritable levier de transformation pour les entreprises africaines.</strong> Nous voulons prouver qu’une équipe composée majoritairement de jeunes Africains peut concevoir des stratégies, des marques, des campagnes et des solutions capables de rivaliser avec les meilleurs standards internationaux.
                 </p>
 
                 <p>
                   Notre mission dépasse la création de logos ou la gestion des réseaux sociaux. Nous voulons construire des marques fortes, accompagner les entreprises dans leur croissance, mettre la technologie et l’IA au service du développement, valoriser les talents locaux et inspirer une nouvelle génération d’entrepreneurs.
                 </p>
 
-                <p className="text-lg font-bold text-sunuOrange">
-                  Chez SUNULINK Consulting, nous croyons que l’Afrique ne doit plus seulement consommer les innovations du monde : elle doit les créer, les exporter et les diriger.
+                <p className="text-base sm:text-lg font-bold text-sunuOrange">
+                  Chez SUNULINK CONSULTING, nous croyons que l’Afrique ne doit plus seulement consommer les innovations du monde : elle doit les créer, les exporter et les diriger.
                 </p>
 
                 <p>
@@ -246,16 +247,16 @@ const AboutPage = () => {
 
                 {/* Signature */}
                 <div className="pt-8 border-t border-slate-200 text-center space-y-3">
-                  <p className="text-xl font-bold text-gray-900">
+                  <p className="text-lg sm:text-xl font-bold text-gray-900">
                     L’avenir de la communication mondiale ne se construira pas sans l’Afrique.
                   </p>
-                  <p className="text-2xl font-black text-sunuOrange">
-                    Et SUNULINK Consulting a choisi d’en être l’un des bâtisseurs.
+                  <p className="text-xl sm:text-2xl font-black text-sunuOrange">
+                    Et SUNULINK CONSULTING a choisi d’en être l’un des bâtisseurs.
                   </p>
-                  <div className="pt-4 inline-block bg-slate-100 px-6 py-3 rounded-2xl border border-slate-200">
+                  <div className="pt-4 inline-block bg-slate-100 px-4 sm:px-6 py-3 rounded-2xl border border-slate-200">
                     <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">Notre signature</p>
-                    <p className="text-base font-bold text-sunuBlue">
-                      SUNULINK Consulting — Plus qu’un lien : un levier de progrès, d’impact et de confiance.
+                    <p className="text-sm sm:text-base font-bold text-sunuBlue">
+                      SUNULINK CONSULTING — Plus qu’un lien : un levier de progrès, d’impact et de confiance.
                     </p>
                   </div>
                 </div>
@@ -286,19 +287,19 @@ const AboutPage = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-16 px-6 bg-white">
+        <section className="py-16 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
-            <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-right">
-              <h3 className="text-3xl font-black mb-6">Notre Mission</h3>
-              <p className="leading-relaxed text-xl text-justify hyphens-auto">
+            <div className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-3xl p-8 sm:p-10 shadow-xl" data-aos="fade-right">
+              <h3 className="text-2xl sm:text-3xl font-black mb-6">Notre Mission</h3>
+              <p className="leading-relaxed text-lg sm:text-xl text-justify hyphens-auto">
                 Accompagner les organisations dans leur croissance en concevant
                 des stratégies de conseil, de communication et d’innovation qui
                 génèrent des résultats mesurables et durables.
               </p>
             </div>
-            <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-10 shadow-2xl" data-aos="fade-left">
-              <h3 className="text-3xl font-black mb-6">Notre Vision</h3>
-              <p className="leading-relaxed text-xl text-justify hyphens-auto">
+            <div className="grain-texture bg-gradient-to-br from-sunuOrange to-yellow-500 text-white rounded-3xl p-8 sm:p-10 shadow-xl" data-aos="fade-left">
+              <h3 className="text-2xl sm:text-3xl font-black mb-6">Notre Vision</h3>
+              <p className="leading-relaxed text-lg sm:text-xl text-justify hyphens-auto">
                 Devenir un cabinet de conseil stratégique et de communication de
                 référence, reconnu pour son excellence, son innovation et son impact
                 auprès des organisations à l’échelle internationale.
@@ -308,7 +309,7 @@ const AboutPage = () => {
         </section>
 
         {/* Nos Valeurs */}
-        <section className="py-20 px-6 bg-slate-50">
+        <section className="py-20 px-4 sm:px-6 bg-slate-50">
           <div className="container mx-auto max-w-7xl">
             <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
               Nos <span className="text-sunuOrange">Valeurs</span>
@@ -328,7 +329,7 @@ const AboutPage = () => {
         </section>
 
         {/* Notre Approche */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Approche</span>
@@ -347,7 +348,7 @@ const AboutPage = () => {
         </section>
 
         {/* Notre Équipe */}
-        <section className="py-20 px-6 bg-slate-50">
+        <section className="py-20 px-4 sm:px-6 bg-slate-50">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-gray-800" data-aos="fade-up">
               Notre <span className="text-sunuOrange">Équipe</span>
@@ -368,7 +369,7 @@ const AboutPage = () => {
         </section>
 
         {/* Pourquoi nous choisir */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-20 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-16 text-gray-800" data-aos="fade-up">
               Pourquoi <span className="text-sunuOrange">nous choisir ?</span>
@@ -388,9 +389,9 @@ const AboutPage = () => {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 px-6">
+        <section className="py-16 px-4 sm:px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 text-center shadow-2xl" data-aos="fade-up">
+            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-8 sm:p-12 text-center shadow-2xl" data-aos="fade-up">
               <h2 className="text-3xl md:text-4xl font-black mb-6">
                 Prêt à transformer votre communication ?
               </h2>
