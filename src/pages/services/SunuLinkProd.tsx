@@ -669,7 +669,7 @@ const SunuLinkProd = () => {
           <div className="container mx-auto max-w-5xl">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-[#009CDE] font-bold text-sm tracking-widest uppercase block mb-2">Avis clients</span>
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase">Ce qu'ils dicen de nous</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-white uppercase">Ce qu'ils disent de nous</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -677,7 +677,7 @@ const SunuLinkProd = () => {
                 <div key={idx} className="bg-[#111827] p-8 rounded-3xl border border-white/5 relative flex flex-col justify-between">
                   <p className="text-gray-300 italic text-base leading-relaxed mb-6">"{t.text}"</p>
                   <div className="flex items-center gap-4">
-                    <img src={t.photo} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-[#F6A61A]" />
+                    {/* Les images ont été retirées ici si besoin inserer les ici directement */}
                     <div>
                       <h3 className="text-white font-bold">{t.name}</h3>
                       <p className="text-xs text-gray-400">{t.function} — <span className="text-[#009CDE]">{t.company}</span></p>
