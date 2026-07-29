@@ -353,7 +353,6 @@ const SunuLinkProd = () => {
 
   return (
     <div className="min-h-screen bg-[#0B1220] text-white font-['Lato'] overflow-x-hidden flex flex-col selection:bg-[#F6A61A] selection:text-black">
-      {/* Configuration globale des typographies et polices */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
         
@@ -369,7 +368,6 @@ const SunuLinkProd = () => {
         
         {/* ================= 7. HERO SECTION ================= */}
         <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
-          {/* Fond vidéo avec overlay */}
           <div className="absolute inset-0 z-0">
             <video 
               autoPlay 
@@ -381,13 +379,11 @@ const SunuLinkProd = () => {
             >
               <source src="/portfolio/video-corporate.mp4" type="video/mp4" />
             </video>
-            {/* Overlay sombre 50-60% */}
             <div className="absolute inset-0 bg-[#0B1220]/60 backdrop-blur-[2px]" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-[#0B1220]/40" />
           </div>
 
           <div className="container mx-auto max-w-6xl text-center relative z-10 pt-16">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-[#0071BC]/20 border border-[#009CDE]/40 backdrop-blur-md px-5 py-2 rounded-full mb-8 shadow-[0_0_30px_rgba(0,113,188,0.3)]">
               <Sparkles className="text-[#F6A61A]" size={16} />
               <span className="text-xs md:text-sm font-semibold tracking-wider uppercase text-white">
@@ -395,17 +391,15 @@ const SunuLinkProd = () => {
               </span>
             </div>
 
-            {/* Titre principal */}
             <h1 className="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tight text-white drop-shadow-lg">
               SunuLink <span className="text-[#F6A61A]">Prod</span>
             </h1>
 
-            {/* Sous-titre */}
             <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto font-normal leading-relaxed mb-10 drop-shadow">
               Nous créons des productions audiovisuelles puissantes qui donnent vie à vos idées, valorisent votre marque et captivent votre audience.
             </p>
 
-            {/* Boutons */}
+            {/* CORRECTION 1 : Bouton secondaire avec texte bien lisible */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
               <a href="#devis">
                 <Button className="w-full sm:w-auto bg-[#F6A61A] hover:bg-[#e09310] text-[#0B1220] font-black px-8 py-6 text-lg rounded-full shadow-[0_10px_30px_rgba(246,166,26,0.3)] transition-all transform hover:-translate-y-1">
@@ -413,7 +407,10 @@ const SunuLinkProd = () => {
                 </Button>
               </a>
               <a href="#portfolio">
-                <Button variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 backdrop-blur-md font-bold px-8 py-6 text-lg rounded-full transition-all">
+                <Button 
+                  variant="outline" 
+                  className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/40 text-white font-bold px-8 py-6 text-lg rounded-full backdrop-blur-md transition-all shadow-md"
+                >
                   Voir nos réalisations
                 </Button>
               </a>
@@ -529,7 +526,8 @@ const SunuLinkProd = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {steps.map((step, idx) => (
                 <div key={idx} className="relative bg-[#0B1220] p-8 rounded-2xl border border-white/5 hover:border-[#F6A61A]/40 transition-all">
-                  <div className="text-5xl font-black text-[#0071BC]/30 mb-4">{step.number}</div>
+                  {/* CORRECTION 2 : Chiffres en bleu officiel SunuLink (#0071BC) */}
+                  <div className="text-5xl font-black text-[#0071BC] mb-4">{step.number}</div>
                   <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
                 </div>
@@ -599,7 +597,6 @@ const SunuLinkProd = () => {
               <h2 className="text-4xl md:text-5xl font-black text-white uppercase">Nos Réalisations</h2>
             </div>
 
-            {/* Filtres */}
             <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
               {categories.map((cat) => (
                 <button
@@ -616,7 +613,6 @@ const SunuLinkProd = () => {
               ))}
             </div>
 
-            {/* Grille Vidéos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPortfolio.map((item) => (
                 <div 
@@ -673,7 +669,7 @@ const SunuLinkProd = () => {
           <div className="container mx-auto max-w-5xl">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-[#009CDE] font-bold text-sm tracking-widest uppercase block mb-2">Avis clients</span>
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase">Ce qu'ils disent de nous</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-white uppercase">Ce qu'ils dicen de nous</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -922,7 +918,10 @@ const SunuLinkProd = () => {
 
       </main>
 
-      <Footer />
+      {/* CORRECTION 3 : Footer ré-isolé dans un fond blanc uni pure */}
+      <div className="bg-white text-gray-800">
+        <Footer />
+      </div>
     </div>
   );
 };
