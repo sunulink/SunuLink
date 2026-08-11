@@ -203,18 +203,21 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const collaborateurs = [
+  // 6 Nouveaux ajouts de la zone jaune
   { name: "Agence Babelle", logo: "/collaborateurs/logo-babelle.png" },
-  { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" },
-  { name: "MEER JUS", logo: "/collaborateurs/LOGO MEER JUS.png" },
-  { name: "NATAA", logo: "/collaborateurs/LOGO NATAA.png" },
-  { name: "Femezon", logo: "/collaborateurs/femezon-logo.png" },
   { name: "Biba Séduction", logo: "/collaborateurs/logo-biba-seduction.png" },
   { name: "Café", logo: "/collaborateurs/logo-cafe.png" },
   { name: "De Bouche Bée", logo: "/collaborateurs/logo-de-bouche-bae.png" },
   { name: "Faddeco", logo: "/collaborateurs/logo-faddeco.png" },
+  { name: "Zami", logo: "/collaborateurs/logo-zami.png" },
+
+  // 6 Logos existants du dossier
+  { name: "Femezon", logo: "/collaborateurs/femezon-logo.png" },
   { name: "Miss Mbouracke", logo: "/collaborateurs/LOGO-MISS-MBOURACKE.png" },
-  { name: "Global Fish RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
-  { name: "Souffle de Vie", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" }
+  { name: "SCI La Promobilière", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
+  { name: "Souffle de Vie", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" },
+  { name: "SenHorti Group", logo: "/collaborateurs/LOGO-SenHorti-Group.png" },
+  { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" }
 ];
 
 export const portfolioImages = [
