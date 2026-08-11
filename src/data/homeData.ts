@@ -207,13 +207,13 @@ export const collaborateurs = [
   { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" },
   { name: "MEER JUS", logo: "/collaborateurs/LOGO MEER JUS.png" },
   { name: "NATAA", logo: "/collaborateurs/LOGO NATAA.png" },
-  { name: "GAINDE", logo: "/collaborateurs/LOGO-GAINDE.png" },
-  { name: "BDA Service", logo: "/collaborateurs/BDA-SERVICE-LOGO.png" },
-  { name: "Adja France Babelle", logo: "/collaborateurs/LOGO-ADJA-FRANCE-BABELLE.png" },
-  { name: "Global Fish RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
-  { name: "King Moussa", logo: "/collaborateurs/LOGO-KING-MOUSSA.png" },
+  { name: "Femezon", logo: "/collaborateurs/femezon-logo.png" },
+  { name: "Biba Séduction", logo: "/collaborateurs/logo-biba-seduction.png" },
+  { name: "Café", logo: "/collaborateurs/logo-cafe.png" },
+  { name: "De Bouche Bée", logo: "/collaborateurs/logo-de-bouche-bae.png" },
+  { name: "Faddeco", logo: "/collaborateurs/logo-faddeco.png" },
   { name: "Miss Mbouracke", logo: "/collaborateurs/LOGO-MISS-MBOURACKE.png" },
-  { name: "SCI La Promobilière", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
+  { name: "Global Fish RFT", logo: "/collaborateurs/LOGO-GLOBAL-FISH-RFT.png" },
   { name: "Souffle de Vie", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" }
 ];
 
