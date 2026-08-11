@@ -994,8 +994,10 @@ export default function SunuLinkEventsPage() {
         </div>
       </section>
 
-      {/* Inclusion du Footer requis */}
-      <Footer />
+      {/* Wrapper qui force le fond blanc */}
+      <div className="w-full bg-white text-gray-800 border-t border-gray-200">
+        <Footer />
+      </div>
     </div>
   );
 }
