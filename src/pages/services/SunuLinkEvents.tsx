@@ -1,269 +1,521 @@
 import React, { useState } from 'react';
 import { 
-  X, ChevronLeft, ChevronRight, Star, ChevronUp, ChevronDown, 
-  Upload, MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Play
+  Award, 
+  Calendar, 
+  CheckCircle, 
+  ChevronDown, 
+  ChevronLeft, 
+  ChevronRight, 
+  ChevronUp, 
+  Clock, 
+  Compass, 
+  FileText, 
+  Layers, 
+  MapPin, 
+  Megaphone, 
+  Monitor, 
+  Music, 
+  Palette, 
+  Play, 
+  Send, 
+  ShieldCheck, 
+  Sparkles, 
+  Star, 
+  Target, 
+  Upload, 
+  Users, 
+  Video, 
+  X, 
+  Zap 
 } from 'lucide-react';
 
-// ==========================================
-// COMPOSANT FOOTER
-// ==========================================
-function Footer() {
-  return (
-    <footer className="bg-[#0B1220] border-t border-white/10 pt-20 pb-8 text-gray-400 font-sans">
-      <div className="container mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
-          <div className="space-y-6">
-            <h3 className="text-2xl font-serif font-black text-white tracking-wider">
-              SUNULINK <span className="text-[#009CDE]">CONSULTING</span>
-            </h3>
-            <p className="text-sm leading-relaxed">
-              L'excellence dans la gestion de projets, le conseil stratégique et l'organisation d'événements professionnels sur mesure.
-            </p>
-            <div className="flex gap-4 pt-2">
-              <a href="#" className="w-10 h-10 rounded-full bg-[#111827] flex items-center justify-center hover:bg-[#0071BC] hover:text-white transition-all border border-white/5">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#111827] flex items-center justify-center hover:bg-[#0071BC] hover:text-white transition-all border border-white/5">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#111827] flex items-center justify-center hover:bg-[#0071BC] hover:text-white transition-all border border-white/5">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#111827] flex items-center justify-center hover:bg-[#0071BC] hover:text-white transition-all border border-white/5">
-                <Instagram size={18} />
-              </a>
-            </div>
-          </div>
+// Importation obligatoire de l'entête et du pied de page
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-          <div>
-            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6 border-l-2 border-[#F6A61A] pl-3">
-              Liens Rapides
-            </h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#accueil" className="hover:text-[#009CDE] transition-colors">Accueil</a></li>
-              <li><a href="#services" className="hover:text-[#009CDE] transition-colors">Nos Services</a></li>
-              <li><a href="#galerie" className="hover:text-[#009CDE] transition-colors">Portfolio</a></li>
-              <li><a href="#temoignages" className="hover:text-[#009CDE] transition-colors">Témoignages</a></li>
-              <li><a href="#devis" className="hover:text-[#009CDE] transition-colors">Demander un Devis</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6 border-l-2 border-[#F6A61A] pl-3">
-              Expertises
-            </h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-[#009CDE] transition-colors">Événements Corporate</a></li>
-              <li><a href="#" className="hover:text-[#009CDE] transition-colors">Lancements de Produits</a></li>
-              <li><a href="#" className="hover:text-[#009CDE] transition-colors">Séminaires & Formations</a></li>
-              <li><a href="#" className="hover:text-[#009CDE] transition-colors">Développement Web & IT</a></li>
-              <li><a href="#" className="hover:text-[#009CDE] transition-colors">Data Analysis & BI</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6 border-l-2 border-[#F6A61A] pl-3">
-              Contact
-            </h4>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-[#009CDE] shrink-0 mt-0.5" />
-                <span>Dakar, Sénégal</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-[#009CDE] shrink-0" />
-                <a href="tel:+2210000000" className="hover:text-white transition-colors">+221 77 000 00 00</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-[#009CDE] shrink-0" />
-                <a href="mailto:contact@sunulink.sn" className="hover:text-white transition-colors">contact@sunulink.sn</a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <p>
-            &copy; {new Date().getFullYear()} SUNULINK CONSULTING. Tous droits réservés.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
-            <a href="#" className="hover:text-white transition-colors">Politique de Confidentialité</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+// Type pour la gestion du formulaire
+interface DevisFormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  eventTypes: string[];
+  participants: string;
+  services: string[];
+  desiredDate: string;
+  location: string;
+  description: string;
+  files: File[];
 }
 
-// ==========================================
-// COMPOSANT PRINCIPAL DE LA PAGE
-// ==========================================
 export default function SunuLinkEventsPage() {
-  // --- ÉTATS ---
-  const [activeFilter, setActiveFilter] = useState("Tous");
-  const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [openFaq, setOpenFaq] = useState(null);
-  const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', company: '',
-    eventTypes: [], participants: '', services: [],
-    desiredDate: '', location: '', description: '', files: []
+  // États de l'application
+  const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
+  const [activeGalleryFilter, setActiveGalleryFilter] = useState<string>('Tous');
+  const [currentTestimonial, setCurrentTestimonial] = useState<number>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // État du formulaire avec vos informations spécifiques
+  const [formData, setFormData] = useState<DevisFormData>({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    eventTypes: [],
+    participants: '50 à 100',
+    services: [],
+    desiredDate: '',
+    location: '',
+    description: '',
+    files: []
   });
 
-  // --- DONNÉES FACTICES ---
+  // Données - Domaines d'intervention
+  const domainServices = [
+    {
+      id: 'conf',
+      title: 'Conférences & Forums',
+      desc: 'Organisation complète de conférences, colloques, panels, forums et rencontres professionnelles.',
+      icon: <Users className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80',
+      subServices: [
+        'Coordination générale', 'Gestion des intervenants', 'Gestion des inscriptions',
+        'Badges', 'Signalétique', 'Régie technique', 'Captation', 'Streaming', 'Accueil', 'Gestion protocolaire'
+      ]
+    },
+    {
+      id: 'seminaires',
+      title: 'Séminaires d’entreprise',
+      desc: 'Conception de séminaires favorisant la cohésion, la réflexion stratégique et le partage de connaissances.',
+      icon: <Compass className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80',
+      subServices: [
+        'Recherche de lieu', 'Hébergement', 'Transport', 'Pause café', 'Déjeuner', 'Supports', 'Coordination'
+      ]
+    },
+    {
+      id: 'lancements',
+      title: 'Lancements de produits',
+      desc: 'Créer un lancement spectaculaire qui attire l’attention de votre cible et des médias.',
+      icon: <Zap className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80',
+      subServices: [
+        'Concept créatif', 'Mise en scène', 'Invitation', 'Presse', 'Influenceurs', 'Vidéo', 'Animation', 'Branding'
+      ]
+    },
+    {
+      id: 'galas',
+      title: 'Galas & Remises de prix',
+      desc: 'Organisation de cérémonies prestigieuses mettant en valeur les réussites et les talents.',
+      icon: <Award className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&q=80',
+      subServices: [
+        'Décoration', 'Tapis rouge', 'Sonorisation', 'Éclairage', 'Animation', 'Présentateur', 'Captation vidéo', 'Photographie'
+      ]
+    },
+    {
+      id: 'team-building',
+      title: 'Team Building',
+      desc: 'Renforcez la cohésion de vos équipes grâce à des expériences engageantes.',
+      icon: <Users className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80',
+      subServices: [
+        'Jeux collaboratifs', 'Activités sportives', 'Challenges', 'Coaching', 'Animations', 'Soirée d’entreprise'
+      ]
+    },
+    {
+      id: 'salons',
+      title: 'Salons & Expositions',
+      desc: 'Conception et coordination de votre présence sur les salons professionnels.',
+      icon: <Layers className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80',
+      subServices: [
+        'Stand', 'Habillage graphique', 'Signalétique', 'Hôtesses', 'Accueil', 'Mobilier', 'Audiovisuel'
+      ]
+    },
+    {
+      id: 'roadshows',
+      title: 'Roadshows & Tournées',
+      desc: 'Organisation de campagnes itinérantes dans plusieurs villes ou pays.',
+      icon: <MapPin className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80',
+      subServices: [
+        'Logistique', 'Coordination', 'Véhicules', 'Planning', 'Autorisations', 'Promotion'
+      ]
+    },
+    {
+      id: 'brand-exp',
+      title: 'Brand Experience',
+      desc: 'Créer des expériences immersives qui renforcent l’attachement à votre marque.',
+      icon: <Sparkles className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80',
+      subServices: [
+        'Activation de marque', 'Pop-up', 'Expériences interactives', 'Installations immersives', 'Animations digitales'
+      ]
+    },
+    {
+      id: 'hybrides',
+      title: 'Événements hybrides & virtuels',
+      desc: 'Production d’événements combinant présentiel et digital.',
+      icon: <Monitor className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80',
+      subServices: [
+        'Plateforme de diffusion', 'Régie live', 'Streaming HD', 'Interactivité', 'Captation multicaméra'
+      ]
+    },
+    {
+      id: 'sceno',
+      title: 'Décoration & Scénographie',
+      desc: 'Création d’univers visuels adaptés à votre événement.',
+      icon: <Palette className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80',
+      subServices: [
+        'Design de scène', 'Décoration florale', 'Éclairage architectural', 'Mobilier', 'Signalétique', 'Photobooth'
+      ]
+    },
+    {
+      id: 'tech',
+      title: 'Production technique',
+      desc: 'Gestion complète de tous les aspects techniques.',
+      icon: <Music className="w-8 h-8 text-[#009CDE]" />,
+      image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80',
+      subServices: [
+        'Son', 'Lumière', 'LED', 'Écran géant', 'Vidéoprojection', 'Régie', 'Générateur', 'Internet'
+      ]
+    },
+    {
+      id: 'media',
+      title: 'Couverture Média',
+      desc: 'Immortalisez votre événement avec une couverture professionnelle.',
+      icon: <Video className="w-8 h-8 text-[#F6A61A]" />,
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80',
+      subServices: [
+        'Photographie', 'Vidéo', 'Drone', 'Interviews', 'Aftermovie', 'Reels', 'Live social media'
+      ]
+    }
+  ];
+
+  // Timeline - Notre Méthode
   const methodSteps = [
-    { step: '01', title: 'Cadrage & Brief', desc: 'Analyse approfondie de vos objectifs, de votre cible et définition du budget.' },
-    { step: '02', title: 'Conception Stratégique', desc: 'Élaboration du concept créatif et de la ligne directrice de l’événement.' },
-    { step: '03', title: 'Planification', desc: 'Création d’un rétroplanning détaillé et répartition des tâches.' },
-    { step: '04', title: 'Recherche de prestataires', desc: 'Sélection des meilleurs partenaires (lieu, traiteur, technique, animation).' },
-    { step: '05', title: 'Logistique & Technique', desc: 'Gestion des équipements, de la sonorisation, de la lumière et des flux.' },
-    { step: '06', title: 'Communication', desc: 'Création des supports visuels, invitations et plan média si nécessaire.' },
-    { step: '07', title: 'Répétitions & Tests', desc: 'Vérification complète de tous les dispositifs avant le jour J.' },
-    { step: '08', title: 'Coordination Jour J', desc: 'Pilotage sur le terrain par nos équipes pour un déroulement sans accroc.' },
-    { step: '09', title: 'Démontage & Clôture', desc: 'Gestion fluide de la fin de l’événement et remise en état des lieux.' },
-    { step: '10', title: 'Bilan & Analyse', desc: 'Reporting post-événement, analyse des KPI et recueil des feedbacks.' }
+    { num: '01', title: 'Découverte', desc: 'Analyse initiale de vos objectifs, vos cibles et votre vision.' },
+    { num: '02', title: 'Analyse', desc: 'Étude de faisabilité, contraintes budgétaires et logistiques.' },
+    { num: '03', title: 'Concept créatif', desc: 'Élaboration de la ligne directrice, du thème et du storytelling.' },
+    { num: '04', title: 'Planification', desc: 'Retroplanning détaillé, rétro-ingénierie et affectation des équipes.' },
+    { num: '05', title: 'Préparation', desc: 'Réservations, design technique, prospection prestataires.' },
+    { num: '06', title: 'Production', desc: 'Conception des éléments scénographiques et préparation des contenus.' },
+    { num: '07', title: 'Coordination', desc: 'Montage, tests techniques et répétitions générales.' },
+    { num: '08', title: 'Suivi en temps réel', desc: 'Régie direct le jour J, gestion protocolaire et logistique.' },
+    { num: '09', title: 'Post-production', desc: 'Montage vidéo, retouches photos, revues médias.' },
+    { num: '10', title: 'Bilan', desc: 'Rapport d’impact, retours participants et débrieffing client.' }
   ];
 
-  const whyUsData = [
-    { title: 'Excellence Opérationnelle', desc: 'Une rigueur absolue dans l\'exécution pour garantir une expérience fluide et mémorable.' },
-    { title: 'Accompagnement Sur Mesure', desc: 'Chaque événement est pensé et conçu spécifiquement pour répondre à votre ADN.' },
-    { title: 'Technologies Modernes', desc: 'Utilisation des derniers outils numériques pour la gestion et l\'immersion de vos invités.' }
+  // Pourquoi choisir SunuLink Events
+  const whyUs = [
+    { title: 'Approche stratégique', desc: 'Chaque événement est pensé comme un levier de croissance et de notoriété pour votre marque.' },
+    { title: 'Créativité', desc: 'Des concepts uniques et sur mesure qui captivent et marquent les esprits de vos invités.' },
+    { title: 'Excellence opérationnelle', desc: 'Une exécution rigoureuse sans compromis sur la qualité et la sécurité.' },
+    { title: 'Équipe expérimentée', desc: 'Des experts passionnés du secteur événementiel et de la régie technique.' },
+    { title: 'Solutions sur mesure', desc: 'Une adaptabilité totale à votre cahier des charges et à vos contraintes.' },
+    { title: 'Respect des délais', desc: 'Rigueur absolue dans le calendrier de déploiement et la livraison des prestations.' }
   ];
 
-  const filteredGallery = [
-    { id: 1, img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', category: 'Conférences', title: 'Sommet Tech 2025' },
-    { id: 2, img: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', category: 'Team Building', title: 'Retraite Exécutive' },
-    { id: 3, img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', category: 'Gala', title: 'Soirée Annuelle' },
-    { id: 4, img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', category: 'Corporate', title: 'Lancement Produit' }
+  // Galerie
+  const galleryItems = [
+    { id: 1, title: 'Forum Économique', category: 'Conférences', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80' },
+    { id: 2, title: 'Soirée de Gala Annuelle', category: 'Gala', img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&q=80' },
+    { id: 3, title: 'Lancement Tech Innovation', category: 'Lancement', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80' },
+    { id: 4, title: 'Séminaire Leadership', category: 'Séminaires', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80' },
+    { id: 5, title: 'Team Building Nature', category: 'Team Building', img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80' },
+    { id: 6, title: 'Convention Corporate', category: 'Corporate', img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80' }
   ];
 
-  const testimonialsData = [
-    { text: 'SunuLink a métamorphosé notre vision en une réalité époustouflante. L\'organisation était d\'une précision chirurgicale.', name: 'Fatou Sow', role: 'Directrice Communication', company: 'TechCorp Africa', photo: 'https://i.pravatar.cc/150?img=5' },
-    { text: 'Un partenaire de confiance qui comprend l\'urgence et l\'exigence du monde corporate. Nous les recommandons les yeux fermés.', name: 'Moussa Diop', role: 'CEO', company: 'Innovate SN', photo: 'https://i.pravatar.cc/150?img=11' }
+  const galleryFilters = ['Tous', 'Corporate', 'Conférences', 'Séminaires', 'Gala', 'Lancement', 'Team Building'];
+
+  const filteredGallery = activeGalleryFilter === 'Tous' 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === activeGalleryFilter);
+
+  // Témoignages (SANS PHOTOS selon les instructions)
+  const testimonials = [
+    {
+      name: 'Fatou Sow',
+      role: 'Directrice Communication',
+      company: 'TechCorp Africa',
+      text: 'SunuLink a métamorphosé notre vision en une réalité époustouflante. L’organisation était d’une précision chirurgicale.'
+    },
+    {
+      name: 'Ousmane Diallo',
+      role: 'Chef de Projet Événementiel',
+      company: 'Banque Régionale',
+      text: 'Un partenaire de confiance absolu. La régie technique et la scénographie ont impressionné l’ensemble de nos invités VIP.'
+    },
+    {
+      name: 'Aïssatou Ba',
+      role: 'Responsable RSE',
+      company: 'Groupement Industriel',
+      text: 'Excellence, réactivité et créativité. SunuLink Events a su gérer notre forum international avec un professionnalisme remarquable.'
+    }
   ];
 
-  const faqData = [
-    { q: 'Quels types d\'événements organisez-vous ?', a: 'Nous couvrons un large spectre : séminaires d\'entreprise, lancements de produits, soirées de gala, conférences internationales, et team buildings sur mesure.' },
-    { q: 'Comment obtenir un devis personnalisé ?', a: 'Il vous suffit de remplir le formulaire détaillé situé en bas de cette page. Notre équipe vous recontactera sous 24h avec une proposition adaptée.' },
-    { q: 'Gérez-vous la partie technique (son, lumière, vidéo) ?', a: 'Absolument. Nous disposons d\'un réseau de partenaires techniques premium pour assurer une captation et une diffusion de très haute qualité.' }
+  // FAQ
+  const faqs = [
+    { q: 'Proposez-vous une organisation complète de A à Z ?', a: 'Oui, nous gérons la totalité de votre événement : de la réflexion stratégique initiale, la scénographie, jusqu’à la régie technique et la post-production.' },
+    { q: 'Intervenez-vous partout au Sénégal ?', a: 'Absolument. Nos équipes logistiques et techniques se déplacent sur l’ensemble du territoire national (Dakar, Thiès, Saint-Louis, Saly, Ziguinchor, etc.).' },
+    { q: 'Organisez-vous des événements internationaux ?', a: 'Oui, nous accompagnons les organisations internationales et entreprises dans la sous-région et au-delà grâce à notre réseau de partenaires certifiés.' },
+    { q: 'Quels sont vos délais de prise en charge ?', a: 'Bien que nous recommandions un délai de 2 à 3 mois pour les grands forums, nos équipes sont capables de déployer des événements en urgence sous 2 à 3 semaines.' },
+    { q: 'Gérez-vous le protocole et les invités de marque (VIP) ?', a: 'Oui, nous disposons d’une équipe dédiée à l’accueil protocolaire, aux invitations personnalisées et à la sécurité des personnalités hautes autorités.' },
+    { q: 'La production audiovisuelle est-elle incluse dans vos offres ?', a: 'Oui, nous disposons de nos propres équipements de captation, régies multicaméras HD/4K, écrans LED et drones.' },
+    { q: 'Assurez-vous la communication média autour de l’événement ?', a: 'En lien étroit avec la branche SunuLink Consulting, nous élaborons le plan média, les relations presse, la gestion des réseaux sociaux et le live streaming.' }
   ];
 
-  // --- COMPOSANTS UTILITAIRES ---
-  const AnimatedCounter = ({ end, suffix }) => <span>{end}{suffix}</span>;
-  const Button = ({ children, className, onClick, type = "button" }) => (
-    <button type={type} onClick={onClick} className={className}>{children}</button>
-  );
+  // Listes d'options pour le formulaire
+  const allEventTypes = [
+    'Conférence', 'Forum', 'Séminaire', 'Gala', 'Lancement de produit',
+    'Salon', 'Exposition', 'Team Building', 'Roadshow', 'Activité RSE',
+    'Soirée d’entreprise', 'Assemblée générale', 'Cérémonie officielle',
+    'Festival', 'Événement sportif', 'Événement culturel', 'Mariage premium',
+    'Anniversaire VIP', 'Autre'
+  ];
 
-  // --- FONCTIONS LOGIQUES ---
-  const nextTestimonial = () => setCurrentTestimonial((prev) => (prev + 1) % testimonialsData.length);
-  const prevTestimonial = () => setCurrentTestimonial((prev) => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
+  const allServicesOptions = [
+    'Organisation complète', 'Coordination le jour J', 'Recherche de lieu', 'Décoration',
+    'Scénographie', 'Mobilier', 'Sonorisation', 'Éclairage', 'Écrans LED',
+    'Captation photo', 'Captation vidéo', 'Drone', 'Streaming', 'Animation',
+    'Maître de cérémonie', 'Hôtesses d’accueil', 'Sécurité', 'Restauration',
+    'Signalétique', 'Impression des supports', 'Cadeaux personnalisés',
+    'Communication de l’événement', 'Gestion des invitations', 'Gestion des inscriptions', 'Autre'
+  ];
 
-  const handleCheckboxChange = (group, value) => {
-    setFormData(prev => {
-      const current = prev[group];
-      const updated = current.includes(value) ? current.filter(item => item !== value) : [...current, value];
-      return { ...prev, [group]: updated };
-    });
-  };
-
-  const handleFileChange = (e) => {
-    const newFiles = Array.from(e.target.files);
-    setFormData(prev => ({ ...prev, files: [...prev.files, ...newFiles] }));
-  };
-
-  const removeFile = (idx) => {
+  // Handlers du formulaire
+  const handleEventTypeToggle = (type: string) => {
     setFormData(prev => ({
       ...prev,
-      files: prev.files.filter((_, i) => i !== idx)
+      eventTypes: prev.eventTypes.includes(type)
+        ? prev.eventTypes.filter(t => t !== type)
+        : [...prev.eventTypes, type]
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Formulaire soumis :", formData);
-    alert("Votre demande de devis a été envoyée avec succès !");
+  const handleServiceToggle = (service: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter(s => s !== service)
+        : [...prev.services, service]
+    }));
   };
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFormData(prev => ({ ...prev, files: [...prev.files, ...newFiles] }));
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      files: prev.files.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert('Votre demande de devis sur mesure a bien été transmise à l’équipe SunuLink Events !');
+  };
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="font-sans min-h-screen bg-[#0B1220] text-white">
-      
+    <div className="bg-[#0B1220] text-[#EAEAEA] font-['Lato',sans-serif] min-h-screen selection:bg-[#009CDE] selection:text-white">
+      {/* Inclusion du Header requis */}
+      <Header />
+
       {/* ==========================================
-          HERO SECTION (Vidéographique)
+          HERO SECTION (Vidéo full screen + Design réaligné)
       ========================================== */}
-      <section id="accueil" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Arrière-plan Vidéo */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Fond Vidéo */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
-            className="object-cover w-full h-full opacity-40"
+            className="w-full h-full object-cover"
           >
-            {/* Remplacez par le lien de votre vraie vidéo */}
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-and-a-crowd-at-a-concert-42828-large.mp4" type="video/mp4" />
           </video>
-          {/* Overlay dégradé pour améliorer la lisibilité du texte */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/80 via-[#0B1220]/50 to-[#0B1220]"></div>
+          {/* Overlay sombre à 60% */}
+          <div className="absolute inset-0 bg-[#0B1220]/60 backdrop-blur-[1px]" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 max-w-5xl text-center">
-          <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-[#009CDE] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">
-            Créateurs d'expériences
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif font-black uppercase leading-tight mb-6">
-            L'Art de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#009CDE] to-[#F6A61A]">l'Événement</span> Corporate
+        <div className="container mx-auto px-6 relative z-10 text-center py-20 max-w-5xl">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0071BC]/30 border border-[#009CDE]/40 backdrop-blur-md mb-8 animate-pulse">
+            <Sparkles className="w-4 h-4 text-[#F6A61A]" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#EAEAEA]">
+              Organisation • Production • Expérience
+            </span>
+          </div>
+
+          {/* Titre principal inspiré du visuel fourni */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-['Balgor',serif] uppercase tracking-tight text-white leading-tight mb-6">
+            L'ART DE <br className="hidden sm:inline" />
+            <span className="text-[#009CDE]">L'ÉVÉNEMENT </span>
+            <span className="text-[#F6A61A]">CORPORATE</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
-            De la conception stratégique à la réalisation technique, nous concevons des événements immersifs qui marquent les esprits et propulsent votre marque.
+
+          {/* Sous-titre */}
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+            Nous imaginons, concevons et réalisons des événements qui valorisent votre image, fédèrent vos publics et créent des expériences mémorables. De la stratégie à l’exécution, nous transformons chaque projet en un moment d’exception.
           </p>
+
+          {/* Boutons d'action */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              onClick={() => scrollToSection("devis")}
-              className="w-full sm:w-auto bg-[#F6A61A] hover:bg-white hover:text-[#0B1220] text-white font-bold px-8 py-4 rounded-full text-sm uppercase tracking-wider transition-all"
+            <button
+              onClick={() => scrollToSection('devis')}
+              className="w-full sm:w-auto px-8 py-4 bg-[#F6A61A] hover:bg-[#0071BC] text-white font-bold uppercase tracking-wider rounded-full shadow-lg hover:shadow-[#F6A61A]/30 transition-all duration-300 text-sm"
             >
               Demander un devis
-            </Button>
-            <Button 
-              onClick={() => scrollToSection("galerie")}
-              className="w-full sm:w-auto bg-transparent border border-white/30 hover:bg-white/10 text-white font-bold px-8 py-4 rounded-full text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+            </button>
+            <button
+              onClick={() => scrollToSection('realisations')}
+              className="w-full sm:w-auto px-8 py-4 border border-white/30 bg-black/30 hover:bg-white/10 text-white font-bold uppercase tracking-wider rounded-full backdrop-blur-md transition-all duration-300 text-sm flex items-center justify-center gap-2"
             >
-              <Play size={16} /> Voir nos réalisations
-            </Button>
+              <Play className="w-4 h-4 text-[#F6A61A]" /> Voir nos réalisations
+            </button>
           </div>
         </div>
       </section>
 
       {/* ==========================================
-          SECTION : NOTRE MÉTHODE (Timeline 10 étapes)
+          SECTION : NOTRE VISION
       ========================================== */}
-      <section id="services" className="py-24 px-6 bg-[#111827] border-t border-white/5">
-        <div className="container mx-auto max-w-7xl text-center mb-16">
-          <span className="text-[#009CDE] font-bold text-xs uppercase tracking-widest">Processus d'Excellence</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase mt-2">Notre Méthode</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mt-4">10 étapes structurées pour une exécution fluide et sans imprévu.</p>
+      <section className="py-24 px-6 bg-[#111827] border-t border-white/5">
+        <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="text-[#009CDE] font-bold text-xs uppercase tracking-widest block mb-2">Notre Vision</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mb-6 leading-tight">
+              Créer des événements qui marquent les esprits.
+            </h2>
+            <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+              <p>
+                Chaque événement est une opportunité unique de raconter votre histoire, de valoriser votre identité et de renforcer votre notoriété.
+              </p>
+              <p>
+                Chez <strong className="text-white">SunuLink Events</strong>, nous réunissons stratégie, créativité, production et excellence opérationnelle afin de concevoir des expériences qui génèrent de l’émotion, de l’engagement et des résultats durables.
+              </p>
+              <p className="border-l-4 border-[#F6A61A] pl-4 text-white font-medium italic">
+                Notre ambition est de transformer chaque événement en un véritable levier de communication et de développement.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
+            <img
+              src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80"
+              alt="Réunion d'équipe planification événement"
+              className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent opacity-80" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="text-[#F6A61A] text-xs font-bold uppercase tracking-widest block">Stratégie & Rigueur</span>
+              <p className="text-white font-serif text-lg">Conception & organisation au millimètre près.</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="container mx-auto max-w-5xl">
-          <div className="relative border-l-2 border-[#0071BC]/40 ml-4 md:ml-32 space-y-12">
-            {methodSteps.map((stepItem, idx) => (
-              <div key={idx} className="relative pl-8 md:pl-12 group">
-                {/* Pastille Numéro */}
-                <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#0071BC] text-white font-black text-xs flex items-center justify-center border-4 border-[#111827] group-hover:bg-[#F6A61A] transition-colors">
-                  {stepItem.step}
+      {/* ==========================================
+          SECTION : NOS DOMAINES D'INTERVENTION
+      ========================================== */}
+      <section className="py-24 px-6 bg-[#0B1220]">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Savoir-Faire Complète</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              Nos Domaines d'Intervention
+            </h2>
+            <p className="text-gray-400 mt-4">Des prestations globales adaptées aux exigences des institutions, entreprises et grands groupes.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {domainServices.map((domain) => (
+              <div
+                key={domain.id}
+                className="bg-[#111827] border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-[#009CDE]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl group"
+              >
+                <div>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={domain.image}
+                      alt={domain.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/40 to-transparent" />
+                    <div className="absolute top-4 left-4 bg-[#0B1220]/80 backdrop-blur-md p-3 rounded-2xl border border-white/10">
+                      {domain.icon}
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold font-['Balgor',serif] text-white mb-2">{domain.title}</h3>
+                    <p className="text-sm text-gray-400 mb-6">{domain.desc}</p>
+
+                    <div className="border-t border-white/5 pt-4">
+                      <span className="text-xs font-bold uppercase text-[#009CDE] block mb-3">Sous-services inclus :</span>
+                      <ul className="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                        {domain.subServices.map((sub, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <CheckCircle className="w-3 h-3 text-[#F6A61A] shrink-0" />
+                            <span className="truncate">{sub}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="bg-[#0B1220] border border-white/10 p-6 rounded-2xl hover:border-[#009CDE]/50 transition-all">
-                  <h3 className="text-lg font-serif font-bold text-[#009CDE] mb-1">{stepItem.title}</h3>
-                  <p className="text-sm text-gray-300 leading-relaxed">{stepItem.desc}</p>
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => scrollToSection('devis')}
+                    className="w-full py-3 rounded-xl bg-white/5 hover:bg-[#0071BC] text-white font-bold text-xs uppercase tracking-wider transition-colors border border-white/10"
+                  >
+                    En savoir plus
+                  </button>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          SECTION : NOTRE MÉTHODE (Timeline)
+      ========================================== */}
+      <section className="py-24 px-6 bg-[#111827] border-t border-white/5">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#009CDE] font-bold text-xs uppercase tracking-widest">Processus Qualité</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              Notre Méthode
+            </h2>
+            <p className="text-gray-400 mt-4">Une méthodologie structurée en 10 étapes clés pour garantir la réussite totale de votre événement.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {methodSteps.map((step) => (
+              <div
+                key={step.num}
+                className="bg-[#0B1220] border border-white/10 p-6 rounded-2xl relative hover:border-[#F6A61A] transition-all group"
+              >
+                <span className="text-3xl font-black font-['Balgor',serif] text-[#F6A61A] block mb-2">{step.num}</span>
+                <h4 className="text-base font-bold text-white mb-2">{step.title}</h4>
+                <p className="text-xs text-gray-400 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -273,53 +525,58 @@ export default function SunuLinkEventsPage() {
       {/* ==========================================
           SECTION : POURQUOI CHOISIR SUNULINK EVENTS ?
       ========================================== */}
-      <section className="py-24 px-6 bg-[#EAEAEA] text-[#111827]">
-        <div className="container mx-auto max-w-7xl text-center mb-16">
-          <span className="text-[#0071BC] font-extrabold text-xs uppercase tracking-widest">Atouts Clés</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-black text-[#0B1220] uppercase mt-2">Pourquoi nous choisir ?</h2>
-        </div>
+      <section className="py-24 px-6 bg-[#0B1220]">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Nos Atouts</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              Pourquoi choisir SunuLink Events ?
+            </h2>
+          </div>
 
-        <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {whyUsData.map((item, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#0071BC]/10 text-[#0071BC] flex items-center justify-center font-bold text-xl mb-6">
-                0{idx + 1}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyUs.map((item, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-3xl bg-[#111827] border border-white/10 hover:border-[#009CDE] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#0071BC]/20 flex items-center justify-center text-[#009CDE] mb-6">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold font-['Balgor',serif] text-white mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#0B1220] mb-3">{item.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ==========================================
-          SECTION : CHIFFRES CLÉS
+          SECTION : CHIFFRES CLÉS (DIMINUÉS POUR DÉBUTANTS)
+          Inspiré du visuel fourni (fond bleu #0071BC)
       ========================================== */}
-      <section className="py-20 px-6 bg-[#0071BC] text-white">
-        <div className="container mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="p-4">
-            <h3 className="text-4xl sm:text-6xl font-serif font-black text-[#F6A61A] mb-2">
-              <AnimatedCounter end={120} suffix="+" />
-            </h3>
-            <p className="text-sm font-bold uppercase tracking-wider text-gray-100">Événements</p>
-          </div>
-          <div className="p-4">
-            <h3 className="text-4xl sm:text-6xl font-serif font-black text-[#F6A61A] mb-2">
-              <AnimatedCounter end={85} suffix="+" />
-            </h3>
-            <p className="text-sm font-bold uppercase tracking-wider text-gray-100">Clients</p>
-          </div>
-          <div className="p-4">
-            <h3 className="text-4xl sm:text-6xl font-serif font-black text-[#F6A61A] mb-2">
-              <AnimatedCounter end={4500} suffix="h" />
-            </h3>
-            <p className="text-sm font-bold uppercase tracking-wider text-gray-100">Heures produites</p>
-          </div>
-          <div className="p-4">
-            <h3 className="text-4xl sm:text-6xl font-serif font-black text-[#F6A61A] mb-2">
-              <AnimatedCounter end={99} suffix="%" />
-            </h3>
-            <p className="text-sm font-bold uppercase tracking-wider text-gray-100">Satisfaction</p>
+      <section className="py-16 px-6 bg-[#0071BC] text-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {/* Valeurs fortement diminuées selon la demande */}
+            <div>
+              <p className="text-4xl sm:text-6xl font-black font-['Balgor',serif] text-[#F6A61A] mb-2">15+</p>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">Événements</p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-6xl font-black font-['Balgor',serif] text-[#F6A61A] mb-2">10+</p>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">Clients</p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-6xl font-black font-['Balgor',serif] text-[#F6A61A] mb-2">350h</p>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">Heures Produites</p>
+            </div>
+            <div>
+              <p className="text-4xl sm:text-6xl font-black font-['Balgor',serif] text-[#F6A61A] mb-2">100%</p>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">Satisfaction</p>
+            </div>
           </div>
         </div>
       </section>
@@ -327,298 +584,418 @@ export default function SunuLinkEventsPage() {
       {/* ==========================================
           SECTION : GALERIE
       ========================================== */}
-      <section id="galerie" className="py-24 px-6 bg-[#0B1220]">
-        <div className="container mx-auto max-w-7xl text-center mb-12">
-          <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Portfolio Premium</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase mt-2">Galerie de Réalisations</h2>
+      <section id="realisations" className="py-24 px-6 bg-[#0B1220]">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-[#009CDE] font-bold text-xs uppercase tracking-widest">Portfolio</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              Galerie nos Réalisations
+            </h2>
+          </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
-            {["Tous", "Corporate", "Conférences", "Team Building", "Gala"].map((filter) => (
+          {/* Filtres */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {galleryFilters.map((filter) => (
               <button
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${
-                  activeFilter === filter 
-                    ? "bg-[#009CDE] text-white shadow-lg shadow-[#009CDE]/30" 
-                    : "bg-[#111827] text-gray-400 hover:bg-white/10"
+                onClick={() => setActiveGalleryFilter(filter)}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                  activeGalleryFilter === filter
+                    ? 'bg-[#F6A61A] text-white shadow-lg'
+                    : 'bg-[#111827] text-gray-400 hover:text-white border border-white/10'
                 }`}
               >
                 {filter}
               </button>
             ))}
           </div>
-        </div>
 
-        <div className="container mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredGallery
-            .filter(item => activeFilter === "Tous" || item.category === activeFilter)
-            .map((item) => (
-            <div 
-              key={item.id} 
-              onClick={() => setSelectedGalleryImg(item.img)}
-              className="group relative h-72 rounded-2xl overflow-hidden cursor-pointer border border-white/10 bg-[#111827]"
-            >
-              <img 
-                src={item.img} 
-                alt={item.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#F6A61A] bg-black/40 px-2 py-1 rounded-md backdrop-blur-sm">
-                  {item.category}
-                </span>
-                <h4 className="text-white text-base font-bold mt-2 font-serif">{item.title}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {selectedGalleryImg && (
-          <div 
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md animate-in fade-in"
-            onClick={() => setSelectedGalleryImg(null)}
-          >
-            <button 
-              className="absolute top-6 right-6 text-white bg-[#F6A61A] p-3 rounded-full hover:bg-white hover:text-[#0B1220] transition-all"
-              onClick={() => setSelectedGalleryImg(null)}
-            >
-              <X size={28} />
-            </button>
-            <img 
-              src={selectedGalleryImg} 
-              alt="Zoom Réalisation" 
-              className="max-w-full max-h-[85vh] rounded-2xl shadow-2xl border border-white/20 object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-        )}
-      </section>
-
-      {/* ==========================================
-          SECTION : TÉMOIGNAGES (Slider)
-      ========================================== */}
-      <section id="temoignages" className="py-24 px-6 bg-[#EAEAEA] text-[#111827]">
-        <div className="container mx-auto max-w-4xl text-center">
-          <span className="text-[#0071BC] font-extrabold text-xs uppercase tracking-widest">Avis Clients</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-black text-[#0B1220] uppercase mt-2 mb-12">Ils Nous Font Confiance</h2>
-
-          <div className="relative bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-gray-200">
-            <div className="flex justify-center mb-6 text-[#F6A61A]">
-              {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="#F6A61A" />)}
-            </div>
-
-            <p className="text-gray-700 text-lg sm:text-xl italic mb-8 leading-relaxed">
-              "{testimonialsData[currentTestimonial].text}"
-            </p>
-
-            <div className="flex items-center justify-center gap-4">
-              <img 
-                src={testimonialsData[currentTestimonial].photo} 
-                alt={testimonialsData[currentTestimonial].name} 
-                className="w-14 h-14 rounded-full object-cover border-2 border-[#0071BC]"
-              />
-              <div className="text-left">
-                <h4 className="font-serif font-bold text-[#0B1220] text-base">{testimonialsData[currentTestimonial].name}</h4>
-                <p className="text-xs text-gray-500">{testimonialsData[currentTestimonial].role} - <span className="text-[#0071BC] font-semibold">{testimonialsData[currentTestimonial].company}</span></p>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-100">
-              <button onClick={prevTestimonial} className="p-3 bg-gray-100 rounded-full hover:bg-[#0071BC] hover:text-white transition-all">
-                <ChevronLeft size={20} />
-              </button>
-              <div className="flex gap-2">
-                {testimonialsData.map((_, i) => (
-                  <span 
-                    key={i} 
-                    className={`h-2 rounded-full transition-all ${i === currentTestimonial ? "w-8 bg-[#0071BC]" : "w-2 bg-gray-300"}`}
-                  ></span>
-                ))}
-              </div>
-              <button onClick={nextTestimonial} className="p-3 bg-gray-100 rounded-full hover:bg-[#0071BC] hover:text-white transition-all">
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          SECTION : FAQ
-      ========================================== */}
-      <section className="py-24 px-6 bg-[#0B1220]">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Foire Aux Questions</span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase mt-2">Questions Fréquentes</h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqData.map((item, idx) => (
-              <div key={idx} className="bg-[#111827] border border-white/10 rounded-2xl overflow-hidden transition-all">
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-6 text-left font-serif font-bold text-lg flex items-center justify-between text-white hover:text-[#009CDE] transition-colors"
-                >
-                  <span>{item.q}</span>
-                  {openFaq === idx ? <ChevronUp size={20} className="text-[#F6A61A]" /> : <ChevronDown size={20} />}
-                </button>
-                {openFaq === idx && (
-                  <div className="px-6 pb-6 text-sm text-gray-300 border-t border-white/5 pt-4 leading-relaxed">
-                    {item.a}
-                  </div>
-                )}
+          {/* Grille Mosaïque */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredGallery.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setSelectedGalleryImg(item.img)}
+                className="group relative h-72 rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-lg hover:border-[#009CDE]/50 transition-all"
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/30 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="text-xs font-bold uppercase text-[#F6A61A] mb-1">{item.category}</span>
+                  <h4 className="text-lg font-['Balgor',serif] font-bold text-white">{item.title}</h4>
+                </div>
               </div>
             ))}
           </div>
+
+          {/* Lightbox Modal */}
+          {selectedGalleryImg && (
+            <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+              <button
+                onClick={() => setSelectedGalleryImg(null)}
+                className="absolute top-6 right-6 text-white hover:text-[#F6A61A] transition-colors p-2 bg-white/10 rounded-full"
+              >
+                <X className="w-7 h-7" />
+              </button>
+              <img
+                src={selectedGalleryImg}
+                alt="Agrandissement"
+                className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/20"
+              />
+            </div>
+          )}
         </div>
       </section>
 
       {/* ==========================================
-          SECTION : DEMANDE DE DEVIS COMPLÈTE
+          SECTION : VIDÉO DÉMONSTRATION
       ========================================== */}
-      <section id="devis" className="py-24 px-6 bg-[#111827]">
-        <div className="container mx-auto max-w-5xl bg-[#0B1220] border border-white/10 p-8 sm:p-12 rounded-3xl shadow-2xl">
-          <div className="text-center mb-12">
-            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Sur Mesure</span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase mt-2">Demander un Devis Events</h2>
-            <p className="text-gray-400 text-sm mt-2">Complétez vos besoins spécifiques pour recevoir une proposition détaillée.</p>
+      <section className="py-24 px-6 bg-[#111827] border-t border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Immersion</span>
+          <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2 mb-12">
+            Découvrez l’expérience SunuLink Events
+          </h2>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0B1220] aspect-video">
+            <video
+              controls
+              poster="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80"
+              className="w-full h-full object-cover"
+            >
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-and-a-crowd-at-a-concert-42828-large.mp4" type="video/mp4" />
+              Votre navigateur ne supporte pas le lecteur vidéo.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          SECTION : TÉMOIGNAGES (SUPPRESSION DES IMAGES COMME DEMANDÉ)
+      ========================================== */}
+      <section className="py-24 px-6 bg-[#0B1220]">
+        <div className="container mx-auto max-w-4xl text-center">
+          <span className="text-[#009CDE] font-bold text-xs uppercase tracking-widest block mb-2">Avis Clients</span>
+          <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mb-16">
+            ILS NOUS FONT CONFIANCE
+          </h2>
+
+          <div className="relative bg-[#111827] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
+            <div className="flex flex-col items-center text-center space-y-6">
+              {/* Étoiles de notation */}
+              <div className="flex gap-1 text-[#F6A61A]">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-current" />
+                ))}
+              </div>
+
+              {/* Texte du témoignage */}
+              <p className="text-lg sm:text-2xl italic text-gray-200 leading-relaxed font-serif max-w-2xl">
+                "{testimonials[currentTestimonial].text}"
+              </p>
+
+              {/* Infos client SANS IMAGE */}
+              <div>
+                <h4 className="text-xl font-bold text-white font-['Balgor',serif]">{testimonials[currentTestimonial].name}</h4>
+                <p className="text-sm text-[#009CDE] font-medium">
+                  {testimonials[currentTestimonial].role} — <span className="text-gray-400">{testimonials[currentTestimonial].company}</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div className="flex justify-between items-center absolute inset-x-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <button
+                onClick={() => setCurrentTestimonial(prev => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                className="pointer-events-auto p-3 bg-white/10 hover:bg-[#0071BC] text-white rounded-full backdrop-blur-md transition-all"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={() => setCurrentTestimonial(prev => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                className="pointer-events-auto p-3 bg-white/10 hover:bg-[#0071BC] text-white rounded-full backdrop-blur-md transition-all"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          SECTION : FAQ INTERACTIVE
+      ========================================== */}
+      <section className="py-24 px-6 bg-[#111827] border-t border-white/5">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Questions Fréquentes</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              Faq
+            </h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="bg-[#0B1220] border border-white/10 rounded-2xl overflow-hidden transition-all">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex justify-between items-center gap-4 hover:text-[#009CDE] transition-colors"
+                  >
+                    <span className="font-['Balgor',serif] font-bold text-lg text-white">{faq.q}</span>
+                    {isOpen ? <ChevronUp className="w-5 h-5 text-[#F6A61A] shrink-0" /> : <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />}
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-gray-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          SECTION : FORMULAIRE DE DEVIS SUR MESURE
+          Inspiré du visuel et avec vos données remplacées
+      ========================================== */}
+      <section id="devis" className="py-24 px-6 bg-[#0B1220]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <span className="text-[#F6A61A] font-bold text-xs uppercase tracking-widest">Sur Mesure</span>
+            <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase text-white mt-2">
+              DEMANDER UN DEVIS EVENTS
+            </h2>
+            <p className="text-gray-400 mt-4">Complétez vos besoins spécifiques pour recevoir une proposition détaillée sous 24h.</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="bg-[#111827] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-10">
+            {/* Champs avec vos valeurs spécifiques demandées */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Nom complet *</label>
-                <input 
-                  type="text" required 
-                  value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
-                  placeholder="Ex: Babacar Diop"
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">NOM COMPLET *</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
+                  placeholder="Ex: Birahim BASSE"
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Email *</label>
-                <input 
-                  type="email" required 
-                  value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
-                  placeholder="Ex: contact@entreprise.sn"
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">EMAIL *</label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
+                  placeholder="Ex: contact@sunulink.sn"
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Téléphone *</label>
-                <input 
-                  type="tel" required 
-                  value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
-                  placeholder="+221 77 000 00 00"
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">TÉLÉPHONE *</label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
+                  placeholder="Ex: +221 71 008 59 15"
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Entreprise / Organisation</label>
-                <input 
-                  type="text" 
-                  value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">ENTREPRISE / ORGANISATION</label>
+                <input
+                  type="text"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
                   placeholder="Nom de votre structure"
                 />
               </div>
             </div>
 
+            {/* Type d'événement (Multi-check) */}
             <div>
-              <label className="block text-sm font-serif font-bold text-[#F6A61A] mb-4 uppercase">Type d’événement</label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                {["Conférence", "Séminaire", "Gala", "Lancement", "Team Building", "Exposition", "Autre"].map((type) => (
-                  <label key={type} className="flex items-center gap-2 bg-[#111827] p-3 rounded-xl border border-white/5 cursor-pointer hover:border-[#009CDE] text-xs">
-                    <input 
-                      type="checkbox" 
-                      checked={formData.eventTypes.includes(type)}
-                      onChange={() => handleCheckboxChange('eventTypes', type)}
-                      className="accent-[#0071BC]"
-                    />
-                    <span>{type}</span>
-                  </label>
-                ))}
+              <label className="block text-xs font-bold uppercase text-[#F6A61A] mb-4">TYPE D'ÉVÉNEMENT</label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                {allEventTypes.map((type) => {
+                  const isChecked = formData.eventTypes.includes(type);
+                  return (
+                    <button
+                      type="button"
+                      key={type}
+                      onClick={() => handleEventTypeToggle(type)}
+                      className={`p-3 rounded-xl border text-xs font-medium text-left transition-all ${
+                        isChecked
+                          ? 'bg-[#0071BC] border-[#009CDE] text-white'
+                          : 'bg-[#0B1220] border-white/10 text-gray-400 hover:border-white/30'
+                      }`}
+                    >
+                      {type}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
+            {/* Nombre de participants */}
             <div>
-              <label className="block text-sm font-serif font-bold text-[#F6A61A] mb-4 uppercase">Nombre de participants</label>
+              <label className="block text-xs font-bold uppercase text-gray-300 mb-3">NOMBRE DE PARTICIPANTS</label>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                {["< 50", "50 à 100", "100 à 300", "300 à 500", "> 500"].map((range) => (
-                  <label key={range} className={`p-3 rounded-xl border cursor-pointer text-center text-xs font-bold transition-all ${
-                    formData.participants === range ? "bg-[#0071BC] border-[#009CDE] text-white" : "bg-[#111827] border-white/5 text-gray-300 hover:border-white/20"
-                  }`}>
-                    <input 
-                      type="radio" name="participants" value={range} 
-                      onChange={(e) => setFormData({...formData, participants: e.target.value})}
-                      className="hidden" 
-                    />
-                    <span>{range}</span>
-                  </label>
+                {['Moins de 50', '50 à 100', '100 à 300', '300 à 500', 'Plus de 1000'].map((p) => (
+                  <button
+                    type="button"
+                    key={p}
+                    onClick={() => setFormData({ ...formData, participants: p })}
+                    className={`py-3 px-2 rounded-xl border text-xs font-bold transition-all text-center ${
+                      formData.participants === p
+                        ? 'bg-[#F6A61A] border-[#F6A61A] text-white'
+                        : 'bg-[#0B1220] border-white/10 text-gray-400 hover:border-white/30'
+                    }`}
+                  >
+                    {p}
+                  </button>
                 ))}
               </div>
             </div>
 
+            {/* Prestations souhaitées */}
+            <div>
+              <label className="block text-xs font-bold uppercase text-[#F6A61A] mb-4">PRESTATIONS SOUHAITÉES</label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                {allServicesOptions.map((serv) => {
+                  const isChecked = formData.services.includes(serv);
+                  return (
+                    <button
+                      type="button"
+                      key={serv}
+                      onClick={() => handleServiceToggle(serv)}
+                      className={`p-3 rounded-xl border text-xs font-medium text-left transition-all ${
+                        isChecked
+                          ? 'bg-[#009CDE] border-[#009CDE] text-white'
+                          : 'bg-[#0B1220] border-white/10 text-gray-400 hover:border-white/30'
+                      }`}
+                    >
+                      {serv}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Date et Lieu */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Date souhaitée</label>
-                <input 
-                  type="date" 
-                  value={formData.desiredDate} onChange={(e) => setFormData({...formData, desiredDate: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">DATE SOUHAITÉE</label>
+                <input
+                  type="date"
+                  value={formData.desiredDate}
+                  onChange={(e) => setFormData({ ...formData, desiredDate: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Lieu pressenti</label>
-                <input 
-                  type="text" 
-                  value={formData.location} onChange={(e) => setFormData({...formData, location: e.target.value})}
-                  className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
-                  placeholder="Ex: Dakar, Saly..."
+                <label className="block text-xs font-bold uppercase text-gray-300 mb-2">LIEU ENVISAGÉ</label>
+                <input
+                  type="text"
+                  value={formData.location}
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
+                  placeholder="Ex: Dakar, Saly, Saint-Louis..."
                 />
               </div>
             </div>
 
+            {/* Description du projet */}
             <div>
-              <label className="block text-xs font-bold uppercase text-gray-300 mb-2">Description du projet</label>
-              <textarea 
-                rows={4}
-                value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})}
-                className="w-full bg-[#111827] border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-[#009CDE]"
-                placeholder="Détaillez vos attentes..."
-              ></textarea>
+              <label className="block text-xs font-bold uppercase text-gray-300 mb-2">DESCRIPTION DU PROJET</label>
+              <textarea
+                rows={5}
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="w-full bg-[#0B1220] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-[#009CDE] text-sm"
+                placeholder="Décrivez vos besoins spécifiques, vos enjeux, votre public cible..."
+              />
             </div>
 
-            <Button type="submit" className="w-full bg-[#F6A61A] hover:bg-[#0071BC] text-white font-bold py-6 rounded-2xl text-lg shadow-xl shadow-[#F6A61A]/20 transition-all">
-              Envoyer ma demande de devis
-            </Button>
+            {/* Upload Fichiers */}
+            <div>
+              <label className="block text-xs font-bold uppercase text-gray-300 mb-2">PIÈCES JOINTES (Cahier des charges, brief...)</label>
+              <div className="border-2 border-dashed border-white/10 hover:border-[#009CDE] rounded-2xl p-6 text-center bg-[#0B1220] cursor-pointer relative transition-colors">
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleFileChange}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
+                <p className="text-sm text-gray-300 font-medium">Glissez-déposez vos fichiers ici ou cliquez pour parcourir</p>
+                <p className="text-xs text-gray-500 mt-1">Formats acceptés : PDF, WORD, EXCEL, POWERPOINT, ZIP, IMAGES</p>
+              </div>
+
+              {formData.files.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {formData.files.map((file, i) => (
+                    <li key={i} className="flex items-center justify-between text-xs bg-[#0B1220] px-4 py-2 rounded-lg border border-white/10">
+                      <span className="truncate text-gray-300">{file.name}</span>
+                      <button type="button" onClick={() => removeFile(i)} className="text-red-400 hover:text-red-300 ml-2">
+                        <X className="w-4 h-4" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-[#F6A61A] hover:bg-[#0071BC] text-white font-black py-5 rounded-2xl text-base uppercase tracking-wider transition-all shadow-xl shadow-[#F6A61A]/20 flex items-center justify-center gap-2"
+            >
+              <Send className="w-5 h-5" /> Envoyer la demande de devis
+            </button>
           </form>
         </div>
       </section>
 
       {/* ==========================================
-          CTA FINAL
+          SECTION : CTA FINAL
       ========================================== */}
-      <section className="relative py-24 px-6 bg-[#0071BC] overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#009CDE]/40 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#F6A61A]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
-          <h2 className="text-4xl sm:text-6xl font-serif font-black uppercase leading-tight">
-            Transformons votre événement en une expérience inoubliable.
+      <section className="py-20 px-6 bg-gradient-to-r from-[#0071BC] to-[#009CDE] text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent opacity-50" />
+        <div className="container mx-auto max-w-4xl relative z-10 space-y-6">
+          <h2 className="text-3xl sm:text-5xl font-['Balgor',serif] font-black uppercase tracking-tight">
+            Transformons votre prochain événement en une expérience inoubliable.
           </h2>
-          <div>
-            <Button onClick={() => scrollToSection("devis")} className="bg-[#F6A61A] hover:bg-white hover:text-[#0B1220] text-white font-bold px-10 py-6 rounded-full text-lg shadow-2xl transition-all transform hover:-translate-y-1">
-              Démarrer un projet
-            </Button>
+          <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto">
+            De la première idée au dernier applaudissement, SunuLink Events met son expertise au service de votre réussite.
+          </p>
+          <div className="pt-4">
+            <button
+              onClick={() => scrollToSection('devis')}
+              className="bg-[#F6A61A] hover:bg-[#0B1220] text-white font-bold px-10 py-5 rounded-full text-sm uppercase tracking-wider shadow-2xl transition-all border border-white/20"
+            >
+              Demander un devis
+            </button>
           </div>
         </div>
       </section>
 
-      {/* PIED DE PAGE */}
+      {/* Inclusion du Footer requis */}
       <Footer />
-
     </div>
   );
 }
