@@ -30,8 +30,8 @@ import {
 } from 'lucide-react';
 
 // Importation obligatoire de l'entête et du pied de page
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // Type pour la gestion du formulaire
 interface DevisFormData {
