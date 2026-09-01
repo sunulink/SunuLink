@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { 
   Award, 
   Calendar, 
@@ -26,7 +27,8 @@ import {
   Users, 
   Video, 
   X, 
-  Zap 
+  Zap,
+  Loader2
 } from 'lucide-react';
 
 // Importation obligatoire de l'entête et du pied de page
@@ -49,13 +51,22 @@ interface DevisFormData {
 }
 
 export default function SunuLinkEventsPage() {
+  const formRef = useRef<HTMLFormElement>(null);
+
   // États de l'application
   const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
   const [activeGalleryFilter, setActiveGalleryFilter] = useState<string>('Tous');
   const [currentTestimonial, setCurrentTestimonial] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // État du formulaire avec vos informations spécifiques
+  // États du traitement de l'envoi d'email
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  // État du formulaire
   const [formData, setFormData] = useState<DevisFormData>({
     name: '',
     email: '',
@@ -69,6 +80,12 @@ export default function SunuLinkEventsPage() {
     description: '',
     files: []
   });
+
+  // Identifiants EmailJS issus de la configuration
+  const EMAILJS_SERVICE_ID = 'service_hp5lf9h';
+  const EMAILJS_TEMPLATE_CONTACT = 'template_5pljpzh';
+  const EMAILJS_TEMPLATE_AUTOREPLY = 'template_clf4wp';
+  const EMAILJS_PUBLIC_KEY = 'VOTRE_PUBLIC_KEY_EMAILJS'; // Remplacer par votre clé publique EmailJS (Account > Public Key)
 
   // Données - Domaines d'intervention
   const domainServices = [
@@ -235,7 +252,7 @@ export default function SunuLinkEventsPage() {
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeGalleryFilter);
 
-  // Témoignages (SANS PHOTOS selon les instructions)
+  // Témoignages
   const testimonials = [
     {
       name: 'Fatou Sow',
@@ -319,9 +336,72 @@ export default function SunuLinkEventsPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Traitement et soumission du formulaire via EmailJS
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Votre demande de devis sur mesure a bien été transmise à l’équipe SunuLink Events !');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    // Préparation des paramètres des modèles EmailJS
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      company: formData.company || 'N/A',
+      event_types: formData.eventTypes.length > 0 ? formData.eventTypes.join(', ') : 'Non spécifié',
+      participants: formData.participants,
+      services: formData.services.length > 0 ? formData.services.join(', ') : 'Non spécifié',
+      desired_date: formData.desiredDate || 'Non communiquée',
+      location: formData.location || 'Non précisé',
+      message: formData.description,
+      to_email: formData.email
+    };
+
+    try {
+      // 1. Envoi de l'email de notification aux administrateurs (Template "Contact Us")
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_CONTACT,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      // 2. Envoi de l'auto-réponse au client (Template "Auto-Reply")
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_AUTOREPLY,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Votre demande de devis sur mesure a bien été transmise à l’équipe SunuLink Events ! Un accusé de réception vous a été envoyé.'
+      });
+
+      // Réinitialisation du formulaire
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        eventTypes: [],
+        participants: '50 à 100',
+        services: [],
+        desiredDate: '',
+        location: '',
+        description: '',
+        files: []
+      });
+    } catch (error) {
+      console.error('Erreur lors de l’envoi EmailJS:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayez ou nous contacter directement.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (id: string) => {
@@ -331,14 +411,13 @@ export default function SunuLinkEventsPage() {
 
   return (
     <div className="bg-[#0B1220] text-[#EAEAEA] font-['Lato',sans-serif] min-h-screen selection:bg-[#009CDE] selection:text-white">
-      {/* Inclusion du Header requis */}
+      {/* Header */}
       <Header />
 
       {/* ==========================================
-          HERO SECTION (Vidéo full screen + Design réaligné)
+          HERO SECTION
       ========================================== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Fond Vidéo */}
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
@@ -349,12 +428,10 @@ export default function SunuLinkEventsPage() {
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-and-a-crowd-at-a-concert-42828-large.mp4" type="video/mp4" />
           </video>
-          {/* Overlay sombre à 60% */}
           <div className="absolute inset-0 bg-[#0B1220]/60 backdrop-blur-[1px]" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center py-20 max-w-5xl">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0071BC]/30 border border-[#009CDE]/40 backdrop-blur-md mb-8 animate-pulse">
             <Sparkles className="w-4 h-4 text-[#F6A61A]" />
             <span className="text-xs font-bold uppercase tracking-widest text-[#EAEAEA]">
@@ -362,19 +439,16 @@ export default function SunuLinkEventsPage() {
             </span>
           </div>
 
-          {/* Titre principal inspiré du visuel fourni */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-['Balgor',serif] uppercase tracking-tight text-white leading-tight mb-6">
             L'ART DE <br className="hidden sm:inline" />
             <span className="text-[#009CDE]">L'ÉVÉNEMENT </span>
             <span className="text-[#F6A61A]">CORPORATE</span>
           </h1>
 
-          {/* Sous-titre */}
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
             Nous imaginons, concevons et réalisons des événements qui valorisent votre image, fédèrent vos publics et créent des expériences mémorables. De la stratégie à l’exécution, nous transformons chaque projet en un moment d’exception.
           </p>
 
-          {/* Boutons d'action */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => scrollToSection('devis')}
@@ -554,13 +628,11 @@ export default function SunuLinkEventsPage() {
       </section>
 
       {/* ==========================================
-          SECTION : CHIFFRES CLÉS (DIMINUÉS POUR DÉBUTANTS)
-          Inspiré du visuel fourni (fond bleu #0071BC)
+          SECTION : CHIFFRES CLÉS
       ========================================== */}
       <section className="py-16 px-6 bg-[#0071BC] text-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {/* Valeurs fortement diminuées selon la demande */}
             <div>
               <p className="text-4xl sm:text-6xl font-black font-['Balgor',serif] text-[#F6A61A] mb-2">15+</p>
               <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">Événements</p>
@@ -593,7 +665,6 @@ export default function SunuLinkEventsPage() {
             </h2>
           </div>
 
-          {/* Filtres */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {galleryFilters.map((filter) => (
               <button
@@ -610,7 +681,6 @@ export default function SunuLinkEventsPage() {
             ))}
           </div>
 
-          {/* Grille Mosaïque */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredGallery.map((item) => (
               <div
@@ -631,7 +701,6 @@ export default function SunuLinkEventsPage() {
             ))}
           </div>
 
-          {/* Lightbox Modal */}
           {selectedGalleryImg && (
             <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
               <button
@@ -674,7 +743,7 @@ export default function SunuLinkEventsPage() {
       </section>
 
       {/* ==========================================
-          SECTION : TÉMOIGNAGES (SUPPRESSION DES IMAGES COMME DEMANDÉ)
+          SECTION : TÉMOIGNAGES
       ========================================== */}
       <section className="py-24 px-6 bg-[#0B1220]">
         <div className="container mx-auto max-w-4xl text-center">
@@ -685,19 +754,16 @@ export default function SunuLinkEventsPage() {
 
           <div className="relative bg-[#111827] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
             <div className="flex flex-col items-center text-center space-y-6">
-              {/* Étoiles de notation */}
               <div className="flex gap-1 text-[#F6A61A]">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
 
-              {/* Texte du témoignage */}
               <p className="text-lg sm:text-2xl italic text-gray-200 leading-relaxed font-serif max-w-2xl">
                 "{testimonials[currentTestimonial].text}"
               </p>
 
-              {/* Infos client SANS IMAGE */}
               <div>
                 <h4 className="text-xl font-bold text-white font-['Balgor',serif]">{testimonials[currentTestimonial].name}</h4>
                 <p className="text-sm text-[#009CDE] font-medium">
@@ -706,7 +772,6 @@ export default function SunuLinkEventsPage() {
               </div>
             </div>
 
-            {/* Controls */}
             <div className="flex justify-between items-center absolute inset-x-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <button
                 onClick={() => setCurrentTestimonial(prev => (prev === 0 ? testimonials.length - 1 : prev - 1))}
@@ -764,7 +829,6 @@ export default function SunuLinkEventsPage() {
 
       {/* ==========================================
           SECTION : FORMULAIRE DE DEVIS SUR MESURE
-          Inspiré du visuel et avec vos données remplacées
       ========================================== */}
       <section id="devis" className="py-24 px-6 bg-[#0B1220]">
         <div className="container mx-auto max-w-5xl">
@@ -776,13 +840,26 @@ export default function SunuLinkEventsPage() {
             <p className="text-gray-400 mt-4">Complétez vos besoins spécifiques pour recevoir une proposition détaillée sous 24h.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-[#111827] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-10">
-            {/* Champs avec vos valeurs spécifiques demandées */}
+          <form ref={formRef} onSubmit={handleSubmit} className="bg-[#111827] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-10">
+            {/* Notification d'état de la soumission */}
+            {submitStatus.type && (
+              <div
+                className={`p-4 rounded-xl border text-sm font-medium ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                    : 'bg-red-500/10 border-red-500/30 text-red-400'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">NOM COMPLET *</label>
                 <input
                   type="text"
+                  name="from_name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -795,6 +872,7 @@ export default function SunuLinkEventsPage() {
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">EMAIL *</label>
                 <input
                   type="email"
+                  name="from_email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -807,6 +885,7 @@ export default function SunuLinkEventsPage() {
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">TÉLÉPHONE *</label>
                 <input
                   type="tel"
+                  name="phone"
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -819,6 +898,7 @@ export default function SunuLinkEventsPage() {
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">ENTREPRISE / ORGANISATION</label>
                 <input
                   type="text"
+                  name="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
@@ -827,7 +907,7 @@ export default function SunuLinkEventsPage() {
               </div>
             </div>
 
-            {/* Type d'événement (Multi-check) */}
+            {/* Type d'événement */}
             <div>
               <label className="block text-xs font-bold uppercase text-[#F6A61A] mb-4">TYPE D'ÉVÉNEMENT</label>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -902,6 +982,7 @@ export default function SunuLinkEventsPage() {
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">DATE SOUHAITÉE</label>
                 <input
                   type="date"
+                  name="desired_date"
                   value={formData.desiredDate}
                   onChange={(e) => setFormData({ ...formData, desiredDate: e.target.value })}
                   className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
@@ -912,6 +993,7 @@ export default function SunuLinkEventsPage() {
                 <label className="block text-xs font-bold uppercase text-gray-300 mb-2">LIEU ENVISAGÉ</label>
                 <input
                   type="text"
+                  name="location"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   className="w-full bg-[#0B1220] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#009CDE]"
@@ -924,6 +1006,7 @@ export default function SunuLinkEventsPage() {
             <div>
               <label className="block text-xs font-bold uppercase text-gray-300 mb-2">DESCRIPTION DU PROJET</label>
               <textarea
+                name="message"
                 rows={5}
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -963,9 +1046,18 @@ export default function SunuLinkEventsPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#F6A61A] hover:bg-[#0071BC] text-white font-black py-5 rounded-2xl text-base uppercase tracking-wider transition-all shadow-xl shadow-[#F6A61A]/20 flex items-center justify-center gap-2"
+              disabled={isSubmitting}
+              className="w-full bg-[#F6A61A] hover:bg-[#0071BC] disabled:opacity-50 disabled:cursor-not-allowed text-white font-black py-5 rounded-2xl text-base uppercase tracking-wider transition-all shadow-xl shadow-[#F6A61A]/20 flex items-center justify-center gap-2"
             >
-              <Send className="w-5 h-5" /> Envoyer la demande de devis
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" /> Envoi en cours...
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5" /> Envoyer la demande de devis
+                </>
+              )}
             </button>
           </form>
         </div>
@@ -994,7 +1086,7 @@ export default function SunuLinkEventsPage() {
         </div>
       </section>
 
-      {/* Wrapper qui force le fond blanc */}
+      {/* Footer Wrapper */}
       <div className="w-full bg-white text-gray-800 border-t border-gray-200">
         <Footer />
       </div>
