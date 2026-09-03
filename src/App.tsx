@@ -40,6 +40,7 @@ import BrandingCompletPage from "./pages/BrandingCompletPage";
 import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
 import VideoAnimationPage from "./pages/VideoAnimationPage";
+import WebDigitalPage from "./pages/WebDigitalPage"; // <-- AJOUTÉ
 
 // Nouveaux services insérés (Audiovisuel et Événementiel)
 import SunuLinkProd from "./pages/services/SunuLinkProd";
@@ -66,10 +67,6 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          {/* 
-            Le composant ScrollToTop est placé à l'intérieur de BrowserRouter pour
-            fonctionner de manière transparente et globale sur l'ensemble de l'application.
-          */}
           <ScrollToTop />
 
           <Routes>
@@ -113,6 +110,7 @@ const App = () => {
             <Route path="/realisations/photo-shooting" element={<PhotoShootingPage />} />
             <Route path="/realisations/design-packaging" element={<DesignPackagingPage />} />
             <Route path="/realisations/video-animation" element={<VideoAnimationPage />} />
+            <Route path="/realisations/web-digital" element={<WebDigitalPage />} /> {/* <-- AJOUTÉ */}
 
             {/* 404 - Page non trouvée */}
             <Route path="*" element={<NotFound />} />
