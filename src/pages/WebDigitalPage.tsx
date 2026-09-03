@@ -33,42 +33,34 @@ const WebDigitalPage = () => {
     <div className="min-h-screen bg-slate-50">
       <Header />
 
-      <main className="pt-24 pb-20">
-        {/* HERO SECTION - Sombre & Style Code/Digital */}
-        <section className="relative bg-slate-950 text-white py-20 px-6 overflow-hidden">
-          {/* Overlay Image de Code/Digital */}
+      <main className="pt-20">
+        {/* HERO SECTION - Hauteur 400px, Image d'arrière-plan pleine largeur sans fond noir */}
+        <section className="relative w-full h-[400px] flex items-center overflow-hidden">
+          {/* Image de fond digitale couvrant 100% de la largeur */}
           <div
-            className="absolute inset-0 opacity-15 bg-cover bg-center mix-blend-overlay pointer-events-none"
+            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2000')",
+                "url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2000')",
             }}
           />
 
-          {/* Gradient et Grille de Fond */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/95 to-slate-950 pointer-events-none" />
-          <div
-            className="absolute inset-0 opacity-5 pointer-events-none"
-            style={{
-              backgroundImage:
-                "radial-gradient(#ffffff 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
-            }}
-          />
+          {/* Superposition légère pour garantir la lisibilité du texte */}
+          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]" />
 
-          <div className="container mx-auto max-w-7xl relative z-10 text-center md:text-left">
+          <div className="container mx-auto max-w-7xl px-6 relative z-10 text-center md:text-left">
             {/* Tag Badge */}
             <div
-              className="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-sunuCyan mb-6"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-sunuCyan mb-4"
               data-aos="fade-down"
             >
               <Code2 className="w-4 h-4 text-sunuCyan" />
               <span>Portfolio Web & Ingénierie Digitale</span>
             </div>
 
-            {/* Titre avec Couleurs Officielles SunuLink */}
+            {/* Titre aux couleurs officielles */}
             <h1
-              className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight mb-6 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-4 leading-tight"
               data-aos="fade-up"
             >
               <span className="text-white">RÉALISATIONS </span>
@@ -77,7 +69,7 @@ const WebDigitalPage = () => {
             </h1>
 
             <p
-              className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed"
+              className="text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed"
               data-aos="fade-up"
               data-aos-delay="100"
             >
@@ -87,8 +79,8 @@ const WebDigitalPage = () => {
           </div>
         </section>
 
-        {/* SECTION MOCKUPS ET PROJETS (Grand Format) */}
-        <section className="py-16 px-6 -mt-6">
+        {/* SECTION MOCKUPS ET PROJETS */}
+        <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="flex flex-col gap-12">
               {projects.map((project, index) => (
@@ -98,7 +90,7 @@ const WebDigitalPage = () => {
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  {/* Mockup Grand Format (7 colonnes sur Desktop) */}
+                  {/* Mockup Grand Format */}
                   <div className="lg:col-span-7 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 p-6 md:p-10 flex items-center justify-center relative group min-h-[350px] md:min-h-[450px]">
                     <div className="relative w-full h-full flex items-center justify-center">
                       <img
@@ -109,7 +101,7 @@ const WebDigitalPage = () => {
                     </div>
                   </div>
 
-                  {/* Détails du Projet (5 colonnes sur Desktop) */}
+                  {/* Détails du Projet */}
                   <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between bg-white">
                     <div>
                       <div className="flex items-center gap-2 mb-4">
@@ -128,7 +120,6 @@ const WebDigitalPage = () => {
                     </div>
 
                     <div>
-                      {/* Technologies / Tags */}
                       <div className="mb-8">
                         <p className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-3">
                           Technologies & Compétences
@@ -145,7 +136,6 @@ const WebDigitalPage = () => {
                         </div>
                       </div>
 
-                      {/* Lien Externe si présent */}
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
@@ -165,23 +155,25 @@ const WebDigitalPage = () => {
           </div>
         </section>
 
-        {/* SECTION CALL TO ACTION -> Redirection vers /devis */}
+        {/* SECTION CTA - Couleurs officielles en dégradé & bouton à fond blanc au survol */}
         <section className="py-12 px-6">
           <div className="container mx-auto max-w-7xl text-center">
-            <div className="grain-texture bg-gradient-to-r from-slate-900 via-sunuBlue to-slate-900 text-white rounded-3xl p-10 md:p-14 shadow-2xl border border-slate-800">
-              <div className="inline-flex items-center justify-center p-3 bg-white/10 backdrop-blur-md rounded-2xl mb-6">
-                <Sparkles className="w-6 h-6 text-sunuOrange" />
+            <div className="bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange text-white rounded-3xl p-10 md:p-14 shadow-2xl">
+              <div className="inline-flex items-center justify-center p-3 bg-white/15 backdrop-blur-md rounded-2xl mb-6">
+                <Sparkles className="w-6 h-6 text-white" />
               </div>
               <h2 className="text-3xl md:text-4xl font-black mb-4">
                 Vous avez un projet Web & Digital ?
               </h2>
-              <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto text-slate-200">
+              <p className="text-lg opacity-95 mb-8 max-w-2xl mx-auto text-white">
                 Confiez-nous la création de votre plateforme, site vitrine ou
                 application web sur mesure.
               </p>
+              
+              {/* Bouton : Couleur orange/bleue par défaut, fond blanc au survol */}
               <Link
                 to="/devis"
-                className="inline-block bg-sunuOrange text-white px-10 py-4 rounded-full font-black hover:bg-white hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="inline-block bg-sunuOrange text-white border-2 border-transparent px-10 py-4 rounded-full font-black transition-all duration-300 shadow-lg hover:bg-white hover:text-sunuBlue hover:border-white hover:shadow-2xl hover:-translate-y-0.5"
               >
                 Demander un devis
               </Link>
