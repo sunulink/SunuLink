@@ -120,7 +120,7 @@ const RealisationsPage = () => {
       examples: "Sites web, interfaces, visuels digitaux, contenus optimisés",
       color: "from-sunuOrange to-yellow-500",
       projects: "20+",
-      link: "/realisations/web-digital"
+      link: "/pages/web-digital"
     },
   ];
 
