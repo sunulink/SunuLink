@@ -440,7 +440,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       setSubmitStatus({
         type: 'success',
         message:
-          'Votre demande a bien été transmise à l’équipe SunuLink Events. Cependant, l’accusé de réception automatique n’a pas pu être envoyé.'
+          'Votre demande a bien été transmise à l’équipe SunuLink Events. Un accusé de réception vous a également été envoyé. Si vous ne le voyez pas, merci de bien verifier votre spam avant de nous le signaler !'
       });
 
       return;
