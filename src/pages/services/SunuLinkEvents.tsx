@@ -337,28 +337,59 @@ export default function SunuLinkEventsPage() {
   };
 
   // Traitement et soumission du formulaire via EmailJS
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    // Préparation des paramètres des modèles EmailJS
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      phone: formData.phone,
-      company: formData.company || 'N/A',
-      event_types: formData.eventTypes.length > 0 ? formData.eventTypes.join(', ') : 'Non spécifié',
-      participants: formData.participants,
-      services: formData.services.length > 0 ? formData.services.join(', ') : 'Non spécifié',
-      desired_date: formData.desiredDate || 'Non communiquée',
-      location: formData.location || 'Non précisé',
-      message: formData.description,
-      to_email: formData.email
-    };
+  // Éviter les doubles soumissions
+  if (isSubmitting) return;
 
+  setIsSubmitting(true);
+  setSubmitStatus({
+    type: null,
+    message: ''
+  });
+
+  const templateParams = {
+    // Informations du client
+    from_name: formData.name,
+    from_email: formData.email,
+    phone: formData.phone,
+    company: formData.company || 'Non renseignée',
+
+    // Informations événement
+    event_types:
+      formData.eventTypes.length > 0
+        ? formData.eventTypes.join(', ')
+        : 'Non spécifié',
+
+    participants: formData.participants,
+
+    services:
+      formData.services.length > 0
+        ? formData.services.join(', ')
+        : 'Non spécifié',
+
+    desired_date: formData.desiredDate || 'Non communiquée',
+    location: formData.location || 'Non précisé',
+
+    // Message
+    message: formData.description || 'Aucune description fournie',
+
+    // Destinataires
+    to_email: formData.email,
+    admin_email: 'contact@sunulink.sn'
+  };
+
+  try {
+    /*
+     * =========================================================
+     * 1. NOTIFICATION INTERNE
+     * =========================================================
+     *
+     * Cette notification est envoyée à :
+     * contact@sunulink.sn
+     */
     try {
-      // 1. Envoi de l'email de notification aux administrateurs (Template "Contact Us")
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_CONTACT,
@@ -366,7 +397,27 @@ export default function SunuLinkEventsPage() {
         EMAILJS_PUBLIC_KEY
       );
 
-      // 2. Envoi de l'auto-réponse au client (Template "Auto-Reply")
+      console.log('✅ Notification interne envoyée avec succès');
+    } catch (notificationError) {
+      console.error(
+        '❌ Erreur notification interne EmailJS :',
+        notificationError
+      );
+
+      throw new Error(
+        'La notification destinée à SunuLink n’a pas pu être envoyée.'
+      );
+    }
+
+    /*
+     * =========================================================
+     * 2. ACCUSÉ DE RÉCEPTION CLIENT
+     * =========================================================
+     *
+     * Cette réponse est envoyée à :
+     * l'adresse email saisie par le client
+     */
+    try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_AUTOREPLY,
@@ -374,35 +425,71 @@ export default function SunuLinkEventsPage() {
         EMAILJS_PUBLIC_KEY
       );
 
+      console.log('✅ Accusé de réception envoyé au client');
+    } catch (autoReplyError) {
+      console.error(
+        '❌ Erreur accusé de réception EmailJS :',
+        autoReplyError
+      );
+
+      /*
+       * La demande interne a déjà été reçue.
+       * On informe donc l'utilisateur que sa demande est bien
+       * partie, même si l'accusé automatique a échoué.
+       */
       setSubmitStatus({
         type: 'success',
-        message: 'Votre demande de devis sur mesure a bien été transmise à l’équipe SunuLink Events ! Un accusé de réception vous a été envoyé.'
+        message:
+          'Votre demande a bien été transmise à l’équipe SunuLink Events. Cependant, l’accusé de réception automatique n’a pas pu être envoyé.'
       });
 
-      // Réinitialisation du formulaire
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        eventTypes: [],
-        participants: '50 à 100',
-        services: [],
-        desiredDate: '',
-        location: '',
-        description: '',
-        files: []
-      });
-    } catch (error) {
-      console.error('Erreur lors de l’envoi EmailJS:', error);
-      setSubmitStatus({
-        type: 'error',
-        message: 'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayez ou nous contacter directement.'
-      });
-    } finally {
-      setIsSubmitting(false);
+      return;
     }
-  };
+
+    /*
+     * =========================================================
+     * 3. SUCCÈS COMPLET
+     * =========================================================
+     */
+    setSubmitStatus({
+      type: 'success',
+      message:
+        'Votre demande de devis a bien été transmise à l’équipe SunuLink Events. Un accusé de réception vous a également été envoyé.'
+    });
+
+    /*
+     * =========================================================
+     * 4. RÉINITIALISATION DU FORMULAIRE
+     * =========================================================
+     */
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      eventTypes: [],
+      participants: '50 à 100',
+      services: [],
+      desiredDate: '',
+      location: '',
+      description: '',
+      files: []
+    });
+
+  } catch (error) {
+    console.error('❌ Erreur lors de l’envoi EmailJS :', error);
+
+    setSubmitStatus({
+      type: 'error',
+      message:
+        'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayer ou nous contacter directement.'
+    });
+
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+  // Fin ConstHundleSubmit
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
