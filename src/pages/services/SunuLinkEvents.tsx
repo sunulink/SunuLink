@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { 
   Award, 
@@ -52,6 +52,8 @@ interface DevisFormData {
 
 export default function SunuLinkEventsPage() {
   const formRef = useRef<HTMLFormElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // États de l'application
   const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
@@ -66,6 +68,16 @@ export default function SunuLinkEventsPage() {
     message: string;
   }>({ type: null, message: '' });
 
+  // Faire défiler automatiquement vers le message après l'envoi
+  useEffect(() => {
+    if (submitStatus.type && statusRef.current) {
+      statusRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, [submitStatus.type]);
+
   // État du formulaire
   const [formData, setFormData] = useState<DevisFormData>({
     name: '',
@@ -73,7 +85,7 @@ export default function SunuLinkEventsPage() {
     phone: '',
     company: '',
     eventTypes: [],
-    participants: '50 à 100',
+    participants: '',
     services: [],
     desiredDate: '',
     location: '',
@@ -337,59 +349,29 @@ export default function SunuLinkEventsPage() {
   };
 
   // Traitement et soumission du formulaire via EmailJS
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
 
-  // Éviter les doubles soumissions
-  if (isSubmitting) return;
+    // Préparation des paramètres des modèles EmailJS
+    const templateParams = {
+      from_name: formData.name.trim(),
+      from_email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      company: formData.company.trim() || 'Non renseignée',
+      event_types: formData.eventTypes.length > 0 ? formData.eventTypes.join(', ') : 'Non spécifié',
+      participants: formData.participants || 'Non spécifié',
+      services: formData.services.length > 0 ? formData.services.join(', ') : 'Non spécifié',
+      desired_date: formData.desiredDate || 'Non communiquée',
+      location: formData.location.trim() || 'Non précisé',
+      message: formData.description.trim() || 'Aucune description fournie',
+      to_email: formData.email.trim(),
+      admin_email: 'contact@sunulink.sn'
+    };
 
-  setIsSubmitting(true);
-  setSubmitStatus({
-    type: null,
-    message: ''
-  });
-
-  const templateParams = {
-    // Informations du client
-    from_name: formData.name,
-    from_email: formData.email,
-    phone: formData.phone,
-    company: formData.company || 'Non renseignée',
-
-    // Informations événement
-    event_types:
-      formData.eventTypes.length > 0
-        ? formData.eventTypes.join(', ')
-        : 'Non spécifié',
-
-    participants: formData.participants,
-
-    services:
-      formData.services.length > 0
-        ? formData.services.join(', ')
-        : 'Non spécifié',
-
-    desired_date: formData.desiredDate || 'Non communiquée',
-    location: formData.location || 'Non précisé',
-
-    // Message
-    message: formData.description || 'Aucune description fournie',
-
-    // Destinataires
-    to_email: formData.email,
-    admin_email: 'contact@sunulink.sn'
-  };
-
-  try {
-    /*
-     * =========================================================
-     * 1. NOTIFICATION INTERNE
-     * =========================================================
-     *
-     * Cette notification est envoyée à :
-     * contact@sunulink.sn
-     */
     try {
+      // 1. Envoi de l'email de notification aux administrateurs (Template "Contact Us")
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_CONTACT,
@@ -397,27 +379,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         EMAILJS_PUBLIC_KEY
       );
 
-      console.log('✅ Notification interne envoyée avec succès');
-    } catch (notificationError) {
-      console.error(
-        '❌ Erreur notification interne EmailJS :',
-        notificationError
-      );
-
-      throw new Error(
-        'La notification destinée à SunuLink n’a pas pu être envoyée.'
-      );
-    }
-
-    /*
-     * =========================================================
-     * 2. ACCUSÉ DE RÉCEPTION CLIENT
-     * =========================================================
-     *
-     * Cette réponse est envoyée à :
-     * l'adresse email saisie par le client
-     */
-    try {
+      // 2. Envoi de l'auto-réponse au client (Template "Auto-Reply")
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_AUTOREPLY,
@@ -425,71 +387,40 @@ const handleSubmit = async (e: React.FormEvent) => {
         EMAILJS_PUBLIC_KEY
       );
 
-      console.log('✅ Accusé de réception envoyé au client');
-    } catch (autoReplyError) {
-      console.error(
-        '❌ Erreur accusé de réception EmailJS :',
-        autoReplyError
-      );
-
-      /*
-       * La demande interne a déjà été reçue.
-       * On informe donc l'utilisateur que sa demande est bien
-       * partie, même si l'accusé automatique a échoué.
-       */
       setSubmitStatus({
         type: 'success',
-        message:
-          'Votre demande a bien été transmise à l’équipe SunuLink Events. Un accusé de réception vous a également été envoyé. Si vous ne le voyez pas, merci de bien verifier votre spam avant de nous le signaler !'
+        message: 'Votre demande de devis sur mesure a bien été transmise à l’équipe SunuLink Events ! Un accusé de réception vous a été envoyé.'
       });
 
-      return;
+      // Réinitialisation du formulaire
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        eventTypes: [],
+        participants: '',
+        services: [],
+        desiredDate: '',
+        location: '',
+        description: '',
+        files: []
+      });
+
+      // Réinitialiser également le champ de sélection de fichiers
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    } catch (error) {
+      console.error('Erreur lors de l’envoi EmailJS:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayez ou nous contacter directement.'
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    /*
-     * =========================================================
-     * 3. SUCCÈS COMPLET
-     * =========================================================
-     */
-    setSubmitStatus({
-      type: 'success',
-      message:
-        'Votre demande de devis a bien été transmise à l’équipe SunuLink Events. Un accusé de réception vous a également été envoyé.'
-    });
-
-    /*
-     * =========================================================
-     * 4. RÉINITIALISATION DU FORMULAIRE
-     * =========================================================
-     */
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      eventTypes: [],
-      participants: '50 à 100',
-      services: [],
-      desiredDate: '',
-      location: '',
-      description: '',
-      files: []
-    });
-
-  } catch (error) {
-    console.error('❌ Erreur lors de l’envoi EmailJS :', error);
-
-    setSubmitStatus({
-      type: 'error',
-      message:
-        'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayer ou nous contacter directement.'
-    });
-
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-  // Fin ConstHundleSubmit
+  };
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -931,6 +862,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             {/* Notification d'état de la soumission */}
             {submitStatus.type && (
               <div
+                ref={statusRef}
                 className={`p-4 rounded-xl border text-sm font-medium ${
                   submitStatus.type === 'success'
                     ? 'bg-green-500/10 border-green-500/30 text-green-400'
@@ -1107,6 +1039,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               <label className="block text-xs font-bold uppercase text-gray-300 mb-2">PIÈCES JOINTES (Cahier des charges, brief...)</label>
               <div className="border-2 border-dashed border-white/10 hover:border-[#009CDE] rounded-2xl p-6 text-center bg-[#0B1220] cursor-pointer relative transition-colors">
                 <input
+                  ref={fileInputRef}
                   type="file"
                   multiple
                   onChange={handleFileChange}
