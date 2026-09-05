@@ -96,7 +96,7 @@ export default function SunuLinkEventsPage() {
   // Identifiants EmailJS issus de la configuration
   const EMAILJS_SERVICE_ID = 'service_hp5lf9h';
   const EMAILJS_TEMPLATE_CONTACT = 'template_5pljpzh';
-  const EMAILJS_TEMPLATE_AUTOREPLY = 'template_clf4wp';
+  const EMAILJS_TEMPLATE_AUTOREPLY = 'template_clf4fwp';
   const EMAILJS_PUBLIC_KEY = '1lk26ZAgIF5tij5ml'; // Remplacer par votre clé publique EmailJS (Account > Public Key)
 
   // Données - Domaines d'intervention
