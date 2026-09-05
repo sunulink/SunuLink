@@ -412,7 +412,9 @@ export default function SunuLinkEventsPage() {
         fileInputRef.current.value = '';
       }
     } catch (error) {
-      console.error('Erreur lors de l’envoi EmailJS:', error);
+      console.error("Erreur EmailJS complète :", error);
+      console.log("Status :", (error as any)?.status);
+      console.log("Message :", (error as any)?.text);
       setSubmitStatus({
         type: 'error',
         message: 'Une erreur est survenue lors de l’envoi de votre demande. Veuillez réessayez ou nous contacter directement.'
