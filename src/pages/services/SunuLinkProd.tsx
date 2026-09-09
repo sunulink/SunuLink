@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
@@ -18,6 +19,37 @@ const SunuLinkProd = () => {
   // Form states
   const [selectedProjectTypes, setSelectedProjectTypes] = useState<string[]>([]);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_phone: "",
+    objective: "",
+    style: "",
+    diffusion: "",
+    desired_date: "",
+    location: "",
+    duration: "",
+    message: "",
+  });
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "idle" | "success" | "error";
+    message: string;
+  }>({ type: "idle", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
+
+  const EMAILJS_SERVICE_ID = "service_hp5lf9h";
+  const EMAILJS_TEMPLATE_CONTACT = "template_f2e7ec";
+  const EMAILJS_TEMPLATE_AUTOREPLY = "template_yegn5m";
+  const EMAILJS_PUBLIC_KEY = "aAxTlOuSnIqQa-Ld8";
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const MAX_FILES = 5;
+  const ALLOWED_FILE_EXTENSIONS = [
+    ".pdf", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx", ".jpg", ".jpeg", ".png",
+  ];
 
   const cacheBuster = new Date().getTime();
 
@@ -37,6 +69,176 @@ const SunuLinkProd = () => {
       setList([...list, item]);
     }
   };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (submitStatus.type !== "idle") {
+      setSubmitStatus({ type: "idle", message: "" });
+    }
+  };
+
+  const syncFileInput = (files: File[]) => {
+    if (!fileInputRef.current) return;
+
+    const dataTransfer = new DataTransfer();
+    files.forEach((file) => dataTransfer.items.add(file));
+    fileInputRef.current.files = dataTransfer.files;
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+
+    if (files.length === 0) return;
+
+    const availableSlots = MAX_FILES - selectedFiles.length;
+    const filesToAdd = files.slice(0, Math.max(0, availableSlots));
+
+    if (files.length > availableSlots) {
+      setSubmitStatus({
+        type: "error",
+        message: `Vous pouvez joindre au maximum ${MAX_FILES} fichiers.`,
+      });
+    }
+
+    const invalidType = filesToAdd.find((file) => {
+      const extension = `.${file.name.split(".").pop()?.toLowerCase() || ""}`;
+      return !ALLOWED_FILE_EXTENSIONS.includes(extension);
+    });
+    if (invalidType) {
+      setSubmitStatus({
+        type: "error",
+        message: `Le fichier « ${invalidType.name} » n'est pas dans un format autorisé.`,
+      });
+      syncFileInput(selectedFiles);
+      return;
+    }
+
+    const tooLarge = filesToAdd.find((file) => file.size > MAX_FILE_SIZE);
+    if (tooLarge) {
+      setSubmitStatus({
+        type: "error",
+        message: `Le fichier « ${tooLarge.name} » dépasse la limite de 10 Mo.`,
+      });
+      syncFileInput(selectedFiles);
+      return;
+    }
+
+    const combinedFiles = [...selectedFiles, ...filesToAdd];
+    setSelectedFiles(combinedFiles);
+    syncFileInput(combinedFiles);
+
+    if (submitStatus.type !== "idle") {
+      setSubmitStatus({ type: "idle", message: "" });
+    }
+  };
+
+  const removeFile = (index: number) => {
+    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+    setSelectedFiles(updatedFiles);
+    syncFileInput(updatedFiles);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      user_name: "",
+      user_email: "",
+      user_phone: "",
+      objective: "",
+      style: "",
+      diffusion: "",
+      desired_date: "",
+      location: "",
+      duration: "",
+      message: "",
+    });
+    setSelectedProjectTypes([]);
+    setSelectedServices([]);
+    setSelectedFiles([]);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!formRef.current || isSubmitting) return;
+
+    if (!formData.user_name.trim() || !formData.user_email.trim() || !formData.user_phone.trim()) {
+      setSubmitStatus({
+        type: "error",
+        message: "Veuillez renseigner votre nom, votre adresse email et votre téléphone.",
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setSubmitStatus({
+        type: "error",
+        message: "Veuillez décrire brièvement votre projet avant d'envoyer la demande.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: "idle", message: "" });
+
+    try {
+      // 1) Envoi de la demande à contact@sunulink.sn avec les pièces jointes.
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_CONTACT,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+
+      // 2) Accusé de réception automatique au client.
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_AUTOREPLY,
+          {
+            user_name: formData.user_name.trim(),
+            user_email: formData.user_email.trim(),
+            service_type: selectedProjectTypes.length > 0
+              ? selectedProjectTypes.join(", ")
+              : "Production audiovisuelle",
+            message: formData.message.trim(),
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      } catch (autoReplyError) {
+        // La demande principale est déjà envoyée : on ne la considère pas comme échouée.
+        console.error("Erreur accusé de réception EmailJS :", autoReplyError);
+      }
+
+      resetForm();
+      setSubmitStatus({
+        type: "success",
+        message: "Votre demande a bien été envoyée. Un conseiller SunuLink vous répondra sous 24h à 48h ouvrées.",
+      });
+    } catch (error) {
+      console.error("Erreur EmailJS SunuLink Prod :", error);
+      setSubmitStatus({
+        type: "error",
+        message: "Une erreur est survenue lors de l'envoi. Vérifiez votre connexion puis réessayez. Si le problème persiste, contactez-nous directement.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    if (submitStatus.type === "success" && statusRef.current) {
+      const top =
+        statusRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        100;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }, [submitStatus.type]);
 
   // 9 Services du cahier des charges
   const services = [
@@ -698,8 +900,47 @@ const SunuLinkProd = () => {
               <p className="text-gray-400 mt-2">Configurez votre projet audiovisuel sur-mesure.</p>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="bg-[#0B1220] p-8 md:p-12 rounded-3xl border border-white/10 space-y-10 shadow-2xl">
+            <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data" className="bg-[#0B1220] p-8 md:p-12 rounded-3xl border border-white/10 space-y-10 shadow-2xl">
               
+              {/* Coordonnées */}
+              <div>
+                <label className="text-lg font-bold text-white block mb-4 border-l-4 border-[#009CDE] pl-3">
+                  Vos coordonnées
+                </label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <input
+                    type="text"
+                    name="user_name"
+                    value={formData.user_name}
+                    onChange={handleInputChange}
+                    placeholder="Nom / Organisation"
+                    autoComplete="name"
+                    required
+                    className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#009CDE] outline-none"
+                  />
+                  <input
+                    type="email"
+                    name="user_email"
+                    value={formData.user_email}
+                    onChange={handleInputChange}
+                    placeholder="Adresse email"
+                    autoComplete="email"
+                    required
+                    className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#009CDE] outline-none"
+                  />
+                  <input
+                    type="tel"
+                    name="user_phone"
+                    value={formData.user_phone}
+                    onChange={handleInputChange}
+                    placeholder="Téléphone"
+                    autoComplete="tel"
+                    required
+                    className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#009CDE] outline-none"
+                  />
+                </div>
+              </div>
+
               {/* Type de projet */}
               <div>
                 <label className="text-lg font-bold text-white block mb-4 border-l-4 border-[#F6A61A] pl-3">
@@ -737,7 +978,7 @@ const SunuLinkProd = () => {
                 <label className="text-lg font-bold text-white block mb-4 border-l-4 border-[#009CDE] pl-3">
                   Objectif du projet
                 </label>
-                <select className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#009CDE] outline-none">
+                <select name="objective" value={formData.objective} onChange={handleInputChange} className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#009CDE] outline-none">
                   <option value="">Sélectionnez un objectif principal</option>
                   <option value="présenter">Présenter mon entreprise</option>
                   <option value="promouvoir">Promouvoir un produit</option>
@@ -787,7 +1028,7 @@ const SunuLinkProd = () => {
                   <label className="text-lg font-bold text-white block mb-4 border-l-4 border-[#0071BC] pl-3">
                     Style souhaité
                   </label>
-                  <select className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#0071BC] outline-none">
+                  <select name="style" value={formData.style} onChange={handleInputChange} className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#0071BC] outline-none">
                     <option value="">Choisir un style visuel</option>
                     <option value="cinematographique">Cinématographique</option>
                     <option value="corporate">Corporate</option>
@@ -803,7 +1044,7 @@ const SunuLinkProd = () => {
                   <label className="text-lg font-bold text-white block mb-4 border-l-4 border-[#0071BC] pl-3">
                     Diffusion prévue
                   </label>
-                  <select className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#0071BC] outline-none">
+                  <select name="diffusion" value={formData.diffusion} onChange={handleInputChange} className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#0071BC] outline-none">
                     <option value="">Sélectionnez le canal de diffusion</option>
                     <option value="web">Site web</option>
                     <option value="reseaux">Réseaux sociaux</option>
@@ -821,25 +1062,81 @@ const SunuLinkProd = () => {
                   Informations projet
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                  <input type="date" placeholder="Date souhaitée" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#F6A61A] outline-none" />
-                  <input type="text" placeholder="Lieu (ex: Dakar, Thiès...)" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#F6A61A] outline-none" />
-                  <input type="text" placeholder="Durée souhaitée (ex: 2 min)" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#F6A61A] outline-none" />
+                  <input type="date" name="desired_date" value={formData.desired_date} onChange={handleInputChange} aria-label="Date souhaitée" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#F6A61A] outline-none" />
+                  <input type="text" name="location" value={formData.location} onChange={handleInputChange} placeholder="Lieu (ex: Dakar, Thiès...)" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#F6A61A] outline-none" />
+                  <input type="text" name="duration" value={formData.duration} onChange={handleInputChange} placeholder="Durée souhaitée (ex: 2 min)" className="bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#F6A61A] outline-none" />
                 </div>
                 <textarea 
+                  name="message"
                   rows={4} 
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Description détaillée de vos attentes..." 
-                  className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white focus:border-[#F6A61A] outline-none mb-4"
+                  required
+                  className="w-full bg-[#111827] border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:border-[#F6A61A] outline-none mb-4"
                 ></textarea>
                 
-                <div className="flex items-center gap-3 p-4 bg-[#111827] border border-dashed border-white/20 rounded-xl text-gray-400 hover:text-white cursor-pointer transition-colors">
+                <label className="flex items-center gap-3 p-4 bg-[#111827] border border-dashed border-white/20 rounded-xl text-gray-400 hover:text-white cursor-pointer transition-colors">
                   <Upload size={20} className="text-[#009CDE]" />
-                  <span className="text-sm">Ajouter des pièces jointes (cahier des charges, inspirations...)</span>
-                </div>
+                  <span className="text-sm flex-1">
+                    {selectedFiles.length > 0
+                      ? `${selectedFiles.length} fichier${selectedFiles.length > 1 ? "s" : ""} sélectionné${selectedFiles.length > 1 ? "s" : ""}`
+                      : "Ajouter des pièces jointes (cahier des charges, inspirations...)"}
+                  </span>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    name="attachments"
+                    multiple
+                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
+
+                {selectedFiles.length > 0 && (
+                  <div className="mt-3 space-y-2">
+                    {selectedFiles.map((file, index) => (
+                      <div key={`${file.name}-${index}`} className="flex items-center justify-between gap-3 rounded-lg bg-[#111827] border border-white/10 px-3 py-2">
+                        <span className="text-sm text-gray-300 truncate">{file.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="text-gray-400 hover:text-[#F6A61A] transition-colors"
+                          aria-label={`Supprimer ${file.name}`}
+                        >
+                          <X size={16} />
+                        </button>
+                      </div>
+                    ))}
+                    <p className="text-xs text-gray-500">PDF, Word, PowerPoint, Excel, JPG ou PNG — 10 Mo maximum par fichier, 5 fichiers maximum.</p>
+                  </div>
+                )}
+
+                <input type="hidden" name="service_type" value={selectedProjectTypes.join(", ") || "Production audiovisuelle"} />
+                <input type="hidden" name="project_types" value={selectedProjectTypes.join(", ") || "Non spécifié"} />
+                <input type="hidden" name="services" value={selectedServices.join(", ") || "Non spécifié"} />
               </div>
 
-              <Button className="w-full bg-[#F6A61A] hover:bg-[#e09310] text-[#0B1220] font-black py-5 text-xl rounded-xl shadow-[0_10px_30px_rgba(246,166,26,0.3)] transition-all">
-                Envoyer ma demande de devis
-              </Button>
+              <div ref={statusRef} aria-live="polite" className="space-y-4">
+                {submitStatus.type !== "idle" && (
+                  <div className={`rounded-xl border p-4 text-sm ${
+                    submitStatus.type === "success"
+                      ? "border-green-500/30 bg-green-500/10 text-green-300"
+                      : "border-red-500/30 bg-red-500/10 text-red-300"
+                  }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#F6A61A] hover:bg-[#e09310] disabled:opacity-60 disabled:cursor-not-allowed text-[#0B1220] font-black py-5 text-xl rounded-xl shadow-[0_10px_30px_rgba(246,166,26,0.3)] transition-all"
+                >
+                  {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande de devis"}
+                </Button>
+              </div>
 
             </form>
           </div>
