@@ -44,7 +44,7 @@ const SunuLinkProd = () => {
   const EMAILJS_SERVICE_ID = "service_hp5lf9h";
   const EMAILJS_TEMPLATE_CONTACT = "template_f2e7ec";
   const EMAILJS_TEMPLATE_AUTOREPLY = "template_yegn5m";
-  const EMAILJS_PUBLIC_KEY = "aAxTlOuSnIqQa-Ld8";
+  const EMAILJS_PUBLIC_KEY = "1lk26ZAgIF5tij5ml";
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
   const MAX_FILES = 5;
   const ALLOWED_FILE_EXTENSIONS = [
@@ -185,13 +185,49 @@ const SunuLinkProd = () => {
     setSubmitStatus({ type: "idle", message: "" });
 
     try {
-      // 1) Envoi de la demande à contact@sunulink.sn avec les pièces jointes.
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_CONTACT,
-        formRef.current,
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
+      const serviceType =
+        selectedProjectTypes.length > 0
+          ? selectedProjectTypes.join(", ")
+          : "Production audiovisuelle";
+
+      // Paramètres communs pour l'envoi sans pièce jointe.
+      const templateParams = {
+        user_name: formData.user_name.trim(),
+        user_email: formData.user_email.trim(),
+        user_phone: formData.user_phone.trim(),
+        service_type: serviceType,
+        project_types: selectedProjectTypes.length > 0
+          ? selectedProjectTypes.join(", ")
+          : "Non spécifié",
+        services: selectedServices.length > 0
+          ? selectedServices.join(", ")
+          : "Non spécifié",
+        objective: formData.objective || "Non spécifié",
+        style: formData.style || "Non spécifié",
+        diffusion: formData.diffusion || "Non spécifié",
+        desired_date: formData.desired_date || "Non communiquée",
+        location: formData.location.trim() || "Non précisé",
+        duration: formData.duration.trim() || "Non précisée",
+        message: formData.message.trim(),
+      };
+
+      // 1) Sans pièce jointe : envoi JSON avec emailjs.send().
+      // 2) Avec pièce(s) jointe(s) : envoi multipart avec emailjs.sendForm().
+      if (selectedFiles.length > 0) {
+        await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_CONTACT,
+          formRef.current,
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      } else {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_CONTACT,
+          templateParams,
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      }
 
       // 2) Accusé de réception automatique au client.
       try {
@@ -201,16 +237,16 @@ const SunuLinkProd = () => {
           {
             user_name: formData.user_name.trim(),
             user_email: formData.user_email.trim(),
-            service_type: selectedProjectTypes.length > 0
-              ? selectedProjectTypes.join(", ")
-              : "Production audiovisuelle",
+            service_type: serviceType,
             message: formData.message.trim(),
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );
-      } catch (autoReplyError) {
+      } catch (autoReplyError: any) {
         // La demande principale est déjà envoyée : on ne la considère pas comme échouée.
         console.error("Erreur accusé de réception EmailJS :", autoReplyError);
+        console.error("Auto-reply status :", autoReplyError?.status);
+        console.error("Auto-reply message :", autoReplyError?.text);
       }
 
       resetForm();
@@ -218,11 +254,20 @@ const SunuLinkProd = () => {
         type: "success",
         message: "Votre demande a bien été envoyée. Un conseiller SunuLink vous répondra sous 24h à 48h ouvrées.",
       });
-    } catch (error) {
-      console.error("Erreur EmailJS SunuLink Prod :", error);
+    } catch (error: any) {
+      console.error("❌ ERREUR EMAILJS SUNULINK PROD");
+      console.error("Status :", error?.status);
+      console.error("Message :", error?.text);
+      console.error("Erreur complète :", error);
+
+      const errorMessage = error?.text ||
+        "Une erreur est survenue lors de l'envoi. Vérifiez votre connexion puis réessayez. Si le problème persiste, contactez-nous directement.";
+
       setSubmitStatus({
         type: "error",
-        message: "Une erreur est survenue lors de l'envoi. Vérifiez votre connexion puis réessayez. Si le problème persiste, contactez-nous directement.",
+        message: import.meta.env.DEV && error?.text
+          ? `Erreur EmailJS : ${errorMessage}`
+          : errorMessage,
       });
     } finally {
       setIsSubmitting(false);
@@ -900,7 +945,7 @@ const SunuLinkProd = () => {
               <p className="text-gray-400 mt-2">Configurez votre projet audiovisuel sur-mesure.</p>
             </div>
 
-            <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data" className="bg-[#0B1220] p-8 md:p-12 rounded-3xl border border-white/10 space-y-10 shadow-2xl">
+            <form id="sunulink-prod-form" ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data" className="bg-[#0B1220] p-8 md:p-12 rounded-3xl border border-white/10 space-y-10 shadow-2xl">
               
               {/* Coordonnées */}
               <div>
