@@ -41,10 +41,10 @@ const SunuLinkProd = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
 
-  const EMAILJS_SERVICE_ID = "service_hp5lf9h";
-  const EMAILJS_TEMPLATE_CONTACT = "template_f2e7ec";
-  const EMAILJS_TEMPLATE_AUTOREPLY = "template_yegn5m";
-  const EMAILJS_PUBLIC_KEY = "1lk26ZAgIF5tij5ml";
+  const EMAILJS_SERVICE_ID = "service_e7tbe59";
+  const EMAILJS_TEMPLATE_CONTACT = "template_f2ez7ec";
+  const EMAILJS_TEMPLATE_AUTOREPLY = "template_yecgn5m";
+  const EMAILJS_PUBLIC_KEY = "aAxTlOuSnIqQa-Ld8";
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
   const MAX_FILES = 5;
   const ALLOWED_FILE_EXTENSIONS = [
