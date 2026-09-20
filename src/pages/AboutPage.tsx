@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -15,6 +16,7 @@ import {
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
+  const [isFounderExpanded, setIsFounderExpanded] = useState(false);
   const values = [
     {
       icon: Award,
@@ -94,14 +96,15 @@ const AboutPage = () => {
       name: "Ndéye Léna Kamara",
       role: "Manager & Consultante Stratégique",
       expertise: "Marketing · Communication · Développement commercial",
-      image: "/img/Lena_Manager_Consultante_Strategique.PNG",
+      image: "/img/Lena_Manager_Consultante_Strategique.PHG",
+      fallbackImage: "/img/Lena_Manager_Consultante_Strategique.PNG",
       accent: "sunuOrange",
     },
     {
       name: "Djibril",
       role: "Développeur",
       expertise: "Développement web · Solutions digitales",
-      image: "/img/Djibril_Developpeur.JPG",
+      image: "/img/Djibril_Developpeur.jpg",
       accent: "sunuBlue",
     },
   ];
@@ -131,11 +134,11 @@ const AboutPage = () => {
     <div className="min-h-screen bg-white text-gray-800">
       <Header />
 
-      <main className="pt-20 md:pt-24 pb-20">
+      <main className="pb-20">
         {/* ========================================================= */}
         {/* HERO À PROPOS                                            */}
         {/* ========================================================= */}
-        <section className="relative w-full h-[400px] overflow-hidden">
+        <section className="relative w-full h-[450px] overflow-hidden">
           <img
             src={heroImage}
             alt="Équipe africaine dans un environnement professionnel et technologique"
@@ -193,11 +196,11 @@ const AboutPage = () => {
                 <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
 
                 <div className="relative z-10">
-                  <div className="mx-auto lg:mx-0 w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden border-4 border-white/30 shadow-2xl">
+                  <div className="mx-auto lg:mx-0 w-full h-[360px] sm:h-[420px] lg:h-[460px] rounded-[2rem] overflow-hidden border-4 border-white/30 shadow-2xl">
                     <img
                       src="/img/Birahim_DG.JPG"
                       alt="Birahim Basse — PDG / Fondateur de SunuLink Consulting"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
 
@@ -224,7 +227,11 @@ const AboutPage = () => {
 
               {/* Texte du fondateur */}
               <div className="p-5 sm:p-8 md:p-10 lg:p-12">
-                <div className="space-y-7 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                <div
+                  className={`relative space-y-7 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+                    isFounderExpanded ? "max-h-[5000px]" : "max-h-[760px] md:max-h-[820px]"
+                  }`}
+                >
                   <p className="text-base sm:text-lg md:text-xl font-bold text-sunuBlue italic border-l-4 border-sunuOrange pl-4 py-2 bg-orange-50/60 rounded-r-xl">
                     Chaque grande aventure naît d’une conviction. La nôtre est née d’un constat.
                   </p>
@@ -278,7 +285,7 @@ const AboutPage = () => {
                     </div>
 
                     <div className="pt-5 border-t border-slate-200">
-                      <p className="text-xl sm:text-2xl md:text-3xl font-black text-sunuOrange tracking-tight">
+                      <p className="text-lg sm:text-xl md:text-2xl font-black text-sunuOrange tracking-tight">
                         SUNULINK = Notre Lien.
                       </p>
                     </div>
@@ -324,6 +331,22 @@ const AboutPage = () => {
                       </div>
                     </div>
                   </div>
+
+                  {!isFounderExpanded && (
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none" />
+                  )}
+                </div>
+
+                <div className="pt-6 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setIsFounderExpanded((prev) => !prev)}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-sunuBlue px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-md transition-all duration-300 hover:bg-sunuOrange hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sunuBlue/30"
+                    aria-expanded={isFounderExpanded}
+                  >
+                    {isFounderExpanded ? "Voir moins" : "Voir plus"}
+                    <span aria-hidden="true">{isFounderExpanded ? "↑" : "↓"}</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -391,9 +414,6 @@ const AboutPage = () => {
               ))}
             </div>
 
-            <div className="mt-10 bg-white border border-slate-200 rounded-2xl px-5 py-4 max-w-4xl mx-auto text-sm sm:text-base text-gray-600 leading-relaxed">
-              <strong className="text-gray-800">Photographies d’équipe :</strong> pour un rendu premium et cohérent, privilégier à terme un même shooting avec cadrage, lumière, fond, tenues et traitement visuel homogènes, tout en conservant des expressions naturelles et authentiques.
-            </div>
           </div>
         </section>
 
