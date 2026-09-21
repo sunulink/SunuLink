@@ -86,14 +86,14 @@ const AboutPage = () => {
 
   const teamMembers = [
     {
-      name: "Birahim BASSE",
+      name: "Birahim Basse",
       role: "PDG / Fondateur",
       expertise: "Conseil stratégique & développement",
       image: "/img/Birahim_DG.JPG",
       accent: "sunuBlue",
     },
     {
-      name: "Ndéye Léna KAMARA",
+      name: "Ndéye Léna Kamara",
       role: "Manager & Consultante Stratégique",
       expertise: "Marketing · Communication · Développement commercial",
       image: "/img/Lena_Manager_Consultante_Strategique.PHG",
@@ -101,7 +101,7 @@ const AboutPage = () => {
       accent: "sunuOrange",
     },
     {
-      name: "Djibril ANNE",
+      name: "Djibril",
       role: "Développeur",
       expertise: "Développement web · Solutions digitales",
       image: "/img/Djibril_Developpeur.jpg",
@@ -382,7 +382,7 @@ const AboutPage = () => {
               {teamMembers.map((member, index) => (
                 <article
                   key={member.name}
-                  className="group bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className={`group bg-white rounded-[2rem] overflow-hidden border-2 ${member.accent === "sunuOrange" ? "border-sunuOrange/70 hover:border-sunuOrange" : "border-sunuBlue/70 hover:border-sunuBlue"} shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
@@ -410,9 +410,6 @@ const AboutPage = () => {
                     <h3 className="text-xl sm:text-2xl font-black text-gray-800 mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-sunuBlue font-bold text-sm sm:text-base mb-3">
-                      {member.role}
-                    </p>
                     <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                       {member.expertise}
                     </p>
