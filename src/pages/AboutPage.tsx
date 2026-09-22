@@ -104,7 +104,7 @@ const AboutPage = () => {
       name: "Djibril",
       role: "Développeur",
       expertise: "Développement web · Solutions digitales",
-      image: "/img/Djibril_Developpeur.jpg",
+      image: "/img/Djibril_ANNE_developpeur.jpg",
       accent: "sunuBlue",
     },
   ];
