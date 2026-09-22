@@ -366,12 +366,13 @@ const BlogPage = () => {
 
                 <div className="relative min-h-[250px] lg:min-h-full overflow-hidden border-t lg:border-t-0 lg:border-l border-white/10">
                   <img
-                    src="https://allafricanyouth.org/assets/img2-CQHmmqh8.jpg"
-                    alt="Professionnels africains réunis autour d'un projet en entreprise"
+                    src="https://images.unsplash.com/photo-1758519290802-2c761001c5da?auto=format&fit=crop&fm=jpg&q=85&w=1800"
+                    alt="Professionnel noir en réflexion sur un projet professionnel, devant son ordinateur"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0B1220]/40 via-[#0071BC]/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#07111F]/35 via-[#0071BC]/10 to-[#F6A61A]/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/45 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 rounded-2xl border border-white/15 bg-[#0B1220]/55 px-4 py-3 backdrop-blur-md">
                     <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.12em] text-white/90">
                       Stratégie • Expertise • Action
