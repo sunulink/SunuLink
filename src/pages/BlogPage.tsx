@@ -330,30 +330,79 @@ const BlogPage = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pt-32 pb-20">
+      <main className="pb-20">
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-sunuBlue/10 to-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800">
-                BLOG & <span className="text-sunuOrange">RESSOURCES</span>
-              </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Explorez nos articles, conseils pratiques et analyses pour booster votre communication et votre marketing.
-              </p>
-            </div>
+        <section className="relative h-[450px] w-full overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=85&w=2200"
+              alt="Professionnel consultant des documents et des ressources stratégiques"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-[#0B1220]/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0071BC]/50 via-[#0B1220]/30 to-[#F6A61A]/20" />
+          </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto max-w-6xl px-5 sm:px-6">
+              <div className="max-w-4xl text-white">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] backdrop-blur-md mb-5">
+                  <BookOpen className="w-4 h-4 text-sunuOrange" />
+                  RESSOURCES &amp; EXPERTISE
+                </span>
+
+                <p className="text-sm sm:text-base md:text-lg font-black uppercase tracking-[0.18em] text-sunuOrange mb-2">
+                  SUNULINK INSIGHTS
+                </p>
+
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-white/80 mb-5">
+                  ÉDITION 2026–2027
+                </p>
+
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-[0.98] tracking-tight mb-5">
+                  COMPRENDRE. DÉCIDER. <span className="text-sunuOrange">TRANSFORMER.</span>
+                </h1>
+
+                <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl leading-relaxed mb-7">
+                  Des idées, des méthodes et des stratégies pour faire grandir votre entreprise.
+                </p>
+
+                <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl leading-relaxed mb-8">
+                  Des ressources conçues pour les entreprises qui ne veulent pas simplement communiquer, mais construire une marque visible, crédible et performante.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <a
+                    href="#categories"
+                    className="inline-flex items-center justify-center rounded-full bg-sunuOrange px-6 sm:px-8 py-3.5 sm:py-4 font-black text-slate-950 shadow-lg transition-all hover:bg-white hover:text-sunuBlue hover:-translate-y-0.5"
+                  >
+                    Explorer nos e-books
+                  </a>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center rounded-full border-2 border-white/70 bg-white/5 px-6 sm:px-8 py-3.5 sm:py-4 font-black text-white backdrop-blur-sm transition-all hover:bg-white hover:text-sunuBlue"
+                  >
+                    Parler à un expert
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="py-14 px-6 bg-white">
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <h3 className="text-4xl md:text-5xl font-black mb-2">
+                  <h3 className="text-3xl md:text-5xl font-black mb-2">
                     <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2000} />
                   </h3>
-                  <p className="font-semibold opacity-90">{stat.label}</p>
+                  <p className="font-semibold opacity-90 text-sm md:text-base">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -361,7 +410,7 @@ const BlogPage = () => {
         </section>
 
         {/* Blog Categories Grid */}
-        <section className="py-20 px-6 bg-gradient-to-b from-white to-sunuGray/20">
+        <section id="categories" className="py-20 px-6 bg-gradient-to-b from-white to-sunuGray/20">
           <div className="container mx-auto max-w-7xl">
             <h2 className="text-4xl font-black text-center mb-4 text-gray-800">
               Explorez nos <span className="text-sunuOrange">catégories</span>
@@ -394,69 +443,117 @@ const BlogPage = () => {
         </section>
 
         {/* CTA Section (Newsletter double étape) */}
-        <section className="py-20 px-6 bg-gradient-to-b from-white to-sunuBlue/10">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange rounded-3xl p-8 sm:p-12 text-white text-center shadow-2xl">
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
-                Restez informé de nos dernières publications
-              </h2>
-              <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-                Abonnez-vous à notre newsletter pour recevoir nos articles, conseils et actualités directement dans votre boîte mail.
-              </p>
+        <section className="py-16 md:py-20 px-4 sm:px-6 bg-slate-50">
+          <div className="container mx-auto max-w-6xl">
+            <div className="relative overflow-hidden rounded-[2rem] border border-sunuBlue/15 bg-white shadow-[0_20px_60px_rgba(0,113,188,0.12)]">
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange" />
 
-              {isSuccess ? (
-                <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 max-w-2xl mx-auto flex flex-col items-center justify-center gap-4 border border-white/20 animate-fade-in">
-                  <CheckCircle className="w-12 h-12 text-white" />
-                  <div className="space-y-2">
-                    <h3 className="font-black text-2xl">Bienvenue au club !</h3>
-                    <p className="text-lg opacity-90 max-w-lg mx-auto">
-                      Votre inscription a bien été validée. Vous recevrez bientôt nos meilleures ressources et astuces marketing directement dans votre boîte mail.
+              <div className="grid lg:grid-cols-[1.05fr_1.25fr]">
+                <div className="relative overflow-hidden bg-sunuBlue p-7 sm:p-10 md:p-12 text-white">
+                  <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-sunuCyan/25 blur-2xl" />
+                  <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-sunuOrange/20 blur-3xl" />
+
+                  <div className="relative z-10">
+                    <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-white/90">
+                      SUNULINK INSIGHTS
+                    </span>
+
+                    <h2 className="mt-5 text-3xl sm:text-4xl font-black leading-tight">
+                      Restez au cœur de notre expertise.
+                    </h2>
+
+                    <p className="mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-blue-50/90">
+                      Recevez nos analyses, conseils, actualités et nouvelles ressources directement dans votre boîte mail.
                     </p>
+
+                    <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-sunuOrange">
+                      <BookOpen className="w-4 h-4" />
+                      Des idées utiles. Des méthodes concrètes.
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <div className="max-w-2xl mx-auto">
-                  <form onSubmit={handleSubscribe} className="space-y-4">
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Votre adresse email"
-                        required
-                        className="flex-1 px-6 py-4 rounded-full text-gray-800 font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 text-base"
-                      />
-                      <input
-                        type="email"
-                        value={confirmEmail}
-                        onChange={(e) => setConfirmEmail(e.target.value)}
-                        placeholder="Confirmez votre email"
-                        required
-                        className="flex-1 px-6 py-4 rounded-full text-gray-800 font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 text-base"
-                      />
-                    </div>
-                     
-                    <button 
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full sm:w-auto bg-white text-sunuOrange px-12 py-4 rounded-full font-bold hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg flex items-center justify-center gap-2 mx-auto text-lg active:scale-95"
-                    >
-                      {isSubmitting ? "Inscription en cours..." : "S'abonner à la newsletter"}
-                      <Send className="w-4 h-4" />
-                    </button>
-                  </form>
 
-                  {errorMessage && (
-                    <div className="mt-4 bg-red-500/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-3 flex items-center justify-center gap-2 text-white text-sm font-semibold animate-shake">
-                      <AlertCircle className="w-4 h-4 shrink-0" />
-                      <span>{errorMessage}</span>
+                <div className="p-6 sm:p-8 md:p-10 lg:p-12">
+                  {isSuccess ? (
+                    <div className="h-full min-h-[260px] rounded-2xl border border-sunuBlue/15 bg-slate-50 p-7 sm:p-9 flex flex-col items-center justify-center text-center">
+                      <div className="w-14 h-14 rounded-2xl bg-sunuBlue/10 flex items-center justify-center mb-5">
+                        <CheckCircle className="w-8 h-8 text-sunuBlue" />
+                      </div>
+                      <h3 className="font-black text-2xl text-gray-900">Bienvenue dans SunuLink Insights</h3>
+                      <p className="mt-3 text-gray-600 leading-relaxed max-w-md">
+                        Votre inscription a bien été validée. Vous recevrez bientôt nos meilleures ressources et astuces directement dans votre boîte mail.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="max-w-xl mx-auto">
+                      <div className="mb-6">
+                        <p className="text-xs font-bold uppercase tracking-[0.15em] text-sunuBlue">
+                          Newsletter
+                        </p>
+                        <h3 className="mt-2 text-2xl sm:text-3xl font-black text-gray-900">
+                          Inscrivez-vous en quelques secondes
+                        </h3>
+                      </div>
+
+                      <form onSubmit={handleSubscribe} className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                              Votre adresse email
+                            </label>
+                            <input
+                              type="email"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              placeholder="exemple@entreprise.com"
+                              required
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-gray-800 font-medium placeholder:text-gray-400 focus:outline-none focus:border-sunuBlue focus:ring-4 focus:ring-sunuBlue/10 transition-all"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-2">
+                              Confirmer votre email
+                            </label>
+                            <input
+                              type="email"
+                              value={confirmEmail}
+                              onChange={(e) => setConfirmEmail(e.target.value)}
+                              placeholder="Retapez votre email"
+                              required
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-gray-800 font-medium placeholder:text-gray-400 focus:outline-none focus:border-sunuBlue focus:ring-4 focus:ring-sunuBlue/10 transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-sunuBlue px-6 py-4 text-base sm:text-lg font-black text-white shadow-lg shadow-sunuBlue/20 transition-all hover:bg-sunuOrange hover:shadow-sunuOrange/20 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                          {isSubmitting ? "Inscription en cours..." : "S'abonner à la newsletter"}
+                          <Send className="w-4 h-4" />
+                        </button>
+
+                        <p className="text-xs text-gray-500 text-center leading-relaxed">
+                          Des contenus utiles, sans surcharge. Vous pourrez vous désinscrire à tout moment.
+                        </p>
+                      </form>
+
+                      {errorMessage && (
+                        <div className="mt-4 bg-red-50 border border-red-200 rounded-xl p-3.5 flex items-center justify-center gap-2 text-red-700 text-sm font-semibold animate-shake">
+                          <AlertCircle className="w-4 h-4 shrink-0" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
