@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/realisations", label: "Réalisations" },
   { href: "/boost-my-pub", label: "Boost My Pub" },
   { href: "/ialinkbusiness", label: "Link IA Business" },
-  { href: "/blog", label: "Blog & Ressources" },
+  { href: "/blog", label: "Ressources & Expertise" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
