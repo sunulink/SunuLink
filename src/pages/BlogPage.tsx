@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -20,63 +20,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-
-// Composant de compteur animé
-const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const counterRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
-
-    return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
-    };
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [isVisible, end, duration]);
-
-  return (
-    <div ref={counterRef}>
-      {count}{suffix}
-    </div>
-  );
-};
 
 const BlogPage = () => {
   // États pour la Newsletter (Double étape de confirmation d'email)
@@ -319,12 +262,7 @@ const BlogPage = () => {
     },
   ];
 
-  const stats = [
-    { value: 20, suffix: "", label: "Catégories d'articles" },
-    { value: 180, suffix: "+", label: "Articles publiés" },
-    { value: 50, suffix: "+", label: "Success stories" },
-    { value: 25, suffix: "K+", label: "Lecteurs mensuels" },
-  ];
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -390,21 +328,57 @@ const BlogPage = () => {
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="py-14 px-6 bg-white">
+
+
+        {/* Premium Banner — Transition vers la bibliothèque d'expertise */}
+        <section className="px-4 sm:px-6 py-10 md:py-14 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="grain-texture bg-gradient-to-br from-sunuBlue to-sunuCyan text-white rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  <h3 className="text-3xl md:text-5xl font-black mb-2">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2000} />
-                  </h3>
-                  <p className="font-semibold opacity-90 text-sm md:text-base">{stat.label}</p>
+            <div className="relative overflow-hidden rounded-[2rem] border border-sunuBlue/15 bg-gradient-to-br from-sunuBlue to-sunuCyan shadow-[0_20px_60px_rgba(0,113,188,0.18)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.16),transparent_34%),radial-gradient(circle_at_85%_80%,rgba(246,166,26,0.18),transparent_30%)] pointer-events-none" />
+
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.12fr_0.88fr] min-h-[360px] md:min-h-[400px]">
+                <div className="flex flex-col justify-center p-7 sm:p-10 md:p-14 lg:p-16 text-white">
+                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.16em] text-white/90 backdrop-blur-md">
+                    <BookOpen className="w-4 h-4 text-sunuOrange" />
+                    SUNULINK INSIGHTS
+                  </span>
+
+                  <h2 className="mt-6 max-w-3xl text-3xl sm:text-4xl md:text-5xl font-black leading-[1.05] tracking-tight">
+                    VOUS AVEZ UN PROJET.
+                    <br />
+                    <span className="text-sunuOrange">NOUS AVONS LA MÉTHODE.</span>
+                  </h2>
+
+                  <p className="mt-5 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-blue-50">
+                    Stratégie, communication, branding, digital, développement commercial, événementiel et intelligence artificielle : découvrez des ressources pensées pour vous aider à mieux comprendre vos enjeux et à prendre de meilleures décisions.
+                  </p>
+
+                  <div className="mt-7">
+                    <Link
+                      to="/services"
+                      className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-black text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-sunuBlue hover:-translate-y-0.5"
+                    >
+                      Découvrir notre expertise
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
                 </div>
-              ))}
+
+                <div className="relative min-h-[250px] lg:min-h-full overflow-hidden border-t lg:border-t-0 lg:border-l border-white/10">
+                  <img
+                    src="https://allafricanyouth.org/assets/img2-CQHmmqh8.jpg"
+                    alt="Professionnels africains réunis autour d'un projet en entreprise"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0B1220]/40 via-[#0071BC]/10 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 rounded-2xl border border-white/15 bg-[#0B1220]/55 px-4 py-3 backdrop-blur-md">
+                    <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.12em] text-white/90">
+                      Stratégie • Expertise • Action
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
