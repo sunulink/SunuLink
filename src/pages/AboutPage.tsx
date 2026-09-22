@@ -86,14 +86,14 @@ const AboutPage = () => {
 
   const teamMembers = [
     {
-      name: "Birahim Basse",
+      name: "Birahim BASSE",
       role: "PDG / Fondateur",
       expertise: "Conseil stratégique & développement",
       image: "/img/Birahim_DG.JPG",
       accent: "sunuBlue",
     },
     {
-      name: "Ndéye Léna Kamara",
+      name: "Ndéye Léna KAMARA",
       role: "Manager & Consultante Stratégique",
       expertise: "Marketing · Communication · Développement commercial",
       image: "/img/Lena_Manager_Consultante_Strategique.PHG",
@@ -101,7 +101,7 @@ const AboutPage = () => {
       accent: "sunuOrange",
     },
     {
-      name: "Djibril",
+      name: "Djibril ANNE",
       role: "Développeur",
       expertise: "Développement web · Solutions digitales",
       image: "/img/Djibril_ANNE_developpeur.jpg",
