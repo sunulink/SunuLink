@@ -108,12 +108,13 @@ const AboutPage = () => {
       accent: "sunuBlue",
     },
     {
-      name: "Edwige Aimée DIATTA ",
-      role: "Responsable Marketing & Communication",
-      expertise: "Marketing · Communication",
-      image: "/img/Edwige_Responsable_Marketing.PNG",
-      accent: "sunuOrange",
-    },
+    name: "Edwige Aimée DIATTA",
+    role: "Responsable Marketing & Communication",
+    expertise: "Marketing · Communication",
+    image: "/img/Edwige_Responsable_Marketing.png",
+    fallbackImage: "/img/Edwige_Responsable_Marketing.PNG",
+    accent: "sunuOrange",
+  },
   ];
 
   const whyChooseUs = [
