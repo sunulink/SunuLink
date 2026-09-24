@@ -107,6 +107,13 @@ const AboutPage = () => {
       image: "/img/Djibril_ANNE_developpeur.jpg",
       accent: "sunuBlue",
     },
+    {
+      name: "Edwige Aimée DIATTA ",
+      role: "Responsable Marketing & Communication",
+      expertise: "Marketing · Communication",
+      image: "/img/Edwige_Responsable_Marketing.PNG",
+      accent: "sunuOrange",
+    },
   ];
 
   const whyChooseUs = [
