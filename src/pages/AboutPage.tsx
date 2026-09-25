@@ -115,6 +115,20 @@ const AboutPage = () => {
     fallbackImage: "/img/Edwige_Responsable_Marketing.PNG",
     accent: "sunuOrange",
   },
+    {
+      name: "Ibrahima DIOUSSE",
+      role: "Graphiste & Motion Designer ",
+      expertise: "Design graphique · Identité visuelle",
+      image: "/img/Ibrahima_Diousse_Designer.png",
+      accent: "sunuBlue",
+    },
+    {
+    name: "Mariétou DIOUF",
+    role: "Assistante Administrative & Commerciale",
+    expertise: "Administration · Coordination",
+    image: "/img/Marietou_Diouf_Assistante_Admi_Comm.JPG",
+    accent: "sunuOrange",
+  },
   ];
 
   const whyChooseUs = [
