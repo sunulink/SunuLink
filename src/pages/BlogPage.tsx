@@ -17,6 +17,9 @@ import {
   Send,
   CheckCircle,
   AlertCircle,
+  Clock,
+  ArrowRight,
+  Filter,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
@@ -72,8 +75,8 @@ const BlogPage = () => {
         nom: "Newsletter",
         email: normalizedEmail,
         telephone: "Non renseigné",
-        objet: "Nouvelle inscription à la Newsletter du Blog",
-        source: "Formulaire Newsletter Blog",
+        objet: "Nouvelle inscription à la Newsletter SunuLink Insights",
+        source: "Formulaire Newsletter SunuLink Insights",
         message: `Une nouvelle inscription à la newsletter a été enregistrée avec l'adresse email suivante : ${normalizedEmail}`,
       };
 
@@ -99,170 +102,312 @@ const BlogPage = () => {
     }
   };
 
-  const blogCategories = [
+  // =========================================================
+  // BIBLIOTHÈQUE SUNULINK INSIGHTS — 20 E-BOOKS
+  // =========================================================
+
+  const ebookFilters = [
+    "Tous",
+    "Marketing",
+    "Communication",
+    "Branding",
+    "Digital & SEO",
+    "Réseaux sociaux",
+    "Innovation & IA",
+    "Business & Développement",
+  ];
+
+  const ebookGroups = [
     {
-      icon: Lightbulb,
-      title: "Conseils & Astuces Marketing",
-      description: "Des astuces pratiques pour améliorer votre stratégie marketing au quotidien",
-      color: "from-sunuOrange to-yellow-500",
-      slug: "conseils-marketing",
-      articles: "15+",
+      id: "strategie-croissance",
+      number: "01",
+      title: "STRATÉGIE & CROISSANCE",
+      description:
+        "Comprendre son marché, structurer son marketing et transformer les opportunités en développement.",
     },
     {
-      icon: TrendingUp,
-      title: "Tendances & Actualités",
-      description: "Restez informé des dernières tendances en communication et marketing digital",
-      color: "from-sunuBlue to-sunuCyan",
-      slug: "tendances-actualites",
-      articles: "20+",
+      id: "communication-marque",
+      number: "02",
+      title: "COMMUNICATION & MARQUE",
+      description:
+        "Construire une identité forte et une communication cohérente, crédible et différenciante.",
     },
     {
-      icon: Megaphone,
-      title: "Stratégies de Communication",
-      description: "Apprenez à construire des stratégies de communication efficaces et percutantes",
-      color: "from-purple-500 to-pink-500",
-      slug: "strategies-communication",
-      articles: "12+",
+      id: "digital-creation",
+      number: "03",
+      title: "DIGITAL & CRÉATION",
+      description:
+        "Développer sa visibilité digitale et créer des contenus capables de retenir l’attention.",
     },
     {
-      icon: Target,
-      title: "Marketing Digital & SEO",
-      description: "Optimisez votre présence en ligne et améliorez votre référencement naturel",
-      color: "from-green-500 to-emerald-500",
-      slug: "marketing-digital-seo",
-      articles: "18+",
+      id: "innovation-activation",
+      number: "04",
+      title: "INNOVATION & ACTIVATION",
+      description:
+        "Explorer les nouvelles technologies et transformer les idées en expériences concrètes.",
     },
     {
-      icon: Users,
-      title: "Réseaux Sociaux",
-      description: "Maîtrisez les réseaux sociaux et développez votre communauté en ligne",
-      color: "from-blue-500 to-indigo-500",
-      slug: "reseaux-sociaux",
-      articles: "25+",
-    },
-    {
-      icon: Palette,
-      title: "Branding & Identité Visuelle",
-      description: "Construisez une marque forte et une identity visuelle mémorable",
-      color: "from-pink-500 to-rose-500",
-      slug: "branding-identite",
-      articles: "10+",
-    },
-    {
-      icon: Globe,
-      title: "Communication Africaine",
-      description: "Focus sur les spécificités de la communication sur le continent africain",
-      color: "from-amber-500 to-orange-500",
-      slug: "communication-africaine",
-      articles: "8+",
-    },
-    {
-      icon: Briefcase,
-      title: "Entrepreneuriat & Business",
-      description: "Conseils pour les entrepreneurs et PME en matière de communication",
-      color: "from-teal-500 to-cyan-500",
-      slug: "entrepreneuriat-business",
-      articles: "14+",
-    },
-    {
-      icon: Sparkles,
-      title: "Innovation & IA",
-      description: "L'intelligence artificielle et les innovations au service de la communication",
-      color: "from-violet-500 to-purple-500",
-      slug: "innovation-ia",
-      articles: "16+",
-    },
-    {
-      icon: Award,
-      title: "Success Stories",
-      description: "Des études de cas et témoignages inspirants de projets réussis",
-      color: "from-red-500 to-orange-500",
-      slug: "success-stories",
-      articles: "12+",
-    },
-    {
-      icon: MessageSquare,
-      title: "Interviews & Portraits",
-      description: "Rencontres avec des experts et acteurs du monde de la communication",
-      color: "from-indigo-500 to-blue-500",
-      slug: "interviews-portraits",
-      articles: "9+",
-    },
-    {
-      icon: BookOpen,
-      title: "Tutoriels & Guides",
-      description: "Des tutoriels pratiques et guides pas à pas pour progresser",
-      color: "from-cyan-500 to-blue-500",
-      slug: "tutoriels-guides",
-      articles: "22+",
-    },
-    {
-      icon: Target,
-      title: "Communication 360° & Stratégie Globale",
-      description: "Stratégies complètes pour construire, piloter et optimiser la communication des marques.",
-      color: "from-sunuBlue to-sunuCyan",
-      slug: "communication-360-strategie-globale",
-      articles: "20+",
-    },
-    {
-      icon: Megaphone,
-      title: "Publicité & Média Buying",
-      description: "Campagnes sponsorisées, achat média, performance publicitaire et ROI.",
-      color: "from-red-500 to-orange-500",
-      slug: "publicite-digitale-strategies-media",
-      articles: "15+",
-    },
-    {
-      icon: MessageSquare,
-      title: "Création de Contenu & Storytelling",
-      description: "Contenus engageants, storytelling de marque et stratégies éditoriales.",
-      color: "from-purple-500 to-pink-500",
-      slug: "strategie-contenu-creation-editoriale",
-      articles: "18+",
-    },
-    {
-      icon: Palette,
-      title: "Design Graphique & Création Visuelle",
-      description: "Identité visuelle, branding, design graphique et supports de communication.",
-      color: "from-pink-500 to-rose-500",
-      slug: "design-graphique-branding-visuel",
-      articles: "14+",
-    },
-    {
-      icon: Sparkles,
-      title: "Audiovisuel & Motion Design",
-      description: "Vidéos, motion design, animations et contenus audiovisuels impactants.",
-      color: "from-indigo-500 to-blue-500",
-      slug: "audiovisuel-motion-design",
-      articles: "12+",
-    },
-    {
-      icon: Users,
-      title: "Événementiel & Activation de Marque",
-      description: "Événements, lancements, activations terrain et expériences de marque.",
-      color: "from-amber-500 to-orange-500",
-      slug: "evenementiel-experience-client",
-      articles: "10+",
-    },
-    {
-      icon: Briefcase,
-      title: "Communication Corporate & Institutionnelle",
-      description: "Communication interne, institutionnelle et image de marque corporate.",
-      color: "from-teal-500 to-cyan-500",
-      slug: "relations-publiques-communication-institutionnelle",
-      articles: "11+",
-    },
-    {
-      icon: Award,
-      title: "Communication de Crise & Réputation",
-      description: "Gestion de crise, e-réputation et communication sensible.",
-      color: "from-gray-600 to-gray-800",
-      slug: "communication-crise-reputation",
-      articles: "8+",
+      id: "expertise-reputation",
+      number: "05",
+      title: "EXPERTISE & RÉPUTATION",
+      description:
+        "Développer les compétences, renforcer la réputation et mieux piloter sa communication.",
     },
   ];
 
+  const ebooks = [
+    {
+      id: 1,
+      group: "strategie-croissance",
+      title: "Conseils & Astuces Marketing",
+      category: "Marketing",
+      description:
+        "Des conseils pratiques pour mieux structurer vos actions marketing et investir avec davantage de méthode.",
+      slug: "conseils-astuces-marketing",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 2,
+      group: "strategie-croissance",
+      title: "Tendances & Actualités",
+      category: "Marketing",
+      description:
+        "Comprendre les évolutions du marché, des usages et des pratiques pour mieux anticiper les transformations.",
+      slug: "tendances-actualites",
+      image: "/img/tendances_actualites.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 3,
+      group: "strategie-croissance",
+      title: "Stratégies de Communication",
+      category: "Communication",
+      description:
+        "Construire une communication cohérente, différenciante et orientée vers des objectifs concrets.",
+      slug: "strategies-communication",
+      image: "/img/strategies_communication.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 4,
+      group: "strategie-croissance",
+      title: "Entrepreneuriat & Business",
+      category: "Business & Développement",
+      description:
+        "Des méthodes pour structurer son activité, mieux comprendre ses enjeux et soutenir sa croissance.",
+      slug: "entrepreneuriat-business",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
 
+    {
+      id: 5,
+      group: "communication-marque",
+      title: "Branding & Identité Visuelle",
+      category: "Branding",
+      description:
+        "Construire une marque cohérente, reconnaissable et capable de créer une véritable préférence.",
+      slug: "branding-identite-visuelle",
+      image: "/img/branding_identite_visuelle.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 6,
+      group: "communication-marque",
+      title: "Communication Africaine",
+      category: "Communication",
+      description:
+        "Explorer les spécificités culturelles et stratégiques de la communication sur les marchés africains.",
+      slug: "communication-africaine",
+      image: "/img/communication_africaine.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 7,
+      group: "communication-marque",
+      title: "Communication 360° & Stratégie Globale",
+      category: "Communication",
+      description:
+        "Relier les différents leviers de communication autour d’une vision globale et cohérente.",
+      slug: "communication-360-strategie-globale",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 8,
+      group: "communication-marque",
+      title: "Communication Corporate & Institutionnelle",
+      category: "Communication",
+      description:
+        "Renforcer l’image, la crédibilité et la communication des entreprises et organisations.",
+      slug: "communication-corporate-institutionnelle",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+
+    {
+      id: 9,
+      group: "digital-creation",
+      title: "Marketing Digital & SEO",
+      category: "Digital & SEO",
+      description:
+        "Développer sa visibilité sur le digital et mettre en place une présence web plus performante.",
+      slug: "marketing-digital-seo",
+      image: "/img/marketing_digital_seo.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 10,
+      group: "digital-creation",
+      title: "Réseaux Sociaux",
+      category: "Réseaux sociaux",
+      description:
+        "Créer une présence sociale cohérente, développer sa communauté et mieux engager son audience.",
+      slug: "reseaux-sociaux",
+      image: "/img/reseaux_sociaux.PNG",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 11,
+      group: "digital-creation",
+      title: "Création de Contenu & Storytelling",
+      category: "Communication",
+      description:
+        "Développer des contenus utiles et raconter l’histoire de sa marque avec plus d’impact.",
+      slug: "creation-contenu-storytelling",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 12,
+      group: "digital-creation",
+      title: "Design Graphique & Création Visuelle",
+      category: "Branding",
+      description:
+        "Comprendre les principes d’une création visuelle cohérente au service de l’image de marque.",
+      slug: "design-graphique-creation-visuelle",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+
+    {
+      id: 13,
+      group: "innovation-activation",
+      title: "Innovation & IA",
+      category: "Innovation & IA",
+      description:
+        "Comprendre les usages de l’intelligence artificielle et identifier des applications concrètes pour l’entreprise.",
+      slug: "innovation-ia",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 14,
+      group: "innovation-activation",
+      title: "Publicité & Média Buying",
+      category: "Marketing",
+      description:
+        "Mieux comprendre la publicité digitale, l’achat média, le ciblage et la logique de performance.",
+      slug: "publicite-media-buying",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 15,
+      group: "innovation-activation",
+      title: "Audiovisuel & Motion Design",
+      category: "Communication",
+      description:
+        "Explorer les formats audiovisuels et le motion design comme outils de communication et d’impact.",
+      slug: "audiovisuel-motion-design",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 16,
+      group: "innovation-activation",
+      title: "Événementiel & Activation de Marque",
+      category: "Communication",
+      description:
+        "Créer des expériences de marque et des activations événementielles pensées pour générer de l’engagement.",
+      slug: "evenementiel-activation-marque",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+
+    {
+      id: 17,
+      group: "expertise-reputation",
+      title: "Success Stories",
+      category: "Business & Développement",
+      description:
+        "Décrypter des parcours, expériences et réalisations afin d’en tirer des enseignements utiles.",
+      slug: "success-stories",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 18,
+      group: "expertise-reputation",
+      title: "Interviews & Portraits",
+      category: "Communication",
+      description:
+        "Rencontrer des profils, experts et acteurs qui façonnent les métiers et les transformations du marché.",
+      slug: "interviews-portraits",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 19,
+      group: "expertise-reputation",
+      title: "Tutoriels & Guides",
+      category: "Digital & SEO",
+      description:
+        "Des ressources pratiques pour apprendre, appliquer et progresser étape par étape.",
+      slug: "tutoriels-guides",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+    {
+      id: 20,
+      group: "expertise-reputation",
+      title: "Communication de Crise & Réputation",
+      category: "Communication",
+      description:
+        "Anticiper les situations sensibles, protéger son image et structurer sa communication en contexte de crise.",
+      slug: "communication-crise-reputation",
+      image: "",
+      pages: "40–55 pages",
+      readTime: "20–30 min",
+    },
+  ];
+
+  const [activeEbookFilter, setActiveEbookFilter] = useState("Tous");
+
+  const filteredEbooks =
+    activeEbookFilter === "Tous"
+      ? ebooks
+      : ebooks.filter((ebook) => ebook.category === activeEbookFilter);
 
   return (
     <div className="min-h-screen bg-white">
@@ -384,36 +529,231 @@ const BlogPage = () => {
           </div>
         </section>
 
-        {/* Blog Categories Grid */}
-        <section id="categories" className="py-20 px-6 bg-gradient-to-b from-white to-sunuGray/20">
+        {/* =========================================================
+            SUNULINK INSIGHTS — BIBLIOTHÈQUE DES E-BOOKS
+        ========================================================= */}
+        <section
+          id="categories"
+          className="py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-b from-white via-slate-50/60 to-white"
+        >
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl font-black text-center mb-4 text-gray-800">
-              Explorez nos <span className="text-sunuOrange">catégories</span>
-            </h2>
-            <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-              Cliquez sur une catégorie pour découvrir tous les articles associés.
-            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {blogCategories.map((category, index) => (
-                <Link
-                  key={index}
-                  to={`/blog/${category.slug}`}
-                  className={`grain-texture bg-gradient-to-br ${category.color} text-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group cursor-pointer`}
-                >
-                  <div className="bg-white/20 backdrop-blur-sm w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <category.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="mb-3">
-                    <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold">
-                      {category.articles} articles
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-black mb-3 leading-tight">{category.title}</h3>
-                  <p className="opacity-90 text-sm leading-relaxed">{category.description}</p>
-                </Link>
-              ))}
+            {/* En-tête */}
+            <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+              <span className="inline-flex items-center gap-2 rounded-full border border-sunuBlue/15 bg-sunuBlue/5 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-sunuBlue">
+                <BookOpen className="w-4 h-4 text-sunuOrange" />
+                SUNULINK INSIGHTS
+              </span>
+
+              <p className="mt-5 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-sunuOrange">
+                ÉDITION 2026–2027
+              </p>
+
+              <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-gray-900">
+                LA BIBLIOTHÈQUE{" "}
+                <span className="text-sunuBlue">STRATÉGIQUE SUNULINK</span>
+              </h2>
+
+              <p className="mt-5 text-base sm:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                Retrouvez nos e-books, analyses, conseils et décryptages pour
+                mieux comprendre les évolutions du marché, renforcer votre
+                stratégie et accélérer votre développement.
+              </p>
             </div>
+
+            {/* Filtres */}
+            <div className="mb-14">
+              <div className="flex items-center justify-center gap-2 mb-5 text-xs font-black uppercase tracking-[0.15em] text-gray-500">
+                <Filter className="w-4 h-4 text-sunuOrange" />
+                Explorer par expertise
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2.5">
+                {ebookFilters.map((filter) => {
+                  const isActive = activeEbookFilter === filter;
+
+                  return (
+                    <button
+                      key={filter}
+                      type="button"
+                      onClick={() => setActiveEbookFilter(filter)}
+                      className={`rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-black transition-all duration-300 border ${
+                        isActive
+                          ? "bg-sunuBlue text-white border-sunuBlue shadow-lg shadow-sunuBlue/20"
+                          : "bg-white text-gray-600 border-gray-200 hover:border-sunuBlue hover:text-sunuBlue hover:-translate-y-0.5"
+                      }`}
+                    >
+                      {filter}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Les 5 univers */}
+            <div className="space-y-20">
+              {ebookGroups.map((group) => {
+                const groupEbooks = filteredEbooks.filter(
+                  (ebook) => ebook.group === group.id
+                );
+
+                if (groupEbooks.length === 0) return null;
+
+                return (
+                  <div key={group.id}>
+
+                    {/* En-tête de l'univers */}
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8 md:mb-10">
+                      <div className="flex items-start gap-4">
+                        <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-sunuBlue to-sunuCyan text-white flex items-center justify-center shadow-lg">
+                          <span className="text-lg sm:text-xl font-black">
+                            {group.number}
+                          </span>
+                        </div>
+
+                        <div>
+                          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sunuOrange mb-1">
+                            Univers {group.number}
+                          </p>
+
+                          <h3 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
+                            {group.title}
+                          </h3>
+
+                          <p className="mt-2 text-sm sm:text-base text-gray-500 max-w-2xl leading-relaxed">
+                            {group.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="self-start md:self-auto inline-flex items-center rounded-full bg-slate-100 border border-slate-200 px-4 py-2 text-xs font-bold text-gray-500">
+                        {groupEbooks.length} guide
+                        {groupEbooks.length > 1 ? "s" : ""}
+                      </span>
+                    </div>
+
+                    {/* Cartes */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                      {groupEbooks.map((ebook) => (
+                        <article
+                          key={ebook.id}
+                          className="group relative flex flex-col bg-white rounded-[1.75rem] overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                        >
+                          {/* Couverture */}
+                          <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+
+                            {ebook.image ? (
+                              <img
+                                src={ebook.image}
+                                alt={`Couverture de l’e-book ${ebook.title}`}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuOrange p-6 flex flex-col justify-between">
+                                <span className="text-xs font-black uppercase tracking-[0.2em] text-white/80">
+                                  SUNULINK INSIGHTS
+                                </span>
+
+                                <div>
+                                  <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-3">
+                                    ÉDITION 2026–2027
+                                  </p>
+
+                                  <h4 className="text-2xl font-black text-white leading-tight">
+                                    {ebook.title}
+                                  </h4>
+                                </div>
+
+                                <span className="text-xs font-bold text-white/70">
+                                  E-BOOK
+                                </span>
+                              </div>
+                            )}
+
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent pointer-events-none" />
+
+                            <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                              <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-sunuBlue shadow-sm">
+                                E-BOOK
+                              </span>
+
+                              <span className="rounded-full bg-black/35 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white border border-white/15">
+                                2026–2027
+                              </span>
+                            </div>
+
+                            <div className="absolute bottom-4 left-4">
+                              <span className="rounded-full bg-sunuOrange px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-white shadow-lg">
+                                E-BOOK {String(ebook.id).padStart(2, "0")}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Informations */}
+                          <div className="flex flex-col flex-1 p-5 sm:p-6">
+
+                            <div className="mb-3">
+                              <span className="text-[10px] font-black uppercase tracking-[0.16em] text-sunuBlue">
+                                {ebook.category}
+                              </span>
+                            </div>
+
+                            <h4 className="text-xl font-black text-gray-900 leading-tight mb-3 group-hover:text-sunuBlue transition-colors">
+                              {ebook.title}
+                            </h4>
+
+                            <p className="text-sm text-gray-600 leading-relaxed">
+                              {ebook.description}
+                            </p>
+
+                            <div className="mt-5 flex flex-wrap gap-2">
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-50 border border-slate-200 px-3 py-1.5 text-[11px] font-bold text-gray-500">
+                                <BookOpen className="w-3.5 h-3.5 text-sunuBlue" />
+                                {ebook.pages}
+                              </span>
+
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-50 border border-slate-200 px-3 py-1.5 text-[11px] font-bold text-gray-500">
+                                <Clock className="w-3.5 h-3.5 text-sunuOrange" />
+                                {ebook.readTime}
+                              </span>
+                            </div>
+
+                            {/* Bouton */}
+                            <div className="mt-6 pt-5 border-t border-slate-100">
+                              <Link
+                                to={`/ressources/${ebook.slug}`}
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sunuBlue px-4 py-3.5 text-sm font-black text-white shadow-md transition-all duration-300 hover:bg-sunuOrange hover:-translate-y-0.5"
+                              >
+                                Découvrir le guide
+                                <ArrowRight className="w-4 h-4" />
+                              </Link>
+                            </div>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Aucun résultat */}
+            {filteredEbooks.length === 0 && (
+              <div className="rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+                <BookOpen className="w-12 h-12 text-sunuBlue mx-auto mb-4" />
+
+                <h3 className="text-xl font-black text-gray-900">
+                  Aucun e-book trouvé
+                </h3>
+
+                <p className="mt-2 text-gray-500">
+                  Aucun guide ne correspond actuellement à ce filtre.
+                </p>
+              </div>
+            )}
+
           </div>
         </section>
 
