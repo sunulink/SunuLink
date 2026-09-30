@@ -7,32 +7,42 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Import du nouveau composant de retour en haut
+// Import du composant de retour en haut
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-// Imports des pages standards
+// =========================================================
+// IMPORTS DES PAGES STANDARDS
+// =========================================================
+
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
-import ResourcesPage from "./pages/ResourcesPage";
-import ResourceDetailPage from "./pages/ResourceDetailPage";
 import ArticlePage from "./pages/ArticlePage";
 import BoostMyPubPage from "./pages/BoostMyPubPage";
 import BoostMyPubDetailPage from "./pages/BoostMyPubDetailPage";
+
 import BlogPage from "./pages/BlogPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import EbookDetailPage from "./pages/EbookDetailPage";
+
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import DevisPage from "./pages/DevisPage";
 import NotFound from "./pages/NotFound";
 
-// Imports IA-link-business
+// =========================================================
+// IMPORTS IA-LINK-BUSINESS
+// =========================================================
+
 import IAlinkbusiness from "./pages/IA-link-business/IAlinkbusiness";
 import IAlinkDetail from "./pages/IA-link-business/IAlinkDeatil";
 import PackPubIA from "./pages/IA-link-business/PackpubIA";
 import PackpubIADetail from "./pages/IA-link-business/PackpubIADetail";
 
-// Import des pages de réalisations
+// =========================================================
+// IMPORTS DES PAGES DE RÉALISATIONS
+// =========================================================
+
 import RealisationsPage from "./pages/RealisationsPage";
 import LogoIdentitePage from "./pages/LogoIdentitePage";
 import AffichesSupportsPage from "./pages/AffichesSupportsPage";
@@ -40,14 +50,24 @@ import BrandingCompletPage from "./pages/BrandingCompletPage";
 import PhotoShootingPage from "./pages/PhotoShootingPage";
 import DesignPackagingPage from "./pages/DesignPackagingPage";
 import VideoAnimationPage from "./pages/VideoAnimationPage";
-import WebDigitalPage from "./pages/WebDigitalPage"; // <-- AJOUTÉ
+import WebDigitalPage from "./pages/WebDigitalPage";
 
-// Nouveaux services insérés (Audiovisuel et Événementiel)
+// =========================================================
+// SERVICES SPÉCIFIQUES
+// =========================================================
+
 import SunuLinkProd from "./pages/services/SunuLinkProd";
 import SunuLinkEvents from "./pages/services/SunuLinkEvents";
 
-// Import du Formulaire de Témoignage Client
+// =========================================================
+// FORMULAIRE DE TÉMOIGNAGE CLIENT
+// =========================================================
+
 import FormulaireTemoignage from "@/components/temoignages/FormulaireTemoignage";
+
+// =========================================================
+// QUERY CLIENT
+// =========================================================
 
 const queryClient = new QueryClient();
 
@@ -66,54 +86,184 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+
         <BrowserRouter>
           <ScrollToTop />
 
           <Routes>
-            {/* Pages Principales */}
+            {/* =====================================================
+                PAGES PRINCIPALES
+            ===================================================== */}
+
             <Route path="/" element={<Home />} />
+
             <Route path="/about" element={<AboutPage />} />
+
             <Route path="/services" element={<ServicesPage />} />
+
             <Route path="/contact" element={<ContactPage />} />
+
             <Route path="/devis" element={<DevisPage />} />
+
             <Route path="/faq" element={<FAQPage />} />
 
-            {/* Ressources & Blog */}
-            <Route path="/ressources" element={<ResourcesPage />} />
-            <Route path="/ressources/:slug" element={<ResourceDetailPage />} />
-            <Route path="/article/:articleSlug" element={<ArticlePage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogDetailPage />} />
+            {/* =====================================================
+                RESSOURCES & EXPERTISES
+            =====================================================
 
-            {/* Témoignages Clients */}
-            <Route path="/temoignages/nouveau" element={<FormulaireTemoignage />} />
+                Nouvelle architecture :
+                /ressources
+                    ↓
+                BlogPage
+                    ↓
+                /ressources/:slug
+                    ↓
+                EbookDetailPage
+            ===================================================== */}
 
-            {/* Boost My Pub */}
-            <Route path="/boost-my-pub" element={<BoostMyPubPage />} />
-            <Route path="/boost-my-pub/:packSlug" element={<BoostMyPubDetailPage />} />
+            <Route
+              path="/ressources"
+              element={<BlogPage />}
+            />
 
-            {/* IA Link Business */}
-            <Route path="/ialinkbusiness" element={<IAlinkbusiness />} />
-            <Route path="/ialinkbusiness/:serviceTitle" element={<IAlinkDetail />} />
-            <Route path="/pack-pub-ia" element={<PackPubIA />} />
-            <Route path="/pack-pub-ia/:packSlugia" element={<PackpubIADetail />} />
+            <Route
+              path="/ressources/:slug"
+              element={<EbookDetailPage />}
+            />
 
-            {/* --- SECTION SERVICES DÉDIÉS --- */}
-            <Route path="/services/audiovisuel" element={<SunuLinkProd />} />
-            <Route path="/services/evenementiel" element={<SunuLinkEvents />} />
+            {/* =====================================================
+                ANCIEN SYSTÈME ARTICLES / BLOG
+                Conservé pour compatibilité
+            ===================================================== */}
 
-            {/* --- SECTION RÉALISATIONS --- */}
-            <Route path="/realisations" element={<RealisationsPage />} />
-            <Route path="/realisations/logo-identite" element={<LogoIdentitePage />} />
-            <Route path="/realisations/print-affiches" element={<AffichesSupportsPage />} />
-            <Route path="/realisations/branding-complet" element={<BrandingCompletPage />} />
-            <Route path="/realisations/photo-shooting" element={<PhotoShootingPage />} />
-            <Route path="/realisations/design-packaging" element={<DesignPackagingPage />} />
-            <Route path="/realisations/video-animation" element={<VideoAnimationPage />} />
-            <Route path="/realisations/web-digital" element={<WebDigitalPage />} /> {/* <-- AJOUTÉ */}
+            <Route
+              path="/article/:articleSlug"
+              element={<ArticlePage />}
+            />
 
-            {/* 404 - Page non trouvée */}
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/blog"
+              element={<BlogPage />}
+            />
+
+            <Route
+              path="/blog/:slug"
+              element={<BlogDetailPage />}
+            />
+
+            {/* =====================================================
+                TÉMOIGNAGES CLIENTS
+            ===================================================== */}
+
+            <Route
+              path="/temoignages/nouveau"
+              element={<FormulaireTemoignage />}
+            />
+
+            {/* =====================================================
+                BOOST MY PUB
+            ===================================================== */}
+
+            <Route
+              path="/boost-my-pub"
+              element={<BoostMyPubPage />}
+            />
+
+            <Route
+              path="/boost-my-pub/:packSlug"
+              element={<BoostMyPubDetailPage />}
+            />
+
+            {/* =====================================================
+                IA LINK BUSINESS
+            ===================================================== */}
+
+            <Route
+              path="/ialinkbusiness"
+              element={<IAlinkbusiness />}
+            />
+
+            <Route
+              path="/ialinkbusiness/:serviceTitle"
+              element={<IAlinkDetail />}
+            />
+
+            <Route
+              path="/pack-pub-ia"
+              element={<PackPubIA />}
+            />
+
+            <Route
+              path="/pack-pub-ia/:packSlugia"
+              element={<PackpubIADetail />}
+            />
+
+            {/* =====================================================
+                SERVICES DÉDIÉS
+            ===================================================== */}
+
+            <Route
+              path="/services/audiovisuel"
+              element={<SunuLinkProd />}
+            />
+
+            <Route
+              path="/services/evenementiel"
+              element={<SunuLinkEvents />}
+            />
+
+            {/* =====================================================
+                RÉALISATIONS
+            ===================================================== */}
+
+            <Route
+              path="/realisations"
+              element={<RealisationsPage />}
+            />
+
+            <Route
+              path="/realisations/logo-identite"
+              element={<LogoIdentitePage />}
+            />
+
+            <Route
+              path="/realisations/print-affiches"
+              element={<AffichesSupportsPage />}
+            />
+
+            <Route
+              path="/realisations/branding-complet"
+              element={<BrandingCompletPage />}
+            />
+
+            <Route
+              path="/realisations/photo-shooting"
+              element={<PhotoShootingPage />}
+            />
+
+            <Route
+              path="/realisations/design-packaging"
+              element={<DesignPackagingPage />}
+            />
+
+            <Route
+              path="/realisations/video-animation"
+              element={<VideoAnimationPage />}
+            />
+
+            <Route
+              path="/realisations/web-digital"
+              element={<WebDigitalPage />}
+            />
+
+            {/* =====================================================
+                PAGE 404
+            ===================================================== */}
+
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
