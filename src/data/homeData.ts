@@ -205,7 +205,7 @@ export const testimonials: Testimonial[] = [
 export const collaborateurs = [
   // 6 Nouveaux ajouts de la zone jaune
   { name: "Agence Babelle", logo: "/collaborateurs/logo-babelle.png" },
-  { name: "Biba Séduction", logo: "/collaborateurs/logo-bda-service.png" },
+  { name: "Biba Séduction", logo: "/collaborateurs/logo_bda_service.png" },
   { name: "Café", logo: "/collaborateurs/LOGO NATAA.png" },
   { name: "De Bouche Bée", logo: "/collaborateurs/logo-de-bouche-bae.png" },
   { name: "Faddeco", logo: "/collaborateurs/logo-faddeco.png" },
