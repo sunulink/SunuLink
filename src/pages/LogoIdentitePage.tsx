@@ -55,6 +55,7 @@ const LogoIdentitePage = () => {
   ];
 
   const logoGrid = [
+    { name: "BDA Service", logo: "/portfolio/logo_bda_service.png" },
     { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
     { name: "Soso", logo: "/portfolio/logo-soso.png" },
     { name: "Sarataa", logo: "/portfolio/logo-sarataa.png" },
