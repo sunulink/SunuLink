@@ -164,7 +164,7 @@ const BlogPage = () => {
       description:
         "Des conseils pratiques pour mieux structurer vos actions marketing et investir avec davantage de méthode.",
       slug: "conseils-astuces-marketing",
-      image: "",
+      image: "/img/conseils-astuces-marketing.JPEG",
       pages: "48 pages",
       readTime: "50–70 min",
     },
@@ -200,7 +200,7 @@ const BlogPage = () => {
       description:
         "Des méthodes pour structurer son activité, mieux comprendre ses enjeux et soutenir sa croissance.",
       slug: "entrepreneuriat-business",
-      image: "",
+      image: "/img/entreprenariat-business.PNG",
       pages: "60 pages",
       readTime: "40–55 min",
     },
@@ -311,7 +311,7 @@ const BlogPage = () => {
       description:
         "Comprendre les usages de l’intelligence artificielle et identifier des applications concrètes pour l’entreprise.",
       slug: "innovation-ia",
-      image: "",
+      image: "/img/innovation-ia.PNG",
       pages: "71 pages",
       readTime: "30–45 min",
     },
