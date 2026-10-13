@@ -22,9 +22,9 @@ import { Link } from "react-router-dom";
 const SUNU_BLUE = "#1178B7";
 const SUNU_ORANGE = "#F59C27";
 
-// Images hébergées sur Unsplash : aucun fichier local à ajouter.
+// Images hébergées sur Unsplash .
 const IMAGE_HERO =
-  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=85";
+  "https://images.unsplash.com/photo-1739302750702-e26a61113758?auto=format&fit=crop&w=2200&q=85";
 
 const categories = [
   {
