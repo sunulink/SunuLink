@@ -123,7 +123,7 @@ const ServicesPage = () => {
         {/* HERO : image de fond et dégradé SunuLink */}
         <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[320px] lg:min-h-[350px]">
           <img
-            src="/img/services-hero.jpg"
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85"
             alt=""
             aria-hidden="true"
             loading="eager"
@@ -363,8 +363,8 @@ const ServicesPage = () => {
               {/* Image de production */}
               <div className="relative min-h-[260px] bg-[#1178B7] sm:min-h-[320px]">
                 <img
-                  src="/img/services-prod.jpg"
-                  alt="Équipe de production audiovisuelle en tournage"
+                  src="https://images.unsplash.com/photo-1781127445209-f02336fa36a0?auto=format&fit=crop&fm=jpg&q=80&w=1600"
+                  alt="Équipe et équipement de production audiovisuelle en tournage"
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
@@ -396,8 +396,8 @@ const ServicesPage = () => {
               {/* Image événementielle */}
               <div className="relative order-2 min-h-[260px] bg-[#1178B7] sm:min-h-[320px] lg:order-1">
                 <img
-                  src="/img/services-events.jpg"
-                  alt="Conférence professionnelle organisée dans une salle événementielle"
+                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=85"
+                  alt="Conférence professionnelle dans un espace événementiel"
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
