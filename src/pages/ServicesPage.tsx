@@ -1,64 +1,114 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  Briefcase, Palette, Image as ImageIcon, Globe, TrendingUp, Calendar,
-  Brain, CheckCircle, Film, ArrowRight, Sparkles, Camera, Clapperboard,
-  Users, Target, Mail
+  Briefcase,
+  Palette,
+  Image as ImageIcon,
+  Globe,
+  TrendingUp,
+  Calendar,
+  Brain,
+  CheckCircle,
+  Film,
+  ArrowRight,
+  Sparkles,
+  Users,
+  Target,
+  Mail,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const SUNU_BLUE = "#1178B7";
+const SUNU_ORANGE = "#F59C27";
 
 const services = [
   {
     icon: Briefcase,
     title: "Stratégie & Consulting",
-    description: "Clarifiez votre positionnement, vos priorités et votre plan d’action pour faire avancer votre activité avec méthode.",
-    color: "from-sunuBlue to-sunuCyan",
-    offerings: ["Audit & diagnostic", "Positionnement stratégique", "Plan marketing et communication", "Études de marché", "Accompagnement des dirigeants"],
+    description:
+      "Clarifiez votre positionnement, vos priorités et votre plan d’action pour faire avancer votre activité avec méthode.",
+    offerings: [
+      "Audit & diagnostic",
+      "Positionnement stratégique",
+      "Plan marketing et communication",
+      "Études de marché",
+      "Accompagnement des dirigeants",
+    ],
     action: "Parler de mon projet",
     link: "/contact",
   },
   {
     icon: Palette,
     title: "Branding & Identité Visuelle",
-    description: "Construisez une marque reconnaissable, cohérente et mémorable, de votre logo à votre univers visuel.",
-    color: "from-violet-600 to-fuchsia-500",
-    offerings: ["Création de logo", "Charte graphique", "Identité de marque", "Rebranding", "Direction artistique"],
+    description:
+      "Construisez une marque reconnaissable, cohérente et mémorable, de votre logo à votre univers visuel.",
+    offerings: [
+      "Création de logo",
+      "Charte graphique",
+      "Identité de marque",
+      "Rebranding",
+      "Direction artistique",
+    ],
     action: "Créer mon identité",
     link: "/contact",
   },
   {
     icon: ImageIcon,
     title: "Communication Visuelle & Contenus",
-    description: "Des supports créatifs qui transmettent votre message clairement et donnent envie de découvrir votre marque.",
-    color: "from-sunuOrange to-amber-400",
-    offerings: ["Visuels et affiches", "Contenus pour les réseaux sociaux", "Copywriting", "Campagnes visuelles", "Motion design"],
+    description:
+      "Des supports créatifs qui transmettent votre message clairement et donnent envie de découvrir votre marque.",
+    offerings: [
+      "Visuels et affiches",
+      "Contenus pour les réseaux sociaux",
+      "Copywriting",
+      "Campagnes visuelles",
+      "Motion design",
+    ],
     action: "Créer mes contenus",
     link: "/contact",
   },
   {
     icon: Globe,
     title: "Digital, Web & SEO",
-    description: "Développez une présence en ligne professionnelle, facile à trouver, à comprendre et à utiliser.",
-    color: "from-cyan-500 to-sky-600",
-    offerings: ["Création et refonte de sites web", "UX/UI design", "Référencement naturel (SEO)", "Audit digital", "Visibilité Google"],
+    description:
+      "Développez une présence en ligne professionnelle, facile à trouver, à comprendre et à utiliser.",
+    offerings: [
+      "Création et refonte de sites web",
+      "UX/UI design",
+      "Référencement naturel (SEO)",
+      "Audit digital",
+      "Visibilité Google",
+    ],
     action: "Développer ma présence en ligne",
     link: "/contact",
   },
   {
     icon: TrendingUp,
     title: "Développement Commercial",
-    description: "Structurez votre prospection et votre parcours client pour transformer plus efficacement les opportunités en clients.",
-    color: "from-emerald-500 to-teal-600",
-    offerings: ["Stratégie commerciale", "Prospection B2B/B2C", "Tunnel de conversion", "Mise en place de CRM", "Coaching commercial"],
+    description:
+      "Structurez votre prospection et votre parcours client pour transformer plus efficacement les opportunités en clients.",
+    offerings: [
+      "Stratégie commerciale",
+      "Prospection B2B/B2C",
+      "Tunnel de conversion",
+      "Mise en place de CRM",
+      "Coaching commercial",
+    ],
     action: "Accélérer ma croissance",
     link: "/contact",
   },
   {
     icon: Brain,
     title: "IA & Automatisation",
-    description: "Réduisez les tâches répétitives et facilitez le travail de vos équipes grâce à des automatisations adaptées.",
-    color: "from-indigo-500 to-violet-600",
-    offerings: ["Workflows automatisés", "Assistants IA", "Automatisation e-mail et WhatsApp", "Chatbots professionnels", "Tableaux de bord intelligents"],
+    description:
+      "Réduisez les tâches répétitives et facilitez le travail de vos équipes grâce à des automatisations adaptées.",
+    offerings: [
+      "Workflows automatisés",
+      "Assistants IA",
+      "Automatisation e-mail et WhatsApp",
+      "Chatbots professionnels",
+      "Tableaux de bord intelligents",
+    ],
     action: "Explorer les possibilités",
     link: "/contact",
   },
@@ -70,37 +120,71 @@ const ServicesPage = () => {
       <Header />
 
       <main className="pt-20">
-        {/* HERO — déposer l’image générée dans public/img/services-hero.jpg */}
-        <section className="relative isolate flex min-h-[570px] items-center overflow-hidden bg-[#061b36]">
+        {/* HERO : image de fond et dégradé SunuLink */}
+        <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[320px] lg:min-h-[350px]">
+          <img
+            src="/img/services-hero.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            fetchPriority="high"
+            className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+          />
+
           <div
-            className="absolute inset-0 -z-20 bg-cover bg-center"
-            style={{ backgroundImage: "url('/img/services-hero.jpg')" }}
+            className="absolute inset-0 z-10 bg-gradient-to-r from-[#1178B7]/95 via-[#1178B7]/80 to-[#1178B7]/20"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#04162e]/95 via-[#05264a]/80 to-[#05264a]/25" aria-hidden="true" />
-          <div className="container mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
+
+          <div className="container relative z-20 mx-auto w-full max-w-7xl px-5 py-7 sm:px-6 md:py-8">
             <div className="max-w-3xl" data-aos="fade-up">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-sunuOrange backdrop-blur">
-                <Sparkles size={16} /> Nos expertises
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#F59C27] backdrop-blur">
+                <Sparkles size={16} />
+                Nos expertises
               </div>
-              <h1 className="mb-6 text-4xl font-black leading-tight text-white sm:text-5xl md:text-6xl">
-                Une communication à <span className="text-sunuOrange">360°</span> pour donner de l’élan à vos projets.
+
+              <h1 className="mb-3 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
+                Une communication à{" "}
+                <span className="text-[#F59C27]">360°</span> pour donner de
+                l’élan à vos projets.
               </h1>
-              <p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
-                De la stratégie à la création, du digital à l’événementiel et à la production audiovisuelle : SunuLink vous accompagne avec des solutions adaptées à vos objectifs.
+
+              <p className="mb-5 max-w-2xl text-sm leading-relaxed text-white/95 sm:text-base md:text-lg">
+                De la stratégie à la création, du digital à l’événementiel et
+                à la production audiovisuelle : SunuLink vous accompagne avec
+                des solutions adaptées à vos objectifs.
               </p>
+
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a href="#nos-services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300">
-                  Explorer nos services <ArrowRight size={18} />
+                <a
+                  href="#nos-services"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F59C27] px-7 py-3 font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                >
+                  Explorer nos services
+                  <ArrowRight size={18} />
                 </a>
-                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-7 py-3 font-bold text-white transition hover:bg-white hover:text-[#062448] focus:outline-none focus:ring-4 focus:ring-white/40">
-                  <Mail size={18} /> Parler à un expert
+
+                <Link
+                  to="/contact"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#1178B7] px-7 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#F59C27] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                >
+                  <Mail size={18} />
+                  Parler à un expert
                 </Link>
               </div>
-              <div className="mt-10 grid max-w-2xl grid-cols-1 gap-3 text-sm text-white/90 sm:grid-cols-3">
-                {["Une approche sur mesure", "Des expertises complémentaires", "Des objectifs concrets"].map((item) => (
+
+              <div className="mt-5 grid max-w-2xl grid-cols-1 gap-2 text-sm text-white sm:grid-cols-3">
+                {[
+                  "Une approche sur mesure",
+                  "Des expertises complémentaires",
+                  "Des objectifs concrets",
+                ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
-                    <CheckCircle className="shrink-0 text-sunuOrange" size={18} /> {item}
+                    <CheckCircle
+                      className="shrink-0 text-[#F59C27]"
+                      size={18}
+                    />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
@@ -108,45 +192,96 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* INTRO */}
-        <section id="nos-services" className="scroll-mt-24 px-6 pb-8 pt-16 md:pt-20">
+        {/* INTRODUCTION AUX SERVICES */}
+        <section
+          id="nos-services"
+          className="scroll-mt-24 px-5 pb-8 pt-12 sm:px-6 md:pt-16"
+        >
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Nos services</p>
-            <h2 className="mb-5 text-3xl font-black leading-tight text-[#08264b] md:text-4xl">
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#F59C27]">
+              Nos services
+            </p>
+
+            <h2 className="mb-5 text-3xl font-black leading-tight text-[#1178B7] md:text-4xl">
               Les bonnes expertises, réunies autour de votre ambition.
             </h2>
+
             <p className="text-base leading-relaxed text-slate-600 md:text-lg">
-              Choisissez le service qui correspond à votre besoin. Chaque prestation peut être adaptée à votre contexte, à vos délais et à votre budget.
+              Choisissez le service qui correspond à votre besoin. Chaque
+              prestation peut être adaptée à votre contexte, à vos délais et
+              à votre budget.
             </p>
           </div>
         </section>
 
-        {/* GENERAL SERVICES */}
-        <section className="px-6 pb-16 pt-8 md:pb-20">
+        {/* CARTES DES SERVICES GÉNÉRAUX */}
+        <section className="px-5 pb-12 pt-6 sm:px-6 md:pb-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {services.map((service, index) => {
               const Icon = service.icon;
+
               return (
-                <article key={service.title} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sunuBlue/40 hover:shadow-xl" data-aos="fade-up" data-aos-delay={index * 60}>
-                  <div className={`bg-gradient-to-br ${service.color} p-6 text-white`}>
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/30 bg-white/15 shadow-inner">
+                <article
+                  key={service.title}
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 border-t-4 ${
+                    index % 2 === 0
+                      ? "border-t-[#1178B7]"
+                      : "border-t-[#F59C27]"
+                  } bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#F59C27] hover:shadow-[0_18px_40px_rgba(245,156,39,0.18)] focus-within:ring-2 focus-within:ring-[#F59C27]/40`}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 60}
+                >
+                  {/* Barre orange animée */}
+                  <div
+                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#F59C27] transition-transform duration-300 group-hover:scale-x-100"
+                    aria-hidden="true"
+                  />
+
+                  <div className="flex flex-1 flex-col p-6 pt-7">
+                    <div
+                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-sm transition-all duration-300 group-hover:rotate-3 group-hover:scale-110 group-hover:bg-[#F59C27] ${
+                        index % 2 === 0
+                          ? "bg-[#1178B7]"
+                          : "bg-[#F59C27]"
+                      }`}
+                    >
                       <Icon size={28} strokeWidth={1.8} />
                     </div>
-                    <h3 className="text-xl font-extrabold leading-snug">{service.title}</h3>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="mb-5 leading-relaxed text-slate-600">{service.description}</p>
-                    <h4 className="mb-3 text-sm font-extrabold uppercase tracking-wide text-[#08264b]">Comment nous pouvons vous aider</h4>
+
+                    <h3 className="mb-3 text-xl font-extrabold leading-snug text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27]">
+                      {service.title}
+                    </h3>
+
+                    <p className="mb-5 leading-relaxed text-slate-600">
+                      {service.description}
+                    </p>
+
+                    <h4 className="mb-3 text-sm font-extrabold uppercase tracking-wide text-[#1178B7]">
+                      Comment nous pouvons vous aider
+                    </h4>
+
                     <ul className="mb-6 space-y-2.5">
                       {service.offerings.map((offering) => (
-                        <li key={offering} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700">
-                          <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuBlue" /> <span>{offering}</span>
+                        <li
+                          key={offering}
+                          className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700"
+                        >
+                          <CheckCircle
+                            size={17}
+                            className="mt-0.5 shrink-0 text-[#F59C27]"
+                          />
+                          <span>{offering}</span>
                         </li>
                       ))}
                     </ul>
+
                     <div className="mt-auto pt-2">
-                      <Link to={service.link} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sunuBlue px-4 py-3 text-center font-bold text-sunuBlue transition hover:bg-sunuBlue hover:text-white focus:outline-none focus:ring-4 focus:ring-sky-200">
-                        {service.action} <ArrowRight size={17} />
+                      <Link
+                        to={service.link}
+                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#1178B7] bg-[#1178B7] px-4 py-3 text-center font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                      >
+                        {service.action}
+                        <ArrowRight size={17} />
                       </Link>
                     </div>
                   </div>
@@ -156,87 +291,190 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* SUNULINK PROD FEATURE */}
-        <section className="px-6 py-6 md:py-10">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#061a35] shadow-xl">
+        {/* SUNULINK PROD */}
+        <section className="px-5 py-6 sm:px-6 md:py-8">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-[#1178B7]/20 bg-white shadow-lg transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(17,120,183,0.15)]">
             <div className="grid lg:grid-cols-2">
-              <div className="flex flex-col justify-center p-7 text-white sm:p-10 lg:p-12">
+              {/* Texte de Prod en bleu SunuLink */}
+              <div className="flex flex-col justify-center bg-white p-7 text-[#1178B7] sm:p-10 lg:p-12">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sunuOrange text-white"><Film size={29} /></span>
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#F59C27] text-white shadow-sm">
+                    <Film size={29} />
+                  </span>
+
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-sunuOrange">Production audiovisuelle</p>
-                    <h2 className="text-3xl font-black sm:text-4xl">SunuLink Prod</h2>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F59C27]">
+                      Production audiovisuelle
+                    </p>
+                    <h2 className="text-3xl font-black text-[#1178B7] sm:text-4xl">
+                      SunuLink Prod
+                    </h2>
                   </div>
                 </div>
-                <p className="mb-4 text-xl font-bold text-white">Donnez vie à vos idées.</p>
-                <p className="mb-6 leading-relaxed text-white/80">
-                  Des films de marque aux vidéos événementielles, nous vous aidons à raconter votre histoire avec une production soignée et un message clair.
+
+                <p className="mb-4 text-xl font-bold text-[#1178B7]">
+                  Donnez vie à vos idées.
                 </p>
+
+                <p className="mb-6 leading-relaxed text-[#1178B7]">
+                  Des films de marque aux vidéos événementielles, nous vous
+                  aidons à raconter votre histoire avec une production soignée
+                  et un message clair.
+                </p>
+
                 <div className="mb-8 grid gap-3 sm:grid-cols-2">
-                  {["Films institutionnels et publicitaires", "Captation vidéo et prises de vues", "Montage, étalonnage et post-production", "Motion design et contenus vidéo"].map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-sm text-white/90">
-                      <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuOrange" /> {item}
+                  {[
+                    "Films institutionnels et publicitaires",
+                    "Captation vidéo et prises de vues",
+                    "Montage, étalonnage et post-production",
+                    "Motion design et contenus vidéo",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-[#1178B7]"
+                    >
+                      <CheckCircle
+                        size={17}
+                        className="mt-0.5 shrink-0 text-[#F59C27]"
+                      />
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
+
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <Link to="/services/audiovisuel" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-6 py-3 font-extrabold text-white transition hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300">
-                    Découvrir SunuLink Prod <ArrowRight size={18} />
+                  <Link
+                    to="/services/audiovisuel"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F59C27] px-6 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                  >
+                    Découvrir SunuLink Prod
+                    <ArrowRight size={18} />
                   </Link>
-                  <Link to="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/40 px-6 py-3 font-bold text-white transition hover:bg-white hover:text-[#061a35] focus:outline-none focus:ring-4 focus:ring-white/30">
+
+                  <Link
+                    to="/contact"
+                    className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[#1178B7] bg-[#1178B7] px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:bg-[#F59C27] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                  >
                     Demander une production
                   </Link>
                 </div>
               </div>
-              <div className="relative min-h-[280px] bg-gradient-to-br from-slate-800 via-[#12345b] to-black">
-                <img src="/img/services-prod.jpg" alt="Équipe de production audiovisuelle en tournage" className="absolute inset-0 h-full w-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061a35]/70 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-black/35 px-4 py-3 text-white backdrop-blur">
+
+              {/* Image de production */}
+              <div className="relative min-h-[260px] bg-[#1178B7] sm:min-h-[320px]">
+                <img
+                  src="/img/services-prod.jpg"
+                  alt="Équipe de production audiovisuelle en tournage"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#1178B7]/75 via-transparent to-transparent"
+                  aria-hidden="true"
+                />
+
+                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-[#1178B7]/90 px-4 py-3 text-white backdrop-blur">
                   <p className="font-bold">De l’idée à l’image finale</p>
-                  <p className="text-sm text-white/80">Création · Tournage · Post-production</p>
+                  <p className="text-sm text-white/90">
+                    Création · Tournage · Post-production
+                  </p>
                 </div>
-                <div className="absolute right-6 top-6 rounded-full bg-sunuOrange px-3 py-1 text-xs font-extrabold text-white">SUNULINK PROD</div>
+
+                <div className="absolute right-6 top-6 rounded-full bg-[#F59C27] px-3 py-1 text-xs font-extrabold text-white">
+                  SUNULINK PROD
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SUNULINK EVENTS FEATURE */}
-        <section className="px-6 py-6 md:py-10">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-slate-200 bg-[#f5f8fc] shadow-lg">
+        {/* SUNULINK EVENTS */}
+        <section className="px-5 py-6 sm:px-6 md:py-8">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-[#F59C27]/30 bg-white shadow-lg transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(245,156,39,0.18)]">
             <div className="grid lg:grid-cols-2">
-              <div className="relative order-2 min-h-[280px] bg-gradient-to-br from-[#0a2b53] via-[#0a3d70] to-[#061a35] lg:order-1">
-                <img src="/img/services-events.jpg" alt="Conférence professionnelle organisée dans une salle événementielle" className="absolute inset-0 h-full w-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#061a35]/20 to-[#061a35]/60" />
-                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-black/35 px-4 py-3 text-white backdrop-blur">
+              {/* Image événementielle */}
+              <div className="relative order-2 min-h-[260px] bg-[#1178B7] sm:min-h-[320px] lg:order-1">
+                <img
+                  src="/img/services-events.jpg"
+                  alt="Conférence professionnelle organisée dans une salle événementielle"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-[#1178B7]/15 to-[#1178B7]/60"
+                  aria-hidden="true"
+                />
+
+                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-[#1178B7]/90 px-4 py-3 text-white backdrop-blur">
                   <p className="font-bold">Des moments qui rassemblent</p>
-                  <p className="text-sm text-white/80">Conception · Coordination · Réalisation</p>
+                  <p className="text-sm text-white/90">
+                    Conception · Coordination · Réalisation
+                  </p>
                 </div>
               </div>
+
+              {/* Texte événementiel */}
               <div className="order-1 flex flex-col justify-center p-7 sm:p-10 lg:order-2 lg:p-12">
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sunuBlue text-white"><Calendar size={28} /></span>
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#1178B7] text-white">
+                    <Calendar size={28} />
+                  </span>
+
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-sunuOrange">Événementiel & activation</p>
-                    <h2 className="text-3xl font-black text-[#08264b] sm:text-4xl">SunuLink Events</h2>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F59C27]">
+                      Événementiel & activation
+                    </p>
+                    <h2 className="text-3xl font-black text-[#1178B7] sm:text-4xl">
+                      SunuLink Events
+                    </h2>
                   </div>
                 </div>
-                <p className="mb-4 text-xl font-bold text-[#08264b]">Des événements qui marquent les esprits.</p>
-                <p className="mb-6 leading-relaxed text-slate-600">
-                  Nous concevons et coordonnons des événements professionnels ou grand public en tenant compte de votre objectif, de votre public et de votre identité de marque.
+
+                <p className="mb-4 text-xl font-bold text-[#1178B7]">
+                  Des événements qui marquent les esprits.
                 </p>
+
+                <p className="mb-6 leading-relaxed text-slate-600">
+                  Nous concevons et coordonnons des événements professionnels
+                  ou grand public en tenant compte de votre objectif, de
+                  votre public et de votre identité de marque.
+                </p>
+
                 <div className="mb-8 grid gap-3 sm:grid-cols-2">
-                  {["Conférences, forums et séminaires", "Lancements et activations de marque", "Galas, salons et rencontres professionnelles", "Coordination logistique et technique"].map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-sm text-slate-700">
-                      <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuBlue" /> {item}
+                  {[
+                    "Conférences, forums et séminaires",
+                    "Lancements et activations de marque",
+                    "Galas, salons et rencontres professionnelles",
+                    "Coordination logistique et technique",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-slate-700"
+                    >
+                      <CheckCircle
+                        size={17}
+                        className="mt-0.5 shrink-0 text-[#F59C27]"
+                      />
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
+
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <Link to="/services/evenementiel" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuBlue px-6 py-3 font-extrabold text-white transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-200">
-                    Découvrir SunuLink Events <ArrowRight size={18} />
+                  <Link
+                    to="/services/evenementiel"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1178B7] px-6 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#F59C27] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                  >
+                    Découvrir SunuLink Events
+                    <ArrowRight size={18} />
                   </Link>
-                  <Link to="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full border border-sunuBlue px-6 py-3 font-bold text-sunuBlue transition hover:bg-sunuBlue hover:text-white focus:outline-none focus:ring-4 focus:ring-sky-200">
+
+                  <Link
+                    to="/contact"
+                    className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+                  >
                     Organiser mon événement
                   </Link>
                 </div>
@@ -245,81 +483,185 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* SERVICE PHARE */}
-        <section className="px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#062448] via-sunuBlue to-[#007cba] p-7 text-white shadow-xl sm:p-10 lg:p-12">
+        {/* NOTRE MÉTHODE */}
+        <section className="px-5 py-12 sm:px-6 md:py-16">
+          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#1178B7] via-[#1178B7] to-[#F59C27] p-7 text-white shadow-xl sm:p-10 lg:p-12">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <div>
-                <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Notre méthode</p>
-                <h2 className="mb-5 text-3xl font-black sm:text-4xl">Une stratégie claire. Des actions cohérentes. Des résultats suivis.</h2>
-                <p className="mb-7 leading-relaxed text-white/85">
-                  Nous commençons par comprendre votre situation et vos objectifs, puis nous construisons avec vous une démarche adaptée, de la réflexion à la mise en œuvre.
+                <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-white">
+                  Notre méthode
                 </p>
-                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 font-extrabold text-[#062448] transition hover:bg-sunuOrange hover:text-white focus:outline-none focus:ring-4 focus:ring-white/40">
-                  Échanger sur mes objectifs <ArrowRight size={18} />
+
+                <h2 className="mb-5 text-3xl font-black sm:text-4xl">
+                  Une stratégie claire. Des actions cohérentes. Des résultats
+                  suivis.
+                </h2>
+
+                <p className="mb-7 leading-relaxed text-white/95">
+                  Nous commençons par comprendre votre situation et vos
+                  objectifs, puis nous construisons avec vous une démarche
+                  adaptée, de la réflexion à la mise en œuvre.
+                </p>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F59C27] px-7 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/50"
+                >
+                  Échanger sur mes objectifs
+                  <ArrowRight size={18} />
                 </Link>
               </div>
+
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
-                  { icon: Target, title: "Comprendre", text: "Analyser votre besoin et définir les priorités." },
-                  { icon: Briefcase, title: "Structurer", text: "Construire un plan d’action réaliste." },
-                  { icon: Users, title: "Collaborer", text: "Avancer avec un accompagnement adapté." },
-                  { icon: TrendingUp, title: "Évaluer", text: "Suivre les indicateurs et ajuster les actions." },
+                  {
+                    icon: Target,
+                    title: "Comprendre",
+                    text: "Analyser votre besoin et définir les priorités.",
+                  },
+                  {
+                    icon: Briefcase,
+                    title: "Structurer",
+                    text: "Construire un plan d’action réaliste.",
+                  },
+                  {
+                    icon: Users,
+                    title: "Collaborer",
+                    text: "Avancer avec un accompagnement adapté.",
+                  },
+                  {
+                    icon: TrendingUp,
+                    title: "Évaluer",
+                    text: "Suivre les indicateurs et ajuster les actions.",
+                  },
                 ].map((item) => {
                   const Icon = item.icon;
-                  return <div key={item.title} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
-                    <Icon className="mb-3 text-sunuOrange" size={25} />
-                    <h3 className="mb-2 font-extrabold">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-white/80">{item.text}</p>
-                  </div>;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className="rounded-2xl border border-white/25 bg-white/10 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:bg-[#1178B7]/70"
+                    >
+                      <Icon
+                        className="mb-3 text-[#F59C27]"
+                        size={25}
+                      />
+                      <h3 className="mb-2 font-extrabold">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/95">
+                        {item.text}
+                      </p>
+                    </div>
+                  );
                 })}
               </div>
             </div>
           </div>
         </section>
 
-        {/* WHY US */}
-        <section className="bg-slate-50 px-6 py-16 md:py-20">
+        {/* POURQUOI SUNULINK */}
+        <section className="bg-slate-50 px-5 py-12 sm:px-6 md:py-16">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto mb-12 max-w-2xl text-center">
-              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Pourquoi SunuLink ?</p>
-              <h2 className="text-3xl font-black text-[#08264b] md:text-4xl">Un partenaire à vos côtés, à chaque étape.</h2>
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#F59C27]">
+                Pourquoi SunuLink ?
+              </p>
+
+              <h2 className="text-3xl font-black text-[#1178B7] md:text-4xl">
+                Un partenaire à vos côtés, à chaque étape.
+              </h2>
             </div>
+
             <div className="grid gap-5 md:grid-cols-3">
               {[
-                { icon: Target, title: "Une approche sur mesure", text: "Des recommandations adaptées à votre réalité, vos publics et vos objectifs." },
-                { icon: CheckCircle, title: "Un suivi lisible", text: "Des étapes claires, des échanges réguliers et des priorités partagées." },
-                { icon: Sparkles, title: "Une expertise à 360°", text: "Stratégie, création, digital, événementiel et audiovisuel réunis au même endroit." },
+                {
+                  icon: Target,
+                  title: "Une approche sur mesure",
+                  text: "Des recommandations adaptées à votre réalité, vos publics et vos objectifs.",
+                },
+                {
+                  icon: CheckCircle,
+                  title: "Un suivi lisible",
+                  text: "Des étapes claires, des échanges réguliers et des priorités partagées.",
+                },
+                {
+                  icon: Sparkles,
+                  title: "Une expertise à 360°",
+                  text: "Stratégie, création, digital, événementiel et audiovisuel réunis au même endroit.",
+                },
               ].map((item) => {
                 const Icon = item.icon;
-                return <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sunuBlue"><Icon size={25} /></div>
-                  <h3 className="mb-3 text-xl font-extrabold text-[#08264b]">{item.title}</h3>
-                  <p className="leading-relaxed text-slate-600">{item.text}</p>
-                </article>;
+
+                return (
+                  <article
+                    key={item.title}
+                    className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:shadow-[0_14px_35px_rgba(245,156,39,0.15)]"
+                  >
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1178B7]/10 text-[#1178B7] transition-all duration-300 group-hover:bg-[#F59C27] group-hover:text-white">
+                      <Icon size={25} />
+                    </div>
+
+                    <h3 className="mb-3 text-xl font-extrabold text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27]">
+                      {item.title}
+                    </h3>
+
+                    <p className="leading-relaxed text-slate-600">
+                      {item.text}
+                    </p>
+                  </article>
+                );
               })}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="px-6 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-sunuOrange to-amber-500 px-6 py-12 text-center text-white shadow-xl sm:px-12">
-            <h2 className="mb-5 text-3xl font-black md:text-4xl">Votre prochain défi mérite une stratégie à sa hauteur.</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/95">
-              Parlez-nous de votre projet. Nous vous aiderons à identifier les prochaines étapes et le service le plus adapté.
+        {/* APPEL À L'ACTION FINAL */}
+        <section className="px-5 py-12 sm:px-6 md:py-16">
+          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-[#1178B7] to-[#1178B7] px-6 py-10 text-center text-white shadow-xl sm:px-12 md:py-12">
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-[#F59C27]">
+              Votre prochain projet
             </p>
+
+            <h2 className="mb-5 text-3xl font-black md:text-4xl">
+              Votre prochain défi mérite une stratégie à sa hauteur.
+            </h2>
+
+            <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/95">
+              Parlez-nous de votre projet. Nous vous aiderons à identifier
+              les prochaines étapes et le service le plus adapté.
+            </p>
+
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
-              <Link to="/devis" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-extrabold text-sunuOrange transition hover:bg-[#062448] hover:text-white focus:outline-none focus:ring-4 focus:ring-white/40">
-                Demander un devis <ArrowRight size={18} />
+              <Link
+                to="/devis"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F59C27] px-8 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+              >
+                Demander un devis
+                <ArrowRight size={18} />
               </Link>
-              <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-white px-8 py-3 font-extrabold text-white transition hover:bg-white hover:text-sunuOrange focus:outline-none focus:ring-4 focus:ring-white/40">
-                Nous contacter <Mail size={18} />
+
+              <Link
+                to="/contact"
+                aria-label="Contactez-nous"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-white px-8 py-3 font-extrabold transition-all duration-300 hover:-translate-y-1 hover:bg-[#F59C27] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40"
+              >
+                <Mail
+                  size={18}
+                  className="text-[#1178B7] transition-colors duration-300 group-hover:text-white"
+                />
+
+                <span className="text-[#1178B7] transition-colors duration-300 group-hover:text-white">
+                  Contactez
+                </span>
+
+                <span className="text-[#F59C27] transition-colors duration-300 group-hover:text-white">
+                  -nous
+                </span>
               </Link>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
