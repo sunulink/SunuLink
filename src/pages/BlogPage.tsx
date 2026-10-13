@@ -165,8 +165,8 @@ const BlogPage = () => {
         "Des conseils pratiques pour mieux structurer vos actions marketing et investir avec davantage de méthode.",
       slug: "conseils-astuces-marketing",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "48 pages",
+      readTime: "50–70 min",
     },
     {
       id: 2,
@@ -177,8 +177,8 @@ const BlogPage = () => {
         "Comprendre les évolutions du marché, des usages et des pratiques pour mieux anticiper les transformations.",
       slug: "tendances-actualites",
       image: "/img/tendances_actualites.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "46 pages",
+      readTime: "45–65 min",
     },
     {
       id: 3,
@@ -189,8 +189,8 @@ const BlogPage = () => {
         "Construire une communication cohérente, différenciante et orientée vers des objectifs concrets.",
       slug: "strategies-communication",
       image: "/img/strategies_communication.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "47 pages",
+      readTime: "40–60 min",
     },
     {
       id: 4,
@@ -201,8 +201,8 @@ const BlogPage = () => {
         "Des méthodes pour structurer son activité, mieux comprendre ses enjeux et soutenir sa croissance.",
       slug: "entrepreneuriat-business",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "60 pages",
+      readTime: "40–55 min",
     },
 
     {
@@ -214,8 +214,8 @@ const BlogPage = () => {
         "Construire une marque cohérente, reconnaissable et capable de créer une véritable préférence.",
       slug: "branding-identite-visuelle",
       image: "/img/branding_identite_visuelle.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "40 pages",
+      readTime: "40–55 min",
     },
     {
       id: 6,
@@ -226,8 +226,8 @@ const BlogPage = () => {
         "Explorer les spécificités culturelles et stratégiques de la communication sur les marchés africains.",
       slug: "communication-africaine",
       image: "/img/communication_africaine.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "43 pages",
+      readTime: "40–60 min",
     },
     {
       id: 7,
@@ -238,8 +238,8 @@ const BlogPage = () => {
         "Relier les différents leviers de communication autour d’une vision globale et cohérente.",
       slug: "communication-360-strategie-globale",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "82 pages",
+      readTime: "70–100 min",
     },
     {
       id: 8,
@@ -250,8 +250,8 @@ const BlogPage = () => {
         "Renforcer l’image, la crédibilité et la communication des entreprises et organisations.",
       slug: "communication-corporate-institutionnelle",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "73 pages",
+      readTime: "75–105 min",
     },
 
     {
@@ -263,8 +263,8 @@ const BlogPage = () => {
         "Développer sa visibilité sur le digital et mettre en place une présence web plus performante.",
       slug: "marketing-digital-seo",
       image: "/img/marketing_digital_seo.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "51 pages",
+      readTime: "40–60 min",
     },
     {
       id: 10,
@@ -275,8 +275,8 @@ const BlogPage = () => {
         "Créer une présence sociale cohérente, développer sa communauté et mieux engager son audience.",
       slug: "reseaux-sociaux",
       image: "/img/reseaux_sociaux.PNG",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "46 pages",
+      readTime: "35–50 min",
     },
     {
       id: 11,
@@ -287,8 +287,8 @@ const BlogPage = () => {
         "Développer des contenus utiles et raconter l’histoire de sa marque avec plus d’impact.",
       slug: "creation-contenu-storytelling",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "92 pages",
+      readTime: "85–120 min",
     },
     {
       id: 12,
@@ -299,8 +299,8 @@ const BlogPage = () => {
         "Comprendre les principes d’une création visuelle cohérente au service de l’image de marque.",
       slug: "design-graphique-creation-visuelle",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "92 pages",
+      readTime: "75–105 min",
     },
 
     {
@@ -312,8 +312,8 @@ const BlogPage = () => {
         "Comprendre les usages de l’intelligence artificielle et identifier des applications concrètes pour l’entreprise.",
       slug: "innovation-ia",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "71 pages",
+      readTime: "30–45 min",
     },
     {
       id: 14,
@@ -324,8 +324,8 @@ const BlogPage = () => {
         "Mieux comprendre la publicité digitale, l’achat média, le ciblage et la logique de performance.",
       slug: "publicite-media-buying",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "80 pages",
+      readTime: "70–95 min",
     },
     {
       id: 15,
@@ -336,8 +336,8 @@ const BlogPage = () => {
         "Explorer les formats audiovisuels et le motion design comme outils de communication et d’impact.",
       slug: "audiovisuel-motion-design",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "77 pages",
+      readTime: "60–85 min",
     },
     {
       id: 16,
@@ -348,8 +348,8 @@ const BlogPage = () => {
         "Créer des expériences de marque et des activations événementielles pensées pour générer de l’engagement.",
       slug: "evenementiel-activation-marque",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "73 pages",
+      readTime: "50–70 min",
     },
 
     {
@@ -361,8 +361,8 @@ const BlogPage = () => {
         "Décrypter des parcours, expériences et réalisations afin d’en tirer des enseignements utiles.",
       slug: "success-stories",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "59 pages",
+      readTime: "45–65 min",
     },
     {
       id: 18,
@@ -373,8 +373,8 @@ const BlogPage = () => {
         "Rencontrer des profils, experts et acteurs qui façonnent les métiers et les transformations du marché.",
       slug: "interviews-portraits",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "70 pages",
+      readTime: "70–95 min",
     },
     {
       id: 19,
@@ -385,8 +385,8 @@ const BlogPage = () => {
         "Des ressources pratiques pour apprendre, appliquer et progresser étape par étape.",
       slug: "tutoriels-guides",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "62 pages",
+      readTime: "50–70 min",
     },
     {
       id: 20,
@@ -397,8 +397,8 @@ const BlogPage = () => {
         "Anticiper les situations sensibles, protéger son image et structurer sa communication en contexte de crise.",
       slug: "communication-crise-reputation",
       image: "",
-      pages: "40–55 pages",
-      readTime: "20–30 min",
+      pages: "72 pages",
+      readTime: "70–100 min",
     },
   ];
 
