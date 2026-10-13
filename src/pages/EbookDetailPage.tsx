@@ -17,6 +17,10 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+// API Google Apps Script déployée pour enregistrer les demandes de téléchargement.
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxuYFqc86JT3ftortzM4hWoKIYzzw7qhyf0giTDw_UnmN1o_0tylRNyG0udX6pPnRI/exec";
+
 interface EbookSection {
   title: string;
   description: string;
@@ -34,9 +38,58 @@ interface EbookData {
   readTime: string;
   publishedDate?: string;
   author: string;
-  pdfUrl?: string;
   sections: EbookSection[];
 }
+
+
+// ============================================================================
+// CONFIGURATION DES PDF — NOMS FOURNIS POUR 19 GUIDES
+// ============================================================================
+// Les fichiers placés dans public/assets/docs/ sont accessibles depuis le site
+// avec une URL commençant par /assets/docs/.
+// Les 19 noms reçus ont été complétés avec l'extension .pdf, absente de votre
+// message. Vérifiez que GitHub affiche bien cette extension à la fin des fichiers.
+// Le nom de « Tendances & Actualités » n'a pas encore été fourni : il reste à
+// renseigner dans EBOOK_PDF_FILES ci-dessous.
+// Ne modifiez pas les clés à gauche : elles correspondent aux slugs des guides.
+// Tant qu'une valeur commence par "REMPLACER_PAR_", le téléchargement reste
+// désactivé pour ce guide et l'adresse e-mail n'est pas envoyée à l'API.
+// ============================================================================
+const PDF_DIRECTORY = "/assets/docs";
+
+const EBOOK_PDF_FILES: Record<string, string> = {
+  "conseils-astuces-marketing": "SunuLink Consulting - E-book Conseils & Astuces Marketing 2026-2027.pdf",
+  "tendances-actualites": "SunuLink Consulting - E-book Tendances & Actualités 2026-2027.pdf",
+  "strategies-communication": "SunuLink Consulting - E-book Stratégies de Communication 2026-2027 - Copie.pdf",
+  "entrepreneuriat-business": "SunuLink Consulting - E-book Entrepreneuriat & Business 2026-2027.pdf",
+  "branding-identite-visuelle": "SunuLink Consulting - E-book Branding & Identité Visuelle 2026-2027-1.pdf",
+  "communication-africaine": "SunuLink Consulting - E-book Communication Africaine 2026-2027-1.pdf",
+  "communication-360-strategie-globale": "SunuLink Consulting - E-book Communication 360° & Stratégie globale 2026-2027.pdf",
+  "communication-corporate-institutionnelle": "SunuLink Consulting - E-book Communication Corporate & Institutionnelle 2026-2027.pdf",
+  "marketing-digital-seo": "SunuLink Consulting - E-book Marketing Digital & SEO 2026-2027.pdf",
+  "reseaux-sociaux": "SunuLink Consulting - E-book Réseaux Sociaux 2026-2027-1.pdf",
+  "creation-contenu-storytelling": "SunuLink Consulting - E-book Création de contenu & Storytelling 2026-2027.pdf",
+  "design-graphique-creation-visuelle": "SunuLink Consulting - E-book Design Graphique & Création Visuelle 2026-2027.pdf",
+  "innovation-ia": "SunuLink Consulting - E-book Innovation & IA 2026-2027.pdf",
+  "publicite-media-buying": "SunuLink Consulting - E-book Publicité & Média Buying 2026-2027.pdf",
+  "audiovisuel-motion-design": "SunuLink Consulting - E-book Audiovisuel & Motion Design 2026-2027.pdf",
+  "evenementiel-activation-marque": "SunuLink Consulting - E-book Événementiel & Activation de Marque 2026-2027.pdf",
+  "success-stories": "SunuLink Consulting - E-book Success Stories 2026-2027.pdf",
+  "interviews-portraits": "SunuLink Consulting - E-book Interviews & Portraits 2026-2027.pdf",
+  "tutoriels-guides": "SunuLink Consulting - E-book Tutoriels & Guides 2026-2027.pdf",
+  "communication-crise-reputation": "SunuLink Consulting - E-book Communication de Crise & Réputation 2026-2027.pdf",
+};
+
+/** Construit l'URL publique du PDF seulement si son nom exact est renseigné. */
+const getEbookPdfUrl = (slug: string): string | undefined => {
+  const fileName = EBOOK_PDF_FILES[slug]?.trim();
+
+  if (!fileName || fileName.startsWith("REMPLACER_PAR_")) {
+    return undefined;
+  }
+
+  return `${PDF_DIRECTORY}/${encodeURIComponent(fileName)}`;
+};
 
 const GUIDE_AUDIENCES = [
   {
@@ -386,6 +439,8 @@ const EbookDetailPage = () => {
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [email, setEmail] = useState("");
   const [downloadStatus, setDownloadStatus] = useState("");
+  const [downloadStatusType, setDownloadStatusType] = useState<"success" | "error" | "info">("info");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [coverError, setCoverError] = useState(false);
 
   const ebook = slug ? ebooksData[slug] : null;
@@ -397,26 +452,104 @@ const EbookDetailPage = () => {
   }, [slug]);
 
   useEffect(() => {
-    document.body.style.overflow = showDownloadModal ? "hidden" : "unset";
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = showDownloadModal ? "hidden" : previousOverflow;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowDownloadModal(false);
+    };
+
+    if (showDownloadModal) {
+      window.addEventListener("keydown", handleEscape);
+    }
+
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleEscape);
     };
   }, [showDownloadModal]);
 
-  const handleDownloadRequest = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleDownloadRequest = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!ebook) return;
+    if (!ebook || isSubmitting) return;
 
-    if (ebook.pdfUrl) {
-      window.open(ebook.pdfUrl, "_blank", "noopener,noreferrer");
-      setDownloadStatus("Votre guide est prêt à être téléchargé.");
+    // Le nom exact du PDF doit être renseigné dans EBOOK_PDF_FILES ci-dessus.
+    // Sinon, on n'envoie pas l'e-mail à l'API et on n'affiche pas de faux succès.
+    const configuredPdfUrl = getEbookPdfUrl(ebook.slug);
+    if (!configuredPdfUrl) {
+      setDownloadStatusType("error");
+      setDownloadStatus(
+        "Le fichier PDF de ce guide n’est pas encore associé. Aucun e-mail n’a été enregistré. Vérifiez son nom dans la configuration EBOOK_PDF_FILES en haut du fichier."
+      );
       return;
     }
 
-    setDownloadStatus(
-      "L’adresse e-mail a bien été enregistrée. Le PDF sera associé à ce guide lors de la prochaine étape de mise en ligne."
-    );
+    const normalizedEmail = email.trim().toLowerCase();
+    setIsSubmitting(true);
+    setDownloadStatus("");
+
+    try {
+      // text/plain évite une requête CORS préliminaire OPTIONS avec Apps Script.
+      // redirect: follow suit la redirection de la réponse ContentService de Google.
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          type: "ebook_download",
+          email: normalizedEmail,
+          ebook_titre: ebook.title,
+          ebook_slug: ebook.slug,
+          source: "Site SunuLink Insights",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Le service d’enregistrement n’a pas répondu correctement.");
+      }
+
+      const result: { status?: string; message?: string } = await response.json();
+
+      if (result.status !== "success") {
+        throw new Error(result.message || "L’adresse e-mail n’a pas pu être enregistrée.");
+      }
+
+      setDownloadStatusType("success");
+      setDownloadStatus("Adresse enregistrée. Le téléchargement du guide est lancé.");
+
+      // Pour les PDF servis par le même site (ex. /ebooks/mon-guide.pdf),
+      // l'attribut download demande au navigateur de télécharger le fichier.
+      // Pour une URL externe, le lien s'ouvre dans un nouvel onglet.
+      const pdfUrl = new URL(configuredPdfUrl, window.location.origin);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = pdfUrl.href;
+      downloadLink.rel = "noopener noreferrer";
+
+      if (pdfUrl.origin === window.location.origin) {
+        downloadLink.download = EBOOK_PDF_FILES[ebook.slug];
+      } else {
+        downloadLink.target = "_blank";
+      }
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+    } catch (error) {
+      console.error("Erreur lors de la demande de téléchargement :", error);
+      setDownloadStatusType("error");
+      setDownloadStatus(
+        error instanceof TypeError
+          ? "La connexion à l’API Google n’a pas pu être établie depuis le navigateur. Vérifiez le déploiement de l’application Web, son accès et la connexion réseau, puis réessayez."
+          : error instanceof Error
+            ? error.message
+            : "Une erreur est survenue. Veuillez réessayer dans quelques instants."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!ebook) {
@@ -527,6 +660,7 @@ const EbookDetailPage = () => {
                         type="button"
                         onClick={() => {
                           setDownloadStatus("");
+                          setDownloadStatusType("info");
                           setShowDownloadModal(true);
                         }}
                         className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 bg-white/5 px-7 py-3.5 font-black text-white backdrop-blur-sm transition-all hover:bg-white hover:text-sunuBlue"
@@ -813,20 +947,31 @@ const EbookDetailPage = () => {
           MODAL TÉLÉCHARGEMENT — ÉTAPE ACTUELLE
       ========================================================= */}
       {showDownloadModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
-          <div className="relative w-full max-w-lg overflow-hidden rounded-[2rem] bg-white shadow-2xl">
-            <div className="h-1.5 bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange" />
-
-            <button
-              type="button"
-              onClick={() => setShowDownloadModal(false)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-gray-600 hover:bg-slate-200 transition-colors"
-              aria-label="Fermer"
+        <div
+          className="fixed inset-0 z-[100] overflow-y-auto bg-slate-950/70 p-3 backdrop-blur-sm sm:p-4"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setShowDownloadModal(false);
+          }}
+        >
+          <div className="flex min-h-full items-center justify-center">
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="ebook-download-title"
+              className="relative my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto overscroll-contain rounded-[1.75rem] bg-white shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:rounded-[2rem]"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <div className="h-1.5 bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuOrange" />
 
-            <div className="p-7 sm:p-9">
+              <button
+                type="button"
+                onClick={() => setShowDownloadModal(false)}
+                className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-gray-700 shadow-sm transition-colors hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-sunuBlue/20"
+                aria-label="Fermer la fenêtre de téléchargement"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="p-6 pt-16 sm:p-9 sm:pt-16">
               <div className="w-14 h-14 rounded-2xl bg-sunuBlue/10 flex items-center justify-center mb-5">
                 <Mail className="w-7 h-7 text-sunuBlue" />
               </div>
@@ -835,7 +980,7 @@ const EbookDetailPage = () => {
                 SUNULINK INSIGHTS
               </span>
 
-              <h2 className="mt-2 text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
+              <h2 id="ebook-download-title" className="mt-2 text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
                 Recevez votre e-book
               </h2>
 
@@ -850,35 +995,60 @@ const EbookDetailPage = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(event) => {
                       setEmail(event.target.value);
                       setDownloadStatus("");
+                      setDownloadStatusType("info");
                     }}
                     required
+                    disabled={isSubmitting}
                     placeholder="exemple@entreprise.com"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-gray-800 outline-none transition-all focus:border-sunuBlue focus:ring-4 focus:ring-sunuBlue/10"
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-gray-800 outline-none transition-all focus:border-sunuBlue focus:ring-4 focus:ring-sunuBlue/10 disabled:cursor-not-allowed disabled:opacity-60"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-sunuBlue px-5 py-3.5 font-black text-white shadow-lg hover:bg-sunuOrange transition-all"
+                  disabled={isSubmitting}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-sunuBlue px-5 py-3.5 font-black text-white shadow-lg transition-all hover:bg-sunuOrange disabled:cursor-wait disabled:opacity-70"
                 >
-                  <Download className="w-4 h-4" />
-                  Accéder au téléchargement
+                  {isSubmitting ? (
+                    <>
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                      Enregistrement en cours…
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-4 w-4" />
+                      Accéder au téléchargement
+                    </>
+                  )}
                 </button>
               </form>
 
               {downloadStatus && (
-                <div className="mt-4 rounded-xl border border-sunuBlue/15 bg-sunuBlue/5 p-4 text-sm font-semibold text-sunuBlue">
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className={`mt-4 rounded-xl border p-4 text-sm font-semibold ${
+                    downloadStatusType === "success"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                      : downloadStatusType === "error"
+                        ? "border-red-200 bg-red-50 text-red-700"
+                        : "border-sunuBlue/15 bg-sunuBlue/5 text-sunuBlue"
+                  }`}
+                >
                   {downloadStatus}
                 </div>
               )}
 
-              <p className="mt-5 text-xs text-gray-400 leading-relaxed">
-                Votre adresse sera utilisée dans le cadre de l’accès à cette ressource. La connexion du formulaire à votre système d’envoi sera finalisée dans l’étape suivante.
+              <p className="mt-5 text-xs leading-relaxed text-gray-400">
+                Votre adresse e-mail sera utilisée pour traiter votre demande d’accès à ce guide. Le téléchargement démarrera une fois l’enregistrement confirmé et le PDF associé à cette ressource.
               </p>
+            </div>
             </div>
           </div>
         </div>
