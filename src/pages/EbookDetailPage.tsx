@@ -90,46 +90,278 @@ const getEbookPdfUrl = (slug: string): string | undefined => {
   return `${PDF_DIRECTORY}/${encodeURIComponent(fileName)}`;
 };
 
-const GUIDE_AUDIENCES = [
-  {
-    title: "DIRIGEANTS",
-    description: "Pour prendre de meilleures décisions stratégiques.",
-  },
-  {
-    title: "ENTREPRENEURS",
-    description: "Pour structurer et développer leur activité.",
-  },
-  {
-    title: "RESPONSABLES MARKETING",
-    description: "Pour renforcer leur visibilité et leurs performances.",
-  },
-  {
-    title: "PROFESSIONNELS",
-    description: "Pour développer leurs compétences et anticiper les évolutions du marché.",
-  },
+interface EbookAudience {
+  title: string;
+  description: string;
+}
+
+interface EbookBenefit {
+  title: string;
+  description: string;
+  icon: typeof Lightbulb;
+}
+
+// Publics et bénéfices individualisés à partir des thèmes, méthodes et outils
+// présents dans chaque PDF. Les profils sont éditorialement ciblés : ils ne
+// constituent pas une promesse de résultat commercial.
+const EBOOK_AUDIENCES: Record<string, EbookAudience[]> = {
+  "conseils-astuces-marketing": [
+    { title: "DIRIGEANTS DE PME", description: "Relier les efforts marketing aux priorités de l’entreprise, à la relation client et aux objectifs commerciaux." },
+    { title: "ENTREPRENEURS", description: "Clarifier leur positionnement, leur client idéal et la manière de rendre leur offre plus compréhensible." },
+    { title: "RESPONSABLES MARKETING", description: "Mieux choisir les canaux, coordonner les contenus et suivre les indicateurs utiles." },
+    { title: "INDÉPENDANTS & CONSULTANTS", description: "Structurer leur visibilité et transformer leur expertise en proposition de valeur lisible." },
+  ],
+  "tendances-actualites": [
+    { title: "DÉCIDEURS", description: "Comprendre les évolutions qui peuvent influencer les choix marketing et les priorités de l’entreprise." },
+    { title: "ÉQUIPES MARKETING", description: "Explorer l’IA, les nouvelles pratiques de recherche, la vidéo, les communautés et la personnalisation." },
+    { title: "AGENCES & CONSULTANTS", description: "Enrichir les recommandations clients avec une lecture structurée des tendances 2026–2027." },
+    { title: "MARQUES AFRICAINES", description: "Évaluer les tendances à l’aune de leurs marchés, de leurs publics et de leurs réalités locales." },
+  ],
+  "strategies-communication": [
+    { title: "DIRIGEANTS", description: "Donner une direction claire à la prise de parole et la relier aux objectifs de l’organisation." },
+    { title: "RESPONSABLES COMMUNICATION", description: "Organiser les publics, les messages, les canaux et les actions dans une stratégie cohérente." },
+    { title: "RESPONSABLES MARKETING", description: "Articuler positionnement, contenu et visibilité autour d’objectifs définis." },
+    { title: "ENTREPRENEURS & ÉQUIPES", description: "Passer d’actions dispersées à une démarche de communication planifiée et suivie." },
+  ],
+  "entrepreneuriat-business": [
+    { title: "PORTEURS DE PROJET", description: "Confronter une idée à un problème réel, à un marché et à des clients potentiels." },
+    { title: "FONDATEURS DE PME & STARTUPS", description: "Structurer l’offre, le modèle économique, les ventes et les priorités de développement." },
+    { title: "DIRIGEANTS DE PETITES STRUCTURES", description: "Mieux relier rentabilité, trésorerie, organisation et décisions de croissance." },
+    { title: "RESPONSABLES COMMERCIAUX", description: "Comprendre les liens entre proposition de valeur, acquisition, vente et fidélisation." },
+  ],
+  "branding-identite-visuelle": [
+    { title: "FONDATEURS & ENTREPRENEURS", description: "Poser les bases d’une marque reconnaissable au-delà du choix d’un logo." },
+    { title: "RESPONSABLES DE MARQUE", description: "Formaliser positionnement, personnalité, messages et règles d’expression de la marque." },
+    { title: "DESIGNERS & CRÉATIFS", description: "Relier les choix visuels à une plateforme de marque et à une intention stratégique." },
+    { title: "ÉQUIPES MARKETING & COMMUNICATION", description: "Maintenir une identité cohérente sur les supports, les contenus et les points de contact." },
+  ],
+  "communication-africaine": [
+    { title: "MARQUES QUI S’INTERNATIONALISENT", description: "Adapter leur communication aux pays, aux langues et aux usages plutôt que de généraliser à l’échelle du continent." },
+    { title: "ÉQUIPES LOCALES & RÉGIONALES", description: "Tenir compte des contextes culturels, de la proximité communautaire et des pratiques mobiles." },
+    { title: "AGENCES & CONSULTANTS", description: "Concevoir des recommandations ancrées dans les réalités des publics et des marchés ciblés." },
+    { title: "INSTITUTIONS & ORGANISATIONS", description: "Penser des messages contextualisés qui respectent la diversité des territoires et des communautés." },
+  ],
+  "communication-360-strategie-globale": [
+    { title: "DIRECTION GÉNÉRALE", description: "Relier la communication aux priorités de l’organisation, aux ressources disponibles et aux résultats attendus." },
+    { title: "RESPONSABLES MARKETING & COMMUNICATION", description: "Coordonner les messages et les canaux dans un système de communication intégré." },
+    { title: "ORGANISATIONS MULTICANALES", description: "Réduire les incohérences entre communication digitale, institutionnelle, commerciale et relations publiques." },
+    { title: "AGENCES & PARTENAIRES", description: "Partager un cadre commun pour planifier, produire, valider et mesurer les actions." },
+  ],
+  "communication-corporate-institutionnelle": [
+    { title: "DIRECTIONS & DIRIGEANTS", description: "Rendre plus lisibles la mission, les engagements, les décisions et les réalisations de l’organisation." },
+    { title: "COMMUNICATION CORPORATE & RP", description: "Structurer les prises de parole, les messages clés et les relations avec les parties prenantes." },
+    { title: "INSTITUTIONS & ORGANISMES PUBLICS", description: "Présenter les actions et informations institutionnelles avec clarté, cohérence et éléments vérifiables." },
+    { title: "ÉQUIPES INTERNES", description: "Mieux articuler communication interne, culture organisationnelle et messages adressés aux publics externes." },
+  ],
+  "marketing-digital-seo": [
+    { title: "DIRIGEANTS & ENTREPRENEURS", description: "Comprendre comment visibilité en ligne, présence numérique et acquisition contribuent au développement." },
+    { title: "RESPONSABLES MARKETING", description: "Organiser les leviers digitaux autour d’objectifs, de contenus et d’indicateurs cohérents." },
+    { title: "ÉQUIPES COMMERCIALES", description: "Mieux relier les points de contact numériques aux demandes, aux prospects et au parcours client." },
+    { title: "ÉQUIPES WEB & CONTENU", description: "Travailler les fondamentaux SEO, la qualité des pages et la pertinence des contenus pour les utilisateurs." },
+  ],
+  "reseaux-sociaux": [
+    { title: "ENTREPRENEURS & MARQUES", description: "Construire une présence sociale régulière et cohérente avec leur activité et leur public." },
+    { title: "COMMUNITY MANAGERS", description: "Mieux organiser la ligne éditoriale, les publications et les interactions avec la communauté." },
+    { title: "ÉQUIPES MARKETING", description: "Relier plateformes, objectifs, contenus et indicateurs plutôt que publier sans direction claire." },
+    { title: "AGENCES & CRÉATEURS DE CONTENU", description: "Structurer la gestion des comptes, la production et le suivi des performances sociales." },
+  ],
+  "creation-contenu-storytelling": [
+    { title: "RESPONSABLES ÉDITORIAUX", description: "Définir les audiences, les piliers de contenu, les formats et une ligne éditoriale cohérente." },
+    { title: "MARKETEURS & COMMUNICANTS", description: "Créer des contenus utiles qui servent un objectif et s’adaptent au canal de diffusion." },
+    { title: "ENTREPRENEURS & EXPERTS", description: "Présenter leur savoir-faire avec des récits, des exemples et une proposition de valeur claire." },
+    { title: "RÉDACTEURS & CRÉATEURS", description: "Préparer, produire, décliner et réutiliser les contenus selon les besoins du public." },
+  ],
+  "design-graphique-creation-visuelle": [
+    { title: "GRAPHISTES DÉBUTANTS À INTERMÉDIAIRES", description: "Structurer leur progression autour des fondamentaux, de la pratique et d’un programme de douze semaines." },
+    { title: "COMMUNICANTS", description: "Concevoir des visuels lisibles et cohérents avec les messages et l’identité de l’organisation." },
+    { title: "ENTREPRENEURS & TPE", description: "Mieux préparer leurs supports de communication imprimés et numériques." },
+    { title: "ÉQUIPES MARKETING & SOCIAL MEDIA", description: "Harmoniser les formats, les modèles et les exports pour les différents canaux." },
+  ],
+  "innovation-ia": [
+    { title: "DIRIGEANTS & DÉCIDEURS", description: "Évaluer où l’innovation et l’IA peuvent servir une priorité réelle plutôt qu’une nouveauté pour elle-même." },
+    { title: "PME & ÉQUIPES OPÉRATIONNELLES", description: "Repérer des tâches et cas d’usage susceptibles d’être améliorés par des outils adaptés." },
+    { title: "ÉQUIPES MARKETING & CONTENU", description: "Explorer les usages de l’IA pour préparer, analyser et soutenir le travail tout en gardant une supervision humaine." },
+    { title: "RESPONSABLES NUMÉRIQUES & PROJETS", description: "Organiser l’expérimentation, prendre en compte les données et réfléchir aux conditions de déploiement." },
+  ],
+  "publicite-media-buying": [
+    { title: "DIRIGEANTS & BUDGETS MARKETING", description: "Mieux comprendre les arbitrages entre dépenses publicitaires, objectifs et rentabilité attendue." },
+    { title: "RESPONSABLES MÉDIA & PERFORMANCE", description: "Préparer, lancer, mesurer et optimiser des campagnes avec des indicateurs explicites." },
+    { title: "COMMUNICANTS & ANNONCEURS", description: "Choisir les audiences, les formats et les messages en fonction du résultat recherché." },
+    { title: "AGENCES & GESTIONNAIRES DE CAMPAGNES", description: "Structurer le plan média, le suivi des conversions et les cycles de test et d’optimisation." },
+  ],
+  "audiovisuel-motion-design": [
+    { title: "DIRIGEANTS & RESPONSABLES MARKETING", description: "Cadrer la finalité d’une vidéo, son public, son format et son rôle dans la communication." },
+    { title: "COMMUNICANTS & CRÉATEURS DE CONTENU", description: "Passer du message à un concept, un scénario et des formats adaptés aux canaux de diffusion." },
+    { title: "VIDÉASTES & ÉQUIPES DE PRODUCTION", description: "Organiser la préparation, le tournage, l’image, le son, le montage et la postproduction." },
+    { title: "MOTION DESIGNERS & ÉQUIPES DIGITALES", description: "Intégrer animation, rythme, sous-titrage et déclinaisons de formats dans une production cohérente." },
+  ],
+  "evenementiel-activation-marque": [
+    { title: "DIRIGEANTS & RESPONSABLES DE MARQUE", description: "Relier l’événement à un objectif de marque, de relation, de lancement ou d’activation." },
+    { title: "CHEFS DE PROJET ÉVÉNEMENTIEL", description: "Organiser concept, budget, calendrier, lieu, prestataires et parcours des participants." },
+    { title: "ÉQUIPES MARKETING & COMMUNICATION", description: "Préparer la communication avant, pendant et après l’événement, ainsi que les partenariats." },
+    { title: "AGENCES & ORGANISATEURS", description: "Coordonner les opérations, anticiper les risques et évaluer les résultats après l’événement." },
+  ],
+  "success-stories": [
+    { title: "ENTREPRENEURS & DIRIGEANTS DE PME", description: "Analyser les décisions et les étapes qui peuvent contribuer à la progression d’un projet." },
+    { title: "ÉQUIPES MARKETING & COMMUNICATION", description: "Apprendre à structurer un cas et à raconter une réalisation avec des éléments vérifiables." },
+    { title: "AGENCES & CONSULTANTS", description: "Présenter une démarche, ses choix et ses enseignements sans réduire l’histoire à un discours promotionnel." },
+    { title: "ÉQUIPES PROJET", description: "Identifier les leviers, les difficultés et les indicateurs utiles pour tirer des enseignements de situations illustratives." },
+  ],
+  "interviews-portraits": [
+    { title: "COMMUNICANTS & ÉQUIPES ÉDITORIALES", description: "Préparer des interviews, portraits et témoignages alignés sur une intention éditoriale précise." },
+    { title: "JOURNALISTES & CRÉATEURS", description: "Rechercher les informations, préparer les questions et conduire une conversation approfondie." },
+    { title: "EXPERTS & ENTREPRENEURS", description: "Partager un parcours et une expertise à travers une parole structurée et fidèlement restituée." },
+    { title: "ORGANISATIONS & MÉDIAS", description: "Décliner un entretien en contenus écrits, photographiques, audio ou vidéo pour les canaux adaptés." },
+  ],
+  "tutoriels-guides": [
+    { title: "ENTREPRENEURS & DIRIGEANTS DE PME", description: "Trouver des méthodes concrètes pour organiser le travail, la communication et les projets." },
+    { title: "ÉTUDIANTS & JEUNES PROFESSIONNELS", description: "Développer des habitudes d’apprentissage et progresser par étapes dans des compétences utiles." },
+    { title: "ÉQUIPES MARKETING & COMMUNICATION", description: "Retrouver des repères pratiques pour la marque, les réseaux sociaux, le contenu et le SEO." },
+    { title: "INDÉPENDANTS & PROFESSIONNELS DU DIGITAL", description: "Explorer les prompts, les outils numériques, les sites web, la prospection et l’automatisation." },
+  ],
+  "communication-crise-reputation": [
+    { title: "DIRIGEANTS & CELLULES DE DÉCISION", description: "Préparer les rôles, les niveaux d’alerte et les décisions à prendre quand une situation se dégrade." },
+    { title: "RESPONSABLES COMMUNICATION & RP", description: "Vérifier les faits, formuler des messages et coordonner la prise de parole pendant une crise." },
+    { title: "ÉQUIPES DIGITALES & COMMUNITY MANAGERS", description: "Surveiller les signaux faibles et organiser la réponse aux critiques et incidents en ligne." },
+    { title: "ÉQUIPES OPÉRATIONNELLES & RH", description: "Mieux coordonner l’information interne, la prise en compte des personnes et le suivi des actions correctives." },
+  ],
+};
+
+const EBOOK_BENEFITS: Record<string, EbookBenefit[]> = {
+  "conseils-astuces-marketing": [
+    { title: "POSITIONNEMENT CLAIR", description: "Formuler ce qui distingue l’offre et à quel client elle répond.", icon: Lightbulb },
+    { title: "CHOIX PRIORISÉS", description: "Sélectionner des canaux et contenus utiles au lieu de multiplier les actions.", icon: Target },
+    { title: "PARCOURS CLIENT", description: "Relier visibilité, confiance, proposition de valeur et opportunités commerciales.", icon: Users },
+    { title: "PLAN SUR 90 JOURS", description: "Organiser les prochaines actions et suivre des indicateurs adaptés.", icon: CheckCircle2 },
+  ],
+  "tendances-actualites": [
+    { title: "LECTURE DES TENDANCES", description: "Situer les évolutions de l’IA, de la recherche, de la vidéo et des communautés.", icon: Lightbulb },
+    { title: "TRI DES OPPORTUNITÉS", description: "Distinguer une évolution pertinente d’une nouveauté à suivre avec prudence.", icon: Target },
+    { title: "REGARD CONTEXTUALISÉ", description: "Interroger les conséquences pour les marchés et marques africains.", icon: Users },
+    { title: "MATRICE D’ACTION", description: "Utiliser les repères du guide pour prioriser les tests et les décisions.", icon: CheckCircle2 },
+  ],
+  "strategies-communication": [
+    { title: "OBJECTIFS DÉFINIS", description: "Passer d’une intention générale à des objectifs de communication précis.", icon: Target },
+    { title: "PUBLICS MIEUX COMPRIS", description: "Clarifier à qui parler, pour quel besoin et avec quel message.", icon: Users },
+    { title: "PRISE DE PAROLE COHÉRENTE", description: "Aligner positionnement, messages, contenus et canaux.", icon: Lightbulb },
+    { title: "PILOTAGE STRUCTURÉ", description: "Organiser les actions, les responsabilités et le suivi sur 90 jours.", icon: CheckCircle2 },
+  ],
+  "entrepreneuriat-business": [
+    { title: "MARCHÉ VALIDÉ", description: "Mieux formuler le problème client et tester les hypothèses du projet.", icon: Target },
+    { title: "OFFRE & MODÈLE", description: "Relier proposition de valeur, prix, revenus et marges.", icon: Lightbulb },
+    { title: "SYSTÈME COMMERCIAL", description: "Comprendre les liens entre visibilité, acquisition, vente et fidélisation.", icon: Users },
+    { title: "PILOTAGE DE L’ACTIVITÉ", description: "Repérer les dimensions financières, organisationnelles et opérationnelles à suivre.", icon: CheckCircle2 },
+  ],
+  "branding-identite-visuelle": [
+    { title: "PLATEFORME DE MARQUE", description: "Clarifier positionnement, mission, valeurs, audience et personnalité.", icon: Lightbulb },
+    { title: "IDENTITÉ COHÉRENTE", description: "Relier langage, couleurs, typographies, logo et éléments visuels.", icon: Target },
+    { title: "EXPÉRIENCE RECONNAISSABLE", description: "Maintenir une expression de marque cohérente sur les points de contact.", icon: Users },
+    { title: "ÉVOLUTION MAÎTRISÉE", description: "Évaluer les changements de marque et préparer des étapes de mise en œuvre.", icon: CheckCircle2 },
+  ],
+  "communication-africaine": [
+    { title: "LECTURE DU CONTEXTE", description: "Éviter les généralisations et prendre en compte les différences entre marchés.", icon: Lightbulb },
+    { title: "ADAPTATION CULTURELLE", description: "Réfléchir aux langues, aux codes, aux usages et à la proximité communautaire.", icon: Users },
+    { title: "USAGES NUMÉRIQUES", description: "Mieux situer la place du mobile, de la vidéo, des créateurs et des communautés.", icon: Target },
+    { title: "ARTICULATION LOCAL–GLOBAL", description: "Penser une expression authentique qui peut s’adapter à différents territoires.", icon: CheckCircle2 },
+  ],
+  "communication-360-strategie-globale": [
+    { title: "VISION D’ENSEMBLE", description: "Relier diagnostic, objectifs et priorités de communication.", icon: Lightbulb },
+    { title: "MESSAGES ALIGNÉS", description: "Harmoniser les prises de parole entre canaux et parties prenantes.", icon: Users },
+    { title: "DÉPLOIEMENT COORDONNÉ", description: "Structurer les rôles, validations, budgets et calendriers.", icon: Target },
+    { title: "MESURE DES ACTIONS", description: "Choisir des indicateurs pour analyser les résultats et ajuster les plans.", icon: CheckCircle2 },
+  ],
+  "communication-corporate-institutionnelle": [
+    { title: "IDENTITÉ INSTITUTIONNELLE", description: "Préciser ce que représente l’organisation et ce qui la distingue.", icon: Lightbulb },
+    { title: "PARTIES PRENANTES IDENTIFIÉES", description: "Adapter informations et messages aux attentes des différents publics.", icon: Users },
+    { title: "PAROLE ÉTAYÉE", description: "Relier les affirmations aux actions, aux faits et aux réalisations vérifiables.", icon: Target },
+    { title: "COHÉRENCE INTERNE–EXTERNE", description: "Réduire les écarts entre les messages, les comportements et les supports.", icon: CheckCircle2 },
+  ],
+  "marketing-digital-seo": [
+    { title: "ÉCOSYSTÈME DIGITAL", description: "Comprendre comment les différents leviers en ligne se complètent.", icon: Lightbulb },
+    { title: "FONDATIONS SEO", description: "Prendre en compte la technique, les contenus, la pertinence et la réputation.", icon: Target },
+    { title: "CONTENUS UTILES", description: "Mieux répondre aux recherches et aux besoins concrets des utilisateurs.", icon: Users },
+    { title: "SUIVI DES PERFORMANCES", description: "Relier visibilité, trafic et actions attendues à des indicateurs adaptés.", icon: CheckCircle2 },
+  ],
+  "reseaux-sociaux": [
+    { title: "STRATÉGIE DE PLATEFORME", description: "Choisir les réseaux en fonction du public, des usages et des objectifs.", icon: Target },
+    { title: "LIGNE ÉDITORIALE", description: "Structurer les thèmes, formats et rythmes de publication.", icon: Lightbulb },
+    { title: "RELATION COMMUNAUTAIRE", description: "Organiser les interactions et les réponses de façon cohérente.", icon: Users },
+    { title: "SUIVI PLUS PERTINENT", description: "Lire les indicateurs sociaux en fonction des objectifs plutôt que des seuls volumes.", icon: CheckCircle2 },
+  ],
+  "creation-contenu-storytelling": [
+    { title: "STRATÉGIE ÉDITORIALE", description: "Clarifier audience, objectif, valeur apportée et piliers de contenu.", icon: Target },
+    { title: "RÉCIT PLUS STRUCTURÉ", description: "Construire un storytelling cohérent avec le message et l’identité de marque.", icon: Lightbulb },
+    { title: "PRODUCTION ORGANISÉE", description: "Choisir formats, calendrier et processus de création adaptés aux ressources.", icon: CheckCircle2 },
+    { title: "CONTENUS RÉUTILISABLES", description: "Décliner les idées sur plusieurs supports tout en gardant leur pertinence.", icon: Users },
+  ],
+  "design-graphique-creation-visuelle": [
+    { title: "FONDAMENTAUX VISUELS", description: "Mieux comprendre composition, hiérarchie, contraste, couleurs et typographie.", icon: Lightbulb },
+    { title: "SUPPORTS PLUS COHÉRENTS", description: "Relier les choix visuels au public, au message et à l’identité de marque.", icon: Target },
+    { title: "FORMATS ADAPTÉS", description: "Préparer les créations pour les réseaux sociaux, les écrans et l’impression.", icon: CheckCircle2 },
+    { title: "PROGRESSION ORGANISÉE", description: "Suivre une démarche de pratique et de progression sur douze semaines.", icon: Users },
+  ],
+  "innovation-ia": [
+    { title: "CAS D’USAGE PERTINENTS", description: "Partir d’un besoin métier avant de choisir un outil ou une technologie.", icon: Target },
+    { title: "USAGES MIEUX COMPRIS", description: "Distinguer possibilités, limites et besoins de supervision humaine.", icon: Lightbulb },
+    { title: "EXPÉRIMENTATION CADRÉE", description: "Comparer les cas d’usage et organiser des essais à petite échelle.", icon: CheckCircle2 },
+    { title: "ATTENTION AUX DONNÉES", description: "Prendre en compte la qualité des données, les risques et les responsabilités.", icon: Users },
+  ],
+  "publicite-media-buying": [
+    { title: "OBJECTIF PUBLICITAIRE", description: "Relier chaque campagne à un résultat attendu et à une audience définie.", icon: Target },
+    { title: "LECTURE DES INDICATEURS", description: "Mieux comprendre CPM, CPC, CTR, CPL, CPA, ROAS et autres repères cités dans le guide.", icon: Lightbulb },
+    { title: "TESTS & OPTIMISATION", description: "Structurer le suivi des conversions et l’amélioration des audiences et créations.", icon: CheckCircle2 },
+    { title: "PLAN MÉDIA ORGANISÉ", description: "Répartir les actions dans une démarche de diffusion et d’amélioration sur 12 semaines.", icon: Users },
+  ],
+  "audiovisuel-motion-design": [
+    { title: "BRIEF & STORYBOARD", description: "Traduire le besoin en objectif, concept, scénario et séquences de production.", icon: Lightbulb },
+    { title: "BASES DE PRODUCTION", description: "Mieux organiser cadrage, image, son, lumière, tournage et interviews.", icon: Target },
+    { title: "MONTAGE & MOTION", description: "Comprendre les étapes d’animation, de montage et de déclinaison des formats.", icon: CheckCircle2 },
+    { title: "DIFFUSION RESPONSABLE", description: "Prendre en compte les droits, le budget, l’accessibilité et la mesure des contenus.", icon: Users },
+  ],
+  "evenementiel-activation-marque": [
+    { title: "OBJECTIFS D’ÉVÉNEMENT", description: "Définir ce que l’événement ou l’activation doit apporter à la marque et au public.", icon: Target },
+    { title: "CONCEPTION & BUDGET", description: "Relier concept, format, lieu, ressources et contraintes de réalisation.", icon: Lightbulb },
+    { title: "EXPÉRIENCE PARTICIPANT", description: "Préparer l’accueil, les interactions, les prestataires et les moments clés.", icon: Users },
+    { title: "BILAN & APPRENTISSAGES", description: "Évaluer l’organisation et les résultats après l’événement afin d’en tirer des enseignements.", icon: CheckCircle2 },
+  ],
+  "success-stories": [
+    { title: "LECTURE DES CAS", description: "Comprendre une situation à travers son diagnostic, sa stratégie, sa transformation et ses résultats." , icon: Lightbulb },
+    { title: "LEVIERS DE RÉUSSITE", description: "Repérer les décisions, méthodes et contributions mis en avant dans les cas pédagogiques.", icon: Target },
+    { title: "PREUVES & INDICATEURS", description: "Distinguer les éléments vérifiables des affirmations qui demandent à être démontrées.", icon: CheckCircle2 },
+    { title: "RÉCIT CRÉDIBLE", description: "Structurer une étude de cas professionnelle sans présenter les exemples fictifs du guide comme des cas réels.", icon: Users },
+  ],
+  "interviews-portraits": [
+    { title: "ANGLE ÉDITORIAL", description: "Définir le but de l’entretien, l’interlocuteur et ce que le public doit en retenir.", icon: Target },
+    { title: "PRÉPARATION & ÉCOUTE", description: "Construire les questions, vérifier les informations et relancer avec pertinence.", icon: Lightbulb },
+    { title: "FIDÉLITÉ DE LA RESTITUTION", description: "Présenter les propos et le parcours de la personne avec précision et respect.", icon: Users },
+    { title: "DÉCLINAISON DES CONTENUS", description: "Adapter et diffuser les interviews sous forme écrite, audio, photo ou vidéo.", icon: CheckCircle2 },
+  ],
+  "tutoriels-guides": [
+    { title: "APPRENDRE PAR ÉTAPES", description: "Organiser l’apprentissage et transformer l’information en compétences mobilisables.", icon: Lightbulb },
+    { title: "REPÈRES TRANSVERSAUX", description: "Retrouver des méthodes sur la communication, le marketing, la marque et les réseaux sociaux.", icon: Target },
+    { title: "OUTILS NUMÉRIQUES", description: "Explorer les prompts, l’IA, les sites web, le SEO et l’automatisation dans des usages pratiques.", icon: CheckCircle2 },
+    { title: "PLAN DE PROGRESSION", description: "Relier les modules à des objectifs de travail et à une progression sur 30 jours.", icon: Users },
+  ],
+  "communication-crise-reputation": [
+    { title: "DÉTECTION DES RISQUES", description: "Repérer les signaux faibles, niveaux d’alerte et enjeux pour les personnes concernées.", icon: Lightbulb },
+    { title: "DISPOSITIF DE RÉPONSE", description: "Clarifier les rôles, les procédures de décision et l’organisation de la cellule de crise.", icon: Target },
+    { title: "MESSAGES FIABLES", description: "Vérifier les faits et préparer une parole adaptée pendant les premières heures.", icon: CheckCircle2 },
+    { title: "CONFIANCE & SUIVI", description: "Coordonner la réponse sur les médias et canaux numériques, puis suivre les actions de reconstruction.", icon: Users },
+  ],
+};
+
+const DEFAULT_GUIDE_AUDIENCES: EbookAudience[] = [
+  { title: "DIRIGEANTS", description: "Pour relier le sujet du guide aux décisions et priorités de l’organisation." },
+  { title: "ENTREPRENEURS", description: "Pour structurer leur démarche et choisir les prochaines actions." },
+  { title: "ÉQUIPES MÉTIER", description: "Pour organiser les méthodes et les pratiques associées à leur activité." },
+  { title: "PROFESSIONNELS", description: "Pour développer leurs compétences sur le thème du guide." },
 ];
 
-const GUIDE_BENEFITS = [
-  {
-    title: "CLARTÉ",
-    description: "Mieux comprendre vos enjeux.",
-    icon: Lightbulb,
-  },
-  {
-    title: "MÉTHODE",
-    description: "Passer de l’idée à une démarche structurée.",
-    icon: Target,
-  },
-  {
-    title: "ACTION",
-    description: "Transformer les recommandations en décisions concrètes.",
-    icon: CheckCircle2,
-  },
-  {
-    title: "PERFORMANCE",
-    description: "Construire des actions orientées résultats.",
-    icon: ArrowRight,
-  },
+const DEFAULT_EBOOK_BENEFITS: EbookBenefit[] = [
+  { title: "REPÈRES", description: "Mieux comprendre les notions et les enjeux du sujet.", icon: Lightbulb },
+  { title: "MÉTHODE", description: "Structurer la démarche et les étapes de travail.", icon: Target },
+  { title: "APPLICATION", description: "Identifier des pistes à adapter à son contexte.", icon: CheckCircle2 },
+  { title: "PROGRESSION", description: "Préparer les prochaines actions et les points à suivre.", icon: ArrowRight },
 ];
 
 // Pages = nombre réel de pages PDF (couverture et pages liminaires incluses).
@@ -882,9 +1114,9 @@ const EbookDetailPage = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {GUIDE_AUDIENCES.map((profile) => (
+              {(EBOOK_AUDIENCES[ebook.slug] ?? DEFAULT_GUIDE_AUDIENCES).map((profile, index) => (
                 <div
-                  key={profile.title}
+                  key={`${profile.title}-${index}`}
                   className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 hover:border-sunuBlue/30 hover:shadow-lg transition-all"
                 >
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sunuBlue to-sunuCyan text-white flex items-center justify-center mb-5">
@@ -917,12 +1149,12 @@ const EbookDetailPage = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {GUIDE_BENEFITS.map((benefit) => {
+              {(EBOOK_BENEFITS[ebook.slug] ?? DEFAULT_EBOOK_BENEFITS).map((benefit, index) => {
                 const Icon = benefit.icon;
 
                 return (
                   <article
-                    key={benefit.title}
+                    key={`${benefit.title}-${index}`}
                     className="group rounded-[1.5rem] bg-white border border-slate-200 p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300"
                   >
                     <div className="w-12 h-12 rounded-xl bg-sunuBlue/10 flex items-center justify-center mb-5 group-hover:bg-sunuOrange transition-colors">
