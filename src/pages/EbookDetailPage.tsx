@@ -43,14 +43,13 @@ interface EbookData {
 
 
 // ============================================================================
-// CONFIGURATION DES PDF — NOMS FOURNIS POUR 19 GUIDES
+// CONFIGURATION DES PDF — 20 GUIDES
 // ============================================================================
 // Les fichiers placés dans public/assets/docs/ sont accessibles depuis le site
 // avec une URL commençant par /assets/docs/.
-// Les 19 noms reçus ont été complétés avec l'extension .pdf, absente de votre
-// message. Vérifiez que GitHub affiche bien cette extension à la fin des fichiers.
-// Le nom de « Tendances & Actualités » n'a pas encore été fourni : il reste à
-// renseigner dans EBOOK_PDF_FILES ci-dessous.
+// Les noms des 20 PDF proviennent de l’archive fournie. Les fichiers sont placés
+// dans public/assets/docs/ ; le nom « Tendances & Actualités » a également été
+// renseigné à partir de cette archive. Conservez les clés (slugs) à gauche.
 // Ne modifiez pas les clés à gauche : elles correspondent aux slugs des guides.
 // Tant qu'une valeur commence par "REMPLACER_PAR_", le téléchargement reste
 // désactivé pour ce guide et l'adresse e-mail n'est pas envoyée à l'API.
@@ -133,6 +132,8 @@ const GUIDE_BENEFITS = [
   },
 ];
 
+// Pages = nombre réel de pages PDF (couverture et pages liminaires incluses).
+// Temps de lecture estimé à partir du volume de texte extrait, à environ 150–200 mots/minute.
 const ebooksData: Record<string, EbookData> = {
   "conseils-astuces-marketing": {
     id: 1,
@@ -140,13 +141,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Marketing",
     group: "Stratégie & Croissance",
     description:
-      "Des conseils pratiques pour mieux structurer vos actions marketing et investir avec davantage de méthode.",
+      "Un guide stratégique qui aide les dirigeants à comprendre ce que le marketing doit réellement accomplir : clarifier le positionnement, mieux connaître son client, construire une marque cohérente et transformer progressivement la visibilité en confiance puis en clients. Il rassemble 20 conseils, des repères de mesure et un plan d’action marketing sur 90 jours.",
     slug: "conseils-astuces-marketing",
     cover: "/img/conseils_astuces_marketing.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "48 pages",
+    readTime: "50–70 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Poser les fondations", description: "Comprendre le rôle du marketing, clarifier son positionnement et identifier les besoins de son client idéal avant d’investir." },
+      { title: "Construire une marque cohérente", description: "Relier marque, communication et contenus utiles pour créer une identité plus reconnaissable et une proposition de valeur compréhensible." },
+      { title: "De la visibilité aux clients", description: "Choisir les bons canaux, installer la confiance et organiser le parcours qui transforme l’attention en opportunités commerciales." },
+      { title: "Investir, mesurer et passer à l’action", description: "Utiliser la publicité et l’IA avec méthode, suivre les performances, éviter les erreurs coûteuses et établir un plan marketing sur 90 jours." }
+    ],
   },
   "tendances-actualites": {
     id: 2,
@@ -154,13 +160,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Marketing",
     group: "Stratégie & Croissance",
     description:
-      "Comprendre les évolutions du marché, des usages et des pratiques pour mieux anticiper les transformations.",
+      "Un rapport stratégique consacré à 15 tendances qui transforment le marketing, la communication et les entreprises africaines à l’horizon 2027. Il propose une lecture orientée décision : observer les évolutions, comprendre leurs conséquences possibles pour l’entreprise, puis identifier les actions à tester sans suivre aveuglément chaque nouveauté.",
     slug: "tendances-actualites",
     cover: "/img/tendances_actualites.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "46 pages",
+    readTime: "45–65 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Quand la technologie change les règles", description: "Explorer le marketing augmenté par l’intelligence artificielle et l’évolution de la recherche, des moteurs classiques aux moteurs de réponse." },
+      { title: "Gagner l’attention et mériter la confiance", description: "Comprendre le rôle grandissant de la confiance, de la vidéo, des communautés et des contenus utiles, humains et différenciants." },
+      { title: "Données, marchés et conversations", description: "Découvrir les enjeux de personnalisation, de données stratégiques, d’influence des marques africaines et de commerce conversationnel." },
+      { title: "Influence, expérience et avenir", description: "Relier créateurs, branding, expérience client et marketing responsable, puis utiliser la synthèse des tendances, la matrice d’action et l’auto-diagnostic." }
+    ],
   },
   "strategies-communication": {
     id: 3,
@@ -168,13 +179,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Stratégie & Croissance",
     description:
-      "Construire une communication cohérente, différenciante et orientée vers des objectifs concrets.",
+      "Un guide pour passer d’actions de communication isolées à une démarche structurée. Il aide à définir des objectifs au service de l’entreprise, comprendre ses publics, clarifier son positionnement, construire des messages cohérents et piloter une stratégie de communication mesurable.",
     slug: "strategies-communication",
     cover: "/img/strategies_communication.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "47 pages",
+    readTime: "40–60 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Poser les fondations", description: "Définir ce que la communication doit accomplir, choisir des objectifs utiles, identifier les publics et formuler un positionnement clair." },
+      { title: "Un message, une voix", description: "Créer des messages mémorables et construire une identité cohérente avec la perception que l’organisation souhaite installer." },
+      { title: "Contenu, canaux et présence digitale", description: "Structurer la stratégie de contenu, sélectionner les canaux pertinents et renforcer la cohérence de la présence numérique." },
+      { title: "Autorité, réputation et déploiement", description: "Développer l’influence, prendre en compte les situations sensibles, mesurer les résultats et organiser un plan de communication sur 90 jours." }
+    ],
   },
   "entrepreneuriat-business": {
     id: 4,
@@ -182,13 +198,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Business & Développement",
     group: "Stratégie & Croissance",
     description:
-      "Des méthodes pour structurer son activité, mieux comprendre ses enjeux et soutenir sa croissance.",
+      "Un guide stratégique destiné aux PME, startups, fondateurs et porteurs de projets qui veulent construire une entreprise capable de durer. Il aborde la validation du marché, la proposition de valeur, le modèle économique, la vente, la rentabilité, l’organisation, la trésorerie et le pilotage de la croissance.",
     slug: "entrepreneuriat-business",
     cover: "/img/entrepreneuriat_business.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "60 pages",
+    readTime: "40–55 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "L’idée et le marché", description: "Passer de l’idée à l’entreprise, identifier un problème réel, comprendre le marché et définir le client idéal." },
+      { title: "L’offre et le modèle économique", description: "Construire une proposition de valeur et une offre commerciale, choisir un modèle viable, fixer ses prix et suivre ses marges." },
+      { title: "La machine de croissance", description: "Organiser le système commercial, la demande marketing, le branding et l’adoption raisonnée du digital, de l’IA et de l’automatisation." },
+      { title: "Organisation, durée et vision", description: "Structurer les processus, le management, la finance et les ressources, puis préparer la croissance avec un tableau de bord et un plan sur 90 jours." }
+    ],
   },
   "branding-identite-visuelle": {
     id: 5,
@@ -196,13 +217,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Branding",
     group: "Communication & Marque",
     description:
-      "Construire une marque cohérente, reconnaissable et capable de créer une véritable préférence.",
+      "Ce guide montre pourquoi une marque ne se résume pas à son logo. Il accompagne la construction d’une plateforme de marque, d’un positionnement distinctif, d’une identité visuelle et verbale cohérente, puis d’une expérience reconnaissable sur les différents points de contact.",
     slug: "branding-identite-visuelle",
     cover: "/img/branding_identite_visuelle.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "40 pages",
+    readTime: "40–55 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Fondations de marque", description: "Comprendre le branding, construire une plateforme de marque et préciser le positionnement, la mission, la vision, les valeurs et l’audience." },
+      { title: "Identité et expression", description: "Travailler la personnalité, le nom, la signature, le territoire verbal, les couleurs, la typographie, la photographie et le système de logo." },
+      { title: "Récit et expérience", description: "Utiliser le storytelling, assurer la cohérence de l’expérience de marque et adapter l’expression de la marque au numérique." },
+      { title: "Innovation et évolution", description: "Explorer l’usage raisonné de l’IA dans le branding, le rebranding, la mesure de la force de marque et un plan d’action sur 90 jours." }
+    ],
   },
   "communication-africaine": {
     id: 6,
@@ -210,13 +236,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Communication & Marque",
     description:
-      "Explorer les spécificités culturelles et stratégiques de la communication sur les marchés africains.",
+      "Un guide qui invite à penser la communication africaine à partir de la diversité réelle des pays, des langues, des cultures et des usages, plutôt que comme un marché unique. Il explore la proximité communautaire, les pratiques mobiles, les marques africaines, l’influence et les façons d’adapter sa stratégie aux contextes locaux et aux ambitions internationales.",
     slug: "communication-africaine",
     cover: "/img/communication_africaine.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "43 pages",
+    readTime: "40–60 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Fondations et contextes", description: "Comprendre la pluralité du continent, les contextes culturels, les identités, le rôle de la communauté et l’importance des langues et de la proximité." },
+      { title: "Usages numériques", description: "Examiner les réalités d’une Afrique mobile, les réseaux sociaux, la vidéo, les créateurs, les communautés et la confiance." },
+      { title: "Marques et territoires", description: "Réfléchir à la communication des marques africaines, à l’équilibre entre héritage et modernité et à la rencontre du local et de l’international." },
+      { title: "Business, institutions et action", description: "Relier communication B2B, développement commercial, communication institutionnelle et territoriale, diversité culturelle et plan d’action sur 90 jours." }
+    ],
   },
   "communication-360-strategie-globale": {
     id: 7,
@@ -224,13 +255,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Communication & Marque",
     description:
-      "Relier les différents leviers de communication autour d’une vision globale et cohérente.",
+      "Un guide complet pour aligner la marque, les messages, les canaux et les objectifs business au sein d’un même système de communication. Il propose une démarche allant du diagnostic et du positionnement jusqu’au plan de communication, aux budgets, à l’IA, à la mesure des résultats et à l’adaptation aux marchés africains.",
     slug: "communication-360-strategie-globale",
     cover: "/img/communication_360_strategie_globale.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "82 pages",
+    readTime: "70–100 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Fondations stratégiques", description: "Comprendre la communication 360°, réaliser un diagnostic global et définir des objectifs mesurables liés aux priorités de l’organisation." },
+      { title: "Marque et messages", description: "Identifier les publics, travailler le positionnement, construire une plateforme de communication et harmoniser l’architecture des messages." },
+      { title: "Canaux et déploiement", description: "Organiser la complémentarité du digital, des contenus, des relations publiques, de la communication institutionnelle et du développement commercial." },
+      { title: "Pilotage et passage à l’action", description: "Piloter les budgets, les équipes et les validations, intégrer l’IA avec discernement, mesurer le retour sur investissement et planifier les 90 prochains jours." }
+    ],
   },
   "communication-corporate-institutionnelle": {
     id: 8,
@@ -238,13 +274,19 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Communication & Marque",
     description:
-      "Renforcer l’image, la crédibilité et la communication des entreprises et organisations.",
+      "Un guide stratégique et pratique pour aligner ce que l’organisation est, ce qu’elle affirme, ce qu’elle fait et ce que ses parties prenantes perçoivent. Il couvre l’identité corporate, le leadership, la communication interne, les relations médias, la présence numérique, la marque employeur, les engagements, les crises et la mesure de la réputation.",
     slug: "communication-corporate-institutionnelle",
     cover: "/img/communication_corporate_institutionnelle.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "73 pages",
+    readTime: "75–105 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Fondements et positionnement", description: "Distinguer communication corporate, institutionnelle et commerciale, clarifier l’image de marque, l’identité, le positionnement et les parties prenantes." },
+      { title: "Communication interne et leadership", description: "Renforcer la circulation de l’information, mobiliser les collaborateurs autour de la vision et soutenir la communication managériale." },
+      { title: "Institutions, médias et numérique", description: "Développer les relations publiques, les relations médias, une présence numérique structurée et une ligne éditoriale corporate." },
+      { title: "Engagements, crises et transformations", description: "Travailler la marque employeur, la responsabilité sociétale, la prévention des crises et la communication en période de changement." },
+      { title: "Mesure et déploiement", description: "Évaluer réputation et performance, choisir les outils adaptés et organiser une stratégie opérationnelle sur 90 jours." }
+    ],
   },
   "marketing-digital-seo": {
     id: 9,
@@ -252,13 +294,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Digital & SEO",
     group: "Digital & Création",
     description:
-      "Développer sa visibilité sur le digital et mettre en place une présence web plus performante.",
+      "Un guide stratégique pour construire une présence numérique qui ne se limite pas à être en ligne, mais aide l’entreprise à être trouvée, à gagner en crédibilité et à convertir sa visibilité en opportunités. Il relie stratégie digitale, parcours client, référencement naturel, SEO local, réseaux sociaux, publicité, analytics et IA.",
     slug: "marketing-digital-seo",
     cover: "/img/marketing_digital_seo.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "51 pages",
+    readTime: "40–60 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Les fondations digitales", description: "Comprendre le marketing digital moderne, bâtir une stratégie et organiser le parcours client ainsi que la présence en ligne." },
+      { title: "Le SEO, de la technique à la réputation", description: "Aborder les bases techniques du référencement, le contenu, l’autorité, les liens, la réputation numérique et le SEO local pour les entreprises africaines." },
+      { title: "Réseaux, publicité et conversion", description: "Relier les réseaux sociaux et la publicité digitale à une démarche de conversion qui transforme la visibilité en opportunités." },
+      { title: "Données, IA et système digital", description: "Utiliser les analytics pour piloter la performance, comprendre l’IA et les moteurs de réponse, puis construire un système digital 360° et un plan sur 90 jours." }
+    ],
   },
   "reseaux-sociaux": {
     id: 10,
@@ -266,13 +313,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Réseaux sociaux",
     group: "Digital & Création",
     description:
-      "Créer une présence sociale cohérente, développer sa communauté et mieux engager son audience.",
+      "Un guide pour faire des réseaux sociaux autre chose qu’une simple vitrine de publications. Il accompagne la construction d’une stratégie sociale, le choix des plateformes, la production de contenus, l’animation d’une communauté et la transformation de l’engagement en confiance, en fidélité et en opportunités commerciales.",
     slug: "reseaux-sociaux",
     cover: "/img/reseaux_sociaux.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "46 pages",
+    readTime: "35–50 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Fondations d’une stratégie sociale", description: "Clarifier le rôle des réseaux sociaux, choisir les plateformes, comprendre son audience et développer une identité sociale cohérente." },
+      { title: "Contenu et engagement", description: "Construire une stratégie de contenu, sélectionner les formats, produire de la vidéo courte et susciter des interactions utiles." },
+      { title: "Communauté et croissance", description: "Organiser le community management, développer une communauté et relier les réseaux sociaux au développement commercial, à la publicité et aux partenariats d’influence." },
+      { title: "Performance et maîtrise", description: "Gérer la réputation et les situations de crise, mesurer les résultats, utiliser l’IA avec discernement et bâtir un système social sur 90 jours." }
+    ],
   },
   "creation-contenu-storytelling": {
     id: 11,
@@ -280,13 +332,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Digital & Création",
     description:
-      "Développer des contenus utiles et raconter l’histoire de sa marque avec plus d’impact.",
+      "Un guide pratique pour passer de publications improvisées à une stratégie éditoriale cohérente et mesurable. Il associe compréhension de l’audience, positionnement éditorial, piliers de contenu, storytelling de marque, formats adaptés aux plateformes, calendrier éditorial et analyse des performances.",
     slug: "creation-contenu-storytelling",
     cover: "/img/creation_contenu_storytelling.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "92 pages",
+    readTime: "85–120 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre la création de contenu", description: "Définir les besoins de l’audience, les objectifs éditoriaux, le positionnement de la marque et les piliers de contenu dans un environnement saturé." },
+      { title: "Maîtriser le storytelling", description: "Construire une histoire authentique, choisir une structure narrative et travailler l’émotion, la confiance et l’adaptation aux réalités africaines." },
+      { title: "Produire des contenus engageants", description: "Rédiger des publications, créer des carrousels et des vidéos courtes, établir une identité éditoriale et adapter les contenus aux plateformes." },
+      { title: "Construire, mesurer et optimiser", description: "Planifier un calendrier éditorial, organiser la production et la diffusion, mesurer les indicateurs et utiliser briefs, formules et checklists." }
+    ],
   },
   "design-graphique-creation-visuelle": {
     id: 12,
@@ -294,13 +351,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Branding",
     group: "Digital & Création",
     description:
-      "Comprendre les principes d’une création visuelle cohérente au service de l’image de marque.",
+      "Un guide pratique qui présente le design graphique comme une démarche de communication, et pas seulement comme la recherche d’un visuel esthétique. Il relie brief créatif, composition, couleurs, typographie, identité de marque, conception des supports, production technique et organisation d’un workflow professionnel.",
     slug: "design-graphique-creation-visuelle",
     cover: "/img/design_graphique_creation_visuelle.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "92 pages",
+    readTime: "75–105 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre le design graphique", description: "Découvrir les missions du graphiste, interpréter un brief et maîtriser les fondamentaux de la communication visuelle, des couleurs et de la composition." },
+      { title: "Identité visuelle et branding", description: "Distinguer logo, identité et branding, construire un système visuel cohérent, choisir une palette, associer les typographies et définir une charte." },
+      { title: "Concevoir les supports de communication", description: "Créer des visuels sociaux, affiches, brochures, présentations, supports imprimés et publicitaires en adaptant l’identité aux formats." },
+      { title: "Méthodes, outils et boîte à outils", description: "Passer de l’idée au concept, travailler les moodboards et mises en page, préparer les fichiers, gérer les retours et organiser un workflow incluant IA, droits et portfolio." }
+    ],
   },
   "innovation-ia": {
     id: 13,
@@ -308,13 +370,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Innovation & IA",
     group: "Innovation & Activation",
     description:
-      "Comprendre les usages de l’intelligence artificielle et identifier des applications concrètes pour l’entreprise.",
+      "Un guide pour dépasser la simple adoption d’un outil d’intelligence artificielle et réfléchir à la transformation qu’il peut soutenir dans l’entreprise. Il explore des cas d’usage en productivité, marketing, communication, vente, relation client, données, automatisation et ressources humaines, tout en abordant risques, gouvernance et mise en œuvre.",
     slug: "innovation-ia",
     cover: "/img/innovation_ia.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "71 pages",
+    readTime: "30–45 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre l’innovation et l’IA", description: "Clarifier ce qu’est l’innovation, comprendre les grandes familles d’IA et situer l’IA générative dans les usages professionnels." },
+      { title: "Les usages dans l’entreprise", description: "Explorer des applications possibles en productivité, marketing, communication, développement commercial, relation client, données, RH et création de produits." },
+      { title: "Contexte, risques et gouvernance", description: "Prendre en compte les réalités des PME, startups et marchés africains, tout en considérant les limites, la confidentialité, la responsabilité et la formation des équipes." },
+      { title: "Construire un projet IA", description: "Choisir les cas d’usage prioritaires, organiser la mise en œuvre, mesurer le retour sur investissement et structurer une transformation sur 90 jours." }
+    ],
   },
   "publicite-media-buying": {
     id: 14,
@@ -322,13 +389,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Marketing",
     group: "Innovation & Activation",
     description:
-      "Mieux comprendre la publicité digitale, l’achat média, le ciblage et la logique de performance.",
+      "Un guide stratégique pour planifier, acheter, diffuser, mesurer et optimiser des espaces publicitaires à partir d’objectifs définis. Il aide à préparer les campagnes, cibler les audiences, établir un budget, suivre les conversions et distinguer les indicateurs visibles de la rentabilité réelle.",
     slug: "publicite-media-buying",
     cover: "/img/publicite_media_buying.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "80 pages",
+    readTime: "70–95 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Les fondamentaux publicitaires", description: "Comprendre le média buying, relier les objectifs publicitaires au parcours d’achat et préciser les résultats recherchés." },
+      { title: "Préparer la campagne", description: "Choisir les plateformes, segmenter les audiences, construire une offre convaincante et concevoir des créations publicitaires pertinentes." },
+      { title: "Piloter la performance", description: "Structurer les campagnes, définir un budget, suivre les indicateurs, installer le suivi des conversions et tester les créations et audiences." },
+      { title: "Canaux, rentabilité et plan média", description: "Travailler le retargeting, les réseaux sociaux, Google Ads et la vidéo, calculer le ROI, tenir compte des risques et bâtir un plan média sur 90 jours." }
+    ],
   },
   "audiovisuel-motion-design": {
     id: 15,
@@ -336,13 +408,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Innovation & Activation",
     description:
-      "Explorer les formats audiovisuels et le motion design comme outils de communication et d’impact.",
+      "Un guide pratique pour cadrer un projet vidéo, concevoir une idée et un scénario, préparer le tournage, travailler l’image, le son et la lumière, puis animer, monter et diffuser un contenu audiovisuel cohérent. Il aborde également l’accessibilité, la mesure des performances, l’IA, les droits, le budget et l’organisation de production.",
     slug: "audiovisuel-motion-design",
     cover: "/img/audiovisuel_motion_design.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "77 pages",
+    readTime: "60–85 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre et cadrer", description: "Définir les objectifs d’une production, comprendre l’audiovisuel et le motion design, choisir son audience et sélectionner le bon format." },
+      { title: "Concevoir et produire", description: "Trouver un concept, construire un récit, écrire un scénario et un storyboard, puis préparer le tournage, l’image, le son, l’éclairage et les interviews." },
+      { title: "Animer, monter et diffuser", description: "Découvrir les techniques de motion design, structurer le montage, travailler la voix et le son, adapter les formats et organiser la diffusion." },
+      { title: "Mesurer et piloter", description: "Évaluer les performances, tenir compte de l’IA, des droits et du budget, utiliser des checklists et suivre un plan d’action sur 90 jours." }
+    ],
   },
   "evenementiel-activation-marque": {
     id: 16,
@@ -350,13 +427,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Innovation & Activation",
     description:
-      "Créer des expériences de marque et des activations événementielles pensées pour générer de l’engagement.",
+      "Un guide pratique pour concevoir des événements qui servent une ambition de marque : lancement, activation terrain, événement corporate ou format hybride. Il accompagne la définition des objectifs, le concept, le budget, la planification, le parcours des participants, la communication avant-pendant-après et la mesure du retour sur investissement.",
     slug: "evenementiel-activation-marque",
     cover: "/img/evenementiel_activation_marque.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "73 pages",
+    readTime: "50–70 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre et cadrer", description: "Relier l’événementiel à la stratégie de marque, définir les objectifs et concevoir une expérience pertinente pour son public." },
+      { title: "Concevoir l’événement", description: "Développer un concept différenciant, choisir le format et le lieu, définir la stratégie et construire un budget réaliste." },
+      { title: "Organiser l’expérience", description: "Planifier les opérations, créer une identité événementielle cohérente, structurer le parcours des participants et coordonner les prestataires." },
+      { title: "Activer, communiquer et mesurer", description: "Préparer lancements et activations, gérer la communication et les partenariats, anticiper les risques et évaluer les résultats après l’événement." }
+    ],
   },
   "success-stories": {
     id: 17,
@@ -364,13 +446,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Business & Développement",
     group: "Expertise & Réputation",
     description:
-      "Décrypter des parcours, expériences et réalisations afin d’en tirer des enseignements utiles.",
+      "Un guide pédagogique pour comprendre les mécanismes d’un projet réussi, analyser les décisions et transformer une expérience en apprentissage. Il présente des études de cas conçues à des fins d’illustration — explicitement fictives dans le document — puis explique comment mesurer les résultats sans les exagérer et raconter une réussite avec crédibilité.",
     slug: "success-stories",
     cover: "/img/success_stories.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "59 pages",
+    readTime: "45–65 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre la réussite", description: "Analyser la valeur d’une success story, les caractéristiques d’une réussite durable et les étapes d’un projet réussi." },
+      { title: "Études de cas pédagogiques", description: "Examiner des situations illustratives portant sur une PME, une marque, une startup, la présence digitale, l’automatisation et un projet qui rebondit après un échec." },
+      { title: "Les leviers de réussite", description: "Relier leadership, marketing, communication, performance, innovation et transformation digitale aux décisions d’un projet." },
+      { title: "Prouver, raconter et agir", description: "Mesurer sans exagération, structurer un cas professionnel, utiliser le storytelling, valoriser les projets et appliquer une checklist de crédibilité." }
+    ],
   },
   "interviews-portraits": {
     id: 18,
@@ -378,13 +465,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Expertise & Réputation",
     description:
-      "Rencontrer des profils, experts et acteurs qui façonnent les métiers et les transformations du marché.",
+      "Un guide éditorial et pratique pour transformer une rencontre en contenu utile, fidèle et intéressant. Il explique comment choisir ses interlocuteurs, vérifier les informations, préparer un questionnaire, conduire l’entretien, rédiger un portrait respectueux, produire des versions audio ou vidéo et diffuser le contenu sur les plateformes adaptées.",
     slug: "interviews-portraits",
     cover: "/img/interviews_portraits.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "70 pages",
+    readTime: "70–95 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre et cadrer", description: "Distinguer interview, portrait et témoignage, définir les objectifs éditoriaux, identifier les bons interlocuteurs et établir une ligne éditoriale." },
+      { title: "Préparer et conduire la rencontre", description: "Rechercher et vérifier les informations, préparer les questions, écouter, relancer et approfondir les réponses, en présentiel comme à distance." },
+      { title: "Écrire et respecter la parole", description: "Construire un portrait captivant, structurer le contenu et restituer avec justesse les propos et l’image de la personne interviewée." },
+      { title: "Produire, diffuser et mesurer", description: "Réaliser des interviews photo, audio ou vidéo, adapter le contenu aux plateformes, optimiser le référencement et réutiliser les contenus avec méthode." }
+    ],
   },
   "tutoriels-guides": {
     id: 19,
@@ -392,13 +484,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Digital & SEO",
     group: "Expertise & Réputation",
     description:
-      "Des ressources pratiques pour apprendre, appliquer et progresser étape par étape.",
+      "Une bibliothèque de méthodes pratiques pour passer de l’information à la compétence et de la connaissance à l’action. Les 21 modules abordent l’apprentissage, la communication, la marque, les réseaux sociaux, le SEO, l’IA, les prompts, les sites web, la prospection, la mesure, l’automatisation et l’organisation de projet.",
     slug: "tutoriels-guides",
     cover: "/img/tutoriels_guides.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "62 pages",
+    readTime: "50–70 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Apprendre et s’organiser", description: "Développer une méthode d’apprentissage, transformer l’information en compétence et organiser son travail avant de commencer." },
+      { title: "Communiquer et créer", description: "Structurer une stratégie de communication, une identité de marque, une présence sociale et une production de contenu planifiée." },
+      { title: "Outils et usages numériques", description: "Utiliser l’IA comme assistant, concevoir des prompts précis, créer un site orienté utilisateur et améliorer le SEO." },
+      { title: "Développer et progresser", description: "Organiser la prospection, mesurer les performances, automatiser avec discernement, piloter des projets et suivre un plan de progression sur 30 jours." }
+    ],
   },
   "communication-crise-reputation": {
     id: 20,
@@ -406,13 +503,18 @@ const ebooksData: Record<string, EbookData> = {
     category: "Communication",
     group: "Expertise & Réputation",
     description:
-      "Anticiper les situations sensibles, protéger son image et structurer sa communication en contexte de crise.",
+      "Un guide stratégique et pratique pour préparer une organisation aux situations sensibles, détecter les signaux faibles et coordonner une réponse responsable. Il traite du diagnostic des risques, de la cellule de crise, de la vérification des faits, des messages publics, des crises sur les réseaux sociaux, des incidents de sécurité ou de données et de la reconstruction de la confiance.",
     slug: "communication-crise-reputation",
     cover: "/img/communication_crise_reputation.PNG",
-    pages: "40–55 pages",
-    readTime: "20–30 min",
+    pages: "72 pages",
+    readTime: "70–100 min",
     author: "SunuLink Consulting",
-    sections: [],
+    sections: [
+      { title: "Comprendre la crise et la réputation", description: "Distinguer les formes de crise, comprendre la réputation et l’e-réputation et évaluer les enjeux de communication." },
+      { title: "Anticiper et préparer le dispositif", description: "Détecter les signaux faibles, réaliser un diagnostic des risques, construire un plan de gestion et organiser une cellule de crise." },
+      { title: "Vérifier, décider et informer", description: "Vérifier les faits, maîtriser l’information, définir une stratégie de réponse, gérer les premières heures et préparer les déclarations." },
+      { title: "Répondre, reconstruire et mesurer", description: "Gérer les critiques, les médias, les réseaux sociaux, les crises internes et numériques, puis mesurer l’impact et reconstruire la confiance." }
+    ],
   },
 };
 
