@@ -1,329 +1,325 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Briefcase, Palette, Image, Globe, TrendingUp, Calendar, Brain, CheckCircle, Film } from "lucide-react";
+import {
+  Briefcase, Palette, Image as ImageIcon, Globe, TrendingUp, Calendar,
+  Brain, CheckCircle, Film, ArrowRight, Sparkles, Camera, Clapperboard,
+  Users, Target, Mail
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
-const ServicesPage = () => {
-  const services = [
-    {
-      icon: Briefcase,
-      title: "Stratégie & Consulting",
-      description: "Bâtissez une stratégie solide et alignée sur vos objectifs pour garantir votre réussite.",
-      color: "from-sunuBlue to-sunuCyan",
-      offerings: [
-        "Audit & diagnostic",
-        "Positionnement stratégique",
-        "Plan marketing",
-        "Plan de communication",
-        "Stratégie digitale",
-        "Accompagnement dirigeant",
-        "Études de marché",
-        "Conseil à long terme"
-      ]
-    },
-    {
-      icon: Palette,
-      title: "Branding & Identité Visuelle",
-      description: "Créez une identité de marque forte, mémorable et cohérente qui vous distingue.",
-      color: "from-purple-500 to-pink-500",
-      offerings: [
-        "Création de logos premium",
-        "Charte graphique complète",
-        "Rebranding",
-        "Branding produits",
-        "Identité de marque complète",
-        "Direction artistique"
-      ]
-    },
-    {
-      icon: Image,
-      title: "Communication Visuelle & Contenus",
-      description: "Des créations visuelles modernes et percutantes pour captiver votre audience.",
-      color: "from-orange-500 to-yellow-500",
-      offerings: [
-        "Création de visuels",
-        "Flyers / affiches",
-        "Vidéos courtes & motion design",
-        "Contenus réseaux sociaux",
-        "Copywriting",
-        "Conception de campagnes visuelles"
-      ]
-    },
-    {
-      icon: Globe,
-      title: "Digital, Web & SEO",
-      description: "Dominez le web avec une présence digitale performante et professionnelle.",
-      color: "from-cyan-500 to-blue-500",
-      offerings: [
-        "Création de sites web",
-        "Refonte de sites",
-        "SEO (référencement naturel)",
-        "Audit digital",
-        "Campagnes sponsorisées",
-        "Référencement Google",
-        "UX/UI design"
-      ]
-    },
-    {
-      icon: TrendingUp,
-      title: "Développement Commercial",
-      description: "Structurez et accélérez votre croissance commerciale avec nos experts.",
-      color: "from-green-500 to-teal-500",
-      offerings: [
-        "Stratégie commerciale",
-        "Prospection B2B/B2C",
-        "Scripts de vente",
-        "Processus & tunnel de conversion",
-        "Mise en place de CRM",
-        "Coaching commercial"
-      ]
-    },
-    {
-      icon: Film,
-      title: "SunuLink Prod",
-      description: "Donnez une dimension cinématographique, moderne et mémorable à votre univers visuel.",
-      color: "from-amber-600 to-orange-600",
-      link: "/services/audiovisuel",
-      offerings: [
-        "Branding & Films Institutionnels",
-        "Motion Design & Animation Graphique",
-        "Tournage Haute Définition (Sol & Air)",
-        "Post-Production & Étalonnage Cinéma",
-        "Sound-Design & Captation Audio Pro"
-      ]
-    },
-    {
-      icon: Calendar,
-      title: "SunuLink Events",
-      description: "L'art de concevoir et piloter des rassemblements corporatifs ou grand public millimétrés.",
-      color: "from-pink-500 to-rose-600",
-      link: "/services/evenementiel",
-      offerings: [
-        "Conférences & Forums Élite",
-        "Cocktails & Galas Prestige",
-        "Salons Professionnels B2B",
-        "Lancements de Produits & Activations",
-        "Gestion Logistique & Technique Clé en Main"
-      ]
-    },
-    {
-      icon: Brain,
-      title: "IA & Automatisation",
-      description: "Optimisez vos processus avec l'intelligence artificielle et l'automatisation.",
-      color: "from-indigo-500 to-purple-500",
-      offerings: [
-        "Chatbots professionnels",
-        "Automatisation WhatsApp & email",
-        "Création de workflows",
-        "Assistants IA personnalisés",
-        "Dashboards intelligents",
-        "Génération automatisée de contenus",
-        "Outils IA internes pour les entreprises"
-      ]
-    }
-  ];
+const services = [
+  {
+    icon: Briefcase,
+    title: "Stratégie & Consulting",
+    description: "Clarifiez votre positionnement, vos priorités et votre plan d’action pour faire avancer votre activité avec méthode.",
+    color: "from-sunuBlue to-sunuCyan",
+    offerings: ["Audit & diagnostic", "Positionnement stratégique", "Plan marketing et communication", "Études de marché", "Accompagnement des dirigeants"],
+    action: "Parler de mon projet",
+    link: "/contact",
+  },
+  {
+    icon: Palette,
+    title: "Branding & Identité Visuelle",
+    description: "Construisez une marque reconnaissable, cohérente et mémorable, de votre logo à votre univers visuel.",
+    color: "from-violet-600 to-fuchsia-500",
+    offerings: ["Création de logo", "Charte graphique", "Identité de marque", "Rebranding", "Direction artistique"],
+    action: "Créer mon identité",
+    link: "/contact",
+  },
+  {
+    icon: ImageIcon,
+    title: "Communication Visuelle & Contenus",
+    description: "Des supports créatifs qui transmettent votre message clairement et donnent envie de découvrir votre marque.",
+    color: "from-sunuOrange to-amber-400",
+    offerings: ["Visuels et affiches", "Contenus pour les réseaux sociaux", "Copywriting", "Campagnes visuelles", "Motion design"],
+    action: "Créer mes contenus",
+    link: "/contact",
+  },
+  {
+    icon: Globe,
+    title: "Digital, Web & SEO",
+    description: "Développez une présence en ligne professionnelle, facile à trouver, à comprendre et à utiliser.",
+    color: "from-cyan-500 to-sky-600",
+    offerings: ["Création et refonte de sites web", "UX/UI design", "Référencement naturel (SEO)", "Audit digital", "Visibilité Google"],
+    action: "Développer ma présence en ligne",
+    link: "/contact",
+  },
+  {
+    icon: TrendingUp,
+    title: "Développement Commercial",
+    description: "Structurez votre prospection et votre parcours client pour transformer plus efficacement les opportunités en clients.",
+    color: "from-emerald-500 to-teal-600",
+    offerings: ["Stratégie commerciale", "Prospection B2B/B2C", "Tunnel de conversion", "Mise en place de CRM", "Coaching commercial"],
+    action: "Accélérer ma croissance",
+    link: "/contact",
+  },
+  {
+    icon: Brain,
+    title: "IA & Automatisation",
+    description: "Réduisez les tâches répétitives et facilitez le travail de vos équipes grâce à des automatisations adaptées.",
+    color: "from-indigo-500 to-violet-600",
+    offerings: ["Workflows automatisés", "Assistants IA", "Automatisation e-mail et WhatsApp", "Chatbots professionnels", "Tableaux de bord intelligents"],
+    action: "Explorer les possibilités",
+    link: "/contact",
+  },
+];
 
+const ServicesPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-slate-900">
       <Header />
 
-      <main className="pt-32 pb-20">
-        {/* Hero Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-white to-sunuGray/20">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-6xl font-black mb-6 text-gray-800" data-aos="fade-up">
-              Nos <span className="text-sunuOrange">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-4" data-aos="fade-up" data-aos-delay="100">
-              Une communication à 360° pour donner de l'élan à vos projets
-            </p>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-              Nous vous accompagnons sur l'ensemble des besoins en communication, stratégie et développement digital. Nos services sont organisés autour de piliers puissants.
+      <main className="pt-20">
+        {/* HERO — déposer l’image générée dans public/img/services-hero.jpg */}
+        <section className="relative isolate flex min-h-[570px] items-center overflow-hidden bg-[#061b36]">
+          <div
+            className="absolute inset-0 -z-20 bg-cover bg-center"
+            style={{ backgroundImage: "url('/img/services-hero.jpg')" }}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#04162e]/95 via-[#05264a]/80 to-[#05264a]/25" aria-hidden="true" />
+          <div className="container mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
+            <div className="max-w-3xl" data-aos="fade-up">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-sunuOrange backdrop-blur">
+                <Sparkles size={16} /> Nos expertises
+              </div>
+              <h1 className="mb-6 text-4xl font-black leading-tight text-white sm:text-5xl md:text-6xl">
+                Une communication à <span className="text-sunuOrange">360°</span> pour donner de l’élan à vos projets.
+              </h1>
+              <p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+                De la stratégie à la création, du digital à l’événementiel et à la production audiovisuelle : SunuLink vous accompagne avec des solutions adaptées à vos objectifs.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <a href="#nos-services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300">
+                  Explorer nos services <ArrowRight size={18} />
+                </a>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-7 py-3 font-bold text-white transition hover:bg-white hover:text-[#062448] focus:outline-none focus:ring-4 focus:ring-white/40">
+                  <Mail size={18} /> Parler à un expert
+                </Link>
+              </div>
+              <div className="mt-10 grid max-w-2xl grid-cols-1 gap-3 text-sm text-white/90 sm:grid-cols-3">
+                {["Une approche sur mesure", "Des expertises complémentaires", "Des objectifs concrets"].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle className="shrink-0 text-sunuOrange" size={18} /> {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* INTRO */}
+        <section id="nos-services" className="scroll-mt-24 px-6 pb-8 pt-16 md:pt-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Nos services</p>
+            <h2 className="mb-5 text-3xl font-black leading-tight text-[#08264b] md:text-4xl">
+              Les bonnes expertises, réunies autour de votre ambition.
+            </h2>
+            <p className="text-base leading-relaxed text-slate-600 md:text-lg">
+              Choisissez le service qui correspond à votre besoin. Chaque prestation peut être adaptée à votre contexte, à vos délais et à votre budget.
             </p>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-20 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {services.map((service, index) => {
-                const CardContent = (
-                  <>
-                    <div className={`grain-texture bg-gradient-to-br ${service.color} text-white p-8`}>
-                      <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <service.icon className="w-8 h-8 text-white" />
-                      </div>
-                      <h3 className="text-3xl font-black mb-4 flex items-center gap-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-lg opacity-95 leading-relaxed">{service.description}</p>
+        {/* GENERAL SERVICES */}
+        <section className="px-6 pb-16 pt-8 md:pb-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <article key={service.title} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sunuBlue/40 hover:shadow-xl" data-aos="fade-up" data-aos-delay={index * 60}>
+                  <div className={`bg-gradient-to-br ${service.color} p-6 text-white`}>
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/30 bg-white/15 shadow-inner">
+                      <Icon size={28} strokeWidth={1.8} />
                     </div>
-                    <div className="p-8 bg-gradient-to-b from-white to-sunuGray/5 flex-grow">
-                      <h4 className="text-lg font-bold text-gray-800 mb-4">Nos prestations :</h4>
-                      <ul className="space-y-3">
-                        {service.offerings.map((offering, idx) => (
-                          <li key={idx} className="flex items-start space-x-3">
-                            <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-700">{offering}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {service.link && (
-                        <div className="mt-6 text-right">
-                          <span className="inline-block text-sm font-black uppercase tracking-wider text-sunuOrange group-hover:underline">
-                            Découvrir l'espace →
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </>
-                );
-
-                const cardClasses = "group relative bg-white rounded-3xl overflow-hidden shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange hover:scale-105 md:hover:scale-110 hover:-translate-y-3 md:hover:-translate-y-6 hover:-translate-x-1 hover:rotate-1 md:hover:rotate-2 hover:shadow-[0_20px_50px_rgba(255,127,39,0.4)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.5)] flex flex-col h-full";
-
-                return service.link ? (
-                  <Link 
-                    to={service.link}
-                    key={index}
-                    className={cardClasses}
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
-                    {CardContent}
-                  </Link>
-                ) : (
-                  <div
-                    key={index}
-                    className={cardClasses}
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
-                    {CardContent}
+                    <h3 className="text-xl font-extrabold leading-snug">{service.title}</h3>
                   </div>
-                );
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="mb-5 leading-relaxed text-slate-600">{service.description}</p>
+                    <h4 className="mb-3 text-sm font-extrabold uppercase tracking-wide text-[#08264b]">Comment nous pouvons vous aider</h4>
+                    <ul className="mb-6 space-y-2.5">
+                      {service.offerings.map((offering) => (
+                        <li key={offering} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700">
+                          <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuBlue" /> <span>{offering}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto pt-2">
+                      <Link to={service.link} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sunuBlue px-4 py-3 text-center font-bold text-sunuBlue transition hover:bg-sunuBlue hover:text-white focus:outline-none focus:ring-4 focus:ring-sky-200">
+                        {service.action} <ArrowRight size={17} />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* SUNULINK PROD FEATURE */}
+        <section className="px-6 py-6 md:py-10">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#061a35] shadow-xl">
+            <div className="grid lg:grid-cols-2">
+              <div className="flex flex-col justify-center p-7 text-white sm:p-10 lg:p-12">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sunuOrange text-white"><Film size={29} /></span>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-sunuOrange">Production audiovisuelle</p>
+                    <h2 className="text-3xl font-black sm:text-4xl">SunuLink Prod</h2>
+                  </div>
+                </div>
+                <p className="mb-4 text-xl font-bold text-white">Donnez vie à vos idées.</p>
+                <p className="mb-6 leading-relaxed text-white/80">
+                  Des films de marque aux vidéos événementielles, nous vous aidons à raconter votre histoire avec une production soignée et un message clair.
+                </p>
+                <div className="mb-8 grid gap-3 sm:grid-cols-2">
+                  {["Films institutionnels et publicitaires", "Captation vidéo et prises de vues", "Montage, étalonnage et post-production", "Motion design et contenus vidéo"].map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-sm text-white/90">
+                      <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuOrange" /> {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link to="/services/audiovisuel" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-6 py-3 font-extrabold text-white transition hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-300">
+                    Découvrir SunuLink Prod <ArrowRight size={18} />
+                  </Link>
+                  <Link to="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/40 px-6 py-3 font-bold text-white transition hover:bg-white hover:text-[#061a35] focus:outline-none focus:ring-4 focus:ring-white/30">
+                    Demander une production
+                  </Link>
+                </div>
+              </div>
+              <div className="relative min-h-[280px] bg-gradient-to-br from-slate-800 via-[#12345b] to-black">
+                <img src="/img/services-prod.jpg" alt="Équipe de production audiovisuelle en tournage" className="absolute inset-0 h-full w-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061a35]/70 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-black/35 px-4 py-3 text-white backdrop-blur">
+                  <p className="font-bold">De l’idée à l’image finale</p>
+                  <p className="text-sm text-white/80">Création · Tournage · Post-production</p>
+                </div>
+                <div className="absolute right-6 top-6 rounded-full bg-sunuOrange px-3 py-1 text-xs font-extrabold text-white">SUNULINK PROD</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SUNULINK EVENTS FEATURE */}
+        <section className="px-6 py-6 md:py-10">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-slate-200 bg-[#f5f8fc] shadow-lg">
+            <div className="grid lg:grid-cols-2">
+              <div className="relative order-2 min-h-[280px] bg-gradient-to-br from-[#0a2b53] via-[#0a3d70] to-[#061a35] lg:order-1">
+                <img src="/img/services-events.jpg" alt="Conférence professionnelle organisée dans une salle événementielle" className="absolute inset-0 h-full w-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#061a35]/20 to-[#061a35]/60" />
+                <div className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-black/35 px-4 py-3 text-white backdrop-blur">
+                  <p className="font-bold">Des moments qui rassemblent</p>
+                  <p className="text-sm text-white/80">Conception · Coordination · Réalisation</p>
+                </div>
+              </div>
+              <div className="order-1 flex flex-col justify-center p-7 sm:p-10 lg:order-2 lg:p-12">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sunuBlue text-white"><Calendar size={28} /></span>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-sunuOrange">Événementiel & activation</p>
+                    <h2 className="text-3xl font-black text-[#08264b] sm:text-4xl">SunuLink Events</h2>
+                  </div>
+                </div>
+                <p className="mb-4 text-xl font-bold text-[#08264b]">Des événements qui marquent les esprits.</p>
+                <p className="mb-6 leading-relaxed text-slate-600">
+                  Nous concevons et coordonnons des événements professionnels ou grand public en tenant compte de votre objectif, de votre public et de votre identité de marque.
+                </p>
+                <div className="mb-8 grid gap-3 sm:grid-cols-2">
+                  {["Conférences, forums et séminaires", "Lancements et activations de marque", "Galas, salons et rencontres professionnelles", "Coordination logistique et technique"].map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                      <CheckCircle size={17} className="mt-0.5 shrink-0 text-sunuBlue" /> {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link to="/services/evenementiel" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuBlue px-6 py-3 font-extrabold text-white transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-200">
+                    Découvrir SunuLink Events <ArrowRight size={18} />
+                  </Link>
+                  <Link to="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full border border-sunuBlue px-6 py-3 font-bold text-sunuBlue transition hover:bg-sunuBlue hover:text-white focus:outline-none focus:ring-4 focus:ring-sky-200">
+                    Organiser mon événement
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICE PHARE */}
+        <section className="px-6 py-16 md:py-20">
+          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#062448] via-sunuBlue to-[#007cba] p-7 text-white shadow-xl sm:p-10 lg:p-12">
+            <div className="grid items-center gap-10 lg:grid-cols-2">
+              <div>
+                <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Notre méthode</p>
+                <h2 className="mb-5 text-3xl font-black sm:text-4xl">Une stratégie claire. Des actions cohérentes. Des résultats suivis.</h2>
+                <p className="mb-7 leading-relaxed text-white/85">
+                  Nous commençons par comprendre votre situation et vos objectifs, puis nous construisons avec vous une démarche adaptée, de la réflexion à la mise en œuvre.
+                </p>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 font-extrabold text-[#062448] transition hover:bg-sunuOrange hover:text-white focus:outline-none focus:ring-4 focus:ring-white/40">
+                  Échanger sur mes objectifs <ArrowRight size={18} />
+                </Link>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  { icon: Target, title: "Comprendre", text: "Analyser votre besoin et définir les priorités." },
+                  { icon: Briefcase, title: "Structurer", text: "Construire un plan d’action réaliste." },
+                  { icon: Users, title: "Collaborer", text: "Avancer avec un accompagnement adapté." },
+                  { icon: TrendingUp, title: "Évaluer", text: "Suivre les indicateurs et ajuster les actions." },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return <div key={item.title} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+                    <Icon className="mb-3 text-sunuOrange" size={25} />
+                    <h3 className="mb-2 font-extrabold">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-white/80">{item.text}</p>
+                  </div>;
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY US */}
+        <section className="bg-slate-50 px-6 py-16 md:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-sunuOrange">Pourquoi SunuLink ?</p>
+              <h2 className="text-3xl font-black text-[#08264b] md:text-4xl">Un partenaire à vos côtés, à chaque étape.</h2>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3">
+              {[
+                { icon: Target, title: "Une approche sur mesure", text: "Des recommandations adaptées à votre réalité, vos publics et vos objectifs." },
+                { icon: CheckCircle, title: "Un suivi lisible", text: "Des étapes claires, des échanges réguliers et des priorités partagées." },
+                { icon: Sparkles, title: "Une expertise à 360°", text: "Stratégie, création, digital, événementiel et audiovisuel réunis au même endroit." },
+              ].map((item) => {
+                const Icon = item.icon;
+                return <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sunuBlue"><Icon size={25} /></div>
+                  <h3 className="mb-3 text-xl font-extrabold text-[#08264b]">{item.title}</h3>
+                  <p className="leading-relaxed text-slate-600">{item.text}</p>
+                </article>;
               })}
             </div>
           </div>
         </section>
 
-        {/* Featured Service - Stratégie */}
-        <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-12 shadow-2xl" data-aos="fade-up">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-2xl flex items-center justify-center">
-                      <Briefcase className="w-8 h-8 text-white" />
-                    </div>
-                    <h2 className="text-4xl font-black">Service phare</h2>
-                  </div>
-                  <h3 className="text-3xl font-black mb-6">
-                    CONSEIL STRATÉGIQUE & PILOTAGE
-                  </h3>
-                  <p className="text-xl mb-6 opacity-95 leading-relaxed">
-                    Construire une stratégie solide, alignée à vos objectifs, est essentiel pour réussir.
-                  </p>
-                  <p className="text-lg opacity-90 leading-relaxed mb-8">
-                    Nous vous accompagnons dans l'audit, la définition de votre positionnement, la mise en œuvre de vos plans d'action et l'analyse des performances pour une croissance durable.
-                  </p>
-                  <Link to="/contact">
-                    <button className="bg-white text-sunuBlue px-8 py-4 rounded-full font-bold text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg">
-                      Planifier un audit gratuit
-                    </button>
-                  </Link>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Audit complet de votre marque et positionnement</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Plan d'action stratégique personnalisé</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Accompagnement dans l'exécution</p>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-white flex-shrink-0 mt-1" />
-                      <p className="text-lg">Mesure des performances et optimisation continue</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pourquoi choisir nos services */}
-        <section className="py-20 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-800" data-aos="fade-up">
-              Pourquoi choisir <span className="text-sunuOrange">nos services ?</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up">
-                <div className="bg-gradient-to-br from-sunuBlue to-sunuCyan w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Résultats mesurables</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Nous définissons des KPI clairs et vous livrons des reportings réguliers pour suivre votre croissance.
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="100">
-                <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Qualité garantie</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Chaque projet est traité avec excellence et professionnalisme par nos équipes expertes.
-                </p>
-              </div>
-              <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-sunuGray/10 to-white" data-aos="fade-up" data-aos-delay="200">
-                <div className="bg-gradient-to-br from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Palette className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-gray-800">Approche 360°</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  De la stratégie à l'exécution, nous couvrons tous vos besoins en communication et marketing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 px-6 bg-gradient-to-b from-sunuGray/20 to-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuOrange via-yellow-500 to-sunuOrange text-white rounded-3xl p-12 text-center shadow-2xl" data-aos="fade-up">
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
-                Prêt à transformer votre vision en réalité ?
-              </h2>
-              <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-                Contactez-nous pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/devis">
-                  <button className="bg-white text-sunuOrange px-10 py-4 rounded-full font-bold text-lg hover:bg-sunuBlue hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Demander un devis
-                  </button>
-                </Link>
-                <Link to="/boost-my-pub">
-                  <button className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-sunuOrange transition-all duration-300">
-                    Découvrir Boost My Pub
-                  </button>
-                </Link>
-              </div>
+        {/* CTA */}
+        <section className="px-6 py-16 md:py-20">
+          <div className="mx-auto max-w-7xl rounded-3xl bg-gradient-to-r from-sunuOrange to-amber-500 px-6 py-12 text-center text-white shadow-xl sm:px-12">
+            <h2 className="mb-5 text-3xl font-black md:text-4xl">Votre prochain défi mérite une stratégie à sa hauteur.</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/95">
+              Parlez-nous de votre projet. Nous vous aiderons à identifier les prochaines étapes et le service le plus adapté.
+            </p>
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <Link to="/devis" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-extrabold text-sunuOrange transition hover:bg-[#062448] hover:text-white focus:outline-none focus:ring-4 focus:ring-white/40">
+                Demander un devis <ArrowRight size={18} />
+              </Link>
+              <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-white px-8 py-3 font-extrabold text-white transition hover:bg-white hover:text-sunuOrange focus:outline-none focus:ring-4 focus:ring-white/40">
+                Nous contacter <Mail size={18} />
+              </Link>
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
