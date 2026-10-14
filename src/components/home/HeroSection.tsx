@@ -92,10 +92,7 @@ export const HeroSection = () => {
             <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
 
               {/* Bouton principal orange */}
-              <Link
-                to="/contact"
-                className="w-full sm:w-auto"
-              >
+              <Link to="/contact" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className="min-h-12 w-full rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-6 text-base font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/40 sm:w-auto sm:px-8 sm:text-lg motion-reduce:transform-none"
@@ -105,10 +102,7 @@ export const HeroSection = () => {
               </Link>
 
               {/* Bouton secondaire bleu */}
-              <Link
-                to="/services"
-                className="w-full sm:w-auto"
-              >
+              <Link to="/services" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"
@@ -120,8 +114,6 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : CARROUSEL D'IMAGES SANS TEXTE SUPERPOSÉ */}
-          
           {/* CÔTÉ DROIT : CARROUSEL D'IMAGES */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
             <div className="w-full max-w-[500px]">
@@ -155,7 +147,7 @@ export const HeroSection = () => {
                             event.currentTarget.style.visibility = "hidden";
                           }}
                         />
-          
+
                         {/* Accent orange SunuLink, sans texte superposé */}
                         <div
                           className="pointer-events-none absolute bottom-0 left-0 h-1.5 w-24 bg-[#F59C27] sm:w-32"
@@ -169,12 +161,16 @@ export const HeroSection = () => {
             </div>
           </div>
 
+        </div>
+        {/* FIN DE LA GRILLE PRINCIPALE */}
 
         {/* LOGO CAROUSEL */}
         <div className="mt-12 sm:mt-16">
           <LogoCarousel />
         </div>
+
       </div>
+      {/* FIN DU CONTAINER */}
     </section>
   );
 };
