@@ -28,7 +28,7 @@ export const HeroSection = () => {
       <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-12">
 
         {/* GRILLE PRINCIPALE */}
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
 
           {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
           <div className="relative z-10 flex min-w-0 flex-col">
@@ -63,7 +63,7 @@ export const HeroSection = () => {
                 </p>
               </div>
 
-              {/* SLIDE 2 : TROIS LIGNES DISTINCTES */}
+              {/* SLIDE 2 : STRATÉGIE, CRÉATIVITÉ, IMPACT */}
               <div
                 className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out ${
                   !showFirstBlock
@@ -88,9 +88,10 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS AUX COULEURS SUNULINK */}
+            {/* BOUTONS SUNULINK */}
             <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
 
+              {/* Bouton principal orange */}
               <Link
                 to="/contact"
                 className="w-full sm:w-auto"
@@ -103,6 +104,7 @@ export const HeroSection = () => {
                 </Button>
               </Link>
 
+              {/* Bouton secondaire bleu */}
               <Link
                 to="/services"
                 className="w-full sm:w-auto"
@@ -118,47 +120,38 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : CARROUSEL RESPONSIVE */}
+          {/* CÔTÉ DROIT : CARROUSEL D'IMAGES SANS TEXTE SUPERPOSÉ */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
-            <div className="w-full max-w-[700px] overflow-hidden rounded-3xl bg-transparent shadow-2xl">
+            <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-3xl bg-transparent shadow-xl">
 
               <Carousel
                 opts={{
                   loop: true,
                   align: "start",
                 }}
-                className="w-full overflow-hidden rounded-3xl"
+                className="absolute inset-0 h-full w-full overflow-hidden rounded-3xl bg-transparent"
               >
-                <CarouselContent className="ml-0">
+                <CarouselContent className="ml-0 h-full">
                   {heroImages.map((img, index) => (
                     <CarouselItem
                       key={index}
-                      className="relative basis-full overflow-hidden rounded-3xl pl-0"
+                      className="h-full basis-full overflow-hidden rounded-3xl pl-0"
                     >
-                      {/* Le ratio donne une hauteur réelle à la diapositive */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-transparent sm:aspect-[5/4] md:aspect-[4/3]">
+                      <div className="relative h-full w-full overflow-hidden rounded-3xl bg-transparent">
 
+                        {/* Image entière, sans légende ni texte ajouté */}
                         <img
                           src={img.src}
                           alt={img.alt}
                           loading={index === 0 ? "eager" : "lazy"}
                           fetchPriority={index === 0 ? "high" : "auto"}
                           draggable={false}
-                          className="absolute inset-0 block h-full w-full rounded-3xl object-cover object-center"
+                          className="absolute inset-0 block h-full w-full rounded-3xl object-contain object-center"
                         />
 
-                        {/* Légende intégrée à la photo, si disponible */}
-                        {img.text && (
-                          <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#1178B7]/85 via-[#1178B7]/30 to-transparent px-5 pb-5 pt-16 sm:px-7 sm:pb-7">
-                            <p className="text-sm font-semibold leading-relaxed text-white drop-shadow-md sm:text-base">
-                              {img.text}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Accent orange sans bordure autour de l'image */}
+                        {/* Accent orange SunuLink */}
                         <div
-                          className="absolute bottom-0 left-0 z-20 h-1.5 w-24 bg-[#F59C27] sm:w-32"
+                          className="pointer-events-none absolute bottom-0 left-0 z-20 h-1.5 w-24 bg-[#F59C27] sm:w-32"
                           aria-hidden="true"
                         />
                       </div>
