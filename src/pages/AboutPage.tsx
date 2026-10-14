@@ -160,22 +160,28 @@ const AboutPage = () => {
         {/* ========================================================= */}
         {/* HERO À PROPOS                                            */}
         {/* ========================================================= */}
-        <section className="relative w-full h-[450px] overflow-hidden">
+        <section className="relative isolate h-[520px] w-full overflow-hidden bg-[#1178B7] sm:h-[580px] lg:h-[640px]">
           <img
             src={heroImage}
             alt="Équipe africaine dans un environnement professionnel et technologique"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/88" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/70 to-sunuBlue/80" />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#1178B7]/90 via-[#1178B7]/65 to-[#1178B7]/35"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-[#1178B7]/35 via-transparent to-[#F59C27]/10"
+            aria-hidden="true"
+          />
 
           <div className="relative z-10 h-full flex items-center justify-center px-6 text-center">
             <div data-aos="fade-up">
               <p className="text-sunuOrange font-bold uppercase tracking-[0.28em] text-xs md:text-sm mb-4">
                 SunuLink Consulting
               </p>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight whitespace-nowrap">
-                À Propos de Nous
+              <h1 className="mx-auto max-w-full text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+                À Propos de <span className="text-[#F59C27]">Nous</span>
               </h1>
             </div>
           </div>
@@ -198,7 +204,7 @@ const AboutPage = () => {
         {/* ========================================================= */}
         {/* MOTS DU FONDATEUR                                        */}
         {/* ========================================================= */}
-        <section className="py-10 md:py-16 px-2 sm:px-4 md:px-6 bg-slate-50 border-y border-slate-200">
+        <section className="py-12 md:py-20 px-3 sm:px-5 md:px-6 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-y border-slate-200">
           <div className="w-full max-w-[1440px] mx-auto">
             <div className="flex justify-center mb-5">
               <span className="inline-flex items-center gap-2 bg-sunuBlue/10 text-sunuBlue border border-sunuBlue/20 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -211,14 +217,14 @@ const AboutPage = () => {
               Mots du <span className="text-sunuOrange">Fondateur</span>
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[390px_minmax(0,1fr)] items-stretch bg-white rounded-[1.75rem] lg:rounded-[2.25rem] border border-slate-200 shadow-xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-[360px_minmax(0,1fr)] items-stretch bg-white rounded-[1.75rem] lg:rounded-[2.25rem] border border-slate-200 shadow-xl shadow-slate-200/70 overflow-hidden">
               {/* Profil fondateur */}
               <div className="relative bg-gradient-to-br from-sunuBlue via-sunuBlue to-sunuCyan p-4 sm:p-6 lg:p-9 text-white min-h-full rounded-t-[1.75rem] lg:rounded-tl-[2.25rem] lg:rounded-tr-none lg:rounded-bl-[2.25rem]">
                 <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-sunuOrange/20 blur-3xl" />
                 <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
 
                 <div className="relative z-10 h-full flex flex-col">
-                  <div className="w-full h-[400px] sm:h-[500px] lg:h-[560px] rounded-[1.5rem] overflow-hidden border-4 border-white/30 shadow-2xl bg-white/10">
+                  <div className="w-full h-[360px] sm:h-[430px] lg:h-[480px] rounded-2xl overflow-hidden border border-white/25 shadow-xl bg-white/10">
                     <img
                       src="/img/Birahim_DG.JPG"
                       alt="Birahim Basse — PDG / Fondateur de SunuLink Consulting"
@@ -248,10 +254,10 @@ const AboutPage = () => {
               </div>
 
               {/* Texte du fondateur */}
-              <div className="p-4 sm:p-6 md:p-8 lg:p-12 xl:p-14">
+              <div className="p-5 sm:p-7 md:p-9 lg:p-10 xl:p-12">
                 <div
-                  className={`relative space-y-6 text-gray-700 text-[15px] sm:text-base lg:text-[17px] leading-8 overflow-hidden transition-[max-height] duration-500 ease-in-out ${
-                    isFounderExpanded ? "max-h-[7000px]" : "max-h-[760px] md:max-h-[820px]"
+                  className={`relative space-y-6 text-slate-700 text-base sm:text-[17px] lg:text-lg leading-[1.85] overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+                    isFounderExpanded ? "max-h-[9000px]" : "max-h-[1000px] md:max-h-[1100px]"
                   }`}
                 >
                   {/* Introduction — carte inspirée de Mission / Vision */}
@@ -308,9 +314,11 @@ const AboutPage = () => {
                         </div>
                       </div>
 
-                      <div className="rounded-2xl bg-slate-900 px-5 py-4 text-center">
-                        <p className="text-lg sm:text-xl font-black text-sunuOrange tracking-tight">
-                          SUNULINK = Notre Lien.
+                      <div className="rounded-2xl border border-[#1178B7]/15 bg-gradient-to-r from-[#1178B7]/10 via-white to-[#F59C27]/15 px-5 py-5 text-center shadow-sm">
+                        <p className="text-lg sm:text-xl md:text-2xl font-black tracking-tight">
+                          <span className="text-[#1178B7]">SUNULINK</span>{" "}
+                          <span className="text-slate-500">=</span>{" "}
+                          <span className="text-[#F59C27]">Notre Lien.</span>
                         </p>
                       </div>
                     </div>
@@ -392,8 +400,8 @@ const AboutPage = () => {
                 <Users className="w-4 h-4 text-sunuOrange" />
                 Équipe SunuLink
               </span>
-              <h2 className="text-3xl md:text-5xl font-black mb-5 text-gray-800" data-aos="fade-up">
-                Notre <span className="text-sunuOrange">Équipe</span>
+              <h2 className="text-3xl md:text-5xl font-black mb-5 text-[#1178B7]" data-aos="fade-up">
+                Notre <span className="text-[#F59C27]">Équipe</span>
               </h2>
               <p className="text-base sm:text-xl text-gray-600 leading-relaxed">
                 Derrière chaque mission, des expertises et des personnalités. Chez SunuLink, nous réunissons des profils complémentaires autour d’une même ambition : transformer les enjeux de nos clients en solutions concrètes, pertinentes et durables.
@@ -468,8 +476,8 @@ const AboutPage = () => {
         {/* Nos Valeurs */}
         <section className="py-16 md:py-20 px-4 sm:px-6 bg-slate-50">
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-3xl md:text-5xl font-black text-center mb-12 md:mb-16 text-gray-800" data-aos="fade-up">
-              Nos <span className="text-sunuOrange">Valeurs</span>
+            <h2 className="text-3xl md:text-5xl font-black text-center mb-12 md:mb-16 text-[#1178B7]" data-aos="fade-up">
+              Nos <span className="text-[#F59C27]">Valeurs</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {values.map((value, index) => (
@@ -488,8 +496,8 @@ const AboutPage = () => {
         {/* Notre Approche */}
         <section className="py-16 md:py-20 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
-            <h2 className="text-3xl md:text-5xl font-black mb-6 md:mb-8 text-gray-800" data-aos="fade-up">
-              Notre <span className="text-sunuOrange">Approche</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 md:mb-8 text-[#1178B7]" data-aos="fade-up">
+              Notre <span className="text-[#F59C27]">Approche</span>
             </h2>
             <p className="text-base sm:text-xl text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto">Un processus clair et structuré pour garantir votre succès</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
@@ -507,8 +515,8 @@ const AboutPage = () => {
         {/* Pourquoi nous choisir */}
         <section className="py-16 md:py-20 px-4 sm:px-6 bg-white">
           <div className="container mx-auto max-w-7xl text-center">
-            <h2 className="text-3xl md:text-5xl font-black mb-12 md:mb-16 text-gray-800" data-aos="fade-up">
-              Pourquoi <span className="text-sunuOrange">nous choisir ?</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-12 md:mb-16 text-[#1178B7]" data-aos="fade-up">
+              Pourquoi <span className="text-[#F59C27]">nous choisir ?</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
               {whyChooseUs.map((reason, index) => (
