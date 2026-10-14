@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { ArrowDown, ArrowRight, Mail, PhoneCall, Users } from "lucide-react";
 
 const CONTACT_HERO_IMAGE =
-  "https://images.unsplash.com/photo-1758873272000-d3763373f863?auto=format&fit=crop&w=2200&q=85";
+  "/img/contact-hero.jpg";
 
 const ContactPage = () => {
   const scrollToContact = () => {
