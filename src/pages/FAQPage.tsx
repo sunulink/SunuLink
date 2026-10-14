@@ -1,7 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { ChevronDown, ChevronUp, HelpCircle, ArrowRight } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  HelpCircle,
+  ArrowRight,
+} from "lucide-react";
 
 const FAQ_HERO_IMAGE =
   "https://images.unsplash.com/photo-1651848894662-5245755aea8e?auto=format&fit=crop&w=1800&q=85";
@@ -158,7 +163,7 @@ const FAQPage = () => {
     {
       question: "Comment puis-je obtenir un devis ?",
       answer:
-        "Via le bouton 'Demander un devis' sur notre site ou en envoyant un email à . Nous revenons sous 48h.",
+        "Via le bouton « Demander un devis » sur notre site ou en envoyant un email à notre équipe. Nous revenons sous 48h.",
     },
   ];
 
@@ -169,13 +174,13 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-slate-800">
       <Header />
 
-      <main className="pt-24 pb-16 md:pt-28 md:pb-20">
-        {/* HERO FAQ : image, léger dégradé et identité SunuLink */}
+      {/* Le héros commence directement sous l'en-tête. */}
+      <main className="pt-20 pb-16 md:pb-20">
+        {/* HERO FAQ */}
         <section className="relative isolate flex min-h-[390px] items-center overflow-hidden bg-white sm:min-h-[420px] md:min-h-[460px]">
-          {/* Image Unsplash en arrière-plan */}
           <img
             src={FAQ_HERO_IMAGE}
             alt=""
@@ -188,19 +193,17 @@ const FAQPage = () => {
             }}
           />
 
-          {/* Dégradé clair pour préserver la lisibilité du texte */}
+          {/* Dégradé clair pour assurer la lisibilité */}
           <div
             className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/70 md:bg-gradient-to-r md:from-white md:via-white/95 md:to-white/10"
             aria-hidden="true"
           />
 
-          {/* Léger accent de couleur sur la photo */}
           <div
             className="absolute inset-y-0 right-0 hidden w-[18%] bg-gradient-to-l from-[#F59C27]/15 to-transparent md:block"
             aria-hidden="true"
           />
 
-          {/* Contenu du héros */}
           <div className="container relative z-10 mx-auto w-full max-w-7xl px-5 py-12 sm:px-6 md:py-16">
             <div
               className="mx-auto max-w-3xl text-center md:mx-0 md:text-left"
@@ -240,7 +243,6 @@ const FAQPage = () => {
             </div>
           </div>
 
-          {/* Filet de couleur au bas du héros */}
           <div
             className="absolute bottom-0 left-0 h-1.5 w-28 bg-[#F59C27] sm:w-44"
             aria-hidden="true"
@@ -263,6 +265,7 @@ const FAQPage = () => {
               </h2>
             </div>
 
+            {/* Important : aucune animation AOS sur les cartes FAQ. */}
             <div className="space-y-4">
               {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
@@ -271,24 +274,22 @@ const FAQPage = () => {
                 return (
                   <div
                     key={index}
-                    className={`overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
+                    className={`overflow-hidden rounded-2xl border-2 transition-colors duration-200 ${
                       isOpen
                         ? "border-[#F59C27] shadow-md shadow-[#F59C27]/10"
                         : "border-slate-200 hover:border-[#1178B7]/40"
                     }`}
-                    data-aos="fade-up"
-                    data-aos-delay={Math.min(index * 20, 180)}
                   >
                     <button
                       type="button"
                       onClick={() => toggleFAQ(index)}
                       aria-expanded={isOpen}
                       aria-controls={answerId}
-                      className="flex w-full items-center justify-between gap-4 bg-white p-4 text-left transition-colors duration-200 hover:bg-[#1178B7]/5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/30 sm:p-6"
+                      className="flex w-full items-center justify-between gap-4 bg-white p-4 text-left transition-colors duration-200 hover:bg-[#1178B7]/5 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#F59C27]/30 sm:p-6"
                     >
                       <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
                         <span
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white transition-colors duration-300 ${
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white transition-colors duration-200 ${
                             isOpen
                               ? "bg-[#F59C27]"
                               : "bg-[#1178B7]"
@@ -304,27 +305,23 @@ const FAQPage = () => {
 
                       <span className="shrink-0">
                         {isOpen ? (
-                          <ChevronUp
-                            className="h-5 w-5 text-[#F59C27] sm:h-6 sm:w-6"
-                          />
+                          <ChevronUp className="h-5 w-5 text-[#F59C27] sm:h-6 sm:w-6" />
                         ) : (
-                          <ChevronDown
-                            className="h-5 w-5 text-[#1178B7] sm:h-6 sm:w-6"
-                          />
+                          <ChevronDown className="h-5 w-5 text-[#1178B7] sm:h-6 sm:w-6" />
                         )}
                       </span>
                     </button>
 
-                    {isOpen && (
-                      <div
-                        id={answerId}
-                        className="border-t border-slate-100 bg-slate-50/70 px-5 py-5 sm:px-8 sm:py-6"
-                      >
-                        <p className="leading-relaxed text-slate-700">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    )}
+                    {/* La réponse s'affiche sans animation de défilement. */}
+                    <div
+                      id={answerId}
+                      hidden={!isOpen}
+                      className="border-t border-slate-100 bg-slate-50/70 px-5 py-5 sm:px-8 sm:py-6"
+                    >
+                      <p className="leading-relaxed text-slate-700">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 );
               })}
@@ -336,7 +333,7 @@ const FAQPage = () => {
         <section className="bg-gradient-to-b from-slate-50 to-white px-4 py-12 sm:px-6 md:py-16">
           <div className="container mx-auto max-w-4xl">
             <div
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1178B7] to-[#1178B7] p-6 text-center text-white shadow-2xl sm:p-10 md:p-12"
+              className="relative overflow-hidden rounded-3xl bg-[#1178B7] p-6 text-center text-white shadow-2xl sm:p-10 md:p-12"
               data-aos="fade-up"
             >
               <div
