@@ -15,12 +15,15 @@ export const PacksSection = () => {
       <div className="container mx-auto max-w-7xl">
         {/* En-tête de section */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-4">
-            BOOST <span className="text-sunuOrange">MY PUB</span>
+          <h2 className="text-4xl md:text-5xl font-black text-[#1178B7] mb-4">
+            BOOST{" "}
+            <span className="text-[#F59C27]">MY PUB</span>
           </h2>
+
           <p className="text-xl text-gray-600 mb-2 font-bold">
             Votre visibilité. Notre puissance.
           </p>
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Des packs sur mesure pour propulser votre communication et dominer votre marché.
           </p>
@@ -29,7 +32,8 @@ export const PacksSection = () => {
         {/* Grille des Packs */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {packsPub.map((pack, index) => {
-            const IconComponent = iconMap[pack.slug as keyof typeof iconMap] || Sparkles;
+            const IconComponent =
+              iconMap[pack.slug as keyof typeof iconMap] || Sparkles;
 
             return (
               <div
@@ -46,21 +50,23 @@ export const PacksSection = () => {
                   </div>
                 )}
 
-                <div className={`grain-texture bg-gradient-to-br ${pack.gradient} text-white p-6 sm:p-8`}>
+                <div
+                  className={`grain-texture bg-gradient-to-br ${pack.gradient} text-white p-6 sm:p-8`}
+                >
                   <div className="flex items-center justify-center mb-4 sm:mb-6">
                     <div className="bg-white/20 backdrop-blur-sm w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center">
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                   </div>
-                  
+
                   <h3 className="text-2xl sm:text-3xl font-black text-center mb-1 sm:mb-2 tracking-tight">
                     {pack.name}
                   </h3>
-                  
+
                   <p className="text-center text-sm sm:text-base font-semibold mb-3 sm:mb-4 opacity-90">
                     {pack.duration}
                   </p>
-                  
+
                   <div className="text-center mb-4 sm:mb-6">
                     <p className="text-2xl sm:text-3xl md:text-4xl font-black whitespace-normal break-words">
                       {pack.price}
@@ -71,7 +77,7 @@ export const PacksSection = () => {
                       )}
                     </p>
                   </div>
-                  
+
                   <p className="text-center text-base sm:text-lg font-bold mb-2 sm:mb-4 italic min-h-[50px] leading-relaxed">
                     "{pack.tagline}"
                   </p>
@@ -85,7 +91,10 @@ export const PacksSection = () => {
 
                     <div className="space-y-3 mb-8 border-t border-gray-100 pt-6">
                       {pack.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start space-x-3">
+                        <div
+                          key={idx}
+                          className="flex items-start space-x-3"
+                        >
                           <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700 text-sm sm:text-base font-medium">
                             {feature}
@@ -96,8 +105,16 @@ export const PacksSection = () => {
                   </div>
 
                   <div>
-                    <Link to={`/boost-my-pub/${pack.slug}`} className="block w-full">
-                      <Button className={`w-full ${pack.buttonColor || 'bg-sunuOrange hover:bg-orange-600'} text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}>
+                    <Link
+                      to={`/boost-my-pub/${pack.slug}`}
+                      className="block w-full"
+                    >
+                      <Button
+                        className={`w-full ${
+                          pack.buttonColor ||
+                          "bg-sunuOrange hover:bg-orange-600"
+                        } text-white font-bold py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center`}
+                      >
                         Voir le détail
                       </Button>
                     </Link>
@@ -108,8 +125,12 @@ export const PacksSection = () => {
           })}
         </div>
 
+        {/* Bouton vers tous les packs */}
         <div className="text-center mt-12 px-4" data-aos="fade-up">
-          <Link to="/boost-my-pub" className="inline-block w-full sm:w-auto">
+          <Link
+            to="/boost-my-pub"
+            className="inline-block w-full sm:w-auto"
+          >
             <Button className="w-full sm:w-auto bg-gradient-to-r from-sunuOrange to-yellow-500 text-white hover:from-sunuBlue hover:to-sunuCyan font-bold px-10 py-6 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
               Voir tous nos packs en détail
             </Button>
