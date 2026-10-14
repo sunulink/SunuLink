@@ -121,37 +121,44 @@ export const HeroSection = () => {
           </div>
 
           {/* CÔTÉ DROIT : CARROUSEL D'IMAGES SANS TEXTE SUPERPOSÉ */}
+          
+          {/* CÔTÉ DROIT : CARROUSEL D'IMAGES */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
-            <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-3xl bg-transparent shadow-xl">
-
+            <div className="w-full max-w-[500px]">
               <Carousel
                 opts={{
                   loop: true,
                   align: "start",
                 }}
-                className="absolute inset-0 h-full w-full overflow-hidden rounded-3xl bg-transparent"
+                className="w-full"
               >
-                <CarouselContent className="ml-0 h-full">
+                <CarouselContent className="ml-0">
                   {heroImages.map((img, index) => (
                     <CarouselItem
                       key={index}
-                      className="h-full basis-full overflow-hidden rounded-3xl pl-0"
+                      className="basis-full pl-0"
                     >
-                      <div className="relative h-full w-full overflow-hidden rounded-3xl bg-transparent">
-
-                        {/* Image entière, sans légende ni texte ajouté */}
+                      {/* Le ratio fixe la hauteur de chaque diapositive */}
+                      <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-transparent">
                         <img
                           src={img.src}
                           alt={img.alt}
                           loading={index === 0 ? "eager" : "lazy"}
                           fetchPriority={index === 0 ? "high" : "auto"}
                           draggable={false}
-                          className="absolute inset-0 block h-full w-full rounded-3xl object-contain object-center"
+                          className="block h-full w-full object-contain object-center"
+                          onError={(event) => {
+                            console.error(
+                              "Impossible de charger l'image du héros :",
+                              img.src
+                            );
+                            event.currentTarget.style.visibility = "hidden";
+                          }}
                         />
-
-                        {/* Accent orange SunuLink */}
+          
+                        {/* Accent orange SunuLink, sans texte superposé */}
                         <div
-                          className="pointer-events-none absolute bottom-0 left-0 z-20 h-1.5 w-24 bg-[#F59C27] sm:w-32"
+                          className="pointer-events-none absolute bottom-0 left-0 h-1.5 w-24 bg-[#F59C27] sm:w-32"
                           aria-hidden="true"
                         />
                       </div>
@@ -159,10 +166,9 @@ export const HeroSection = () => {
                   ))}
                 </CarouselContent>
               </Carousel>
-
             </div>
           </div>
-        </div>
+
 
         {/* LOGO CAROUSEL */}
         <div className="mt-12 sm:mt-16">
