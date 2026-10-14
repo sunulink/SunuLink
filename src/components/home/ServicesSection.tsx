@@ -15,12 +15,17 @@ export const ServicesSection = () => {
       />
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center mb-10 md:mb-16 text-gray-800 leading-tight px-2" data-aos="fade-up">
+        <h2
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center mb-10 md:mb-16 text-[#1178B7] leading-tight px-2"
+          data-aos="fade-up"
+        >
           UNE COMMUNICATION À 360°<br />
-          <span className="text-sunuOrange">POUR DONNER DE L'ÉLAN À VOS PROJETS</span>
+          <span className="text-[#F59C27]">
+            POUR DONNER DE L'ÉLAN À VOS PROJETS
+          </span>
         </h2>
 
-        {/* Grid de 6 cards avec effet flip */}
+        {/* Section de 6 cards avec effet flip */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {services.map((service, index) => (
             <div
