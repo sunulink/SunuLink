@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LogoCarousel from "@/components/LogoCarousel";
@@ -15,7 +14,7 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setShowFirstBlock((prev) => !prev);
+      setShowFirstBlock((previous) => !previous);
     }, 10000);
 
     return () => window.clearInterval(interval);
@@ -26,13 +25,16 @@ export const HeroSection = () => {
       className="relative overflow-hidden bg-gradient-hero pt-[110px] pb-12"
       data-aos="fade-up"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-12">
+
         {/* GRILLE PRINCIPALE */}
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-8 lg:gap-12">
 
           {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
           <div className="relative z-10 flex min-w-0 flex-col">
-            <div className="relative flex min-h-[330px] flex-col justify-center sm:min-h-[300px]">
+
+            {/* Zone des deux textes alternés */}
+            <div className="relative flex min-h-[340px] flex-col justify-center sm:min-h-[310px] lg:min-h-[350px]">
 
               {/* SLIDE 1 : SUNULINK CONSULTING */}
               <div
@@ -55,13 +57,13 @@ export const HeroSection = () => {
                   Plus qu'une agence, votre partenaire de croissance 360°
                 </p>
 
-                <p className="max-w-xl text-base font-medium leading-relaxed text-white/90 sm:text-lg">
+                <p className="max-w-xl text-base font-medium leading-relaxed text-white/95 sm:text-lg">
                   Nous transformons vos idées en stratégies, vos projets en
                   résultats, et votre présence en véritable impact.
                 </p>
               </div>
 
-              {/* SLIDE 2 : STRATÉGIE, CRÉATIVITÉ, IMPACT */}
+              {/* SLIDE 2 : TROIS LIGNES DISTINCTES */}
               <div
                 className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out ${
                   !showFirstBlock
@@ -70,16 +72,15 @@ export const HeroSection = () => {
                 }`}
                 aria-hidden={showFirstBlock}
               >
-                <h2 className="mb-6 text-4xl font-extrabold uppercase leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-                  Stratégie
-                  <br />
-                  Créativité{" "}
-                  <span className="text-[#F59C27]">
+                <h2 className="mb-6 text-4xl font-extrabold uppercase leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+                  <span className="block">Stratégie</span>
+                  <span className="block">Créativité</span>
+                  <span className="block text-[#F59C27]">
                     Impact
                   </span>
                 </h2>
 
-                <p className="max-w-xl text-base font-medium leading-relaxed text-white/90 sm:text-lg">
+                <p className="max-w-xl text-base font-medium leading-relaxed text-white/95 sm:text-lg">
                   Nous vous aidons à développer une stratégie marketing
                   complète, de la création de votre identité visuelle à la
                   mise en place d'une stratégie digitale.
@@ -87,10 +88,9 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* BOUTONS MODERNISÉS */}
+            {/* BOUTONS AUX COULEURS SUNULINK */}
             <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
 
-              {/* Bouton principal orange */}
               <Link
                 to="/contact"
                 className="w-full sm:w-auto"
@@ -103,7 +103,6 @@ export const HeroSection = () => {
                 </Button>
               </Link>
 
-              {/* Bouton secondaire bleu */}
               <Link
                 to="/services"
                 className="w-full sm:w-auto"
@@ -119,49 +118,45 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGES PLEIN CADRE */}
+          {/* CÔTÉ DROIT : CARROUSEL RESPONSIVE */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
-            <div
-              className="relative isolate aspect-[4/3] min-h-[290px] w-full max-w-[620px] overflow-hidden rounded-3xl bg-transparent sm:aspect-[5/4] md:aspect-[4/3] md:min-h-0"
-            >
+            <div className="w-full max-w-[700px] overflow-hidden rounded-3xl bg-transparent shadow-2xl">
+
               <Carousel
                 opts={{
                   loop: true,
                   align: "start",
                 }}
-                className="absolute inset-0 h-full w-full overflow-hidden rounded-3xl bg-transparent"
+                className="w-full overflow-hidden rounded-3xl"
               >
-                <CarouselContent className="ml-0 h-full">
+                <CarouselContent className="ml-0">
                   {heroImages.map((img, index) => (
                     <CarouselItem
                       key={index}
-                      className="h-full basis-full pl-0"
+                      className="relative basis-full overflow-hidden rounded-3xl pl-0"
                     >
-                      <div className="relative h-full w-full overflow-hidden rounded-3xl bg-transparent">
+                      {/* Le ratio donne une hauteur réelle à la diapositive */}
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-transparent sm:aspect-[5/4] md:aspect-[4/3]">
 
-                        {/* L'image remplit réellement tout le cadre */}
                         <img
                           src={img.src}
                           alt={img.alt}
                           loading={index === 0 ? "eager" : "lazy"}
                           fetchPriority={index === 0 ? "high" : "auto"}
                           draggable={false}
-                          className="absolute inset-0 h-full w-full object-cover object-center"
+                          className="absolute inset-0 block h-full w-full rounded-3xl object-cover object-center"
                         />
 
-                        {/* Dégradé discret intégré à la photo */}
+                        {/* Légende intégrée à la photo, si disponible */}
                         {img.text && (
-                          <div
-                            className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#1178B7]/80 via-[#1178B7]/25 to-transparent px-5 pb-5 pt-20 sm:px-7 sm:pb-7"
-                            aria-hidden="true"
-                          >
+                          <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#1178B7]/85 via-[#1178B7]/30 to-transparent px-5 pb-5 pt-16 sm:px-7 sm:pb-7">
                             <p className="text-sm font-semibold leading-relaxed text-white drop-shadow-md sm:text-base">
                               {img.text}
                             </p>
                           </div>
                         )}
 
-                        {/* Accent orange de la marque */}
+                        {/* Accent orange sans bordure autour de l'image */}
                         <div
                           className="absolute bottom-0 left-0 z-20 h-1.5 w-24 bg-[#F59C27] sm:w-32"
                           aria-hidden="true"
@@ -171,6 +166,7 @@ export const HeroSection = () => {
                   ))}
                 </CarouselContent>
               </Carousel>
+
             </div>
           </div>
         </div>
