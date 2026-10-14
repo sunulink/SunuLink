@@ -21,18 +21,18 @@ export const HeroSection = () => {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-[#1178B7] via-[#1178B7] to-[#0C5C91] pt-[110px] pb-12"
+      className="relative overflow-hidden bg-gradient-to-br from-[#1178B7] via-[#1178B7] to-[#F59C27] pt-[110px] pb-12"
       data-aos="fade-up"
     >
       <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-12">
         {/* GRILLE PRINCIPALE */}
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
+
           {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
           <div className="relative z-10 flex min-w-0 flex-col">
-            {/* Zone des textes alternés */}
+            {/* Textes alternés : un seul affiché à la fois */}
             <div className="flex min-h-[340px] flex-col justify-center sm:min-h-[310px] lg:min-h-[350px]">
               {showFirstBlock ? (
-                /* SLIDE 1 : SUNULINK CONSULTING */
                 <div
                   key="consulting"
                   className="hero-copy-enter flex flex-col justify-center"
@@ -55,7 +55,6 @@ export const HeroSection = () => {
                   </p>
                 </div>
               ) : (
-                /* SLIDE 2 : TROIS LIGNES DISTINCTES */
                 <div
                   key="strategie"
                   className="hero-copy-enter flex flex-col justify-center"
@@ -77,9 +76,8 @@ export const HeroSection = () => {
               )}
             </div>
 
-            {/* BOUTONS AUX COULEURS SUNULINK */}
+            {/* BOUTONS SUNULINK */}
             <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              {/* Bouton principal orange */}
               <Link
                 to="/contact"
                 className="w-full sm:w-auto"
@@ -89,7 +87,6 @@ export const HeroSection = () => {
                 </span>
               </Link>
 
-              {/* Bouton secondaire bleu */}
               <Link
                 to="/services"
                 className="w-full sm:w-auto"
@@ -101,9 +98,9 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : CARROUSEL D'IMAGES */}
+          {/* CÔTÉ DROIT : IMAGE RECTANGULAIRE RESPONSIVE */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
-            <div className="w-full max-w-[560px]">
+            <div className="w-full max-w-[440px]">
               <Carousel
                 opts={{
                   loop: true,
@@ -117,15 +114,15 @@ export const HeroSection = () => {
                       key={index}
                       className="min-w-0 basis-full pl-0"
                     >
-                      {/* Image large, moins haute, sans texte superposé */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl sm:aspect-[5/4]">
+                      {/* Rectangle plus haut sur mobile, plus horizontal sur ordinateur */}
+                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-transparent sm:aspect-[5/4]">
                         <img
                           src={img.src}
                           alt={img.alt}
                           loading={index === 0 ? "eager" : "lazy"}
                           fetchPriority={index === 0 ? "high" : "auto"}
                           draggable={false}
-                          className="block h-full w-full rounded-3xl object-cover object-center"
+                          className="absolute inset-0 block h-full w-full rounded-3xl object-cover object-center"
                           onError={(event) => {
                             console.error(
                               "Impossible de charger l'image du héros :",
@@ -149,7 +146,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Animation des textes : un seul bloc est affiché à la fois */}
+      {/* Animation douce des textes */}
       <style>{`
         @keyframes hero-copy-enter {
           from {
