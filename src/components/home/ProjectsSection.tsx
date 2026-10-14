@@ -1,28 +1,20 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Monitor,
   ArrowRight,
   ArrowUpRight,
-  Search,
-  Target,
-  Palette,
-  Megaphone,
-  BarChart3,
-  TrendingUp,
   FileText,
   Download,
   ExternalLink,
   CheckCircle2,
   BookOpen,
-  Users,
+  TrendingUp,
+  Target,
+  BarChart3,
 } from "lucide-react";
 
-const SUNU_BLUE = "#1178B7";
-const SUNU_ORANGE = "#F59C27";
-
-// Compteur local : il ne dépend pas de l'IntersectionObserver.
+// Compteur animé, indépendant du défilement et responsive.
 const AnimatedCounter = ({
   end,
   duration = 1400,
@@ -66,68 +58,28 @@ const AnimatedCounter = ({
   return <span>{count}</span>;
 };
 
-const processSteps = [
-  {
-    number: "01",
-    title: "Diagnostic",
-    description:
-      "Nous commençons par comprendre votre entreprise, votre marché, votre audience, votre positionnement et vos enjeux.",
-    objective: "Comprendre avant d’agir.",
-    icon: Search,
-  },
-  {
-    number: "02",
-    title: "Stratégie",
-    description:
-      "Nous construisons une stratégie adaptée à vos objectifs, à votre marché et à vos ambitions.",
-    objective: "Donner une direction claire.",
-    icon: Target,
-  },
-  {
-    number: "03",
-    title: "Création",
-    description:
-      "Nous transformons la stratégie en contenus, identité, campagnes et expériences qui donnent vie à votre marque.",
-    objective: "Transformer la stratégie en impact.",
-    icon: Palette,
-  },
-  {
-    number: "04",
-    title: "Diffusion",
-    description:
-      "Nous diffusons votre message sur les bons canaux, auprès des bonnes audiences, au bon moment.",
-    objective: "Toucher les bonnes audiences.",
-    icon: Megaphone,
-  },
-  {
-    number: "05",
-    title: "Analyse",
-    description:
-      "Nous mesurons les performances, analysons les données et optimisons les actions.",
-    objective: "Mesurer et optimiser.",
-    icon: BarChart3,
-  },
-  {
-    number: "06",
-    title: "Résultat",
-    description:
-      "Notre objectif est de créer de la visibilité, de la confiance et de la croissance.",
-    objective: "Transformer l’action en valeur.",
-    icon: TrendingUp,
-  },
+// Les six intitulés sont conservés, sans cartes descriptives.
+const processStages = [
+  "Diagnostic",
+  "Stratégie",
+  "Création",
+  "Diffusion",
+  "Analyse",
+  "Résultat",
 ];
 
+// Les fichiers sont hébergés dans public/assets/docs/.
 const resources = [
   {
-    id: "visibilite-vente",
+    id: "croissance",
     number: "01",
-    title: "De la visibilité à la vente",
-    category: "Marketing & développement commercial",
+    title: "Votre marque est-elle prête à changer d’échelle ?",
+    category: "Stratégie, branding & digital",
     description:
-      "Un document pour explorer le lien entre visibilité d’une marque et objectifs commerciaux.",
-    objective: "Visibilité & conversion",
-    file: "/assets/docs/de-la-visibilite-a-la-vente.pdf",
-    downloadName: "de-la-visibilite-a-la-vente.pdf",
+      "Identité de marque, positionnement, cohérence de la communication, digital et organisation : explorez les dimensions à considérer pour accompagner la croissance de votre marque.",
+    objective: "Préparer votre changement d’échelle",
+    file: "/assets/docs/votre-digital-peut-il-accompagner-votre-croissance.pdf",
+    downloadName: "votre-digital-peut-il-accompagner-votre-croissance.pdf",
     icon: TrendingUp,
   },
   {
@@ -148,7 +100,7 @@ const resources = [
     title: "Pourquoi votre marketing ne produit pas les résultats attendus",
     category: "Performance marketing",
     description:
-      "Un document pour réfléchir aux facteurs qui peuvent limiter les performances marketing.",
+      "Explorez les facteurs susceptibles de limiter les performances marketing et réfléchissez aux moyens d’améliorer vos actions.",
     objective: "Performance & optimisation",
     file: "/assets/docs/Pourquoi_votre_marketing_ne_produit_pas_les_r%C3%A9sultats_attendus.pdf",
     downloadName:
@@ -157,18 +109,11 @@ const resources = [
   },
 ];
 
-const projectJourney = [
-  "Besoin",
-  "Stratégie",
-  "Action",
-  "Performance",
-  "Croissance",
-];
-
 export const ProjectsSection = () => {
   return (
     <section className="overflow-hidden bg-white px-4 py-12 sm:px-6 sm:py-14 md:py-16">
       <div className="mx-auto max-w-7xl">
+
         {/* INTRODUCTION */}
         <header
           className="mx-auto mb-10 max-w-3xl text-center sm:mb-14"
@@ -187,18 +132,21 @@ export const ProjectsSection = () => {
           </h2>
 
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Découvrez notre démarche d’accompagnement et explorez nos
-            ressources professionnelles pour mieux comprendre les enjeux
-            de la stratégie, de la communication et du marketing.
+            Découvrez notre approche, nos ressources professionnelles et
+            notre manière d’accompagner les marques de la réflexion
+            stratégique jusqu’aux résultats.
           </p>
         </header>
 
-        {/* BANDEAU DES PROJETS */}
+        {/* BANDEAU DES RÉALISATIONS */}
         <div
           className="relative mb-14 overflow-hidden rounded-3xl bg-[#1178B7] p-5 text-white shadow-lg sm:p-8 md:p-10"
           data-aos="fade-up"
         >
-          <div className="absolute right-0 top-0 h-2 w-28 bg-[#F59C27] sm:w-40" />
+          <div
+            className="absolute right-0 top-0 h-2 w-28 bg-[#F59C27] sm:w-40"
+            aria-hidden="true"
+          />
 
           <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="flex items-center gap-4 sm:gap-5">
@@ -231,9 +179,13 @@ export const ProjectsSection = () => {
           </div>
         </div>
 
-        {/* SIX ÉTAPES : NOUVEAU DESIGN EN PARCOURS */}
-        <section className="mb-16" aria-labelledby="method-title">
-          <div className="mb-8 max-w-3xl" data-aos="fade-up">
+        {/* MÉTHODE SUNULINK : UN SEUL PARCOURS */}
+        <section
+          className="mb-16"
+          aria-labelledby="method-title"
+          data-aos="fade-up"
+        >
+          <div className="mx-auto mb-8 max-w-3xl text-center">
             <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#F59C27] sm:text-sm">
               Notre méthode d’accompagnement
             </p>
@@ -242,132 +194,65 @@ export const ProjectsSection = () => {
               id="method-title"
               className="text-2xl font-black leading-tight text-[#1178B7] sm:text-3xl md:text-4xl"
             >
-              Six étapes pour transformer votre besoin en résultats.
+              Du diagnostic au résultat.
             </h3>
 
             <p className="mt-3 leading-relaxed text-slate-600">
-              Chaque étape prépare la suivante. Cette progression nous permet
-              de garder une direction claire et de travailler vers les objectifs
-              convenus avec vous.
+              Six étapes complémentaires pour faire avancer chaque projet
+              avec une direction claire.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:gap-5">
-            {processSteps.map((step, index) => {
-              const Icon = step.icon;
-              const orangeAccent = index % 2 === 1;
-              const progress = `${((index + 1) / processSteps.length) * 100}%`;
-
-              return (
-                <article
-                  key={step.number}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:shadow-[0_16px_36px_rgba(17,120,183,0.12)] motion-reduce:transform-none sm:p-6"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 50}
+          {/* Parcours minimal : horizontal sur grand écran,
+              vertical sur mobile. Pas de cartes individuelles. */}
+          <ol className="relative mx-auto flex max-w-5xl flex-col gap-2 md:flex-row md:items-start md:gap-0">
+            {processStages.map((stage, index) => (
+              <li
+                key={stage}
+                className="relative flex items-center gap-4 py-2 md:flex-1 md:flex-col md:items-center md:gap-3 md:px-2 md:py-0 md:text-center"
+              >
+                <span
+                  className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 text-sm font-black transition-colors duration-300 md:h-12 md:w-12 ${
+                    index === processStages.length - 1
+                      ? "border-[#F59C27] bg-[#F59C27] text-white"
+                      : "border-[#1178B7] bg-white text-[#1178B7] hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white"
+                  }`}
                 >
-                  {/* Barre latérale bleu/orange */}
-                  <div
-                    className={`absolute inset-y-0 left-0 w-1 transition-colors duration-300 group-hover:bg-[#F59C27] ${
-                      orangeAccent ? "bg-[#F59C27]" : "bg-[#1178B7]"
-                    }`}
-                    aria-hidden="true"
-                  />
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-                  <div className="flex items-start justify-between gap-4 pl-2">
-                    <div>
-                      <span
-                        className={`inline-flex h-10 min-w-12 items-center justify-center rounded-xl px-3 text-sm font-black text-white ${
-                          orangeAccent ? "bg-[#F59C27]" : "bg-[#1178B7]"
-                        }`}
-                      >
-                        {step.number}
-                      </span>
+                <span
+                  className={`text-base font-extrabold sm:text-lg ${
+                    index === processStages.length - 1
+                      ? "text-[#F59C27]"
+                      : "text-[#1178B7]"
+                  }`}
+                >
+                  {stage}
+                </span>
 
-                      <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
-                        Étape {index + 1} sur 6
-                      </p>
-                    </div>
-
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1178B7]/10 text-[#1178B7] transition-all duration-300 group-hover:rotate-3 group-hover:bg-[#F59C27] group-hover:text-white motion-reduce:transform-none">
-                      <Icon size={24} />
-                    </span>
-                  </div>
-
-                  <h4 className="mb-3 mt-5 pl-2 text-xl font-extrabold text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27] sm:text-2xl">
-                    {step.title}
-                  </h4>
-
-                  <p className="flex-1 pl-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                    {step.description}
-                  </p>
-
-                  <div className="ml-2 mt-6 border-t border-slate-100 pt-4">
-                    <div className="mb-3 flex items-start gap-2">
-                      <CheckCircle2
-                        size={17}
-                        className="mt-0.5 shrink-0 text-[#F59C27]"
-                      />
-                      <p className="text-sm font-bold leading-relaxed text-[#1178B7]">
-                        {step.objective}
-                      </p>
-                    </div>
-
-                    <div
-                      className="h-1.5 overflow-hidden rounded-full bg-slate-100"
-                      aria-label={`Progression indicative : ${index + 1} étape sur 6`}
-                    >
-                      <div
-                        className="h-full rounded-full transition-all duration-500 group-hover:bg-[#F59C27]"
-                        style={{
-                          width: progress,
-                          backgroundColor: orangeAccent
-                            ? SUNU_ORANGE
-                            : SUNU_BLUE,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-
-          {/* Parcours global */}
-          <div
-            className="mt-6 rounded-2xl bg-[#1178B7] p-5 text-white sm:p-6"
-            data-aos="fade-up"
-          >
-            <p className="mb-4 text-xs font-extrabold uppercase tracking-[0.16em] text-[#F59C27]">
-              Le parcours de transformation
-            </p>
-
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-              {projectJourney.map((item, index) => (
-                <div key={item} className="flex items-center gap-3">
-                  <span
-                    className={`rounded-full px-3 py-2 text-sm font-bold sm:px-4 ${
-                      index === projectJourney.length - 1
-                        ? "bg-[#F59C27] text-white"
-                        : "bg-white/10 text-white"
-                    }`}
-                  >
-                    {item}
-                  </span>
-
-                  {index < projectJourney.length - 1 && (
-                    <ArrowRight
-                      size={16}
-                      className="text-[#F59C27]"
+                {index < processStages.length - 1 && (
+                  <>
+                    {/* Liaison verticale pour mobile */}
+                    <span
+                      className="absolute left-[1.35rem] top-[3.25rem] h-3 w-px bg-[#1178B7]/25 md:hidden"
                       aria-hidden="true"
                     />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+
+                    {/* Liaison horizontale pour tablette et ordinateur */}
+                    <ArrowRight
+                      size={17}
+                      className="absolute -bottom-0.5 right-0 hidden translate-x-1/2 text-[#F59C27] md:right-0 md:top-[1rem] md:block"
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+              </li>
+            ))}
+          </ol>
         </section>
 
-        {/* BIBLIOTHÈQUE DE PDF */}
+        {/* BIBLIOTHÈQUE DE DOCUMENTS PDF */}
         <section
           id="ressources-pdf"
           className="scroll-mt-24"
@@ -390,8 +275,8 @@ export const ProjectsSection = () => {
               </h3>
 
               <p className="mt-3 leading-relaxed text-slate-600">
-                Consultez nos documents PDF en ligne ou téléchargez-les pour
-                les retrouver plus tard.
+                Retrouvez nos documents PDF et consultez-les en ligne ou
+                téléchargez-les pour les conserver.
               </p>
             </div>
 
@@ -412,7 +297,7 @@ export const ProjectsSection = () => {
                   data-aos="fade-up"
                   data-aos-delay={index * 70}
                 >
-                  {/* Couverture de document créée en CSS */}
+                  {/* COUVERTURE GRAPHIQUE */}
                   <div className="relative flex min-h-[205px] flex-col justify-between overflow-hidden bg-[#1178B7] p-5 text-white sm:min-h-[220px] sm:p-6">
                     <div
                       className="absolute -right-12 -top-12 h-40 w-40 rounded-full border-[18px] border-white/10 transition-transform duration-500 group-hover:scale-110 motion-reduce:transform-none"
@@ -449,7 +334,7 @@ export const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  {/* Détails */}
+                  {/* INFORMATIONS DU DOCUMENT */}
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <span className="mb-4 inline-flex w-fit max-w-full rounded-full bg-[#F59C27]/10 px-3 py-2 text-xs font-extrabold leading-relaxed text-[#1178B7]">
                       {resource.category}
@@ -482,7 +367,7 @@ export const ProjectsSection = () => {
                       <a
                         href={resource.file}
                         download={resource.downloadName}
-                        aria-label={`Télécharger le document : ${resource.title}`}
+                        aria-label={`Télécharger : ${resource.title}`}
                         className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-[#F59C27] bg-white px-4 py-3 text-center text-sm font-extrabold text-[#1178B7] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#F59C27] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40 motion-reduce:transform-none"
                       >
                         Télécharger le document
@@ -501,7 +386,10 @@ export const ProjectsSection = () => {
           className="relative mt-12 overflow-hidden rounded-3xl bg-[#1178B7] p-6 text-white sm:mt-16 sm:p-8 md:p-10"
           data-aos="fade-up"
         >
-          <div className="absolute right-0 top-0 h-2 w-28 bg-[#F59C27] sm:w-44" />
+          <div
+            className="absolute right-0 top-0 h-2 w-28 bg-[#F59C27] sm:w-44"
+            aria-hidden="true"
+          />
 
           <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="max-w-2xl">
@@ -523,7 +411,6 @@ export const ProjectsSection = () => {
               to="/contact"
               className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[#F59C27] px-6 py-3 font-extrabold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 motion-reduce:transform-none sm:w-auto"
             >
-              <Users size={18} />
               Parlons de votre projet
               <ArrowUpRight size={19} />
             </Link>
