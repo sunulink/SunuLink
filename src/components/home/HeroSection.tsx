@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LogoCarousel from "@/components/LogoCarousel";
@@ -22,63 +23,92 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-[110px] pb-12 grain-texture relative bg-gradient-hero overflow-hidden" data-aos="fade-up">
+    <section
+      className="relative overflow-hidden bg-gradient-hero pt-[110px] pb-12"
+      data-aos="fade-up"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        
-        {/* GRILLE ALIGNÉE AU CENTRE */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          
+        {/* GRILLE PRINCIPALE */}
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
+
           {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
-          <div className="relative z-10 flex flex-col max-w-[550px]">
-            <div className="relative min-h-[300px] flex flex-col justify-center">
-              
-              {/* Slide 1 : SUNULINK CONSULTING */}
+          <div className="relative z-10 flex max-w-[550px] flex-col">
+            <div className="relative flex min-h-[300px] flex-col justify-center sm:min-h-[280px]">
+
+              {/* SLIDE 1 : SUNULINK CONSULTING */}
               <div
-                className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col justify-center ${
-                  showFirstBlock ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
+                className={`absolute inset-0 flex flex-col justify-center transition-all duration-[1500ms] ease-in-out ${
+                  showFirstBlock
+                    ? "translate-x-0 opacity-100"
+                    : "pointer-events-none -translate-x-8 opacity-0"
                 }`}
+                aria-hidden={!showFirstBlock}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white">
-                  SunuLink <br /> Consulting
+                <h1 className="mb-6 text-4xl font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+                  SunuLink
+                  <br />
+                  Consulting
                 </h1>
-                <p className="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-4">
+
+                <p className="mb-4 text-lg font-light leading-relaxed text-white/90 md:text-xl">
                   Plus qu'une agence, votre partenaire de croissance 360°
                 </p>
-                <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
-                  Nous transformons vos idées en stratégies, vos projets en résultats, et votre présence en véritable impact.
+
+                <p className="text-base font-light leading-relaxed text-white/80 md:text-lg">
+                  Nous transformons vos idées en stratégies, vos projets en
+                  résultats, et votre présence en véritable impact.
                 </p>
               </div>
 
-              {/* Slide 2 : STRATÉGIE CRÉATIVITÉ IMPACT */}
+              {/* SLIDE 2 : STRATÉGIE, CRÉATIVITÉ, IMPACT */}
               <div
-                className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col justify-center ${
-                  !showFirstBlock ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8 pointer-events-none"
+                className={`absolute inset-0 flex flex-col justify-center transition-all duration-[1500ms] ease-in-out ${
+                  !showFirstBlock
+                    ? "translate-x-0 opacity-100"
+                    : "pointer-events-none -translate-x-8 opacity-0"
                 }`}
+                aria-hidden={showFirstBlock}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-white uppercase">
-                  Stratégie <br /> Créativité <span className="text-white">Impact</span>
-                </h1>
-                <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
-                  Nous vous aidons à développer une stratégie marketing complète, de la création de votre identité visuelle à la mise en place d'une stratégie digitale.
+                <h2 className="mb-6 text-4xl font-extrabold uppercase leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+                  Stratégie
+                  <br />
+                  Créativité{" "}
+                  <span className="text-[#F59C27]">Impact</span>
+                </h2>
+
+                <p className="text-base font-light leading-relaxed text-white/80 md:text-lg">
+                  Nous vous aidons à développer une stratégie marketing
+                  complète, de la création de votre identité visuelle à la
+                  mise en place d'une stratégie digitale.
                 </p>
               </div>
             </div>
 
-            {/* BOUTONS */}
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Link to="/contact">
-                <Button 
-                  size="lg" 
-                  className="bg-sunuOrange text-white hover:bg-sunuOrange/90 font-bold px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105"
+            {/* BOUTONS SUNULINK */}
+            <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+
+              {/* Bouton principal orange */}
+              <Link
+                to="/contact"
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  size="lg"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-6 text-base font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/40 sm:w-auto sm:px-8 sm:text-lg motion-reduce:transform-none"
                 >
                   Parlons de votre projet
                 </Button>
               </Link>
-              <Link to="/services">
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-white text-sunuBlue bg-white hover:bg-sunuOrange hover:border-sunuOrange hover:text-white font-bold px-8 py-6 text-lg rounded-xl transition-all duration-300 transform hover:scale-105"
+
+              {/* Bouton secondaire bleu */}
+              <Link
+                to="/services"
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#1178B7] px-6 py-6 text-base font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/40 sm:w-auto sm:px-8 sm:text-lg motion-reduce:transform-none"
                 >
                   Découvrir nos services
                 </Button>
@@ -86,28 +116,41 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE (Cadre de référence) / pour changer l'image, merci d'aller à la src/data/homeData */}
-          {/* CÔTÉ DROIT : CARROUSEL AVEC CLIP-PATH (SOLUTION RADICALE ANTI-COINS BLANCS) */}
-          <div className="flex justify-center md:justify-end items-center">
-            <div 
-              className="w-full max-w-[500px] aspect-square relative bg-transparent"
-              style={{ clipPath: "inset(0% 0% 0% 0% round 1.875rem)" }} // Coupe tout au pixel près avec un arrondi identique à rounded-3xl (30px)
-            >
-              <Carousel opts={{ loop: true }} className="w-full h-full bg-transparent">
-                <CarouselContent className="h-full bg-transparent ml-0">
+          {/* CÔTÉ DROIT : CARROUSEL D'IMAGES */}
+          <div className="flex min-w-0 items-center justify-center md:justify-end">
+
+            {/* Cadre responsive : mêmes arrondis sur les quatre coins */}
+            <div className="relative aspect-[4/3] w-full max-w-[540px] isolate overflow-hidden rounded-3xl bg-[#1178B7] shadow-xl ring-1 ring-[#1178B7]/10 sm:aspect-square sm:rounded-3xl">
+
+              <Carousel
+                opts={{
+                  loop: true,
+                  align: "start",
+                }}
+                className="h-full w-full overflow-hidden rounded-3xl"
+              >
+                <CarouselContent className="ml-0 h-full">
                   {heroImages.map((img, index) => (
-                    <CarouselItem key={index} className="h-full pl-0 bg-transparent flex items-center justify-center">
-                      <div className="w-full h-full bg-transparent select-none">
+                    <CarouselItem
+                      key={index}
+                      className="flex h-full basis-full items-stretch justify-center pl-0"
+                    >
+                      <div className="h-full w-full overflow-hidden rounded-3xl">
                         <FlipCard
                           front={
-                            <img 
-                              src={img.src} 
-                              alt={img.alt} 
-                              className="w-full h-full object-cover bg-transparent" 
-                            />
+                            <div className="h-full w-full overflow-hidden rounded-3xl">
+                              <img
+                                src={img.src}
+                                alt={img.alt}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                fetchPriority={index === 0 ? "high" : "auto"}
+                                draggable={false}
+                                className="h-full w-full rounded-3xl object-cover object-center"
+                              />
+                            </div>
                           }
                           back={
-                            <div className="p-8 h-full flex items-center justify-center text-white text-center font-light text-xl bg-sunuBlue/95 backdrop-blur-sm">
+                            <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-[#1178B7]/95 p-5 text-center text-base font-light leading-relaxed text-white backdrop-blur-sm sm:p-8 sm:text-xl">
                               {img.text}
                             </div>
                           }
@@ -117,13 +160,18 @@ export const HeroSection = () => {
                   ))}
                 </CarouselContent>
               </Carousel>
+
+              {/* Accent décoratif discret aux couleurs de la marque */}
+              <div
+                className="pointer-events-none absolute bottom-0 left-0 z-20 h-1.5 w-24 bg-[#F59C27] sm:w-32"
+                aria-hidden="true"
+              />
             </div>
           </div>
-
         </div>
 
         {/* LOGO CAROUSEL */}
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <LogoCarousel />
         </div>
       </div>
