@@ -21,16 +21,19 @@ export const HeroSection = () => {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-[#1178B7] via-[#1178B7] to-[#F59C27] pt-[110px] pb-12"
+      className="relative overflow-hidden pt-[110px] pb-12"
+      style={{
+        background:
+          "linear-gradient(115deg, #1178B7 0%, #1178B7 25%, #F59C27 100%)",
+      }}
       data-aos="fade-up"
     >
       <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-12">
         {/* GRILLE PRINCIPALE */}
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
-
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
           {/* CÔTÉ GAUCHE : TEXTES ET BOUTONS */}
           <div className="relative z-10 flex min-w-0 flex-col">
-            {/* Textes alternés : un seul affiché à la fois */}
+            {/* TEXTES ALTERNÉS */}
             <div className="flex min-h-[340px] flex-col justify-center sm:min-h-[310px] lg:min-h-[350px]">
               {showFirstBlock ? (
                 <div
@@ -76,13 +79,13 @@ export const HeroSection = () => {
               )}
             </div>
 
-            {/* BOUTONS SUNULINK */}
+            {/* BOUTONS AUX COULEURS SUNULINK */}
             <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 to="/contact"
                 className="w-full sm:w-auto"
               >
-                <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/40 sm:w-auto sm:px-8 motion-reduce:transform-none">
+                <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 sm:w-auto sm:px-8 motion-reduce:transform-none">
                   Parlons de votre projet
                 </span>
               </Link>
@@ -91,14 +94,14 @@ export const HeroSection = () => {
                 to="/services"
                 className="w-full sm:w-auto"
               >
-                <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#1178B7] px-6 py-3 text-center font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#F59C27] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/40 sm:w-auto sm:px-8 motion-reduce:transform-none">
+                <span className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#F59C27] bg-[#1178B7] px-6 py-3 text-center font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#F59C27] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 sm:w-auto sm:px-8 motion-reduce:transform-none">
                   Découvrir nos services
                 </span>
               </Link>
             </div>
           </div>
 
-          {/* CÔTÉ DROIT : IMAGE RECTANGULAIRE RESPONSIVE */}
+          {/* CÔTÉ DROIT : IMAGE RECTANGULAIRE VERTICALE */}
           <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
             <div className="w-full max-w-[440px]">
               <Carousel
@@ -114,8 +117,8 @@ export const HeroSection = () => {
                       key={index}
                       className="min-w-0 basis-full pl-0"
                     >
-                      {/* Rectangle plus haut sur mobile, plus horizontal sur ordinateur */}
-                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-transparent sm:aspect-[5/4]">
+                      {/* Ratio 4:5 maintenu sur mobile et ordinateur */}
+                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
                         <img
                           src={img.src}
                           alt={img.alt}
@@ -146,7 +149,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Animation douce des textes */}
+      {/* Animation légère des textes */}
       <style>{`
         @keyframes hero-copy-enter {
           from {
