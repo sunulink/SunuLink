@@ -1,4 +1,4 @@
-import { Check, Sparkles, Star, Crown } from "lucide-react";
+import { Check, Sparkles, Star, Crown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -11,18 +11,17 @@ const PackpubIA = () => {
       price: "500 000 FCFA",
       period: "/ mois",
       tagline: "Structurer son entreprise et automatiser l’essentiel.",
-      description: "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
+      description:
+        "Solution pour PME et startups souhaitant intégrer progressivement l’intelligence artificielle.",
       icon: Sparkles,
-      color: "from-blue-500 to-cyan-500",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
       recommended: false,
       features: [
         "Audit IA",
         "CRM simple",
         "Automatisation tâches",
         "Assistant IA",
-        "Formation équipe"
-      ]
+        "Formation équipe",
+      ],
     },
     {
       slug: "link-ia-growth",
@@ -31,18 +30,17 @@ const PackpubIA = () => {
       price: "900 000 FCFA",
       period: "/ mois",
       tagline: "Automatiser ses processus pour accélérer.",
-      description: "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
+      description:
+        "Solution destinée aux entreprises en croissance souhaitant automatiser plusieurs fonctions clés.",
       icon: Star,
-      color: "from-orange-500 to-yellow-500",
-      buttonColor: "bg-orange-500 hover:bg-orange-600",
       recommended: true,
       features: [
         "CRM avancé",
         "Marketing automation",
         "Chatbot intelligent",
         "Analyse données",
-        "Process automatisés"
-      ]
+        "Process automatisés",
+      ],
     },
     {
       slug: "link-ia-transformation",
@@ -51,125 +49,186 @@ const PackpubIA = () => {
       price: "Sur devis",
       period: "",
       tagline: "Transformer votre entreprise grâce à l’IA.",
-      description: "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
+      description:
+        "Solution stratégique destinée aux entreprises et institutions souhaitant intégrer l’intelligence artificielle dans leur fonctionnement global.",
       icon: Crown,
-      color: "from-purple-600 to-pink-600",
-      buttonColor: "bg-purple-600 hover:bg-purple-700",
       recommended: false,
       features: [
         "Audit IA 360°",
         "Stratégie IA",
         "Transformation processus",
         "Data & KPI",
-        "Accompagnement direction"
-      ]
-    }
+        "Accompagnement direction",
+      ],
+    },
   ];
 
   return (
-    <section className="py-10 md:py-20 px-4 sm:px-6 bg-white w-full">
-      <div className="container mx-auto max-w-7xl w-full">
-        {/* En-tête de section */}
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-gray-800 mb-4">
-            Nos Packs <span className="text-sunuOrange">Link IA</span>
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-12 sm:px-6 md:py-20">
+      {/* Décoration discrète aux couleurs SunuLink */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 top-32 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#F59C27]/10 blur-3xl"
+      />
+
+      <div className="container relative z-10 mx-auto w-full max-w-7xl">
+        {/* EN-TÊTE */}
+        <div
+          className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
+          data-aos="fade-up"
+        >
+          <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/15 bg-[#1178B7]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-[#1178B7] sm:text-sm">
+            <Sparkles className="h-4 w-4 text-[#F59C27]" />
+            Nos solutions d’intelligence artificielle
+          </p>
+
+          <h2 className="text-3xl font-black leading-tight tracking-tight text-[#1178B7] sm:text-4xl md:text-5xl">
+            Nos Packs{" "}
+            <span className="text-[#F59C27]">Link IA</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Choisissez la formule adaptée à la maturité de votre organisation et commencez votre transformation.
+
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            Choisissez la formule adaptée à la maturité de votre organisation
+            et commencez votre transformation.
           </p>
         </div>
 
-        {/* Grille des packs */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch w-full">
+        {/* GRILLE DES PACKS */}
+        <div className="grid w-full grid-cols-1 items-stretch gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-8">
           {packs.map((pack, index) => {
             const IconComponent = pack.icon;
+            const isOrangeHeader = index === 1;
 
             return (
-              <div
+              <article
                 key={pack.slug}
-                className={`group relative rounded-2xl md:rounded-3xl shadow-xl transition-all duration-500 border-4 border-transparent hover:border-sunuOrange overflow-hidden flex flex-col justify-between w-full ${
-                  pack.recommended ? "lg:-translate-y-4 lg:scale-105" : ""
-                } md:hover:scale-105 md:hover:-translate-y-4 md:hover:rotate-1 hover:shadow-[0_20px_40px_rgba(255,127,39,0.2)] md:hover:shadow-[0_25px_70px_rgba(255,127,39,0.4)]`}
+                className={`group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(17,120,183,0.14)] md:rounded-3xl ${
+                  pack.recommended
+                    ? "border-t-4 border-t-[#F59C27] ring-1 ring-[#F59C27]/15"
+                    : "border-t-4 border-t-[#1178B7]"
+                } motion-reduce:transform-none`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                {/* Badge Recommandé */}
+                {/* Badge */}
                 {pack.recommended && (
-                  <div className="absolute top-0 right-0 bg-sunuOrange text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
-                    ⭐ Recommandé
-                  </div>
-                )}
-                {!pack.recommended && pack.slug === "link-ia-transformation" && (
-                  <div className="absolute top-0 right-0 bg-purple-600 text-white px-4 py-1.5 sm:px-6 sm:py-2 font-bold text-xs sm:text-sm rounded-bl-2xl z-10">
-                    🏢 Corporate
+                  <div className="absolute right-0 top-0 z-20 rounded-bl-2xl bg-[#F59C27] px-4 py-2 text-xs font-extrabold text-white shadow-sm sm:text-sm">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Star className="h-4 w-4 fill-current" />
+                      Recommandé
+                    </span>
                   </div>
                 )}
 
-                {/* Partie supérieure colorée */}
-                <div className={`grain-texture bg-gradient-to-br ${pack.color} text-white p-5 md:p-8`}>
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="bg-white/20 backdrop-blur-sm w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center">
-                      <IconComponent className="w-7 h-7 md:w-10 md:h-10 text-white" />
+                {!pack.recommended &&
+                  pack.slug === "link-ia-transformation" && (
+                    <div className="absolute right-0 top-0 z-20 rounded-bl-2xl bg-[#1178B7] px-4 py-2 text-xs font-extrabold text-white shadow-sm sm:text-sm">
+                      Solution corporate
                     </div>
-                  </div>
-                  <h3 className="text-xl md:text-3xl font-black text-center mb-1 tracking-tight">
-                    {pack.title}
-                  </h3>
-                  <p className="text-center text-xs md:text-base font-semibold mb-3 opacity-90">
-                    {pack.duration}
-                  </p>
-                  <div className="text-center mb-4">
-                    <p className="text-2xl md:text-4xl font-black whitespace-normal break-words">
-                      {pack.price}
+                  )}
+
+                {/* EN-TÊTE COLORÉ */}
+                <div
+                  className={`relative flex flex-col overflow-hidden p-5 text-white sm:p-7 ${
+                    isOrangeHeader ? "bg-[#F59C27]" : "bg-[#1178B7]"
+                  }`}
+                >
+                  <div
+                    aria-hidden="true"
+                    className="absolute -right-10 -top-12 h-36 w-36 rounded-full border-[18px] border-white/10 transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute -bottom-16 -left-10 h-36 w-36 rounded-full bg-white/5 blur-2xl"
+                  />
+
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-105 md:h-16 md:w-16">
+                      <IconComponent className="h-7 w-7 text-white md:h-8 md:w-8" />
+                    </div>
+
+                    <h3 className="mb-2 text-xl font-black leading-tight tracking-tight text-white sm:text-2xl">
+                      {pack.title}
+                    </h3>
+
+                    <p className="mb-5 min-h-5 text-xs font-semibold text-white/90 sm:text-sm">
+                      {pack.duration}
+                    </p>
+
+                    <div className="mb-4 flex min-h-[72px] flex-col items-center justify-center">
+                      <p className="text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl">
+                        {pack.price}
+                      </p>
                       {pack.period && (
-                        <span className="text-base md:text-xl font-medium block sm:inline">
+                        <span className="mt-1 text-sm font-semibold text-white/90 sm:text-base">
                           {pack.period}
                         </span>
                       )}
+                    </div>
+
+                    <p className="min-h-[48px] text-sm font-bold leading-relaxed text-white sm:text-base">
+                      “{pack.tagline}”
                     </p>
                   </div>
-                  <p className="text-center text-sm md:text-lg font-bold mb-2 italic min-h-[40px] md:min-h-[50px] leading-relaxed">
-                    "{pack.tagline}"
-                  </p>
                 </div>
 
-                {/* Partie inférieure blanche */}
-                <div className="bg-white p-5 md:p-8 flex-1 flex flex-col justify-between">
-                  <div>
-                    <p className="text-gray-700 mb-6 text-sm md:text-base leading-relaxed">
-                      {pack.description}
-                    </p>
+                {/* CONTENU */}
+                <div className="flex flex-1 flex-col p-5 sm:p-7">
+                  <p className="mb-6 min-h-[76px] text-sm leading-relaxed text-slate-600 sm:text-base">
+                    {pack.description}
+                  </p>
 
-                    {/* Liste des caractéristiques */}
-                    <div className="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                  <div className="mb-7 border-t border-slate-100 pt-6">
+                    <h4 className="mb-4 text-sm font-extrabold uppercase tracking-wider text-[#1178B7]">
+                      Ce qui est inclus
+                    </h4>
+
+                    <ul className="space-y-3.5">
                       {pack.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start space-x-3">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm md:text-base font-medium">
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3"
+                        >
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#F59C27]/10">
+                            <Check className="h-3.5 w-3.5 text-[#F59C27]" />
+                          </span>
+                          <span className="text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
                             {feature}
                           </span>
-                        </div>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
 
-                  {/* Actions / Boutons */}
-                  <div className="mt-auto">
-                    <Link to="/contact" className="block w-full">
-                      <Button className={`w-full ${pack.buttonColor} text-white font-bold py-4 md:py-6 text-sm md:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-auto whitespace-normal text-center border-none`}>
+                  {/* BOUTONS */}
+                  <div className="mt-auto space-y-3">
+                    <Button
+                      asChild
+                      className="h-auto min-h-12 w-full rounded-xl border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-sm font-extrabold text-white shadow-md shadow-[#F59C27]/15 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-lg focus-visible:ring-4 focus-visible:ring-[#F59C27]/30 sm:text-base motion-reduce:transform-none"
+                    >
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center justify-center gap-2 whitespace-normal text-center"
+                      >
                         Je valide
-                      </Button>
-                    </Link>
+                        <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    </Button>
 
                     <Link
                       to={`/pack-pub-ia/${pack.slug}`}
-                      className="block text-center mt-4 text-sunuBlue hover:text-sunuOrange font-semibold text-sm md:text-base transition-colors"
+                      className="group/more inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#1178B7]/20 bg-[#1178B7]/5 px-4 py-2.5 text-center text-sm font-bold text-[#1178B7] transition-all duration-300 hover:border-[#F59C27]/40 hover:bg-[#F59C27]/10 hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#1178B7]/15 sm:text-base"
                     >
-                      En savoir plus →
+                      En savoir plus
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/more:translate-x-1" />
                     </Link>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
