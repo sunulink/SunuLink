@@ -164,7 +164,7 @@ const IAlinkbusiness = () => {
       <main className="pt-0">
         {/* HERO : IMAGE EN ARRIÈRE-PLAN SUR TOUTE LA LARGEUR */}
         <section className="relative isolate min-h-[620px] overflow-hidden bg-slate-100 sm:min-h-[660px] lg:min-h-[720px]">
-          {/* Image de fond, légèrement décalée vers la droite */}
+          {/* Image de fond décalée vers la droite */}
           <img
             src="/img/hero-link-ia-business.png"
             alt=""
@@ -179,24 +179,26 @@ const IAlinkbusiness = () => {
             }}
           />
 
-          {/* Dégradé renforcé à gauche pour la lisibilité */}
+          {/* Voile blanc réduit pour laisser davantage apparaître l'image */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-[1] bg-white/35"
+            className="absolute inset-0 z-[1] bg-white/10"
           />
+
+          {/* Dégradé allégé à gauche pour garder le texte lisible */}
           <div
             aria-hidden="true"
             className="absolute inset-0 z-[2]"
             style={{
               background:
-                "linear-gradient(90deg, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.97) 30%, rgba(255,255,255,0.90) 45%, rgba(255,255,255,0.58) 60%, rgba(255,255,255,0.13) 82%, rgba(255,255,255,0.03) 100%)",
+                "linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 25%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.42) 58%, rgba(255,255,255,0.12) 78%, rgba(255,255,255,0) 100%)",
             }}
           />
 
-          {/* Atténuation complémentaire sur mobile */}
+          {/* Voile très léger sur mobile */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-[3] bg-gradient-to-t from-white/35 via-transparent to-white/15 md:hidden"
+            className="absolute inset-0 z-[3] bg-gradient-to-t from-white/15 via-transparent to-white/5 md:hidden"
           />
 
           <div className="container relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-center px-4 py-16 sm:min-h-[660px] sm:px-6 sm:py-20 lg:min-h-[720px] lg:py-24">
@@ -371,7 +373,7 @@ const IAlinkbusiness = () => {
           </div>
         </section>
 
-        {/* DIX EXPERTISES : CARTES HARMONISÉES */}
+        {/* DIX EXPERTISES */}
         <section className="bg-slate-50 px-4 py-12 sm:px-6 md:py-20">
           <div className="container mx-auto max-w-7xl">
             <div
@@ -414,13 +416,16 @@ const IAlinkbusiness = () => {
                         className="absolute -right-9 -top-10 h-32 w-32 rounded-full border-[16px] border-white/10 transition-transform duration-500 group-hover:scale-110"
                         aria-hidden="true"
                       />
+
                       <div className="relative z-10">
                         <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/15 text-white sm:h-14 sm:w-14">
                           <IconComponent className="h-6 w-6 sm:h-7 sm:w-7" />
                         </span>
+
                         <h3 className="mb-3 text-xl font-black leading-snug text-white sm:text-2xl">
                           {service.title}
                         </h3>
+
                         <p className="text-sm font-medium leading-relaxed text-white/95 sm:text-base">
                           {service.description}
                         </p>
