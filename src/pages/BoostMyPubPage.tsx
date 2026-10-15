@@ -90,7 +90,7 @@ const BoostMyPubPage = () => {
             aria-hidden="true"
             loading="eager"
             fetchPriority="high"
-            className="absolute inset-0 z-0 h-full w-full object-cover object-[66%_center] sm:object-[70%_center]"
+            className="absolute inset-0 z-0 h-full w-full object-cover object-[74%_center] sm:object-[80%_center] lg:object-[84%_center]"
             onError={() => {
               console.error(
                 "Impossible de charger /img/hero-boost-my-pub.png"
@@ -98,22 +98,32 @@ const BoostMyPubPage = () => {
             }}
           />
 
+          {/* Dégradé sombre discret à gauche pour améliorer la lisibilité du texte */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-[1]"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(0,35,75,0.78) 0%, rgba(0,55,105,0.62) 28%, rgba(0,65,120,0.30) 48%, rgba(0,65,120,0.08) 68%, rgba(0,65,120,0) 100%)",
+            }}
+          />
+
           <div className="container relative z-10 mx-auto flex min-h-[580px] max-w-7xl items-center px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:min-h-[660px] lg:py-20">
-            <div className="w-full max-w-2xl" data-aos="fade-up">
+            <div className="w-full max-w-2xl py-4 sm:py-6" data-aos="fade-up">
               {/* Badge */}
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/85 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#1178B7] shadow-sm backdrop-blur-sm sm:text-sm">
+              <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/85 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#1178B7] shadow-sm backdrop-blur-sm sm:text-sm">
                 <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
                 Publicité digitale & acquisition
               </span>
 
               {/* Titre du héros */}
-              <h1 className="mb-5 text-4xl font-black leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mb-8 text-4xl font-black leading-[1.03] tracking-tight drop-shadow-sm sm:mb-10 sm:text-5xl lg:text-6xl">
                 <span className="block text-[#1178B7]">BOOST MY</span>
                 <span className="block text-[#F59C27]">PUB</span>
               </h1>
 
               {/* Boutons du héros : sans bloc de prix */}
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <div className="mt-2 flex w-full flex-col gap-4 sm:mt-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   to="#packs"
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-sm font-extrabold text-white shadow-lg shadow-[#F59C27]/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/35 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
@@ -132,7 +142,7 @@ const BoostMyPubPage = () => {
               </div>
 
               {/* Points forts */}
-              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold text-slate-700">
+              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 text-sm font-semibold text-white drop-shadow-sm sm:mt-12 lg:mt-14">
                 {[
                   "Stratégie publicitaire",
                   "Ciblage audience",
