@@ -1,11 +1,18 @@
 import Header from "@/components/Header";
-// import Footer from "@/components/Footer";
-// import { Check, Sparkles, Star, Crown, ArrowLeft, Target, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link, useParams, Navigate } from "react-router-dom";
-
-import { Sparkles, Star, Crown, Target, ArrowLeft, Check, Truck, Scale, Factory, GraduationCap } from "lucide-react";
 import Footer from "@/components/Footer";
+import {
+  Sparkles,
+  Star,
+  Crown,
+  Target,
+  ArrowLeft,
+  Check,
+  Truck,
+  Scale,
+  Factory,
+  GraduationCap,
+} from "lucide-react";
+import { Link, useParams, Navigate } from "react-router-dom";
 
 export const servicesData = [
   {
@@ -460,83 +467,209 @@ La formation et le conseil IA 360° permettent à l’entreprise de tirer pleine
 
 
 const IAlinkDetail = () => {
+  // Le paramètre doit correspondre à celui défini dans la route React Router.
+  const { serviceTitle } = useParams<{ serviceTitle: string }>();
+  const pack = servicesData.find((service) => service.slug === serviceTitle);
 
-  const { serviceTitle } = useParams();
-
-  const pack = servicesData.find((p) => p.slug === serviceTitle);
-
+  // En cas de slug invalide, retour à la page mère Link IA Business.
   if (!pack) {
     return <Navigate to="/ialinkbusiness" replace />;
   }
 
   const PackIcon = pack.icon;
+  const orangeServices = [
+    "automatisation-commerciale",
+    "automatisation-administrative",
+    "automatisation-logistique-operationnelle",
+    "automatisation-production-industrie",
+  ];
+  const accent = orangeServices.includes(pack.slug)
+    ? {
+        gradient: "from-[#F59C27] to-[#f7bd67]",
+        solid: "#F59C27",
+      }
+    : {
+        gradient: "from-[#1178B7] to-[#009CDE]",
+        solid: "#1178B7",
+      };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-slate-800">
       <Header />
 
-      <main className="pt-0 pb-20">
-        {/* Hero Section */}
-        <section className={`pt-24 pb-16 px-6 bg-gradient-to-br ${pack.color} text-white`}>
-          <div className="container mx-auto max-w-7xl">
+      <main className="pb-0">
+        {/* HERO — IDENTITÉ VISUELLE SUNULINK */}
+        <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#0b3157] via-[#1178B7] to-[#0b5789] text-white">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-28 h-96 w-96 rounded-full border-[48px] border-white/5"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-32 left-[35%] h-80 w-80 rounded-full bg-[#F59C27]/15 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-[#1178B7] via-[#009CDE] to-[#F59C27]"
+          />
+
+          <div className="container relative z-10 mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-12 lg:pb-24">
             <Link
-              to="/boost-my-pub"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors"
+              to="/ialinkbusiness"
+              className="group mb-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2.5 text-sm font-bold text-white/95 backdrop-blur-sm transition-all duration-300 hover:-translate-x-0.5 hover:border-[#F59C27] hover:bg-white/15 hover:text-white focus:outline-none focus:ring-4 focus:ring-white/20 sm:mb-12 sm:text-base"
             >
-              <ArrowLeft className="w-5 h-5" />
-              Retour aux packs
+              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              Retour aux expertises IA
             </Link>
 
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="bg-white/20 backdrop-blur-sm w-32 h-32 rounded-3xl flex items-center justify-center">
-                <PackIcon className="w-16 h-16 text-white" />
+            <div className="grid items-center gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-10 lg:gap-14">
+              <div className="flex justify-center md:justify-start">
+                <div className={`relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br ${accent.gradient} shadow-2xl ring-1 ring-white/25 sm:h-28 sm:w-28 lg:h-36 lg:w-36`}>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-1 rounded-[1.25rem] border border-white/25"
+                  />
+                  <PackIcon className="relative h-11 w-11 text-white sm:h-14 sm:w-14 lg:h-16 lg:w-16" />
+                </div>
               </div>
 
-              <div className="text-center md:text-left">
-                <h1 className="text-4xl md:text-6xl font-black mb-4">{pack.title}</h1>
-                <p className="text-2xl md:text-3xl font-bold mb-2">{pack.tagline}</p>
+              <div className="max-w-4xl text-center md:text-left">
+                <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm sm:text-sm">
+                  <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
+                  Link IA Business · Expertise
+                </p>
+                <h1 className="mb-4 text-3xl font-black leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+                  {pack.title}
+                </h1>
+                <p className="max-w-3xl text-lg font-semibold leading-relaxed text-white/90 sm:text-xl md:text-2xl">
+                  {pack.tagline}
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Introduction */}
-        <section className="py-16 px-6">
+        {/* PRÉSENTATION */}
+        <section className="px-4 py-12 sm:px-6 md:py-16 lg:py-20">
           <div className="container mx-auto max-w-7xl">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl">
-              {pack.introduction}
-            </p>
+            <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.7fr)] lg:gap-12">
+              <div className="max-w-3xl">
+                <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#F59C27]">
+                  Présentation
+                </p>
+                <h2 className="mb-5 text-2xl font-black leading-tight text-[#1178B7] sm:text-3xl md:text-4xl">
+                  Une expertise pensée pour vos objectifs.
+                </h2>
+                <p className="whitespace-pre-line text-base leading-8 text-slate-600 sm:text-lg">
+                  {pack.introduction.trim()}
+                </p>
+              </div>
+
+              <aside className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm sm:rounded-3xl sm:p-8">
+                <div
+                  aria-hidden="true"
+                  className="absolute right-0 top-0 h-1.5 w-24 rounded-bl-full bg-[#F59C27] sm:w-32"
+                />
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1178B7]/10 text-[#1178B7]">
+                  <Target className="h-6 w-6" />
+                </div>
+                <h3 className="mb-3 text-xl font-black text-[#1178B7]">
+                  Une approche orientée résultats
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+                  Découvrez les leviers de cette expertise et identifiez les pistes d’amélioration adaptées à votre organisation.
+                </p>
+                <Link
+                  to="/contact"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 font-extrabold text-[#1178B7] transition-colors hover:text-[#F59C27] focus:outline-none focus:ring-2 focus:ring-[#1178B7]/30"
+                >
+                  Échanger sur mon projet
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </aside>
+            </div>
           </div>
         </section>
 
-        {/* Points */}
-        <section className="py-16 px-6 bg-sunuGray/5">
+        {/* DÉTAIL DES PRESTATIONS */}
+        <section className="bg-slate-50 px-4 py-12 sm:px-6 md:py-16 lg:py-20">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mx-auto mb-9 max-w-3xl text-center sm:mb-12" data-aos="fade-up">
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#F59C27]">
+                Nos domaines d’intervention
+              </p>
+              <h2 className="text-2xl font-black leading-tight text-[#1178B7] sm:text-3xl md:text-4xl">
+                Ce que cette expertise vous permet de faire
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                Des leviers concrets pour structurer vos actions, simplifier vos opérations et mieux piloter votre activité.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
               {pack.points.map((point, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                <article
+                  key={`${point.title}-${index}`}
+                  className="group flex h-full gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7]/25 hover:shadow-[0_16px_36px_rgba(17,120,183,0.10)] sm:p-6 md:rounded-3xl motion-reduce:transform-none"
+                  data-aos="fade-up"
+                  data-aos-delay={(index % 3) * 60}
                 >
-                  <div className={`bg-gradient-to-br ${pack.color} w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <Check className="w-5 h-5 text-white" />
+                  <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${accent.gradient} shadow-sm transition-transform duration-300 group-hover:scale-105`}>
+                    <Check className="h-5 w-5 text-white" />
                   </div>
-                  <div>
-                    <p className="font-bold text-gray-800">{point.title}</p>
-                    <p className="text-gray-600">{point.description}</p>
+                  <div className="min-w-0">
+                    <h3 className="mb-2 text-base font-extrabold leading-snug text-[#1178B7] sm:text-lg">
+                      {point.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+                      {point.description}
+                    </p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Conclusion */}
-        <section className="py-16 px-6">
+        {/* CONCLUSION ET APPEL À L'ACTION */}
+        <section className="px-4 py-12 sm:px-6 md:py-16 lg:py-20">
           <div className="container mx-auto max-w-7xl">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl">
-              {pack.conclusion}
-            </p>
+            <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b3157] via-[#1178B7] to-[#0b5789] p-6 text-white shadow-xl sm:p-9 md:p-12 lg:p-14">
+              <div
+                aria-hidden="true"
+                className="absolute -right-10 -top-16 -z-10 h-64 w-64 rounded-full border-[32px] border-white/5"
+              />
+              <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+                <div className="max-w-3xl">
+                  <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#F59C27]">
+                    Passons à l’action
+                  </p>
+                  <h2 className="mb-5 text-2xl font-black leading-tight sm:text-3xl md:text-4xl">
+                    Faisons avancer votre projet avec l’IA.
+                  </h2>
+                  <p className="whitespace-pre-line text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
+                    {pack.conclusion.trim()}
+                  </p>
+                </div>
+
+                <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:flex-col">
+                  <Link
+                    to="/contact"
+                    className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-sm font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-[#F59C27]/30 sm:text-base lg:min-w-56"
+                  >
+                    Parler de mon projet
+                    <ArrowLeft className="h-4 w-4 rotate-180 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    to="/ialinkbusiness"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3 text-center text-sm font-bold text-white transition-all duration-300 hover:border-white hover:bg-white/15 focus:outline-none focus:ring-4 focus:ring-white/20 sm:text-base lg:min-w-56"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Toutes les expertises IA
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -545,6 +678,5 @@ const IAlinkDetail = () => {
     </div>
   );
 };
-
 
 export default IAlinkDetail;
