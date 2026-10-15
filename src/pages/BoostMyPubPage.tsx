@@ -98,28 +98,6 @@ const BoostMyPubPage = () => {
             }}
           />
 
-          {/* Voile général léger pour préserver la visibilité de l'image */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[1] bg-white/10"
-          />
-
-          {/* Dégradé plus opaque à gauche et transparent à droite */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[2]"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 25%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.42) 58%, rgba(255,255,255,0.12) 78%, rgba(255,255,255,0) 100%)",
-            }}
-          />
-
-          {/* Protection légère sur mobile */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[3] bg-gradient-to-t from-white/15 via-transparent to-white/5 md:hidden"
-          />
-
           <div className="container relative z-10 mx-auto flex min-h-[580px] max-w-7xl items-center px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:min-h-[660px] lg:py-20">
             <div className="w-full max-w-2xl" data-aos="fade-up">
               {/* Badge */}
@@ -133,16 +111,6 @@ const BoostMyPubPage = () => {
                 <span className="block text-[#1178B7]">BOOST MY</span>
                 <span className="block text-[#F59C27]">PUB</span>
               </h1>
-
-              <p className="mb-5 max-w-xl text-lg font-bold leading-relaxed text-slate-800 sm:text-xl">
-                Accélérez votre acquisition grâce à la publicité digitale.
-              </p>
-
-              <p className="mb-7 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base lg:text-lg">
-                Développez votre visibilité, atteignez la bonne audience et
-                transformez vos campagnes publicitaires en opportunités
-                concrètes pour votre entreprise.
-              </p>
 
               {/* Boutons du héros : sans bloc de prix */}
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
