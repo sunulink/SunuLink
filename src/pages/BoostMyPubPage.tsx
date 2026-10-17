@@ -81,10 +81,10 @@ const BoostMyPubPage = () => {
       <Header />
 
       <main className="pt-0 pb-0">
-        {/* HERO : IMAGE ENTIÈREMENT VISIBLE */}
+        {/* HERO : IMAGE ENTIÈRE, ESPACEMENT MOBILE AJUSTÉ */}
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* IMAGE DU HERO */}
-          <div className="relative w-full pt-5 sm:pt-0">
+          {/* Visuel : 40 px d'espace au-dessus sur mobile */}
+          <div className="relative w-full pt-10 sm:pt-0">
             <img
               src="/img/hero-boost-my-pub.png"
               alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
@@ -98,8 +98,8 @@ const BoostMyPubPage = () => {
               }}
             />
 
-            {/* BADGE EN HAUT À GAUCHE */}
-            <div className="absolute left-3 top-1 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
+            {/* Badge conservé en haut à gauche */}
+            <div className="absolute left-3 top-2 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs md:text-sm">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
                 Publicité digitale & acquisition
@@ -107,9 +107,10 @@ const BoostMyPubPage = () => {
             </div>
           </div>
 
-          {/* BOUTONS SOUS L'IMAGE */}
-          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-6 sm:px-6 sm:py-7 md:py-8">
-            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5">
+          {/* ACTIONS : ESPACEMENTS RÉDUITS SUR MOBILE */}
+          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 sm:py-7 md:py-8">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-5">
+              {/* Boutons sous l'image */}
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <Link
                   to="/boost-my-pub#packs"
@@ -128,8 +129,8 @@ const BoostMyPubPage = () => {
                 </Link>
               </div>
 
-              {/* BÉNÉFICES EN BLANC */}
-              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-3 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:text-sm md:text-base">
+              {/* Bénéfices blancs avec espacement réduit */}
+              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:gap-y-3 sm:text-sm md:text-base">
                 {[
                   "Stratégie publicitaire",
                   "Ciblage audience",
@@ -147,7 +148,7 @@ const BoostMyPubPage = () => {
             </div>
           </div>
 
-          {/* BORDURE ORANGE */}
+          {/* Fine bordure orange */}
           <div
             aria-hidden="true"
             className="h-1 w-full bg-[#F59C27]"
@@ -157,8 +158,9 @@ const BoostMyPubPage = () => {
         {/* SECTION DES TROIS PACKS */}
         <section
           id="packs"
-          className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-12 sm:px-6 md:py-16"
+          className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-10 sm:px-6 sm:py-12 md:py-16"
         >
+          {/* Décorations discrètes */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-24 top-32 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
@@ -170,9 +172,9 @@ const BoostMyPubPage = () => {
           />
 
           <div className="container relative z-10 mx-auto max-w-7xl">
-            {/* EN-TÊTE */}
+            {/* En-tête de section */}
             <div
-              className="mx-auto mb-10 max-w-3xl text-center md:mb-12"
+              className="mx-auto mb-8 max-w-3xl text-center sm:mb-10 md:mb-12"
               data-aos="fade-up"
             >
               <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/15 bg-[#1178B7]/5 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-[#1178B7] sm:text-sm">
@@ -191,8 +193,8 @@ const BoostMyPubPage = () => {
               </p>
             </div>
 
-            {/* GRILLE RESPONSIVE */}
-            <div className="grid w-full grid-cols-1 items-stretch gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
+            {/* Grille responsive : 1 mobile, 2 tablette, 3 desktop */}
+            <div className="grid w-full grid-cols-1 items-stretch gap-5 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
               {packs.map((pack, index) => {
                 const IconComponent = pack.icon;
 
@@ -207,7 +209,7 @@ const BoostMyPubPage = () => {
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                   >
-                    {/* BADGE */}
+                    {/* Badge */}
                     <div
                       className={`absolute right-0 top-0 z-20 rounded-bl-2xl px-4 py-2 text-xs font-extrabold shadow-sm sm:text-sm ${
                         pack.recommended
@@ -221,11 +223,11 @@ const BoostMyPubPage = () => {
                       {pack.badge}
                     </div>
 
-                    {/* EN-TÊTE COLORÉ : BLEU, ORANGE, BLEU */}
+                    {/* En-tête : bleu, orange, bleu */}
                     <div
-                      className={`relative flex flex-col overflow-hidden p-5 text-white sm:p-7 ${
+                      className={`relative flex flex-col overflow-hidden p-5 sm:p-7 ${
                         pack.recommended ? "bg-[#F59C27]" : "bg-[#1178B7]"
-                      }`}
+                      } text-white`}
                     >
                       <div
                         aria-hidden="true"
@@ -274,7 +276,7 @@ const BoostMyPubPage = () => {
                       </div>
                     </div>
 
-                    {/* CONTENU DE LA CARTE */}
+                    {/* Contenu de la carte */}
                     <div className="flex flex-1 flex-col p-5 sm:p-7">
                       <p className="mb-6 min-h-[105px] text-sm leading-relaxed text-slate-600 sm:text-base">
                         {pack.description}
@@ -303,7 +305,7 @@ const BoostMyPubPage = () => {
                         </ul>
                       </div>
 
-                      {/* BOUTON */}
+                      {/* Bouton uniforme */}
                       <div className="mt-auto">
                         <Button
                           asChild
@@ -327,10 +329,10 @@ const BoostMyPubPage = () => {
         </section>
 
         {/* APPEL À L'ACTION FINAL */}
-        <section className="bg-gradient-to-b from-slate-50 to-white px-4 py-12 sm:px-6 sm:py-16">
+        <section className="bg-gradient-to-b from-slate-50 to-white px-4 py-10 sm:px-6 sm:py-14 md:py-16">
           <div className="container mx-auto max-w-7xl">
             <div
-              className="relative isolate overflow-hidden rounded-2xl bg-[#1178B7] px-6 py-8 text-center text-white shadow-xl sm:rounded-3xl sm:px-8 md:px-12 md:py-12"
+              className="relative isolate overflow-hidden rounded-2xl bg-[#1178B7] px-5 py-8 text-center text-white shadow-xl sm:rounded-3xl sm:px-8 md:px-12 md:py-12"
               data-aos="fade-up"
             >
               <div
