@@ -81,67 +81,63 @@ const BoostMyPubPage = () => {
       <Header />
 
       <main className="pt-0 pb-0">
-        {/* HERO : IMAGE CLAIRE SUR TOUTE LA LARGEUR */}
-        <section className="relative isolate min-h-[560px] overflow-hidden bg-[#0B4D78] sm:min-h-[600px] lg:min-h-[640px]">
-          {/* Image de fond : aucun dégradé ni voile superposé */}
-          <img
-            src="/img/hero-boost-my-pub.png"
-            alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
-            aria-hidden="true"
-            loading="eager"
-            fetchPriority="high"
-            className="absolute inset-0 z-0 h-full w-full object-cover object-center"
-            onError={() => {
-              console.error(
-                "Impossible de charger /img/hero-boost-my-pub.png"
-              );
-            }}
-          />
+        {/* HERO : IMAGE ENTIÈREMENT VISIBLE SUR MOBILE ET DESKTOP */}
+        <section className="relative w-full overflow-hidden bg-[#0B4D78]">
+          {/* Visuel principal : proportions naturelles, sans recadrage */}
+          <div className="relative w-full">
+            <img
+              src="/img/hero-boost-my-pub.png"
+              alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
+              loading="eager"
+              fetchPriority="high"
+              className="block h-auto w-full object-contain"
+              onError={() => {
+                console.error(
+                  "Impossible de charger /img/hero-boost-my-pub.png"
+                );
+              }}
+            />
 
-          <div className="container relative z-10 mx-auto flex min-h-[560px] max-w-7xl flex-col px-4 pb-14 pt-5 sm:min-h-[600px] sm:px-6 sm:pb-16 sm:pt-6 lg:min-h-[640px] lg:pb-16">
-            {/* Badge conservé en haut à gauche */}
-            <div data-aos="fade-down">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/95 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1178B7] shadow-sm sm:text-sm">
-                <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
+            {/* Badge en haut à gauche */}
+            <div className="absolute left-3 top-3 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs md:text-sm">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
                 Publicité digitale & acquisition
               </span>
             </div>
+          </div>
 
-            {/* Partie basse : boutons et bénéfices uniquement */}
-            <div className="mt-auto pt-24 sm:pt-28 lg:pt-32" data-aos="fade-up">
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          {/* ACTIONS SOUS L'IMAGE : ELLES NE MASQUENT PLUS LES COFFRETS */}
+          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-6 sm:px-6 sm:py-7 md:py-8">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5">
+              {/* Boutons */}
+              <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <Link
-                  to="#packs"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-sm font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/35 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
+                  to="/boost-my-pub#packs"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Découvrir nos packs
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
 
                 <Link
                   to="/contact"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-white bg-white/95 px-6 py-3 text-center text-sm font-extrabold text-[#1178B7] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-5 py-3 text-center text-sm font-extrabold text-[#1178B7] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Parler à un expert
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
 
               {/* Bénéfices en blanc */}
-              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-white sm:gap-x-6 sm:text-base">
+              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-3 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:text-sm md:text-base">
                 {[
                   "Stratégie publicitaire",
                   "Ciblage audience",
                   "Optimisation campagnes",
                 ].map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-2"
-                    style={{
-                      textShadow: "0 1px 5px rgba(0, 0, 0, 0.8)",
-                    }}
-                  >
-                    <CheckCircle className="h-4 w-4 shrink-0 text-white drop-shadow sm:h-5 sm:w-5" />
+                  <span key={item} className="inline-flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#FFC36E] sm:h-5 sm:w-5" />
                     {item}
                   </span>
                 ))}
@@ -149,10 +145,10 @@ const BoostMyPubPage = () => {
             </div>
           </div>
 
-          {/* Ligne décorative en bas */}
+          {/* Fine bordure orange inférieure */}
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 z-10 h-1 bg-gradient-to-r from-[#1178B7] via-[#009CDE] to-[#F59C27]"
+            className="h-1 w-full bg-[#F59C27]"
           />
         </section>
 
@@ -161,6 +157,7 @@ const BoostMyPubPage = () => {
           id="packs"
           className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-12 sm:px-6 md:py-16"
         >
+          {/* Décorations discrètes */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-24 top-32 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
@@ -172,7 +169,7 @@ const BoostMyPubPage = () => {
           />
 
           <div className="container relative z-10 mx-auto max-w-7xl">
-            {/* En-tête */}
+            {/* En-tête de section */}
             <div
               className="mx-auto mb-10 max-w-3xl text-center md:mb-12"
               data-aos="fade-up"
@@ -193,7 +190,7 @@ const BoostMyPubPage = () => {
               </p>
             </div>
 
-            {/* Grille responsive */}
+            {/* Grille responsive : 1 mobile, 2 tablette, 3 desktop */}
             <div className="grid w-full grid-cols-1 items-stretch gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
               {packs.map((pack, index) => {
                 const IconComponent = pack.icon;
@@ -223,7 +220,7 @@ const BoostMyPubPage = () => {
                       {pack.badge}
                     </div>
 
-                    {/* En-tête : TERANGA bleu, XEEWAL orange, BUUR bleu */}
+                    {/* En-tête : Teranga bleu, Xeewal orange, Buur bleu */}
                     <div
                       className={`relative flex flex-col overflow-hidden p-5 text-white sm:p-7 ${
                         pack.recommended ? "bg-[#F59C27]" : "bg-[#1178B7]"
@@ -276,7 +273,7 @@ const BoostMyPubPage = () => {
                       </div>
                     </div>
 
-                    {/* Contenu */}
+                    {/* Contenu de la carte */}
                     <div className="flex flex-1 flex-col p-5 sm:p-7">
                       <p className="mb-6 min-h-[105px] text-sm leading-relaxed text-slate-600 sm:text-base">
                         {pack.description}
@@ -305,7 +302,7 @@ const BoostMyPubPage = () => {
                         </ul>
                       </div>
 
-                      {/* Bouton */}
+                      {/* Bouton uniforme */}
                       <div className="mt-auto">
                         <Button
                           asChild
@@ -332,7 +329,7 @@ const BoostMyPubPage = () => {
         <section className="bg-gradient-to-b from-slate-50 to-white px-4 py-12 sm:px-6 sm:py-16">
           <div className="container mx-auto max-w-7xl">
             <div
-              className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#0C4E78] via-[#1178B7] to-[#0B5E91] px-6 py-8 text-center text-white shadow-xl sm:rounded-3xl sm:px-8 md:px-12 md:py-12"
+              className="relative isolate overflow-hidden rounded-2xl bg-[#1178B7] px-6 py-8 text-center text-white shadow-xl sm:rounded-3xl sm:px-8 md:px-12 md:py-12"
               data-aos="fade-up"
             >
               <div
