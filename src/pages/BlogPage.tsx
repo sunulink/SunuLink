@@ -164,7 +164,7 @@ const BlogPage = () => {
       description:
         "Des conseils pratiques pour mieux structurer vos actions marketing et investir avec davantage de méthode.",
       slug: "conseils-astuces-marketing",
-      image: "/img/conseils-astuces-marketing.JPEG",
+      image: "/img/SunuLink_Ebook_09_Conseils-Astuces-Marketing_recto-verso_fond-jaune_1080.jpg",
       pages: "48 pages",
       readTime: "50–70 min",
     },
@@ -176,7 +176,7 @@ const BlogPage = () => {
       description:
         "Comprendre les évolutions du marché, des usages et des pratiques pour mieux anticiper les transformations.",
       slug: "tendances-actualites",
-      image: "/img/tendances_actualites.PNG",
+      image: "/img/SunuLink_Ebook_18_Tendances-Actualites_recto-verso_fond-jaune_1080.jpg",
       pages: "46 pages",
       readTime: "45–65 min",
     },
@@ -188,7 +188,7 @@ const BlogPage = () => {
       description:
         "Construire une communication cohérente, différenciante et orientée vers des objectifs concrets.",
       slug: "strategies-communication",
-      image: "/img/strategies_communication.PNG",
+      image: "/img/SunuLink_Ebook_01_Strategies-de-Communication_recto-verso_fond-blanc_1080.jpg",
       pages: "47 pages",
       readTime: "40–60 min",
     },
@@ -200,7 +200,7 @@ const BlogPage = () => {
       description:
         "Des méthodes pour structurer son activité, mieux comprendre ses enjeux et soutenir sa croissance.",
       slug: "entrepreneuriat-business",
-      image: "/img/entreprenariat-business.PNG",
+      image: "/img/SunuLink_Ebook_12_Entrepreneuriat-Business_recto-verso_fond-jaune_1080.jpg",
       pages: "60 pages",
       readTime: "40–55 min",
     },
@@ -213,7 +213,7 @@ const BlogPage = () => {
       description:
         "Construire une marque cohérente, reconnaissable et capable de créer une véritable préférence.",
       slug: "branding-identite-visuelle",
-      image: "/img/branding_identite_visuelle.PNG",
+      image: "/img/SunuLink_Ebook_02_Branding-Identite-Visuelle_recto-verso_fond-bleu_1080.jpg",
       pages: "40 pages",
       readTime: "40–55 min",
     },
@@ -225,7 +225,7 @@ const BlogPage = () => {
       description:
         "Explorer les spécificités culturelles et stratégiques de la communication sur les marchés africains.",
       slug: "communication-africaine",
-      image: "/img/communication_africaine.PNG",
+      image: "/img/SunuLink_Ebook_06_Communication-Africaine_recto-verso_fond-jaune_1080.jpg",
       pages: "43 pages",
       readTime: "40–60 min",
     },
@@ -237,7 +237,7 @@ const BlogPage = () => {
       description:
         "Relier les différents leviers de communication autour d’une vision globale et cohérente.",
       slug: "communication-360-strategie-globale",
-      image: "",
+      image: "/img/SunuLink_Ebook_05_Communication-360_recto-verso_fond-bleu_1080.jpg",
       pages: "82 pages",
       readTime: "70–100 min",
     },
@@ -249,7 +249,7 @@ const BlogPage = () => {
       description:
         "Renforcer l’image, la crédibilité et la communication des entreprises et organisations.",
       slug: "communication-corporate-institutionnelle",
-      image: "",
+      image: "/img/SunuLink_Ebook_07_Communication-Corporate-Institutionnelle_recto-verso_fond-blanc_1080.jpg",
       pages: "73 pages",
       readTime: "75–105 min",
     },
@@ -262,7 +262,7 @@ const BlogPage = () => {
       description:
         "Développer sa visibilité sur le digital et mettre en place une présence web plus performante.",
       slug: "marketing-digital-seo",
-      image: "/img/marketing_digital_seo.PNG",
+      image: "/img/SunuLink_Ebook_03_Marketing-Digital-SEO_recto-verso_fond-jaune_1080.jpg",
       pages: "51 pages",
       readTime: "40–60 min",
     },
@@ -274,7 +274,7 @@ const BlogPage = () => {
       description:
         "Créer une présence sociale cohérente, développer sa communauté et mieux engager son audience.",
       slug: "reseaux-sociaux",
-      image: "/img/reseaux_sociaux.PNG",
+      image: "/img/SunuLink_Ebook_04_Reseaux-Sociaux_recto-verso_fond-blanc_1080.jpg",
       pages: "46 pages",
       readTime: "35–50 min",
     },
@@ -286,7 +286,7 @@ const BlogPage = () => {
       description:
         "Développer des contenus utiles et raconter l’histoire de sa marque avec plus d’impact.",
       slug: "creation-contenu-storytelling",
-      image: "",
+      image: "/img/SunuLink_Ebook_10_Creation-de-contenu-Storytelling_recto-verso_fond-blanc_1080.jpg",
       pages: "92 pages",
       readTime: "85–120 min",
     },
@@ -298,7 +298,7 @@ const BlogPage = () => {
       description:
         "Comprendre les principes d’une création visuelle cohérente au service de l’image de marque.",
       slug: "design-graphique-creation-visuelle",
-      image: "",
+      image: "/img/SunuLink_Ebook_11_Design-Graphique-Creation-Visuelle_recto-verso_fond-bleu_1080.jpg",
       pages: "92 pages",
       readTime: "75–105 min",
     },
@@ -311,7 +311,7 @@ const BlogPage = () => {
       description:
         "Comprendre les usages de l’intelligence artificielle et identifier des applications concrètes pour l’entreprise.",
       slug: "innovation-ia",
-      image: "/img/innovation-ia.PNG",
+      image: "/img/SunuLink_Ebook_14_Innovation-IA_recto-verso_fond-bleu_1080.jpg",
       pages: "71 pages",
       readTime: "30–45 min",
     },
@@ -323,7 +323,7 @@ const BlogPage = () => {
       description:
         "Mieux comprendre la publicité digitale, l’achat média, le ciblage et la logique de performance.",
       slug: "publicite-media-buying",
-      image: "",
+      image: "/img/SunuLink_Ebook_16_Publicite-Media-Buying_recto-verso_fond-blanc_1080.jpg",
       pages: "80 pages",
       readTime: "70–95 min",
     },
@@ -335,7 +335,7 @@ const BlogPage = () => {
       description:
         "Explorer les formats audiovisuels et le motion design comme outils de communication et d’impact.",
       slug: "audiovisuel-motion-design",
-      image: "",
+      image: "/img/SunuLink_Ebook_20_Audiovisuel-Motion-Design_recto-verso_fond-bleu_1080.jpg",
       pages: "77 pages",
       readTime: "60–85 min",
     },
@@ -347,7 +347,7 @@ const BlogPage = () => {
       description:
         "Créer des expériences de marque et des activations événementielles pensées pour générer de l’engagement.",
       slug: "evenementiel-activation-marque",
-      image: "",
+      image: "/img/SunuLink_Ebook_13_Evenementiel-Activation-de-Marque_recto-verso_fond-blanc_1080.jpg",
       pages: "73 pages",
       readTime: "50–70 min",
     },
@@ -360,7 +360,7 @@ const BlogPage = () => {
       description:
         "Décrypter des parcours, expériences et réalisations afin d’en tirer des enseignements utiles.",
       slug: "success-stories",
-      image: "",
+      image: "/img/SunuLink_Ebook_17_Success-Stories_recto-verso_fond-bleu_1080.jpg",
       pages: "59 pages",
       readTime: "45–65 min",
     },
@@ -372,7 +372,7 @@ const BlogPage = () => {
       description:
         "Rencontrer des profils, experts et acteurs qui façonnent les métiers et les transformations du marché.",
       slug: "interviews-portraits",
-      image: "",
+      image: "/img/SunuLink_Ebook_15_Interviews-Portraits_recto-verso_fond-jaune_1080.jpg",
       pages: "70 pages",
       readTime: "70–95 min",
     },
@@ -384,7 +384,7 @@ const BlogPage = () => {
       description:
         "Des ressources pratiques pour apprendre, appliquer et progresser étape par étape.",
       slug: "tutoriels-guides",
-      image: "",
+      image: "/img/SunuLink_Ebook_19_Tutoriels-Guides_recto-verso_fond-blanc_1080.jpg",
       pages: "62 pages",
       readTime: "50–70 min",
     },
@@ -396,7 +396,7 @@ const BlogPage = () => {
       description:
         "Anticiper les situations sensibles, protéger son image et structurer sa communication en contexte de crise.",
       slug: "communication-crise-reputation",
-      image: "",
+      image: "/img/SunuLink_Ebook_08_Communication-de-Crise-Reputation_recto-verso_fond-bleu_1080.jpg",
       pages: "72 pages",
       readTime: "70–100 min",
     },
