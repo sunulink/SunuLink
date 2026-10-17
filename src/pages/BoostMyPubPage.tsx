@@ -80,17 +80,17 @@ const BoostMyPubPage = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pb-0 pt-0">
-        {/* HERO : IMAGE EN ARRIÈRE-PLAN SUR TOUTE LA LARGEUR */}
-        <section className="relative isolate min-h-[580px] overflow-hidden bg-slate-100 sm:min-h-[620px] lg:min-h-[660px]">
-          {/* Image de fond légèrement décalée vers la droite */}
+      <main className="pt-0 pb-0">
+        {/* HERO : IMAGE CLAIRE SUR TOUTE LA LARGEUR */}
+        <section className="relative isolate min-h-[560px] overflow-hidden bg-[#0B4D78] sm:min-h-[600px] lg:min-h-[640px]">
+          {/* Image de fond : aucun dégradé ni voile superposé */}
           <img
             src="/img/hero-boost-my-pub.png"
-            alt=""
+            alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
             aria-hidden="true"
             loading="eager"
             fetchPriority="high"
-            className="absolute inset-0 z-0 h-full w-full object-cover object-[66%_center] sm:object-[70%_center]"
+            className="absolute inset-0 z-0 h-full w-full object-cover object-center"
             onError={() => {
               console.error(
                 "Impossible de charger /img/hero-boost-my-pub.png"
@@ -98,57 +98,21 @@ const BoostMyPubPage = () => {
             }}
           />
 
-          {/* Voile général léger pour préserver la visibilité de l'image */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[1] bg-white/10"
-          />
-
-          {/* Dégradé plus opaque à gauche et transparent à droite */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[2]"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 25%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.42) 58%, rgba(255,255,255,0.12) 78%, rgba(255,255,255,0) 100%)",
-            }}
-          />
-
-          {/* Protection légère sur mobile */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[3] bg-gradient-to-t from-white/15 via-transparent to-white/5 md:hidden"
-          />
-
-          <div className="container relative z-10 mx-auto flex min-h-[580px] max-w-7xl items-center px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:min-h-[660px] lg:py-20">
-            <div className="w-full max-w-2xl" data-aos="fade-up">
-              {/* Badge */}
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/85 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#1178B7] shadow-sm backdrop-blur-sm sm:text-sm">
+          <div className="container relative z-10 mx-auto flex min-h-[560px] max-w-7xl flex-col px-4 pb-14 pt-5 sm:min-h-[600px] sm:px-6 sm:pb-16 sm:pt-6 lg:min-h-[640px] lg:pb-16">
+            {/* Badge conservé en haut à gauche */}
+            <div data-aos="fade-down">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/95 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1178B7] shadow-sm sm:text-sm">
                 <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
                 Publicité digitale & acquisition
               </span>
+            </div>
 
-              {/* Titre du héros */}
-              <h1 className="mb-5 text-4xl font-black leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">
-                <span className="block text-[#1178B7]">BOOST MY</span>
-                <span className="block text-[#F59C27]">PUB</span>
-              </h1>
-
-              <p className="mb-5 max-w-xl text-lg font-bold leading-relaxed text-slate-800 sm:text-xl">
-                Accélérez votre acquisition grâce à la publicité digitale.
-              </p>
-
-              <p className="mb-7 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base lg:text-lg">
-                Développez votre visibilité, atteignez la bonne audience et
-                transformez vos campagnes publicitaires en opportunités
-                concrètes pour votre entreprise.
-              </p>
-
-              {/* Boutons du héros : sans bloc de prix */}
+            {/* Partie basse : boutons et bénéfices uniquement */}
+            <div className="mt-auto pt-24 sm:pt-28 lg:pt-32" data-aos="fade-up">
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   to="#packs"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-sm font-extrabold text-white shadow-lg shadow-[#F59C27]/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/35 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-sm font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/35 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Découvrir nos packs
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -156,15 +120,15 @@ const BoostMyPubPage = () => {
 
                 <Link
                   to="/contact"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-[#1178B7] bg-white/90 px-6 py-3 text-center text-sm font-extrabold text-[#1178B7] shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#1178B7]/25 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border-2 border-white bg-white/95 px-6 py-3 text-center text-sm font-extrabold text-[#1178B7] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Parler à un expert
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
 
-              {/* Points forts */}
-              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold text-slate-700">
+              {/* Bénéfices en blanc */}
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-white sm:gap-x-6 sm:text-base">
                 {[
                   "Stratégie publicitaire",
                   "Ciblage audience",
@@ -173,8 +137,11 @@ const BoostMyPubPage = () => {
                   <span
                     key={item}
                     className="inline-flex items-center gap-2"
+                    style={{
+                      textShadow: "0 1px 5px rgba(0, 0, 0, 0.8)",
+                    }}
                   >
-                    <CheckCircle className="h-4 w-4 shrink-0 text-[#F59C27]" />
+                    <CheckCircle className="h-4 w-4 shrink-0 text-white drop-shadow sm:h-5 sm:w-5" />
                     {item}
                   </span>
                 ))}
@@ -182,10 +149,10 @@ const BoostMyPubPage = () => {
             </div>
           </div>
 
-          {/* Ligne décorative aux couleurs SunuLink */}
+          {/* Ligne décorative en bas */}
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 z-10 h-1.5 bg-gradient-to-r from-[#1178B7] via-[#009CDE] to-[#F59C27]"
+            className="absolute inset-x-0 bottom-0 z-10 h-1 bg-gradient-to-r from-[#1178B7] via-[#009CDE] to-[#F59C27]"
           />
         </section>
 
@@ -194,18 +161,18 @@ const BoostMyPubPage = () => {
           id="packs"
           className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-12 sm:px-6 md:py-16"
         >
-          {/* Décorations discrètes */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-24 top-32 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
           />
+
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#F59C27]/10 blur-3xl"
           />
 
           <div className="container relative z-10 mx-auto max-w-7xl">
-            {/* En-tête de section */}
+            {/* En-tête */}
             <div
               className="mx-auto mb-10 max-w-3xl text-center md:mb-12"
               data-aos="fade-up"
@@ -226,7 +193,7 @@ const BoostMyPubPage = () => {
               </p>
             </div>
 
-            {/* Grille responsive : 1 mobile, 2 tablette, 3 grand écran */}
+            {/* Grille responsive */}
             <div className="grid w-full grid-cols-1 items-stretch gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8">
               {packs.map((pack, index) => {
                 const IconComponent = pack.icon;
@@ -242,7 +209,7 @@ const BoostMyPubPage = () => {
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                   >
-                    {/* Badge : lisible sur tous les en-têtes */}
+                    {/* Badge */}
                     <div
                       className={`absolute right-0 top-0 z-20 rounded-bl-2xl px-4 py-2 text-xs font-extrabold shadow-sm sm:text-sm ${
                         pack.recommended
@@ -256,7 +223,7 @@ const BoostMyPubPage = () => {
                       {pack.badge}
                     </div>
 
-                    {/* En-tête des cartes : TERANGA bleu, XEEWAL orange, BUUR bleu */}
+                    {/* En-tête : TERANGA bleu, XEEWAL orange, BUUR bleu */}
                     <div
                       className={`relative flex flex-col overflow-hidden p-5 text-white sm:p-7 ${
                         pack.recommended ? "bg-[#F59C27]" : "bg-[#1178B7]"
@@ -292,7 +259,7 @@ const BoostMyPubPage = () => {
                         </p>
 
                         <div className="mb-4 flex min-h-[76px] flex-col items-center justify-center">
-                          <p className="text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl">
+                          <p className="break-words text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl">
                             {pack.price}
                           </p>
 
@@ -309,7 +276,7 @@ const BoostMyPubPage = () => {
                       </div>
                     </div>
 
-                    {/* Partie inférieure blanche : structure identique sur les trois cartes */}
+                    {/* Contenu */}
                     <div className="flex flex-1 flex-col p-5 sm:p-7">
                       <p className="mb-6 min-h-[105px] text-sm leading-relaxed text-slate-600 sm:text-base">
                         {pack.description}
@@ -321,9 +288,9 @@ const BoostMyPubPage = () => {
                         </h4>
 
                         <ul className="space-y-3.5">
-                          {pack.features.map((feature) => (
+                          {pack.features.map((feature, idx) => (
                             <li
-                              key={feature}
+                              key={`${pack.slug}-${idx}`}
                               className="flex items-start gap-3"
                             >
                               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#F59C27]/10">
@@ -338,28 +305,20 @@ const BoostMyPubPage = () => {
                         </ul>
                       </div>
 
-                      {/* Boutons harmonisés */}
-                      <div className="mt-auto space-y-3">
+                      {/* Bouton */}
+                      <div className="mt-auto">
                         <Button
                           asChild
                           className="group/button h-auto min-h-12 w-full rounded-xl border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-sm font-extrabold text-white shadow-md shadow-[#F59C27]/15 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-lg focus-visible:ring-4 focus-visible:ring-[#F59C27]/30 sm:text-base motion-reduce:transform-none"
                         >
                           <Link
-                            to="/contact"
+                            to={`/boost-my-pub/${pack.slug}`}
                             className="inline-flex items-center justify-center gap-2 whitespace-normal text-center"
                           >
-                            Je valide
+                            Voir le détail
                             <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover/button:translate-x-1" />
                           </Link>
                         </Button>
-
-                        <Link
-                          to={`/boost-my-pub/${pack.slug}`}
-                          className="group/more inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#1178B7]/20 bg-[#1178B7]/5 px-4 py-2.5 text-center text-sm font-bold text-[#1178B7] transition-all duration-300 hover:border-[#F59C27]/40 hover:bg-[#F59C27]/10 focus:outline-none focus:ring-4 focus:ring-[#1178B7]/15 sm:text-base"
-                        >
-                          En savoir plus
-                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/more:translate-x-1" />
-                        </Link>
                       </div>
                     </div>
                   </article>
