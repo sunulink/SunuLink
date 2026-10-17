@@ -162,100 +162,70 @@ const IAlinkbusiness = () => {
       <Header />
 
       <main className="pt-0">
-        {/* HERO : IMAGE EN ARRIÈRE-PLAN SUR TOUTE LA LARGEUR */}
-        <section className="relative isolate min-h-[620px] overflow-hidden bg-slate-100 sm:min-h-[660px] lg:min-h-[720px]">
-          {/* Image de fond décalée vers la droite */}
-          <img
-            src="/img/hero-link-ia-business.png"
-            alt=""
-            aria-hidden="true"
-            loading="eager"
-            fetchPriority="high"
-            className="absolute inset-0 z-0 h-full w-full object-cover object-[66%_center] sm:object-[70%_center]"
-            onError={() => {
-              console.error(
-                "Impossible de charger /img/hero-link-ia-business.png"
-              );
-            }}
-          />
+        {/* HERO LINK IA BUSINESS : IMAGE ENTIÈRE, BOUTONS SOUS LE VISUEL */}
+        <section className="relative w-full overflow-hidden bg-[#0B4D78]">
+          {/* Image de présentation : 40 px d'espace supérieur sur mobile */}
+          <div className="relative w-full pt-10 sm:pt-0">
+            <img
+              src="/img/hero-link-ia-business.png"
+              alt="Présentation des offres Link IA Business"
+              loading="eager"
+              fetchPriority="high"
+              className="block h-auto w-full object-contain object-center"
+              onError={() => {
+                console.error(
+                  "Impossible de charger /img/hero-link-ia-business.png"
+                );
+              }}
+            />
 
-          {/* Voile blanc réduit pour laisser davantage apparaître l'image */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[1] bg-white/10"
-          />
-
-          {/* Dégradé allégé à gauche pour garder le texte lisible */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[2]"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 25%, rgba(255,255,255,0.72) 42%, rgba(255,255,255,0.42) 58%, rgba(255,255,255,0.12) 78%, rgba(255,255,255,0) 100%)",
-            }}
-          />
-
-          {/* Voile très léger sur mobile */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 z-[3] bg-gradient-to-t from-white/15 via-transparent to-white/5 md:hidden"
-          />
-
-          <div className="container relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-center px-4 py-16 sm:min-h-[660px] sm:px-6 sm:py-20 lg:min-h-[720px] lg:py-24">
-            <div className="w-full max-w-2xl" data-aos="fade-up">
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/85 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#1178B7] shadow-sm backdrop-blur-sm sm:text-sm">
-                <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
+            {/* Badge en haut à gauche */}
+            <div className="absolute left-3 top-2 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs md:text-sm">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
                 Intelligence artificielle & automatisation
               </span>
+            </div>
+          </div>
 
-              <h1 className="mb-6 text-4xl font-black leading-[1.03] tracking-tight sm:text-5xl lg:text-7xl">
-                <span className="block text-[#1178B7]">Link IA</span>
-                <span className="block text-[#F59C27]">Business</span>
-              </h1>
-
-              <p className="mb-8 max-w-xl text-base font-medium leading-relaxed text-slate-700 sm:text-lg lg:text-xl">
-                Propulsez votre entreprise dans une nouvelle ère.
-                Automatisez vos processus, optimisez vos performances et
-                libérez le plein potentiel de vos équipes grâce à
-                l'intelligence artificielle.
-              </p>
-
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          {/* Actions sous l'image : elles ne masquent pas les visuels */}
+          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 sm:py-7 md:py-8">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-5">
+              <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <Link
-                  to="/contact"
-                  className="group inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-6 py-3 text-center text-base font-extrabold text-white shadow-lg shadow-[#F59C27]/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#1178B7] hover:bg-[#1178B7] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F59C27]/35 sm:w-auto sm:px-7 sm:text-lg motion-reduce:transform-none"
+                  to="/ialinkbusiness#packs"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
-                  Démarrer mon projet IA
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Découvrir nos packs
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
 
                 <Link
-                  to="/services"
-                  className="group inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full border-2 border-[#1178B7] bg-white/90 px-6 py-3 text-center text-base font-extrabold text-[#1178B7] shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#1178B7]/25 sm:w-auto sm:px-7 sm:text-lg motion-reduce:transform-none"
+                  to="/contact"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-5 py-3 text-center text-sm font-extrabold text-[#1178B7] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
-                  Découvrez nos solutions IA 360°
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Parler à un expert
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-slate-700 sm:text-base">
-                <span className="inline-flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 shrink-0 text-[#F59C27]" />
-                  Processus optimisés
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 shrink-0 text-[#F59C27]" />
-                  Décisions éclairées
-                </span>
+              {/* Bénéfices en blanc */}
+              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:gap-y-3 sm:text-sm md:text-base">
+                {[
+                  "Processus optimisés",
+                  "Décisions éclairées",
+                ].map((item) => (
+                  <span key={item} className="inline-flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#FFC36E] sm:h-5 sm:w-5" />
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Filet décoratif aux couleurs de SunuLink */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 z-10 h-1.5 bg-gradient-to-r from-[#1178B7] via-[#009CDE] to-[#F59C27]"
-          />
+          {/* Bordure décorative aux couleurs SunuLink */}
+          <div aria-hidden="true" className="h-1 w-full bg-[#F59C27]" />
         </section>
 
         {/* POURQUOI L'IA EST ESSENTIELLE */}
@@ -307,7 +277,9 @@ const IAlinkbusiness = () => {
         </section>
 
         {/* PACKS LINK IA */}
-        <PackpubIA />
+        <div id="packs" className="scroll-mt-24">
+          <PackpubIA />
+        </div>
 
         {/* AVANTAGES CLÉS */}
         <section className="bg-white px-4 py-12 sm:px-6 md:py-20">
