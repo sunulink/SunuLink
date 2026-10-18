@@ -178,7 +178,7 @@ const FAQPage = () => {
       <main className="pt-20 pb-16 md:pb-20">
         {/* HERO FAQ : fond bleu SunuLink, sans image */}
         <section className="relative isolate flex min-h-[390px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[420px] md:min-h-[460px]">
-          {/* Décoration discrète aux couleurs de SunuLink */}
+          {/* Décorations discrètes aux couleurs de SunuLink */}
           <div
             className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full border-[36px] border-white/5 sm:h-96 sm:w-96"
             aria-hidden="true"
@@ -205,13 +205,13 @@ const FAQPage = () => {
                 </span>
               </div>
 
-              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#FFC36E] sm:text-base">
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#F59C27] sm:text-base">
                 Nous sommes là pour vous aider
               </p>
 
               <h1 className="mb-5 text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 Foire Aux{" "}
-                <span className="text-[#FFC36E]">Questions</span>
+                <span className="text-[#F59C27]">Questions</span>
               </h1>
 
               <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg md:mx-0 md:text-xl">
@@ -220,28 +220,30 @@ const FAQPage = () => {
                 notre processus et nos tarifs.
               </p>
 
-              <Link
-                to="#faq-questions"
-                className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 font-extrabold text-[#123C56] shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-6"
+              <a
+                href="#faq-questions"
+                className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-[#1178B7] hover:text-white focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-6"
               >
                 Parcourir les questions fréquentes
                 <ArrowRight
                   size={18}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </Link>
+              </a>
 
               <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-white/90 md:justify-start">
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
                   Nos services
                 </span>
+
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
                   Notre accompagnement
                 </span>
+
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  <span className="h-2 w-2 rounded-full bg-[#F59C27]" />
                   Nos tarifs
                 </span>
               </div>
@@ -270,7 +272,7 @@ const FAQPage = () => {
               </h2>
             </div>
 
-            {/* Aucun effet de défilement sur les cartes FAQ */}
+            {/* Cartes FAQ sans animation de défilement */}
             <div className="space-y-4">
               {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
@@ -317,6 +319,7 @@ const FAQPage = () => {
                       </span>
                     </button>
 
+                    {/* Réponse affichée sans animation de défilement */}
                     <div
                       id={answerId}
                       hidden={!isOpen}
@@ -356,7 +359,7 @@ const FAQPage = () => {
 
               <Link
                 to="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-8 py-4 text-base font-extrabold text-[#123C56] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-10 sm:text-lg"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-8 py-4 text-base font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-10 sm:text-lg"
               >
                 Contactez-nous
                 <ArrowRight size={19} />
