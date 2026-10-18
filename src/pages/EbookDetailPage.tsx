@@ -84,29 +84,29 @@ const getEbookPdfUrl = (slug: string): string | undefined => {
   return `${PDF_DIRECTORY}/${encodeURIComponent(fileName)}`;
 };
 
-// Couvertures identiques à celles de BlogPage.tsx : les visuels restent cohérents
-// entre la bibliothèque et la page détaillée de chaque e-book.
+// Couvertures recto-verso stockées dans public/img/.
+// Les mêmes chemins peuvent être réutilisés dans la bibliothèque de ressources.
 const BLOG_EBOOK_COVERS: Record<string, string> = {
-  "conseils-astuces-marketing": "/img/SunuLink_Ebook_09_Conseils-Astuces-Marketing_recto-verso_fond-jaune_1080.jpg",
-  "tendances-actualites": "/img/SunuLink_Ebook_18_Tendances-Actualites_recto-verso_fond-jaune_1080.jpg",
-  "strategies-communication": "/img/SunuLink_Ebook_01_Strategies-de-Communication_recto-verso_fond-blanc_1080.jpg",
-  "entrepreneuriat-business": "/img/SunuLink_Ebook_12_Entrepreneuriat-Business_recto-verso_fond-jaune_1080.jpg",
-  "branding-identite-visuelle": "/img/SunuLink_Ebook_02_Branding-Identite-Visuelle_recto-verso_fond-bleu_1080.jpg",
-  "communication-africaine": "/img/SunuLink_Ebook_06_Communication-Africaine_recto-verso_fond-jaune_1080.jpg",
-  "communication-360-strategie-globale": "/img/SunuLink_Ebook_05_Communication-360_recto-verso_fond-bleu_1080.jpg",
-  "communication-corporate-institutionnelle": "/img/SunuLink_Ebook_07_Communication-Corporate-Institutionnelle_recto-verso_fond-blanc_1080.jpg",
-  "marketing-digital-seo": "/img/SunuLink_Ebook_03_Marketing-Digital-SEO_recto-verso_fond-jaune_1080.jpg",
-  "reseaux-sociaux": "/img/SunuLink_Ebook_04_Reseaux-Sociaux_recto-verso_fond-blanc_1080.jpg",
-  "creation-contenu-storytelling": "/img/SunuLink_Ebook_10_Creation-de-contenu-Storytelling_recto-verso_fond-blanc_1080.jpg",
-  "design-graphique-creation-visuelle": "/img/SunuLink_Ebook_11_Design-Graphique-Creation-Visuelle_recto-verso_fond-bleu_1080.jpg",
-  "innovation-ia": "/img/SunuLink_Ebook_14_Innovation-IA_recto-verso_fond-bleu_1080.jpg",
-  "publicite-media-buying": "/img/SunuLink_Ebook_16_Publicite-Media-Buying_recto-verso_fond-blanc_1080.jpg",
-  "audiovisuel-motion-design": "/img/SunuLink_Ebook_20_Audiovisuel-Motion-Design_recto-verso_fond-bleu_1080.jpg",
-  "evenementiel-activation-marque": "/img/SunuLink_Ebook_13_Evenementiel-Activation-de-Marque_recto-verso_fond-blanc_1080.jpg",
-  "success-stories": "/img/SunuLink_Ebook_17_Success-Stories_recto-verso_fond-bleu_1080.jpg",
-  "interviews-portraits": "/img/SunuLink_Ebook_15_Interviews-Portraits_recto-verso_fond-jaune_1080.jpg",
-  "tutoriels-guides": "/img/SunuLink_Ebook_19_Tutoriels-Guides_recto-verso_fond-blanc_1080.jpg",
-  "communication-crise-reputation": "/img/SunuLink_Ebook_08_Communication-de-Crise-Reputation_recto-verso_fond-bleu_1080.jpg",
+  "conseils-astuces-marketing": "/img/Ebook_09_Conseils-Astuces-Marketing_recto-verso.png",
+  "tendances-actualites": "/img/Ebook_18_Tendances-Actualites_recto-verso.png",
+  "strategies-communication": "/img/Ebook_01_Strategies-de-Communication_recto-verso.png",
+  "entrepreneuriat-business": "/img/Ebook_12_Entrepreneuriat-Business_recto-verso.png",
+  "branding-identite-visuelle": "/img/Ebook_02_Branding-Identite-Visuelle_recto-verso.png",
+  "communication-africaine": "/img/Ebook_06_Communication-Africaine_recto-verso.png",
+  "communication-360-strategie-globale": "/img/Ebook_05_Communication-360_recto-verso.png",
+  "communication-corporate-institutionnelle": "/img/Ebook_07_Communication-Corporate-Institutionnelle_recto-verso.png",
+  "marketing-digital-seo": "/img/Ebook_03_Marketing-Digital-SEO_recto-verso.png",
+  "reseaux-sociaux": "/img/Ebook_04_Reseaux-Sociaux_recto-verso.png",
+  "creation-contenu-storytelling": "/img/Ebook_10_Creation-de-contenu-Storytelling_recto-verso.png",
+  "design-graphique-creation-visuelle": "/img/Ebook_11_Design-Graphique-Creation-Visuelle_recto-verso.png",
+  "innovation-ia": "/img/Ebook_14_Innovation-IA_recto-verso.png",
+  "publicite-media-buying": "/img/Ebook_16_Publicite-Media-Buying_recto-verso.png",
+  "audiovisuel-motion-design": "/img/Ebook_20_Audiovisuel-Motion-Design_recto-verso.png",
+  "evenementiel-activation-marque": "/img/Ebook_13_Evenementiel-Activation-de-Marque_recto-verso.png",
+  "success-stories": "/img/Ebook_17_Success-Stories_recto-verso.png",
+  "interviews-portraits": "/img/Ebook_15_Interviews-Portraits_recto-verso.png",
+  "tutoriels-guides": "/img/Ebook_19_Tutoriels-Guides_recto-verso.png",
+  "communication-crise-reputation": "/img/Ebook_08_Communication-de-Crise-Reputation_recto-verso.png",
 };
 
 const ebooksData: Record<string, EbookData> = {
@@ -753,23 +753,30 @@ const EbookDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Couverture principale mise à jour avec le visuel de BlogPage */}
-                <div className="relative flex items-center justify-center border-t border-white/10 bg-gradient-to-br from-white/5 via-white/10 to-sunuCyan/10 p-4 sm:p-10 md:p-14 lg:border-l lg:border-t-0">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
-                  <div className="relative w-full max-w-[330px] sm:max-w-[350px]">
-                    <div className="absolute -inset-4 rounded-[2rem] bg-sunuOrange/15 blur-3xl" />
-                    <div className="relative aspect-[3/4] rotate-0 overflow-hidden rounded-xl border border-white/20 bg-white shadow-[0_20px_55px_rgba(0,0,0,0.3)] sm:rotate-2 sm:rounded-[1.5rem] sm:shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-                      {ebook.cover && !coverError ? (
-                        <img src={ebook.cover} alt={`Couverture complète de l’e-book ${ebook.title}`} className="h-full w-full bg-white object-contain" onError={() => setCoverError(true)} />
-                      ) : (
-                        <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuOrange p-7 text-white">
-                          <div><p className="text-xs font-black uppercase tracking-[0.2em] text-white/80">SUNULINK INSIGHTS</p><p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">ÉDITION 2026–2027</p></div>
-                          <div><span className="mb-4 inline-flex rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider">E-BOOK</span><h2 className="text-3xl font-black leading-tight">{ebook.title}</h2></div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">SunuLink Consulting</div>
-                        </div>
-                      )}
+                {/* Couverture recto-verso en pleine largeur, sans marges internes */}
+                <div className="relative flex min-h-[320px] items-stretch justify-center overflow-hidden border-t border-white/10 bg-[#0B2440] p-0 lg:min-h-full lg:border-l lg:border-t-0">
+                  {ebook.cover && !coverError ? (
+                    <img
+                      src={ebook.cover}
+                      alt={`Couverture recto-verso de l’e-book ${ebook.title}`}
+                      className="absolute inset-0 h-full min-h-[320px] w-full object-cover object-center lg:min-h-full"
+                      onError={() => setCoverError(true)}
+                      loading="eager"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuOrange p-7 text-white">
+                      <div>
+                        <p className="text-xs font-black uppercase tracking-[0.2em] text-white/80">SUNULINK INSIGHTS</p>
+                        <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">ÉDITION 2026–2027</p>
+                      </div>
+                      <div>
+                        <span className="mb-4 inline-flex rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider">E-BOOK</span>
+                        <h2 className="text-3xl font-black leading-tight">{ebook.title}</h2>
+                      </div>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/80">SunuLink Consulting</div>
                     </div>
-                  </div>
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B2440]/10 via-transparent to-transparent" aria-hidden="true" />
                 </div>
               </div>
             </div>
