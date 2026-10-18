@@ -13,6 +13,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const BoostMyPubPage = () => {
+  const scrollToPacks = () => {
+    document.getElementById("packs")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const packs = [
     {
       slug: "teranga",
@@ -83,8 +90,8 @@ const BoostMyPubPage = () => {
       <main className="pt-0 pb-0">
         {/* HERO BOOST MY PUB */}
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* MOBILE : image intégrale, descendue de 40 px */}
-          <div className="relative w-full pt-10 md:hidden">
+          {/* MOBILE : image intégrale avec espace supérieur réduit */}
+          <div className="relative w-full pt-2 md:hidden">
             <img
               src="/img/hero-boost-my-pub.png"
               alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
@@ -107,15 +114,14 @@ const BoostMyPubPage = () => {
             </div>
           </div>
 
-          {/* TABLETTE / DESKTOP : image zoomée et cadrée sur les coffrets */}
-          <div className="relative hidden h-[410px] w-full overflow-hidden md:block lg:h-[450px] xl:h-[490px]">
+          {/* TABLETTE / DESKTOP : image entière, sans zoom ni recadrage */}
+          <div className="relative hidden h-[380px] w-full overflow-hidden md:block lg:h-[430px] xl:h-[460px]">
             <img
               src="/img/hero-boost-my-pub.png"
               alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
-              aria-hidden="true"
               loading="eager"
               fetchPriority="high"
-              className="absolute inset-0 h-full w-full origin-top scale-[1.12] object-cover object-top"
+              className="absolute inset-0 h-full w-full object-contain object-center"
               onError={() => {
                 console.error(
                   "Impossible de charger /img/hero-boost-my-pub.png"
@@ -124,7 +130,7 @@ const BoostMyPubPage = () => {
             />
 
             {/* Badge en haut à gauche */}
-            <div className="absolute left-5 top-5 z-10 lg:left-8 lg:top-6">
+            <div className="absolute left-5 top-4 z-10 lg:left-8 lg:top-5">
               <span className="inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/95 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1178B7] shadow-sm lg:text-sm">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-[#F59C27]" />
                 Publicité digitale & acquisition
@@ -136,13 +142,14 @@ const BoostMyPubPage = () => {
           <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 md:py-4 lg:py-5">
             <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 sm:gap-4">
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
-                <Link
-                  to="/boost-my-pub#packs"
+                <button
+                  type="button"
+                  onClick={scrollToPacks}
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Découvrir nos packs
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                </button>
 
                 <Link
                   to="/contact"
