@@ -162,13 +162,13 @@ const IAlinkbusiness = () => {
       <Header />
 
       <main className="pt-0">
-        {/* HERO LINK IA BUSINESS : PACKS AGRANDIS SUR DESKTOP, IMAGE ENTIÈRE SUR MOBILE */}
+        {/* HERO LINK IA BUSINESS : IMAGE ENTIÈRE, BOUTONS SOUS LE VISUEL */}
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* MOBILE : conserver l'image entière pour montrer les trois packs */}
-          <div className="relative w-full pt-10 md:hidden">
+          {/* Image de présentation : 40 px d'espace supérieur sur mobile */}
+          <div className="relative w-full pt-10 sm:pt-0">
             <img
               src="/img/hero-link-ia-business.png"
-              alt="Présentation des trois packs Link IA Business"
+              alt="Présentation des offres Link IA Business"
               loading="eager"
               fetchPriority="high"
               className="block h-auto w-full object-contain object-center"
@@ -178,50 +178,23 @@ const IAlinkbusiness = () => {
                 );
               }}
             />
-            <div className="absolute left-3 top-2 z-10 min-[380px]:left-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px]">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27]" />
+
+            {/* Badge en haut à gauche */}
+            <div className="absolute left-3 top-2 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs md:text-sm">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
                 Intelligence artificielle & automatisation
               </span>
             </div>
           </div>
 
-          {/* TABLETTE / DESKTOP : zoom sur les packs et recadrage du vide inférieur */}
-          <div
-            className="relative hidden w-full overflow-hidden md:block"
-            style={{ height: "clamp(380px, calc(25vw + 140px), 600px)" }}
-          >
-            <img
-              src="/img/hero-link-ia-business.png"
-              alt="Présentation des trois packs Link IA Business : Start, Growth et Transformation"
-              loading="eager"
-              fetchPriority="high"
-              className="absolute left-0 top-0 block h-auto w-full max-w-none"
-              style={{
-                transform: "translateY(80px) scale(1.12)",
-                transformOrigin: "center top",
-              }}
-              onError={() => {
-                console.error(
-                  "Impossible de charger /img/hero-link-ia-business.png"
-                );
-              }}
-            />
-          </div>
-
-          {/* BADGE, BOUTONS ET BÉNÉFICES : ZONE COMPACTE SOUS L'IMAGE */}
-          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 md:py-4">
-            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4">
-              {/* Sur desktop, placer le badge à côté des boutons afin de ne pas masquer les packs */}
-              <div className="flex w-full max-w-md flex-col gap-3 md:max-w-none md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-4">
-                <span className="hidden items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white/95 md:inline-flex">
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-[#F59C27]" />
-                  Intelligence artificielle & automatisation
-                </span>
-
+          {/* Actions sous l'image : elles ne masquent pas les visuels */}
+          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 sm:py-7 md:py-8">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-5">
+              <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <Link
                   to="/ialinkbusiness#packs"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:text-base md:w-auto md:min-w-48 md:px-6 motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Découvrir nos packs
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
@@ -229,7 +202,7 @@ const IAlinkbusiness = () => {
 
                 <Link
                   to="/contact"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-5 py-3 text-center text-sm font-extrabold text-[#1178B7] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:text-base md:w-auto md:min-w-48 md:px-6 motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-5 py-3 text-center text-sm font-extrabold text-[#1178B7] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#F59C27] hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Parler à un expert
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
@@ -237,13 +210,13 @@ const IAlinkbusiness = () => {
               </div>
 
               {/* Bénéfices en blanc */}
-              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 md:text-sm">
+              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:gap-y-3 sm:text-sm md:text-base">
                 {[
                   "Processus optimisés",
                   "Décisions éclairées",
                 ].map((item) => (
                   <span key={item} className="inline-flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-[#FFC36E]" />
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#FFC36E] sm:h-5 sm:w-5" />
                     {item}
                   </span>
                 ))}
@@ -251,7 +224,7 @@ const IAlinkbusiness = () => {
             </div>
           </div>
 
-          {/* Bordure décorative SunuLink */}
+          {/* Bordure décorative aux couleurs SunuLink */}
           <div aria-hidden="true" className="h-1 w-full bg-[#F59C27]" />
         </section>
 
