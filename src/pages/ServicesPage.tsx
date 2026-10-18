@@ -120,11 +120,11 @@ const ServicesPage = () => {
       <Header />
 
       <main className="pt-20">
-        {/* HERO : image de fond et dégradé SunuLink */}
-        <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[320px] lg:min-h-[350px]">
+        {/* HERO : équipe africaine et dégradé SunuLink */}
+        <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[320px] lg:min-h-[560px] xl:min-h-[600px]">
           <img
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85"
-            alt=""
+            src="https://images.pexels.com/photos/3869649/pexels-photo-3869649.jpeg?auto=compress&cs=tinysrgb&w=2000"
+            alt="Équipe de professionnelles africaines collaborant lors d'une réunion"
             aria-hidden="true"
             loading="eager"
             fetchPriority="high"
@@ -136,7 +136,7 @@ const ServicesPage = () => {
             aria-hidden="true"
           />
 
-          <div className="container relative z-20 mx-auto w-full max-w-7xl px-5 py-7 sm:px-6 md:py-8">
+          <div className="container relative z-20 mx-auto w-full max-w-7xl px-5 py-7 sm:px-6 md:py-8 lg:py-12 xl:py-16">
             <div className="max-w-3xl" data-aos="fade-up">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#F59C27] backdrop-blur">
                 <Sparkles size={16} />
