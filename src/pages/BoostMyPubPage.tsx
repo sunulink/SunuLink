@@ -81,10 +81,10 @@ const BoostMyPubPage = () => {
       <Header />
 
       <main className="pt-0 pb-0">
-        {/* HERO : IMAGE ENTIÈRE, ESPACEMENT MOBILE AJUSTÉ */}
+        {/* HERO BOOST MY PUB */}
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* Visuel : 40 px d'espace au-dessus sur mobile */}
-          <div className="relative w-full pt-10 sm:pt-0">
+          {/* MOBILE : image intégrale, descendue de 40 px */}
+          <div className="relative w-full pt-10 md:hidden">
             <img
               src="/img/hero-boost-my-pub.png"
               alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
@@ -98,19 +98,43 @@ const BoostMyPubPage = () => {
               }}
             />
 
-            {/* Badge conservé en haut à gauche */}
-            <div className="absolute left-3 top-2 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6 lg:left-8 lg:top-7">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs md:text-sm">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
+            {/* Badge en haut à gauche sur mobile */}
+            <div className="absolute left-3 top-2 z-10">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27]" />
                 Publicité digitale & acquisition
               </span>
             </div>
           </div>
 
-          {/* ACTIONS : ESPACEMENTS RÉDUITS SUR MOBILE */}
-          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 sm:py-7 md:py-8">
-            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-5">
-              {/* Boutons sous l'image */}
+          {/* TABLETTE / DESKTOP : image zoomée et cadrée sur les coffrets */}
+          <div className="relative hidden h-[410px] w-full overflow-hidden md:block lg:h-[450px] xl:h-[490px]">
+            <img
+              src="/img/hero-boost-my-pub.png"
+              alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
+              aria-hidden="true"
+              loading="eager"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full origin-top scale-[1.12] object-cover object-top"
+              onError={() => {
+                console.error(
+                  "Impossible de charger /img/hero-boost-my-pub.png"
+                );
+              }}
+            />
+
+            {/* Badge en haut à gauche */}
+            <div className="absolute left-5 top-5 z-10 lg:left-8 lg:top-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/95 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1178B7] shadow-sm lg:text-sm">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-[#F59C27]" />
+                Publicité digitale & acquisition
+              </span>
+            </div>
+          </div>
+
+          {/* ACTIONS : directement sous l'image, sans grand espace vide */}
+          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 md:py-4 lg:py-5">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 sm:gap-4">
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <Link
                   to="/boost-my-pub#packs"
@@ -129,17 +153,14 @@ const BoostMyPubPage = () => {
                 </Link>
               </div>
 
-              {/* Bénéfices blancs avec espacement réduit */}
-              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:gap-y-3 sm:text-sm md:text-base">
+              {/* Bénéfices en blanc */}
+              <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:text-sm md:text-base">
                 {[
                   "Stratégie publicitaire",
                   "Ciblage audience",
                   "Optimisation campagnes",
                 ].map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-2"
-                  >
+                  <span key={item} className="inline-flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 shrink-0 text-[#FFC36E] sm:h-5 sm:w-5" />
                     {item}
                   </span>
@@ -149,10 +170,7 @@ const BoostMyPubPage = () => {
           </div>
 
           {/* Fine bordure orange */}
-          <div
-            aria-hidden="true"
-            className="h-1 w-full bg-[#F59C27]"
-          />
+          <div aria-hidden="true" className="h-1 w-full bg-[#F59C27]" />
         </section>
 
         {/* SECTION DES TROIS PACKS */}
@@ -160,12 +178,10 @@ const BoostMyPubPage = () => {
           id="packs"
           className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 px-4 py-10 sm:px-6 sm:py-12 md:py-16"
         >
-          {/* Décorations discrètes */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-24 top-32 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
           />
-
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#F59C27]/10 blur-3xl"
@@ -183,8 +199,7 @@ const BoostMyPubPage = () => {
               </p>
 
               <h2 className="text-2xl font-black leading-tight tracking-tight text-[#1178B7] sm:text-3xl md:text-4xl">
-                Nos Packs{" "}
-                <span className="text-[#F59C27]">Boost My Pub</span>
+                Nos Packs <span className="text-[#F59C27]">Boost My Pub</span>
               </h2>
 
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">
@@ -225,15 +240,14 @@ const BoostMyPubPage = () => {
 
                     {/* En-tête : bleu, orange, bleu */}
                     <div
-                      className={`relative flex flex-col overflow-hidden p-5 sm:p-7 ${
+                      className={`relative flex flex-col overflow-hidden p-5 text-white sm:p-7 ${
                         pack.recommended ? "bg-[#F59C27]" : "bg-[#1178B7]"
-                      } text-white`}
+                      }`}
                     >
                       <div
                         aria-hidden="true"
                         className="absolute -right-10 -top-12 h-36 w-36 rounded-full border-[18px] border-white/10 transition-transform duration-500 group-hover:scale-110"
                       />
-
                       <div
                         aria-hidden="true"
                         className="absolute -bottom-16 -left-10 h-36 w-36 rounded-full bg-white/10 blur-2xl"
@@ -243,9 +257,7 @@ const BoostMyPubPage = () => {
                         <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-105 sm:h-16 sm:w-16">
                           <IconComponent
                             className={`h-7 w-7 sm:h-8 sm:w-8 ${
-                              pack.recommended
-                                ? "text-white"
-                                : "text-[#FFC36E]"
+                              pack.recommended ? "text-white" : "text-[#FFC36E]"
                             }`}
                           />
                         </div>
@@ -262,7 +274,6 @@ const BoostMyPubPage = () => {
                           <p className="break-words text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl">
                             {pack.price}
                           </p>
-
                           {pack.period && (
                             <span className="mt-1 text-sm font-semibold text-white/90 sm:text-base">
                               {pack.period}
@@ -296,7 +307,6 @@ const BoostMyPubPage = () => {
                               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#F59C27]/10">
                                 <Check className="h-3.5 w-3.5 text-[#F59C27]" />
                               </span>
-
                               <span className="text-sm font-medium leading-relaxed text-slate-700 sm:text-base">
                                 {feature}
                               </span>
@@ -339,7 +349,6 @@ const BoostMyPubPage = () => {
                 aria-hidden="true"
                 className="absolute -right-12 -top-16 -z-10 h-56 w-56 rounded-full border-[24px] border-white/10"
               />
-
               <div
                 aria-hidden="true"
                 className="absolute -bottom-24 -left-10 -z-10 h-56 w-56 rounded-full bg-[#F59C27]/20 blur-3xl"
@@ -348,11 +357,9 @@ const BoostMyPubPage = () => {
               <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-[#FFC36E] sm:text-sm">
                 Votre prochain défi
               </p>
-
               <h2 className="mx-auto mb-4 max-w-4xl text-2xl font-black leading-tight sm:text-3xl">
                 Transformez votre communication et votre croissance avec SunuLink.
               </h2>
-
               <p className="mx-auto mb-7 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base md:text-lg">
                 Choisissez la solution adaptée à vos objectifs et bénéficiez
                 d’un accompagnement stratégique personnalisé.
