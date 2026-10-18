@@ -450,8 +450,22 @@ const BlogPage = () => {
       <main className="pb-20">
         {/* HERO : diaporama en haut, badge et boutons sous les images */}
         <section className="w-full overflow-hidden bg-[#0B4D78]">
-          {/* Zone des images uniquement : aucun texte ni bouton superposé */}
-          <div className="relative h-[300px] w-full overflow-hidden bg-[#0B1220] sm:h-[420px] md:h-[500px] lg:h-[580px] xl:h-[640px]">
+          {/*
+            Zone des images : sur mobile, l'image entière reste visible avec
+            object-contain pour éviter de couper le contenu sur les côtés.
+            Un fond flouté issu de la diapositive active remplit l'espace vertical.
+          */}
+          <div className="relative h-[clamp(300px,82vw,420px)] w-full overflow-hidden bg-[#0B1220] sm:h-[420px] md:h-[500px] lg:h-[580px] xl:h-[640px]">
+            {/* Fond flouté mobile : remplit la zone sans rogner l'image principale */}
+            <img
+              key={`mobile-backdrop-${activeHeroImage}`}
+              src={heroImages[activeHeroImage]}
+              alt=""
+              aria-hidden="true"
+              loading="eager"
+              className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-xl sm:hidden"
+            />
+
             {heroImages.map((image, index) => (
               <img
                 key={image}
@@ -460,12 +474,12 @@ const BlogPage = () => {
                 aria-hidden="true"
                 loading="eager"
                 fetchPriority={index === 0 ? "high" : "auto"}
-                className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out motion-reduce:transition-none ${
+                className={`absolute inset-0 h-full w-full max-w-full object-contain object-center transition-opacity duration-1000 ease-in-out motion-reduce:transition-none sm:object-cover ${
                   activeHeroImage === index ? "opacity-100" : "opacity-0"
                 }`}
               />
             ))}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07111F]/30 via-transparent to-[#07111F]/10" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07111F]/25 via-transparent to-[#07111F]/10" />
           </div>
 
           {/* Zone sous les images : badge, indicateurs et boutons */}
