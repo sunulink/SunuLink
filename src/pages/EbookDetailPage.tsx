@@ -759,7 +759,7 @@ const EbookDetailPage = () => {
                     <img
                       src={ebook.cover}
                       alt={`Couverture recto-verso de l’e-book ${ebook.title}`}
-                      className="absolute inset-0 h-full min-h-[320px] w-full object-cover object-center lg:min-h-full"
+                      className="absolute inset-0 h-full min-h-[320px] w-full object-contain object-center lg:min-h-full"
                       onError={() => setCoverError(true)}
                       loading="eager"
                     />
