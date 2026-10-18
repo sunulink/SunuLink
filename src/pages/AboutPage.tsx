@@ -12,6 +12,7 @@ import {
   CheckCircle,
   Lightbulb,
   Quote,
+  ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -22,13 +23,13 @@ const AboutPage = () => {
       icon: Award,
       title: "Excellence",
       description: "Chaque détail compte. Nous visons la perfection dans tout ce que nous créons.",
-      color: "from-sunuOrange to-yellow-500",
+      color: "from-sunuBlue to-sunuCyan",
     },
     {
       icon: Lightbulb,
       title: "Créativité",
       description: "Des solutions originales et percutantes qui marquent les esprits.",
-      color: "from-purple-500 to-pink-500",
+      color: "from-sunuOrange to-yellow-500",
     },
     {
       icon: Sparkles,
@@ -40,13 +41,13 @@ const AboutPage = () => {
       icon: Shield,
       title: "Confiance",
       description: "Transparence, engagement et professionnalisme dans chaque interaction.",
-      color: "from-green-500 to-teal-500",
+      color: "from-sunuOrange to-yellow-500",
     },
     {
       icon: Eye,
       title: "Transparence",
       description: "Une communication claire et honnête à chaque étape du projet.",
-      color: "from-cyan-500 to-blue-500",
+      color: "from-sunuBlue to-sunuCyan",
     },
     {
       icon: TrendingUp,
@@ -474,91 +475,226 @@ const AboutPage = () => {
         </section>
 
         {/* Nos Valeurs */}
-        <section className="py-16 md:py-20 px-4 sm:px-6 bg-slate-50">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-3xl md:text-5xl font-black text-center mb-12 md:mb-16 text-[#1178B7]" data-aos="fade-up">
-              Nos <span className="text-[#F59C27]">Valeurs</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white px-4 py-16 sm:px-6 md:py-20">
+          <div
+            className="pointer-events-none absolute -right-24 top-12 h-64 w-64 rounded-full bg-[#1178B7]/5 blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="container relative z-10 mx-auto max-w-7xl">
+            <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/15 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-[#1178B7] shadow-sm">
+                <Sparkles className="h-4 w-4 text-[#F59C27]" />
+                Ce qui nous guide
+              </span>
+              <h2 className="text-3xl font-black tracking-tight text-[#1178B7] sm:text-4xl md:text-5xl" data-aos="fade-up">
+                Nos <span className="text-[#F59C27]">Valeurs</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                Les principes qui inspirent notre travail, orientent nos décisions et donnent du sens à chaque collaboration.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
               {values.map((value, index) => (
-                <div key={index} className={`grain-texture bg-gradient-to-br ${value.color} text-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`} data-aos="fade-up" data-aos-delay={index * 100}>
-                  <div className="bg-white/20 backdrop-blur-sm w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <value.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                <article
+                  key={value.title}
+                  className={`group relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:p-7 ${
+                    index % 2 === 0
+                      ? "hover:border-[#1178B7]/50 hover:shadow-[#1178B7]/10"
+                      : "hover:border-[#F59C27]/60 hover:shadow-[#F59C27]/10"
+                  }`}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 70}
+                >
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1.5 ${
+                      index % 2 === 0 ? "bg-[#1178B7]" : "bg-[#F59C27]"
+                    }`}
+                    aria-hidden="true"
+                  />
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.color} text-white shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:rotate-2 sm:h-16 sm:w-16`}>
+                      <value.icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.9} />
+                    </div>
+                    <span className="text-sm font-black tracking-[0.18em] text-slate-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black mb-3">{value.title}</h3>
-                  <p className="opacity-90 text-base sm:text-lg leading-relaxed">{value.description}</p>
-                </div>
+                  <h3 className="mb-3 text-xl font-black text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27] sm:text-2xl">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                    {value.description}
+                  </p>
+                  <div className="mt-6 h-px w-full bg-slate-100" aria-hidden="true" />
+                  <div className="mt-4 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#1178B7]">
+                    <span className={`h-2 w-2 rounded-full ${index % 2 === 0 ? "bg-[#1178B7]" : "bg-[#F59C27]"}`} />
+                    L’esprit SunuLink
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* Notre Approche */}
-        <section className="py-16 md:py-20 px-4 sm:px-6 bg-white">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2 className="text-3xl md:text-5xl font-black mb-6 md:mb-8 text-[#1178B7]" data-aos="fade-up">
+        <section className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 md:py-20">
+          <div
+            className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-[#F59C27]/5 blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="container relative z-10 mx-auto max-w-7xl text-center">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#F59C27]/30 bg-[#F59C27]/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-[#1178B7]">
+              <Target className="h-4 w-4 text-[#F59C27]" />
+              De l’analyse aux résultats
+            </span>
+            <h2 className="mb-5 text-3xl font-black tracking-tight text-[#1178B7] sm:text-4xl md:text-5xl" data-aos="fade-up">
               Notre <span className="text-[#F59C27]">Approche</span>
             </h2>
-            <p className="text-base sm:text-xl text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto">Un processus clair et structuré pour garantir votre succès</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
+            <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-slate-600 sm:mb-14 sm:text-lg">
+              Un processus clair et structuré pour transformer vos objectifs en actions concrètes et progresser à chaque étape.
+            </p>
+
+            <div className="grid grid-cols-1 gap-5 text-left sm:grid-cols-2 xl:grid-cols-5 xl:gap-4">
               {approachSteps.map((step, index) => (
-                <div key={index} className="bg-slate-50 rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
-                  <div className="text-5xl sm:text-6xl font-black text-sunuOrange mb-3 opacity-30">{step.number}</div>
-                  <h3 className="text-xl sm:text-2xl font-black mb-2 text-gray-800">{step.title}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{step.description}</p>
-                </div>
+                <article
+                  key={step.number}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#F59C27]/70 hover:shadow-xl hover:shadow-[#1178B7]/10 sm:p-6"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 80}
+                >
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1.5 ${index % 2 === 0 ? "bg-[#1178B7]" : "bg-[#F59C27]"}`}
+                    aria-hidden="true"
+                  />
+                  <div className="mb-5 flex items-center justify-between gap-3 pt-1">
+                    <span
+                      className={`inline-flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-2xl text-3xl font-black leading-none text-white shadow-lg transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 sm:text-4xl ${
+                        index % 2 === 0
+                          ? "bg-gradient-to-br from-[#1178B7] to-[#075985] shadow-[#1178B7]/20"
+                          : "bg-gradient-to-br from-[#F59C27] to-[#D97706] shadow-[#F59C27]/20"
+                      }`}
+                    >
+                      {step.number}
+                    </span>
+                    <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-400">
+                      Étape {index + 1}/5
+                    </span>
+                  </div>
+                  <h3 className="mb-3 text-xl font-black text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27] sm:text-2xl">
+                    {step.title}
+                  </h3>
+                  <p className="flex-1 text-sm leading-7 text-slate-600 sm:text-base">
+                    {step.description}
+                  </p>
+                  <div className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 text-xs font-bold text-slate-500">
+                    <span className={`h-2 w-2 rounded-full ${index % 2 === 0 ? "bg-[#1178B7]" : "bg-[#F59C27]"}`} />
+                    Un accompagnement progressif
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* Pourquoi nous choisir */}
-        <section className="py-16 md:py-20 px-4 sm:px-6 bg-white">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h2 className="text-3xl md:text-5xl font-black mb-12 md:mb-16 text-[#1178B7]" data-aos="fade-up">
+        <section className="relative overflow-hidden bg-slate-50 px-4 py-16 sm:px-6 md:py-20">
+          <div className="container relative z-10 mx-auto max-w-7xl text-center">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#1178B7]/15 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-[#1178B7] shadow-sm">
+              <CheckCircle className="h-4 w-4 text-[#F59C27]" />
+              La différence SunuLink
+            </span>
+            <h2 className="mb-5 text-3xl font-black tracking-tight text-[#1178B7] sm:text-4xl md:text-5xl" data-aos="fade-up">
               Pourquoi <span className="text-[#F59C27]">nous choisir ?</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
+            <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-slate-600 sm:mb-14 sm:text-lg">
+              Un partenaire engagé, une méthode lisible et une exigence constante pour faire avancer vos projets.
+            </p>
+
+            <div className="grid grid-cols-1 gap-6 text-left md:grid-cols-3 md:gap-7">
               {whyChooseUs.map((reason, index) => (
-                <div key={index} className="bg-slate-50 rounded-3xl p-6 sm:p-10 shadow-md border border-slate-200 hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay={index * 100}>
-                  <div className="bg-gradient-to-br from-sunuOrange to-yellow-500 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-6">
-                    <reason.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                <article
+                  key={reason.title}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-[#F59C27]/70 hover:shadow-xl hover:shadow-[#1178B7]/10 sm:p-8 lg:p-9"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1.5 ${index === 1 ? "bg-[#F59C27]" : "bg-[#1178B7]"}`}
+                    aria-hidden="true"
+                  />
+                  <div className="mb-6 flex items-center justify-between gap-4 pt-1">
+                    <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg transition-all duration-300 group-hover:rotate-3 group-hover:scale-105 ${index === 1 ? "bg-gradient-to-br from-[#F59C27] to-[#D97706] shadow-[#F59C27]/20" : "bg-gradient-to-br from-[#1178B7] to-[#075985] shadow-[#1178B7]/20"}`}>
+                      <reason.icon className="h-8 w-8" strokeWidth={1.9} />
+                    </div>
+                    <span className="text-3xl font-black text-slate-100 transition-colors duration-300 group-hover:text-[#F59C27]/30">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black mb-3 text-gray-800">{reason.title}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{reason.description}</p>
-                </div>
+                  <h3 className="mb-4 text-xl font-black leading-snug text-[#1178B7] transition-colors duration-300 group-hover:text-[#F59C27] sm:text-2xl">
+                    {reason.title}
+                  </h3>
+                  <p className="flex-1 text-sm leading-7 text-slate-600 sm:text-base">
+                    {reason.description}
+                  </p>
+                  <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4 text-xs font-extrabold uppercase tracking-wider text-[#1178B7]">
+                    <CheckCircle className="h-4 w-4 text-[#F59C27]" />
+                    Un engagement concret
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* CTA Final */}
-        <section className="py-12 md:py-16 px-4 sm:px-6">
+        <section className="px-4 py-14 sm:px-6 md:py-20">
           <div className="container mx-auto max-w-7xl">
-            <div className="grain-texture bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white rounded-3xl p-8 sm:p-12 text-center shadow-2xl" data-aos="fade-up">
-              <h2 className="text-2xl sm:text-4xl font-black mb-4 sm:mb-6">
-                Prêt à transformer votre communication ?
+            <div
+              className="grain-texture relative isolate overflow-hidden rounded-[2rem] border border-[#1178B7]/20 bg-gradient-to-br from-[#1178B7] via-[#0E679B] to-[#084B73] px-6 py-10 text-center text-white shadow-2xl shadow-[#1178B7]/20 sm:px-10 sm:py-14 md:px-14 md:py-16"
+              data-aos="fade-up"
+            >
+              <div
+                className="pointer-events-none absolute -right-16 -top-20 -z-10 h-64 w-64 rounded-full border-[28px] border-white/10 sm:h-80 sm:w-80"
+                aria-hidden="true"
+              />
+              <div
+                className="pointer-events-none absolute -bottom-20 -left-12 -z-10 h-64 w-64 rounded-full bg-[#F59C27]/15 blur-3xl"
+                aria-hidden="true"
+              />
+              <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.17em] text-white backdrop-blur-sm">
+                <Sparkles className="h-4 w-4 text-[#F59C27]" />
+                Passons à l’action
+              </div>
+              <h2 className="mx-auto mb-5 max-w-4xl text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                Prêt à transformer votre <span className="text-[#F59C27]">communication</span> ?
               </h2>
-              <p className="text-base sm:text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+              <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg md:mb-10 md:text-xl">
                 Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
                 <Link
                   to="/devis"
-                  className="inline-block bg-white text-sunuBlue px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-sunuOrange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-7 py-3.5 text-base font-extrabold text-white shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-9 sm:py-4 sm:text-lg"
                 >
                   Demander un devis
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/services"
-                  className="inline-block bg-transparent border-2 border-white text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-sunuBlue transition-all duration-300"
+                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-white/80 bg-white/5 px-7 py-3.5 text-base font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-9 sm:py-4 sm:text-lg"
                 >
                   Découvrir nos services
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
+              <p className="mt-7 text-xs font-medium text-white/75 sm:text-sm">
+                Stratégie · Créativité · Technologie · Résultats
+              </p>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
