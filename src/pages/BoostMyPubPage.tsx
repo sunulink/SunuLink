@@ -95,11 +95,11 @@ const BoostMyPubPage = () => {
             backgroundImage:
               "linear-gradient(180deg, rgba(5, 48, 83, 0.08) 0%, rgba(5, 48, 83, 0.12) 48%, rgba(5, 48, 83, 0.88) 100%), url('/img/hero-boost-my-pub.png')",
             backgroundSize: "cover",
-            backgroundPosition: "center center",
+            backgroundPosition: "center 42%",
           }}
         >
           {/* L’image est désormais le fond de toute la zone Hero */}
-          <div className="relative min-h-[300px] sm:min-h-[360px] md:min-h-[390px] lg:min-h-[430px]">
+          <div className="relative min-h-[390px] sm:min-h-[470px] md:min-h-[540px] lg:min-h-[620px] xl:min-h-[680px]">
             {/* Badge en haut à gauche */}
             <div className="absolute left-3 top-3 z-10 sm:left-5 sm:top-5 lg:left-8 lg:top-6">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs lg:text-sm">
