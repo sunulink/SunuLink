@@ -647,38 +647,44 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* CTA Final : dimensions proches de la version initiale */}
-        <section className="px-4 py-12 sm:px-6 md:py-16">
-          <div className="container mx-auto max-w-7xl">
+        
+        {/* CTA Final — dimensions adaptées au contenu */}
+        <section className="px-4 py-8 sm:px-6 sm:py-10 md:py-12">
+          <div className="container mx-auto max-w-5xl">
             <div
-              className="grain-texture relative isolate overflow-hidden rounded-3xl border border-[#1178B7]/20 bg-gradient-to-r from-[#1178B7] via-[#0E679B] to-[#1178B7] p-8 text-center text-white shadow-xl sm:p-12"
+              className="grain-texture relative isolate overflow-hidden rounded-3xl border border-[#1178B7]/20 bg-gradient-to-r from-[#1178B7] via-[#0E679B] to-[#1178B7] px-5 py-7 text-center text-white shadow-xl sm:px-8 sm:py-9 md:px-10 md:py-10"
               data-aos="fade-up"
             >
+              {/* Décoration d'arrière-plan */}
               <div
-                className="pointer-events-none absolute -right-16 -top-20 -z-10 h-64 w-64 rounded-full border-[28px] border-white/10 sm:h-80 sm:w-80"
+                className="pointer-events-none absolute -right-12 -top-14 -z-10 h-40 w-40 rounded-full border-[18px] border-white/10 sm:h-56 sm:w-56"
                 aria-hidden="true"
               />
               <div
-                className="pointer-events-none absolute -bottom-20 -left-12 -z-10 h-64 w-64 rounded-full bg-[#F59C27]/15 blur-3xl"
+                className="pointer-events-none absolute -bottom-14 -left-10 -z-10 h-40 w-40 rounded-full bg-[#F59C27]/15 blur-3xl sm:h-56 sm:w-56"
                 aria-hidden="true"
               />
 
-              <h2 className="mb-4 text-2xl font-black text-white sm:mb-6 sm:text-4xl">
+              <h2 className="mb-3 text-2xl font-black leading-tight text-white sm:mb-4 sm:text-3xl md:text-4xl">
                 Prêt à transformer votre communication ?
               </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-base sm:text-xl leading-relaxed text-white/95">
-                Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
+
+              <p className="mx-auto mb-5 max-w-xl text-sm leading-relaxed text-white/95 sm:mb-6 sm:text-base md:text-lg">
+                Contactez-nous dès aujourd'hui pour discuter de vos besoins
+                et découvrir comment nous pouvons vous accompagner vers le succès.
               </p>
-              <div className="flex flex-col justify-center gap-4 sm:flex-row">
+
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                 <Link
                   to="/devis"
-                  className="inline-block rounded-full bg-[#F59C27] px-8 py-3.5 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] hover:shadow-xl sm:px-10 sm:py-4 sm:text-lg"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-[#F59C27] px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] hover:shadow-xl sm:w-auto sm:px-8 sm:py-3.5 sm:text-base"
                 >
                   Demander un devis
                 </Link>
+
                 <Link
                   to="/services"
-                  className="inline-block rounded-full border-2 border-white bg-transparent px-8 py-3.5 text-base font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] sm:px-10 sm:py-4 sm:text-lg"
+                  className="inline-flex w-full items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] sm:w-auto sm:px-8 sm:py-3.5 sm:text-base"
                 >
                   Découvrir nos services
                 </Link>
@@ -686,6 +692,7 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
