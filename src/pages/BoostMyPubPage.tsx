@@ -89,57 +89,28 @@ const BoostMyPubPage = () => {
 
       <main className="pt-0 pb-0">
         {/* HERO BOOST MY PUB */}
-        <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* MOBILE : image intégrale avec espace supérieur réduit */}
-          <div className="relative w-full pt-2 md:hidden">
-            <img
-              src="/img/hero-boost-my-pub.png"
-              alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
-              loading="eager"
-              fetchPriority="high"
-              className="block h-auto w-full object-contain object-center"
-              onError={() => {
-                console.error(
-                  "Impossible de charger /img/hero-boost-my-pub.png"
-                );
-              }}
-            />
-
-            {/* Badge en haut à gauche sur mobile */}
-            <div className="absolute left-3 top-2 z-10">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px]">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27]" />
-                Publicité digitale & acquisition
-              </span>
-            </div>
-          </div>
-
-          {/* TABLETTE / DESKTOP : image entière, sans zoom ni recadrage */}
-          <div className="relative hidden h-[380px] w-full overflow-hidden md:block lg:h-[430px] xl:h-[460px]">
-            <img
-              src="/img/hero-boost-my-pub.png"
-              alt="Les trois offres Boost My Pub : Teranga, Xeewal et Buur"
-              loading="eager"
-              fetchPriority="high"
-              className="absolute inset-0 h-full w-full object-contain object-center"
-              onError={() => {
-                console.error(
-                  "Impossible de charger /img/hero-boost-my-pub.png"
-                );
-              }}
-            />
-
+        <section
+          className="relative isolate w-full overflow-hidden bg-[#0B4D78] bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, rgba(5, 48, 83, 0.08) 0%, rgba(5, 48, 83, 0.12) 48%, rgba(5, 48, 83, 0.88) 100%), url('/img/hero-boost-my-pub.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+          }}
+        >
+          {/* L’image est désormais le fond de toute la zone Hero */}
+          <div className="relative min-h-[300px] sm:min-h-[360px] md:min-h-[390px] lg:min-h-[430px]">
             {/* Badge en haut à gauche */}
-            <div className="absolute left-5 top-4 z-10 lg:left-8 lg:top-5">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#1178B7]/20 bg-white/95 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1178B7] shadow-sm lg:text-sm">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-[#F59C27]" />
+            <div className="absolute left-3 top-3 z-10 sm:left-5 sm:top-5 lg:left-8 lg:top-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#1178B7]/20 bg-white/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#1178B7] shadow-sm min-[380px]:text-[10px] sm:gap-2 sm:px-4 sm:py-2 sm:text-xs lg:text-sm">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F59C27] sm:h-2 sm:w-2" />
                 Publicité digitale & acquisition
               </span>
             </div>
           </div>
 
-          {/* ACTIONS : directement sous l'image, sans grand espace vide */}
-          <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 md:py-4 lg:py-5">
+          {/* Actions intégrées au Hero, sur le même arrière-plan */}
+          <div className="relative border-t border-white/15 bg-[#0B4D78]/80 px-4 py-4 backdrop-blur-[2px] sm:px-6 md:py-5 lg:py-6">
             <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 sm:gap-4">
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <button
