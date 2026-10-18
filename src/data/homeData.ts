@@ -57,37 +57,37 @@ export const services: Service[] = [
   {
     id: 1,
     title: "Stratégie & Conseil",
-    image: "/img/strategie.jpg",
+    image: "/img/service-strategie-conseil.jpg",
     description: "Nous construisons avec vous une vision claire et durable de votre communication. De l'analyse à l'action, nous transformons vos ambitions en plans stratégiques mesurables."
   },
   {
     id: 2,
     title: "Création Visuelle & Contenus",
-    image: "/img/graphism.jpg",
+    image: "/img/service-creation-visuelle-contenus.jpg",
     description: "Nous donnons forme et émotion à vos idées. Chaque visuel, chaque mot et chaque concept sont pensés pour captiver, inspirer et engager."
   },
   {
     id: 3,
     title: "Branding & Positionnement",
-    image: "/img/strategie-marketing-d-entreprise.jpg",
+    image: "/img/service-branding-positionnement.jpg",
     description: "Nous révélons la force émotionnelle et stratégique de votre marque. De la conception à la mise en œuvre, nous façonnons une identité cohérente et différenciante."
   },
   {
     id: 4,
     title: "Digital, Réseaux & SEO",
-    image: "/img/seo.jpg",
+    image: "/img/service-digital-reseaux-seo.jpg",
     description: "Nous façonnons votre présence digitale avec méthode, créativité et performance. De la conception web à la gestion de vos réseaux, nous bâtissons votre empreinte numérique."
   },
   {
     id: 5,
     title: "Développement Commercial & Partenariats",
-    image: "/img/marketing_business_plan.jfif",
+    image: "/img/service-developpement-partenariats.jpg",
     description: "Nous transformons vos opportunités en résultats concrets. Nos experts développent des stratégies qui renforcent vos ventes et partenariats."
   },
   {
     id: 6,
     title: "Événementiel & Expérientiel",
-    image: "/img/evenmentiel.jpg",
+    image: "/img/service-evenementiel-experientiel.jpg",
     description: "Nous créons des événements qui racontent votre histoire et laissent une empreinte durable dans les esprits. De la conception à la mise en scène, chaque détail compte."
   }
 ];
