@@ -497,7 +497,7 @@ const BlogPage = () => {
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
                 <a
                   href="#categories"
-                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-sunuOrange bg-sunuOrange px-6 py-3 text-center text-sm font-extrabold text-slate-950 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-sunuBlue hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-sunuOrange bg-sunuOrange px-6 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-sunuBlue hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Explorer nos e-books
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
@@ -552,7 +552,7 @@ const BlogPage = () => {
 
                 <div className="relative min-h-[250px] overflow-hidden border-t border-white/10 lg:min-h-full lg:border-l lg:border-t-0">
                   <img
-                    src="https://images.unsplash.com/photo-1758519290802-2c761001c5da?auto=format&fit=crop&fm=jpg&q=85&w=1800"
+                    src="/img/projet_methode.jpg"
                     alt="Professionnel en réflexion sur un projet professionnel devant son ordinateur"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                     loading="lazy"
