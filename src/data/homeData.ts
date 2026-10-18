@@ -87,7 +87,7 @@ export const services: Service[] = [
   {
     id: 6,
     title: "Événementiel & Expérientiel",
-    image: "/img/service-evenementiel-experientiel.jpg",
+    image: "/img/service-evenementiel-experientiel2.jpg",
     description: "Nous créons des événements qui racontent votre histoire et laissent une empreinte durable dans les esprits. De la conception à la mise en scène, chaque détail compte."
   }
 ];
