@@ -725,11 +725,11 @@ const EbookDetailPage = () => {
         </section>
 
         {/* HERO E-BOOK */}
-        <section className="px-4 pb-12 sm:px-6 md:pb-16">
+        <section className="px-1.5 pb-10 sm:px-6 sm:pb-12 md:pb-16">
           <div className="container mx-auto max-w-7xl">
-            <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-slate-950 via-[#0B2440] to-sunuBlue shadow-[0_25px_80px_rgba(0,113,188,0.2)]">
+            <div className="overflow-hidden rounded-[1.25rem] bg-gradient-to-br from-slate-950 via-[#0B2440] to-sunuBlue shadow-[0_18px_55px_rgba(0,113,188,0.18)] sm:rounded-[2rem] sm:shadow-[0_25px_80px_rgba(0,113,188,0.2)]">
               <div className="grid min-h-[620px] lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="relative flex flex-col justify-center p-7 text-white sm:p-10 md:p-14 lg:p-16">
+                <div className="relative flex flex-col justify-center p-5 text-white sm:p-10 md:p-14 lg:p-16">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(0,156,222,0.22),transparent_35%),radial-gradient(circle_at_85%_75%,rgba(246,166,26,0.14),transparent_30%)]" />
                   <div className="relative z-10">
                     <div className="mb-5 flex flex-wrap gap-2">
@@ -754,13 +754,13 @@ const EbookDetailPage = () => {
                 </div>
 
                 {/* Couverture principale mise à jour avec le visuel de BlogPage */}
-                <div className="relative flex items-center justify-center border-t border-white/10 bg-gradient-to-br from-white/5 via-white/10 to-sunuCyan/10 p-8 sm:p-10 md:p-14 lg:border-l lg:border-t-0">
+                <div className="relative flex items-center justify-center border-t border-white/10 bg-gradient-to-br from-white/5 via-white/10 to-sunuCyan/10 p-4 sm:p-10 md:p-14 lg:border-l lg:border-t-0">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
-                  <div className="relative w-full max-w-[350px]">
+                  <div className="relative w-full max-w-[330px] sm:max-w-[350px]">
                     <div className="absolute -inset-4 rounded-[2rem] bg-sunuOrange/15 blur-3xl" />
-                    <div className="relative aspect-[3/4] rotate-2 overflow-hidden rounded-[1.5rem] border border-white/20 bg-white shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+                    <div className="relative aspect-[3/4] rotate-0 overflow-hidden rounded-xl border border-white/20 bg-white shadow-[0_20px_55px_rgba(0,0,0,0.3)] sm:rotate-2 sm:rounded-[1.5rem] sm:shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
                       {ebook.cover && !coverError ? (
-                        <img src={ebook.cover} alt={`Couverture de l’e-book ${ebook.title}`} className="h-full w-full object-cover" onError={() => setCoverError(true)} />
+                        <img src={ebook.cover} alt={`Couverture complète de l’e-book ${ebook.title}`} className="h-full w-full bg-white object-contain" onError={() => setCoverError(true)} />
                       ) : (
                         <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-br from-sunuBlue via-sunuCyan to-sunuOrange p-7 text-white">
                           <div><p className="text-xs font-black uppercase tracking-[0.2em] text-white/80">SUNULINK INSIGHTS</p><p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">ÉDITION 2026–2027</p></div>
@@ -829,17 +829,17 @@ const EbookDetailPage = () => {
         </section>
 
         {/* CTA FINAL */}
-        <section className="px-4 py-12 sm:px-6 md:py-20">
+        <section className="px-1.5 py-10 sm:px-6 sm:py-12 md:py-20">
           <div className="container mx-auto max-w-7xl">
-            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white shadow-2xl">
+            <div className="relative overflow-hidden rounded-[1.25rem] bg-gradient-to-r from-sunuBlue via-sunuCyan to-sunuBlue text-white shadow-xl sm:rounded-[2rem] sm:shadow-2xl">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_85%_75%,rgba(246,166,26,0.18),transparent_30%)]" />
-              <div className="relative z-10 px-6 py-12 text-center sm:px-10 md:py-16">
+              <div className="relative z-10 px-4 py-10 text-center sm:px-10 sm:py-12 md:py-16">
                 <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-sunuOrange">SUNULINK CONSULTING</p>
-                <h2 className="mx-auto max-w-4xl text-3xl font-black leading-tight sm:text-4xl md:text-5xl">BESOIN D’ALLER PLUS LOIN ? PARLONS DE VOTRE PROJET.</h2>
+                <h2 className="mx-auto max-w-4xl text-2xl font-black leading-tight sm:text-4xl md:text-5xl">BESOIN D’ALLER PLUS LOIN ? PARLONS DE VOTRE PROJET.</h2>
                 <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-blue-50 sm:text-lg">Nos ressources vous donnent les clés. Notre équipe vous accompagne pour les transformer en résultats.</p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-                  <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 py-3.5 font-black text-white transition-all hover:bg-white hover:text-sunuBlue">Parler à un expert <ArrowRight className="h-4 w-4" /></Link>
-                  <Link to="/ressources" className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/70 bg-white/5 px-7 py-3.5 font-black text-white transition-all hover:bg-white hover:text-sunuBlue"><BookOpen className="h-4 w-4" /> Voir d’autres ressources</Link>
+                  <Link to="/contact" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-sunuOrange px-5 py-3.5 font-black text-white transition-all hover:bg-white hover:text-sunuBlue sm:w-auto sm:px-7">Parler à un expert <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="/ressources" className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-white/70 bg-white/5 px-5 py-3.5 font-black text-white transition-all hover:bg-white hover:text-sunuBlue sm:w-auto sm:px-7"><BookOpen className="h-4 w-4" /> Voir d’autres ressources</Link>
                 </div>
               </div>
             </div>
