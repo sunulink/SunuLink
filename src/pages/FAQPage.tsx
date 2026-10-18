@@ -7,9 +7,7 @@ import {
   HelpCircle,
   ArrowRight,
 } from "lucide-react";
-
-const FAQ_HERO_IMAGE =
-  "https://images.unsplash.com/photo-1651848894662-5245755aea8e?auto=format&fit=crop&w=1800&q=85";
+import { Link } from "react-router-dom";
 
 const FAQPage = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -177,30 +175,22 @@ const FAQPage = () => {
     <div className="min-h-screen bg-white text-slate-800">
       <Header />
 
-      {/* Le héros commence directement sous l'en-tête. */}
       <main className="pt-20 pb-16 md:pb-20">
-        {/* HERO FAQ */}
-        <section className="relative isolate flex min-h-[390px] items-center overflow-hidden bg-white sm:min-h-[420px] md:min-h-[460px]">
-          <img
-            src={FAQ_HERO_IMAGE}
-            alt=""
-            aria-hidden="true"
-            loading="eager"
-            fetchPriority="high"
-            className="absolute inset-0 h-full w-full object-cover object-[65%_center] md:left-auto md:w-[58%]"
-            onError={(event) => {
-              event.currentTarget.style.display = "none";
-            }}
-          />
-
-          {/* Dégradé clair pour assurer la lisibilité */}
+        {/* HERO FAQ : fond bleu SunuLink, sans image */}
+        <section className="relative isolate flex min-h-[390px] items-center overflow-hidden bg-[#1178B7] sm:min-h-[420px] md:min-h-[460px]">
+          {/* Décoration discrète aux couleurs de SunuLink */}
           <div
-            className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/70 md:bg-gradient-to-r md:from-white md:via-white/95 md:to-white/10"
+            className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full border-[36px] border-white/5 sm:h-96 sm:w-96"
             aria-hidden="true"
           />
 
           <div
-            className="absolute inset-y-0 right-0 hidden w-[18%] bg-gradient-to-l from-[#F59C27]/15 to-transparent md:block"
+            className="pointer-events-none absolute -bottom-24 right-[15%] h-64 w-64 rounded-full bg-[#F59C27]/10 blur-3xl"
+            aria-hidden="true"
+          />
+
+          <div
+            className="pointer-events-none absolute right-0 top-0 h-1.5 w-28 bg-[#F59C27] sm:w-40"
             aria-hidden="true"
           />
 
@@ -210,36 +200,51 @@ const FAQPage = () => {
               data-aos="fade-up"
             >
               <div className="mb-5 flex justify-center md:justify-start">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1178B7] text-[#F59C27] shadow-md">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white text-[#1178B7] shadow-lg">
                   <HelpCircle className="h-8 w-8" />
                 </span>
               </div>
 
-              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#F59C27] sm:text-base">
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#FFC36E] sm:text-base">
                 Nous sommes là pour vous aider
               </p>
 
-              <h1 className="mb-5 text-4xl font-black leading-tight text-[#1178B7] sm:text-5xl md:text-6xl">
+              <h1 className="mb-5 text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 Foire Aux{" "}
-                <span className="text-[#F59C27]">Questions</span>
+                <span className="text-[#FFC36E]">Questions</span>
               </h1>
 
-              <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg md:mx-0 md:text-xl">
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg md:mx-0 md:text-xl">
                 Vous avez des questions ? Nous avons les réponses.
                 Découvrez tout ce que vous devez savoir sur nos services,
                 notre processus et nos tarifs.
               </p>
 
-              <a
-                href="#faq-questions"
-                className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-[#1178B7]/15 bg-white/90 px-5 py-3 font-bold text-[#1178B7] shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:bg-[#1178B7] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#F59C27]/40 sm:px-6"
+              <Link
+                to="#faq-questions"
+                className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 font-extrabold text-[#123C56] shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-6"
               >
                 Parcourir les questions fréquentes
                 <ArrowRight
                   size={18}
-                  className="text-[#F59C27] transition-transform duration-300 group-hover:translate-x-1"
+                  className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
+
+              <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-white/90 md:justify-start">
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  Nos services
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  Notre accompagnement
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#FFC36E]" />
+                  Nos tarifs
+                </span>
+              </div>
             </div>
           </div>
 
@@ -265,7 +270,7 @@ const FAQPage = () => {
               </h2>
             </div>
 
-            {/* Important : aucune animation AOS sur les cartes FAQ. */}
+            {/* Aucun effet de défilement sur les cartes FAQ */}
             <div className="space-y-4">
               {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
@@ -312,7 +317,6 @@ const FAQPage = () => {
                       </span>
                     </button>
 
-                    {/* La réponse s'affiche sans animation de défilement. */}
                     <div
                       id={answerId}
                       hidden={!isOpen}
@@ -350,13 +354,13 @@ const FAQPage = () => {
                 spécifiques.
               </p>
 
-              <a
-                href="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#F59C27] px-8 py-4 text-base font-extrabold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-10 sm:text-lg"
+              <Link
+                to="/contact"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-8 py-4 text-base font-extrabold text-[#123C56] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-10 sm:text-lg"
               >
                 Contactez-nous
                 <ArrowRight size={19} />
-              </a>
+              </Link>
             </div>
           </div>
         </section>
