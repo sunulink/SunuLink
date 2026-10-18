@@ -647,11 +647,11 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* CTA Final */}
-        <section className="px-4 py-14 sm:px-6 md:py-20">
+        {/* CTA Final : dimensions proches de la version initiale */}
+        <section className="px-4 py-12 sm:px-6 md:py-16">
           <div className="container mx-auto max-w-7xl">
             <div
-              className="grain-texture relative isolate overflow-hidden rounded-[2rem] border border-[#1178B7]/20 bg-gradient-to-br from-[#1178B7] via-[#0E679B] to-[#084B73] px-6 py-10 text-center text-white shadow-2xl shadow-[#1178B7]/20 sm:px-10 sm:py-14 md:px-14 md:py-16"
+              className="grain-texture relative isolate overflow-hidden rounded-3xl border border-[#1178B7]/20 bg-gradient-to-r from-[#1178B7] via-[#0E679B] to-[#1178B7] p-8 text-center text-white shadow-xl sm:p-12"
               data-aos="fade-up"
             >
               <div
@@ -662,39 +662,30 @@ const AboutPage = () => {
                 className="pointer-events-none absolute -bottom-20 -left-12 -z-10 h-64 w-64 rounded-full bg-[#F59C27]/15 blur-3xl"
                 aria-hidden="true"
               />
-              <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.17em] text-white backdrop-blur-sm">
-                <Sparkles className="h-4 w-4 text-[#F59C27]" />
-                Passons à l’action
-              </div>
-              <h2 className="mx-auto mb-5 max-w-4xl text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
-                Prêt à transformer votre <span className="text-[#F59C27]">communication</span> ?
+
+              <h2 className="mb-4 text-2xl font-black text-white sm:mb-6 sm:text-4xl">
+                Prêt à transformer votre communication ?
               </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg md:mb-10 md:text-xl">
+              <p className="mx-auto mb-8 max-w-2xl text-base sm:text-xl leading-relaxed text-white/95">
                 Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner vers le succès.
               </p>
-              <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+              <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
                   to="/devis"
-                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-7 py-3.5 text-base font-extrabold text-white shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-9 sm:py-4 sm:text-lg"
+                  className="inline-block rounded-full bg-[#F59C27] px-8 py-3.5 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] hover:shadow-xl sm:px-10 sm:py-4 sm:text-lg"
                 >
                   Demander un devis
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/services"
-                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-white/80 bg-white/5 px-7 py-3.5 text-base font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-[#1178B7] focus:outline-none focus:ring-4 focus:ring-white/40 sm:px-9 sm:py-4 sm:text-lg"
+                  className="inline-block rounded-full border-2 border-white bg-transparent px-8 py-3.5 text-base font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#1178B7] sm:px-10 sm:py-4 sm:text-lg"
                 >
                   Découvrir nos services
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
-              <p className="mt-7 text-xs font-medium text-white/75 sm:text-sm">
-                Stratégie · Créativité · Technologie · Résultats
-              </p>
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />
