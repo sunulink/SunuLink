@@ -157,14 +157,21 @@ const IAlinkbusiness = () => {
     },
   ];
 
+  // Défilement fluide vers la section des packs
+  const scrollToPacks = () => {
+    document.getElementById("packs")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-0">
-        {/* HERO LINK IA BUSINESS : IMAGE ENTIÈRE, BOUTONS SOUS LE VISUEL */}
+        {/* HERO LINK IA BUSINESS */}
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
-          {/* Image de présentation : 40 px d'espace supérieur sur mobile */}
           <div className="relative w-full pt-10 sm:pt-0">
             <img
               src="/img/hero-link-ia-business.png"
@@ -188,17 +195,19 @@ const IAlinkbusiness = () => {
             </div>
           </div>
 
-          {/* Actions sous l'image : elles ne masquent pas les visuels */}
+          {/* Actions sous l'image */}
           <div className="border-t border-white/10 bg-[#0B4D78] px-4 py-4 sm:px-6 sm:py-7 md:py-8">
             <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-5">
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
-                <Link
-                  to="/ialinkbusiness#packs"
+                {/* BOUTON CORRIGÉ */}
+                <button
+                  type="button"
+                  onClick={scrollToPacks}
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#F59C27] bg-[#F59C27] px-5 py-3 text-center text-sm font-extrabold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1178B7] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:w-auto sm:min-w-52 sm:px-7 sm:text-base motion-reduce:transform-none"
                 >
                   Découvrir nos packs
                   <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                </button>
 
                 <Link
                   to="/contact"
@@ -209,7 +218,7 @@ const IAlinkbusiness = () => {
                 </Link>
               </div>
 
-              {/* Bénéfices en blanc */}
+              {/* Bénéfices */}
               <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-bold text-white min-[380px]:text-sm sm:gap-x-6 sm:gap-y-3 sm:text-sm md:text-base">
                 {[
                   "Processus optimisés",
@@ -224,7 +233,6 @@ const IAlinkbusiness = () => {
             </div>
           </div>
 
-          {/* Bordure décorative aux couleurs SunuLink */}
           <div aria-hidden="true" className="h-1 w-full bg-[#F59C27]" />
         </section>
 
@@ -258,12 +266,14 @@ const IAlinkbusiness = () => {
                       Réduire les tâches répétitives
                     </p>
                   </div>
+
                   <div className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#F59C27] md:h-6 md:w-6" />
                     <p className="text-base md:text-lg">
                       Optimiser vos processus internes
                     </p>
                   </div>
+
                   <div className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#F59C27] md:h-6 md:w-6" />
                     <p className="text-base md:text-lg">
