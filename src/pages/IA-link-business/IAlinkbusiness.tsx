@@ -174,14 +174,14 @@ const IAlinkbusiness = () => {
         <section className="relative w-full overflow-hidden bg-[#0B4D78]">
           <div className="relative w-full pt-10 sm:pt-0">
             <img
-              src="/img/hero-link-ia-business-officiel.png"
+              src="/img/hero-link-ia-business-officiel.PNG"
               alt="Présentation des offres Link IA Business"
               loading="eager"
               fetchPriority="high"
               className="block h-auto w-full object-contain object-center"
               onError={() => {
                 console.error(
-                  "Impossible de charger /img/hero-link-ia-business-officiel.png"
+                  "Impossible de charger /img/hero-link-ia-business-officiel.PNG"
                 );
               }}
             />
