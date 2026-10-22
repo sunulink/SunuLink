@@ -152,7 +152,7 @@ const LogoIdentitePage = () => {
                   <img src="/portfolio/FreshUP-Logo-couleur.png" alt="Logo FreshUP" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/portfolio/Welli_logo_vert.png" alt="Logo Welli" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/Babelle-Logo-violet.png" alt="Logo Babelle" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
                   <img src="/portfolio/Zami_logo.png" alt="Logo Zami" className="max-h-full max-w-full object-contain" loading="lazy" />
