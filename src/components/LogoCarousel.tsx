@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 const partnerLogos = [
   { name: "Agence Babelle", logo: "/portfolio/Babelle-Logo-violet.png" },
   { name: "Vide Boubou", logo: "/partners/logo-vide-boubou.png" },
-  { name: "BDA SERVICE", logo: "/collaborateurs/logo-bda-service.png" },
+  { name: "BDA SERVICE", logo: "/portfolio/BDA-Logo-couleur.png" },
   { name: "FREHUP", logo: "/partners/LOGO FREHUP.png" },
   { name: "MEER JUS", logo: "/partners/LOGO MEER JUS.png" },
   { name: "NATAA", logo: "/partners/LOGO NATAA.png" },
