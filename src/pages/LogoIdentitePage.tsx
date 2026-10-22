@@ -152,7 +152,7 @@ const LogoIdentitePage = () => {
                   <img src="/portfolio/FreshUP-Logo-couleur.png" alt="Logo FreshUP" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/portfolio/Babelle-Logo-violet.png" alt="Logo Babelle" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/Welli_logo_vert.png" alt="Logo Welli" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
                   <img src="/portfolio/Zami_logo.png" alt="Logo Zami" className="max-h-full max-w-full object-contain" loading="lazy" />
@@ -198,8 +198,13 @@ const LogoIdentitePage = () => {
 
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
               {mainShowcase.map((item, index) => (
-                <article key={item.id} className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#1178B7]/30 hover:shadow-xl" data-aos="fade-up" data-aos-delay={index * 80}>
-                  <div className="relative aspect-[4/4.5] overflow-hidden bg-slate-100">
+                <article
+                  key={item.id}
+                  className="group rounded-3xl bg-gradient-to-br from-[#1178B7] via-[#1178B7]/70 to-[#F59C27] p-[2px] shadow-[0_10px_30px_rgba(17,120,183,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(245,156,39,0.22)]"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 80}
+                >
+                  <div className="relative aspect-[4/4.5] overflow-hidden rounded-[1.35rem] border border-white/80 bg-slate-100">
                     <img src={item.img} alt={item.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#062B43]/90 via-[#062B43]/10 to-transparent" aria-hidden="true" />
                     <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
@@ -223,8 +228,18 @@ const LogoIdentitePage = () => {
           </div>
           <div className="animate-marquee flex w-max items-stretch gap-5 whitespace-nowrap px-3 sm:gap-7">
             {[...otherRealizations, ...otherRealizations].map((img, index) => (
-              <div key={`${img}-${index}`} className="h-[360px] w-[min(76vw,290px)] flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg sm:h-[440px] sm:w-[330px] sm:rounded-3xl">
-                <img src={img} className="h-full w-full object-cover" alt={`Réalisation graphique ${index % otherRealizations.length + 1}`} loading="lazy" />
+              <div
+                key={`${img}-${index}`}
+                className="group h-[360px] w-[min(76vw,290px)] flex-shrink-0 rounded-[1.6rem] bg-gradient-to-br from-[#1178B7] via-[#1178B7]/70 to-[#F59C27] p-[3px] shadow-[0_12px_30px_rgba(17,120,183,0.14)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(245,156,39,0.22)] sm:h-[440px] sm:w-[330px]"
+              >
+                <div className="h-full w-full overflow-hidden rounded-[1.4rem] border border-white/80 bg-white">
+                  <img
+                    src={img}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    alt={`Réalisation graphique ${index % otherRealizations.length + 1}`}
+                    loading="lazy"
+                  />
+                </div>
               </div>
             ))}
           </div>
