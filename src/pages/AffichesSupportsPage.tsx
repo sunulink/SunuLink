@@ -86,14 +86,6 @@ const projects: PrintProject[] = [
     ],
   },
   {
-    id: "nguela",
-    name: "Nguela",
-    category: "Présentation produit",
-    description:
-      "Un support de présentation destiné à mettre le produit et son univers en évidence sur le point de vente.",
-    images: ["/portfolio/Nguela-ad6_presentoir.jpg"],
-  },
-  {
     id: "nguelna",
     name: "Nguelna",
     category: "Produits & ingrédients",
@@ -325,25 +317,25 @@ const AffichesSupportsPage = () => {
               </div>
             </div>
 
-            {/* Aperçu asymétrique inspiré de la référence envoyée */}
-            <div className="relative" data-aos="fade-up" data-aos-delay="120">
+            {/* Aperçu des projets : grille responsive avec des images plus larges */}
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none" data-aos="fade-up" data-aos-delay="120">
               <div className="absolute -inset-3 rounded-[2rem] border border-white/20" aria-hidden="true" />
-              <div className="relative grid grid-cols-4 grid-rows-3 gap-2 rounded-[1.75rem] border border-white/15 bg-white/10 p-2.5 shadow-2xl backdrop-blur-sm sm:gap-3 sm:p-3">
-                {bentoItems.map((item, index) => (
+              <div className="relative grid grid-cols-2 gap-2.5 rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur-sm sm:grid-cols-3 sm:gap-3 sm:p-4 lg:grid-cols-2">
+                {bentoItems.map((item) => (
                   <button
                     type="button"
-                    key={item.image}
+                    key={`hero-${item.image}`}
                     onClick={() => setSelectedImg(item.image)}
-                    className={`group relative min-h-[92px] overflow-hidden rounded-xl text-left sm:min-h-[112px] sm:rounded-2xl ${item.className}`}
+                    className="group relative aspect-[4/3] min-w-0 overflow-hidden rounded-xl border border-white/15 bg-[#082F4A]/30 text-left shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F59C27] hover:shadow-xl sm:rounded-2xl"
                     aria-label={`Agrandir : ${item.title}`}
                   >
                     <img src={item.image} alt={item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#062B43]/85 via-[#062B43]/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
-                      <p className="text-xs font-extrabold text-white sm:text-sm">{item.title}</p>
-                      <p className="mt-1 hidden text-[11px] text-white/80 sm:block">{item.subtitle}</p>
+                    <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3">
+                      <p className="text-xs font-extrabold leading-tight text-white sm:text-sm">{item.title}</p>
+                      <p className="mt-1 hidden text-[11px] leading-tight text-white/85 sm:block">{item.subtitle}</p>
                     </div>
-                    <span className="absolute right-2 top-2 rounded-full border border-white/30 bg-black/20 p-1.5 text-white opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="absolute right-2 top-2 rounded-full border border-white/30 bg-black/30 p-1.5 text-white opacity-0 transition-opacity group-hover:opacity-100">
                       <Maximize2 size={14} />
                     </span>
                   </button>
