@@ -83,16 +83,16 @@ const LogoIdentitePage = () => {
   // Les nouveaux fichiers fournis dans /img remplacent les anciennes versions des mêmes marques.
   // Les autres logos déjà présents dans /portfolio sont conservés.
   const logoGrid = [
-    { name: "Babelle", logo: "/img/Babelle-Logo-violet.png" },
-    { name: "BDA Service", logo: "/img/BDA-Logo-couleur.png" },
-    { name: "FreshUP", logo: "/img/FreshUP-Logo-couleur.png" },
-    { name: "Linguere Oil", logo: "/img/Linguere_couleur.png" },
-    { name: "Identité couleur", logo: "/img/logo_couleur.png" },
-    { name: "Dykha", logo: "/img/logo_couleur_dykha.png" },
-    { name: "Nataa", logo: "/img/logo_or_original.png" },
-    { name: "Soso", logo: "/img/Soso_logo.png" },
-    { name: "Welli", logo: "/img/Welli_logo_vert.png" },
-    { name: "Zami", logo: "/img/Zami_logo.png" },
+    { name: "Babelle", logo: "/portfolio/Babelle-Logo-violet.png" },
+    { name: "BDA Service", logo: "/portfolio/BDA-Logo-couleur.png" },
+    { name: "FreshUP", logo: "/portfolio/FreshUP-Logo-couleur.png" },
+    { name: "Linguere Oil", logo: "/portfolio/Linguere_couleur.png" },
+    { name: "Identité couleur", logo: "/portfolio/logo_couleur.png" },
+    { name: "Dykha", logo: "/portfolio/logo_couleur_dykha.png" },
+    { name: "Identité originale", logo: "/portfolio/logo_or_original.png" },
+    { name: "Soso", logo: "/portfolio/Soso_logo.png" },
+    { name: "Welli", logo: "/portfolio/Welli_logo_vert.png" },
+    { name: "Zami", logo: "/portfolio/Zami_logo.png" },
     { name: "SunuLink", logo: "/portfolio/logo-sunulink.png" },
     { name: "Sarataa", logo: "/portfolio/logo-sarataa.png" },
     { name: "Telemarck", logo: "/portfolio/logo-telemarck.png" },
@@ -146,16 +146,16 @@ const LogoIdentitePage = () => {
               <div className="absolute -inset-3 rounded-[2rem] border border-white/20" aria-hidden="true" />
               <div className="relative grid grid-cols-2 gap-3 rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur-sm sm:gap-4 sm:p-4">
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/img/BDA-Logo-couleur.png" alt="Logo BDA Service" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/BDA-Logo-couleur.png" alt="Logo BDA Service" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/img/FreshUP-Logo-couleur.png" alt="Logo FreshUP" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/FreshUP-Logo-couleur.png" alt="Logo FreshUP" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/img/Welli_logo_vert.png" alt="Logo Welli" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/Welli_logo_vert.png" alt="Logo Welli" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
-                  <img src="/img/Zami_logo.png" alt="Logo Zami" className="max-h-full max-w-full object-contain" loading="lazy" />
+                  <img src="/portfolio/Zami_logo.png" alt="Logo Zami" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
               </div>
               <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-[#0A3B5A] px-4 py-2 text-xs font-semibold text-white shadow-xl sm:text-sm">
