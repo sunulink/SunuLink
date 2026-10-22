@@ -8,7 +8,6 @@ const partnerLogos = [
   { name: "FREHUP", logo: "/partners/LOGO FREHUP.png" },
   { name: "MEER JUS", logo: "/partners/LOGO MEER JUS.png" },
   { name: "NATAA", logo: "/partners/LOGO NATAA.png" },
-  { name: "SUNULINK", logo: "/partners/LOGO SUNULINK.png" },
   { name: "FADDECO", logo: "/partners/LOGO-FADDECO.png" },
   { name: "INW Tech", logo: "/partners/LOGO-INW-Tech-1.png" },
   { name: "KING MOUSSA", logo: "/partners/LOGO-KING-MOUSSA.png" },
