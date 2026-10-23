@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -136,37 +137,37 @@ const bentoItems = [
     image: "/portfolio/Face-avant_Banane.jpg",
     title: "Packaging produit",
     subtitle: "Banane · Moringa · Sorgho",
-    className: "col-span-2 row-span-2 min-h-[290px] md:min-h-0",
+    className: "col-span-2 row-span-1 min-h-0 lg:col-start-1 lg:row-start-1 lg:row-span-2",
   },
   {
     image: "/portfolio/Nataa-ad1_pure-shea.jpg",
     title: "Nataa",
     subtitle: "Soins & cosmétiques",
-    className: "col-span-1 row-span-2 min-h-[290px] md:min-h-0",
+    className: "col-span-1 row-span-1 min-h-0 lg:col-start-3 lg:row-start-1 lg:row-span-2",
   },
   {
     image: "/portfolio/Soso-01.jpg",
     title: "Soso",
     subtitle: "Communication de marque",
-    className: "col-span-1 row-span-1 min-h-[170px] md:min-h-0",
+    className: "col-span-1 row-span-1 min-h-0 lg:col-start-4 lg:row-start-1",
   },
   {
     image: "/portfolio/Linguere-oil-Post-01.jpg",
     title: "Linguere Oil",
     subtitle: "Supports de communication",
-    className: "col-span-1 row-span-1 min-h-[170px] md:min-h-0",
+    className: "col-span-1 row-span-1 min-h-0 lg:col-start-4 lg:row-start-2",
   },
   {
     image: "/portfolio/Welli-Post-01.jpg",
     title: "Welli",
     subtitle: "Campagne de marque",
-    className: "col-span-1 row-span-1 min-h-[170px] md:min-h-0",
+    className: "col-span-1 row-span-1 min-h-0 lg:col-start-1 lg:row-start-3",
   },
   {
     image: "/portfolio/Zami-Post-01.jpg",
     title: "Zami",
     subtitle: "Série de publications",
-    className: "col-span-2 row-span-1 min-h-[170px] md:min-h-0",
+    className: "col-span-2 row-span-1 min-h-0 lg:col-start-2 lg:row-start-3",
   },
 ];
 
@@ -386,24 +387,29 @@ const AffichesSupportsPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 auto-rows-[135px] gap-3 sm:auto-rows-[170px] sm:gap-4 lg:grid-cols-4 lg:auto-rows-[160px]" data-aos="fade-up">
+            <div className="grid grid-cols-2 auto-rows-[180px] gap-3 sm:grid-cols-3 sm:auto-rows-[190px] sm:gap-4 lg:grid-cols-4 lg:auto-rows-[180px]" data-aos="fade-up">
               {bentoItems.map((item) => (
                 <button
                   type="button"
                   key={`bento-${item.image}`}
                   onClick={() => setSelectedImg(item.image)}
-                  className={`group relative overflow-hidden rounded-2xl border-2 border-[#1178B7]/20 bg-white text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:shadow-[0_18px_40px_rgba(17,120,183,0.17)] sm:rounded-3xl ${item.className}`}
+                  className={`group relative flex min-h-0 flex-col overflow-hidden rounded-2xl border-2 border-[#1178B7]/20 bg-white text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#F59C27] hover:shadow-[0_18px_40px_rgba(17,120,183,0.17)] sm:rounded-3xl ${item.className}`}
                 >
-                  <img src={item.image} alt={item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#062B43]/85 via-[#062B43]/5 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
-                    <span className="mb-1 inline-flex rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-white backdrop-blur sm:text-[10px]">Projet sélectionné</span>
-                    <h3 className="text-sm font-extrabold text-white sm:text-lg">{item.title}</h3>
-                    <p className="mt-1 hidden text-xs text-white/80 sm:block">{item.subtitle}</p>
+                  <div className="relative min-h-0 flex-1 overflow-hidden bg-white">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full bg-white object-contain p-2 transition-transform duration-500 group-hover:scale-[1.02] sm:p-3"
+                    />
+                    <span className="absolute right-2 top-2 rounded-full border border-white/50 bg-[#082F4A]/80 p-2 text-white shadow-md transition-colors group-hover:bg-[#F59C27] sm:right-3 sm:top-3">
+                      <Maximize2 size={14} />
+                    </span>
                   </div>
-                  <span className="absolute right-3 top-3 rounded-full border border-white/35 bg-[#082F4A]/65 p-2 text-white opacity-0 transition-opacity group-hover:opacity-100">
-                    <Maximize2 size={15} />
-                  </span>
+                  <div className="shrink-0 border-t-2 border-[#F59C27] bg-[#082F4A] px-3 py-2.5 sm:px-4 sm:py-3">
+                    <h3 className="text-xs font-extrabold leading-tight text-white sm:text-sm md:text-base">{item.title}</h3>
+                    <p className="mt-1 text-[10px] leading-tight text-white/75 sm:text-xs">{item.subtitle}</p>
+                  </div>
                 </button>
               ))}
             </div>
@@ -562,31 +568,42 @@ const AffichesSupportsPage = () => {
           </div>
         </section>
 
-        {/* LIGHTBOX */}
-        {selectedImg && (
-          <div
-            className="fixed inset-0 z-[999] flex cursor-zoom-out items-center justify-center bg-[#031522]/95 p-3 backdrop-blur-sm sm:p-6"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Aperçu agrandi du support"
-            onClick={() => setSelectedImg(null)}
-          >
-            <button
-              type="button"
+        {/* LIGHTBOX : portail plein écran avec bouton de fermeture toujours visible */}
+        {selectedImg &&
+          createPortal(
+            <div
+              className="fixed inset-0 z-[10000] flex items-center justify-center overflow-y-auto bg-[#031522]/95 px-3 pb-4 pt-20 backdrop-blur-sm sm:px-6 sm:pb-6 sm:pt-24"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Aperçu agrandi du support"
               onClick={() => setSelectedImg(null)}
-              className="absolute right-4 top-4 z-[1000] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-[#F59C27] text-white shadow-2xl transition-all hover:rotate-90 hover:bg-white hover:text-[#1178B7] sm:right-8 sm:top-8 sm:h-14 sm:w-14"
-              aria-label="Fermer l’image agrandie"
             >
-              <X size={27} strokeWidth={2.5} />
-            </button>
-            <img
-              src={selectedImg}
-              alt="Réalisation Print agrandie"
-              className="max-h-[90vh] max-w-full cursor-default rounded-xl object-contain shadow-2xl sm:rounded-2xl"
-              onClick={(event) => event.stopPropagation()}
-            />
-          </div>
-        )}
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setSelectedImg(null);
+                }}
+                className="fixed z-[10001] flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 bg-[#F59C27] text-white shadow-[0_8px_30px_rgba(0,0,0,0.55)] transition-all hover:rotate-90 hover:bg-white hover:text-[#1178B7] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/70 sm:h-14 sm:w-14"
+                style={{
+                  top: "max(1rem, env(safe-area-inset-top, 0px))",
+                  right: "max(1rem, env(safe-area-inset-right, 0px))",
+                }}
+                aria-label="Fermer l’image agrandie"
+              >
+                <X size={27} strokeWidth={2.5} />
+              </button>
+
+              <img
+                src={selectedImg}
+                alt="Réalisation Print agrandie"
+                className="max-h-[calc(100vh-6rem)] max-w-full cursor-default rounded-xl object-contain shadow-2xl sm:rounded-2xl"
+                style={{ maxHeight: "calc(100dvh - 6rem)" }}
+                onClick={(event) => event.stopPropagation()}
+              />
+            </div>,
+            document.body,
+          )}
 
         {/* CTA FINAL */}
         <section className="px-4 py-14 sm:px-6 sm:py-20">
