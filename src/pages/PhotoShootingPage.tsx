@@ -1,218 +1,309 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X, Camera, Users, Image as ImageIcon, LayoutGrid } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  Camera,
+  Check,
+  Image as ImageIcon,
+  X,
+} from "lucide-react";
+
+type GalleryCategory = "Ramadan" | "Lifestyle & Corporate";
+type GalleryFilter = "Tout" | GalleryCategory;
+
+type GalleryItem = {
+  id: number;
+  src: string;
+  title: string;
+  category: GalleryCategory;
+};
+
+const ramadanCollection: GalleryItem[] = Array.from({ length: 8 }, (_, index) => ({
+  id: index,
+  src: `/portfolio/image-photographie${index + 1}.jpg`,
+  title: `Visuel Ramadan ${String(index + 1).padStart(2, "0")}`,
+  category: "Ramadan",
+}));
+
+const extendedGallery: GalleryItem[] = Array.from({ length: 17 }, (_, index) => ({
+  id: index + 8,
+  src: `/portfolio/image-photographie${index + 9}.jpg`,
+  title: `Visuel ${String(index + 9).padStart(2, "0")}`,
+  category: "Lifestyle & Corporate",
+}));
+
+const galleryItems: GalleryItem[] = [...ramadanCollection, ...extendedGallery];
+const filters: GalleryFilter[] = ["Tout", "Ramadan", "Lifestyle & Corporate"];
 
 const PhotoShootingPage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>("Tout");
+  const [selectedImageId, setSelectedImageId] = useState<number | null>(null);
 
-  // --- Organisation des Images ---
-  // Collection originale (1 à 8)
-  const ramadanCollection = Array.from({ length: 8 }, (_, i) => `/portfolio/image-photographie${i + 1}.jpg`);
-  
-  // Nouvelles images (9 à 25) pour la section Galerie étendue
-  const extendedGallery = Array.from({ length: 17 }, (_, i) => `/portfolio/image-photographie${i + 9}.jpg`);
-  
-  // Liste complète pour le Marquee (flux visuel)
-  const fullCollection = [...ramadanCollection, ...extendedGallery];
+  const visibleImages = useMemo(
+    () =>
+      activeFilter === "Tout"
+        ? galleryItems
+        : galleryItems.filter((image) => image.category === activeFilter),
+    [activeFilter],
+  );
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % ramadanCollection.length);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + ramadanCollection.length) % ramadanCollection.length);
+  const selectedImage =
+    selectedImageId === null
+      ? null
+      : galleryItems.find((image) => image.id === selectedImageId) ?? null;
 
-  // Gestion du scroll lors du zoom
+  const showPrevious = () => {
+    setSelectedImageId((current) => {
+      if (current === null) return null;
+      return (current - 1 + galleryItems.length) % galleryItems.length;
+    });
+  };
+
+  const showNext = () => {
+    setSelectedImageId((current) => {
+      if (current === null) return null;
+      return (current + 1) % galleryItems.length;
+    });
+  };
+
   useEffect(() => {
-    if (selectedImg) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [selectedImg]);
+    if (selectedImageId === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedImageId(null);
+      if (event.key === "ArrowLeft") {
+        setSelectedImageId((current) =>
+          current === null ? null : (current - 1 + galleryItems.length) % galleryItems.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        setSelectedImageId((current) =>
+          current === null ? null : (current + 1) % galleryItems.length,
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImageId]);
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-white text-slate-900">
       <Header />
 
-      <main className="pt-32 pb-20">
-        {/* HERO SECTION */}
-        <section className="py-16 px-6 bg-gradient-to-br from-sunuOrange/5 to-white">
-          <div className="container mx-auto max-w-7xl text-center">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 text-gray-900 uppercase tracking-tighter">
-              Images & <span className="text-sunuOrange text-transparent bg-clip-text bg-gradient-to-r from-sunuOrange to-yellow-600">Photographies</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-              Shooting produits, portraits corporate et mises en scène artistiques signés SUNULINK CONSULTING.
+      <main>
+        {/* HERO — une entrée visuelle forte, sans répéter la galerie */}
+        <section className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-slate-950 pt-28 md:min-h-[680px]">
+          <img
+            src="/portfolio/image-photographie1.jpg"
+            alt="Exemple de réalisation photographique SunuLink"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/20" />
+          <div className="container mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
+            <div className="max-w-3xl">
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+                <Camera size={16} className="text-sunuOrange" />
+                SunuLink Consulting · Production visuelle
+              </p>
+              <h1 className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+                Images &amp; <span className="text-sunuOrange">Photographies</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
+                Des images pensées pour raconter une histoire, valoriser une marque et donner vie à vos idées.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#galerie"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 py-3 font-bold text-white transition hover:-translate-y-0.5 hover:bg-orange-500"
+                >
+                  Découvrir la galerie <ArrowDown size={18} />
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/50 px-7 py-3 font-bold text-white transition hover:bg-white hover:text-slate-900"
+                >
+                  Parler de mon projet
+                </Link>
+              </div>
+              <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/20 pt-6 text-sm font-medium text-white/75">
+                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> 25 visuels</span>
+                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> 2 collections</span>
+                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> Ramadan, Lifestyle &amp; Corporate</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* INTRODUCTION */}
+        <section className="px-6 py-16 md:py-20">
+          <div className="container mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+            <div>
+              <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-sunuBlue">Notre regard</p>
+              <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
+                Chaque image a <span className="text-sunuOrange">son histoire.</span>
+              </h2>
+            </div>
+            <p className="max-w-3xl text-base leading-7 text-slate-600 md:justify-self-end md:text-lg">
+              Parcourez nos réalisations et explorez les univers visuels présentés dans cette galerie.
+              Sélectionnez une image pour l’afficher en grand format.
             </p>
           </div>
         </section>
 
-        {/* 1. FLUX VISUEL (Marquee infini avec toutes les images) */}
-        <section className="py-12 bg-gray-50 overflow-hidden">
-          <div className="flex gap-4 animate-marquee-photo whitespace-nowrap">
-            {[...fullCollection, ...fullCollection].map((img, index) => (
-              <div 
-                key={index} 
-                className="w-[350px] h-[250px] rounded-2xl overflow-hidden shadow-lg flex-shrink-0 cursor-zoom-in border-2 border-transparent hover:border-sunuOrange transition-all"
-                onClick={() => setSelectedImg(img)}
-              >
-                <img src={img} className="w-full h-full object-cover" alt="Production SUNULINK" loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 2. FOCUS COLLECTION RAMADAN (Grid 1-8) */}
-        <section className="py-20 px-6">
+        {/* GALERIE FILTRABLE — un seul endroit pour parcourir les 25 images */}
+        <section id="galerie" className="scroll-mt-24 bg-slate-50 px-6 py-16 md:py-24">
           <div className="container mx-auto max-w-7xl">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-              <div className="flex items-center gap-4">
-                <Camera className="text-sunuOrange" size={40} />
-                <div>
-                  <h3 className="text-4xl font-black uppercase italic leading-none">
-                    Collection <span className="text-sunuOrange">Ramadan</span>
-                  </h3>
-                  <p className="text-gray-500 font-bold mt-2 flex items-center gap-2">
-                    <Users size={18} /> Sunulink Consulting — Shooting Thématique
-                  </p>
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="mb-3 flex items-center gap-3 text-sunuBlue">
+                  <ImageIcon size={24} />
+                  <span className="text-sm font-extrabold uppercase tracking-[0.2em]">Portfolio photographique</span>
                 </div>
+                <h2 className="text-3xl font-black sm:text-4xl md:text-5xl">La galerie <span className="text-sunuBlue">visuelle</span></h2>
+                <p className="mt-3 text-slate-600">{visibleImages.length} visuels à explorer</p>
               </div>
-              <div className="hidden md:block">
-                 <span className="bg-sunuBlue text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
-                   Série Limitée
-                 </span>
+
+              <div className="flex flex-wrap gap-2" aria-label="Filtrer les photographies">
+                {filters.map((filter) => {
+                  const isActive = activeFilter === filter;
+                  return (
+                    <button
+                      key={filter}
+                      type="button"
+                      onClick={() => setActiveFilter(filter)}
+                      aria-pressed={isActive}
+                      className={`rounded-full border px-5 py-2.5 text-sm font-bold transition ${
+                        isActive
+                          ? "border-sunuBlue bg-sunuBlue text-white shadow-md"
+                          : "border-slate-200 bg-white text-slate-600 hover:border-sunuBlue hover:text-sunuBlue"
+                      }`}
+                    >
+                      {filter}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {ramadanCollection.map((img, i) => (
-                <div 
-                  key={i} 
-                  className="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl cursor-zoom-in bg-gray-200 border-4 border-white transition-transform duration-500 hover:-translate-y-2"
-                  onClick={() => setSelectedImg(img)}
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {visibleImages.map((image) => (
+                <button
+                  key={image.id}
+                  type="button"
+                  onClick={() => setSelectedImageId(image.id)}
+                  aria-label={`Agrandir ${image.title}, catégorie ${image.category}`}
+                  className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-200 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-sunuOrange"
                 >
-                  <img 
-                    src={img} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                    alt={`Ramadan Collection ${i + 1}`} 
+                  <img
+                    src={image.src}
+                    alt={image.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <p className="text-white font-bold italic">Visual #0{i + 1}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/0 to-transparent opacity-80 transition group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-white">
+                    <div>
+                      <span className="mb-2 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-bold backdrop-blur-sm">
+                        {image.category}
+                      </span>
+                      <p className="font-bold">{image.title}</p>
+                    </div>
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sunuOrange text-white transition group-hover:scale-110">
+                      <ArrowRight size={18} />
+                    </span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 3. SLIDER INTERACTIF (Focus sur la collection principale) */}
-        <section className="py-24 bg-sunuBlue/5">
-          <div className="container mx-auto max-w-6xl px-6">
-            <div className="flex items-center justify-center gap-4 mb-12">
-                <ImageIcon className="text-sunuOrange" size={28} />
-                <h2 className="text-4xl font-black uppercase italic text-center">
-                  Mise en <span className="text-sunuOrange">Lumière</span>
-                </h2>
-            </div>
-            
-            <div className="relative flex items-center justify-center">
-              <button onClick={prevSlide} className="absolute left-[-20px] lg:left-[-80px] z-10 p-5 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
-                <ChevronLeft size={35} />
-              </button>
-              
-              <div 
-                className="w-full max-w-[1000px] h-[600px] rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-[12px] border-white cursor-zoom-in group relative" 
-                onClick={() => setSelectedImg(ramadanCollection[currentIndex])}
-              >
-                <img 
-                  src={ramadanCollection[currentIndex]} 
-                  alt="Shooting Focus" 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              <button onClick={nextSlide} className="absolute right-[-20px] lg:right-[-80px] z-10 p-5 bg-sunuOrange text-white rounded-full shadow-2xl hover:scale-110 transition-all">
-                <ChevronRight size={35} />
-              </button>
-            </div>
+        {/* CTA */}
+        <section className="relative isolate overflow-hidden bg-sunuBlue px-6 py-20 text-white md:py-28">
+          <div className="absolute -right-20 -top-24 -z-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-20 -z-10 h-80 w-80 rounded-full bg-sunuOrange/20 blur-3xl" />
+          <div className="container mx-auto max-w-4xl text-center">
+            <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-white/70">Une idée à mettre en images ?</p>
+            <h2 className="mt-4 text-3xl font-black leading-tight sm:text-5xl md:text-6xl">
+              Donnons vie à votre <span className="text-sunuOrange">prochain projet.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/80">
+              Parlons de votre besoin et construisons ensemble une proposition adaptée à votre vision.
+            </p>
+            <Link to="/contact" className="mt-8 inline-block">
+              <Button className="h-auto rounded-full border-0 bg-sunuOrange px-8 py-6 text-base font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-sunuBlue">
+                Démarrer un projet <ArrowRight size={18} className="ml-2" />
+              </Button>
+            </Link>
           </div>
-        </section>
-
-        {/* 4. GALERIE ÉTENDUE (Nouvelles images 9-25) */}
-        <section className="py-20 px-6 bg-white">
-          <div className="container mx-auto max-w-7xl">
-            <div className="flex items-center gap-4 mb-12">
-              <LayoutGrid className="text-sunuBlue" size={32} />
-              <h3 className="text-3xl font-black uppercase italic">
-                Galerie <span className="text-sunuBlue">Lifestyle & Corporate</span>
-              </h3>
-            </div>
-            
-            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-              {extendedGallery.map((img, i) => (
-                <div 
-                  key={i} 
-                  className="relative break-inside-avoid rounded-2xl overflow-hidden shadow-xl cursor-zoom-in hover:shadow-2xl transition-all duration-300 group"
-                  onClick={() => setSelectedImg(img)}
-                >
-                  <img 
-                    src={img} 
-                    alt={`Photo Galerie ${i + 9}`}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-sunuBlue/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* MODAL ZOOM */}
-        {selectedImg && (
-          <div 
-            className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 cursor-pointer backdrop-blur-sm"
-            onClick={() => setSelectedImg(null)}
-          >
-            <button 
-              onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }} 
-              className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000] bg-sunuOrange text-white p-4 rounded-full hover:bg-white hover:text-sunuOrange transition-all shadow-2xl"
-            >
-              <X size={45} strokeWidth={3} />
-            </button>
-
-            <img 
-              src={selectedImg} 
-              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain animate-in zoom-in duration-300" 
-              alt="Zoom Photographie" 
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-        )}
-
-        {/* CTA FINAL */}
-        <section className="py-24 px-6 text-center bg-sunuBlue">
-            <div className="max-w-4xl mx-auto text-white">
-                <h2 className="text-5xl font-black mb-10 uppercase leading-tight">
-                  Un projet visuel en <br/><span className="text-sunuOrange text-6xl">préparation ?</span>
-                </h2>
-                <Link to="/contact">
-                    <Button className="bg-sunuOrange hover:bg-white hover:text-sunuBlue text-white font-black px-14 py-10 rounded-full text-2xl shadow-2xl transition-all hover:-translate-y-2 border-none">
-                        Démarrer un projet
-                    </Button>
-                </Link>
-            </div>
         </section>
       </main>
 
       <Footer />
 
-      <style>{`
-        @keyframes marqueePhoto { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee-photo { animation: marqueePhoto 50s linear infinite; }
-        .animate-marquee-photo:hover { animation-play-state: paused; }
-      `}</style>
+      {/* LIGHTBOX — fermeture Escape, navigation clavier et boutons accessibles */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/95 p-4 backdrop-blur-sm md:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Aperçu de ${selectedImage.title}`}
+          onClick={() => setSelectedImageId(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedImageId(null)}
+            aria-label="Fermer l’aperçu"
+            className="absolute right-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-sunuOrange text-white transition hover:rotate-90 hover:bg-white hover:text-sunuBlue md:right-8 md:top-8"
+          >
+            <X size={25} />
+          </button>
+
+          <button
+            type="button"
+            onClick={(event) => { event.stopPropagation(); showPrevious(); }}
+            aria-label="Photo précédente"
+            className="absolute left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-sunuOrange md:left-8 md:h-14 md:w-14"
+          >
+            <ArrowLeft size={24} />
+          </button>
+
+          <div className="flex max-h-full max-w-6xl flex-col items-center" onClick={(event) => event.stopPropagation()}>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.title}
+              className="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"
+            />
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center text-white">
+              <span className="font-bold">{selectedImage.title}</span>
+              <span className="rounded-full bg-white/15 px-3 py-1 text-sm text-white/80">{selectedImage.category}</span>
+              <span className="text-sm text-white/60">{selectedImage.id + 1} / {galleryItems.length}</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={(event) => { event.stopPropagation(); showNext(); }}
+            aria-label="Photo suivante"
+            className="absolute right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-sunuOrange md:right-8 md:h-14 md:w-14"
+          >
+            <ArrowRight size={24} />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
