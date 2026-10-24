@@ -69,10 +69,10 @@ const VideoAnimationPage = () => {
   }, [selectedVideo]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#0a0a0a] text-white">
+    <div className="min-h-screen overflow-x-hidden bg-white text-gray-900">
       <Header />
 
-      <main className="pt-24 pb-16 sm:pt-28">
+      <main className="bg-[#0a0a0a] pt-24 pb-16 text-white sm:pt-28">
         {/* HERO */}
         <section className="relative isolate overflow-hidden px-5 py-12 sm:px-8 sm:py-16 lg:py-20">
           <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-sunuOrange/10 blur-3xl" />
@@ -113,10 +113,10 @@ const VideoAnimationPage = () => {
           </div>
         </section>
 
-        {/* VIDÉO PRINCIPALE — pleine largeur, sans conteneur étroit */}
-        <section id="video-principale" className="w-full scroll-mt-24">
-          <div className="w-full overflow-hidden border-y border-white/10 bg-black">
-            <div className="aspect-video w-full bg-black">
+        {/* VIDÉO PRINCIPALE — conteneur plus compact, encadré et responsive */}
+        <section id="video-principale" className="scroll-mt-24 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-[1040px] overflow-hidden rounded-2xl border border-sunuOrange/35 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.45)] sm:rounded-3xl">
+            <div className="h-[260px] w-full bg-black sm:h-[360px] lg:h-[460px]">
               <video
                 className="h-full w-full object-contain"
                 controls
@@ -130,7 +130,7 @@ const VideoAnimationPage = () => {
               </video>
             </div>
           </div>
-          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+          <div className="mx-auto flex max-w-[1040px] flex-col gap-3 px-5 py-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
             <div>
               <p className="mb-1 text-xs font-bold uppercase tracking-[0.22em] text-sunuOrange">
                 Réalisation à la une
