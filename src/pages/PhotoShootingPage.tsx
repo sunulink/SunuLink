@@ -103,45 +103,82 @@ const PhotoShootingPage = () => {
       <Header />
 
       <main>
-        {/* HERO — une entrée visuelle forte, sans répéter la galerie */}
-        <section className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-slate-950 pt-28 md:min-h-[680px]">
-          <img
-            src="/portfolio/image-photographie1.jpg"
-            alt="Exemple de réalisation photographique SunuLink"
-            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/20" />
-          <div className="container mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
-            <div className="max-w-3xl">
-              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+        {/* HERO — fond graphique de marque et montage photo */}
+        <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-slate-50 to-sky-50 pt-28">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-20 -z-10 h-80 w-80 rounded-full bg-sunuBlue/10 blur-3xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 left-[-5rem] -z-10 h-72 w-72 rounded-full bg-sunuOrange/15 blur-3xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 -z-10 h-full w-[42%] bg-[linear-gradient(135deg,transparent_0%,rgba(17,120,183,0.035)_50%,rgba(245,156,39,0.07)_100%)]" />
+
+          <div className="container mx-auto grid w-full max-w-7xl items-center gap-12 px-6 pb-16 pt-12 md:pb-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:pt-16">
+            <div className="max-w-2xl">
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-sunuBlue/20 bg-white/90 px-4 py-2 text-sm font-extrabold tracking-wide text-sunuBlue shadow-sm">
                 <Camera size={16} className="text-sunuOrange" />
-                SunuLink Consulting · Production visuelle
+                SunuLink Consulting <span className="text-slate-300">/</span> Production visuelle
               </p>
-              <h1 className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
-                Images &amp; <span className="text-sunuOrange">Photographies</span>
+              <h1 className="text-4xl font-black uppercase leading-[1.04] tracking-tight text-slate-950 sm:text-6xl md:text-7xl">
+                Images &amp;
+                <span className="mt-2 block bg-gradient-to-r from-sunuBlue via-sunuBlue to-sunuOrange bg-clip-text text-transparent">
+                  Photographies
+                </span>
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
+              <div className="mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-sunuBlue to-sunuOrange" />
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 md:text-xl">
                 Des images pensées pour raconter une histoire, valoriser une marque et donner vie à vos idées.
               </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="#galerie"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sunuOrange px-7 py-3 font-bold text-white transition hover:-translate-y-0.5 hover:bg-orange-500"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border-2 border-sunuBlue bg-sunuBlue px-7 py-3 font-extrabold text-white shadow-lg shadow-sunuBlue/20 transition duration-300 hover:-translate-y-0.5 hover:border-sunuOrange hover:bg-sunuOrange hover:shadow-sunuOrange/25 focus:outline-none focus-visible:ring-4 focus-visible:ring-sunuOrange/40"
                 >
                   Découvrir la galerie <ArrowDown size={18} />
                 </a>
                 <Link
                   to="/contact"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/50 px-7 py-3 font-bold text-white transition hover:bg-white hover:text-slate-900"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border-2 border-sunuOrange bg-sunuOrange px-7 py-3 font-extrabold text-white shadow-lg shadow-sunuOrange/20 transition duration-300 hover:-translate-y-0.5 hover:border-sunuBlue hover:bg-sunuBlue hover:shadow-sunuBlue/25 focus:outline-none focus-visible:ring-4 focus-visible:ring-sunuBlue/30"
                 >
-                  Parler de mon projet
+                  Parler de mon projet <ArrowRight size={18} />
                 </Link>
               </div>
-              <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/20 pt-6 text-sm font-medium text-white/75">
-                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> 25 visuels</span>
-                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> 2 collections</span>
-                <span className="flex items-center gap-2"><Check size={16} className="text-sunuOrange" /> Ramadan, Lifestyle &amp; Corporate</span>
+
+              <div className="mt-10 flex flex-wrap gap-3 border-t border-slate-200 pt-6 text-sm font-semibold text-slate-600">
+                <span className="inline-flex items-center gap-2 rounded-full border border-sunuBlue/15 bg-white px-3.5 py-2 shadow-sm">
+                  <span className="h-2 w-2 rounded-full bg-sunuBlue" /> 25 visuels
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-sunuOrange/25 bg-white px-3.5 py-2 shadow-sm">
+                  <span className="h-2 w-2 rounded-full bg-sunuOrange" /> 2 collections
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 shadow-sm">
+                  <Check size={15} className="text-sunuBlue" /> Ramadan, Lifestyle &amp; Corporate
+                </span>
+              </div>
+            </div>
+
+            {/* Montage de réalisations : les photos sont présentées dans des cadres, pas en arrière-plan du texte */}
+            <div className="relative mx-auto w-full max-w-[610px] pb-5 pt-2 sm:pb-8">
+              <div aria-hidden="true" className="absolute inset-x-8 top-8 bottom-0 rounded-[2rem] border-2 border-sunuOrange/50 rotate-3" />
+              <div className="relative grid grid-cols-12 grid-rows-[150px_105px_145px] gap-3 sm:grid-rows-[200px_130px_175px] sm:gap-4">
+                <div className="col-span-7 row-span-2 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-xl shadow-slate-900/10 ring-1 ring-sunuBlue/20">
+                  <img src="/portfolio/image-photographie3.jpg" alt="Réalisation photographique SunuLink" className="h-full w-full object-cover" loading="eager" />
+                </div>
+                <div className="col-span-5 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-lg ring-1 ring-sunuOrange/30">
+                  <img src="/portfolio/image-photographie10.jpg" alt="Shooting lifestyle et corporate" className="h-full w-full object-cover" loading="eager" />
+                </div>
+                <div className="col-span-5 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-lg ring-1 ring-sunuBlue/20">
+                  <img src="/portfolio/image-photographie14.jpg" alt="Photographie de la galerie SunuLink" className="h-full w-full object-cover" loading="eager" />
+                </div>
+                <div className="col-span-5 overflow-hidden rounded-2xl border-4 border-white bg-slate-100 shadow-lg ring-1 ring-sunuOrange/30">
+                  <img src="/portfolio/image-photographie7.jpg" alt="Visuel de la collection Ramadan" className="h-full w-full object-cover" loading="eager" />
+                </div>
+                <div className="col-span-7 flex items-center justify-between gap-4 rounded-2xl border-2 border-sunuBlue/15 bg-white p-4 shadow-lg sm:p-5">
+                  <div>
+                    <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-sunuBlue">Le regard SunuLink</p>
+                    <p className="mt-1 text-sm font-semibold text-slate-600 sm:text-base">L’image au service de votre histoire.</p>
+                  </div>
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sunuOrange text-white shadow-md shadow-sunuOrange/25">
+                    <Camera size={21} />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -205,7 +242,7 @@ const PhotoShootingPage = () => {
                   type="button"
                   onClick={() => setSelectedImageId(image.id)}
                   aria-label={`Agrandir ${image.title}, catégorie ${image.category}`}
-                  className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-200 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-sunuOrange"
+                  className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl border-2 border-slate-200 bg-white text-left shadow-sm shadow-slate-900/5 transition duration-300 hover:-translate-y-1 hover:border-sunuOrange hover:shadow-xl hover:shadow-sunuBlue/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-sunuOrange focus-visible:ring-offset-2"
                 >
                   <img
                     src={image.src}
@@ -213,7 +250,8 @@ const PhotoShootingPage = () => {
                     loading="lazy"
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/0 to-transparent opacity-80 transition group-hover:opacity-100" />
+                  <div className="absolute inset-0 border-[5px] border-white/0 transition duration-300 group-hover:border-sunuOrange/70" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/0 to-transparent opacity-85 transition group-hover:opacity-100" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-white">
                     <div>
                       <span className="mb-2 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-bold backdrop-blur-sm">
