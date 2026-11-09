@@ -87,7 +87,6 @@ const LogoIdentitePage = () => {
     { name: "BDA Service", logo: "/portfolio/BDA-Logo-couleur.png" },
     { name: "FreshUP", logo: "/portfolio/FreshUP-Logo-couleur.png" },
     { name: "Linguere Oil", logo: "/portfolio/Linguere_couleur.png" },
-    { name: "Identité couleur", logo: "/portfolio/logo_couleur.png" },
     { name: "Dykha", logo: "/portfolio/logo_couleur_dykha.png" },
     { name: "Identité originale", logo: "/portfolio/logo_or_original.png" },
     { name: "Soso", logo: "/portfolio/Soso_logo.png" },
