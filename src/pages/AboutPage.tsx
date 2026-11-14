@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,6 +12,12 @@ import {
   CheckCircle,
   Lightbulb,
   Quote,
+  Compass,
+  Megaphone,
+  Palette,
+  RefreshCw,
+  Handshake,
+  Flag,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -23,43 +28,85 @@ const AboutPage = () => {
     {
       icon: Award,
       title: "Excellence",
-      description:
-        "Chaque détail compte. Nous visons la perfection dans tout ce que nous créons.",
+      description: "Chaque détail compte. Nous visons la perfection dans tout ce que nous créons.",
+      tagline: "L’excellence, sans compromis.",
       color: "from-sunuBlue to-sunuCyan",
     },
     {
       icon: Lightbulb,
       title: "Créativité",
-      description:
-        "Des solutions originales et percutantes qui marquent les esprits.",
+      description: "Des solutions originales et percutantes qui marquent les esprits.",
+      tagline: "Oser. Créer. Impacter.",
       color: "from-sunuOrange to-yellow-500",
     },
     {
       icon: Sparkles,
       title: "Innovation",
-      description:
-        "Nous anticipons, testons et intégrons les meilleures technologies et idées.",
+      description: "Nous anticipons, testons et intégrons les meilleures technologies et idées.",
+      tagline: "Repousser les limites.",
       color: "from-sunuBlue to-sunuCyan",
     },
     {
       icon: Shield,
       title: "Confiance",
-      description:
-        "Transparence, engagement et professionnalisme dans chaque interaction.",
+      description: "Transparence, engagement et professionnalisme dans chaque interaction.",
+      tagline: "La confiance se mérite.",
       color: "from-sunuOrange to-yellow-500",
     },
     {
       icon: Eye,
       title: "Transparence",
-      description:
-        "Une communication claire et honnête à chaque étape du projet.",
+      description: "Une communication claire et honnête à chaque étape du projet.",
+      tagline: "La vérité comme fondement.",
       color: "from-sunuBlue to-sunuCyan",
     },
     {
       icon: TrendingUp,
       title: "Performance",
-      description:
-        "Tout ce que nous créons doit vous apporter un résultat réel et mesurable.",
+      description: "Tout ce que nous créons doit vous apporter un résultat réel et mesurable.",
+      tagline: "L’impact se mesure.",
+      color: "from-sunuBlue to-sunuCyan",
+    },
+    {
+      icon: Compass,
+      title: "Stratégie",
+      description: "Nous définissons une direction claire et des choix cohérents avec vos objectifs.",
+      tagline: "Penser juste. Agir fort.",
+      color: "from-sunuOrange to-yellow-500",
+    },
+    {
+      icon: Megaphone,
+      title: "Communication",
+      description: "Nous construisons des messages clairs et mémorables pour rapprocher votre marque de ses publics.",
+      tagline: "Marquer les esprits.",
+      color: "from-sunuBlue to-sunuCyan",
+    },
+    {
+      icon: Palette,
+      title: "Branding",
+      description: "Nous façonnons des identités distinctives, cohérentes et reconnaissables.",
+      tagline: "Bâtir des marques qui comptent.",
+      color: "from-sunuOrange to-yellow-500",
+    },
+    {
+      icon: RefreshCw,
+      title: "Transformation",
+      description: "Nous accompagnons l’évolution de votre marque, de vos pratiques et de vos outils.",
+      tagline: "Voir plus loin. Aller plus haut.",
+      color: "from-sunuBlue to-sunuCyan",
+    },
+    {
+      icon: Handshake,
+      title: "Accompagnement",
+      description: "Nous avançons à vos côtés pour concrétiser vos projets à chaque étape.",
+      tagline: "Votre ambition, notre engagement.",
+      color: "from-sunuOrange to-yellow-500",
+    },
+    {
+      icon: Flag,
+      title: "Résultats",
+      description: "Nous suivons les objectifs et évaluons l’impact des actions mises en place.",
+      tagline: "Des ambitions aux résultats.",
       color: "from-sunuBlue to-sunuCyan",
     },
   ];
@@ -699,15 +746,16 @@ const AboutPage = () => {
                     aria-hidden="true"
                   />
 
-                  <div className="mt-4 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#1178B7]">
+                  <div className="mt-4 flex items-center gap-2 text-sm font-semibold leading-snug tracking-normal text-[#1178B7]">
                     <span
-                      className={`h-2 w-2 rounded-full ${
+                      className={`h-2 w-2 shrink-0 rounded-full ${
                         index % 2 === 0
                           ? "bg-[#1178B7]"
                           : "bg-[#F59C27]"
                       }`}
+                      aria-hidden="true"
                     />
-                    L’esprit SunuLink
+                    <span>{value.tagline}</span>
                   </div>
                 </article>
               ))}
