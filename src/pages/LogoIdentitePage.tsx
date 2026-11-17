@@ -83,6 +83,7 @@ const LogoIdentitePage = () => {
   // Les nouveaux fichiers fournis dans /img remplacent les anciennes versions des mêmes marques.
   // Les autres logos déjà présents dans /portfolio sont conservés.
   const logoGrid = [
+    { name: "Akhmadounah Café", logo: "/portfolio/Akhmadounah-Cafe_logo.png" },
     { name: "Babelle", logo: "/portfolio/Babelle-Logo-violet.png" },
     { name: "BDA Service", logo: "/portfolio/BDA-Logo-couleur.png" },
     { name: "FreshUP", logo: "/portfolio/FreshUP-Logo-couleur.png" },
@@ -155,6 +156,9 @@ const LogoIdentitePage = () => {
                 </div>
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
                   <img src="/portfolio/Zami_logo.png" alt="Logo Zami" className="max-h-full max-w-full object-contain" loading="lazy" />
+                </div>
+                <div className="col-span-2 mx-auto flex aspect-[2/1] w-1/2 items-center justify-center rounded-2xl bg-white p-4 shadow-lg">
+                  <img src="/portfolio/Akhmadounah-Cafe_logo.png" alt="Logo Akhmadounah Café" className="max-h-full max-w-full object-contain" loading="lazy" />
                 </div>
               </div>
               <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-[#0A3B5A] px-4 py-2 text-xs font-semibold text-white shadow-xl sm:text-sm">
