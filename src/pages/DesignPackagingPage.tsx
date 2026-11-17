@@ -44,6 +44,27 @@ const bdaImages: ImageItem[] = [
   { src: "/portfolio/BDA-Service-08_Instagram.png", title: "Communication Instagram", alt: "Déclinaison Instagram BDA Service" },
 ];
 
+const akhmadounaCafeImages: ImageItem[] = [
+  {
+    src: "/portfolio/Akhmadounah-Cafe_11_Mug.jpg",
+    title: "Mug personnalisé",
+    alt: "Mug personnalisé Akhmadouna Café",
+    description: "Produit dérivé : mug personnalisé",
+  },
+  {
+    src: "/portfolio/Akhmadounah-Cafe_13_Sachet.jpg",
+    title: "Sachet de café",
+    alt: "Sachet de café Akhmadouna Café",
+    description: "Packaging : sachet de café",
+  },
+  {
+    src: "/portfolio/Akhmadounah-Cafe_14_Gobelet.jpg",
+    title: "Gobelet personnalisé",
+    alt: "Gobelet personnalisé Akhmadouna Café",
+    description: "Packaging : gobelet personnalisé",
+  },
+];
+
 const freshUpPackshots: ImageItem[] = [
   { src: "/portfolio/FreshUP-Packshot_Ananas.jpg", title: "Ananas", alt: "Packshot Fresh UP saveur ananas", description: "Packshot sur fond design" },
   { src: "/portfolio/FreshUP-Packshot_Ananas-Gingembre.jpg", title: "Ananas–Gingembre", alt: "Packshot Fresh UP ananas et gingembre", description: "Packshot sur fond design" },
@@ -169,7 +190,7 @@ const DesignPackagingPage = () => {
   const [activeFlavor, setActiveFlavor] = useState<(typeof freshUpFlavors)[number]["id"]>("ananas");
 
   const allCategories = useMemo(
-    () => ["Tous", ...existingCategories.map((category) => category.name), "BDA Service", "Fresh UP", "GIE Telemack"],
+    () => ["Tous", "Akhmadouna Café", ...existingCategories.map((category) => category.name), "BDA Service", "Fresh UP", "GIE Telemack"],
     [],
   );
   const currentFlavor = useMemo(
@@ -251,6 +272,26 @@ const DesignPackagingPage = () => {
 
         {/* NEW COLLECTIONS */}
         <div id="collections-recentes" className="space-y-14 py-12 sm:space-y-20 sm:py-16">
+          {showCategory("Akhmadouna Café") && (
+            <section className="px-4 sm:px-6" aria-labelledby="akhmadouna-cafe-title">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeading
+                  eyebrow="Packaging · Produits dérivés"
+                  title="Akhmadouna Café"
+                  description="Une sélection de supports personnalisés qui prolongent l’identité de la marque Akhmadouna Café, du sachet de café aux objets de marque."
+                />
+                <div
+                  id="akhmadouna-cafe-title"
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+                >
+                  {akhmadounaCafeImages.map((image) => (
+                    <GalleryCard key={image.src} image={image} onOpen={setSelectedImg} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
           {showCategory("BDA Service") && (
             <section className="px-4 sm:px-6" aria-labelledby="bda-service-title">
               <div className="mx-auto max-w-7xl">
