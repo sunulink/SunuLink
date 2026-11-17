@@ -204,17 +204,17 @@ export const testimonials: Testimonial[] = [
 
 export const collaborateurs = [
   // 6 Nouveaux ajouts de la zone jaune
+  { name: "Akhmadounah Cafe", logo: "/portfolio/Akhmadounah-Cafe_logo.png" },
   { name: "Agence Babelle", logo: "/portfolio/Babelle-Logo-violet.png" },
   { name: "BDA Services", logo: "/portfolio/BDA-Logo-couleur.png" },
   { name: "Café", logo: "/collaborateurs/LOGO NATAA.png" },
   { name: "De Bouche Bée", logo: "/collaborateurs/logo-de-bouche-bae.png" },
   { name: "Faddeco", logo: "/collaborateurs/logo-faddeco.png" },
-  { name: "Zami", logo: "/collaborateurs/logo-zami.png" },
 
   // 6 Logos existants du dossier
   { name: "Femezon", logo: "/collaborateurs/femezon-logo.png" },
   { name: "Miss Mbouracke", logo: "/collaborateurs/LOGO-KING-MOUSSA.png" },
-  { name: "SCI La Promobilière", logo: "/collaborateurs/LOGO-SCI-LA-PROMOBILIERE.png" },
+  { name: "Zami", logo: "/collaborateurs/logo-zami.png" },
   { name: "Souffle de Vie", logo: "/collaborateurs/LOGO-SOFFLE-DE-VIE.png" },
   { name: "SenHorti Group", logo: "/collaborateurs/LOGO-SenHorti-Group.png" },
   { name: "FREHUP", logo: "/collaborateurs/LOGO FREHUP.png" }
