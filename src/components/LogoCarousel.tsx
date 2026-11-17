@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 // Logos de partenaires/clients Aller vers le dossier /public/partners... pour en ajouter ici du plus récent au plus ancien
 const partnerLogos = [
-  { name: "Akhmadounah Cafe", logo: "public/portfolio/Akhmadounah-Cafe_logo.png" },
+  { name: "Akhmadounah Cafe", logo: "/portfolio/Akhmadounah-Cafe_logo.png" },
   { name: "Agence Babelle", logo: "/portfolio/Babelle-Logo-violet.png" },
   { name: "Vide Boubou", logo: "/partners/logo-vide-boubou.png" },
   { name: "BDA SERVICE", logo: "/portfolio/BDA-Logo-couleur.png" },
