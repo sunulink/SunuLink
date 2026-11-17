@@ -29,6 +29,21 @@ type PrintProject = {
 };
 
 const projects: PrintProject[] = [
+    {
+    id: "akhmadounah-cafe",
+    name: "Akhmadounah Café",
+    category: "Identité visuelle & branding",
+    description:
+      "Une présentation de l’univers de marque d’Akhmadounah Café, de son manifeste aux différentes applications de son identité sur les tenues, le point de vente mobile et la façade.",
+    images: [
+      "/portfolio/Akhmadounah-Cafe_01_Ouverture.jpg",
+      "/portfolio/Akhmadounah-Cafe_02_Manifeste.jpg",
+      "/portfolio/Akhmadounah-Cafe_15_Tablier.jpg",
+      "/portfolio/Akhmadounah-Cafe_16_Charrette.jpg",
+      "/portfolio/Akhmadounah-Cafe_17_Facade.jpg",
+      "/portfolio/Akhmadounah-Cafe_19_Fin.jpg",
+    ],
+  },
   {
     id: "packaging",
     name: "Packaging & face avant",
@@ -127,21 +142,6 @@ const projects: PrintProject[] = [
       "/portfolio/Zami-Post-04.jpg",
       "/portfolio/Zami-Post-05.jpg",
       "/portfolio/Zami-Post-06.jpg",
-    ],
-  },
-  {
-    id: "akhmadounah-cafe",
-    name: "Akhmadounah Café",
-    category: "Identité visuelle & branding",
-    description:
-      "Une présentation de l’univers de marque d’Akhmadounah Café, de son manifeste aux différentes applications de son identité sur les tenues, le point de vente mobile et la façade.",
-    images: [
-      "/Portfolio/Akhmadounah-Cafe_01_Ouverture.jpg",
-      "/Portfolio/Akhmadounah-Cafe_02_Manifeste.jpg",
-      "/Portfolio/Akhmadounah-Cafe_15_Tablier.jpg",
-      "/Portfolio/Akhmadounah-Cafe_16_Charrette.jpg",
-      "/Portfolio/Akhmadounah-Cafe_17_Facade.jpg",
-      "/Portfolio/Akhmadounah-Cafe_19_Fin.jpg",
     ],
   },
 ];
